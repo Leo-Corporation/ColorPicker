@@ -68,5 +68,38 @@ namespace ColorPicker.Properties {
                 return ResourceManager.GetString("ColorPicker", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Picker.
+        /// </summary>
+        public static string Picker
+        {
+            get
+            {
+                return ResourceManager.GetString("Picker", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Converter.
+        /// </summary>
+        public static string Converter
+        {
+            get
+            {
+                return ResourceManager.GetString("Converter", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings
+        {
+            get
+            {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
     }
 }

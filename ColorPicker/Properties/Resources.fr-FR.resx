@@ -120,4 +120,13 @@
   <data name="ColorPicker" xml:space="preserve">
     <value>ColorPicker</value>
   </data>
+  <data name="Picker" xml:space="preserve">
+    <value>Picker</value>
+  </data>
+  <data name="Converter" xml:space="preserve">
+    <value>Convertisseur</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
 </root>

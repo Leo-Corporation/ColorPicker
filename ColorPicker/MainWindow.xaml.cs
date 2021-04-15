@@ -43,9 +43,52 @@ namespace ColorPicker
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private Button CheckedButton { get; set; }
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+
+		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void TabEnter(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Create button
+
+			button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["WindowButtonsHoverForeground1"].ToString()) }; // Set the foreground
+		}
+
+		private void TabLeave(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Create button
+
+			if (button != CheckedButton)
+			{
+				button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground 
+			}
+		}
+
+		private void PickerTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void ConverterTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void SettingsTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }
