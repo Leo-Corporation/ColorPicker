@@ -48,6 +48,14 @@ namespace ColorPicker
 		public MainWindow()
 		{
 			InitializeComponent();
+			InitUI();
+		}
+
+		private void InitUI()
+		{
+			HelloTxt.Text = Global.GetHiSentence; // Set the "Hello" message
+
+			CheckButton(PickerTabBtn); // Check the start page button
 		}
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
