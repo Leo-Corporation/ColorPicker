@@ -56,6 +56,7 @@ namespace ColorPicker
 			HelloTxt.Text = Global.GetHiSentence; // Set the "Hello" message
 
 			CheckButton(PickerTabBtn); // Check the start page button
+			PageContent.Content = Global.PickerPage; // Set startup page
 		}
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -109,6 +110,8 @@ namespace ColorPicker
 		{
 			ResetAllCheckStatus(); // Reset the background and foreground of all buttons
 			CheckButton(PickerTabBtn); // Check the "Picker" button
+
+			PageContent.Navigate(Global.PickerPage); // Navigate
 		}
 
 		private void ConverterTabBtn_Click(object sender, RoutedEventArgs e)
