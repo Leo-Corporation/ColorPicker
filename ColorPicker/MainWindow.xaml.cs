@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,12 +52,12 @@ namespace ColorPicker
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			WindowState = WindowState.Minimized; // Minimize window
 		}
 
 		private void CloseBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			Environment.Exit(0); // Quit
 		}
 
 		private void TabEnter(object sender, MouseEventArgs e)
@@ -76,19 +77,42 @@ namespace ColorPicker
 			}
 		}
 
+		private void CheckButton(Button button)
+		{
+			button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["WindowButtonsHoverForeground1"].ToString()) }; // Set the foreground
+			button.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set the background
+
+			CheckedButton = button; // Set the "checked" button
+		}
+
+		private void ResetAllCheckStatus()
+		{
+			PickerTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
+			PickerTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
+
+			ConverterTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
+			ConverterTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
+
+			SettingsTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
+			SettingsTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
+		}
+
 		private void PickerTabBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			ResetAllCheckStatus(); // Reset the background and foreground of all buttons
+			CheckButton(PickerTabBtn); // Check the "Picker" button
 		}
 
 		private void ConverterTabBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			ResetAllCheckStatus(); // Reset the background and foreground of all buttons
+			CheckButton(ConverterTabBtn); // Check the "Converter" button
 		}
 
 		private void SettingsTabBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			ResetAllCheckStatus(); // Reset the background and foreground of all buttons
+			CheckButton(SettingsTabBtn); // Check the "Settings" button
 		}
 	}
 }

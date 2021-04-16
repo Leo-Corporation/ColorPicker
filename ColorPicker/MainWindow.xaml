@@ -152,19 +152,19 @@
 						</Grid.ColumnDefinitions>
 
 						<StackPanel Margin="10" Grid.Column="0">
-							<Button Click="PickerTabBtn_Click" x:Name="PickerTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="190" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
+							<Button Click="PickerTabBtn_Click" x:Name="PickerTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xF2F6;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 									<TextBlock Text="{x:Static lang:Resources.Picker}" VerticalAlignment="Center"/>
 								</StackPanel>
 							</Button>
-							<Button Click="ConverterTabBtn_Click" x:Name="ConverterTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="190" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave">
+							<Button Click="ConverterTabBtn_Click" x:Name="ConverterTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xF18E;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
 									<TextBlock Text="{x:Static lang:Resources.Converter}" VerticalAlignment="Center"/>
 								</StackPanel>
 							</Button>
-							<Button Click="SettingsTabBtn_Click" x:Name="SettingsTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="190" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
+							<Button Click="SettingsTabBtn_Click" x:Name="SettingsTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xF6AB;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
 									<TextBlock Text="{x:Static lang:Resources.Settings}" VerticalAlignment="Center"/>
