@@ -142,7 +142,7 @@
     <value>Bonne soirée</value>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Copier</value>
   </data>
   <data name="Red" xml:space="preserve">
     <value>Rouge</value>
@@ -158,5 +158,20 @@
   </data>
   <data name="HEX" xml:space="preserve">
     <value>HEX</value>
+  </data>
+  <data name="RedP" xml:space="preserve">
+    <value>Rouge :</value>
+  </data>
+  <data name="GreenP" xml:space="preserve">
+    <value>Vert :</value>
+  </data>
+  <data name="BlueP" xml:space="preserve">
+    <value>Blue :</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Sélectionner une couleur</value>
+  </data>
+  <data name="HEXP" xml:space="preserve">
+    <value>HEX :</value>
   </data>
 </root>

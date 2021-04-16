@@ -70,6 +70,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blue:.
+        /// </summary>
+        public static string BlueP {
+            get {
+                return ResourceManager.GetString("BlueP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker.
         /// </summary>
         public static string ColorPicker {
@@ -133,11 +142,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Green:.
+        /// </summary>
+        public static string GreenP {
+            get {
+                return ResourceManager.GetString("GreenP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HEX.
         /// </summary>
         public static string HEX {
             get {
                 return ResourceManager.GetString("HEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HEX:.
+        /// </summary>
+        public static string HEXP {
+            get {
+                return ResourceManager.GetString("HEXP", resourceCulture);
             }
         }
         
@@ -169,11 +196,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Red:.
+        /// </summary>
+        public static string RedP {
+            get {
+                return ResourceManager.GetString("RedP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RGB.
         /// </summary>
         public static string RGB {
             get {
                 return ResourceManager.GetString("RGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select color.
+        /// </summary>
+        public static string SelectColor {
+            get {
+                return ResourceManager.GetString("SelectColor", resourceCulture);
             }
         }
         

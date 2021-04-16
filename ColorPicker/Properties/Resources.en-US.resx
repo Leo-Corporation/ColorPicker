@@ -159,4 +159,19 @@
   <data name="HEX" xml:space="preserve">
     <value>HEX</value>
   </data>
+  <data name="RedP" xml:space="preserve">
+    <value>Red:</value>
+  </data>
+  <data name="GreenP" xml:space="preserve">
+    <value>Green:</value>
+  </data>
+  <data name="BlueP" xml:space="preserve">
+    <value>Blue:</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
+  <data name="HEXP" xml:space="preserve">
+    <value>HEX:</value>
+  </data>
 </root>
