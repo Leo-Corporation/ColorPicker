@@ -24,6 +24,7 @@ SOFTWARE.
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using Color = System.Windows.Media.Color;
 
 namespace ColorPicker.Pages
 {
@@ -44,10 +47,26 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class PickerPage : Page
 	{
+		bool isRunning = false;
+		DispatcherTimer dispatcherTimer = new();
 		public PickerPage()
 		{
 			InitializeComponent();
 			InitUI(); // Init UI
+			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
+			dispatcherTimer.Tick += (o, e) =>
+			{
+				Bitmap bitmap = new(1, 1);
+				Graphics GFX = Graphics.FromImage(bitmap);
+				GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+				var pixel = bitmap.GetPixel(0, 0);
+
+				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
+
+				RedSlider.Value = pixel.R; // Set value
+				GreenSlider.Value = pixel.G; // Set value
+				BlueSlider.Value = pixel.B; // Set value
+			};
 		}
 
 		private void InitUI()
@@ -94,9 +113,19 @@ namespace ColorPicker.Pages
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
 		}
 
+
 		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			if (!isRunning)
+			{
+				dispatcherTimer.Start(); // Start
+				isRunning = true;
+			}
+			else
+			{
+				dispatcherTimer.Stop(); // Stop
+				isRunning = false;
+			}
 		}
 
 		private void CopyBtn_Click(object sender, RoutedEventArgs e)
