@@ -58,13 +58,40 @@ namespace ColorPicker.Pages
 			
 			// Display
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)r, (byte)g, (byte)b) }; // Display color
-			RedTxt.Text = $"{Properties.Resources.RedP} {r}"; // Set text
-			GreenTxt.Text = $"{Properties.Resources.GreenP} {g}"; // Set text
-			BlueTxt.Text = $"{Properties.Resources.BlueP} {b}"; // Set text
+			RedSlider.Value = r; // Set value
+			GreenSlider.Value = g; // Set value
+			BlueSlider.Value = b; // Set value
 
 			// Convert to HEX
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{hex.Value}";
+		}
+
+		private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
+			RedValueTxt.Text = RedSlider.Value.ToString(); // Set text
+
+			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
+		}
+
+		private void GreenSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
+			GreenValueTxt.Text = GreenSlider.Value.ToString(); // Set text
+
+			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
+		}
+
+		private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
+			BlueValueTxt.Text = BlueSlider.Value.ToString(); // Set text
+
+			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
 		}
 
 		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
@@ -74,7 +101,12 @@ namespace ColorPicker.Pages
 
 		private void CopyBtn_Click(object sender, RoutedEventArgs e)
 		{
+			Clipboard.SetText($"{RedSlider.Value};{GreenSlider.Value};{BlueSlider.Value}"); // Copy
+		}
 
+		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText("#" + ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value); // Copy
 		}
 	}
 }

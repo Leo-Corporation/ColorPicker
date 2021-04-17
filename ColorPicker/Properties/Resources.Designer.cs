@@ -106,6 +106,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy HEX.
+        /// </summary>
+        public static string CopyHEX {
+            get {
+                return ResourceManager.GetString("CopyHEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy RGB.
+        /// </summary>
+        public static string CopyRGB {
+            get {
+                return ResourceManager.GetString("CopyRGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Good afternoon.
         /// </summary>
         public static string GoodAfternoon {

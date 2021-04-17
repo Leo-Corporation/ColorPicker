@@ -174,4 +174,10 @@
   <data name="HEXP" xml:space="preserve">
     <value>HEX :</value>
   </data>
+  <data name="CopyRGB" xml:space="preserve">
+    <value>Copier RGB</value>
+  </data>
+  <data name="CopyHEX" xml:space="preserve">
+    <value>Copier HEX</value>
+  </data>
 </root>
