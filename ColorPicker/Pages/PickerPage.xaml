@@ -43,15 +43,15 @@
 						</Grid.ColumnDefinitions>
 
 						<TextBlock x:Name="RedTxt" Text="{x:Static lang:Resources.RedP}" FontSize="14" Grid.Row="0" FontWeight="Bold"/>
-						<Slider x:Name="RedSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" ValueChanged="RedSlider_ValueChanged" Grid.Column="1" SmallChange="1"/>
+						<Slider Style="{DynamicResource SliderStyle1}" x:Name="RedSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" ValueChanged="RedSlider_ValueChanged" Grid.Column="1" SmallChange="1" Foreground="#FF4500" BorderBrush="#FF4500"/>
 						<TextBlock x:Name="RedValueTxt" d:Text="255" Grid.Column="2" FontWeight="Bold" FontSize="14"/>
 
 						<TextBlock x:Name="GreenTxt" Text="{x:Static lang:Resources.GreenP}" FontSize="14" Grid.Row="1" FontWeight="Bold"/>
-						<Slider x:Name="GreenSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="1" ValueChanged="GreenSlider_ValueChanged" Grid.Column="1" SmallChange="1"/>
+						<Slider Style="{DynamicResource SliderStyle1}" x:Name="GreenSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="1" ValueChanged="GreenSlider_ValueChanged" Grid.Column="1" SmallChange="1" BorderBrush="#00df39" Foreground="#00df39"/>
 						<TextBlock x:Name="GreenValueTxt" d:Text="255" Grid.Column="2" Grid.Row="1" FontWeight="Bold" FontSize="14"/>
 
 						<TextBlock x:Name="BlueTxt" Text="{x:Static lang:Resources.BlueP}" FontSize="14" Grid.Row="2" FontWeight="Bold"/>
-						<Slider x:Name="BlueSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="2" ValueChanged="BlueSlider_ValueChanged" Grid.Column="1" SmallChange="1"/>
+						<Slider Style="{DynamicResource SliderStyle1}" x:Name="BlueSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="2" ValueChanged="BlueSlider_ValueChanged" Grid.Column="1" SmallChange="1" Foreground="#4169E1" BorderBrush="#4169E1"/>
 						<TextBlock x:Name="BlueValueTxt" d:Text="255" Grid.Column="2" Grid.Row="2" FontWeight="Bold" FontSize="14"/>
 					</Grid>
 					<TextBlock x:Name="HEXTxt" Text="{x:Static lang:Resources.HEXP}" FontSize="14" VerticalAlignment="Center" Grid.Row="3" FontWeight="Bold"/>
