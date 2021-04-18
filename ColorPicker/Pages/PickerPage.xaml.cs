@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Windows;
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,10 @@ namespace ColorPicker.Pages
 				RedSlider.Value = pixel.R; // Set value
 				GreenSlider.Value = pixel.G; // Set value
 				BlueSlider.Value = pixel.B; // Set value
+
+				// MiniPicker
+				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
+				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
 			};
 		}
 
@@ -113,7 +118,7 @@ namespace ColorPicker.Pages
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
 		}
 
-
+		MiniPicker miniPicker = new(); // MiniPicker window
 		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
 		{
 			if (!isRunning)
@@ -121,12 +126,17 @@ namespace ColorPicker.Pages
 				dispatcherTimer.Start(); // Start
 				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
+
+				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
+				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
+				miniPicker.Show(); // Show
 			}
 			else
 			{
 				dispatcherTimer.Stop(); // Stop
 				SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
 				isRunning = false;
+				miniPicker.Hide(); // Hide
 			}
 		}
 
