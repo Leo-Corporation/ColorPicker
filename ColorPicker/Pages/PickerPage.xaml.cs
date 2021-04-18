@@ -119,11 +119,13 @@ namespace ColorPicker.Pages
 			if (!isRunning)
 			{
 				dispatcherTimer.Start(); // Start
+				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
 			}
 			else
 			{
 				dispatcherTimer.Stop(); // Stop
+				SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
 				isRunning = false;
 			}
 		}

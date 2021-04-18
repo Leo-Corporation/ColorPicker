@@ -248,5 +248,14 @@ namespace ColorPicker.Properties {
                 return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string Stop {
+            get {
+                return ResourceManager.GetString("Stop", resourceCulture);
+            }
+        }
     }
 }
