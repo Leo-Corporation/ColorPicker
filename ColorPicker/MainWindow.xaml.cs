@@ -118,6 +118,8 @@ namespace ColorPicker
 		{
 			ResetAllCheckStatus(); // Reset the background and foreground of all buttons
 			CheckButton(ConverterTabBtn); // Check the "Converter" button
+
+			PageContent.Navigate(Global.ConverterPage); // Navigate
 		}
 
 		private void SettingsTabBtn_Click(object sender, RoutedEventArgs e)

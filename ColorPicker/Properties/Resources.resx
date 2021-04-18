@@ -163,4 +163,7 @@
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>
   </data>
+  <data name="ColorType" xml:space="preserve">
+    <value>Color type</value>
+  </data>
 </root>

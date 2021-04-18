@@ -21,28 +21,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace ColorPicker
+namespace ColorPicker.Enums
 {
 	/// <summary>
-	/// Interaction logic for App.xaml
+	/// The <see cref="ColorTypes"/> enum.
 	/// </summary>
-	public partial class App : Application
+	public enum ColorTypes
 	{
-		protected override void OnStartup(StartupEventArgs e)
-		{
-			Global.PickerPage = new(); // Create a new PickerPage
-			Global.ConverterPage = new(); // Create a new ConverterPage
-
-			base.OnStartup(e);
-		}
+		RGB,
+		HEX
 	}
 }

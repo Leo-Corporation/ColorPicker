@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Enums;
 using ColorPicker.Pages;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,11 @@ namespace ColorPicker.Classes
 		public static PickerPage PickerPage { get; set; }
 
 		/// <summary>
+		/// The <see cref="Pages.ConverterPage"/>.
+		/// </summary>
+		public static ConverterPage ConverterPage { get; set; }
+
+		/// <summary>
 		/// Gets the "Hi" sentence message.
 		/// </summary>
 		public static string GetHiSentence
@@ -83,6 +89,20 @@ namespace ColorPicker.Classes
 					return Properties.Resources.Hi + ", " + Environment.UserName + "."; // Return the correct value
 				}
 			}
+		}
+
+		/// <summary>
+		/// <c>ToString()</c> method for <see cref="ColorTypes"/> enum.
+		/// </summary>
+		/// <param name="colorTypes">The enum.</param>
+		/// <returns>A <see cref="string"/> value.</returns>
+		public static string ColorTypesToString(ColorTypes colorTypes)
+		{
+			return colorTypes switch
+			{
+				ColorTypes.HEX => Properties.Resources.HEX,
+				ColorTypes.RGB => Properties.Resources.RGB
+			}; // Return value
 		}
 	}
 }

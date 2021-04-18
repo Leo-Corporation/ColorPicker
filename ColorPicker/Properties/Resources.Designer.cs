@@ -88,6 +88,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color type.
+        /// </summary>
+        public static string ColorType {
+            get {
+                return ResourceManager.GetString("ColorType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Converter.
         /// </summary>
         public static string Converter {
