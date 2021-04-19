@@ -24,17 +24,32 @@
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto"/>
 						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
 					</Grid.RowDefinitions>
 
 					<StackPanel Grid.Row="0" Orientation="Horizontal">
 						<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.ColorType}"/>
-						<ComboBox x:Name="ColorTypeComboBox" Foreground="{Binding Source={StaticResource Foreground1}}" Style="{DynamicResource ComboBoxStyle1}" Margin="10,0,0,0" BorderThickness="2" Padding="5"/>
+						<ComboBox x:Name="ColorTypeComboBox" SelectionChanged="ColorTypeComboBox_SelectionChanged" Foreground="{Binding Source={StaticResource Foreground1}}" Style="{DynamicResource ComboBoxStyle1}" Margin="10,0,0,0" BorderThickness="2" Padding="5"/>
 						<TextBox x:Name="ColorTxt" TextChanged="ColorTxt_TextChanged" Width="150" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0"/>
 					</StackPanel>
 
-					<StackPanel Grid.Row="1" Margin="0,10,0,0">
-						<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.RGB}" x:Name="RGBTxt"/>
-						<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HEX}" x:Name="HEXTxt"/>
+					<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+						<TextBlock x:Name="IconValidMsgTxt" FontSize="18" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,10,0" VerticalAlignment="Center"/>
+						<TextBlock x:Name="ValidMsgTxt" FontWeight="Bold" FontSize="12" VerticalAlignment="Center"/>
+					</StackPanel>
+
+					<StackPanel Orientation="Horizontal" Grid.Row="2">
+						<Border x:Name="ColorDisplayer" CornerRadius="10" Margin="10" d:Background="Red" Grid.Column="0" Height="100" Width="100"/>
+						<StackPanel Margin="0,10,0,0" VerticalAlignment="Center">
+							<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.RGB}" x:Name="RGBTxt"/>
+							<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HEX}" x:Name="HEXTxt"/>
+						</StackPanel>
+					</StackPanel>
+
+					<StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
+						<Button x:Name="CopyBtn" Click="CopyBtn_Click" Content="{x:Static lang:Resources.CopyRGB}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0"/>
+						<Button x:Name="CopyHEXBtn" Click="CopyHEXBtn_Click" Content="{x:Static lang:Resources.CopyHEX}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,0,0"/>
 					</StackPanel>
 				</Grid>
 			</StackPanel>

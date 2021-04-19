@@ -1,4 +1,27 @@
-﻿using ColorPicker.Classes;
+﻿/*
+MIT License
+
+Copyright (c) Léo Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
+*/
+using ColorPicker.Classes;
 using ColorPicker.Enums;
 using LeoCorpLibrary;
 using System;
@@ -23,6 +46,7 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class ConverterPage : Page
 	{
+		string rgbColor, hexColor = "";
 		public ConverterPage()
 		{
 			InitializeComponent();
@@ -34,29 +58,78 @@ namespace ColorPicker.Pages
 			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.RGB)); // Add
 			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HEX)); // Add
 			ColorTypeComboBox.SelectedIndex = 0; // Set index
+
+			// Generate random color
+			Random random = new(); // Create new random
+			int r = random.Next(0, 255); // Generate random number between 0 and 255
+			int g = random.Next(0, 255); // Generate random number between 0 and 255
+			int b = random.Next(0, 255); // Generate random number between 0 and 255
+			ColorTxt.Text = $"{r};{g};{b}"; // Set text
 		}
 
 		private void ColorTxt_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			try
+			if (!string.IsNullOrEmpty(ColorTxt.Text))
 			{
-				if (ColorTypeComboBox.Text == Properties.Resources.RGB)
+				try
 				{
-					string[] rgb = ColorTxt.Text.Split(new string[] { ";" }, StringSplitOptions.None); // Split
+					if (ColorTypeComboBox.Text == Properties.Resources.RGB)
+					{
+						string[] rgb = ColorTxt.Text.Split(new string[] { ";" }, StringSplitOptions.None); // Split
 
-					RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
-					HEXTxt.Text = $"{Properties.Resources.HEX} #{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
+						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
+						HEXTxt.Text = $"{Properties.Resources.HEX} #{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
+
+						rgbColor = $"{rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
+						hexColor = $"#{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
+					}
+					else if (ColorTypeComboBox.Text == Properties.Resources.HEX)
+					{
+						var rgb = ColorsConverter.HEXtoRGB(new() { Value = ColorTxt.Text }); // Convert
+						string hex = ColorTxt.Text.StartsWith("#") ? ColorTxt.Text : "#" + ColorTxt.Text; // Set
+
+						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
+						HEXTxt.Text = $"{Properties.Resources.HEX} {hex}"; // Set text
+
+						rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set text
+						hexColor = $"{hex}"; // Set text
+					}
+
+					string[] rC = rgbColor.Split(new string[] { ";" }, StringSplitOptions.None); // Split
+					ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rC[0]), (byte)int.Parse(rC[1]), (byte)int.Parse(rC[2])) };
+
+					IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(0, 223, 57) }; // Set foreground color
+					IconValidMsgTxt.Text = "\uF299"; // Set icon
+					ValidMsgTxt.Text = Properties.Resources.ColorValid; // Set text
 				}
-				else if (ColorTypeComboBox.Text == Properties.Resources.HEX)
+				catch
 				{
-					var rgb = ColorsConverter.HEXtoRGB(new() { Value = ColorTxt.Text }); // Convert
-					string hex = ColorTxt.Text.StartsWith("#") ? ColorTxt.Text : "#" + ColorTxt.Text; // Set
-
-					RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
-					HEXTxt.Text = $"{Properties.Resources.HEX} {hex}"; // Set text
-				}
+					IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(255, 69, 0) }; // Set foreground color
+					IconValidMsgTxt.Text = "\uF36E"; // Set icon
+					ValidMsgTxt.Text = Properties.Resources.InvalidColor; // Set text
+				} 
 			}
-			catch { }
+		}
+
+		private void CopyBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(rgbColor); // Copy
+		}
+
+		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(hexColor); // Copy
+		}
+
+		private void ColorTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			ColorTxt.Text = $""; // Clear
+			ColorTxt.MaxLength = ColorTypeComboBox.SelectedIndex switch
+			{
+				0 => 11,
+				1 => 7,
+				_ => 11
+			}; // Set max length
 		}
 	}
 }
