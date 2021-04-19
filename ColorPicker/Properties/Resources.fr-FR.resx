@@ -186,4 +186,10 @@
   <data name="ColorType" xml:space="preserve">
     <value>Type de couleur</value>
   </data>
+  <data name="ColorValid" xml:space="preserve">
+    <value>La couleur est valide.</value>
+  </data>
+  <data name="InvalidColor" xml:space="preserve">
+    <value>La couleur est invalide.</value>
+  </data>
 </root>

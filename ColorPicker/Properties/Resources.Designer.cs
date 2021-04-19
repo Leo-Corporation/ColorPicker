@@ -97,6 +97,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The color is valid..
+        /// </summary>
+        public static string ColorValid {
+            get {
+                return ResourceManager.GetString("ColorValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Converter.
         /// </summary>
         public static string Converter {
@@ -201,6 +210,15 @@ namespace ColorPicker.Properties {
         public static string Hi {
             get {
                 return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The color is invalid..
+        /// </summary>
+        public static string InvalidColor {
+            get {
+                return ResourceManager.GetString("InvalidColor", resourceCulture);
             }
         }
         
