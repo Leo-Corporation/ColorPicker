@@ -349,7 +349,7 @@
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type TextBox}">
 							<Border x:Name="border" CornerRadius="3" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
-								<ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+								<ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Center"/>
 							</Border>
 							<ControlTemplate.Triggers>
 								<Trigger Property="IsEnabled" Value="false">
