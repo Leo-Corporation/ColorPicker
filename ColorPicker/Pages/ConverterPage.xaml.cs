@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using LeoCorpLibrary;
@@ -46,7 +47,7 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class ConverterPage : Page
 	{
-		string rgbColor, hexColor = "";
+		string rgbColor, hexColor, hsvColor = "";
 		public ConverterPage()
 		{
 			InitializeComponent();
@@ -57,6 +58,7 @@ namespace ColorPicker.Pages
 		{
 			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.RGB)); // Add
 			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HEX)); // Add
+			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HSV)); // Add
 			ColorTypeComboBox.SelectedIndex = 0; // Set index
 
 			// Generate random color
@@ -76,9 +78,11 @@ namespace ColorPicker.Pages
 					if (ColorTypeComboBox.Text == Properties.Resources.RGB)
 					{
 						string[] rgb = ColorTxt.Text.Split(new string[] { ";" }, StringSplitOptions.None); // Split
+						var hsv = ColorsConverter.RGBtoHSV(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])); // Convert
 
 						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
 						HEXTxt.Text = $"{Properties.Resources.HEX} #{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
+						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 
 						rgbColor = $"{rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
 						hexColor = $"#{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
@@ -87,9 +91,11 @@ namespace ColorPicker.Pages
 					{
 						var rgb = ColorsConverter.HEXtoRGB(new() { Value = ColorTxt.Text }); // Convert
 						string hex = ColorTxt.Text.StartsWith("#") ? ColorTxt.Text : "#" + ColorTxt.Text; // Set
+						var hsv = ColorsConverter.RGBtoHSV(rgb); // Convert
 
 						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
 						HEXTxt.Text = $"{Properties.Resources.HEX} {hex}"; // Set text
+						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 
 						rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set text
 						hexColor = $"{hex}"; // Set text
@@ -116,6 +122,49 @@ namespace ColorPicker.Pages
 			Clipboard.SetText(rgbColor); // Copy
 		}
 
+		private void HueTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			ConvertHSV(); // Convert HSV color
+		}
+
+		private void SatTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			ConvertHSV(); // Convert HSV color
+		}
+
+		private void ValTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			ConvertHSV(); // Convert HSV color
+		}
+
+		private void ConvertHSV()
+		{
+			try
+			{
+				int h = int.Parse(HueTxt.Text); // Parse
+				int s = int.Parse(SatTxt.Text); // Parse
+				int v = int.Parse(ValTxt.Text); // Parse
+				var rgb = ColorHelper.ColorConverter.HsvToRgb(new(h, (byte)s, (byte)v)); // Convert
+				var hex = ColorsConverter.RGBtoHEX(rgb.R, rgb.G, rgb.B); // Convert
+
+				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
+				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
+				HSVTxt.Text = $"{Properties.Resources.HSV} ({h},{s},{v})"; // Set text
+
+				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
+
+				IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(0, 223, 57) }; // Set foreground color
+				IconValidMsgTxt.Text = "\uF299"; // Set icon
+				ValidMsgTxt.Text = Properties.Resources.ColorValid; // Set text
+			}
+			catch
+			{
+				IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(255, 69, 0) }; // Set foreground color
+				IconValidMsgTxt.Text = "\uF36E"; // Set icon
+				ValidMsgTxt.Text = Properties.Resources.InvalidColor; // Set text
+			}
+		}
+
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Clipboard.SetText(hexColor); // Copy
@@ -123,13 +172,33 @@ namespace ColorPicker.Pages
 
 		private void ColorTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			ColorTxt.Text = $""; // Clear
+			ColorTxt.Text = ""; // Clear
 			ColorTxt.MaxLength = ColorTypeComboBox.SelectedIndex switch
 			{
 				0 => 11,
 				1 => 7,
 				_ => 11
 			}; // Set max length
+
+			HueTxt.Text = ""; // Clear
+			SatTxt.Text = ""; // Clear
+			ValTxt.Text = ""; // Clear
+
+			switch (ColorTypeComboBox.SelectedIndex)
+			{
+				case 0: // RGB
+					ColorTxt.Visibility = Visibility.Visible; // Show
+					HSVGrid.Visibility = Visibility.Collapsed; // Hide
+					break;
+				case 1: // HEX
+					ColorTxt.Visibility = Visibility.Visible; // Show
+					HSVGrid.Visibility = Visibility.Collapsed; // Hide
+					break;
+				case 2:
+					ColorTxt.Visibility = Visibility.Collapsed; // Hide
+					HSVGrid.Visibility = Visibility.Visible; // Show
+					break;
+			}
 		}
 	}
 }

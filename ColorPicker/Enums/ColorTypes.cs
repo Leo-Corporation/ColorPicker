@@ -35,6 +35,7 @@ namespace ColorPicker.Enums
 	public enum ColorTypes
 	{
 		RGB,
-		HEX
+		HEX,
+		HSV
 	}
 }

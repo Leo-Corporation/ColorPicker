@@ -101,7 +101,9 @@ namespace ColorPicker.Classes
 			return colorTypes switch
 			{
 				ColorTypes.HEX => Properties.Resources.HEX,
-				ColorTypes.RGB => Properties.Resources.RGB
+				ColorTypes.RGB => Properties.Resources.RGB,
+				ColorTypes.HSV => Properties.Resources.HSV,
+				_ => Properties.Resources.RGB
 			}; // Return value
 		}
 	}

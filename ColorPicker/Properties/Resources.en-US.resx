@@ -192,4 +192,16 @@
   <data name="InvalidColor" xml:space="preserve">
     <value>The color is invalid.</value>
   </data>
+  <data name="HSV" xml:space="preserve">
+    <value>HSV</value>
+  </data>
+  <data name="H" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="S" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="V" xml:space="preserve">
+    <value>V</value>
+  </data>
 </root>

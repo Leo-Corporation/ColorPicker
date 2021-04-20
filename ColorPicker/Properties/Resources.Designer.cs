@@ -187,6 +187,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to H.
+        /// </summary>
+        public static string H {
+            get {
+                return ResourceManager.GetString("H", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HEX.
         /// </summary>
         public static string HEX {
@@ -210,6 +219,15 @@ namespace ColorPicker.Properties {
         public static string Hi {
             get {
                 return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HSV.
+        /// </summary>
+        public static string HSV {
+            get {
+                return ResourceManager.GetString("HSV", resourceCulture);
             }
         }
         
@@ -259,6 +277,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S.
+        /// </summary>
+        public static string S {
+            get {
+                return ResourceManager.GetString("S", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select color.
         /// </summary>
         public static string SelectColor {
@@ -282,6 +309,15 @@ namespace ColorPicker.Properties {
         public static string Stop {
             get {
                 return ResourceManager.GetString("Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V.
+        /// </summary>
+        public static string V {
+            get {
+                return ResourceManager.GetString("V", resourceCulture);
             }
         }
     }
