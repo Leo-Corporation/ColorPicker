@@ -61,6 +61,33 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string Apply {
+            get {
+                return ResourceManager.GetString("Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates are available..
+        /// </summary>
+        public static string AvailableUpdates {
+            get {
+                return ResourceManager.GetString("AvailableUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blue.
         /// </summary>
         public static string Blue {
@@ -75,6 +102,51 @@ namespace ColorPicker.Properties {
         public static string BlueP {
             get {
                 return ResourceManager.GetString("BlueP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change ColorPicker language..
+        /// </summary>
+        public static string ChangeLanguage {
+            get {
+                return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change ColorPicker theme..
+        /// </summary>
+        public static string ChangeTheme {
+            get {
+                return ResourceManager.GetString("ChangeTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check updates.
+        /// </summary>
+        public static string CheckUpdate {
+            get {
+                return ResourceManager.GetString("CheckUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking updates on start is disabled..
+        /// </summary>
+        public static string CheckUpdatesDisabledOnStart {
+            get {
+                return ResourceManager.GetString("CheckUpdatesDisabledOnStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check updates on start.
+        /// </summary>
+        public static string CheckUpdatesOnStart {
+            get {
+                return ResourceManager.GetString("CheckUpdatesOnStart", resourceCulture);
             }
         }
         
@@ -138,6 +210,33 @@ namespace ColorPicker.Properties {
         public static string CopyRGB {
             get {
                 return ResourceManager.GetString("CopyRGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string Dark {
+            get {
+                return ResourceManager.GetString("Dark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data.
+        /// </summary>
+        public static string Data {
+            get {
+                return ResourceManager.GetString("Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string Default {
+            get {
+                return ResourceManager.GetString("Default", resourceCulture);
             }
         }
         
@@ -232,11 +331,92 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Install.
+        /// </summary>
+        public static string Install {
+            get {
+                return ResourceManager.GetString("Install", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To install updates, ColorPicker needs to restart. Do you want to continue?.
+        /// </summary>
+        public static string InstallConfirmMsg {
+            get {
+                return ResourceManager.GetString("InstallConfirmMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install version.
+        /// </summary>
+        public static string InstallVersion {
+            get {
+                return ResourceManager.GetString("InstallVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The color is invalid..
         /// </summary>
         public static string InvalidColor {
             get {
                 return ResourceManager.GetString("InvalidColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Licenses.
+        /// </summary>
+        public static string Licenses {
+            get {
+                return ResourceManager.GetString("Licenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        public static string Light {
+            get {
+                return ResourceManager.GetString("Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes. Do you want to restart now?.
+        /// </summary>
+        public static string NeedRestartToApplyChanges {
+            get {
+                return ResourceManager.GetString("NeedRestartToApplyChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show a notification when updates are available.
+        /// </summary>
+        public static string NotifyUpdates {
+            get {
+                return ResourceManager.GetString("NotifyUpdates", resourceCulture);
             }
         }
         
@@ -268,6 +448,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset settings.
+        /// </summary>
+        public static string ResetSettings {
+            get {
+                return ResourceManager.GetString("ResetSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to reset all settings?.
+        /// </summary>
+        public static string ResetSettingsConfirmMsg {
+            get {
+                return ResourceManager.GetString("ResetSettingsConfirmMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RGB.
         /// </summary>
         public static string RGB {
@@ -282,6 +480,15 @@ namespace ColorPicker.Properties {
         public static string S {
             get {
                 return ResourceManager.GetString("S", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See licenses.
+        /// </summary>
+        public static string SeeLicenses {
+            get {
+                return ResourceManager.GetString("SeeLicenses", resourceCulture);
             }
         }
         
@@ -304,6 +511,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All settings have been reset, ColorPicker will now restart..
+        /// </summary>
+        public static string SettingsReset {
+            get {
+                return ResourceManager.GetString("SettingsReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop.
         /// </summary>
         public static string Stop {
@@ -313,11 +529,56 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string Theme {
+            get {
+                return ResourceManager.GetString("Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to check updates.
+        /// </summary>
+        public static string UnableToCheckUpdates {
+            get {
+                return ResourceManager.GetString("UnableToCheckUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        public static string Updates {
+            get {
+                return ResourceManager.GetString("Updates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ColorPicker is up to date..
+        /// </summary>
+        public static string UpToDate {
+            get {
+                return ResourceManager.GetString("UpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to V.
         /// </summary>
         public static string V {
             get {
                 return ResourceManager.GetString("V", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        public static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
             }
         }
     }
