@@ -652,6 +652,303 @@
 				</Style.Triggers>
 			</Style>
 
+			<Style x:Key="FocusVisual3">
+				<Setter Property="Control.Template">
+					<Setter.Value>
+						<ControlTemplate>
+							<Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="OptionMarkFocusVisual">
+				<Setter Property="Control.Template">
+					<Setter.Value>
+						<ControlTemplate>
+							<Rectangle Margin="14,0,0,0" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+			<SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
+			<SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
+			<SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121"/>
+			<SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="{Binding Source={StaticResource Background1}}"/>
+			<SolidColorBrush x:Key="RadioButton.MouseOver.Border" Color="{Binding Source={StaticResource AccentColor}}"/>
+			<SolidColorBrush x:Key="RadioButton.MouseOver.Glyph" Color="{Binding Source={StaticResource AccentColor}}"/>
+			<SolidColorBrush x:Key="RadioButton.Pressed.Background" Color="{Binding Source={StaticResource Background1}}"/>
+			<SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="{Binding Source={StaticResource AccentColor}}"/>
+			<SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="{Binding Source={StaticResource AccentColor}}"/>
+			<SolidColorBrush x:Key="RadioButton.Disabled.Background" Color="#FFE6E6E6"/>
+			<SolidColorBrush x:Key="RadioButton.Disabled.Border" Color="#FFBCBCBC"/>
+			<SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="#FF707070"/>
+			<Style x:Key="RadioButtonStyle1" TargetType="{x:Type RadioButton}">
+				<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual3}"/>
+				<Setter Property="Background" Value="{StaticResource RadioButton.Static.Background}"/>
+				<Setter Property="BorderBrush" Value="{StaticResource RadioButton.Static.Border}"/>
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+				<Setter Property="BorderThickness" Value="1"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type RadioButton}">
+							<Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Border x:Name="radioButtonBorder" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,2,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+									<Grid x:Name="markGrid" Margin="2">
+										<Ellipse x:Name="optionMark" Fill="{Binding Source={StaticResource AccentColor}}" MinHeight="6" MinWidth="6" Opacity="0"/>
+									</Grid>
+								</Border>
+								<ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+							</Grid>
+							<ControlTemplate.Triggers>
+								<Trigger Property="HasContent" Value="true">
+									<Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+									<Setter Property="Padding" Value="4,-1,0,0"/>
+								</Trigger>
+								<Trigger Property="IsMouseOver" Value="true">
+									<Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Background}"/>
+									<Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Border}"/>
+									<Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.MouseOver.Glyph}"/>
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Background}"/>
+									<Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Border}"/>
+									<Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Disabled.Glyph}"/>
+								</Trigger>
+								<Trigger Property="IsPressed" Value="true">
+									<Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Background}"/>
+									<Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Border}"/>
+									<Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Pressed.Glyph}"/>
+								</Trigger>
+								<Trigger Property="IsChecked" Value="true">
+									<Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+								</Trigger>
+								<Trigger Property="IsChecked" Value="{x:Null}">
+									<Setter Property="Opacity" TargetName="optionMark" Value="0.56"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+			<ControlTemplate x:Key="ScrollViewerControlTemplate" TargetType="{x:Type ScrollViewer}">
+				<Grid x:Name="Grid" Background="{TemplateBinding Background}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
+					<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.RowSpan="2" Margin="{TemplateBinding Padding}" Grid.ColumnSpan="2"/>
+					<ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Width="8"/>
+					<ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" Height="8"/>
+				</Grid>
+			</ControlTemplate>
+
+			<Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+				<Setter Property="OverridesDefaultStyle" Value="true"/>
+				<Setter Property="Background" Value="Transparent"/>
+				<Setter Property="Focusable" Value="false"/>
+				<Setter Property="IsTabStop" Value="false"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type RepeatButton}">
+							<Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+			<Style x:Key="HorizontalThumb" TargetType="{x:Type Thumb}">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Thumb}">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="4" />
+									<ColumnDefinition Width="4" />
+									<ColumnDefinition />
+									<ColumnDefinition Width="4" />
+									<ColumnDefinition Width="4" />
+								</Grid.ColumnDefinitions>
+								<Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="{Binding Source={StaticResource Gray}}" />
+								<Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="{Binding Source={StaticResource Gray}}" />
+								<Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="{Binding Source={StaticResource Gray}}" />
+							</Grid>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+			<Style x:Key="VerticalThumb" TargetType="{x:Type Thumb}">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Thumb}">
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="4" />
+									<RowDefinition Height="4" />
+									<RowDefinition />
+									<RowDefinition Height="4" />
+									<RowDefinition Height="4" />
+								</Grid.RowDefinitions>
+								<Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="{Binding Source={StaticResource Gray}}" />
+								<Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="{Binding Source={StaticResource Gray}}" />
+								<Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="{Binding Source={StaticResource Gray}}" />
+							</Grid>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+			<Style TargetType="{x:Type ScrollBar}">
+				<Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+				<Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+				<Setter Property="Width" Value="10"/>
+				<Setter Property="MinWidth" Value="10"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ScrollBar}">
+							<Grid x:Name="Bg" SnapsToDevicePixels="true" Background="Transparent">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="0.00001*"/>
+								</Grid.RowDefinitions>
+								<Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="1">
+									<Track.DecreaseRepeatButton>
+										<RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource ScrollBarPageButton}"/>
+									</Track.DecreaseRepeatButton>
+									<Track.IncreaseRepeatButton>
+										<RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource ScrollBarPageButton}"/>
+									</Track.IncreaseRepeatButton>
+									<Track.Thumb>
+										<Thumb Style="{DynamicResource VerticalThumb}" theme:ScrollChrome.ScrollGlyph="VerticalGripper" Width="8"/>
+									</Track.Thumb>
+								</Track>
+							</Grid>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+				<Style.Triggers>
+					<Trigger Property="Orientation" Value="Horizontal">
+						<Setter Property="Width" Value="Auto"/>
+						<Setter Property="MinWidth" Value="0"/>
+						<Setter Property="Height" Value="10"/>
+						<Setter Property="MinHeight" Value="10"/>
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="{x:Type ScrollBar}">
+									<Grid x:Name="Bg" SnapsToDevicePixels="true" Background="Transparent">
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="0.00001*"/>
+										</Grid.ColumnDefinitions>
+										<Track x:Name="PART_Track" Grid.Column="1" IsEnabled="{TemplateBinding IsMouseOver}">
+											<Track.DecreaseRepeatButton>
+												<RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{StaticResource ScrollBarPageButton}"/>
+											</Track.DecreaseRepeatButton>
+											<Track.IncreaseRepeatButton>
+												<RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Style="{StaticResource ScrollBarPageButton}"/>
+											</Track.IncreaseRepeatButton>
+											<Track.Thumb>
+												<Thumb theme:ScrollChrome.ScrollGlyph="HorizontalGripper" Style="{DynamicResource HorizontalThumb}" Height="8"/>
+											</Track.Thumb>
+										</Track>
+									</Grid>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Trigger>
+				</Style.Triggers>
+			</Style>
+			<Style x:Key="FocusVisual1">
+				<Setter Property="Control.Template">
+					<Setter.Value>
+						<ControlTemplate>
+							<Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
+			<SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
+			<SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="White"/>
+			<SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="Transparent"/>
+			<SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#2491FF"/>
+			<SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="White"/>
+			<SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#2491FF"/>
+			<SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="WhiteSmoke"/>
+			<SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6"/>
+			<SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC"/>
+			<SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070"/>
+			<SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="Transparent"/>
+			<Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
+				<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+				<Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
+				<Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+				<Setter Property="BorderThickness" Value="1"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type CheckBox}">
+							<Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Border x:Name="checkBoxBorder" CornerRadius="3" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="20" Width="20" BorderBrush="#59ADFF">
+									<Grid x:Name="markGrid">
+										<Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Fill="{StaticResource OptionMark.Static.Glyph}" Margin="1" Opacity="0" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+										<Rectangle x:Name="indeterminateMark" Fill="{StaticResource OptionMark.Static.Glyph}" Margin="2" Opacity="0"/>
+									</Grid>
+								</Border>
+								<ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+							</Grid>
+							<ControlTemplate.Triggers>
+								<Trigger Property="HasContent" Value="true">
+									<Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+									<Setter Property="Padding" Value="4,-1,0,0"/>
+								</Trigger>
+								<Trigger Property="IsMouseOver" Value="true">
+									<Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Background}"/>
+									<Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Border}"/>
+									<Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+									<Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Background}"/>
+									<Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Border}"/>
+									<Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+									<Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+								</Trigger>
+								<Trigger Property="IsPressed" Value="true">
+									<Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>
+									<Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Border}"/>
+									<Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+									<Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+								</Trigger>
+								<Trigger Property="IsChecked" Value="true">
+									<Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+									<Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+									<Setter Property="Background" TargetName="checkBoxBorder" Value="#59ADFF"/>
+								</Trigger>
+								<Trigger Property="IsChecked" Value="{x:Null}">
+									<Setter Property="Opacity" TargetName="optionMark" Value="0"/>
+									<Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+									<Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Static.Background}"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
 		</ResourceDictionary>
     </Application.Resources>
 </Application>

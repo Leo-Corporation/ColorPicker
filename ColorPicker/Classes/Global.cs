@@ -62,6 +62,11 @@ namespace ColorPicker.Classes
 		public static ConverterPage ConverterPage { get; set; }
 
 		/// <summary>
+		/// The <see cref="Pages.SettingsPage"/>.
+		/// </summary>
+		public static SettingsPage SettingsPage { get; set; }
+
+		/// <summary>
 		/// Gets the "Hi" sentence message.
 		/// </summary>
 		public static string GetHiSentence

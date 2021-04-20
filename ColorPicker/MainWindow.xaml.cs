@@ -126,6 +126,8 @@ namespace ColorPicker
 		{
 			ResetAllCheckStatus(); // Reset the background and foreground of all buttons
 			CheckButton(SettingsTabBtn); // Check the "Settings" button
+
+			PageContent.Navigate(Global.SettingsPage); // Navigate
 		}
 	}
 }

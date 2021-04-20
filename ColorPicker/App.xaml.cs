@@ -41,6 +41,7 @@ namespace ColorPicker
 		{
 			Global.PickerPage = new(); // Create a new PickerPage
 			Global.ConverterPage = new(); // Create a new ConverterPage
+			Global.SettingsPage = new(); // Create a new SettingsPage
 
 			base.OnStartup(e);
 		}
