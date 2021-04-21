@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
