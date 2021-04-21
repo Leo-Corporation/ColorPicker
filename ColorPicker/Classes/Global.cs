@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ColorPicker.Classes
 {
@@ -120,6 +121,26 @@ namespace ColorPicker.Classes
 				ColorTypes.HSV => Properties.Resources.HSV,
 				_ => Properties.Resources.RGB
 			}; // Return value
+		}
+
+		/// <summary>
+		/// Changes the application's theme.
+		/// </summary>
+		public static void ChangeTheme()
+		{
+			App.Current.Resources.MergedDictionaries.Clear();
+			ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
+
+			if (Settings.IsDarkTheme) // If the dark theme is on
+			{
+				resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
+			}
+			else
+			{
+				resourceDictionary.Source = new Uri("..\\Themes\\Light.xaml", UriKind.Relative); // Add source
+			}
+
+			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
 		}
 	}
 }
