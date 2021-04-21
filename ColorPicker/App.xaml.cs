@@ -42,6 +42,7 @@ namespace ColorPicker
 			SettingsManager.Load(); // Load settings
 
 			Global.ChangeTheme(); // Change the theme
+			Global.ChangeLanguage(); // Change the language
 
 			Global.PickerPage = new(); // Create a new PickerPage
 			Global.ConverterPage = new(); // Create a new ConverterPage

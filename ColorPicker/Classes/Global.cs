@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -141,6 +142,27 @@ namespace ColorPicker.Classes
 			}
 
 			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+		}
+
+		/// <summary>
+		/// Changes the application's language.
+		/// </summary>
+		public static void ChangeLanguage()
+		{
+			switch (Global.Settings.Language) // For each case
+			{
+				case "_default": // No language
+					break;
+				case "en-US": // English (US)
+					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US"); // Change
+					break;
+
+				case "fr-FR": // French (FR)
+					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
+					break;
+				default: // No language
+					break;
+			}
 		}
 	}
 }
