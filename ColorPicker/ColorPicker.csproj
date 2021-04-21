@@ -6,12 +6,13 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
-    <Version>3.0.0.2104-rc1</Version>
+    <Version>3.0.0.2104</Version>
     <Authors>Léo Corporation</Authors>
     <Copyright>© 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Leo-Corporation/ColorPicker</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
