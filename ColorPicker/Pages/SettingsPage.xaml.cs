@@ -254,6 +254,7 @@ namespace ColorPicker.Pages
 			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
 				"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
 				"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
+				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
 				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
 				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
