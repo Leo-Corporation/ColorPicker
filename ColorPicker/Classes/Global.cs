@@ -67,6 +67,16 @@ namespace ColorPicker.Classes
 		public static SettingsPage SettingsPage { get; set; }
 
 		/// <summary>
+		/// Settings of ColorPicker.
+		/// </summary>
+		public static Settings Settings { get; set; }
+
+		/// <summary>
+		/// Last version link.
+		/// </summary>
+		public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/Version.txt";
+
+		/// <summary>
 		/// Gets the "Hi" sentence message.
 		/// </summary>
 		public static string GetHiSentence
