@@ -291,4 +291,7 @@
   <data name="SettingsReset" xml:space="preserve">
     <value>All settings have been reset, ColorPicker will now restart.</value>
   </data>
+  <data name="ShortcutsGuide" xml:space="preserve">
+    <value>Press S to start/stop the selection. Press C to copy the color.</value>
+  </data>
 </root>

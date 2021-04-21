@@ -520,6 +520,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press S to start/stop the selection. Press C to copy the color..
+        /// </summary>
+        public static string ShortcutsGuide {
+            get {
+                return ResourceManager.GetString("ShortcutsGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop.
         /// </summary>
         public static string Stop {
