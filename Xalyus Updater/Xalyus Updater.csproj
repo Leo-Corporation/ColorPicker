@@ -9,4 +9,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Xalyus Updater.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Xalyus Updater.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>

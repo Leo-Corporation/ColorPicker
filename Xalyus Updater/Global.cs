@@ -45,7 +45,7 @@ namespace Xalyus_Updater
         /// <summary>
         /// The directory where the file is downloaded.
         /// </summary>
-        public static string Directory { get; set; }
+        public static string Directory => AppDomain.CurrentDomain.BaseDirectory + @"\UpdatedColorPickerFiles.zip";
 
         /// <summary>
         /// The displayed message when the update is installed.
