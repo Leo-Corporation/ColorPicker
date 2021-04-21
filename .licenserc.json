@@ -1,0 +1,16 @@
+{
+    "**/*.cs": [
+        "/*",
+        "MIT License",
+        "",
+        "Copyright (c) Léo Corporation"
+    ],
+    "ignore": [
+        "**/*.Designer.cs",
+        "ColorPicker/Properties/",
+        "ColorPicker/Ressources/",
+        "Xalyus Updater/Properties/",
+        "Xalyus Updater/Resources/",
+        "AssemblyInfo.cs"
+    ]
+}
