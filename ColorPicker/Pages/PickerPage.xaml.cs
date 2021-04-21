@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Windows;
+using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
@@ -49,10 +50,12 @@ namespace ColorPicker.Pages
 	public partial class PickerPage : Page
 	{
 		bool isRunning = false;
+		private IKeyboardMouseEvents m_GlobalHook;
 		DispatcherTimer dispatcherTimer = new();
 		public PickerPage()
 		{
 			InitializeComponent();
+			m_GlobalHook = Hook.GlobalEvents();
 			InitUI(); // Init UI
 			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
 			dispatcherTimer.Tick += (o, e) =>
@@ -89,6 +92,34 @@ namespace ColorPicker.Pages
 			// Convert to HEX
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{hex.Value}";
+
+			m_GlobalHook.KeyPress += (o, e) =>
+			{
+				if (e.KeyChar.ToString().ToLower() == "c")
+				{
+					if (isRunning)
+					{
+						Clipboard.SetText($"{RedSlider.Value};{GreenSlider.Value};{BlueSlider.Value}"); // Copy
+					}
+				}
+				else if (e.KeyChar.ToString().ToLower() == "s")
+				{
+					if (isRunning)
+					{
+						dispatcherTimer.Stop();
+						miniPicker.Hide();
+						isRunning = false;
+						SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
+					}
+					else
+					{
+						dispatcherTimer.Start();
+						miniPicker.Show();
+						isRunning = true;
+						SelectColorBtn.Content = Properties.Resources.Stop; // Set text
+					}
+				}
+			};
 		}
 
 		private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

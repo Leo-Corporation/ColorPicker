@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="ColorHelper" Version="1.4.0" />
     <PackageReference Include="LeoCorpLibrary" Version="3.5.0.2104" />
+    <PackageReference Include="MouseKeyHook" Version="5.6.0" />
   </ItemGroup>
 
   <ItemGroup>
