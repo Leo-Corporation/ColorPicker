@@ -10,7 +10,7 @@
 	<sys:String x:Key="MainWindowBackground">/Images/BackgroundWhite.png</sys:String>
 	<sys:String x:Key="WindowButtonsHoverForeground1">#ffffff</sys:String>
 	<sys:String x:Key="AccentColor">#59ADFF</sys:String>
-	<sys:String x:Key="LightAccentColor">#8AC4FF</sys:String>
+	<sys:String x:Key="LightAccentColor">#CCE5FF</sys:String>
 	<sys:String x:Key="Gray">#DEDEDE</sys:String>
 
 </ResourceDictionary>
