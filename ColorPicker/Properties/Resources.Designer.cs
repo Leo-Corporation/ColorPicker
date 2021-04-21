@@ -205,6 +205,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy HSV.
+        /// </summary>
+        public static string CopyHSV {
+            get {
+                return ResourceManager.GetString("CopyHSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy RGB.
         /// </summary>
         public static string CopyRGB {

@@ -274,4 +274,7 @@
   <data name="ShortcutsGuide" xml:space="preserve">
     <value>Press S to start/stop the selection. Press C to copy the color.</value>
   </data>
+  <data name="CopyHSV" xml:space="preserve">
+    <value>Copy HSV</value>
+  </data>
 </root>

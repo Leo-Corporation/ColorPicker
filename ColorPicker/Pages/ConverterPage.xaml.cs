@@ -86,6 +86,7 @@ namespace ColorPicker.Pages
 
 						rgbColor = $"{rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
 						hexColor = $"#{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
+						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 					}
 					else if (ColorTypeComboBox.Text == Properties.Resources.HEX)
 					{
@@ -151,6 +152,8 @@ namespace ColorPicker.Pages
 				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({h},{s},{v})"; // Set text
 
+				hsvColor = $"({h},{s},{v})"; // Set
+
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
 				IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(0, 223, 57) }; // Set foreground color
@@ -163,6 +166,11 @@ namespace ColorPicker.Pages
 				IconValidMsgTxt.Text = "\uF36E"; // Set icon
 				ValidMsgTxt.Text = Properties.Resources.InvalidColor; // Set text
 			}
+		}
+
+		private void CopyHSVBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(hsvColor); // Copy
 		}
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
