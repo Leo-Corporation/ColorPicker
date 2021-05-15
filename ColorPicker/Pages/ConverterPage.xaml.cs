@@ -59,6 +59,7 @@ namespace ColorPicker.Pages
 			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.RGB)); // Add
 			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HEX)); // Add
 			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HSV)); // Add
+			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HSL)); // Add
 			ColorTypeComboBox.SelectedIndex = 0; // Set index
 
 			// Generate random color
@@ -79,10 +80,12 @@ namespace ColorPicker.Pages
 					{
 						string[] rgb = ColorTxt.Text.Split(new string[] { ";" }, StringSplitOptions.None); // Split
 						var hsv = ColorsConverter.RGBtoHSV(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])); // Convert
+						var hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 
 						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
 						HEXTxt.Text = $"{Properties.Resources.HEX} #{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
 						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
+						HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 
 						rgbColor = $"{rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
 						hexColor = $"#{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
@@ -93,10 +96,12 @@ namespace ColorPicker.Pages
 						var rgb = ColorsConverter.HEXtoRGB(new() { Value = ColorTxt.Text }); // Convert
 						string hex = ColorTxt.Text.StartsWith("#") ? ColorTxt.Text : "#" + ColorTxt.Text; // Set
 						var hsv = ColorsConverter.RGBtoHSV(rgb); // Convert
+						var hsl = ColorHelper.ColorConverter.HexToHsl(new(hex)); // Convert
 
 						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
 						HEXTxt.Text = $"{Properties.Resources.HEX} {hex}"; // Set text
 						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
+						HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 
 						rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set text
 						hexColor = $"{hex}"; // Set text
@@ -147,12 +152,44 @@ namespace ColorPicker.Pages
 				int v = int.Parse(ValTxt.Text); // Parse
 				var rgb = ColorHelper.ColorConverter.HsvToRgb(new(h, (byte)s, (byte)v)); // Convert
 				var hex = ColorsConverter.RGBtoHEX(rgb.R, rgb.G, rgb.B); // Convert
+				var hsl = ColorHelper.ColorConverter.RgbToHsl(rgb); // Convert
 
 				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
 				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({h},{s},{v})"; // Set text
+				HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 
 				hsvColor = $"({h},{s},{v})"; // Set
+
+				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
+
+				IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(0, 223, 57) }; // Set foreground color
+				IconValidMsgTxt.Text = "\uF299"; // Set icon
+				ValidMsgTxt.Text = Properties.Resources.ColorValid; // Set text
+			}
+			catch
+			{
+				IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(255, 69, 0) }; // Set foreground color
+				IconValidMsgTxt.Text = "\uF36E"; // Set icon
+				ValidMsgTxt.Text = Properties.Resources.InvalidColor; // Set text
+			}
+		}
+
+		private void ConvertHSL()
+		{
+			try
+			{
+				int h = int.Parse(HTxt.Text); // Parse
+				int s = int.Parse(STxt.Text); // Parse
+				int l = int.Parse(LTxt.Text); // Parse
+				var rgb = ColorHelper.ColorConverter.HslToRgb(new(h, (byte)s, (byte)l)); // Convert
+				var hex = ColorsConverter.RGBtoHEX(rgb.R, rgb.G, rgb.B); // Convert
+				var hsv = ColorHelper.ColorConverter.RgbToHsv(rgb); // Convert
+
+				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
+				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
+				HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
+				HSLTxt.Text = $"{Properties.Resources.HSL} ({h},{s},{l})"; // Set text
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
@@ -171,6 +208,21 @@ namespace ColorPicker.Pages
 		private void CopyHSVBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Clipboard.SetText(hsvColor); // Copy
+		}
+
+		private void HTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			ConvertHSL();
+		}
+
+		private void STxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			ConvertHSL();
+		}
+
+		private void LTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			ConvertHSL();
 		}
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
@@ -197,14 +249,22 @@ namespace ColorPicker.Pages
 				case 0: // RGB
 					ColorTxt.Visibility = Visibility.Visible; // Show
 					HSVGrid.Visibility = Visibility.Collapsed; // Hide
+					HSLGrid.Visibility = Visibility.Collapsed; // Hide
 					break;
 				case 1: // HEX
 					ColorTxt.Visibility = Visibility.Visible; // Show
 					HSVGrid.Visibility = Visibility.Collapsed; // Hide
+					HSLGrid.Visibility = Visibility.Collapsed; // Hide
 					break;
-				case 2:
+				case 2: // HSV
 					ColorTxt.Visibility = Visibility.Collapsed; // Hide
 					HSVGrid.Visibility = Visibility.Visible; // Show
+					HSLGrid.Visibility = Visibility.Collapsed; // Hide
+					break;
+				case 3: // HSL
+					ColorTxt.Visibility = Visibility.Collapsed; // Hide
+					HSVGrid.Visibility = Visibility.Collapsed; // Hide
+					HSLGrid.Visibility = Visibility.Visible; // Show
 					break;
 			}
 		}

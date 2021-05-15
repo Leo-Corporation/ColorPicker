@@ -36,6 +36,7 @@ namespace ColorPicker.Enums
 	{
 		RGB,
 		HEX,
-		HSV
+		HSV,
+		HSL
 	}
 }
