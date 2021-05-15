@@ -121,6 +121,7 @@ namespace ColorPicker.Classes
 				ColorTypes.RGB => Properties.Resources.RGB,
 				ColorTypes.HSV => Properties.Resources.HSV,
 				ColorTypes.HSL => Properties.Resources.HSL,
+				ColorTypes.CMYK => Properties.Resources.CMYK,
 				_ => Properties.Resources.RGB
 			}; // Return value
 		}

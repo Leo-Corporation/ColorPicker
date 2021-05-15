@@ -37,6 +37,7 @@ namespace ColorPicker.Enums
 		RGB,
 		HEX,
 		HSV,
-		HSL
+		HSL,
+		CMYK
 	}
 }
