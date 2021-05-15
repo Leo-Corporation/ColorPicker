@@ -47,7 +47,7 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class ConverterPage : Page
 	{
-		string rgbColor, hexColor, hsvColor = "";
+		string rgbColor, hexColor, hsvColor, hslColor = "";
 		public ConverterPage()
 		{
 			InitializeComponent();
@@ -90,6 +90,7 @@ namespace ColorPicker.Pages
 						rgbColor = $"{rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
 						hexColor = $"#{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
 						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
+						hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 					}
 					else if (ColorTypeComboBox.Text == Properties.Resources.HEX)
 					{
@@ -105,6 +106,8 @@ namespace ColorPicker.Pages
 
 						rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set text
 						hexColor = $"{hex}"; // Set text
+						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
+						hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 					}
 
 					string[] rC = rgbColor.Split(new string[] { ";" }, StringSplitOptions.None); // Split
@@ -159,7 +162,10 @@ namespace ColorPicker.Pages
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({h},{s},{v})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 
+				rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set text
+				hexColor = $"{hex}"; // Set text
 				hsvColor = $"({h},{s},{v})"; // Set
+				hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
@@ -190,6 +196,11 @@ namespace ColorPicker.Pages
 				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({h},{s},{l})"; // Set text
+
+				hslColor = $"({h},{s},{l})"; // Set
+				hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
+				rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set
+				hexColor = hex.Value; // Set
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
@@ -223,6 +234,11 @@ namespace ColorPicker.Pages
 		private void LTxt_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			ConvertHSL();
+		}
+
+		private void CopyHSLBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(hslColor);
 		}
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
