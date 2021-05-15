@@ -303,4 +303,7 @@
   <data name="L" xml:space="preserve">
     <value>L</value>
   </data>
+  <data name="CopyHSL" xml:space="preserve">
+    <value>Copier HSL</value>
+  </data>
 </root>
