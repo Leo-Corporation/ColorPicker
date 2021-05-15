@@ -331,6 +331,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HSL.
+        /// </summary>
+        public static string HSL {
+            get {
+                return ResourceManager.GetString("HSL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HSV.
         /// </summary>
         public static string HSV {
@@ -372,6 +381,15 @@ namespace ColorPicker.Properties {
         public static string InvalidColor {
             get {
                 return ResourceManager.GetString("InvalidColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L.
+        /// </summary>
+        public static string L {
+            get {
+                return ResourceManager.GetString("L", resourceCulture);
             }
         }
         

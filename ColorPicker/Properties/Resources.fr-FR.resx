@@ -297,4 +297,10 @@
   <data name="CopyHSV" xml:space="preserve">
     <value>Copier HSV</value>
   </data>
+  <data name="HSL" xml:space="preserve">
+    <value>HSL</value>
+  </data>
+  <data name="L" xml:space="preserve">
+    <value>L</value>
+  </data>
 </root>

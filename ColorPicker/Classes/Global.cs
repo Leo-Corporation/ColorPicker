@@ -120,6 +120,7 @@ namespace ColorPicker.Classes
 				ColorTypes.HEX => Properties.Resources.HEX,
 				ColorTypes.RGB => Properties.Resources.RGB,
 				ColorTypes.HSV => Properties.Resources.HSV,
+				ColorTypes.HSL => Properties.Resources.HSL,
 				_ => Properties.Resources.RGB
 			}; // Return value
 		}

@@ -49,6 +49,22 @@
 									</StackPanel>
 								</StackPanel>
 							</Grid>
+							<Grid x:Name="HSLGrid" Visibility="Collapsed" Margin="10,0,0,0" VerticalAlignment="Center">
+								<StackPanel Orientation="Horizontal">
+									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.H}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+										<TextBox x:Name="HTxt" MinHeight="24" TextChanged="HTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.S}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+										<TextBox x:Name="STxt" MinHeight="24" TextChanged="STxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.L}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+										<TextBox x:Name="LTxt" MinHeight="24" TextChanged="LTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}"/>
+									</StackPanel>
+								</StackPanel>
+							</Grid>
 						</Grid>
 					</StackPanel>
 
@@ -63,6 +79,7 @@
 							<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.RGB}" x:Name="RGBTxt"/>
 							<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HEX}" x:Name="HEXTxt"/>
 							<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HSV}" x:Name="HSVTxt"/>
+							<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HSL}" x:Name="HSLTxt"/>
 						</StackPanel>
 					</StackPanel>
 
