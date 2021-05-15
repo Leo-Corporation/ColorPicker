@@ -200,7 +200,7 @@ namespace ColorPicker.Pages
 				hslColor = $"({h},{s},{l})"; // Set
 				hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
 				rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set
-				hexColor = hex.Value; // Set
+				hexColor = $"#{hex.Value}"; // Set
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
