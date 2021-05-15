@@ -106,6 +106,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C.
+        /// </summary>
+        public static string C {
+            get {
+                return ResourceManager.GetString("C", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change ColorPicker language..
         /// </summary>
         public static string ChangeLanguage {
@@ -151,6 +160,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CMYK.
+        /// </summary>
+        public static string CMYK {
+            get {
+                return ResourceManager.GetString("CMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker.
         /// </summary>
         public static string ColorPicker {
@@ -192,6 +210,15 @@ namespace ColorPicker.Properties {
         public static string Copy {
             get {
                 return ResourceManager.GetString("Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy CMYK.
+        /// </summary>
+        public static string CopyCMYK {
+            get {
+                return ResourceManager.GetString("CopyCMYK", resourceCulture);
             }
         }
         
@@ -394,6 +421,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to K.
+        /// </summary>
+        public static string K {
+            get {
+                return ResourceManager.GetString("K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L.
         /// </summary>
         public static string L {
@@ -426,6 +462,15 @@ namespace ColorPicker.Properties {
         public static string Light {
             get {
                 return ResourceManager.GetString("Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M.
+        /// </summary>
+        public static string M {
+            get {
+                return ResourceManager.GetString("M", resourceCulture);
             }
         }
         
@@ -624,6 +669,15 @@ namespace ColorPicker.Properties {
         public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Y.
+        /// </summary>
+        public static string Y {
+            get {
+                return ResourceManager.GetString("Y", resourceCulture);
             }
         }
     }

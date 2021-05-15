@@ -306,4 +306,22 @@
   <data name="CopyHSL" xml:space="preserve">
     <value>Copier HSL</value>
   </data>
+  <data name="CMYK" xml:space="preserve">
+    <value>CMJN</value>
+  </data>
+  <data name="CopyCMYK" xml:space="preserve">
+    <value>Copier CMJN</value>
+  </data>
+  <data name="C" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="M" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="K" xml:space="preserve">
+    <value>N</value>
+  </data>
 </root>
