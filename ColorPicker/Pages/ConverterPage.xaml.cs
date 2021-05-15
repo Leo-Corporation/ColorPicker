@@ -288,6 +288,11 @@ namespace ColorPicker.Pages
 			ConvertHSL();
 		}
 
+		private void CopyCMYKBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(cmykColor); // Copy
+		}
+
 		private void CTxt_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			ConvertCMYK();
