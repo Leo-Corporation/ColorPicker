@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
@@ -52,6 +53,7 @@ namespace ColorPicker.Pages
 		bool isRunning = false;
 		private IKeyboardMouseEvents m_GlobalHook;
 		DispatcherTimer dispatcherTimer = new();
+		string sep = Global.Settings.RGBSeparator; // Set
 		public PickerPage()
 		{
 			InitializeComponent();
@@ -99,7 +101,7 @@ namespace ColorPicker.Pages
 				{
 					if (isRunning)
 					{
-						Clipboard.SetText($"{RedSlider.Value};{GreenSlider.Value};{BlueSlider.Value}"); // Copy
+						Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
 					}
 				}
 				else if (e.KeyChar.ToString().ToLower() == "s")
@@ -173,7 +175,7 @@ namespace ColorPicker.Pages
 
 		private void CopyBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetText($"{RedSlider.Value};{GreenSlider.Value};{BlueSlider.Value}"); // Copy
+			Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
 		}
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)

@@ -48,6 +48,7 @@ namespace ColorPicker.Pages
 	public partial class ConverterPage : Page
 	{
 		string rgbColor, hexColor, hsvColor, hslColor, cmykColor = "";
+		string sep = Global.Settings.RGBSeparator; // Set
 		public ConverterPage()
 		{
 			InitializeComponent();
@@ -68,7 +69,7 @@ namespace ColorPicker.Pages
 			int r = random.Next(0, 255); // Generate random number between 0 and 255
 			int g = random.Next(0, 255); // Generate random number between 0 and 255
 			int b = random.Next(0, 255); // Generate random number between 0 and 255
-			ColorTxt.Text = $"{r};{g};{b}"; // Set text
+			ColorTxt.Text = $"{r}{sep}{g}{sep}{b}"; // Set text
 		}
 
 		private void ColorTxt_TextChanged(object sender, TextChangedEventArgs e)
@@ -79,18 +80,18 @@ namespace ColorPicker.Pages
 				{
 					if (ColorTypeComboBox.Text == Properties.Resources.RGB)
 					{
-						string[] rgb = ColorTxt.Text.Split(new string[] { ";" }, StringSplitOptions.None); // Split
+						string[] rgb = ColorTxt.Text.Split(new string[] { sep }, StringSplitOptions.None); // Split
 						var hsv = ColorsConverter.RGBtoHSV(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])); // Convert
 						var hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 						var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 
-						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
+						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
 						HEXTxt.Text = $"{Properties.Resources.HEX} #{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
 						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 						HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 						CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
-						rgbColor = $"{rgb[0]};{rgb[1]};{rgb[2]}"; // Set text
+						rgbColor = $"{rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
 						hexColor = $"#{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
 						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 						hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
@@ -104,20 +105,20 @@ namespace ColorPicker.Pages
 						var hsl = ColorHelper.ColorConverter.HexToHsl(new(hex)); // Convert
 						var cmyk = ColorHelper.ColorConverter.HexToCmyk(new(hex));
 
-						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
+						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 						HEXTxt.Text = $"{Properties.Resources.HEX} {hex}"; // Set text
 						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 						HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 						CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
-						rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set text
+						rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 						hexColor = $"{hex}"; // Set text
 						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 						hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 						cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
 					}
 
-					string[] rC = rgbColor.Split(new string[] { ";" }, StringSplitOptions.None); // Split
+					string[] rC = rgbColor.Split(new string[] { sep }, StringSplitOptions.None); // Split
 					ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rC[0]), (byte)int.Parse(rC[1]), (byte)int.Parse(rC[2])) };
 
 					IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(0, 223, 57) }; // Set foreground color
@@ -165,13 +166,13 @@ namespace ColorPicker.Pages
 				var hsl = ColorHelper.ColorConverter.RgbToHsl(rgb); // Convert
 				var cmyk = ColorHelper.ColorConverter.HsvToCmyk(new(h, (byte)s, (byte)v));
 
-				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
+				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({h},{s},{v})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 				CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
-				rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set text
+				rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 				hexColor = $"{hex}"; // Set text
 				hsvColor = $"({h},{s},{v})"; // Set
 				hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
@@ -203,7 +204,7 @@ namespace ColorPicker.Pages
 				var hsv = ColorHelper.ColorConverter.RgbToHsv(rgb); // Convert
 				var cmyk = ColorHelper.ColorConverter.HslToCmyk(new(h, (byte)s, (byte)l));
 
-				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
+				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({h},{s},{l})"; // Set text
@@ -211,7 +212,7 @@ namespace ColorPicker.Pages
 
 				hslColor = $"({h},{s},{l})"; // Set
 				hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
-				rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set
+				rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
 				hexColor = $"#{hex.Value}"; // Set
 				cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
 
@@ -242,7 +243,7 @@ namespace ColorPicker.Pages
 				var hsl = ColorHelper.ColorConverter.CmykToHsl(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
 				var hsv = ColorHelper.ColorConverter.CmykToHsv(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
 
-				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R};{rgb.G};{rgb.B}"; // Set text
+				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
@@ -250,7 +251,7 @@ namespace ColorPicker.Pages
 
 				hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 				hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
-				rgbColor = $"{rgb.R};{rgb.G};{rgb.B}"; // Set
+				rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
 				hexColor = $"#{hex.Value}"; // Set
 				cmykColor = $"{c},{m},{y},{k}"; // Set
 

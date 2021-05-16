@@ -56,6 +56,11 @@ namespace ColorPicker.Classes
 		/// True if ColorPicker should show a notification to the user.
 		/// </summary>
 		public bool NotifyUpdates { get; set; }
+
+		/// <summary>
+		/// The seprator for an RGB color.
+		/// </summary>
+		public string RGBSeparator { get; set; }
 	}
 
 	/// <summary>
@@ -81,7 +86,14 @@ namespace ColorPicker.Classes
 			}
 			else
 			{
-				Global.Settings = new Settings { IsDarkTheme = false, Language = "_default", CheckUpdatesOnStart = true, NotifyUpdates = true }; // Create a new settings file
+				Global.Settings = new Settings 
+				{ 
+					IsDarkTheme = false, 
+					Language = "_default", 
+					CheckUpdatesOnStart = true, 
+					NotifyUpdates = true,
+					RGBSeparator = ";"
+				}; // Create a new settings file
 
 				Save(); // Save the changes
 			}

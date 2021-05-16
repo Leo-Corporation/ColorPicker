@@ -87,8 +87,17 @@ namespace ColorPicker.Pages
 
 				LangComboBox.SelectedIndex = (Global.Settings.Language == "_default") ? 0 : Global.LanguageCodeList.IndexOf(Global.Settings.Language) + 1;
 
+				if (string.IsNullOrEmpty(Global.Settings.RGBSeparator))
+				{
+					Global.Settings.RGBSeparator = ";"; // Set
+					SettingsManager.Save(); // Save changes
+				}
+
+				RGBSeparatorTxt.Text = Global.Settings.RGBSeparator; // Set text
+
 				LangApplyBtn.Visibility = Visibility.Hidden; // Hide
 				ThemeApplyBtn.Visibility = Visibility.Hidden; // Hide
+				RGBFormatApplyBtn.Visibility = Visibility.Hidden; // Hide
 
 				// Update the UpdateStatusTxt
 				if (Global.Settings.CheckUpdatesOnStart)
@@ -224,7 +233,8 @@ namespace ColorPicker.Pages
 					CheckUpdatesOnStart = true,
 					IsDarkTheme = false,
 					Language = "_default",
-					NotifyUpdates = true
+					NotifyUpdates = true,
+					RGBSeparator = ";"
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -257,6 +267,25 @@ namespace ColorPicker.Pages
 				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
 				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
 				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		}
+
+		private void RGBFormatApplyBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (!string.IsNullOrEmpty(RGBSeparatorTxt.Text) && !string.IsNullOrWhiteSpace(RGBSeparatorTxt.Text))
+			{
+				Global.Settings.RGBSeparator = RGBSeparatorTxt.Text; // Set
+				SettingsManager.Save();
+				RGBFormatApplyBtn.Visibility = Visibility.Hidden; // Hide
+			}
+			else
+			{
+				MessageBox.Show(Properties.Resources.InvalidValueRGB, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Warning); // Show	
+			}
+		}
+
+		private void RGBSeparatorTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			RGBFormatApplyBtn.Visibility = Visibility.Visible; // Show
 		}
 	}
 }

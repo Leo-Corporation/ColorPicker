@@ -304,4 +304,16 @@
   <data name="K" xml:space="preserve">
     <value>K</value>
   </data>
+  <data name="ColorFormatting" xml:space="preserve">
+    <value>Color formating</value>
+  </data>
+  <data name="RGBSeparator" xml:space="preserve">
+    <value>RGB separator</value>
+  </data>
+  <data name="ColorFormattingDesc" xml:space="preserve">
+    <value>Color formatting options.</value>
+  </data>
+  <data name="InvalidValueRGB" xml:space="preserve">
+    <value>Please enter a valid value.</value>
+  </data>
 </root>

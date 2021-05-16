@@ -169,6 +169,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color formating.
+        /// </summary>
+        public static string ColorFormatting {
+            get {
+                return ResourceManager.GetString("ColorFormatting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color formatting options..
+        /// </summary>
+        public static string ColorFormattingDesc {
+            get {
+                return ResourceManager.GetString("ColorFormattingDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker.
         /// </summary>
         public static string ColorPicker {
@@ -421,6 +439,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid value..
+        /// </summary>
+        public static string InvalidValueRGB {
+            get {
+                return ResourceManager.GetString("InvalidValueRGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to K.
         /// </summary>
         public static string K {
@@ -552,6 +579,15 @@ namespace ColorPicker.Properties {
         public static string RGB {
             get {
                 return ResourceManager.GetString("RGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RGB separator.
+        /// </summary>
+        public static string RGBSeparator {
+            get {
+                return ResourceManager.GetString("RGBSeparator", resourceCulture);
             }
         }
         
