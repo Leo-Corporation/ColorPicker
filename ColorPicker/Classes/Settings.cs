@@ -61,6 +61,8 @@ namespace ColorPicker.Classes
 		/// The seprator for an RGB color.
 		/// </summary>
 		public string RGBSeparator { get; set; }
+
+		public bool? HEXUseUpperCase { get; set; }
 	}
 
 	/// <summary>
@@ -86,13 +88,14 @@ namespace ColorPicker.Classes
 			}
 			else
 			{
-				Global.Settings = new Settings 
-				{ 
-					IsDarkTheme = false, 
-					Language = "_default", 
-					CheckUpdatesOnStart = true, 
+				Global.Settings = new Settings
+				{
+					IsDarkTheme = false,
+					Language = "_default",
+					CheckUpdatesOnStart = true,
 					NotifyUpdates = true,
-					RGBSeparator = ";"
+					RGBSeparator = ";",
+					HEXUseUpperCase = false
 				}; // Create a new settings file
 
 				Save(); // Save the changes

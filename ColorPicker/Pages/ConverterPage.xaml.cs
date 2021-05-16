@@ -49,6 +49,7 @@ namespace ColorPicker.Pages
 	{
 		string rgbColor, hexColor, hsvColor, hslColor, cmykColor = "";
 		string sep = Global.Settings.RGBSeparator; // Set
+		bool u = Global.Settings.HEXUseUpperCase.Value; // Set
 		public ConverterPage()
 		{
 			InitializeComponent();
@@ -86,13 +87,13 @@ namespace ColorPicker.Pages
 						var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 
 						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
-						HEXTxt.Text = $"{Properties.Resources.HEX} #{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
+						HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value)}"; // Set text
 						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 						HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 						CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
 						rgbColor = $"{rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
-						hexColor = $"#{ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value}"; // Set text
+						hexColor = $"#{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value)}"; // Set text
 						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 						hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 						cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
@@ -106,13 +107,13 @@ namespace ColorPicker.Pages
 						var cmyk = ColorHelper.ColorConverter.HexToCmyk(new(hex));
 
 						RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
-						HEXTxt.Text = $"{Properties.Resources.HEX} {hex}"; // Set text
+						HEXTxt.Text = $"{Properties.Resources.HEX} {(u ? hex.ToUpper() : hex)}"; // Set text
 						HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 						HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 						CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
 						rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
-						hexColor = $"{hex}"; // Set text
+						hexColor = $"{(u ? hex.ToUpper() : hex)}"; // Set text
 						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 						hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 						cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
@@ -167,13 +168,13 @@ namespace ColorPicker.Pages
 				var cmyk = ColorHelper.ColorConverter.HsvToCmyk(new(h, (byte)s, (byte)v));
 
 				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
-				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
+				HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({h},{s},{v})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 				CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
 				rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
-				hexColor = $"{hex}"; // Set text
+				hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 				hsvColor = $"({h},{s},{v})"; // Set
 				hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 				cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
@@ -205,7 +206,7 @@ namespace ColorPicker.Pages
 				var cmyk = ColorHelper.ColorConverter.HslToCmyk(new(h, (byte)s, (byte)l));
 
 				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
-				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
+				HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({h},{s},{l})"; // Set text
 				CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
@@ -213,7 +214,7 @@ namespace ColorPicker.Pages
 				hslColor = $"({h},{s},{l})"; // Set
 				hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
 				rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
-				hexColor = $"#{hex.Value}"; // Set
+				hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set
 				cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
@@ -244,7 +245,7 @@ namespace ColorPicker.Pages
 				var hsv = ColorHelper.ColorConverter.CmykToHsv(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
 
 				RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
-				HEXTxt.Text = $"{Properties.Resources.HEX} #{hex.Value}"; // Set text
+				HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 				HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 				HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 				CMYKTxt.Text = $"{Properties.Resources.CMYK} {c},{m},{y},{k}"; // Set text
@@ -252,7 +253,7 @@ namespace ColorPicker.Pages
 				hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 				hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
 				rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
-				hexColor = $"#{hex.Value}"; // Set
+				hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set
 				cmykColor = $"{c},{m},{y},{k}"; // Set
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color

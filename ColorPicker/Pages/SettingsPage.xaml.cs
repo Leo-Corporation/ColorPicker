@@ -77,6 +77,14 @@ namespace ColorPicker.Pages
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
 
+				if (!Global.Settings.HEXUseUpperCase.HasValue)
+				{
+					Global.Settings.HEXUseUpperCase = false;
+					SettingsManager.Save(); // Save changes
+				}
+
+				HEXUseUpperCaseChk.IsChecked = Global.Settings.HEXUseUpperCase; // Set value
+
 				// Load LangComboBox
 				LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
 
@@ -234,7 +242,8 @@ namespace ColorPicker.Pages
 					IsDarkTheme = false,
 					Language = "_default",
 					NotifyUpdates = true,
-					RGBSeparator = ";"
+					RGBSeparator = ";",
+					HEXUseUpperCase = false,
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -286,6 +295,12 @@ namespace ColorPicker.Pages
 		private void RGBSeparatorTxt_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			RGBFormatApplyBtn.Visibility = Visibility.Visible; // Show
+		}
+
+		private void HEXUseUpperCaseChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.HEXUseUpperCase = HEXUseUpperCaseChk.IsChecked; // Set
+			SettingsManager.Save(); // Save changes
 		}
 	}
 }

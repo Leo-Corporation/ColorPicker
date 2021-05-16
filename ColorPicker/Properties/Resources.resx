@@ -316,4 +316,7 @@
   <data name="InvalidValueRGB" xml:space="preserve">
     <value>Please enter a valid value.</value>
   </data>
+  <data name="UseUpperCaseHEX" xml:space="preserve">
+    <value>Use upper case for HEX colors</value>
+  </data>
 </root>

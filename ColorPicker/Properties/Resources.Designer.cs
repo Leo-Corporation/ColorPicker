@@ -691,6 +691,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use upper case for HEX colors.
+        /// </summary>
+        public static string UseUpperCaseHEX {
+            get {
+                return ResourceManager.GetString("UseUpperCaseHEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to V.
         /// </summary>
         public static string V {
