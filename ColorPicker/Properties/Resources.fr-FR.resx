@@ -297,4 +297,46 @@
   <data name="CopyHSV" xml:space="preserve">
     <value>Copier HSV</value>
   </data>
+  <data name="HSL" xml:space="preserve">
+    <value>HSL</value>
+  </data>
+  <data name="L" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="CopyHSL" xml:space="preserve">
+    <value>Copier HSL</value>
+  </data>
+  <data name="CMYK" xml:space="preserve">
+    <value>CMJN</value>
+  </data>
+  <data name="CopyCMYK" xml:space="preserve">
+    <value>Copier CMJN</value>
+  </data>
+  <data name="C" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="M" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>J</value>
+  </data>
+  <data name="K" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="ColorFormatting" xml:space="preserve">
+    <value>Format de couleur</value>
+  </data>
+  <data name="RGBSeparator" xml:space="preserve">
+    <value>Séparateur RGB</value>
+  </data>
+  <data name="ColorFormattingDesc" xml:space="preserve">
+    <value>Options de format de couleur.</value>
+  </data>
+  <data name="InvalidValueRGB" xml:space="preserve">
+    <value>Veuillez entrer une valeur valide.</value>
+  </data>
+  <data name="UseUpperCaseHEX" xml:space="preserve">
+    <value>Utiliser des majuscules pour les couleurs HEX</value>
+  </data>
 </root>

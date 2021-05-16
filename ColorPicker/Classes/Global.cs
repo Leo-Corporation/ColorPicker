@@ -41,7 +41,7 @@ namespace ColorPicker.Classes
 		/// <summary>
 		/// The current version of ColorPicker.
 		/// </summary>
-		public static string Version => "3.0.0.2104";
+		public static string Version => "3.1.0.2105";
 
 		/// <summary>
 		/// List of the available languages.
@@ -120,6 +120,8 @@ namespace ColorPicker.Classes
 				ColorTypes.HEX => Properties.Resources.HEX,
 				ColorTypes.RGB => Properties.Resources.RGB,
 				ColorTypes.HSV => Properties.Resources.HSV,
+				ColorTypes.HSL => Properties.Resources.HSL,
+				ColorTypes.CMYK => Properties.Resources.CMYK,
 				_ => Properties.Resources.RGB
 			}; // Return value
 		}

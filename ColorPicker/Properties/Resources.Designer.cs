@@ -106,6 +106,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C.
+        /// </summary>
+        public static string C {
+            get {
+                return ResourceManager.GetString("C", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change ColorPicker language..
         /// </summary>
         public static string ChangeLanguage {
@@ -147,6 +156,33 @@ namespace ColorPicker.Properties {
         public static string CheckUpdatesOnStart {
             get {
                 return ResourceManager.GetString("CheckUpdatesOnStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CMYK.
+        /// </summary>
+        public static string CMYK {
+            get {
+                return ResourceManager.GetString("CMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color formating.
+        /// </summary>
+        public static string ColorFormatting {
+            get {
+                return ResourceManager.GetString("ColorFormatting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color formatting options..
+        /// </summary>
+        public static string ColorFormattingDesc {
+            get {
+                return ResourceManager.GetString("ColorFormattingDesc", resourceCulture);
             }
         }
         
@@ -196,11 +232,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy CMYK.
+        /// </summary>
+        public static string CopyCMYK {
+            get {
+                return ResourceManager.GetString("CopyCMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy HEX.
         /// </summary>
         public static string CopyHEX {
             get {
                 return ResourceManager.GetString("CopyHEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy HSL.
+        /// </summary>
+        public static string CopyHSL {
+            get {
+                return ResourceManager.GetString("CopyHSL", resourceCulture);
             }
         }
         
@@ -331,6 +385,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HSL.
+        /// </summary>
+        public static string HSL {
+            get {
+                return ResourceManager.GetString("HSL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HSV.
         /// </summary>
         public static string HSV {
@@ -376,6 +439,33 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid value..
+        /// </summary>
+        public static string InvalidValueRGB {
+            get {
+                return ResourceManager.GetString("InvalidValueRGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to K.
+        /// </summary>
+        public static string K {
+            get {
+                return ResourceManager.GetString("K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L.
+        /// </summary>
+        public static string L {
+            get {
+                return ResourceManager.GetString("L", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -399,6 +489,15 @@ namespace ColorPicker.Properties {
         public static string Light {
             get {
                 return ResourceManager.GetString("Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M.
+        /// </summary>
+        public static string M {
+            get {
+                return ResourceManager.GetString("M", resourceCulture);
             }
         }
         
@@ -480,6 +579,15 @@ namespace ColorPicker.Properties {
         public static string RGB {
             get {
                 return ResourceManager.GetString("RGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RGB separator.
+        /// </summary>
+        public static string RGBSeparator {
+            get {
+                return ResourceManager.GetString("RGBSeparator", resourceCulture);
             }
         }
         
@@ -583,6 +691,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use upper case for HEX colors.
+        /// </summary>
+        public static string UseUpperCaseHEX {
+            get {
+                return ResourceManager.GetString("UseUpperCaseHEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to V.
         /// </summary>
         public static string V {
@@ -597,6 +714,15 @@ namespace ColorPicker.Properties {
         public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Y.
+        /// </summary>
+        public static string Y {
+            get {
+                return ResourceManager.GetString("Y", resourceCulture);
             }
         }
     }
