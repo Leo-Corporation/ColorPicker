@@ -139,6 +139,8 @@ namespace ColorPicker.Pages
 					InstallIconTxt.Text = "\uF191"; // Set text 
 				}
 
+				VersionTxt.Text = Global.Version; // Set text
+
 				SettingsManager.Save(); // Save changes
 			}
 			catch (Exception ex)
