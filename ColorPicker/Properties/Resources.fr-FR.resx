@@ -241,7 +241,7 @@
     <value>ColorPicker est à jour.</value>
   </data>
   <data name="InstallConfirmMsg" xml:space="preserve">
-    <value>Pour installer les mises à jour, Gerayis doit redémarrer. Voulez-vous continuer ?</value>
+    <value>Pour installer les mises à jour, ColorPicker doit redémarrer. Voulez-vous continuer ?</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
