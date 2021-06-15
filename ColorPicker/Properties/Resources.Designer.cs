@@ -304,6 +304,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export settings.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Good afternoon.
         /// </summary>
         public static string GoodAfternoon {
@@ -399,6 +408,15 @@ namespace ColorPicker.Properties {
         public static string HSV {
             get {
                 return ResourceManager.GetString("HSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import settings.
+        /// </summary>
+        public static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
             }
         }
         
@@ -624,6 +642,24 @@ namespace ColorPicker.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings exported sucessfully..
+        /// </summary>
+        public static string SettingsExportedSucessMsg {
+            get {
+                return ResourceManager.GetString("SettingsExportedSucessMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings have been imported sucessfully. To finish the process, ColorPicker will now restart..
+        /// </summary>
+        public static string SettingsImportedMsg {
+            get {
+                return ResourceManager.GetString("SettingsImportedMsg", resourceCulture);
             }
         }
         
