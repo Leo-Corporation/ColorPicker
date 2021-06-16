@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.UserControls;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
@@ -111,6 +112,7 @@ namespace ColorPicker.Pages
 						if (isRunning)
 						{
 							Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
+							RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
 						}
 					}
 					else if (e.KeyChar.ToString().ToLower() == "s")
@@ -186,11 +188,50 @@ namespace ColorPicker.Pages
 		private void CopyBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
+			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
 		}
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Clipboard.SetText("#" + (u ? ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value)); // Copy
+			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+		}
+
+		private void HistoryBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (ContentDisplayer.Visibility == Visibility.Visible)
+			{
+				border.Visibility = Visibility.Collapsed; // Hide
+				ContentDisplayer.Visibility = Visibility.Collapsed; // Hide 
+
+				RecentColorsDisplayer.Visibility = Visibility.Visible; // Show
+				HistoryBtn.Content = "\uF36A"; // Set text
+			}
+			else
+			{
+				border.Visibility = Visibility.Visible; // Show
+				ContentDisplayer.Visibility = Visibility.Visible; // Show 
+
+				RecentColorsDisplayer.Visibility = Visibility.Collapsed; // Hide
+				HistoryBtn.Content = "\uF47F"; // Set text
+			}
+		}
+
+		private void ClearRecentColorsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			List<RecentColorItem> cs = new();
+			foreach (UIElement uIElement in RecentColorsDisplayer.Children)
+			{
+				if (uIElement is RecentColorItem)
+				{
+					cs.Add((RecentColorItem)uIElement); // Remove
+				}
+			}
+
+			for (int i = 0; i < cs.Count; i++)
+			{
+				RecentColorsDisplayer.Children.Remove(cs[i]); // Remove
+			}
 		}
 	}
 }
