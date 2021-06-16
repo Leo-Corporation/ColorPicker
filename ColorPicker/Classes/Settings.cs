@@ -65,6 +65,11 @@ namespace ColorPicker.Classes
 		public string RGBSeparator { get; set; }
 
 		public bool? HEXUseUpperCase { get; set; }
+
+		/// <summary>
+		/// True if ColorPicker's shortcuts should be enabled.
+		/// </summary>
+		public bool? EnableKeyBoardShortcuts { get; set; }
 	}
 
 	/// <summary>

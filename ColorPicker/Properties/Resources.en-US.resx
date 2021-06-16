@@ -351,4 +351,10 @@
   <data name="SettingsImportedMsg" xml:space="preserve">
     <value>Settings have been imported sucessfully. To finish the process, ColorPicker will now restart.</value>
   </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+    <value>Keyboard shortcuts</value>
+  </data>
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
+    <value>Use keyboard shortcuts</value>
+  </data>
 </root>

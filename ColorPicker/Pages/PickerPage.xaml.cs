@@ -96,31 +96,40 @@ namespace ColorPicker.Pages
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{( u ? hex.Value.ToUpper() : hex.Value)}";
 
+			if (Global.Settings.EnableKeyBoardShortcuts is null)
+			{
+				Global.Settings.EnableKeyBoardShortcuts = true; // Set default value
+				SettingsManager.Save(); // Save changes
+			}
+
 			m_GlobalHook.KeyPress += (o, e) =>
 			{
-				if (e.KeyChar.ToString().ToLower() == "c")
+				if (Global.Settings.EnableKeyBoardShortcuts.Value)
 				{
-					if (isRunning)
+					if (e.KeyChar.ToString().ToLower() == "c")
 					{
-						Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
+						if (isRunning)
+						{
+							Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
+						}
 					}
-				}
-				else if (e.KeyChar.ToString().ToLower() == "s")
-				{
-					if (isRunning)
+					else if (e.KeyChar.ToString().ToLower() == "s")
 					{
-						dispatcherTimer.Stop();
-						miniPicker.Hide();
-						isRunning = false;
-						SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
-					}
-					else
-					{
-						dispatcherTimer.Start();
-						miniPicker.Show();
-						isRunning = true;
-						SelectColorBtn.Content = Properties.Resources.Stop; // Set text
-					}
+						if (isRunning)
+						{
+							dispatcherTimer.Stop();
+							miniPicker.Hide();
+							isRunning = false;
+							SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
+						}
+						else
+						{
+							dispatcherTimer.Start();
+							miniPicker.Show();
+							isRunning = true;
+							SelectColorBtn.Content = Properties.Resources.Stop; // Set text
+						}
+					} 
 				}
 			};
 		}

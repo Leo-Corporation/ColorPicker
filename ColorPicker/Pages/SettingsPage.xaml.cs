@@ -84,7 +84,14 @@ namespace ColorPicker.Pages
 					SettingsManager.Save(); // Save changes
 				}
 
+				if (!Global.Settings.EnableKeyBoardShortcuts.HasValue)
+				{
+					Global.Settings.EnableKeyBoardShortcuts = true;
+					SettingsManager.Save(); // Save changes
+				}
+
 				HEXUseUpperCaseChk.IsChecked = Global.Settings.HEXUseUpperCase; // Set value
+				UseKeyboardShortcutsChk.IsChecked = Global.Settings.EnableKeyBoardShortcuts; // Set value
 
 				// Load LangComboBox
 				LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
@@ -345,6 +352,12 @@ namespace ColorPicker.Pages
 		{
 			Button button = (Button)sender; // Create button
 			button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground 
+		}
+
+		private void UseKeyboardShortcutsChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.EnableKeyBoardShortcuts = UseKeyboardShortcutsChk.IsChecked; // Set
+			SettingsManager.Save(); // Save settings
 		}
 	}
 }

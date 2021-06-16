@@ -475,6 +475,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keyboard shortcuts.
+        /// </summary>
+        public static string KeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("KeyboardShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to L.
         /// </summary>
         public static string L {
@@ -723,6 +732,15 @@ namespace ColorPicker.Properties {
         public static string UpToDate {
             get {
                 return ResourceManager.GetString("UpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use keyboard shortcuts.
+        /// </summary>
+        public static string UseKeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("UseKeyboardShortcuts", resourceCulture);
             }
         }
         
