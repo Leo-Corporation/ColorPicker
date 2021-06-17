@@ -304,6 +304,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export settings.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Good afternoon.
         /// </summary>
         public static string GoodAfternoon {
@@ -403,6 +412,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import settings.
+        /// </summary>
+        public static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install.
         /// </summary>
         public static string Install {
@@ -453,6 +471,15 @@ namespace ColorPicker.Properties {
         public static string K {
             get {
                 return ResourceManager.GetString("K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard shortcuts.
+        /// </summary>
+        public static string KeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("KeyboardShortcuts", resourceCulture);
             }
         }
         
@@ -628,6 +655,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings exported sucessfully..
+        /// </summary>
+        public static string SettingsExportedSucessMsg {
+            get {
+                return ResourceManager.GetString("SettingsExportedSucessMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings have been imported sucessfully. To finish the process, ColorPicker will now restart..
+        /// </summary>
+        public static string SettingsImportedMsg {
+            get {
+                return ResourceManager.GetString("SettingsImportedMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All settings have been reset, ColorPicker will now restart..
         /// </summary>
         public static string SettingsReset {
@@ -687,6 +732,15 @@ namespace ColorPicker.Properties {
         public static string UpToDate {
             get {
                 return ResourceManager.GetString("UpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use keyboard shortcuts.
+        /// </summary>
+        public static string UseKeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("UseKeyboardShortcuts", resourceCulture);
             }
         }
         

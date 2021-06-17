@@ -11,7 +11,7 @@
       Title="SettingsPage">
 
 	<ScrollViewer HorizontalScrollBarVisibility="Hidden" Template="{DynamicResource ScrollViewerControlTemplate}" CanContentScroll="True" Height="344">
-		<Grid Height="600">
+		<Grid Height="760">
 			<Grid.RowDefinitions>
 				<RowDefinition/>
 				<RowDefinition Height="Auto"/>
@@ -19,20 +19,27 @@
 
 			<StackPanel Margin="10,40,10,10" Grid.Row="0">
 				<TextBlock Text="{x:Static lang:Resources.Settings}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="16"/>
-
-				<TextBlock Text="{x:Static lang:Resources.Updates}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" FontSize="20" Margin="0,10,0,0"/>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock x:Name="UpdateStatusTxt" Text="{x:Static lang:Resources.Updates}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalAlignment="Center" Margin="0,0,15,0"/>
-					<Button x:Name="RefreshInstallBtn" Click="RefreshInstallBtn_Click" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Padding="10,5,10,5" Style="{StaticResource TabButtonStyle}" FontWeight="Bold" Cursor="Hand" VerticalAlignment="Center">
+				<Border Background="{Binding Source={StaticResource Background3}}" CornerRadius="10" Margin="10" Padding="10" HorizontalAlignment="Left">
+					<Border.Effect>
+						<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality"/>
+					</Border.Effect>
+					<StackPanel>
+						<TextBlock Text="{x:Static lang:Resources.ColorPicker}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" FontSize="28" Margin="0,0,0,0"/>
+						<TextBlock x:Name="VersionTxt" Text="{x:Static lang:Resources.ColorPicker}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Normal" Margin="0,0,0,5" FontSize="14"/>
 						<StackPanel Orientation="Horizontal">
-							<TextBlock x:Name="InstallIconTxt" Text="&#xF152;" FontWeight="Regular" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,5,0" VerticalAlignment="Center" FontSize="16"/>
-							<TextBlock x:Name="InstallMsgTxt" Text="{x:Static lang:Resources.Install}" VerticalAlignment="Center"/>
+							<TextBlock x:Name="UpdateStatusTxt" Text="{x:Static lang:Resources.Updates}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalAlignment="Center" Margin="0,0,15,0"/>
+							<Button x:Name="RefreshInstallBtn" Click="RefreshInstallBtn_Click" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Padding="10,5,10,5" Style="{StaticResource TabButtonStyle}" FontWeight="Bold" Cursor="Hand" VerticalAlignment="Center">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock x:Name="InstallIconTxt" Text="&#xF152;" FontWeight="Regular" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,5,0" VerticalAlignment="Center" FontSize="16"/>
+									<TextBlock x:Name="InstallMsgTxt" Text="{x:Static lang:Resources.Install}" VerticalAlignment="Center"/>
+								</StackPanel>
+							</Button>
 						</StackPanel>
-					</Button>
-				</StackPanel>
+						<CheckBox Margin="0 10 0 2" x:Name="CheckUpdatesOnStartChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.CheckUpdatesOnStart}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="CheckUpdatesOnStartChk_Checked" Checked="CheckUpdatesOnStartChk_Checked"/>
+						<CheckBox Margin="0 2 0 2" x:Name="NotifyUpdatesChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.NotifyUpdates}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="NotifyUpdatesChk_Checked" Checked="NotifyUpdatesChk_Checked"/>
 
-				<CheckBox Margin="0 10 0 2" x:Name="CheckUpdatesOnStartChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.CheckUpdatesOnStart}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="CheckUpdatesOnStartChk_Checked" Checked="CheckUpdatesOnStartChk_Checked"/>
-				<CheckBox Margin="0 2 0 2" x:Name="NotifyUpdatesChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.NotifyUpdates}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="NotifyUpdatesChk_Checked" Checked="NotifyUpdatesChk_Checked"/>
+					</StackPanel>
+				</Border>
 
 				<TextBlock Text="{x:Static lang:Resources.Theme}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" FontSize="20" Margin="0,10,0,0"/>
 				<TextBlock Text="{x:Static lang:Resources.ChangeTheme}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14"/>
@@ -77,7 +84,24 @@
 
 				<CheckBox Margin="0 5 0 2" x:Name="HEXUseUpperCaseChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.UseUpperCaseHEX}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="HEXUseUpperCaseChk_Checked" Checked="HEXUseUpperCaseChk_Checked"/>
 
+				<TextBlock Text="{x:Static lang:Resources.KeyboardShortcuts}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" FontSize="20" Margin="0,10,0,0"/>
+				<CheckBox Margin="0 5 0 2" x:Name="UseKeyboardShortcutsChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.UseKeyboardShortcuts}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="UseKeyboardShortcutsChk_Checked" Checked="UseKeyboardShortcutsChk_Checked"/>
+
 				<TextBlock Text="{x:Static lang:Resources.Data}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" FontSize="20" Margin="0,10,0,0"/>
+				<StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+					<Button x:Name="ImportBtn" Click="ImportBtn_Click" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Padding="10,5,10,5" Style="{StaticResource TabButtonStyle}" FontWeight="Bold" Cursor="Hand" VerticalAlignment="Center" Margin="0,0,10,0">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="&#xF151;" FontWeight="Regular" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,5,0" VerticalAlignment="Center" FontSize="16"/>
+							<TextBlock Text="{x:Static lang:Resources.Import}" VerticalAlignment="Center"/>
+						</StackPanel>
+					</Button>
+					<Button x:Name="ExportBtn" Click="ExportBtn_Click" Background="{Binding Source={StaticResource Background2}}" Foreground="{Binding Source={StaticResource Foreground1}}" Padding="10,5,10,5" Style="{StaticResource TabButtonStyle}" FontWeight="Bold" Cursor="Hand" VerticalAlignment="Center" MouseEnter="BtnEnter" MouseLeave="BtnLeave">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="&#xF1A5;" FontWeight="Regular" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,5,0" VerticalAlignment="Center" FontSize="16"/>
+							<TextBlock Text="{x:Static lang:Resources.Export}" VerticalAlignment="Center"/>
+						</StackPanel>
+					</Button>
+				</StackPanel>
 				<TextBlock x:Name="ResetSettingsLink" Text="{x:Static lang:Resources.ResetSettings}" Foreground="{Binding Source={StaticResource AccentColor}}" FontSize="14" FontWeight="Bold" Cursor="Hand" MouseLeftButtonDown="ResetSettingsLink_MouseLeftButtonDown">
 					<TextBlock.TextDecorations>
 						<TextDecoration/>

@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using LeoCorpLibrary;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -83,7 +84,14 @@ namespace ColorPicker.Pages
 					SettingsManager.Save(); // Save changes
 				}
 
+				if (!Global.Settings.EnableKeyBoardShortcuts.HasValue)
+				{
+					Global.Settings.EnableKeyBoardShortcuts = true;
+					SettingsManager.Save(); // Save changes
+				}
+
 				HEXUseUpperCaseChk.IsChecked = Global.Settings.HEXUseUpperCase; // Set value
+				UseKeyboardShortcutsChk.IsChecked = Global.Settings.EnableKeyBoardShortcuts; // Set value
 
 				// Load LangComboBox
 				LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
@@ -138,6 +146,8 @@ namespace ColorPicker.Pages
 					InstallMsgTxt.Text = Properties.Resources.CheckUpdate; // Set text
 					InstallIconTxt.Text = "\uF191"; // Set text 
 				}
+
+				VersionTxt.Text = Global.Version; // Set text
 
 				SettingsManager.Save(); // Save changes
 			}
@@ -301,6 +311,53 @@ namespace ColorPicker.Pages
 		{
 			Global.Settings.HEXUseUpperCase = HEXUseUpperCaseChk.IsChecked; // Set
 			SettingsManager.Save(); // Save changes
+		}
+
+		private void ImportBtn_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog openFileDialog = new()
+			{
+				Filter = "XML|*.xml",
+				Title = Properties.Resources.Import
+			}; // Create file dialog
+
+			if (openFileDialog.ShowDialog() ?? true)
+			{
+				SettingsManager.Import(openFileDialog.FileName); // Import games
+			}
+		}
+
+		private void ExportBtn_Click(object sender, RoutedEventArgs e)
+		{
+			SaveFileDialog saveFileDialog = new()
+			{
+				FileName = "ColorPickerSettings.xml",
+				Filter = "XML|*.xml",
+				Title = Properties.Resources.Export
+			}; // Create file dialog
+
+			if (saveFileDialog.ShowDialog() ?? true)
+			{
+				SettingsManager.Export(saveFileDialog.FileName); // Export games
+			}
+		}
+
+		private void BtnEnter(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Create button
+			button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["WindowButtonsHoverForeground1"].ToString()) }; // Set the foreground
+		}
+
+		private void BtnLeave(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Create button
+			button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground 
+		}
+
+		private void UseKeyboardShortcutsChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.EnableKeyBoardShortcuts = UseKeyboardShortcutsChk.IsChecked; // Set
+			SettingsManager.Save(); // Save settings
 		}
 	}
 }
