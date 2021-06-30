@@ -24,12 +24,10 @@ SOFTWARE.
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Xml.Serialization;
 
 namespace ColorPicker.Classes
@@ -58,18 +56,6 @@ namespace ColorPicker.Classes
 		/// True if ColorPicker should show a notification to the user.
 		/// </summary>
 		public bool NotifyUpdates { get; set; }
-
-		/// <summary>
-		/// The seprator for an RGB color.
-		/// </summary>
-		public string RGBSeparator { get; set; }
-
-		public bool? HEXUseUpperCase { get; set; }
-
-		/// <summary>
-		/// True if ColorPicker's shortcuts should be enabled.
-		/// </summary>
-		public bool? EnableKeyBoardShortcuts { get; set; }
 	}
 
 	/// <summary>
@@ -95,15 +81,7 @@ namespace ColorPicker.Classes
 			}
 			else
 			{
-				Global.Settings = new Settings
-				{
-					IsDarkTheme = false,
-					Language = "_default",
-					CheckUpdatesOnStart = true,
-					NotifyUpdates = true,
-					RGBSeparator = ";",
-					HEXUseUpperCase = false
-				}; // Create a new settings file
+				Global.Settings = new Settings { IsDarkTheme = false, Language = "_default", CheckUpdatesOnStart = true, NotifyUpdates = true }; // Create a new settings file
 
 				Save(); // Save the changes
 			}
@@ -128,59 +106,6 @@ namespace ColorPicker.Classes
 			xmlSerializer.Serialize(streamWriter, Global.Settings);
 
 			streamWriter.Dispose();
-		}
-
-		/// <summary>
-		/// Exports current settings.
-		/// </summary>
-		/// <param name="path">The path where the settings file should be exported.</param>
-		public static void Export(string path)
-		{
-			try
-			{
-				XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings)); // Create XML Serializer
-
-				StreamWriter streamWriter = new StreamWriter(path); // The place where the file is going to be written
-				xmlSerializer.Serialize(streamWriter, Global.Settings);
-
-				streamWriter.Dispose();
-
-				MessageBox.Show(Properties.Resources.SettingsExportedSucessMsg, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Information); // Show message
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Error); // Show error message
-			}
-		}
-
-		/// <summary>
-		/// Imports settings.
-		/// </summary>
-		/// <param name="path">The path to the settings file.</param>
-		public static void Import(string path)
-		{
-			try
-			{
-				if (File.Exists(path)) // If the file exist
-				{
-					XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings)); // XML Serializer
-					StreamReader streamReader = new StreamReader(path); // Where the file is going to be read
-
-					Global.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
-
-					streamReader.Dispose();
-					Save(); // Save
-					MessageBox.Show(Properties.Resources.SettingsImportedMsg, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Information); // Show error message
-
-					// Restart app
-					Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe"); // Start app
-					Environment.Exit(0); // Quit
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Error); // Show error message
-			}
 		}
 	}
 }

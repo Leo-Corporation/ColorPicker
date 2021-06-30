@@ -3,6 +3,7 @@ name: .NET Desktop
 on:
   push:
   pull_request:
+    branches: [ main ]
 
 jobs:
 
@@ -19,7 +20,7 @@ jobs:
     - name: Install .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 5.0.100
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe

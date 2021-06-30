@@ -54,7 +54,7 @@ namespace Xalyus_Updater
 			InitializeComponent();
             InitText(); // Load the text
             Global.ZIPLink = "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/Download.txt"; // Link to the zip file to download and extract
-            Global.SoftwarePath = Directory.GetCurrentDirectory() + @"\ColorPicker.exe"; // The path to your .exe software (ex: MyApp.exe)
+            Global.SoftwarePath = Directory.GetCurrentDirectory() + "ColorPicker.exe"; // The path to your .exe software (ex: MyApp.exe)
         }
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)

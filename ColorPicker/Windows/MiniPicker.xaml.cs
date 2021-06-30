@@ -21,7 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Classes;
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
@@ -47,7 +46,6 @@ namespace ColorPicker.Windows
 	public partial class MiniPicker : Window
 	{
 		DispatcherTimer timer = new() { Interval = new(0, 0, 0, 0, 1) };
-		bool u = Global.Settings.HEXUseUpperCase.Value;
 		public MiniPicker()
 		{
 			InitializeComponent();
@@ -67,7 +65,7 @@ namespace ColorPicker.Windows
 				RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
 				GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
 				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
-				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hexColor.Value.ToUpper() : hexColor.Value)}"; // Set text
+				HEXTxt.Text = $"{Properties.Resources.HEXP} #{hexColor.Value}"; // Set text
 			};
 
 			timer.Start();
