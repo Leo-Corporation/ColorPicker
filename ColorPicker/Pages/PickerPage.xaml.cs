@@ -21,6 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
+using ColorPicker.UserControls;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
@@ -52,6 +54,8 @@ namespace ColorPicker.Pages
 		bool isRunning = false;
 		private IKeyboardMouseEvents m_GlobalHook;
 		DispatcherTimer dispatcherTimer = new();
+		string sep = Global.Settings.RGBSeparator; // Set
+		bool u = Global.Settings.HEXUseUpperCase.Value;
 		public PickerPage()
 		{
 			InitializeComponent();
@@ -91,33 +95,43 @@ namespace ColorPicker.Pages
 
 			// Convert to HEX
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{hex.Value}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{( u ? hex.Value.ToUpper() : hex.Value)}";
+
+			if (Global.Settings.EnableKeyBoardShortcuts is null)
+			{
+				Global.Settings.EnableKeyBoardShortcuts = true; // Set default value
+				SettingsManager.Save(); // Save changes
+			}
 
 			m_GlobalHook.KeyPress += (o, e) =>
 			{
-				if (e.KeyChar.ToString().ToLower() == "c")
+				if (Global.Settings.EnableKeyBoardShortcuts.Value)
 				{
-					if (isRunning)
+					if (e.KeyChar.ToString().ToLower() == "c")
 					{
-						Clipboard.SetText($"{RedSlider.Value};{GreenSlider.Value};{BlueSlider.Value}"); // Copy
+						if (isRunning)
+						{
+							Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
+							RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+						}
 					}
-				}
-				else if (e.KeyChar.ToString().ToLower() == "s")
-				{
-					if (isRunning)
+					else if (e.KeyChar.ToString().ToLower() == "s")
 					{
-						dispatcherTimer.Stop();
-						miniPicker.Hide();
-						isRunning = false;
-						SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
-					}
-					else
-					{
-						dispatcherTimer.Start();
-						miniPicker.Show();
-						isRunning = true;
-						SelectColorBtn.Content = Properties.Resources.Stop; // Set text
-					}
+						if (isRunning)
+						{
+							dispatcherTimer.Stop();
+							miniPicker.Hide();
+							isRunning = false;
+							SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
+						}
+						else
+						{
+							dispatcherTimer.Start();
+							miniPicker.Show();
+							isRunning = true;
+							SelectColorBtn.Content = Properties.Resources.Stop; // Set text
+						}
+					} 
 				}
 			};
 		}
@@ -128,7 +142,7 @@ namespace ColorPicker.Pages
 			RedValueTxt.Text = RedSlider.Value.ToString(); // Set text
 
 			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
 		}
 
 		private void GreenSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -137,7 +151,7 @@ namespace ColorPicker.Pages
 			GreenValueTxt.Text = GreenSlider.Value.ToString(); // Set text
 
 			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
 		}
 
 		private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -146,7 +160,7 @@ namespace ColorPicker.Pages
 			BlueValueTxt.Text = BlueSlider.Value.ToString(); // Set text
 
 			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{h.Value}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
 		}
 
 		MiniPicker miniPicker = new(); // MiniPicker window
@@ -173,12 +187,51 @@ namespace ColorPicker.Pages
 
 		private void CopyBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetText($"{RedSlider.Value};{GreenSlider.Value};{BlueSlider.Value}"); // Copy
+			Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
+			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
 		}
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetText("#" + ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value); // Copy
+			Clipboard.SetText("#" + (u ? ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value)); // Copy
+			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+		}
+
+		private void HistoryBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (ContentDisplayer.Visibility == Visibility.Visible)
+			{
+				border.Visibility = Visibility.Collapsed; // Hide
+				ContentDisplayer.Visibility = Visibility.Collapsed; // Hide 
+
+				RecentColorsDisplayer.Visibility = Visibility.Visible; // Show
+				HistoryBtn.Content = "\uF36A"; // Set text
+			}
+			else
+			{
+				border.Visibility = Visibility.Visible; // Show
+				ContentDisplayer.Visibility = Visibility.Visible; // Show 
+
+				RecentColorsDisplayer.Visibility = Visibility.Collapsed; // Hide
+				HistoryBtn.Content = "\uF47F"; // Set text
+			}
+		}
+
+		private void ClearRecentColorsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			List<RecentColorItem> cs = new();
+			foreach (UIElement uIElement in RecentColorsDisplayer.Children)
+			{
+				if (uIElement is RecentColorItem)
+				{
+					cs.Add((RecentColorItem)uIElement); // Remove
+				}
+			}
+
+			for (int i = 0; i < cs.Count; i++)
+			{
+				RecentColorsDisplayer.Children.Remove(cs[i]); // Remove
+			}
 		}
 	}
 }
