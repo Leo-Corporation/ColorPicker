@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
-    <Version>3.1.0.2105-pre1</Version>
+    <Version>3.2.0.2106</Version>
     <Authors>Léo Corporation</Authors>
     <Copyright>© 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="ColorHelper" Version="1.4.0" />
-    <PackageReference Include="LeoCorpLibrary" Version="3.5.0.2104" />
+    <PackageReference Include="LeoCorpLibrary" Version="3.7.1.2106" />
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
   </ItemGroup>
 

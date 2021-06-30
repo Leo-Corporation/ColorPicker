@@ -21,11 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Classes;
-using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,41 +35,40 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
-namespace ColorPicker.Windows
+namespace ColorPicker.UserControls
 {
 	/// <summary>
-	/// Interaction logic for MiniPicker.xaml
+	/// Interaction logic for RecentColorItem.xaml
 	/// </summary>
-	public partial class MiniPicker : Window
+	public partial class RecentColorItem : UserControl
 	{
-		DispatcherTimer timer = new() { Interval = new(0, 0, 0, 0, 1) };
-		bool u = Global.Settings.HEXUseUpperCase.Value;
-		public MiniPicker()
+		int R { get; init; }
+		int G { get; init; }
+		int B { get; init; }
+		public RecentColorItem(int r, int g, int b)
 		{
 			InitializeComponent();
-			timer.Tick += (o, e) =>
+			R = r; G = g; B = b; // Set
+			InitUI(); // Load the UI
+		}
+
+		string s = Global.Settings.RGBSeparator; // Set
+		private void InitUI()
+		{
+			Border.Background = new SolidColorBrush
 			{
-				Bitmap bitmap = new(1, 1);
-				Graphics GFX = Graphics.FromImage(bitmap);
-				GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
-				var pixel = bitmap.GetPixel(0, 0);
+				Color = Color.FromRgb((byte)R, (byte)G, (byte)B)
+			}; // Set background
+			ToolTip.Content = $"{Properties.Resources.RGB}: {R}{s}{G}{s}{B}\n" +
+				$"{Properties.Resources.HEX}: {ColorHelper.ColorConverter.RgbToHex(new((byte)R, (byte)G, (byte)B))}"; // Set text
+		}
 
-				ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
-
-				// Convert to HEX
-				var hexColor = ColorsConverter.RGBtoHEX(pixel); // Convert
-
-				// Display
-				RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
-				GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
-				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
-				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hexColor.Value.ToUpper() : hexColor.Value)}"; // Set text
-			};
-
-			timer.Start();
+		private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			Clipboard.SetText($"{R}{s}{G}{s}{B}"); // Set text
 		}
 	}
 }
