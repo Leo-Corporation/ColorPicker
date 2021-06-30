@@ -304,4 +304,37 @@
   <data name="K" xml:space="preserve">
     <value>K</value>
   </data>
+  <data name="ColorFormatting" xml:space="preserve">
+    <value>Color formating</value>
+  </data>
+  <data name="RGBSeparator" xml:space="preserve">
+    <value>RGB separator</value>
+  </data>
+  <data name="ColorFormattingDesc" xml:space="preserve">
+    <value>Color formatting options.</value>
+  </data>
+  <data name="InvalidValueRGB" xml:space="preserve">
+    <value>Please enter a valid value.</value>
+  </data>
+  <data name="UseUpperCaseHEX" xml:space="preserve">
+    <value>Use upper case for HEX colors</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import settings</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export settings</value>
+  </data>
+  <data name="SettingsExportedSucessMsg" xml:space="preserve">
+    <value>Settings exported sucessfully.</value>
+  </data>
+  <data name="SettingsImportedMsg" xml:space="preserve">
+    <value>Settings have been imported sucessfully. To finish the process, ColorPicker will now restart.</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+    <value>Keyboard shortcuts</value>
+  </data>
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
+    <value>Use keyboard shortcuts</value>
+  </data>
 </root>
