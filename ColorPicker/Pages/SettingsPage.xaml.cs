@@ -23,7 +23,6 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using LeoCorpLibrary;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -78,21 +77,6 @@ namespace ColorPicker.Pages
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
 
-				if (!Global.Settings.HEXUseUpperCase.HasValue)
-				{
-					Global.Settings.HEXUseUpperCase = false;
-					SettingsManager.Save(); // Save changes
-				}
-
-				if (!Global.Settings.EnableKeyBoardShortcuts.HasValue)
-				{
-					Global.Settings.EnableKeyBoardShortcuts = true;
-					SettingsManager.Save(); // Save changes
-				}
-
-				HEXUseUpperCaseChk.IsChecked = Global.Settings.HEXUseUpperCase; // Set value
-				UseKeyboardShortcutsChk.IsChecked = Global.Settings.EnableKeyBoardShortcuts; // Set value
-
 				// Load LangComboBox
 				LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
 
@@ -103,17 +87,8 @@ namespace ColorPicker.Pages
 
 				LangComboBox.SelectedIndex = (Global.Settings.Language == "_default") ? 0 : Global.LanguageCodeList.IndexOf(Global.Settings.Language) + 1;
 
-				if (string.IsNullOrEmpty(Global.Settings.RGBSeparator))
-				{
-					Global.Settings.RGBSeparator = ";"; // Set
-					SettingsManager.Save(); // Save changes
-				}
-
-				RGBSeparatorTxt.Text = Global.Settings.RGBSeparator; // Set text
-
 				LangApplyBtn.Visibility = Visibility.Hidden; // Hide
 				ThemeApplyBtn.Visibility = Visibility.Hidden; // Hide
-				RGBFormatApplyBtn.Visibility = Visibility.Hidden; // Hide
 
 				// Update the UpdateStatusTxt
 				if (Global.Settings.CheckUpdatesOnStart)
@@ -146,8 +121,6 @@ namespace ColorPicker.Pages
 					InstallMsgTxt.Text = Properties.Resources.CheckUpdate; // Set text
 					InstallIconTxt.Text = "\uF191"; // Set text 
 				}
-
-				VersionTxt.Text = Global.Version; // Set text
 
 				SettingsManager.Save(); // Save changes
 			}
@@ -251,9 +224,7 @@ namespace ColorPicker.Pages
 					CheckUpdatesOnStart = true,
 					IsDarkTheme = false,
 					Language = "_default",
-					NotifyUpdates = true,
-					RGBSeparator = ";",
-					HEXUseUpperCase = false,
+					NotifyUpdates = true
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -286,78 +257,6 @@ namespace ColorPicker.Pages
 				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
 				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
 				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
-		}
-
-		private void RGBFormatApplyBtn_Click(object sender, RoutedEventArgs e)
-		{
-			if (!string.IsNullOrEmpty(RGBSeparatorTxt.Text) && !string.IsNullOrWhiteSpace(RGBSeparatorTxt.Text))
-			{
-				Global.Settings.RGBSeparator = RGBSeparatorTxt.Text; // Set
-				SettingsManager.Save();
-				RGBFormatApplyBtn.Visibility = Visibility.Hidden; // Hide
-			}
-			else
-			{
-				MessageBox.Show(Properties.Resources.InvalidValueRGB, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Warning); // Show	
-			}
-		}
-
-		private void RGBSeparatorTxt_TextChanged(object sender, TextChangedEventArgs e)
-		{
-			RGBFormatApplyBtn.Visibility = Visibility.Visible; // Show
-		}
-
-		private void HEXUseUpperCaseChk_Checked(object sender, RoutedEventArgs e)
-		{
-			Global.Settings.HEXUseUpperCase = HEXUseUpperCaseChk.IsChecked; // Set
-			SettingsManager.Save(); // Save changes
-		}
-
-		private void ImportBtn_Click(object sender, RoutedEventArgs e)
-		{
-			OpenFileDialog openFileDialog = new()
-			{
-				Filter = "XML|*.xml",
-				Title = Properties.Resources.Import
-			}; // Create file dialog
-
-			if (openFileDialog.ShowDialog() ?? true)
-			{
-				SettingsManager.Import(openFileDialog.FileName); // Import games
-			}
-		}
-
-		private void ExportBtn_Click(object sender, RoutedEventArgs e)
-		{
-			SaveFileDialog saveFileDialog = new()
-			{
-				FileName = "ColorPickerSettings.xml",
-				Filter = "XML|*.xml",
-				Title = Properties.Resources.Export
-			}; // Create file dialog
-
-			if (saveFileDialog.ShowDialog() ?? true)
-			{
-				SettingsManager.Export(saveFileDialog.FileName); // Export games
-			}
-		}
-
-		private void BtnEnter(object sender, MouseEventArgs e)
-		{
-			Button button = (Button)sender; // Create button
-			button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["WindowButtonsHoverForeground1"].ToString()) }; // Set the foreground
-		}
-
-		private void BtnLeave(object sender, MouseEventArgs e)
-		{
-			Button button = (Button)sender; // Create button
-			button.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground 
-		}
-
-		private void UseKeyboardShortcutsChk_Checked(object sender, RoutedEventArgs e)
-		{
-			Global.Settings.EnableKeyBoardShortcuts = UseKeyboardShortcutsChk.IsChecked; // Set
-			SettingsManager.Save(); // Save settings
 		}
 	}
 }
