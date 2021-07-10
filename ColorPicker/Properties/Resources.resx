@@ -337,4 +337,7 @@
   <data name="UseKeyboardShortcuts" xml:space="preserve">
     <value>Use keyboard shortcuts</value>
   </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
 </root>
