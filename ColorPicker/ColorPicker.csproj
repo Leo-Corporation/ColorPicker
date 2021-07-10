@@ -21,6 +21,9 @@
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Images\BackgroundBlack.png" />
     <None Remove="Images\BackgroundWhite.png" />
+    <None Remove="Images\DarkTheme.png" />
+    <None Remove="Images\LightTheme.png" />
+    <None Remove="Images\SystemTheme.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +68,15 @@
 		</Resource>
 		<Resource Include="Images\BackgroundWhite.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\DarkTheme.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\LightTheme.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\SystemTheme.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 	</ItemGroup>
 
