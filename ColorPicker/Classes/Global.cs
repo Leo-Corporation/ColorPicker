@@ -23,6 +23,8 @@ SOFTWARE.
 */
 using ColorPicker.Enums;
 using ColorPicker.Pages;
+using LeoCorpLibrary;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +43,7 @@ namespace ColorPicker.Classes
 		/// <summary>
 		/// The current version of ColorPicker.
 		/// </summary>
-		public static string Version => "3.2.0.2106";
+		public static string Version => "3.3.0.2107";
 
 		/// <summary>
 		/// List of the available languages.
@@ -134,6 +136,16 @@ namespace ColorPicker.Classes
 			App.Current.Resources.MergedDictionaries.Clear();
 			ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
 
+			if (!Settings.IsThemeSystem.HasValue)
+			{
+				Settings.IsThemeSystem = false;
+			}
+
+			if (Settings.IsThemeSystem.Value)
+			{
+				Settings.IsDarkTheme = IsSystemThemeDark(); // Set
+			}
+
 			if (Settings.IsDarkTheme) // If the dark theme is on
 			{
 				resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
@@ -144,6 +156,22 @@ namespace ColorPicker.Classes
 			}
 
 			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+		}
+
+		public static bool IsSystemThemeDark()
+		{
+			if (Env.WindowsVersion != WindowsVersion.Windows10)
+			{
+				return false; // Avoid errors on older OSs
+			}
+
+			var t = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", "1");
+			return t switch
+			{
+				0 => true,
+				1 => false,
+				_ => false
+			}; // Return
 		}
 
 		/// <summary>

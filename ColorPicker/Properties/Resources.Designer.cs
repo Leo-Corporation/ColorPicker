@@ -682,7 +682,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press S to start/stop the selection. Press C to copy the color..
+        ///   Looks up a localized string similar to Press Shift+S to start/stop the selection. Press Shift+C to copy the color..
         /// </summary>
         public static string ShortcutsGuide {
             get {
@@ -696,6 +696,15 @@ namespace ColorPicker.Properties {
         public static string Stop {
             get {
                 return ResourceManager.GetString("Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string System {
+            get {
+                return ResourceManager.GetString("System", resourceCulture);
             }
         }
         

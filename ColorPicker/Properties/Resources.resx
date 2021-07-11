@@ -272,7 +272,7 @@
     <value>All settings have been reset, ColorPicker will now restart.</value>
   </data>
   <data name="ShortcutsGuide" xml:space="preserve">
-    <value>Press S to start/stop the selection. Press C to copy the color.</value>
+    <value>Press Shift+S to start/stop the selection. Press Shift+C to copy the color.</value>
   </data>
   <data name="CopyHSV" xml:space="preserve">
     <value>Copy HSV</value>
@@ -336,5 +336,8 @@
   </data>
   <data name="UseKeyboardShortcuts" xml:space="preserve">
     <value>Use keyboard shortcuts</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
   </data>
 </root>

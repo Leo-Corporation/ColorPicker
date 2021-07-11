@@ -70,6 +70,11 @@ namespace ColorPicker.Classes
 		/// True if ColorPicker's shortcuts should be enabled.
 		/// </summary>
 		public bool? EnableKeyBoardShortcuts { get; set; }
+
+		/// <summary>
+		/// True if ColorPicker's theme should match system.
+		/// </summary>
+		public bool? IsThemeSystem { get; set; }
 	}
 
 	/// <summary>
@@ -102,7 +107,8 @@ namespace ColorPicker.Classes
 					CheckUpdatesOnStart = true,
 					NotifyUpdates = true,
 					RGBSeparator = ";",
-					HEXUseUpperCase = false
+					HEXUseUpperCase = false,
+					IsThemeSystem = false
 				}; // Create a new settings file
 
 				Save(); // Save the changes
