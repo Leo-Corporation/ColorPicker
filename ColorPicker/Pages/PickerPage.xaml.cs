@@ -103,37 +103,46 @@ namespace ColorPicker.Pages
 				SettingsManager.Save(); // Save changes
 			}
 
-			m_GlobalHook.KeyPress += (o, e) =>
+			// Register Keyboard Shortcuts
+
+			Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
 			{
-				if (Global.Settings.EnableKeyBoardShortcuts.Value)
+				{ Combination.FromString("Shift+C"), HandleCopyKeyboard },
+				{ Combination.FromString("Shift+S"), HandleSelectKeyboard }
+			});
+		}
+
+		private void HandleSelectKeyboard()
+		{
+			if (Global.Settings.EnableKeyBoardShortcuts.Value)
+			{
+				if (isRunning)
 				{
-					if (e.KeyChar.ToString().ToLower() == "c")
-					{
-						if (isRunning)
-						{
-							Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
-							RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
-						}
-					}
-					else if (e.KeyChar.ToString().ToLower() == "s")
-					{
-						if (isRunning)
-						{
-							dispatcherTimer.Stop();
-							miniPicker.Hide();
-							isRunning = false;
-							SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
-						}
-						else
-						{
-							dispatcherTimer.Start();
-							miniPicker.Show();
-							isRunning = true;
-							SelectColorBtn.Content = Properties.Resources.Stop; // Set text
-						}
-					} 
+					dispatcherTimer.Stop();
+					miniPicker.Hide();
+					isRunning = false;
+					SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
 				}
-			};
+				else
+				{
+					dispatcherTimer.Start();
+					miniPicker.Show();
+					isRunning = true;
+					SelectColorBtn.Content = Properties.Resources.Stop; // Set text
+				}
+			}
+		}
+
+		private void HandleCopyKeyboard()
+		{
+			if (Global.Settings.EnableKeyBoardShortcuts.Value)
+			{
+				if (isRunning)
+				{
+					Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
+					RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+				}
+			}
 		}
 
 		private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
