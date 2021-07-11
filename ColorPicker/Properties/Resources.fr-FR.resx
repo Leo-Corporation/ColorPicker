@@ -292,7 +292,7 @@
     <value>Tous les paramètres ont été réinitialisés, ColorPicker va maintenant redémarrer.</value>
   </data>
   <data name="ShortcutsGuide" xml:space="preserve">
-    <value>Appuyez sur S pour démarrer/arrêter la sélection. Appuyez sur C pour copier la couleur.</value>
+    <value>Appuyez sur Maj+S pour démarrer/arrêter la sélection. Appuyez sur Maj+C pour copier la couleur.</value>
   </data>
   <data name="CopyHSV" xml:space="preserve">
     <value>Copier HSV</value>
