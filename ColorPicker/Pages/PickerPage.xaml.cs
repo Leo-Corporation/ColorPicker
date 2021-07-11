@@ -242,5 +242,22 @@ namespace ColorPicker.Pages
 				RecentColorsDisplayer.Children.Remove(cs[i]); // Remove
 			}
 		}
+
+		private void RandomColorBtn_Click(object sender, RoutedEventArgs e)
+		{
+			// Generate random color
+			Random random = new();
+			int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
+
+			// Display
+			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)r, (byte)g, (byte)b) }; // Display color
+			RedSlider.Value = r; // Set value
+			GreenSlider.Value = g; // Set value
+			BlueSlider.Value = b; // Set value
+
+			// Convert to HEX
+			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hex.Value.ToUpper() : hex.Value)}";
+		}
 	}
 }
