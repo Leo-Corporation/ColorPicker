@@ -119,6 +119,7 @@ namespace ColorPicker.Pages
 				if (isRunning)
 				{
 					dispatcherTimer.Stop();
+					miniPicker.timer.Stop(); // Stop
 					miniPicker.Hide();
 					isRunning = false;
 					SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
@@ -126,6 +127,7 @@ namespace ColorPicker.Pages
 				else
 				{
 					dispatcherTimer.Start();
+					miniPicker.timer.Start(); // Start
 					miniPicker.Show();
 					isRunning = true;
 					SelectColorBtn.Content = Properties.Resources.Stop; // Set text
@@ -172,15 +174,16 @@ namespace ColorPicker.Pages
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
 		}
 
-		MiniPicker miniPicker = new(); // MiniPicker window
+		internal MiniPicker miniPicker = new(); // MiniPicker window
 		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
 		{
 			if (!isRunning)
 			{
 				dispatcherTimer.Start(); // Start
+				miniPicker.timer.Start(); // Start
 				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
-
+				
 				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
 				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
 				miniPicker.Show(); // Show
@@ -188,6 +191,7 @@ namespace ColorPicker.Pages
 			else
 			{
 				dispatcherTimer.Stop(); // Stop
+				miniPicker.timer.Stop(); // Stop
 				SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
 				isRunning = false;
 				miniPicker.Hide(); // Hide
