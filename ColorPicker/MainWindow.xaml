@@ -115,8 +115,16 @@
 						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
 
-					<Button Grid.Column="1" FontSize="14" Content="&#xFC75;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="MinimizeBtn" Click="MinimizeBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}"/>
-					<Button Grid.Column="2" FontSize="14" Content="&#xF36B;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="CloseBtn" Click="CloseBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarCloseButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+					<Button Grid.Column="1" FontSize="14" Content="&#xFC75;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="MinimizeBtn" Click="MinimizeBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Minimize}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Button.ToolTip>
+					</Button>
+					<Button Grid.Column="2" FontSize="14" Content="&#xF36B;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="CloseBtn" Click="CloseBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarCloseButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Close}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Button.ToolTip>
+					</Button>
 				</Grid>
 			</Border>
 
@@ -157,18 +165,27 @@
 									<TextBlock Text="&#xF2F6;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 									<TextBlock Text="{x:Static lang:Resources.Picker}" VerticalAlignment="Center"/>
 								</StackPanel>
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.Picker}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+								</Button.ToolTip>
 							</Button>
 							<Button Click="ConverterTabBtn_Click" x:Name="ConverterTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xF18E;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
 									<TextBlock Text="{x:Static lang:Resources.Converter}" VerticalAlignment="Center"/>
 								</StackPanel>
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.Converter}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+								</Button.ToolTip>
 							</Button>
 							<Button Click="SettingsTabBtn_Click" x:Name="SettingsTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xF6AB;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
 									<TextBlock Text="{x:Static lang:Resources.Settings}" VerticalAlignment="Center"/>
 								</StackPanel>
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.Settings}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+								</Button.ToolTip>
 							</Button>
 						</StackPanel>
 
