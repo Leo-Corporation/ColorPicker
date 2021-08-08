@@ -86,7 +86,7 @@ namespace ColorPicker.Pages
 			// Generate random color
 			Random random = new();
 			int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
-			
+
 			// Display
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)r, (byte)g, (byte)b) }; // Display color
 			RedSlider.Value = r; // Set value
@@ -95,7 +95,7 @@ namespace ColorPicker.Pages
 
 			// Convert to HEX
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{( u ? hex.Value.ToUpper() : hex.Value)}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hex.Value.ToUpper() : hex.Value)}";
 
 			if (Global.Settings.EnableKeyBoardShortcuts is null)
 			{
@@ -183,7 +183,7 @@ namespace ColorPicker.Pages
 				miniPicker.timer.Start(); // Start
 				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
-				
+
 				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
 				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
 				miniPicker.Show(); // Show
