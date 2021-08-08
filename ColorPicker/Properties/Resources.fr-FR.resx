@@ -360,4 +360,16 @@
   <data name="System" xml:space="preserve">
     <value>Système</value>
   </data>
+  <data name="History" xml:space="preserve">
+    <value>Historique</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>Minimiser</value>
+  </data>
+  <data name="PickRandomColor" xml:space="preserve">
+    <value>Générer une couleur aléatoire</value>
+  </data>
 </root>
