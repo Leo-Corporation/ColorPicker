@@ -131,7 +131,7 @@ namespace ColorPicker.Pages
 					IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(255, 69, 0) }; // Set foreground color
 					IconValidMsgTxt.Text = "\uF36E"; // Set icon
 					ValidMsgTxt.Text = Properties.Resources.InvalidColor; // Set text
-				} 
+				}
 			}
 		}
 

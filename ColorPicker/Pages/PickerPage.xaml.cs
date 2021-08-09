@@ -86,7 +86,7 @@ namespace ColorPicker.Pages
 			// Generate random color
 			Random random = new();
 			int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
-			
+
 			// Display
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)r, (byte)g, (byte)b) }; // Display color
 			RedSlider.Value = r; // Set value
@@ -95,7 +95,7 @@ namespace ColorPicker.Pages
 
 			// Convert to HEX
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{( u ? hex.Value.ToUpper() : hex.Value)}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hex.Value.ToUpper() : hex.Value)}";
 
 			if (Global.Settings.EnableKeyBoardShortcuts is null)
 			{
@@ -119,6 +119,7 @@ namespace ColorPicker.Pages
 				if (isRunning)
 				{
 					dispatcherTimer.Stop();
+					miniPicker.timer.Stop(); // Stop
 					miniPicker.Hide();
 					isRunning = false;
 					SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
@@ -126,6 +127,7 @@ namespace ColorPicker.Pages
 				else
 				{
 					dispatcherTimer.Start();
+					miniPicker.timer.Start(); // Start
 					miniPicker.Show();
 					isRunning = true;
 					SelectColorBtn.Content = Properties.Resources.Stop; // Set text
@@ -172,12 +174,13 @@ namespace ColorPicker.Pages
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
 		}
 
-		MiniPicker miniPicker = new(); // MiniPicker window
+		internal MiniPicker miniPicker = new(); // MiniPicker window
 		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
 		{
 			if (!isRunning)
 			{
 				dispatcherTimer.Start(); // Start
+				miniPicker.timer.Start(); // Start
 				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
 
@@ -188,6 +191,7 @@ namespace ColorPicker.Pages
 			else
 			{
 				dispatcherTimer.Stop(); // Stop
+				miniPicker.timer.Stop(); // Stop
 				SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
 				isRunning = false;
 				miniPicker.Hide(); // Hide

@@ -1,17 +1,17 @@
 ﻿<Page x:Class="ColorPicker.Pages.ConverterPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ColorPicker.Pages"
-      xmlns:lang="clr-namespace:ColorPicker.Properties"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:local="clr-namespace:ColorPicker.Pages"
+	  xmlns:lang="clr-namespace:ColorPicker.Properties"
 	  mc:Ignorable="d" 
 	  Foreground="{Binding Source={StaticResource Foreground1}}"
 	  d:DesignHeight="350" d:DesignWidth="560"
 	  FontFamily="../Fonts/#Montserrat"
-      Title="ConverterPage">
+	  Title="ConverterPage">
 
-    <Grid>
+	<Grid>
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition/>
@@ -105,11 +105,31 @@
 					</StackPanel>
 
 					<StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
-						<Button x:Name="CopyBtn" Click="CopyBtn_Click" Content="{x:Static lang:Resources.CopyRGB}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0"/>
-						<Button x:Name="CopyHEXBtn" Click="CopyHEXBtn_Click" Content="{x:Static lang:Resources.CopyHEX}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0"/>
-						<Button x:Name="CopyHSVBtn" Click="CopyHSVBtn_Click" Content="{x:Static lang:Resources.CopyHSV}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0"/>
-						<Button x:Name="CopyHSLBtn" Click="CopyHSLBtn_Click" Content="{x:Static lang:Resources.CopyHSL}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0"/>
-						<Button x:Name="CopyCMYKBtn" Click="CopyCMYKBtn_Click" Content="{x:Static lang:Resources.CopyCMYK}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,0,0"/>
+						<Button x:Name="CopyBtn" Click="CopyBtn_Click" Content="{x:Static lang:Resources.CopyRGB}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0">
+							<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.CopyRGB}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Button.ToolTip>
+						</Button>
+						<Button x:Name="CopyHEXBtn" Click="CopyHEXBtn_Click" Content="{x:Static lang:Resources.CopyHEX}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0">
+							<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.CopyHEX}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Button.ToolTip>
+						</Button>
+						<Button x:Name="CopyHSVBtn" Click="CopyHSVBtn_Click" Content="{x:Static lang:Resources.CopyHSV}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0">
+							<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.CopyHSV}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+							</Button.ToolTip>
+						</Button>
+						<Button x:Name="CopyHSLBtn" Click="CopyHSLBtn_Click" Content="{x:Static lang:Resources.CopyHSL}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.CopyHSL}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+							</Button.ToolTip>
+						</Button>
+						<Button x:Name="CopyCMYKBtn" Click="CopyCMYKBtn_Click" Content="{x:Static lang:Resources.CopyCMYK}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,0,0">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.CopyCMYK}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+							</Button.ToolTip>
+						</Button>					
 					</StackPanel>
 				</Grid>
 			</StackPanel>

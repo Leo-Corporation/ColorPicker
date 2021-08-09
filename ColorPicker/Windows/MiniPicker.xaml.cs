@@ -46,7 +46,7 @@ namespace ColorPicker.Windows
 	/// </summary>
 	public partial class MiniPicker : Window
 	{
-		DispatcherTimer timer = new() { Interval = new(0, 0, 0, 0, 1) };
+		internal DispatcherTimer timer = new() { Interval = new(0, 0, 0, 0, 1) };
 		bool u = Global.Settings.HEXUseUpperCase.Value;
 		public MiniPicker()
 		{
@@ -69,8 +69,6 @@ namespace ColorPicker.Windows
 				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
 				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hexColor.Value.ToUpper() : hexColor.Value)}"; // Set text
 			};
-
-			timer.Start();
 		}
 	}
 }
