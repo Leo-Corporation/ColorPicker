@@ -18,9 +18,9 @@
     <br />
     <a href="https://github.com/Leo-Corporation/ColorPicker/releases"><strong>Download »</strong></a>
     <br />
-    <a href="https://github.com/Leo-Corporation/ColorPicker/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBug%5D+">Report Bug</a>
+    <a href="https://github.com/Leo-Corporation/ColorPicker/issues/new?assignees=&labels=bug&template=bug-report.yml&title=%5BBug%5D+">Report Bug</a>
     ·
-    <a href="https://github.com/Leo-Corporation/ColorPicker/issues/new?assignees=&labels=suggestion+enhancement&template=feature_request.md&title=%5BEnhancement%5D+">Request Feature</a>
+    <a href="https://github.com/Leo-Corporation/ColorPicker/issues/new?assignees=&labels=enhancement&template=feature-request.yml&title=%5BEnhancement%5D+">Request Feature</a>
     ·
     <a href="https://github.com/Leo-Corporation/ColorPicker/issues?q=is%3Aopen+is%3Aissue+label%3Abug">Known Issues</a>
 
@@ -61,6 +61,18 @@ To contribute to the project, you'll need:
 - .NET 5
 - (*optionnal*) Inno Setup v6.1 or higher
 
+
 [Click here](https://github.com/Leo-Corporation/ColorPicker/blob/main/CONTRIBUTING.md) to see the full guidelines.
+
+## Branches
+This Git repo has always two branches:
+
+| Name | Release | Description |
+| :--: | :-----: | :---------: |
+| `main` | ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker) | Stable versions |
+| `vNext` | ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker?include_prereleases) | Next version of ColorPicker (unstable) |
+
+> Note: Other branches can also - of course - exist.
+
 ## License
 This project is under the [MIT License](https://github.com/Leo-Corporation/ColorPicker/blob/main/LICENSE).
