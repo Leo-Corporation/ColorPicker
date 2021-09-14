@@ -76,8 +76,10 @@ namespace ColorPicker.Pages
 				BlueSlider.Value = pixel.B; // Set value
 
 				// MiniPicker
-				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
-				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
+				double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
+
+				miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
+				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
 			};
 		}
 
@@ -184,8 +186,10 @@ namespace ColorPicker.Pages
 				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
 
-				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
-				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
+				double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
+
+				miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
+				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
 				miniPicker.Show(); // Show
 			}
 			else
