@@ -278,13 +278,13 @@
     <value>Copy HSV</value>
   </data>
   <data name="HSL" xml:space="preserve">
-    <value>HSL</value>
+    <value>HSB</value>
   </data>
   <data name="L" xml:space="preserve">
     <value>L</value>
   </data>
   <data name="CopyHSL" xml:space="preserve">
-    <value>Copy HSL</value>
+    <value>Copy HSB</value>
   </data>
   <data name="CMYK" xml:space="preserve">
     <value>CMYK</value>

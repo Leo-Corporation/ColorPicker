@@ -259,7 +259,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy HSL.
+        ///   Looks up a localized string similar to Copy HSB.
         /// </summary>
         public static string CopyHSL {
             get {
@@ -412,7 +412,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HSL.
+        ///   Looks up a localized string similar to HSB.
         /// </summary>
         public static string HSL {
             get {
