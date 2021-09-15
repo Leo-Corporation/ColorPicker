@@ -66,6 +66,11 @@ namespace ColorPicker.Classes
 		public static ConverterPage ConverterPage { get; set; }
 
 		/// <summary>
+		/// The <see cref="Pages.PalettePage"/>.
+		/// </summary>
+		public static PalettePage PalettePage { get; set; }
+
+		/// <summary>
 		/// The <see cref="Pages.SettingsPage"/>.
 		/// </summary>
 		public static SettingsPage SettingsPage { get; set; }
