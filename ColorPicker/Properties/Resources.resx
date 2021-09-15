@@ -278,13 +278,13 @@
     <value>Copy HSV</value>
   </data>
   <data name="HSL" xml:space="preserve">
-    <value>HSB</value>
+    <value>HSL</value>
   </data>
   <data name="L" xml:space="preserve">
     <value>L</value>
   </data>
   <data name="CopyHSL" xml:space="preserve">
-    <value>Copy HSB</value>
+    <value>Copy HSL</value>
   </data>
   <data name="CMYK" xml:space="preserve">
     <value>CMYK</value>
@@ -351,5 +351,11 @@
   </data>
   <data name="PickRandomColor" xml:space="preserve">
     <value>Generate a random color</value>
+  </data>
+  <data name="Palette" xml:space="preserve">
+    <value>Palette</value>
+  </data>
+  <data name="Shades" xml:space="preserve">
+    <value>Shades</value>
   </data>
 </root>

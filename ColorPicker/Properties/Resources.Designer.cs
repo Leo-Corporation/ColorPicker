@@ -259,7 +259,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy HSB.
+        ///   Looks up a localized string similar to Copy HSL.
         /// </summary>
         public static string CopyHSL {
             get {
@@ -412,7 +412,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HSB.
+        ///   Looks up a localized string similar to HSL.
         /// </summary>
         public static string HSL {
             get {
@@ -583,6 +583,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Palette.
+        /// </summary>
+        public static string Palette {
+            get {
+                return ResourceManager.GetString("Palette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Picker.
         /// </summary>
         public static string Picker {
@@ -714,6 +723,15 @@ namespace ColorPicker.Properties {
         public static string SettingsReset {
             get {
                 return ResourceManager.GetString("SettingsReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shades.
+        /// </summary>
+        public static string Shades {
+            get {
+                return ResourceManager.GetString("Shades", resourceCulture);
             }
         }
         

@@ -372,4 +372,10 @@
   <data name="PickRandomColor" xml:space="preserve">
     <value>Générer une couleur aléatoire</value>
   </data>
+  <data name="Palette" xml:space="preserve">
+    <value>Palette</value>
+  </data>
+  <data name="Shades" xml:space="preserve">
+    <value>Nuances</value>
+  </data>
 </root>
