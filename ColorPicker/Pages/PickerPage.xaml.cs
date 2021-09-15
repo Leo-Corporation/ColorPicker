@@ -76,8 +76,26 @@ namespace ColorPicker.Pages
 				BlueSlider.Value = pixel.B; // Set value
 
 				// MiniPicker
-				double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
+				float dpiX, dpiY;
+				double scaling = 100; // Default scaling = 100%
 
+				using (Graphics graphics = Graphics.FromHwnd(IntPtr.Zero))
+				{
+					dpiX = graphics.DpiX; // Get the DPI
+					dpiY = graphics.DpiY; // Get the DPI
+
+					scaling = dpiX switch
+					{
+						96 => 100, // Get the %
+						120 => 125, // Get the %
+						144 => 150, // Get the %
+						168 => 175, // Get the %
+						192 => 200, // Get the % 
+						_ => 100
+					};
+				}
+
+				double factor = scaling / 100d; // Calculate factor
 				miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
 				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
 			};
@@ -186,8 +204,26 @@ namespace ColorPicker.Pages
 				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
 
-				double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
+				float dpiX, dpiY;
+				double scaling = 100; // Default scaling = 100%
 
+				using (Graphics graphics = Graphics.FromHwnd(IntPtr.Zero))
+				{
+					dpiX = graphics.DpiX; // Get the DPI
+					dpiY = graphics.DpiY; // Get the DPI
+
+					scaling = dpiX switch
+					{
+						96 => 100, // Get the %
+						120 => 125, // Get the %
+						144 => 150, // Get the %
+						168 => 175, // Get the %
+						192 => 200, // Get the % 
+						_ => 100
+					};
+				}
+
+				double factor = scaling / 100d; // Calculate factor
 				miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
 				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
 				miniPicker.Show(); // Show
