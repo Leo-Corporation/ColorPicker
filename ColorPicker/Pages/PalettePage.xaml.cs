@@ -120,5 +120,18 @@ namespace ColorPicker.Pages
 				
 			}
 		}
+
+		private void RandomColorBtn_Click(object sender, RoutedEventArgs e)
+		{
+			// Generate random color
+			int r, g, b;
+			Random random = new();
+
+			r = random.Next(0, 255); // Generate random number between 0 and 255
+			g = random.Next(0, 255); // Generate random number between 0 and 255
+			b = random.Next(0, 255); // Generate random number between 0 and 255
+
+			RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+		}
 	}
 }

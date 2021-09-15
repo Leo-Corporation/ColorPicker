@@ -19,7 +19,18 @@
 			</Grid.RowDefinitions>
 
 			<StackPanel Margin="10,40,10,5" Grid.Row="0">
-				<TextBlock Text="{x:Static lang:Resources.Palette}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="16"/>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Text="{x:Static lang:Resources.Palette}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="16"/>
+					<Button Content="&#xF2F6;" Padding="5" x:Name="RandomColorBtn" Click="RandomColorBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Grid.Column="1" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0,0,5,0">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.PickRandomColor}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Button.ToolTip>
+					</Button>
+				</Grid>
 				<StackPanel Orientation="Horizontal">
 					<Border x:Name="ColorDisplayer" CornerRadius="10" Margin="10" Grid.Column="0" Height="50" Width="50" HorizontalAlignment="Left"/>
 					<TextBlock Text="{x:Static lang:Resources.RGB}" VerticalAlignment="Center"/>
