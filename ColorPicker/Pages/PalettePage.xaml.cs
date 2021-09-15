@@ -133,5 +133,17 @@ namespace ColorPicker.Pages
 
 			RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
 		}
+
+		private string GetRgbStringFromBorder(Border border)
+		{
+			var color = ((SolidColorBrush)border.Background).Color; // Get the color
+
+			return $"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}";
+		}
+
+		private void DarkShade_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			Clipboard.SetText(GetRgbStringFromBorder((Border)sender)); // Copy
+		}
 	}
 }

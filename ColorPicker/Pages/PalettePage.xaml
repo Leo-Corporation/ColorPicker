@@ -39,17 +39,17 @@
 
 				<TextBlock Text="{x:Static lang:Resources.Shades}"/>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-					<Border x:Name="DarkShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
-					<Border x:Name="RegularShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
-					<Border x:Name="BaseShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
-					<Border x:Name="TintShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="DarkShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="RegularShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="BaseShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="TintShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
 				</StackPanel>
 
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-					<Border x:Name="DRegularShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
-					<Border x:Name="DDarkShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
-					<Border x:Name="DBaseShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
-					<Border x:Name="DTintShade" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="DRegularShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="DDarkShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="DBaseShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
+					<Border x:Name="DTintShade" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50"/>
 				</StackPanel>
 			</StackPanel>
 		</Grid>
