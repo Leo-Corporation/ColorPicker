@@ -27,10 +27,7 @@ using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ColorPicker.Classes
@@ -43,7 +40,7 @@ namespace ColorPicker.Classes
 		/// <summary>
 		/// The current version of ColorPicker.
 		/// </summary>
-		public static string Version => "3.5.0.2109-pre1";
+		public static string Version => "3.5.0.2109-rc1";
 
 		/// <summary>
 		/// List of the available languages.
