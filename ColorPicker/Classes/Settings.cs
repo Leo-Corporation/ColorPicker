@@ -104,7 +104,7 @@ namespace ColorPicker.Classes
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
-					IsThemeSystem = false
+					IsThemeSystem = true
 				}; // Create a new settings file
 
 				Save(); // Save the changes

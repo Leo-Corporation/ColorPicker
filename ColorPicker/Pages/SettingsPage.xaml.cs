@@ -263,7 +263,7 @@ namespace ColorPicker.Pages
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
-					IsThemeSystem = false
+					IsThemeSystem = true
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
