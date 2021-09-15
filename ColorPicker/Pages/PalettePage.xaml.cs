@@ -68,7 +68,7 @@ namespace ColorPicker.Pages
 		private RGB[] GetShades(HSL hsl)
 		{
 			// Dark shades
-			HSL darkShade = new(hsl.H, hsl.S, 30);
+			HSL darkShade = new(hsl.H, hsl.S, (hsl.L == 30) ? (byte)15 : (byte)30);
 			RGB darkShadeRgb = ColorHelper.ColorConverter.HslToRgb(darkShade);
 
 			// Regular shades
@@ -106,13 +106,27 @@ namespace ColorPicker.Pages
 
 				DBaseShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
 				
+				// "Lighter" shades
+
 				DarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
 				RegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[1].R, shades[1].G, shades[1].B) };
 				TintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[2].R, shades[2].G, shades[2].B) };
 
+				DarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
+				RegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[1].R}{Global.Settings.RGBSeparator}{shades[1].G}{Global.Settings.RGBSeparator}{shades[1].B}";
+				BaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {rgb[0]}{Global.Settings.RGBSeparator}{rgb[1]}{Global.Settings.RGBSeparator}{rgb[2]}";
+				TintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[2].R}{Global.Settings.RGBSeparator}{shades[2].G}{Global.Settings.RGBSeparator}{shades[2].B}";
+
+				// "Darker" shades
+
 				DDarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[0].R, shades1[0].G, shades1[0].B) };
 				DRegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[1].R, shades1[1].G, shades1[1].B) };
 				DTintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[2].R, shades1[2].G, shades1[2].B) };
+
+				DDarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[0].R}{Global.Settings.RGBSeparator}{shades1[0].G}{Global.Settings.RGBSeparator}{shades1[0].B}";
+				DRegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[1].R}{Global.Settings.RGBSeparator}{shades1[1].G}{Global.Settings.RGBSeparator}{shades1[1].B}";
+				DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
+				DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}";
 
 			}
 			catch
