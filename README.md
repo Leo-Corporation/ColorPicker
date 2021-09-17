@@ -11,7 +11,7 @@
     <img src=".github/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">ColorPicker</h3>
+  <h1 align="center">ColorPicker</h1>
 
   <p align="center">
     A modern color picking tool for developers.
