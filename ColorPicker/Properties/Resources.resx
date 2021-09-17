@@ -352,4 +352,10 @@
   <data name="PickRandomColor" xml:space="preserve">
     <value>Generate a random color</value>
   </data>
+  <data name="Palette" xml:space="preserve">
+    <value>Palette</value>
+  </data>
+  <data name="Shades" xml:space="preserve">
+    <value>Shades</value>
+  </data>
 </root>

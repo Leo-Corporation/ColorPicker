@@ -162,7 +162,7 @@
 						<StackPanel Margin="10" Grid.Column="0">
 							<Button Click="PickerTabBtn_Click" x:Name="PickerTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
 								<StackPanel Orientation="Horizontal">
-									<TextBlock x:Name="PickerIcon" Text="&#xF2F6;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+									<TextBlock x:Name="PickerIcon" Text="&#xF2FC;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 									<TextBlock Text="{x:Static lang:Resources.Picker}" VerticalAlignment="Center"/>
 								</StackPanel>
 								<Button.ToolTip>
@@ -181,7 +181,13 @@
 							</Button>
 							<Button Click="ConverterTabBtn_Click" x:Name="ConverterTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave">
 								<StackPanel Orientation="Horizontal">
-									<TextBlock x:Name="ConvertIcon" Text="&#xF18E;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
+									<TextBlock x:Name="ConvertIcon" Text="&#xF18E;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+										<TextBlock.RenderTransform>
+											<TransformGroup>
+												<RotateTransform x:Name="Rotator2" Angle="0"/>
+											</TransformGroup>
+										</TextBlock.RenderTransform>
+									</TextBlock>
 									<TextBlock Text="{x:Static lang:Resources.Converter}" VerticalAlignment="Center"/>
 								</StackPanel>
 								<Button.ToolTip>
@@ -191,8 +197,34 @@
 									<EventTrigger RoutedEvent="MouseEnter">
 										<BeginStoryboard>
 											<Storyboard>
-												<DoubleAnimation From="15" To="20" Duration="0:0:0.2" Storyboard.TargetName="ConvertIcon" Storyboard.TargetProperty="FontSize"/>
+												<DoubleAnimation From="0" To="180" Duration="0:0:0.2" Storyboard.TargetName="Rotator2" Storyboard.TargetProperty="Angle"/>
 												<ColorAnimation From="{Binding Source={StaticResource Background1}}" To="{Binding Source={StaticResource AccentColor}}" Duration="0:0:0.2" Storyboard.TargetName="ConverterTabBtn" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+											</Storyboard>
+										</BeginStoryboard>
+									</EventTrigger>
+									<EventTrigger RoutedEvent="MouseLeave">
+										<BeginStoryboard>
+											<Storyboard>
+												<DoubleAnimation From="180" To="0" Duration="0:0:0.2" Storyboard.TargetName="Rotator2" Storyboard.TargetProperty="Angle"/>
+											</Storyboard>
+										</BeginStoryboard>
+									</EventTrigger>
+								</Button.Triggers>
+							</Button>
+							<Button Click="PaletteTabBtn_Click" x:Name="PaletteTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock x:Name="PaletteIcon" Text="&#xF2F6;" FontSize="23" FontWeight="Regular" FontFamily="/Fonts/#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+									<TextBlock Text="{x:Static lang:Resources.Palette}" VerticalAlignment="Center"/>
+								</StackPanel>
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.Palette}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+								</Button.ToolTip>
+								<Button.Triggers>
+									<EventTrigger RoutedEvent="MouseEnter">
+										<BeginStoryboard>
+											<Storyboard>
+												<DoubleAnimation From="15" To="20" Duration="0:0:0.2" Storyboard.TargetName="PaletteIcon" Storyboard.TargetProperty="FontSize"/>
+												<ColorAnimation From="{Binding Source={StaticResource Background1}}" To="{Binding Source={StaticResource AccentColor}}" Duration="0:0:0.2" Storyboard.TargetName="PaletteTabBtn" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
 											</Storyboard>
 										</BeginStoryboard>
 									</EventTrigger>

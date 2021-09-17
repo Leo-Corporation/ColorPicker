@@ -23,12 +23,8 @@ SOFTWARE.
 */
 using LeoCorpLibrary;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Serialization;
 
@@ -108,7 +104,7 @@ namespace ColorPicker.Classes
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
-					IsThemeSystem = false
+					IsThemeSystem = true
 				}; // Create a new settings file
 
 				Save(); // Save the changes

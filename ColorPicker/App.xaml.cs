@@ -22,12 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ColorPicker
@@ -46,6 +40,7 @@ namespace ColorPicker
 
 			Global.PickerPage = new(); // Create a new PickerPage
 			Global.ConverterPage = new(); // Create a new ConverterPage
+			Global.PalettePage = new(); // Create a new ConverterPage
 			Global.SettingsPage = new(); // Create a new SettingsPage
 
 			base.OnStartup(e);

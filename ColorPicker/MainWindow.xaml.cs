@@ -23,20 +23,11 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ColorPicker
 {
@@ -110,6 +101,9 @@ namespace ColorPicker
 			ConverterTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
 			ConverterTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
 
+			PaletteTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
+			PaletteTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
+
 			SettingsTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
 			SettingsTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
 		}
@@ -136,6 +130,14 @@ namespace ColorPicker
 			CheckButton(SettingsTabBtn); // Check the "Settings" button
 
 			PageContent.Navigate(Global.SettingsPage); // Navigate
+		}
+
+		private void PaletteTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			ResetAllCheckStatus(); // Reset the background and foreground of all buttons
+			CheckButton(PaletteTabBtn); // Check the "Picker" button
+
+			PageContent.Navigate(Global.PalettePage); // Navigate
 		}
 	}
 }

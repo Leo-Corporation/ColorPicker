@@ -29,18 +29,9 @@ using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Color = System.Windows.Media.Color;
 
@@ -76,8 +67,28 @@ namespace ColorPicker.Pages
 				BlueSlider.Value = pixel.B; // Set value
 
 				// MiniPicker
-				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
-				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
+				float dpiX, dpiY;
+				double scaling = 100; // Default scaling = 100%
+
+				using (Graphics graphics = Graphics.FromHwnd(IntPtr.Zero))
+				{
+					dpiX = graphics.DpiX; // Get the DPI
+					dpiY = graphics.DpiY; // Get the DPI
+
+					scaling = dpiX switch
+					{
+						96 => 100, // Get the %
+						120 => 125, // Get the %
+						144 => 150, // Get the %
+						168 => 175, // Get the %
+						192 => 200, // Get the % 
+						_ => 100
+					};
+				}
+
+				double factor = scaling / 100d; // Calculate factor
+				miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
+				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
 			};
 		}
 
@@ -184,8 +195,28 @@ namespace ColorPicker.Pages
 				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
 				isRunning = true;
 
-				miniPicker.Left = Env.GetMouseCursorPositionWPF().X; // Define position
-				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y; // Define position
+				float dpiX, dpiY;
+				double scaling = 100; // Default scaling = 100%
+
+				using (Graphics graphics = Graphics.FromHwnd(IntPtr.Zero))
+				{
+					dpiX = graphics.DpiX; // Get the DPI
+					dpiY = graphics.DpiY; // Get the DPI
+
+					scaling = dpiX switch
+					{
+						96 => 100, // Get the %
+						120 => 125, // Get the %
+						144 => 150, // Get the %
+						168 => 175, // Get the %
+						192 => 200, // Get the % 
+						_ => 100
+					};
+				}
+
+				double factor = scaling / 100d; // Calculate factor
+				miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
+				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
 				miniPicker.Show(); // Show
 			}
 			else
