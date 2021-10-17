@@ -147,7 +147,16 @@ namespace ColorPicker.Pages
 				Light7.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight7.R, rgbLight7.G, rgbLight7.B) }; // Set background color
 				Light8.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight8.R, rgbLight8.G, rgbLight8.B) }; // Set background color
 
-				
+				// Set tool tips text
+				Light1ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight1.R}{Global.Settings.RGBSeparator}{rgbLight1.G}{Global.Settings.RGBSeparator}{rgbLight1.B}";
+				Light2ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight2.R}{Global.Settings.RGBSeparator}{rgbLight2.G}{Global.Settings.RGBSeparator}{rgbLight2.B}";
+				Light3ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight3.R}{Global.Settings.RGBSeparator}{rgbLight3.G}{Global.Settings.RGBSeparator}{rgbLight3.B}";
+				Light4ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight4.R}{Global.Settings.RGBSeparator}{rgbLight4.G}{Global.Settings.RGBSeparator}{rgbLight4.B}";
+				Light5ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight5.R}{Global.Settings.RGBSeparator}{rgbLight5.G}{Global.Settings.RGBSeparator}{rgbLight5.B}";
+				Light6ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight6.R}{Global.Settings.RGBSeparator}{rgbLight6.G}{Global.Settings.RGBSeparator}{rgbLight6.B}";
+				Light7ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight7.R}{Global.Settings.RGBSeparator}{rgbLight7.G}{Global.Settings.RGBSeparator}{rgbLight7.B}";
+				Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}";
+
 			}
 			catch
 			{
