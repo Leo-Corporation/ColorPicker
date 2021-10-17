@@ -83,7 +83,17 @@ namespace ColorPicker.Pages
 			try
 			{
 				// Set default color
-				string[] rgb = RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None);
+				string[] rgb;
+				rgb = ColorTypeComboBox.SelectedIndex switch
+				{
+					0 => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
+					1 => new string[] { 
+						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).R.ToString(),
+						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).G.ToString(),
+						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).B.ToString()
+					},
+					_ => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
+				};
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
 				BaseShade.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
