@@ -11,7 +11,7 @@
 	  FontFamily="../Fonts/#Montserrat"
       Title="PalettePage">
 
-    <Grid>
+	<ScrollViewer HorizontalScrollBarVisibility="Hidden" Template="{DynamicResource ScrollViewerControlTemplate}" CanContentScroll="True" Height="344">
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition/>
@@ -83,7 +83,53 @@
 						</Border.ToolTip>
 					</Border>
 				</StackPanel>
+
+				<TextBlock Text="{x:Static lang:Resources.Shades}"/>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Border x:Name="Light1" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light1ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+					<Border x:Name="Light2" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light2ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+					<Border x:Name="Light3" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light3ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+					<Border x:Name="Light4" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light4ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,50">
+					<Border x:Name="Light5" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light5ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+					<Border x:Name="Light6" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light6ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+					<Border x:Name="Light7" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light7ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+					<Border x:Name="Light8" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
+						<Border.ToolTip>
+							<ToolTip x:Name="Light8ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Border.ToolTip>
+					</Border>
+				</StackPanel>
 			</StackPanel>
 		</Grid>
-	</Grid>
+	</ScrollViewer>
 </Page>

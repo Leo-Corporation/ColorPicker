@@ -118,6 +118,36 @@ namespace ColorPicker.Pages
 				DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
 				DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}";
 
+				// "Brightness" shades
+				// Get colors
+				HSL light1 = new(hsl.H, hsl.S, 90);
+				HSL light2 = new(hsl.H, hsl.S, 84);
+				HSL light3 = new(hsl.H, hsl.S, 72);
+				HSL light4 = new(hsl.H, hsl.S, 60);
+				HSL light5 = new(hsl.H, hsl.S, 48);
+				HSL light6 = new(hsl.H, hsl.S, 36);
+				HSL light7 = new(hsl.H, hsl.S, 24);
+				HSL light8 = new(hsl.H, hsl.S, 12);
+
+				RGB rgbLight1 = ColorHelper.ColorConverter.HslToRgb(light1); // Convert HSL color to RGB
+				RGB rgbLight2 = ColorHelper.ColorConverter.HslToRgb(light2); // Convert HSL color to RGB
+				RGB rgbLight3 = ColorHelper.ColorConverter.HslToRgb(light3); // Convert HSL color to RGB
+				RGB rgbLight4 = ColorHelper.ColorConverter.HslToRgb(light4); // Convert HSL color to RGB
+				RGB rgbLight5 = ColorHelper.ColorConverter.HslToRgb(light5); // Convert HSL color to RGB
+				RGB rgbLight6 = ColorHelper.ColorConverter.HslToRgb(light6); // Convert HSL color to RGB
+				RGB rgbLight7 = ColorHelper.ColorConverter.HslToRgb(light7); // Convert HSL color to RGB
+				RGB rgbLight8 = ColorHelper.ColorConverter.HslToRgb(light8); // Convert HSL color to RGB
+
+				Light1.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight1.R, rgbLight1.G, rgbLight1.B) }; // Set background color
+				Light2.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight2.R, rgbLight2.G, rgbLight2.B) }; // Set background color
+				Light3.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight3.R, rgbLight3.G, rgbLight3.B) }; // Set background color
+				Light4.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight4.R, rgbLight4.G, rgbLight4.B) }; // Set background color
+				Light5.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight5.R, rgbLight5.G, rgbLight5.B) }; // Set background color
+				Light6.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight6.R, rgbLight6.G, rgbLight6.B) }; // Set background color
+				Light7.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight7.R, rgbLight7.G, rgbLight7.B) }; // Set background color
+				Light8.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight8.R, rgbLight8.G, rgbLight8.B) }; // Set background color
+
+				
 			}
 			catch
 			{
