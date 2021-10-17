@@ -358,4 +358,7 @@
   <data name="Shades" xml:space="preserve">
     <value>Shades</value>
   </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
 </root>

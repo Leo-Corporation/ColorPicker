@@ -84,7 +84,7 @@
 					</Border>
 				</StackPanel>
 
-				<TextBlock Text="{x:Static lang:Resources.Shades}"/>
+				<TextBlock Text="{x:Static lang:Resources.Brightness}"/>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 					<Border x:Name="Light1" MouseLeftButtonUp="DarkShade_MouseLeftButtonUp" Cursor="Hand" CornerRadius="10" Margin="10" Height="50" Width="50">
 						<Border.ToolTip>

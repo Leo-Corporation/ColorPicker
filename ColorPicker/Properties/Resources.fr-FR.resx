@@ -378,4 +378,7 @@
   <data name="Shades" xml:space="preserve">
     <value>Nuances</value>
   </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>Luminosité</value>
+  </data>
 </root>
