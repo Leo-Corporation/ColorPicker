@@ -8,14 +8,46 @@
 			 Width="300">
 	<Border CornerRadius="10" Margin="10" Background="{Binding Source={StaticResource Background2}}" Padding="10">
 		<WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-			<Border x:Name="ColorB1" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
-			<Border x:Name="ColorB2" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
-			<Border x:Name="ColorB3" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
-			<Border x:Name="ColorB4" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
-			<Border x:Name="ColorB5" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
-			<Border x:Name="ColorB6" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
-			<Border x:Name="ColorB7" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
-			<Border x:Name="ColorB8" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown"/>
+			<Border x:Name="ColorB1" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B1ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
+			<Border x:Name="ColorB2" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B2ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
+			<Border x:Name="ColorB3" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B3ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
+			<Border x:Name="ColorB4" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B4ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
+			<Border x:Name="ColorB5" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B5ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
+			<Border x:Name="ColorB6" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B6ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
+			<Border x:Name="ColorB7" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B7ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
+			<Border x:Name="ColorB8" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF" Cursor="Hand" MouseLeftButtonDown="ColorB1_MouseLeftButtonDown">
+				<Border.ToolTip>
+					<ToolTip x:Name="B8ToolTip" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+				</Border.ToolTip>
+			</Border>
 		</WrapPanel>
 	</Border>
 </UserControl>
