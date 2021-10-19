@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="ColorPicker.UserControls.PaletteHistoryItem"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:ColorPicker.UserControls"
+			 mc:Ignorable="d" 
+			 Width="300">
+	<Border CornerRadius="10" Margin="10" Background="{Binding Source={StaticResource Background2}}" Padding="10">
+		<WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<Border x:Name="ColorB1" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+			<Border x:Name="ColorB2" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+			<Border x:Name="ColorB3" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+			<Border x:Name="ColorB4" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+			<Border x:Name="ColorB5" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+			<Border x:Name="ColorB6" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+			<Border x:Name="ColorB7" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+			<Border x:Name="ColorB8" CornerRadius="10" Width="50" Height="50" Margin="7" d:Background="#FFF"/>
+		</WrapPanel>
+	</Border>
+</UserControl>
