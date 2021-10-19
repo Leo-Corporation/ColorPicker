@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorHelper;
+using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,13 @@ namespace ColorPicker.UserControls
 			ColorB6.Background = new SolidColorBrush { Color = Color.FromRgb(Colors[5].R, Colors[5].G, Colors[5].B) }; // Set the background color
 			ColorB7.Background = new SolidColorBrush { Color = Color.FromRgb(Colors[6].R, Colors[6].G, Colors[6].B) }; // Set the background color
 			ColorB8.Background = new SolidColorBrush { Color = Color.FromRgb(Colors[7].R, Colors[7].G, Colors[7].B) }; // Set the background color
+		}
+
+		private void ColorB1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			Border border = (Border)sender; // Convert to border
+			var color = ((SolidColorBrush)border.Background).Color; // Get background color
+			Clipboard.SetText($"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}"); // Copy
 		}
 	}
 }
