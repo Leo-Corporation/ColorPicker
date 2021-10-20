@@ -121,6 +121,11 @@ namespace ColorPicker.Pages
 				{ Combination.FromString("Shift+C"), HandleCopyKeyboard },
 				{ Combination.FromString("Shift+S"), HandleSelectKeyboard }
 			});
+
+			if (RecentColorsDisplayer.Children.Count < 2)
+			{
+				HistoryBtn.Visibility = Visibility.Collapsed; // Hide
+			}
 		}
 
 		private void HandleSelectKeyboard()
@@ -154,6 +159,7 @@ namespace ColorPicker.Pages
 				{
 					Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
 					RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+					HistoryBtn.Visibility = Visibility.Visible;
 				}
 			}
 		}
@@ -233,12 +239,14 @@ namespace ColorPicker.Pages
 		{
 			Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
 			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+			HistoryBtn.Visibility = Visibility.Visible;
 		}
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Clipboard.SetText("#" + (u ? ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value)); // Copy
 			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+			HistoryBtn.Visibility = Visibility.Visible;
 		}
 
 		private void HistoryBtn_Click(object sender, RoutedEventArgs e)
@@ -259,6 +267,10 @@ namespace ColorPicker.Pages
 				RecentColorsDisplayer.Visibility = Visibility.Collapsed; // Hide
 				HistoryBtn.Content = "\uF47F"; // Set text
 			}
+			if (RecentColorsDisplayer.Children.Count < 2)
+			{
+				HistoryBtn.Visibility = Visibility.Collapsed; // Hide
+			}
 		}
 
 		private void ClearRecentColorsBtn_Click(object sender, RoutedEventArgs e)
@@ -276,6 +288,11 @@ namespace ColorPicker.Pages
 			{
 				RecentColorsDisplayer.Children.Remove(cs[i]); // Remove
 			}
+			if (RecentColorsDisplayer.Children.Count < 2)
+			{
+				HistoryBtn.Visibility = Visibility.Collapsed; // Hide
+			}
+			HistoryBtn_Click(this, null);
 		}
 
 		private void RandomColorBtn_Click(object sender, RoutedEventArgs e)

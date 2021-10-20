@@ -23,6 +23,8 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.UserControls;
+using LeoCorpLibrary.Extensions;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +38,7 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class PalettePage : Page
 	{
+		RGB[] CurrentColorPalette { get; set; }
 		public PalettePage()
 		{
 			InitializeComponent();
@@ -83,7 +86,17 @@ namespace ColorPicker.Pages
 			try
 			{
 				// Set default color
-				string[] rgb = RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None);
+				string[] rgb;
+				rgb = ColorTypeComboBox.SelectedIndex switch
+				{
+					0 => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
+					1 => new string[] {
+						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).R.ToString(),
+						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).G.ToString(),
+						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).B.ToString()
+					},
+					_ => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
+				};
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
 				BaseShade.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
@@ -118,6 +131,48 @@ namespace ColorPicker.Pages
 				DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
 				DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}";
 
+				// "Brightness" shades
+				// Get colors
+				HSL light1 = new(hsl.H, hsl.S, 90);
+				HSL light2 = new(hsl.H, hsl.S, 84);
+				HSL light3 = new(hsl.H, hsl.S, 72);
+				HSL light4 = new(hsl.H, hsl.S, 60);
+				HSL light5 = new(hsl.H, hsl.S, 48);
+				HSL light6 = new(hsl.H, hsl.S, 36);
+				HSL light7 = new(hsl.H, hsl.S, 24);
+				HSL light8 = new(hsl.H, hsl.S, 12);
+
+				RGB rgbLight1 = ColorHelper.ColorConverter.HslToRgb(light1); // Convert HSL color to RGB
+				RGB rgbLight2 = ColorHelper.ColorConverter.HslToRgb(light2); // Convert HSL color to RGB
+				RGB rgbLight3 = ColorHelper.ColorConverter.HslToRgb(light3); // Convert HSL color to RGB
+				RGB rgbLight4 = ColorHelper.ColorConverter.HslToRgb(light4); // Convert HSL color to RGB
+				RGB rgbLight5 = ColorHelper.ColorConverter.HslToRgb(light5); // Convert HSL color to RGB
+				RGB rgbLight6 = ColorHelper.ColorConverter.HslToRgb(light6); // Convert HSL color to RGB
+				RGB rgbLight7 = ColorHelper.ColorConverter.HslToRgb(light7); // Convert HSL color to RGB
+				RGB rgbLight8 = ColorHelper.ColorConverter.HslToRgb(light8); // Convert HSL color to RGB
+
+				Light1.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight1.R, rgbLight1.G, rgbLight1.B) }; // Set background color
+				Light2.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight2.R, rgbLight2.G, rgbLight2.B) }; // Set background color
+				Light3.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight3.R, rgbLight3.G, rgbLight3.B) }; // Set background color
+				Light4.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight4.R, rgbLight4.G, rgbLight4.B) }; // Set background color
+				Light5.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight5.R, rgbLight5.G, rgbLight5.B) }; // Set background color
+				Light6.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight6.R, rgbLight6.G, rgbLight6.B) }; // Set background color
+				Light7.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight7.R, rgbLight7.G, rgbLight7.B) }; // Set background color
+				Light8.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight8.R, rgbLight8.G, rgbLight8.B) }; // Set background color
+
+				// Set tool tips text
+				Light1ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight1.R}{Global.Settings.RGBSeparator}{rgbLight1.G}{Global.Settings.RGBSeparator}{rgbLight1.B}";
+				Light2ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight2.R}{Global.Settings.RGBSeparator}{rgbLight2.G}{Global.Settings.RGBSeparator}{rgbLight2.B}";
+				Light3ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight3.R}{Global.Settings.RGBSeparator}{rgbLight3.G}{Global.Settings.RGBSeparator}{rgbLight3.B}";
+				Light4ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight4.R}{Global.Settings.RGBSeparator}{rgbLight4.G}{Global.Settings.RGBSeparator}{rgbLight4.B}";
+				Light5ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight5.R}{Global.Settings.RGBSeparator}{rgbLight5.G}{Global.Settings.RGBSeparator}{rgbLight5.B}";
+				Light6ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight6.R}{Global.Settings.RGBSeparator}{rgbLight6.G}{Global.Settings.RGBSeparator}{rgbLight6.B}";
+				Light7ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight7.R}{Global.Settings.RGBSeparator}{rgbLight7.G}{Global.Settings.RGBSeparator}{rgbLight7.B}";
+				Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}";
+
+				// History
+				RGB[] c1 = shades.Append(shades);
+				CurrentColorPalette = c1.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 			}
 			catch
 			{
@@ -148,6 +203,28 @@ namespace ColorPicker.Pages
 		private void DarkShade_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			Clipboard.SetText(GetRgbStringFromBorder((Border)sender)); // Copy
+		}
+
+		private void HistoryBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (HistoryDisplayer.Visibility == Visibility.Visible)
+			{
+				HistoryDisplayer.Visibility = Visibility.Collapsed;
+				PaletteContent.Visibility = Visibility.Visible;
+				HistoryBtn.Content = "\uF47F"; // Set text
+			}
+			else
+			{
+				HistoryDisplayer.Visibility = Visibility.Visible;
+				PaletteContent.Visibility = Visibility.Collapsed;
+				HistoryBtn.Content = "\uF36A"; // Set text
+			}
+		}
+
+		private void AddToHistoryBtn_Click(object sender, RoutedEventArgs e)
+{
+			HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette));
+
 		}
 	}
 }
