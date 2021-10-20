@@ -82,97 +82,96 @@ namespace ColorPicker.Pages
 
 		private void RGBTxt_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			// Set default color
-			string[] rgb;
-			rgb = ColorTypeComboBox.SelectedIndex switch
+			try
 			{
-				0 => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
-				1 => new string[] {
+				// Set default color
+				string[] rgb;
+				rgb = ColorTypeComboBox.SelectedIndex switch
+				{
+					0 => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
+					1 => new string[] {
 						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).R.ToString(),
 						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).G.ToString(),
 						ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).B.ToString()
 					},
-				_ => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
-			};
+					_ => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
+				};
 
-			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
-			BaseShade.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
+				ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
+				BaseShade.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
 
-			// Get shades
-			HSL hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
+				// Get shades
+				HSL hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 
-			var shades = GetShades(hsl); // Get shades
-			var shades1 = GetShades(ColorHelper.ColorConverter.RgbToHsl(shades[0])); // Get shades
+				var shades = GetShades(hsl); // Get shades
+				var shades1 = GetShades(ColorHelper.ColorConverter.RgbToHsl(shades[0])); // Get shades
 
-			DBaseShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
+				DBaseShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
 
-			// "Lighter" shades
+				// "Lighter" shades
 
-			DarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
-			RegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[1].R, shades[1].G, shades[1].B) };
-			TintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[2].R, shades[2].G, shades[2].B) };
+				DarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
+				RegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[1].R, shades[1].G, shades[1].B) };
+				TintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[2].R, shades[2].G, shades[2].B) };
 
-			DarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
-			RegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[1].R}{Global.Settings.RGBSeparator}{shades[1].G}{Global.Settings.RGBSeparator}{shades[1].B}";
-			BaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {rgb[0]}{Global.Settings.RGBSeparator}{rgb[1]}{Global.Settings.RGBSeparator}{rgb[2]}";
-			TintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[2].R}{Global.Settings.RGBSeparator}{shades[2].G}{Global.Settings.RGBSeparator}{shades[2].B}";
+				DarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
+				RegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[1].R}{Global.Settings.RGBSeparator}{shades[1].G}{Global.Settings.RGBSeparator}{shades[1].B}";
+				BaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {rgb[0]}{Global.Settings.RGBSeparator}{rgb[1]}{Global.Settings.RGBSeparator}{rgb[2]}";
+				TintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[2].R}{Global.Settings.RGBSeparator}{shades[2].G}{Global.Settings.RGBSeparator}{shades[2].B}";
 
-			// "Darker" shades
+				// "Darker" shades
 
-			DDarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[0].R, shades1[0].G, shades1[0].B) };
-			DRegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[1].R, shades1[1].G, shades1[1].B) };
-			DTintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[2].R, shades1[2].G, shades1[2].B) };
+				DDarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[0].R, shades1[0].G, shades1[0].B) };
+				DRegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[1].R, shades1[1].G, shades1[1].B) };
+				DTintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[2].R, shades1[2].G, shades1[2].B) };
 
-			DDarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[0].R}{Global.Settings.RGBSeparator}{shades1[0].G}{Global.Settings.RGBSeparator}{shades1[0].B}";
-			DRegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[1].R}{Global.Settings.RGBSeparator}{shades1[1].G}{Global.Settings.RGBSeparator}{shades1[1].B}";
-			DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
-			DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}";
+				DDarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[0].R}{Global.Settings.RGBSeparator}{shades1[0].G}{Global.Settings.RGBSeparator}{shades1[0].B}";
+				DRegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[1].R}{Global.Settings.RGBSeparator}{shades1[1].G}{Global.Settings.RGBSeparator}{shades1[1].B}";
+				DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}";
+				DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}";
 
-			// "Brightness" shades
-			// Get colors
-			HSL light1 = new(hsl.H, hsl.S, 90);
-			HSL light2 = new(hsl.H, hsl.S, 84);
-			HSL light3 = new(hsl.H, hsl.S, 72);
-			HSL light4 = new(hsl.H, hsl.S, 60);
-			HSL light5 = new(hsl.H, hsl.S, 48);
-			HSL light6 = new(hsl.H, hsl.S, 36);
-			HSL light7 = new(hsl.H, hsl.S, 24);
-			HSL light8 = new(hsl.H, hsl.S, 12);
+				// "Brightness" shades
+				// Get colors
+				HSL light1 = new(hsl.H, hsl.S, 90);
+				HSL light2 = new(hsl.H, hsl.S, 84);
+				HSL light3 = new(hsl.H, hsl.S, 72);
+				HSL light4 = new(hsl.H, hsl.S, 60);
+				HSL light5 = new(hsl.H, hsl.S, 48);
+				HSL light6 = new(hsl.H, hsl.S, 36);
+				HSL light7 = new(hsl.H, hsl.S, 24);
+				HSL light8 = new(hsl.H, hsl.S, 12);
 
-			RGB rgbLight1 = ColorHelper.ColorConverter.HslToRgb(light1); // Convert HSL color to RGB
-			RGB rgbLight2 = ColorHelper.ColorConverter.HslToRgb(light2); // Convert HSL color to RGB
-			RGB rgbLight3 = ColorHelper.ColorConverter.HslToRgb(light3); // Convert HSL color to RGB
-			RGB rgbLight4 = ColorHelper.ColorConverter.HslToRgb(light4); // Convert HSL color to RGB
-			RGB rgbLight5 = ColorHelper.ColorConverter.HslToRgb(light5); // Convert HSL color to RGB
-			RGB rgbLight6 = ColorHelper.ColorConverter.HslToRgb(light6); // Convert HSL color to RGB
-			RGB rgbLight7 = ColorHelper.ColorConverter.HslToRgb(light7); // Convert HSL color to RGB
-			RGB rgbLight8 = ColorHelper.ColorConverter.HslToRgb(light8); // Convert HSL color to RGB
+				RGB rgbLight1 = ColorHelper.ColorConverter.HslToRgb(light1); // Convert HSL color to RGB
+				RGB rgbLight2 = ColorHelper.ColorConverter.HslToRgb(light2); // Convert HSL color to RGB
+				RGB rgbLight3 = ColorHelper.ColorConverter.HslToRgb(light3); // Convert HSL color to RGB
+				RGB rgbLight4 = ColorHelper.ColorConverter.HslToRgb(light4); // Convert HSL color to RGB
+				RGB rgbLight5 = ColorHelper.ColorConverter.HslToRgb(light5); // Convert HSL color to RGB
+				RGB rgbLight6 = ColorHelper.ColorConverter.HslToRgb(light6); // Convert HSL color to RGB
+				RGB rgbLight7 = ColorHelper.ColorConverter.HslToRgb(light7); // Convert HSL color to RGB
+				RGB rgbLight8 = ColorHelper.ColorConverter.HslToRgb(light8); // Convert HSL color to RGB
 
-			Light1.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight1.R, rgbLight1.G, rgbLight1.B) }; // Set background color
-			Light2.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight2.R, rgbLight2.G, rgbLight2.B) }; // Set background color
-			Light3.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight3.R, rgbLight3.G, rgbLight3.B) }; // Set background color
-			Light4.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight4.R, rgbLight4.G, rgbLight4.B) }; // Set background color
-			Light5.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight5.R, rgbLight5.G, rgbLight5.B) }; // Set background color
-			Light6.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight6.R, rgbLight6.G, rgbLight6.B) }; // Set background color
-			Light7.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight7.R, rgbLight7.G, rgbLight7.B) }; // Set background color
-			Light8.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight8.R, rgbLight8.G, rgbLight8.B) }; // Set background color
+				Light1.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight1.R, rgbLight1.G, rgbLight1.B) }; // Set background color
+				Light2.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight2.R, rgbLight2.G, rgbLight2.B) }; // Set background color
+				Light3.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight3.R, rgbLight3.G, rgbLight3.B) }; // Set background color
+				Light4.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight4.R, rgbLight4.G, rgbLight4.B) }; // Set background color
+				Light5.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight5.R, rgbLight5.G, rgbLight5.B) }; // Set background color
+				Light6.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight6.R, rgbLight6.G, rgbLight6.B) }; // Set background color
+				Light7.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight7.R, rgbLight7.G, rgbLight7.B) }; // Set background color
+				Light8.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight8.R, rgbLight8.G, rgbLight8.B) }; // Set background color
 
-			// Set tool tips text
-			Light1ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight1.R}{Global.Settings.RGBSeparator}{rgbLight1.G}{Global.Settings.RGBSeparator}{rgbLight1.B}";
-			Light2ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight2.R}{Global.Settings.RGBSeparator}{rgbLight2.G}{Global.Settings.RGBSeparator}{rgbLight2.B}";
-			Light3ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight3.R}{Global.Settings.RGBSeparator}{rgbLight3.G}{Global.Settings.RGBSeparator}{rgbLight3.B}";
-			Light4ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight4.R}{Global.Settings.RGBSeparator}{rgbLight4.G}{Global.Settings.RGBSeparator}{rgbLight4.B}";
-			Light5ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight5.R}{Global.Settings.RGBSeparator}{rgbLight5.G}{Global.Settings.RGBSeparator}{rgbLight5.B}";
-			Light6ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight6.R}{Global.Settings.RGBSeparator}{rgbLight6.G}{Global.Settings.RGBSeparator}{rgbLight6.B}";
-			Light7ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight7.R}{Global.Settings.RGBSeparator}{rgbLight7.G}{Global.Settings.RGBSeparator}{rgbLight7.B}";
-			Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}";
+				// Set tool tips text
+				Light1ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight1.R}{Global.Settings.RGBSeparator}{rgbLight1.G}{Global.Settings.RGBSeparator}{rgbLight1.B}";
+				Light2ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight2.R}{Global.Settings.RGBSeparator}{rgbLight2.G}{Global.Settings.RGBSeparator}{rgbLight2.B}";
+				Light3ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight3.R}{Global.Settings.RGBSeparator}{rgbLight3.G}{Global.Settings.RGBSeparator}{rgbLight3.B}";
+				Light4ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight4.R}{Global.Settings.RGBSeparator}{rgbLight4.G}{Global.Settings.RGBSeparator}{rgbLight4.B}";
+				Light5ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight5.R}{Global.Settings.RGBSeparator}{rgbLight5.G}{Global.Settings.RGBSeparator}{rgbLight5.B}";
+				Light6ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight6.R}{Global.Settings.RGBSeparator}{rgbLight6.G}{Global.Settings.RGBSeparator}{rgbLight6.B}";
+				Light7ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight7.R}{Global.Settings.RGBSeparator}{rgbLight7.G}{Global.Settings.RGBSeparator}{rgbLight7.B}";
+				Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}";
 
-			// History
-			RGB[] colors = shades.Append(shades);
-			HistoryDisplayer.Children.Add(new PaletteHistoryItem(colors.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])))));
-			try
-			{
-				
+				// History
+				RGB[] colors = shades.Append(shades);
+				HistoryDisplayer.Children.Add(new PaletteHistoryItem(colors.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])))));
 			}
 			catch
 			{
