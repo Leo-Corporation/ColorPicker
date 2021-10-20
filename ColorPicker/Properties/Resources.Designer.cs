@@ -70,6 +70,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to history.
+        /// </summary>
+        public static string AddToHistory {
+            get {
+                return ResourceManager.GetString("AddToHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {

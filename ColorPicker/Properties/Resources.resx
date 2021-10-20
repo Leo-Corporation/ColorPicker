@@ -361,4 +361,7 @@
   <data name="Brightness" xml:space="preserve">
     <value>Brightness</value>
   </data>
+  <data name="AddToHistory" xml:space="preserve">
+    <value>Add to history</value>
+  </data>
 </root>

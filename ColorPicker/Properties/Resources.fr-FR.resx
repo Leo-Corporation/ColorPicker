@@ -381,4 +381,7 @@
   <data name="Brightness" xml:space="preserve">
     <value>Luminosité</value>
   </data>
+  <data name="AddToHistory" xml:space="preserve">
+    <value>Ajouter à l'historique</value>
+  </data>
 </root>

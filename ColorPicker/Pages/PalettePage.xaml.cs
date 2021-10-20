@@ -38,6 +38,7 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class PalettePage : Page
 	{
+		RGB[] CurrentColorPalette { get; set; }
 		public PalettePage()
 		{
 			InitializeComponent();
@@ -170,8 +171,8 @@ namespace ColorPicker.Pages
 				Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}";
 
 				// History
-				RGB[] colors = shades.Append(shades);
-				HistoryDisplayer.Children.Add(new PaletteHistoryItem(colors.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])))));
+				RGB[] c1 = shades.Append(shades);
+				CurrentColorPalette = c1.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 			}
 			catch
 			{
@@ -218,6 +219,12 @@ namespace ColorPicker.Pages
 				PaletteContent.Visibility = Visibility.Collapsed;
 				HistoryBtn.Content = "\uF36A"; // Set text
 			}
+		}
+
+		private void AddToHistoryBtn_Click(object sender, RoutedEventArgs e)
+{
+			HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette));
+
 		}
 	}
 }

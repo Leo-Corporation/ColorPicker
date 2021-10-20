@@ -47,6 +47,11 @@
 							<ComboBoxItem Content="{x:Static lang:Resources.HEX}"/>
 						</ComboBox>
 						<TextBox MinHeight="24" x:Name="RGBTxt" TextChanged="RGBTxt_TextChanged" Width="150" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center"/>
+						<Button Content="&#xF2F4;" Padding="5" x:Name="AddToHistoryBtn" Click="AddToHistoryBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Grid.Column="1" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="10,0,5,0" VerticalAlignment="Center">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.AddToHistory}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+							</Button.ToolTip>
+						</Button>
 					</StackPanel>
 
 					<TextBlock Text="{x:Static lang:Resources.Shades}"/>
