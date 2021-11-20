@@ -26,6 +26,7 @@ using ColorPicker.Classes;
 using ColorPicker.UserControls;
 using LeoCorpLibrary.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -39,6 +40,8 @@ namespace ColorPicker.Pages
 	public partial class PalettePage : Page
 	{
 		RGB[] CurrentColorPalette { get; set; }
+		string CurrentRGBColor { get; set; }
+		List<string> SavedColorPalettes { get; set; }
 		public PalettePage()
 		{
 			InitializeComponent();
@@ -47,6 +50,9 @@ namespace ColorPicker.Pages
 
 		private void InitUI()
 		{
+			// Initialize list
+			SavedColorPalettes = new(); // Init list
+
 			// Generate random color
 			int r, g, b;
 			Random random = new();
@@ -173,6 +179,7 @@ namespace ColorPicker.Pages
 				// History
 				RGB[] c1 = shades.Append(shades);
 				CurrentColorPalette = c1.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
+				CurrentRGBColor = $"{rgb[0]};{rgb[1]};{rgb[2]}";
 			}
 			catch
 			{
@@ -227,9 +234,12 @@ namespace ColorPicker.Pages
 		}
 
 		private void AddToHistoryBtn_Click(object sender, RoutedEventArgs e)
-{
-			HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette));
-
+		{
+			if (!SavedColorPalettes.Contains(CurrentRGBColor))
+			{
+				SavedColorPalettes.Add(CurrentRGBColor); // Add to saved palettes
+				HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette)); 
+			}
 		}
 	}
 }
