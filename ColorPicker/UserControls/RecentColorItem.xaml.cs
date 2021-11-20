@@ -52,7 +52,7 @@ namespace ColorPicker.UserControls
 				Color = Color.FromRgb((byte)R, (byte)G, (byte)B)
 			}; // Set background
 			ToolTip.Content = $"{Properties.Resources.RGB}: {R}{s}{G}{s}{B}\n" +
-				$"{Properties.Resources.HEX}: {ColorHelper.ColorConverter.RgbToHex(new((byte)R, (byte)G, (byte)B))}"; // Set text
+				$"{Properties.Resources.HEX}: #{ColorHelper.ColorConverter.RgbToHex(new((byte)R, (byte)G, (byte)B))}"; // Set text
 		}
 
 		private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
