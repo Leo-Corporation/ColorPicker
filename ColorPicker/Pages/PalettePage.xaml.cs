@@ -41,7 +41,7 @@ namespace ColorPicker.Pages
 	{
 		RGB[] CurrentColorPalette { get; set; }
 		string CurrentRGBColor { get; set; }
-		List<string> SavedColorPalettes { get; set; }
+		internal List<string> SavedColorPalettes { get; set; }
 		public PalettePage()
 		{
 			InitializeComponent();
@@ -238,7 +238,7 @@ namespace ColorPicker.Pages
 			if (!SavedColorPalettes.Contains(CurrentRGBColor))
 			{
 				SavedColorPalettes.Add(CurrentRGBColor); // Add to saved palettes
-				HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette)); 
+				HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette, HistoryDisplayer)); 
 			}
 		}
 	}

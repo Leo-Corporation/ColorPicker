@@ -36,10 +36,12 @@ namespace ColorPicker.UserControls
 	public partial class PaletteHistoryItem : UserControl
 	{
 		internal RGB[] Colors { get; init; }
-		public PaletteHistoryItem(RGB[] colors)
+		private StackPanel ParentStackPanel { get; init; }
+		public PaletteHistoryItem(RGB[] colors, StackPanel parent)
 		{
 			InitializeComponent();
 			Colors = colors;
+			ParentStackPanel = parent; // Set
 
 			InitUI(); // Load the UI
 		}
@@ -72,6 +74,12 @@ namespace ColorPicker.UserControls
 			Border border = (Border)sender; // Convert to border
 			var color = ((SolidColorBrush)border.Background).Color; // Get background color
 			Clipboard.SetText($"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}"); // Copy
+		}
+
+		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.PalettePage.SavedColorPalettes.Remove($"{Colors[7].R};{Colors[7].G};{Colors[7].B}"); // Remove from virtual history
+			ParentStackPanel.Children.Remove(this); // Remove color palette
 		}
 	}
 }
