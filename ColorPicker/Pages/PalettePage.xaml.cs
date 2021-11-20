@@ -190,7 +190,12 @@ namespace ColorPicker.Pages
 			g = random.Next(0, 255); // Generate random number between 0 and 255
 			b = random.Next(0, 255); // Generate random number between 0 and 255
 
-			RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+			RGBTxt.Text = ColorTypeComboBox.SelectedIndex switch
+			{
+				0 => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}", // Set text
+				1 => $"#{ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value}", // Set text
+				_ => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}" // Set text
+			};
 		}
 
 		private string GetRgbStringFromBorder(Border border)
