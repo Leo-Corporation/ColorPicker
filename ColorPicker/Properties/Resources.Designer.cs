@@ -655,6 +655,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Regenerate.
+        /// </summary>
+        public static string Regenerate {
+            get {
+                return ResourceManager.GetString("Regenerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset settings.
         /// </summary>
         public static string ResetSettings {

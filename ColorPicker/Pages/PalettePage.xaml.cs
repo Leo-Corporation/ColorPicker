@@ -217,7 +217,7 @@ namespace ColorPicker.Pages
 			Clipboard.SetText(GetRgbStringFromBorder((Border)sender)); // Copy
 		}
 
-		private void HistoryBtn_Click(object sender, RoutedEventArgs e)
+		internal void HistoryBtn_Click(object sender, RoutedEventArgs e)
 		{
 			if (HistoryDisplayer.Visibility == Visibility.Visible)
 			{

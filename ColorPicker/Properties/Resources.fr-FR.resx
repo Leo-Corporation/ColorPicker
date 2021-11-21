@@ -387,4 +387,7 @@
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
+  <data name="Regenerate" xml:space="preserve">
+    <value>Regénérer</value>
+  </data>
 </root>

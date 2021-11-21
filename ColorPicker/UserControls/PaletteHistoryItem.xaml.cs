@@ -81,5 +81,12 @@ namespace ColorPicker.UserControls
 			Global.PalettePage.SavedColorPalettes.Remove($"{Colors[7].R};{Colors[7].G};{Colors[7].B}"); // Remove from virtual history
 			ParentStackPanel.Children.Remove(this); // Remove color palette
 		}
+
+		private void RegenerateBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.PalettePage.HistoryBtn_Click(this, null); // Close history
+			Global.PalettePage.ColorTypeComboBox.SelectedIndex = 0; // Set color type to RGB
+			Global.PalettePage.RGBTxt.Text = $"{Colors[7].R}{Global.Settings.RGBSeparator}{Colors[7].G}{Global.Settings.RGBSeparator}{Colors[7].B}"; // Set text and regenerate
+		}
 	}
 }
