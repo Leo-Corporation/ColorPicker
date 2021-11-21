@@ -132,10 +132,14 @@ namespace ColorPicker.Pages
 				RegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[1].R, shades[1].G, shades[1].B) };
 				TintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[2].R, shades[2].G, shades[2].B) };
 
-				DarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}\n{Properties.Resources.HEX}: #{(u ? hex1.ToUpper() : hex1.ToLower())}";
-				RegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[1].R}{Global.Settings.RGBSeparator}{shades[1].G}{Global.Settings.RGBSeparator}{shades[1].B}\n{Properties.Resources.HEX}: #{(u ? hex2.ToUpper() : hex2.ToLower())}";
-				BaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {rgb[0]}{Global.Settings.RGBSeparator}{rgb[1]}{Global.Settings.RGBSeparator}{rgb[2]}\n{Properties.Resources.HEX}: #{(u ? hex3.ToUpper() :hex3.ToLower())}";
-				TintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[2].R}{Global.Settings.RGBSeparator}{shades[2].G}{Global.Settings.RGBSeparator}{shades[2].B}\n{Properties.Resources.HEX}: #{(u ? hex4.ToUpper() : hex4.ToLower())}";
+				DarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex1.ToUpper() : hex1.ToLower())}";
+				RegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[1].R}{Global.Settings.RGBSeparator}{shades[1].G}{Global.Settings.RGBSeparator}{shades[1].B}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex2.ToUpper() : hex2.ToLower())}";
+				BaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {rgb[0]}{Global.Settings.RGBSeparator}{rgb[1]}{Global.Settings.RGBSeparator}{rgb[2]}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex3.ToUpper() : hex3.ToLower())}";
+				TintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[2].R}{Global.Settings.RGBSeparator}{shades[2].G}{Global.Settings.RGBSeparator}{shades[2].B}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex4.ToUpper() : hex4.ToLower())}";
 
 				// "Darker" shades
 
@@ -143,11 +147,15 @@ namespace ColorPicker.Pages
 				DRegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[1].R, shades1[1].G, shades1[1].B) };
 				DTintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[2].R, shades1[2].G, shades1[2].B) };
 
-				DDarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[0].R}{Global.Settings.RGBSeparator}{shades1[0].G}{Global.Settings.RGBSeparator}{shades1[0].B}\n{Properties.Resources.HEX}: #{(u ? hex5.ToUpper() : hex5.ToLower())}";
-				DRegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[1].R}{Global.Settings.RGBSeparator}{shades1[1].G}{Global.Settings.RGBSeparator}{shades1[1].B}\n{Properties.Resources.HEX}: #{(u ? hex6.ToUpper() : hex6.ToLower())}";
-				DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}\n{Properties.Resources.HEX}: #{(u ? hex7.ToUpper() : hex7.ToLower())}";
-				DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}\n{Properties.Resources.HEX}: #{(u ? hex8.ToUpper() : hex8.ToLower())}";
-				
+				DDarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[0].R}{Global.Settings.RGBSeparator}{shades1[0].G}{Global.Settings.RGBSeparator}{shades1[0].B}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex5.ToUpper() : hex5.ToLower())}";
+				DRegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[1].R}{Global.Settings.RGBSeparator}{shades1[1].G}{Global.Settings.RGBSeparator}{shades1[1].B}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex6.ToUpper() : hex6.ToLower())}";
+				DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex7.ToUpper() : hex7.ToLower())}";
+				DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}" +
+					$"\n{Properties.Resources.HEX}: #{(u ? hex8.ToUpper() : hex8.ToLower())}";
+
 				// "Brightness" shades
 				// Get colors
 				HSL light1 = new(hsl.H, hsl.S, 90);
@@ -187,14 +195,22 @@ namespace ColorPicker.Pages
 				Light8.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight8.R, rgbLight8.G, rgbLight8.B) }; // Set background color
 
 				// Set tool tips text
-				Light1ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight1.R}{Global.Settings.RGBSeparator}{rgbLight1.G}{Global.Settings.RGBSeparator}{rgbLight1.B}\n{Properties.Resources.HEX}: #{hexLight1}";
-				Light2ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight2.R}{Global.Settings.RGBSeparator}{rgbLight2.G}{Global.Settings.RGBSeparator}{rgbLight2.B}\n{Properties.Resources.HEX}: #{hexLight2}";
-				Light3ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight3.R}{Global.Settings.RGBSeparator}{rgbLight3.G}{Global.Settings.RGBSeparator}{rgbLight3.B}\n{Properties.Resources.HEX}: #{hexLight3}";
-				Light4ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight4.R}{Global.Settings.RGBSeparator}{rgbLight4.G}{Global.Settings.RGBSeparator}{rgbLight4.B}\n{Properties.Resources.HEX}: #{hexLight4}";
-				Light5ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight5.R}{Global.Settings.RGBSeparator}{rgbLight5.G}{Global.Settings.RGBSeparator}{rgbLight5.B}\n{Properties.Resources.HEX}: #{hexLight5}";
-				Light6ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight6.R}{Global.Settings.RGBSeparator}{rgbLight6.G}{Global.Settings.RGBSeparator}{rgbLight6.B}\n{Properties.Resources.HEX}: #{hexLight6}";
-				Light7ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight7.R}{Global.Settings.RGBSeparator}{rgbLight7.G}{Global.Settings.RGBSeparator}{rgbLight7.B}\n{Properties.Resources.HEX}: #{hexLight7}";
-				Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}\n{Properties.Resources.HEX}: #{hexLight8}";
+				Light1ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight1.R}{Global.Settings.RGBSeparator}{rgbLight1.G}{Global.Settings.RGBSeparator}{rgbLight1.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight1}";
+				Light2ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight2.R}{Global.Settings.RGBSeparator}{rgbLight2.G}{Global.Settings.RGBSeparator}{rgbLight2.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight2}";
+				Light3ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight3.R}{Global.Settings.RGBSeparator}{rgbLight3.G}{Global.Settings.RGBSeparator}{rgbLight3.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight3}";
+				Light4ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight4.R}{Global.Settings.RGBSeparator}{rgbLight4.G}{Global.Settings.RGBSeparator}{rgbLight4.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight4}";
+				Light5ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight5.R}{Global.Settings.RGBSeparator}{rgbLight5.G}{Global.Settings.RGBSeparator}{rgbLight5.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight5}";
+				Light6ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight6.R}{Global.Settings.RGBSeparator}{rgbLight6.G}{Global.Settings.RGBSeparator}{rgbLight6.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight6}";
+				Light7ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight7.R}{Global.Settings.RGBSeparator}{rgbLight7.G}{Global.Settings.RGBSeparator}{rgbLight7.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight7}";
+				Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}" +
+					$"\n{Properties.Resources.HEX}: #{hexLight8}";
 
 				// History
 				RGB[] c1 = shades.Append(shades1);
@@ -235,7 +251,7 @@ namespace ColorPicker.Pages
 		private string GetHexStringFromBorder(Border border)
 		{
 			var color = ((SolidColorBrush)border.Background).Color; // Get the color
-			string hex = Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToUpper() 
+			string hex = Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToUpper()
 															   : ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToLower();
 			return $"#{hex}";
 		}
@@ -271,7 +287,7 @@ namespace ColorPicker.Pages
 			if (!SavedColorPalettes.Contains(CurrentRGBColor))
 			{
 				SavedColorPalettes.Add(CurrentRGBColor); // Add to saved palettes
-				HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette, HistoryDisplayer)); 
+				HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette, HistoryDisplayer));
 			}
 		}
 	}
