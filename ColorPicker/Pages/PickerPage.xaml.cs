@@ -166,29 +166,32 @@ namespace ColorPicker.Pages
 
 		private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
+			u = Global.Settings.HEXUseUpperCase.Value;
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 			RedValueTxt.Text = RedSlider.Value.ToString(); // Set text
 
 			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 		}
 
 		private void GreenSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
+			u = Global.Settings.HEXUseUpperCase.Value;
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 			GreenValueTxt.Text = GreenSlider.Value.ToString(); // Set text
 
 			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 		}
 
 		private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
+			u = Global.Settings.HEXUseUpperCase.Value;
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 			BlueValueTxt.Text = BlueSlider.Value.ToString(); // Set text
 
 			var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
-			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value)}";
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 		}
 
 		internal MiniPicker miniPicker = new(); // MiniPicker window
@@ -244,7 +247,8 @@ namespace ColorPicker.Pages
 
 		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetText("#" + (u ? ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value)); // Copy
+			u = Global.Settings.HEXUseUpperCase.Value;
+			Clipboard.SetText("#" + (u ? ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToLower())); // Copy
 			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
 			HistoryBtn.Visibility = Visibility.Visible;
 		}
