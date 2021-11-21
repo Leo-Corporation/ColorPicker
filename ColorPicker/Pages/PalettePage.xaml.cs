@@ -200,7 +200,7 @@ namespace ColorPicker.Pages
 			RGBTxt.Text = ColorTypeComboBox.SelectedIndex switch
 			{
 				0 => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}", // Set text
-				1 => $"#{ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value}", // Set text
+				1 => $"#{(Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToLower())}", // Set text
 				_ => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}" // Set text
 			};
 		}
@@ -212,9 +212,22 @@ namespace ColorPicker.Pages
 			return $"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}";
 		}
 
+		private string GetHexStringFromBorder(Border border)
+		{
+			var color = ((SolidColorBrush)border.Background).Color; // Get the color
+			string hex = Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToUpper() 
+															   : ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToLower();
+			return $"#{hex}";
+		}
+
 		private void DarkShade_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			Clipboard.SetText(GetRgbStringFromBorder((Border)sender)); // Copy
+			Clipboard.SetText(ColorTypeComboBox.SelectedIndex switch
+			{
+				0 => GetRgbStringFromBorder((Border)sender),
+				1 => GetHexStringFromBorder((Border)sender),
+				_ => GetRgbStringFromBorder((Border)sender)
+			}); // Copy
 		}
 
 		internal void HistoryBtn_Click(object sender, RoutedEventArgs e)
