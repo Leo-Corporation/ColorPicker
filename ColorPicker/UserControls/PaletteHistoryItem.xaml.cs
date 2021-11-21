@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -58,15 +59,30 @@ namespace ColorPicker.UserControls
 			ColorB7.Background = new SolidColorBrush { Color = Color.FromRgb(Colors[6].R, Colors[6].G, Colors[6].B) }; // Set the background color
 			ColorB8.Background = new SolidColorBrush { Color = Color.FromRgb(Colors[7].R, Colors[7].G, Colors[7].B) }; // Set the background color
 
+			// Get HEX
+			List<string> hexColors = new();
+			for (int i = 0; i < Colors.Length; i++)
+			{
+				hexColors.Add(Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(Colors[i]).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(Colors[i]).Value.ToLower());
+			}
+
 			// Tooltips
-			B1ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[0].R}{Global.Settings.RGBSeparator}{Colors[0].G}{Global.Settings.RGBSeparator}{Colors[0].B}"; // Set tooltip text
-			B2ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[1].R}{Global.Settings.RGBSeparator}{Colors[1].G}{Global.Settings.RGBSeparator}{Colors[1].B}"; // Set tooltip text
-			B3ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[2].R}{Global.Settings.RGBSeparator}{Colors[2].G}{Global.Settings.RGBSeparator}{Colors[2].B}"; // Set tooltip text
-			B4ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[3].R}{Global.Settings.RGBSeparator}{Colors[3].G}{Global.Settings.RGBSeparator}{Colors[3].B}"; // Set tooltip text
-			B5ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[4].R}{Global.Settings.RGBSeparator}{Colors[4].G}{Global.Settings.RGBSeparator}{Colors[4].B}"; // Set tooltip text
-			B6ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[5].R}{Global.Settings.RGBSeparator}{Colors[5].G}{Global.Settings.RGBSeparator}{Colors[5].B}"; // Set tooltip text
-			B7ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[6].R}{Global.Settings.RGBSeparator}{Colors[6].G}{Global.Settings.RGBSeparator}{Colors[6].B}"; // Set tooltip text
-			B8ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[7].R}{Global.Settings.RGBSeparator}{Colors[7].G}{Global.Settings.RGBSeparator}{Colors[7].B}"; // Set tooltip text
+			B1ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[0].R}{Global.Settings.RGBSeparator}{Colors[0].G}{Global.Settings.RGBSeparator}{Colors[0].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[0]}"; // Set tooltip text
+			B2ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[1].R}{Global.Settings.RGBSeparator}{Colors[1].G}{Global.Settings.RGBSeparator}{Colors[1].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[1]}"; // Set tooltip text
+			B3ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[2].R}{Global.Settings.RGBSeparator}{Colors[2].G}{Global.Settings.RGBSeparator}{Colors[2].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[2]}"; // Set tooltip text
+			B4ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[3].R}{Global.Settings.RGBSeparator}{Colors[3].G}{Global.Settings.RGBSeparator}{Colors[3].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[3]}"; // Set tooltip text
+			B5ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[4].R}{Global.Settings.RGBSeparator}{Colors[4].G}{Global.Settings.RGBSeparator}{Colors[4].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[4]}"; // Set tooltip text
+			B6ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[5].R}{Global.Settings.RGBSeparator}{Colors[5].G}{Global.Settings.RGBSeparator}{Colors[5].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[5]}"; // Set tooltip text
+			B7ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[6].R}{Global.Settings.RGBSeparator}{Colors[6].G}{Global.Settings.RGBSeparator}{Colors[6].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[6]}"; // Set tooltip text
+			B8ToolTip.Content = $"{Properties.Resources.RGB}: {Colors[7].R}{Global.Settings.RGBSeparator}{Colors[7].G}{Global.Settings.RGBSeparator}{Colors[7].B}" +
+				$"\n{Properties.Resources.HEX}: #{hexColors[7]}"; // Set tooltip text
 		}
 
 		private void ColorB1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
