@@ -82,7 +82,7 @@ namespace ColorPicker.Pages
 						CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
 						rgbColor = $"{rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
-						hexColor = $"#{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value)}"; // Set text
+						hexColor = $"#{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToLower())}"; // Set text
 						hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 						hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 						cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set

@@ -384,4 +384,10 @@
   <data name="AddToHistory" xml:space="preserve">
     <value>Ajouter à l'historique</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="Regenerate" xml:space="preserve">
+    <value>Regénérer</value>
+  </data>
 </root>
