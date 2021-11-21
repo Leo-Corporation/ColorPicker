@@ -197,7 +197,7 @@ namespace ColorPicker.Pages
 				Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}\n{Properties.Resources.HEX}: #{hexLight8}";
 
 				// History
-				RGB[] c1 = shades.Append(shades);
+				RGB[] c1 = shades.Append(shades1);
 				CurrentColorPalette = c1.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 				CurrentRGBColor = $"{rgb[0]};{rgb[1]};{rgb[2]}";
 			}
