@@ -81,7 +81,11 @@
 					<Button x:Name="SelectColorBtn" Click="SelectColorBtn_Click" Content="{x:Static lang:Resources.SelectColor}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Background="{Binding Source={StaticResource AccentColor}}" FontWeight="Bold" Margin="0,10,10,0"/>
 					<Button x:Name="CopyBtn" Click="CopyBtn_Click" Content="{x:Static lang:Resources.CopyRGB}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,10,0"/>
 					<Button x:Name="CopyHEXBtn" Click="CopyHEXBtn_Click" Content="{x:Static lang:Resources.CopyHEX}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,0,0"/>
-                    <Button x:Name="SaveToHistoryBtn" Click="SaveToHistoryBtn_Click" Content="&#xF1F6;" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Normal" Margin="10,10,0,0" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+                    <Button x:Name="SaveToHistoryBtn" Click="SaveToHistoryBtn_Click" Content="&#xF2F4;" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Normal" Margin="10,10,0,0" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.AddToHistory}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+                        </Button.ToolTip>
+                    </Button>
 				</StackPanel>
 			</StackPanel>
 			<WrapPanel Orientation="Horizontal" x:Name="RecentColorsDisplayer" Visibility="Collapsed">
