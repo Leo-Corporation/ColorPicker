@@ -62,6 +62,24 @@ namespace ColorPicker.Pages
 			b = random.Next(0, 255); // Generate random number between 0 and 255
 
 			RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+
+			// History
+			if (Global.ColorContentHistory.PaletteColorsRGB.Count > 0)
+			{
+				for (int i = 0; i < Global.ColorContentHistory.PaletteColorsRGB.Count; i++)
+				{
+					RGB[] restoredColorPalette = new RGB[8];
+					for (int j = 0; j < Global.ColorContentHistory.PaletteColorsRGB[i].Count; j++)
+					{
+						restoredColorPalette[j] = new((byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][0],
+							(byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][1],
+							(byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][2]);
+					}
+
+					SavedColorPalettes.Add($"{restoredColorPalette[7].R};{restoredColorPalette[7].G};{restoredColorPalette[7].B}"); // Add to saved palettes
+					HistoryDisplayer.Children.Add(new PaletteHistoryItem(restoredColorPalette, HistoryDisplayer, false, Global.ColorContentHistory.PaletteColorsRGB[i]));
+				}
+			}
 		}
 
 		private RGB[] GetShades(HSL hsl)
