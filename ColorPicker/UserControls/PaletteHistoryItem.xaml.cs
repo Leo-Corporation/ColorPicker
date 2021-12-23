@@ -44,6 +44,14 @@ namespace ColorPicker.UserControls
 			Colors = colors;
 			ParentStackPanel = parent; // Set
 
+			List<int[]> clrs = new();
+			for (int i = 0; i < Colors.Length; i++)
+			{
+				clrs.Add(new int[] { Colors[i].R, Colors[i].G, Colors[i].B });
+			}
+
+			Global.ColorContentHistory.PaletteColorsRGB.Add(clrs);
+
 			InitUI(); // Load the UI
 		}
 

@@ -38,6 +38,11 @@ namespace ColorPicker.Classes
 		/// Colors in history
 		/// </summary>
 		public List<int[]> PickerColorsRGB { get; set; }
+
+		/// <summary>
+		/// Color palettes in history
+		/// </summary>
+		public List<List<int[]>> PaletteColorsRGB { get; set; }
 	}
 
 	public static class HistoryManager
@@ -81,7 +86,11 @@ namespace ColorPicker.Classes
 			}
 			else
 			{
-				Global.ColorContentHistory = new ColorContentHistory() { PickerColorsRGB = new() }; // Create default object
+				Global.ColorContentHistory = new ColorContentHistory()
+				{
+					PickerColorsRGB = new(),
+					PaletteColorsRGB = new()
+				}; // Create default object
 
 				Save(); // Save the changes
 			}
