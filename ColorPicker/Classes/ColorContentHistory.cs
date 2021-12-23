@@ -57,10 +57,34 @@ namespace ColorPicker.Classes
 				Directory.CreateDirectory(Env.AppDataPath + @"\Léo Corporation\ColorPicker"); // Create the directory
 			}
 
-			StreamWriter streamWriter = new StreamWriter(path); // The place where the file is going to be written
+			StreamWriter streamWriter = new(path); // The place where the file is going to be written
 			xmlSerializer.Serialize(streamWriter, Global.ColorContentHistory);
 
 			streamWriter.Dispose();
+		}
+
+		/// <summary>
+		/// Loads the color history.
+		/// </summary>
+		public static void Load()
+		{
+			string path = Env.AppDataPath + @"\Léo Corporation\ColorPicker\ColorHistory.xml"; // The path of the settings file
+
+			if (File.Exists(path)) // If the file exist
+			{
+				XmlSerializer xmlSerializer = new(typeof(ColorContentHistory)); // XML Serializer
+				StreamReader streamReader = new(path); // Where the file is going to be read
+
+				Global.ColorContentHistory = (ColorContentHistory)xmlSerializer.Deserialize(streamReader); // Read
+
+				streamReader.Dispose();
+			}
+			else
+			{
+				Global.ColorContentHistory = new ColorContentHistory() { PickerColorsRGB = new() }; // Create default object
+
+				Save(); // Save the changes
+			}
 		}
 	}
 }

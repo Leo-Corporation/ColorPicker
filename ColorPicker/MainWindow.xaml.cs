@@ -66,6 +66,7 @@ namespace ColorPicker
 
 		private void CloseBtn_Click(object sender, RoutedEventArgs e)
 		{
+			HistoryManager.Save();
 			Environment.Exit(0); // Quit
 		}
 

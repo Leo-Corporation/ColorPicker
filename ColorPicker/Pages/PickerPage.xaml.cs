@@ -122,6 +122,14 @@ namespace ColorPicker.Pages
 				{ Combination.FromString("Shift+S"), HandleSelectKeyboard }
 			});
 
+			if (Global.ColorContentHistory.PickerColorsRGB.Count > 0)
+			{
+				for (int i = 0; i < Global.ColorContentHistory.PickerColorsRGB.Count; i++)
+				{
+					RecentColorsDisplayer.Children.Add(new RecentColorItem(Global.ColorContentHistory.PickerColorsRGB[i][0], Global.ColorContentHistory.PickerColorsRGB[i][1], Global.ColorContentHistory.PickerColorsRGB[i][2], false));
+				}
+			}
+
 			if (RecentColorsDisplayer.Children.Count < 2)
 			{
 				HistoryBtn.Visibility = Visibility.Collapsed; // Hide
@@ -297,6 +305,9 @@ namespace ColorPicker.Pages
 				HistoryBtn.Visibility = Visibility.Collapsed; // Hide
 			}
 			HistoryBtn_Click(this, null);
+
+			Global.ColorContentHistory.PickerColorsRGB = new(); // Reset
+			HistoryManager.Save(); // Save changes
 		}
 
 		private void RandomColorBtn_Click(object sender, RoutedEventArgs e)

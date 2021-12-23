@@ -37,11 +37,15 @@ namespace ColorPicker.UserControls
 		int R { get; init; }
 		int G { get; init; }
 		int B { get; init; }
-		public RecentColorItem(int r, int g, int b)
+		public RecentColorItem(int r, int g, int b, bool addToHistory = true)
 		{
 			InitializeComponent();
 			R = r; G = g; B = b; // Set
-			Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B });
+
+			if (addToHistory)
+			{
+				Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B }); 
+			}
 
 			InitUI(); // Load the UI
 		}

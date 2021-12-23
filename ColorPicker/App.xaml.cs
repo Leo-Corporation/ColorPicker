@@ -34,6 +34,7 @@ namespace ColorPicker
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			SettingsManager.Load(); // Load settings
+			HistoryManager.Load(); // Load the color history
 
 			Global.ChangeTheme(); // Change the theme
 			Global.ChangeLanguage(); // Change the language
