@@ -41,6 +41,8 @@ namespace ColorPicker.UserControls
 		{
 			InitializeComponent();
 			R = r; G = g; B = b; // Set
+			Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B });
+
 			InitUI(); // Load the UI
 		}
 

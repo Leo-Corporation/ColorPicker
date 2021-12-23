@@ -78,6 +78,11 @@ namespace ColorPicker.Classes
 		public static Settings Settings { get; set; }
 
 		/// <summary>
+		/// The content of the history of ColorPicker.
+		/// </summary>
+		public static ColorContentHistory ColorContentHistory { get; set; }
+
+		/// <summary>
 		/// Last version link.
 		/// </summary>
 		public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/Version.txt";

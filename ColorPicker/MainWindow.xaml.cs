@@ -55,6 +55,8 @@ namespace ColorPicker
 
 			CheckButton(PickerTabBtn); // Check the start page button
 			PageContent.Content = Global.PickerPage; // Set startup page
+
+			Closed += (o, e) => HistoryManager.Save();
 		}
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
