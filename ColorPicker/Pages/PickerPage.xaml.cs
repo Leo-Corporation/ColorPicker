@@ -315,5 +315,11 @@ namespace ColorPicker.Pages
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hex.Value.ToUpper() : hex.Value)}";
 		}
+
+		private void SaveToHistoryBtn_Click(object sender, RoutedEventArgs e)
+		{
+			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+			HistoryBtn.Visibility = Visibility.Visible;
+		}
 	}
 }
