@@ -82,24 +82,29 @@ namespace ColorPicker.Pages
 				}
 				RefreshBorders();
 
-				// Load checkboxes
-				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
-				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
-
 				if (!Global.Settings.HEXUseUpperCase.HasValue)
 				{
-					Global.Settings.HEXUseUpperCase = false;
-					SettingsManager.Save(); // Save changes
+					Global.Settings.HEXUseUpperCase = false; // Set default value
 				}
 
 				if (!Global.Settings.EnableKeyBoardShortcuts.HasValue)
 				{
-					Global.Settings.EnableKeyBoardShortcuts = true;
-					SettingsManager.Save(); // Save changes
+					Global.Settings.EnableKeyBoardShortcuts = true; // Set default value
 				}
+
+				if (!Global.Settings.RestoreColorHistory.HasValue)
+				{
+					Global.Settings.RestoreColorHistory = true; // Set default value
+				}
+
+				// Load checkboxes
+				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
+				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
 
 				HEXUseUpperCaseChk.IsChecked = Global.Settings.HEXUseUpperCase; // Set value
 				UseKeyboardShortcutsChk.IsChecked = Global.Settings.EnableKeyBoardShortcuts; // Set value
+
+				RestoreColorHistoryOnStartChk.IsChecked = Global.Settings.RestoreColorHistory; // Set
 
 				// Load LangComboBox
 				LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
@@ -114,7 +119,6 @@ namespace ColorPicker.Pages
 				if (string.IsNullOrEmpty(Global.Settings.RGBSeparator))
 				{
 					Global.Settings.RGBSeparator = ";"; // Set
-					SettingsManager.Save(); // Save changes
 				}
 
 				RGBSeparatorTxt.Text = Global.Settings.RGBSeparator; // Set text
@@ -399,7 +403,8 @@ namespace ColorPicker.Pages
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
-					IsThemeSystem = true
+					IsThemeSystem = true,
+					RestoreColorHistory = true
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -419,6 +424,12 @@ namespace ColorPicker.Pages
 				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
 				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
 				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		}
+
+		private void RestoreColorHistoryOnStartChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.RestoreColorHistory = RestoreColorHistoryOnStartChk.IsChecked; // Set
+			SettingsManager.Save(); // Save changes
 		}
 	}
 }

@@ -42,7 +42,7 @@ namespace ColorPicker.UserControls
 			InitializeComponent();
 			R = r; G = g; B = b; // Set
 
-			if (addToHistory)
+			if (Global.Settings.RestoreColorHistory.Value && addToHistory)
 			{
 				Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B }); 
 			}

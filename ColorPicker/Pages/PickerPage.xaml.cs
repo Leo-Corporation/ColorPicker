@@ -51,7 +51,9 @@ namespace ColorPicker.Pages
 		{
 			InitializeComponent();
 			m_GlobalHook = Hook.GlobalEvents();
+
 			InitUI(); // Init UI
+
 			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
 			dispatcherTimer.Tick += (o, e) =>
 			{
@@ -122,7 +124,7 @@ namespace ColorPicker.Pages
 				{ Combination.FromString("Shift+S"), HandleSelectKeyboard }
 			});
 
-			if (Global.ColorContentHistory.PickerColorsRGB.Count > 0)
+			if (Global.Settings.RestoreColorHistory.Value && Global.ColorContentHistory.PickerColorsRGB.Count > 0)
 			{
 				for (int i = 0; i < Global.ColorContentHistory.PickerColorsRGB.Count; i++)
 				{

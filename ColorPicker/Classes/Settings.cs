@@ -71,6 +71,11 @@ namespace ColorPicker.Classes
 		/// True if ColorPicker's theme should match system.
 		/// </summary>
 		public bool? IsThemeSystem { get; set; }
+
+		/// <summary>
+		/// True if ColorPicker should restore previously generated colors back to history in "Picker" page.
+		/// </summary>
+		public bool? RestoreColorHistory { get; set; }
 	}
 
 	/// <summary>
@@ -104,7 +109,8 @@ namespace ColorPicker.Classes
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
-					IsThemeSystem = true
+					IsThemeSystem = true,
+					RestoreColorHistory = true,
 				}; // Create a new settings file
 
 				Save(); // Save the changes
