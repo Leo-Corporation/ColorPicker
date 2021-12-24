@@ -37,7 +37,8 @@ namespace ColorPicker
 	public partial class MainWindow : Window
 	{
 		private Button CheckedButton { get; set; }
-		ColorAnimation colorAnimation = new()
+
+		readonly ColorAnimation colorAnimation = new()
 		{
 			From = (Color)ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()),
 			To = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()),
@@ -55,6 +56,8 @@ namespace ColorPicker
 
 			CheckButton(PickerTabBtn); // Check the start page button
 			PageContent.Content = Global.PickerPage; // Set startup page
+
+			Closed += (o, e) => HistoryManager.Save();
 		}
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -64,6 +67,7 @@ namespace ColorPicker
 
 		private void CloseBtn_Click(object sender, RoutedEventArgs e)
 		{
+			HistoryManager.Save();
 			Environment.Exit(0); // Quit
 		}
 

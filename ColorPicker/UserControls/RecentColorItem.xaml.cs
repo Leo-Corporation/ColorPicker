@@ -37,14 +37,20 @@ namespace ColorPicker.UserControls
 		int R { get; init; }
 		int G { get; init; }
 		int B { get; init; }
-		public RecentColorItem(int r, int g, int b)
+		public RecentColorItem(int r, int g, int b, bool addToHistory = true)
 		{
 			InitializeComponent();
 			R = r; G = g; B = b; // Set
+
+			if (Global.Settings.RestoreColorHistory.Value && addToHistory)
+			{
+				Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B });
+			}
+
 			InitUI(); // Load the UI
 		}
 
-		string s = Global.Settings.RGBSeparator; // Set
+		readonly string s = Global.Settings.RGBSeparator; // Set
 		private void InitUI()
 		{
 			Border.Background = new SolidColorBrush

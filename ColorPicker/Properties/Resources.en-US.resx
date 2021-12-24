@@ -390,4 +390,10 @@
   <data name="Regenerate" xml:space="preserve">
     <value>Regenerate</value>
   </data>
+  <data name="RestoreColorHistory" xml:space="preserve">
+    <value>Restore color history on start</value>
+  </data>
+  <data name="RestorePaletteHistory" xml:space="preserve">
+    <value>Restore color palettes history on start</value>
+  </data>
 </root>

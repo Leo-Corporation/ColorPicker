@@ -40,7 +40,7 @@ namespace ColorPicker.Classes
 		/// <summary>
 		/// The current version of ColorPicker.
 		/// </summary>
-		public static string Version => "3.7.0.2111";
+		public static string Version => "3.8.0.2112";
 
 		/// <summary>
 		/// List of the available languages.
@@ -76,6 +76,11 @@ namespace ColorPicker.Classes
 		/// Settings of ColorPicker.
 		/// </summary>
 		public static Settings Settings { get; set; }
+
+		/// <summary>
+		/// The content of the history of ColorPicker.
+		/// </summary>
+		public static ColorContentHistory ColorContentHistory { get; set; }
 
 		/// <summary>
 		/// Last version link.
@@ -162,7 +167,7 @@ namespace ColorPicker.Classes
 
 		public static bool IsSystemThemeDark()
 		{
-			if (Env.WindowsVersion != WindowsVersion.Windows10)
+			if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
 			{
 				return false; // Avoid errors on older OSs
 			}

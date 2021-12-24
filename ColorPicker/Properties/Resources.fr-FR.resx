@@ -390,4 +390,10 @@
   <data name="Regenerate" xml:space="preserve">
     <value>Regénérer</value>
   </data>
+  <data name="RestoreColorHistory" xml:space="preserve">
+    <value>Restaurer l'historique des couleurs lors du démarrage</value>
+  </data>
+  <data name="RestorePaletteHistory" xml:space="preserve">
+    <value>Restaurer l'historique des palettes de couleurs lors du démarrage</value>
+  </data>
 </root>

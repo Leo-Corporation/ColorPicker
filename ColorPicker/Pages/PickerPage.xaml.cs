@@ -43,15 +43,17 @@ namespace ColorPicker.Pages
 	public partial class PickerPage : Page
 	{
 		bool isRunning = false;
-		private IKeyboardMouseEvents m_GlobalHook;
-		DispatcherTimer dispatcherTimer = new();
-		string sep = Global.Settings.RGBSeparator; // Set
+		private readonly IKeyboardMouseEvents m_GlobalHook;
+		readonly DispatcherTimer dispatcherTimer = new();
+		readonly string sep = Global.Settings.RGBSeparator; // Set
 		bool u = Global.Settings.HEXUseUpperCase.Value;
 		public PickerPage()
 		{
 			InitializeComponent();
 			m_GlobalHook = Hook.GlobalEvents();
+
 			InitUI(); // Init UI
+
 			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
 			dispatcherTimer.Tick += (o, e) =>
 			{
@@ -121,6 +123,14 @@ namespace ColorPicker.Pages
 				{ Combination.FromString("Shift+C"), HandleCopyKeyboard },
 				{ Combination.FromString("Shift+S"), HandleSelectKeyboard }
 			});
+
+			if (Global.Settings.RestoreColorHistory.Value && Global.ColorContentHistory.PickerColorsRGB.Count > 0)
+			{
+				for (int i = 0; i < Global.ColorContentHistory.PickerColorsRGB.Count; i++)
+				{
+					RecentColorsDisplayer.Children.Add(new RecentColorItem(Global.ColorContentHistory.PickerColorsRGB[i][0], Global.ColorContentHistory.PickerColorsRGB[i][1], Global.ColorContentHistory.PickerColorsRGB[i][2], false));
+				}
+			}
 
 			if (RecentColorsDisplayer.Children.Count < 2)
 			{
@@ -297,6 +307,9 @@ namespace ColorPicker.Pages
 				HistoryBtn.Visibility = Visibility.Collapsed; // Hide
 			}
 			HistoryBtn_Click(this, null);
+
+			Global.ColorContentHistory.PickerColorsRGB = new(); // Reset
+			HistoryManager.Save(); // Save changes
 		}
 
 		private void RandomColorBtn_Click(object sender, RoutedEventArgs e)
@@ -314,6 +327,12 @@ namespace ColorPicker.Pages
 			// Convert to HEX
 			var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hex.Value.ToUpper() : hex.Value)}";
+		}
+
+		private void SaveToHistoryBtn_Click(object sender, RoutedEventArgs e)
+		{
+			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+			HistoryBtn.Visibility = Visibility.Visible;
 		}
 	}
 }

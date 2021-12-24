@@ -36,7 +36,7 @@ namespace ColorPicker.Windows
 	public partial class MiniPicker : Window
 	{
 		internal DispatcherTimer timer = new() { Interval = new(0, 0, 0, 0, 1) };
-		bool u = Global.Settings.HEXUseUpperCase.Value;
+		readonly bool u = Global.Settings.HEXUseUpperCase.Value;
 		public MiniPicker()
 		{
 			InitializeComponent();

@@ -40,7 +40,7 @@ namespace ColorPicker.Pages
 	public partial class SettingsPage : Page
 	{
 		bool isAvailable;
-		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
+		readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
 		public SettingsPage()
 		{
 			InitializeComponent();
@@ -82,24 +82,35 @@ namespace ColorPicker.Pages
 				}
 				RefreshBorders();
 
-				// Load checkboxes
-				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
-				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
-
 				if (!Global.Settings.HEXUseUpperCase.HasValue)
 				{
-					Global.Settings.HEXUseUpperCase = false;
-					SettingsManager.Save(); // Save changes
+					Global.Settings.HEXUseUpperCase = false; // Set default value
 				}
 
 				if (!Global.Settings.EnableKeyBoardShortcuts.HasValue)
 				{
-					Global.Settings.EnableKeyBoardShortcuts = true;
-					SettingsManager.Save(); // Save changes
+					Global.Settings.EnableKeyBoardShortcuts = true; // Set default value
 				}
+
+				if (!Global.Settings.RestoreColorHistory.HasValue)
+				{
+					Global.Settings.RestoreColorHistory = true; // Set default value
+				}
+
+				if (!Global.Settings.RestorePaletteColorHistory.HasValue)
+				{
+					Global.Settings.RestorePaletteColorHistory = true; // Set default value
+				}
+
+				// Load checkboxes
+				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
+				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
 
 				HEXUseUpperCaseChk.IsChecked = Global.Settings.HEXUseUpperCase; // Set value
 				UseKeyboardShortcutsChk.IsChecked = Global.Settings.EnableKeyBoardShortcuts; // Set value
+
+				RestoreColorHistoryOnStartChk.IsChecked = Global.Settings.RestoreColorHistory; // Set
+				RestoreColorPaletteHistoryOnStartChk.IsChecked = Global.Settings.RestorePaletteColorHistory; // Set
 
 				// Load LangComboBox
 				LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
@@ -114,7 +125,6 @@ namespace ColorPicker.Pages
 				if (string.IsNullOrEmpty(Global.Settings.RGBSeparator))
 				{
 					Global.Settings.RGBSeparator = ";"; // Set
-					SettingsManager.Save(); // Save changes
 				}
 
 				RGBSeparatorTxt.Text = Global.Settings.RGBSeparator; // Set text
@@ -206,7 +216,7 @@ namespace ColorPicker.Pages
 		/// <summary>
 		/// Restarts ColorPicker.
 		/// </summary>
-		private void DisplayRestartMessage()
+		private static void DisplayRestartMessage()
 		{
 			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.ColorPicker, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 			{
@@ -251,30 +261,6 @@ namespace ColorPicker.Pages
 			LangApplyBtn.Visibility = Visibility.Visible; // Show the LangApplyBtn button
 		}
 
-		private void ResetSettingsLink_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-			if (MessageBox.Show(Properties.Resources.ResetSettingsConfirmMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-			{
-				Global.Settings = new()
-				{
-					CheckUpdatesOnStart = true,
-					IsDarkTheme = false,
-					Language = "_default",
-					NotifyUpdates = true,
-					RGBSeparator = ";",
-					HEXUseUpperCase = false,
-					IsThemeSystem = true
-				}; // Create default settings
-
-				SettingsManager.Save(); // Save the changes
-				InitUI(); // Reload the page
-
-				MessageBox.Show(Properties.Resources.SettingsReset, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Information);
-				Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
-				Environment.Exit(0); // Quit
-			}
-		}
-
 		private void LangApplyBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Global.Settings.Language = LangComboBox.Text switch
@@ -286,16 +272,6 @@ namespace ColorPicker.Pages
 			SettingsManager.Save(); // Save the changes
 			LangApplyBtn.Visibility = Visibility.Hidden; // Hide
 			DisplayRestartMessage();
-		}
-
-		private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
-				"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
-				"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
-				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
-				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
-				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 
 		private void RGBFormatApplyBtn_Click(object sender, RoutedEventArgs e)
@@ -419,6 +395,55 @@ namespace ColorPicker.Pages
 			SystemBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 
 			CheckedBorder.BorderBrush = new SolidColorBrush() { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set color
+		}
+
+		private void ResetSettingsLink_Click(object sender, RoutedEventArgs e)
+		{
+			if (MessageBox.Show(Properties.Resources.ResetSettingsConfirmMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+			{
+				Global.Settings = new()
+				{
+					CheckUpdatesOnStart = true,
+					IsDarkTheme = false,
+					Language = "_default",
+					NotifyUpdates = true,
+					RGBSeparator = ";",
+					HEXUseUpperCase = false,
+					EnableKeyBoardShortcuts = true,
+					IsThemeSystem = true,
+					RestoreColorHistory = true,
+					RestorePaletteColorHistory = true
+				}; // Create default settings
+
+				SettingsManager.Save(); // Save the changes
+				InitUI(); // Reload the page
+
+				MessageBox.Show(Properties.Resources.SettingsReset, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Information);
+				Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
+				Environment.Exit(0); // Quit
+			}
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
+				"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
+				"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
+				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
+				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
+				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		}
+
+		private void RestoreColorHistoryOnStartChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.RestoreColorHistory = RestoreColorHistoryOnStartChk.IsChecked; // Set
+			SettingsManager.Save(); // Save changes
+		}
+
+		private void RestoreColorPaletteHistoryOnStartChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.RestorePaletteColorHistory = RestoreColorPaletteHistoryOnStartChk.IsChecked; // Set
+			SettingsManager.Save(); // Save changes
 		}
 	}
 }

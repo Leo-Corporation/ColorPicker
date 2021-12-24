@@ -682,6 +682,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restore color history on start.
+        /// </summary>
+        public static string RestoreColorHistory {
+            get {
+                return ResourceManager.GetString("RestoreColorHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore color palettes history on start.
+        /// </summary>
+        public static string RestorePaletteHistory {
+            get {
+                return ResourceManager.GetString("RestorePaletteHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RGB.
         /// </summary>
         public static string RGB {

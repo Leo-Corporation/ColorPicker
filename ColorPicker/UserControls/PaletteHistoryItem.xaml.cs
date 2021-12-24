@@ -38,11 +38,29 @@ namespace ColorPicker.UserControls
 	{
 		internal RGB[] Colors { get; init; }
 		private StackPanel ParentStackPanel { get; init; }
-		public PaletteHistoryItem(RGB[] colors, StackPanel parent)
+
+		readonly List<int[]> IntColors = new();
+		public PaletteHistoryItem(RGB[] colors, StackPanel parent, bool addToHistory = true, List<int[]> intColors = null)
 		{
 			InitializeComponent();
 			Colors = colors;
 			ParentStackPanel = parent; // Set
+
+			IntColors = intColors;
+
+			if (Global.Settings.RestorePaletteColorHistory.Value && addToHistory)
+			{
+				if (IntColors == null)
+				{
+					IntColors = new();
+					for (int i = 0; i < Colors.Length; i++)
+					{
+						IntColors.Add(new int[] { Colors[i].R, Colors[i].G, Colors[i].B });
+					}
+				}
+
+				Global.ColorContentHistory.PaletteColorsRGB.Add(IntColors);
+			}
 
 			InitUI(); // Load the UI
 		}
@@ -95,6 +113,10 @@ namespace ColorPicker.UserControls
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Global.PalettePage.SavedColorPalettes.Remove($"{Colors[7].R};{Colors[7].G};{Colors[7].B}"); // Remove from virtual history
+			Global.ColorContentHistory.PaletteColorsRGB.Remove(IntColors);
+
+			HistoryManager.Save();
+
 			ParentStackPanel.Children.Remove(this); // Remove color palette
 		}
 

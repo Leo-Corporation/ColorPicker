@@ -62,9 +62,27 @@ namespace ColorPicker.Pages
 			b = random.Next(0, 255); // Generate random number between 0 and 255
 
 			RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+
+			// History
+			if (Global.Settings.RestorePaletteColorHistory.Value && Global.ColorContentHistory.PaletteColorsRGB.Count > 0)
+			{
+				for (int i = 0; i < Global.ColorContentHistory.PaletteColorsRGB.Count; i++)
+				{
+					RGB[] restoredColorPalette = new RGB[8];
+					for (int j = 0; j < Global.ColorContentHistory.PaletteColorsRGB[i].Count; j++)
+					{
+						restoredColorPalette[j] = new((byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][0],
+							(byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][1],
+							(byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][2]);
+					}
+
+					SavedColorPalettes.Add($"{restoredColorPalette[7].R};{restoredColorPalette[7].G};{restoredColorPalette[7].B}"); // Add to saved palettes
+					HistoryDisplayer.Children.Add(new PaletteHistoryItem(restoredColorPalette, HistoryDisplayer, false, Global.ColorContentHistory.PaletteColorsRGB[i]));
+				}
+			}
 		}
 
-		private RGB[] GetShades(HSL hsl)
+		private static RGB[] GetShades(HSL hsl)
 		{
 			// Dark shades
 			HSL darkShade = new(hsl.H, hsl.S, (hsl.L == 30) ? (byte)15 : (byte)30);
@@ -241,14 +259,14 @@ namespace ColorPicker.Pages
 			};
 		}
 
-		private string GetRgbStringFromBorder(Border border)
+		private static string GetRgbStringFromBorder(Border border)
 		{
 			var color = ((SolidColorBrush)border.Background).Color; // Get the color
 
 			return $"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}";
 		}
 
-		private string GetHexStringFromBorder(Border border)
+		private static string GetHexStringFromBorder(Border border)
 		{
 			var color = ((SolidColorBrush)border.Background).Color; // Get the color
 			string hex = Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToUpper()
