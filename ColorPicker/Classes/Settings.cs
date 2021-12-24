@@ -76,6 +76,11 @@ namespace ColorPicker.Classes
 		/// True if ColorPicker should restore previously generated colors back to history in "Picker" page.
 		/// </summary>
 		public bool? RestoreColorHistory { get; set; }
+
+		/// <summary>
+		/// True if ColorPicker should restore previously generated color palettes back to history in "Palette" page.
+		/// </summary>
+		public bool? RestorePaletteColorHistory { get; set; }
 	}
 
 	/// <summary>
@@ -109,8 +114,10 @@ namespace ColorPicker.Classes
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
+					EnableKeyBoardShortcuts = true,
 					IsThemeSystem = true,
 					RestoreColorHistory = true,
+					RestorePaletteColorHistory = true
 				}; // Create a new settings file
 
 				Save(); // Save the changes

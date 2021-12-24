@@ -47,7 +47,7 @@ namespace ColorPicker.UserControls
 
 			IntColors = intColors;
 
-			if (addToHistory)
+			if (Global.Settings.RestorePaletteColorHistory.Value && addToHistory)
 			{
 				if (IntColors == null)
 				{

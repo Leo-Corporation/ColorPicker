@@ -97,6 +97,11 @@ namespace ColorPicker.Pages
 					Global.Settings.RestoreColorHistory = true; // Set default value
 				}
 
+				if (!Global.Settings.RestorePaletteColorHistory.HasValue)
+				{
+					Global.Settings.RestorePaletteColorHistory = true; // Set default value
+				}
+
 				// Load checkboxes
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -105,6 +110,7 @@ namespace ColorPicker.Pages
 				UseKeyboardShortcutsChk.IsChecked = Global.Settings.EnableKeyBoardShortcuts; // Set value
 
 				RestoreColorHistoryOnStartChk.IsChecked = Global.Settings.RestoreColorHistory; // Set
+				RestoreColorPaletteHistoryOnStartChk.IsChecked = Global.Settings.RestorePaletteColorHistory; // Set
 
 				// Load LangComboBox
 				LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
@@ -403,8 +409,10 @@ namespace ColorPicker.Pages
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
+					EnableKeyBoardShortcuts = true,
 					IsThemeSystem = true,
-					RestoreColorHistory = true
+					RestoreColorHistory = true,
+					RestorePaletteColorHistory = true
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -429,6 +437,12 @@ namespace ColorPicker.Pages
 		private void RestoreColorHistoryOnStartChk_Checked(object sender, RoutedEventArgs e)
 		{
 			Global.Settings.RestoreColorHistory = RestoreColorHistoryOnStartChk.IsChecked; // Set
+			SettingsManager.Save(); // Save changes
+		}
+
+		private void RestoreColorPaletteHistoryOnStartChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.RestorePaletteColorHistory = RestoreColorPaletteHistoryOnStartChk.IsChecked; // Set
 			SettingsManager.Save(); // Save changes
 		}
 	}

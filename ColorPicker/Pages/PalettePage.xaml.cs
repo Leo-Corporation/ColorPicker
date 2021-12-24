@@ -64,7 +64,7 @@ namespace ColorPicker.Pages
 			RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
 
 			// History
-			if (Global.ColorContentHistory.PaletteColorsRGB.Count > 0)
+			if (Global.Settings.RestorePaletteColorHistory.Value && Global.ColorContentHistory.PaletteColorsRGB.Count > 0)
 			{
 				for (int i = 0; i < Global.ColorContentHistory.PaletteColorsRGB.Count; i++)
 				{
