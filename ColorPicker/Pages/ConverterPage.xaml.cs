@@ -37,8 +37,8 @@ namespace ColorPicker.Pages
 	public partial class ConverterPage : Page
 	{
 		string rgbColor, hexColor, hsvColor, hslColor, cmykColor = "";
-		string sep = Global.Settings.RGBSeparator; // Set
-		bool u = Global.Settings.HEXUseUpperCase.Value; // Set
+		readonly string sep = Global.Settings.RGBSeparator; // Set
+		readonly bool u = Global.Settings.HEXUseUpperCase.Value; // Set
 		public ConverterPage()
 		{
 			InitializeComponent();

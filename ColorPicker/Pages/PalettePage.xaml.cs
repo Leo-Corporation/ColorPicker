@@ -82,7 +82,7 @@ namespace ColorPicker.Pages
 			}
 		}
 
-		private RGB[] GetShades(HSL hsl)
+		private static RGB[] GetShades(HSL hsl)
 		{
 			// Dark shades
 			HSL darkShade = new(hsl.H, hsl.S, (hsl.L == 30) ? (byte)15 : (byte)30);
@@ -259,14 +259,14 @@ namespace ColorPicker.Pages
 			};
 		}
 
-		private string GetRgbStringFromBorder(Border border)
+		private static string GetRgbStringFromBorder(Border border)
 		{
 			var color = ((SolidColorBrush)border.Background).Color; // Get the color
 
 			return $"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}";
 		}
 
-		private string GetHexStringFromBorder(Border border)
+		private static string GetHexStringFromBorder(Border border)
 		{
 			var color = ((SolidColorBrush)border.Background).Color; // Get the color
 			string hex = Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToUpper()

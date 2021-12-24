@@ -40,7 +40,7 @@ namespace ColorPicker.Pages
 	public partial class SettingsPage : Page
 	{
 		bool isAvailable;
-		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
+		readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
 		public SettingsPage()
 		{
 			InitializeComponent();
@@ -216,7 +216,7 @@ namespace ColorPicker.Pages
 		/// <summary>
 		/// Restarts ColorPicker.
 		/// </summary>
-		private void DisplayRestartMessage()
+		private static void DisplayRestartMessage()
 		{
 			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.ColorPicker, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 			{

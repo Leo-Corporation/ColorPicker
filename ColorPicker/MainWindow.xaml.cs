@@ -37,7 +37,8 @@ namespace ColorPicker
 	public partial class MainWindow : Window
 	{
 		private Button CheckedButton { get; set; }
-		ColorAnimation colorAnimation = new()
+
+		readonly ColorAnimation colorAnimation = new()
 		{
 			From = (Color)ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()),
 			To = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()),

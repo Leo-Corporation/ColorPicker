@@ -43,9 +43,9 @@ namespace ColorPicker.Pages
 	public partial class PickerPage : Page
 	{
 		bool isRunning = false;
-		private IKeyboardMouseEvents m_GlobalHook;
-		DispatcherTimer dispatcherTimer = new();
-		string sep = Global.Settings.RGBSeparator; // Set
+		private readonly IKeyboardMouseEvents m_GlobalHook;
+		readonly DispatcherTimer dispatcherTimer = new();
+		readonly string sep = Global.Settings.RGBSeparator; // Set
 		bool u = Global.Settings.HEXUseUpperCase.Value;
 		public PickerPage()
 		{

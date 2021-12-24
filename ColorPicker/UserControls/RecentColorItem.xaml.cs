@@ -44,13 +44,13 @@ namespace ColorPicker.UserControls
 
 			if (Global.Settings.RestoreColorHistory.Value && addToHistory)
 			{
-				Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B }); 
+				Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B });
 			}
 
 			InitUI(); // Load the UI
 		}
 
-		string s = Global.Settings.RGBSeparator; // Set
+		readonly string s = Global.Settings.RGBSeparator; // Set
 		private void InitUI()
 		{
 			Border.Background = new SolidColorBrush

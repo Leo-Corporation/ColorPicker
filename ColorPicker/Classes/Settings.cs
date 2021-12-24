@@ -97,8 +97,8 @@ namespace ColorPicker.Classes
 
 			if (File.Exists(path)) // If the file exist
 			{
-				XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings)); // XML Serializer
-				StreamReader streamReader = new StreamReader(path); // Where the file is going to be read
+				XmlSerializer xmlSerializer = new(typeof(Settings)); // XML Serializer
+				StreamReader streamReader = new(path); // Where the file is going to be read
 
 				Global.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
 
@@ -131,7 +131,7 @@ namespace ColorPicker.Classes
 		{
 			string path = Env.AppDataPath + @"\Léo Corporation\ColorPicker\Settings.xml"; // The path of the settings file
 
-			XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings)); // Create XML Serializer
+			XmlSerializer xmlSerializer = new(typeof(Settings)); // Create XML Serializer
 
 			if (!Directory.Exists(Env.AppDataPath + @"\Léo Corporation\ColorPicker")) // If the directory doesn't exist
 			{
@@ -139,7 +139,7 @@ namespace ColorPicker.Classes
 				Directory.CreateDirectory(Env.AppDataPath + @"\Léo Corporation\ColorPicker"); // Create the directory
 			}
 
-			StreamWriter streamWriter = new StreamWriter(path); // The place where the file is going to be written
+			StreamWriter streamWriter = new(path); // The place where the file is going to be written
 			xmlSerializer.Serialize(streamWriter, Global.Settings);
 
 			streamWriter.Dispose();
@@ -153,9 +153,9 @@ namespace ColorPicker.Classes
 		{
 			try
 			{
-				XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings)); // Create XML Serializer
+				XmlSerializer xmlSerializer = new(typeof(Settings)); // Create XML Serializer
 
-				StreamWriter streamWriter = new StreamWriter(path); // The place where the file is going to be written
+				StreamWriter streamWriter = new(path); // The place where the file is going to be written
 				xmlSerializer.Serialize(streamWriter, Global.Settings);
 
 				streamWriter.Dispose();
@@ -178,8 +178,8 @@ namespace ColorPicker.Classes
 			{
 				if (File.Exists(path)) // If the file exist
 				{
-					XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings)); // XML Serializer
-					StreamReader streamReader = new StreamReader(path); // Where the file is going to be read
+					XmlSerializer xmlSerializer = new(typeof(Settings)); // XML Serializer
+					StreamReader streamReader = new(path); // Where the file is going to be read
 
 					Global.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
 

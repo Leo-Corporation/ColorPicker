@@ -38,7 +38,8 @@ namespace ColorPicker.UserControls
 	{
 		internal RGB[] Colors { get; init; }
 		private StackPanel ParentStackPanel { get; init; }
-		List<int[]> IntColors = new();
+
+		readonly List<int[]> IntColors = new();
 		public PaletteHistoryItem(RGB[] colors, StackPanel parent, bool addToHistory = true, List<int[]> intColors = null)
 		{
 			InitializeComponent();
@@ -54,11 +55,11 @@ namespace ColorPicker.UserControls
 					IntColors = new();
 					for (int i = 0; i < Colors.Length; i++)
 					{
-						IntColors.Add(new int[] { Colors[i].R, Colors[i].G, Colors[i].B }); 
+						IntColors.Add(new int[] { Colors[i].R, Colors[i].G, Colors[i].B });
 					}
 				}
 
-				Global.ColorContentHistory.PaletteColorsRGB.Add(IntColors); 
+				Global.ColorContentHistory.PaletteColorsRGB.Add(IntColors);
 			}
 
 			InitUI(); // Load the UI
