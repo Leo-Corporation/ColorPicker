@@ -251,30 +251,6 @@ namespace ColorPicker.Pages
 			LangApplyBtn.Visibility = Visibility.Visible; // Show the LangApplyBtn button
 		}
 
-		private void ResetSettingsLink_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-			if (MessageBox.Show(Properties.Resources.ResetSettingsConfirmMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-			{
-				Global.Settings = new()
-				{
-					CheckUpdatesOnStart = true,
-					IsDarkTheme = false,
-					Language = "_default",
-					NotifyUpdates = true,
-					RGBSeparator = ";",
-					HEXUseUpperCase = false,
-					IsThemeSystem = true
-				}; // Create default settings
-
-				SettingsManager.Save(); // Save the changes
-				InitUI(); // Reload the page
-
-				MessageBox.Show(Properties.Resources.SettingsReset, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Information);
-				Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
-				Environment.Exit(0); // Quit
-			}
-		}
-
 		private void LangApplyBtn_Click(object sender, RoutedEventArgs e)
 		{
 			Global.Settings.Language = LangComboBox.Text switch
@@ -286,16 +262,6 @@ namespace ColorPicker.Pages
 			SettingsManager.Save(); // Save the changes
 			LangApplyBtn.Visibility = Visibility.Hidden; // Hide
 			DisplayRestartMessage();
-		}
-
-		private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
-				"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
-				"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
-				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
-				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
-				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 
 		private void RGBFormatApplyBtn_Click(object sender, RoutedEventArgs e)
@@ -419,6 +385,40 @@ namespace ColorPicker.Pages
 			SystemBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 
 			CheckedBorder.BorderBrush = new SolidColorBrush() { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set color
+		}
+
+		private void ResetSettingsLink_Click(object sender, RoutedEventArgs e)
+		{
+			if (MessageBox.Show(Properties.Resources.ResetSettingsConfirmMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+			{
+				Global.Settings = new()
+				{
+					CheckUpdatesOnStart = true,
+					IsDarkTheme = false,
+					Language = "_default",
+					NotifyUpdates = true,
+					RGBSeparator = ";",
+					HEXUseUpperCase = false,
+					IsThemeSystem = true
+				}; // Create default settings
+
+				SettingsManager.Save(); // Save the changes
+				InitUI(); // Reload the page
+
+				MessageBox.Show(Properties.Resources.SettingsReset, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Information);
+				Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
+				Environment.Exit(0); // Quit
+			}
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
+				"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
+				"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
+				"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
+				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
+				"ColorPicker - MIT License - © 2021 Léo Corporation", $"{Properties.Resources.ColorPicker} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 	}
 }
