@@ -76,3 +76,8 @@ This Git repo has always two branches:
 
 ## License
 This project is under the [MIT License](https://github.com/Leo-Corporation/ColorPicker/blob/main/LICENSE).
+
+## Translations Credits
+Special thanks to:
+
+- [@wcxu21](https://github.com/wcxu21) for Simplified Chinese

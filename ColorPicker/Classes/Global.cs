@@ -40,17 +40,17 @@ namespace ColorPicker.Classes
 		/// <summary>
 		/// The current version of ColorPicker.
 		/// </summary>
-		public static string Version => "3.8.0.2112";
+		public static string Version => "3.8.1.2112";
 
 		/// <summary>
 		/// List of the available languages.
 		/// </summary>
-		public static List<string> LanguageList => new() { "English (United States)", "Français (France)" };
+		public static List<string> LanguageList => new() { "English (United States)", "Français (France)", "中文（简体）" };
 
 		/// <summary>
 		/// List of the available languages codes.
 		/// </summary>
-		public static List<string> LanguageCodeList => new() { "en-US", "fr-FR" };
+		public static List<string> LanguageCodeList => new() { "en-US", "fr-FR", "zh-CN" };
 
 		/// <summary>
 		/// The <see cref="Pages.PickerPage"/>.
@@ -196,6 +196,10 @@ namespace ColorPicker.Classes
 
 				case "fr-FR": // French (FR)
 					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
+					break;
+
+				case "zh-CN": // Chinese (CN)
+					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
 					break;
 				default: // No language
 					break;
