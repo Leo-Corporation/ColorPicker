@@ -396,4 +396,10 @@
   <data name="RestorePaletteHistory" xml:space="preserve">
     <value>Restaurer l'historique des palettes de couleurs lors du démarrage</value>
   </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Épingler</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>Désépingler</value>
+  </data>
 </root>
