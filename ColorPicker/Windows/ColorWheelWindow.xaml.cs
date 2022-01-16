@@ -48,6 +48,10 @@ namespace ColorPicker.Windows
 	{
 		bool isRunning = false;
 		readonly DispatcherTimer dispatcherTimer = new();
+
+		int r, g, b; // RGB values
+		string hex; // HEX value
+
 		public ColorWheelWindow()
 		{
 			InitializeComponent();
@@ -64,10 +68,15 @@ namespace ColorPicker.Windows
 				GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
 				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
 
+				r = pixel.R;
+				g = pixel.G;
+				b = pixel.B;
+
 				// Convert to HEX
 				bool u = Global.Settings.HEXUseUpperCase.Value;
 				var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
 				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+				hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 
 				ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
 			};
@@ -88,6 +97,9 @@ namespace ColorPicker.Windows
 			ColorDisplayer.Visibility = Visibility.Visible; // Show
 			ColorInforPanel.Visibility = Visibility.Visible; // Show
 
+			CopyBtn.Visibility = Visibility.Visible; // Show
+			CopyHEXBtn.Visibility = Visibility.Visible; // Show
+
 			if (!isRunning)
 			{
 				dispatcherTimer.Start(); // Start
@@ -106,6 +118,9 @@ namespace ColorPicker.Windows
 		{
 			ColorDisplayer.Visibility = Visibility.Visible; // Show
 			ColorInforPanel.Visibility = Visibility.Visible; // Show
+
+			CopyBtn.Visibility = Visibility.Visible; // Show
+			CopyHEXBtn.Visibility = Visibility.Visible; // Show
 			SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
 
 			dispatcherTimer.Stop(); // Stop
@@ -120,10 +135,15 @@ namespace ColorPicker.Windows
 			GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
 			BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
 
+			r = pixel.R;
+			g = pixel.G;
+			b = pixel.B;
+
 			// Convert to HEX
 			bool u = Global.Settings.HEXUseUpperCase.Value;
 			var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+			hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
 		}
@@ -139,6 +159,16 @@ namespace ColorPicker.Windows
 			{
 				dispatcherTimer.Start();
 			}
+		}
+
+		private void CopyBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"); // Copy
+		}
+
+		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(hex); // Copy HEX
 		}
 	}
 }

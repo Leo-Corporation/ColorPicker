@@ -137,7 +137,7 @@
 
 					<Image Cursor="Cross" MouseLeftButtonUp="Image_MouseLeftButtonUp" Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350" VerticalAlignment="Center" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
 
-					<Grid Grid.Column="1" Margin="10" VerticalAlignment="Center">
+					<Grid Grid.Column="1" Margin="10" MinWidth="100" VerticalAlignment="Center">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="Auto"/>
@@ -153,9 +153,13 @@
 							<TextBlock x:Name="HEXTxt" FontWeight="Bold" Text="{x:Static lang:Resources.HEXP}"/>
 						</StackPanel>
 
-						<Button x:Name="SelectColorBtn" Click="SelectColorBtn_Click" Content="{x:Static lang:Resources.SelectColor}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Background="{Binding Source={StaticResource AccentColor}}" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="2"/>
+                        <StackPanel Grid.Row="2">
+                            <Button x:Name="SelectColorBtn" Click="SelectColorBtn_Click" Content="{x:Static lang:Resources.SelectColor}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Background="{Binding Source={StaticResource AccentColor}}" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="2"/>
+                            <Button x:Name="CopyBtn" Visibility="Collapsed" Click="CopyBtn_Click" Content="{x:Static lang:Resources.CopyRGB}" HorizontalAlignment="Stretch" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,0,0"/>
+                            <Button x:Name="CopyHEXBtn" Visibility="Collapsed" Click="CopyHEXBtn_Click" Content="{x:Static lang:Resources.CopyHEX}" HorizontalAlignment="Stretch" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" FontWeight="Bold" Margin="0,10,0,0"/>
+                        </StackPanel>
 
-					</Grid>
+                    </Grid>
 				</Grid>
 			</Border>
 		</Grid>
