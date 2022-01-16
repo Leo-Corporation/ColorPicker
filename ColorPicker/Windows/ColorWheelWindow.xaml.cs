@@ -85,6 +85,9 @@ namespace ColorPicker.Windows
 
 		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
 		{
+			ColorDisplayer.Visibility = Visibility.Visible; // Show
+			ColorInforPanel.Visibility = Visibility.Visible; // Show
+
 			if (!isRunning)
 			{
 				dispatcherTimer.Start(); // Start

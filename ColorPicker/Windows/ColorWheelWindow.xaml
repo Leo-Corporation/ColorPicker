@@ -142,9 +142,9 @@
 							<RowDefinition/>
 						</Grid.RowDefinitions>
 						
-						<Border x:Name="ColorDisplayer" Margin="10" d:Background="Red" CornerRadius="10" Grid.Column="0" Width="80" Height="80"></Border>
+						<Border Visibility="Collapsed" x:Name="ColorDisplayer" Margin="10" d:Background="Red" CornerRadius="10" Grid.Column="0" Width="80" Height="80"></Border>
 
-						<StackPanel Grid.Row="1" Margin="5" VerticalAlignment="Center">
+						<StackPanel x:Name="ColorInforPanel" Visibility="Collapsed" Grid.Row="1" Margin="5" VerticalAlignment="Center">
 							<TextBlock x:Name="RedTxt" FontWeight="Bold" Text="{x:Static lang:Resources.RedP}"/>
 							<TextBlock x:Name="GreenTxt" FontWeight="Bold" Text="{x:Static lang:Resources.GreenP}"/>
 							<TextBlock x:Name="BlueTxt" FontWeight="Bold" Text="{x:Static lang:Resources.BlueP}"/>
