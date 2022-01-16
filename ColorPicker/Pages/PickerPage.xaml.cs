@@ -334,5 +334,10 @@ namespace ColorPicker.Pages
 			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
 			HistoryBtn.Visibility = Visibility.Visible;
 		}
+
+		private void ColorWheelBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new ColorWheelWindow().Show();
+		}
 	}
 }
