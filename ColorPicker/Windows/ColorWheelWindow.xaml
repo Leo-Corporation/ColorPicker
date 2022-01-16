@@ -135,7 +135,7 @@
 						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
 
-					<Image Cursor="Cross" MouseLeftButtonUp="Image_MouseLeftButtonUp" Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350"/>
+					<Image Cursor="Cross" MouseLeftButtonUp="Image_MouseLeftButtonUp" Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350" VerticalAlignment="Center" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
 
 					<Grid Grid.Column="1" Margin="10" VerticalAlignment="Center">
 						<Grid.RowDefinitions>

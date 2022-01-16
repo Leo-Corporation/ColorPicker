@@ -109,6 +109,7 @@ namespace ColorPicker.Windows
 			SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
 
 			dispatcherTimer.Stop(); // Stop
+			isRunning = false;
 
 			Bitmap bitmap = new(1, 1);
 			Graphics GFX = Graphics.FromImage(bitmap);
@@ -125,6 +126,19 @@ namespace ColorPicker.Windows
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
+		}
+
+		private void Image_MouseLeave(object sender, MouseEventArgs e)
+		{
+			dispatcherTimer.Stop(); // Stop
+		}
+
+		private void Image_MouseEnter(object sender, MouseEventArgs e)
+		{
+			if (isRunning)
+			{
+				dispatcherTimer.Start();
+			}
 		}
 	}
 }
