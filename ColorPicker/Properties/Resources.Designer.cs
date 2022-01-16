@@ -241,6 +241,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color wheel.
+        /// </summary>
+        public static string ColorWheel {
+            get {
+                return ResourceManager.GetString("ColorWheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Converter.
         /// </summary>
         public static string Converter {

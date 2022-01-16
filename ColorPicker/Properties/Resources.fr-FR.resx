@@ -402,4 +402,7 @@
   <data name="Unpin" xml:space="preserve">
     <value>Désépingler</value>
   </data>
+  <data name="ColorWheel" xml:space="preserve">
+    <value>Roue chromatique</value>
+  </data>
 </root>
