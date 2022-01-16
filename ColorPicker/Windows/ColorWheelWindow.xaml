@@ -7,7 +7,7 @@
 		xmlns:lang="clr-namespace:ColorPicker.Properties"
 		FontFamily="/Fonts/#Montserrat"
 		mc:Ignorable="d" Foreground="{Binding Source={StaticResource Foreground1}}"
-		Title="{x:Static lang:Resources.ColorPicker}" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True">
+		Title="{x:Static lang:Resources.ColorWheel}" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True">
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="32" ResizeBorderThickness="10"/>
 	</WindowChrome.WindowChrome>
@@ -113,7 +113,9 @@
 						<ColumnDefinition Width="Auto"/>
 						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
-					<Button Grid.Column="1" FontSize="14" Content="&#xFC75;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="MinimizeBtn" Click="MinimizeBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
+                    <TextBlock Foreground="{Binding Source={StaticResource Foreground1}}" Text="{x:Static lang:Resources.ColorWheel}" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                    <Button Grid.Column="1" FontSize="14" Content="&#xFC75;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="MinimizeBtn" Click="MinimizeBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.Minimize}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
 						</Button.ToolTip>
