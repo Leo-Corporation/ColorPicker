@@ -101,5 +101,30 @@ namespace ColorPicker.Windows
 				isRunning = false;
 			}
 		}
+
+		private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ColorDisplayer.Visibility = Visibility.Visible; // Show
+			ColorInforPanel.Visibility = Visibility.Visible; // Show
+			SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
+
+			dispatcherTimer.Stop(); // Stop
+
+			Bitmap bitmap = new(1, 1);
+			Graphics GFX = Graphics.FromImage(bitmap);
+			GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+			var pixel = bitmap.GetPixel(0, 0);
+
+			RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
+			GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
+			BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
+
+			// Convert to HEX
+			bool u = Global.Settings.HEXUseUpperCase.Value;
+			var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+
+			ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
+		}
 	}
 }
