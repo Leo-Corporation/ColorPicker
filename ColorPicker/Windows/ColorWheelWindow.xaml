@@ -127,35 +127,35 @@
 			</Border>
 
 			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}">
-                <Grid x:Name="WindowContent" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+				<Grid x:Name="WindowContent" Grid.Row="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
 
-                    <Image Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350"/>
+					<Image Cursor="Cross" Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350"/>
 
-                    <Grid Grid.Column="1" Margin="10" VerticalAlignment="Center">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        
-                        <Border x:Name="ColorDisplayer" Margin="10" d:Background="Red" CornerRadius="10" Grid.Column="0" Width="80" Height="80"></Border>
+					<Grid Grid.Column="1" Margin="10" VerticalAlignment="Center">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						
+						<Border x:Name="ColorDisplayer" Margin="10" d:Background="Red" CornerRadius="10" Grid.Column="0" Width="80" Height="80"></Border>
 
-                        <StackPanel Grid.Row="1" Margin="5" VerticalAlignment="Center">
-                            <TextBlock x:Name="RedTxt" FontWeight="Bold" Text="{x:Static lang:Resources.RedP}"/>
-                            <TextBlock x:Name="GreenTxt" FontWeight="Bold" Text="{x:Static lang:Resources.GreenP}"/>
-                            <TextBlock x:Name="BlueTxt" FontWeight="Bold" Text="{x:Static lang:Resources.BlueP}"/>
-                            <TextBlock x:Name="HEXTxt" FontWeight="Bold" Text="{x:Static lang:Resources.HEXP}"/>
-                        </StackPanel>
+						<StackPanel Grid.Row="1" Margin="5" VerticalAlignment="Center">
+							<TextBlock x:Name="RedTxt" FontWeight="Bold" Text="{x:Static lang:Resources.RedP}"/>
+							<TextBlock x:Name="GreenTxt" FontWeight="Bold" Text="{x:Static lang:Resources.GreenP}"/>
+							<TextBlock x:Name="BlueTxt" FontWeight="Bold" Text="{x:Static lang:Resources.BlueP}"/>
+							<TextBlock x:Name="HEXTxt" FontWeight="Bold" Text="{x:Static lang:Resources.HEXP}"/>
+						</StackPanel>
 
-                        <Button x:Name="SelectColorBtn" Click="SelectColorBtn_Click" Content="{x:Static lang:Resources.SelectColor}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Background="{Binding Source={StaticResource AccentColor}}" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="2"/>
+						<Button x:Name="SelectColorBtn" Click="SelectColorBtn_Click" Content="{x:Static lang:Resources.SelectColor}" HorizontalAlignment="Center" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Background="{Binding Source={StaticResource AccentColor}}" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="2"/>
 
-                    </Grid>
-                </Grid>
-            </Border>
+					</Grid>
+				</Grid>
+			</Border>
 		</Grid>
 	</Border>
 </Window>
