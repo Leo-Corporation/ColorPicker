@@ -30,6 +30,11 @@
                             <ToolTip Content="{x:Static lang:Resources.ColorWheel}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
                         </Button.ToolTip>
                     </Button>
+                    <Button Content="&#xF793;" Padding="5" x:Name="TextToolBtn" Click="TextToolBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Grid.Column="1" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0,0,5,0">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.TextTool}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+                        </Button.ToolTip>
+                    </Button>
                     <Button Content="&#xF2F6;" Padding="5" x:Name="RandomColorBtn" Click="RandomColorBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Grid.Column="1" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0,0,5,0">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.PickRandomColor}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>

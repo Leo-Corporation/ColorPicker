@@ -339,5 +339,10 @@ namespace ColorPicker.Pages
 		{
 			new ColorWheelWindow().Show();
 		}
+
+		private void TextToolBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new TextToolWindow().Show(); // Show
+		}
 	}
 }
