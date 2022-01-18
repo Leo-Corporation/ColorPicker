@@ -405,4 +405,7 @@
   <data name="ColorWheel" xml:space="preserve">
     <value>Roue chromatique</value>
   </data>
+  <data name="TextTool" xml:space="preserve">
+    <value>Outil de texte</value>
+  </data>
 </root>

@@ -835,6 +835,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text tool.
+        /// </summary>
+        public static string TextTool {
+            get {
+                return ResourceManager.GetString("TextTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string Theme {
