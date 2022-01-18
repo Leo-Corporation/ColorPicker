@@ -69,7 +69,9 @@ namespace ColorPicker.Windows
 
 		private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-
+			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString());
+			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString());
+			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString());
 		}
 	}
 }
