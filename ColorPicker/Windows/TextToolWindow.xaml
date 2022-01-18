@@ -134,7 +134,10 @@
 						<RowDefinition Height="Auto"/>
 						<RowDefinition/>
 					</Grid.RowDefinitions>
-					<ComboBox IsEditable="True" MinWidth="100" SelectionChanged="FontComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FontComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="10,5,10,0" VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox IsEditable="True" MinWidth="100" SelectionChanged="FontComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FontComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="10,5,10,0" VerticalAlignment="Center"/>
+                        <TextBox Visibility="Visible" MinHeight="24" x:Name="FontSizeTxt" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderThickness="2" Margin="10,5,0,0" VerticalAlignment="Center" PreviewTextInput="FontSizeTxt_PreviewTextInput" TextChanged="FontSizeTxt_TextChanged"/>
+                    </StackPanel>
 
                     <StackPanel Grid.Row="1">
                         <TextBlock x:Name="BoldTxt" FontWeight="Bold" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." TextWrapping="Wrap" Margin="10 5" FontSize="16"/>

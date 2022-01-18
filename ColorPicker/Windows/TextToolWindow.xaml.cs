@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,9 +70,26 @@ namespace ColorPicker.Windows
 
 		private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString());
-			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString());
-			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString());
+			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+		}
+
+		private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+		{
+			Regex regex = new("[^0-9]+");
+			e.Handled = regex.IsMatch(e.Text);
+		}
+
+		private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			try
+			{
+				RegularTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+				ItalicTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+				BoldTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+			}
+			catch { }
 		}
 	}
 }
