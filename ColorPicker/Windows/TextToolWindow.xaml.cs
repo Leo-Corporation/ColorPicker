@@ -91,5 +91,15 @@ namespace ColorPicker.Windows
 			}
 			catch { }
 		}
+
+		private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+
+		}
+
+		private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+
+		}
 	}
 }

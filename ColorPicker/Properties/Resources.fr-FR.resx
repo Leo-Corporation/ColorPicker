@@ -414,4 +414,10 @@
   <data name="Size" xml:space="preserve">
     <value>Taille</value>
   </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>Premier plan</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Arrière plan</value>
+  </data>
 </root>

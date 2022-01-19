@@ -97,6 +97,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background.
+        /// </summary>
+        public static string Background {
+            get {
+                return ResourceManager.GetString("Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blue.
         /// </summary>
         public static string Blue {
@@ -363,6 +372,15 @@ namespace ColorPicker.Properties {
         public static string Font {
             get {
                 return ResourceManager.GetString("Font", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground.
+        /// </summary>
+        public static string Foreground {
+            get {
+                return ResourceManager.GetString("Foreground", resourceCulture);
             }
         }
         
