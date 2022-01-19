@@ -408,4 +408,10 @@
   <data name="TextTool" xml:space="preserve">
     <value>Outil de texte</value>
   </data>
+  <data name="Font" xml:space="preserve">
+    <value>Police</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Taille</value>
+  </data>
 </root>
