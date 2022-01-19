@@ -396,4 +396,28 @@
   <data name="RestorePaletteHistory" xml:space="preserve">
     <value>Restore color palettes history on start</value>
   </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>Unpin</value>
+  </data>
+  <data name="ColorWheel" xml:space="preserve">
+    <value>Color wheel</value>
+  </data>
+  <data name="TextTool" xml:space="preserve">
+    <value>Text tool</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+  </data>
 </root>

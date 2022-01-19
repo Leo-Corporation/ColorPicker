@@ -40,7 +40,7 @@ namespace ColorPicker.Classes
 		/// <summary>
 		/// The current version of ColorPicker.
 		/// </summary>
-		public static string Version => "3.8.1.2112";
+		public static string Version => "3.9.0.2201";
 
 		/// <summary>
 		/// List of the available languages.

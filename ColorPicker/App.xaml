@@ -399,7 +399,7 @@
 			<SolidColorBrush x:Key="ComboBox.Static.Border" Color="#59ADFF"/>
 			<SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#59ADFF"/>
 			<SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="Transparent"/>
-			<SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3"/>
+			<SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#59ADFF"/>
 			<SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
 			<SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
 			<SolidColorBrush x:Key="TextBox.Static.Background" Color="Transparent"/>

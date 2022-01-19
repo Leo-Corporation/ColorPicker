@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
-    <Version>3.8.1.2112</Version>
+    <Version>3.9.0.2201</Version>
     <Authors>Léo Corporation;wcxu21</Authors>
     <Copyright>© 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -22,6 +22,7 @@
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Images\BackgroundBlack.png" />
     <None Remove="Images\BackgroundWhite.png" />
+    <None Remove="Images\ColorWheel.png" />
     <None Remove="Images\DarkTheme.png" />
     <None Remove="Images\LightTheme.png" />
     <None Remove="Images\SystemTheme.png" />
@@ -29,7 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="ColorHelper" Version="1.6.0" />
-    <PackageReference Include="LeoCorpLibrary" Version="4.1.0.2112" />
+    <PackageReference Include="LeoCorpLibrary" Version="4.2.0.2201" />
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
   </ItemGroup>
 
@@ -69,6 +70,9 @@
 		</Resource>
 		<Resource Include="Images\BackgroundWhite.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\ColorWheel.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Images\DarkTheme.png">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -396,4 +396,28 @@
   <data name="RestorePaletteHistory" xml:space="preserve">
     <value>Restaurer l'historique des palettes de couleurs lors du démarrage</value>
   </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Épingler</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>Désépingler</value>
+  </data>
+  <data name="ColorWheel" xml:space="preserve">
+    <value>Roue chromatique</value>
+  </data>
+  <data name="TextTool" xml:space="preserve">
+    <value>Outil de texte</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+    <value>Police</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>Premier plan</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Arrière plan</value>
+  </data>
 </root>
