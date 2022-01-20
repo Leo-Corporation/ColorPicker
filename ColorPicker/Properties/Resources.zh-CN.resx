@@ -397,27 +397,27 @@
     <value>启动时恢复调色板历史记录</value>
   </data>
   <data name="Pin" xml:space="preserve">
-    <value>Pin</value>
+    <value>固定</value>
   </data>
   <data name="Unpin" xml:space="preserve">
-    <value>Unpin</value>
+    <value>取消固定</value>
   </data>
   <data name="ColorWheel" xml:space="preserve">
-    <value>Color wheel</value>
+    <value>色轮</value>
   </data>
   <data name="TextTool" xml:space="preserve">
-    <value>Text tool</value>
+    <value>文本工具</value>
   </data>
   <data name="Font" xml:space="preserve">
-    <value>Font</value>
+    <value>字体</value>
   </data>
   <data name="Size" xml:space="preserve">
-    <value>Size</value>
+    <value>大小</value>
   </data>
   <data name="Foreground" xml:space="preserve">
-    <value>Foreground</value>
+    <value>前景色</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>背景色</value>
   </data>
 </root>
