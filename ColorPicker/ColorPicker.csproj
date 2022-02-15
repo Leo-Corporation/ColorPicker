@@ -22,6 +22,7 @@
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Images\BackgroundBlack.png" />
     <None Remove="Images\BackgroundWhite.png" />
+    <None Remove="Images\ColorPicker.png" />
     <None Remove="Images\ColorWheel.png" />
     <None Remove="Images\DarkTheme.png" />
     <None Remove="Images\LightTheme.png" />
@@ -70,6 +71,9 @@
 		</Resource>
 		<Resource Include="Images\BackgroundWhite.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\ColorPicker.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Images\ColorWheel.png">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
