@@ -26,8 +26,8 @@
         </StackPanel>
 
         <StackPanel Margin="10" Grid.Column="1">
-            <TextBlock Text="{x:Static lang:Resources.ChangeLanguage}" FontWeight="Bold" FontSize="16"/>
-            <TextBlock Text="{x:Static lang:Resources.WelcomeChangeTheme}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" Margin="0,0,0,15"/>
+            <TextBlock Text="{x:Static lang:Resources.WelcomeChangeTheme}" FontWeight="Bold" FontSize="16"/>
+            <TextBlock Text="{x:Static lang:Resources.ChangeTheme}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" Margin="0,0,0,15"/>
 
             <StackPanel Orientation="Horizontal">
                 <Border x:Name="LightBorder" CornerRadius="10" Margin="5,20,5,5" Background="{Binding Source={StaticResource Background1}}" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="LightBorder_MouseLeftButtonUp">
