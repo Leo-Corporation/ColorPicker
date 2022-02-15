@@ -404,7 +404,7 @@ namespace ColorPicker.Pages
 			{
 				Global.Settings = new()
 				{
-					CheckUpdatesOnStart = true,
+					CheckUpdatesOnStart = false,
 					IsDarkTheme = false,
 					Language = "_default",
 					NotifyUpdates = true,

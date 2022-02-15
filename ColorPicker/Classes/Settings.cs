@@ -110,7 +110,7 @@ namespace ColorPicker.Classes
 				{
 					IsDarkTheme = false,
 					Language = "_default",
-					CheckUpdatesOnStart = true,
+					CheckUpdatesOnStart = false,
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
