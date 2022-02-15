@@ -441,4 +441,10 @@
   <data name="WelcomePalette" xml:space="preserve">
     <value>The Palette tool can generate different color palettes from a single color. You can get a lighter or darker color. You can also get different shades of the same color.</value>
   </data>
+  <data name="WelcomeChangeTheme" xml:space="preserve">
+    <value>Make ColorPicker yours</value>
+  </data>
+  <data name="ChangesApplyAfterRestart" xml:space="preserve">
+    <value>Changes will be applied after a restart of ColorPicker.</value>
+  </data>
 </root>

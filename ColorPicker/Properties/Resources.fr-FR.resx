@@ -441,4 +441,10 @@
   <data name="WelcomePalette" xml:space="preserve">
     <value>L’outil Palette peut générer différentes palettes de couleurs à partir d’une seule couleur. Vous pouvez obtenir une couleur plus claire ou plus foncée. Vous pouvez également obtenir différentes nuances de la même couleur.</value>
   </data>
+  <data name="WelcomeChangeTheme" xml:space="preserve">
+    <value>Faites de ColorPicker le vôtre</value>
+  </data>
+  <data name="ChangesApplyAfterRestart" xml:space="preserve">
+    <value>Les modifications seront appliquées après un redémarrage de ColorPicker.</value>
+  </data>
 </root>

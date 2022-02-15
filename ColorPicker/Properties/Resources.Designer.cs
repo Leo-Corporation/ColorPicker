@@ -160,6 +160,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changes will be applied after a restart of ColorPicker..
+        /// </summary>
+        public static string ChangesApplyAfterRestart {
+            get {
+                return ResourceManager.GetString("ChangesApplyAfterRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change ColorPicker theme..
         /// </summary>
         public static string ChangeTheme {
@@ -984,6 +993,15 @@ namespace ColorPicker.Properties {
         public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make ColorPicker yours.
+        /// </summary>
+        public static string WelcomeChangeTheme {
+            get {
+                return ResourceManager.GetString("WelcomeChangeTheme", resourceCulture);
             }
         }
         
