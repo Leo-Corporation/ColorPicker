@@ -412,4 +412,13 @@
   <data name="WelcomeThanks" xml:space="preserve">
     <value>Thanks for using ColorPicker! Let's get started!</value>
   </data>
+  <data name="WelcomePicker" xml:space="preserve">
+    <value>It's the main feature of ColorPicker! Get the color of any pixel of your screen easily using the Picker tool. Enable it at any time using Shift+S, and copy the RGB color using Shift+C.</value>
+  </data>
+  <data name="WelcomeConverter" xml:space="preserve">
+    <value>The Converter tool allows you to convert any color type, such as RGB, HEX, HSL, etc., to any other color type.</value>
+  </data>
+  <data name="WelcomePalette" xml:space="preserve">
+    <value>The Palette tool can generate different color palettes from a single color. You can get a lighter or darker color. You can also get different shades of the same color.</value>
+  </data>
 </root>

@@ -988,6 +988,33 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Converter tool allows you to convert any color type, such as RGB, HEX, HSL, etc., to any other color type..
+        /// </summary>
+        public static string WelcomeConverter {
+            get {
+                return ResourceManager.GetString("WelcomeConverter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Palette tool can generate different color palettes from a single color. You can get a lighter or darker color. You can also get different shades of the same color..
+        /// </summary>
+        public static string WelcomePalette {
+            get {
+                return ResourceManager.GetString("WelcomePalette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It&apos;s the main feature of ColorPicker! Get the color of any pixel of your screen easily using the Picker tool. Enable it at any time using Shift+S, and copy the RGB color using Shift+C..
+        /// </summary>
+        public static string WelcomePicker {
+            get {
+                return ResourceManager.GetString("WelcomePicker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thanks for using ColorPicker! Let&apos;s get started!.
         /// </summary>
         public static string WelcomeThanks {
