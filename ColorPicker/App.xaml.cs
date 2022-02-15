@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Windows;
 using System.Windows;
 
 namespace ColorPicker
@@ -44,7 +45,14 @@ namespace ColorPicker
 			Global.ConverterPage = new(); // Create a new ConverterPage
 			Global.PalettePage = new(); // Create a new ConverterPage
 
-			base.OnStartup(e);
+			if (Global.Settings.IsFirstRun.Value)
+			{
+				new FirstRunWindow().Show(); // Show the "First run" experience
+			}
+			else
+			{
+				new MainWindow().Show(); // Launch ColorPicker
+			}
 		}
 	}
 }
