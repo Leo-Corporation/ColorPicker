@@ -447,4 +447,7 @@
   <data name="ChangesApplyAfterRestart" xml:space="preserve">
     <value>Changes will be applied after a restart of ColorPicker.</value>
   </data>
+  <data name="LetsGo" xml:space="preserve">
+    <value>Let's go</value>
+  </data>
 </root>
