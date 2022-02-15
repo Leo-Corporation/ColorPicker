@@ -292,9 +292,9 @@ namespace ColorPicker.Pages
 			List<RecentColorItem> cs = new();
 			foreach (UIElement uIElement in RecentColorsDisplayer.Children)
 			{
-				if (uIElement is RecentColorItem)
+				if (uIElement is RecentColorItem item)
 				{
-					cs.Add((RecentColorItem)uIElement); // Remove
+					cs.Add(item); // Remove
 				}
 			}
 
