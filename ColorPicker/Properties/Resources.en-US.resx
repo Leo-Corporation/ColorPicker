@@ -450,4 +450,7 @@
   <data name="LetsGo" xml:space="preserve">
     <value>Let's go</value>
   </data>
+  <data name="HistorySettings" xml:space="preserve">
+    <value>History settings.</value>
+  </data>
 </root>

@@ -450,4 +450,7 @@
   <data name="LetsGo" xml:space="preserve">
     <value>Allons-y</value>
   </data>
+  <data name="HistorySettings" xml:space="preserve">
+    <value>Paramètres de l'historique.</value>
+  </data>
 </root>

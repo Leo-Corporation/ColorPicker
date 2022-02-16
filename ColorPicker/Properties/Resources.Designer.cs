@@ -493,6 +493,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to History settings..
+        /// </summary>
+        public static string HistorySettings {
+            get {
+                return ResourceManager.GetString("HistorySettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HSL.
         /// </summary>
         public static string HSL {
