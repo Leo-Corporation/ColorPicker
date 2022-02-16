@@ -81,6 +81,11 @@ namespace ColorPicker.Classes
 		/// True if ColorPicker should restore previously generated color palettes back to history in "Palette" page.
 		/// </summary>
 		public bool? RestorePaletteColorHistory { get; set; }
+
+		/// <summary>
+		/// True if this is the first time ColorPicker is launched.
+		/// </summary>
+		public bool? IsFirstRun { get; set; }
 	}
 
 	/// <summary>
@@ -110,14 +115,15 @@ namespace ColorPicker.Classes
 				{
 					IsDarkTheme = false,
 					Language = "_default",
-					CheckUpdatesOnStart = true,
+					CheckUpdatesOnStart = false,
 					NotifyUpdates = true,
 					RGBSeparator = ";",
 					HEXUseUpperCase = false,
 					EnableKeyBoardShortcuts = true,
 					IsThemeSystem = true,
 					RestoreColorHistory = true,
-					RestorePaletteColorHistory = true
+					RestorePaletteColorHistory = true,
+					IsFirstRun = true,
 				}; // Create a new settings file
 
 				Save(); // Save the changes

@@ -400,4 +400,40 @@
   <data name="Background" xml:space="preserve">
     <value>Background</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="WelcomeThanks" xml:space="preserve">
+    <value>Thanks for using ColorPicker! Let's get started!</value>
+  </data>
+  <data name="WelcomePicker" xml:space="preserve">
+    <value>It's the main feature of ColorPicker! Get the color of any pixel of your screen easily using the Picker tool. Enable it at any time using Shift+S, and copy the RGB color using Shift+C.</value>
+  </data>
+  <data name="WelcomeConverter" xml:space="preserve">
+    <value>The Converter tool allows you to convert any color type, such as RGB, HEX, HSL, etc., to any other color type.</value>
+  </data>
+  <data name="WelcomePalette" xml:space="preserve">
+    <value>The Palette tool can generate different color palettes from a single color. You can get a lighter or darker color. You can also get different shades of the same color.</value>
+  </data>
+  <data name="WelcomeChangeTheme" xml:space="preserve">
+    <value>Make ColorPicker yours</value>
+  </data>
+  <data name="ChangesApplyAfterRestart" xml:space="preserve">
+    <value>Changes will be applied after a restart of ColorPicker.</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+    <value>Let's go</value>
+  </data>
+  <data name="HistorySettings" xml:space="preserve">
+    <value>History settings.</value>
+  </data>
+  <data name="ManageData" xml:space="preserve">
+    <value>Manage your data.</value>
+  </data>
 </root>

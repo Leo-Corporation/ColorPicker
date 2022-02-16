@@ -97,6 +97,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Background.
         /// </summary>
         public static string Background {
@@ -147,6 +156,15 @@ namespace ColorPicker.Properties {
         public static string ChangeLanguage {
             get {
                 return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes will be applied after a restart of ColorPicker..
+        /// </summary>
+        public static string ChangesApplyAfterRestart {
+            get {
+                return ResourceManager.GetString("ChangesApplyAfterRestart", resourceCulture);
             }
         }
         
@@ -475,6 +493,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to History settings..
+        /// </summary>
+        public static string HistorySettings {
+            get {
+                return ResourceManager.GetString("HistorySettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HSL.
         /// </summary>
         public static string HSL {
@@ -583,6 +610,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s go.
+        /// </summary>
+        public static string LetsGo {
+            get {
+                return ResourceManager.GetString("LetsGo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Licenses.
         /// </summary>
         public static string Licenses {
@@ -610,6 +646,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage your data..
+        /// </summary>
+        public static string ManageData {
+            get {
+                return ResourceManager.GetString("ManageData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimize.
         /// </summary>
         public static string Minimize {
@@ -633,6 +678,15 @@ namespace ColorPicker.Properties {
         public static string NeedRestartToApplyChanges {
             get {
                 return ResourceManager.GetString("NeedRestartToApplyChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
             }
         }
         
@@ -957,6 +1011,60 @@ namespace ColorPicker.Properties {
         public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make ColorPicker yours.
+        /// </summary>
+        public static string WelcomeChangeTheme {
+            get {
+                return ResourceManager.GetString("WelcomeChangeTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Converter tool allows you to convert any color type, such as RGB, HEX, HSL, etc., to any other color type..
+        /// </summary>
+        public static string WelcomeConverter {
+            get {
+                return ResourceManager.GetString("WelcomeConverter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Palette tool can generate different color palettes from a single color. You can get a lighter or darker color. You can also get different shades of the same color..
+        /// </summary>
+        public static string WelcomePalette {
+            get {
+                return ResourceManager.GetString("WelcomePalette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It&apos;s the main feature of ColorPicker! Get the color of any pixel of your screen easily using the Picker tool. Enable it at any time using Shift+S, and copy the RGB color using Shift+C..
+        /// </summary>
+        public static string WelcomePicker {
+            get {
+                return ResourceManager.GetString("WelcomePicker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks for using ColorPicker! Let&apos;s get started!.
+        /// </summary>
+        public static string WelcomeThanks {
+            get {
+                return ResourceManager.GetString("WelcomeThanks", resourceCulture);
             }
         }
         

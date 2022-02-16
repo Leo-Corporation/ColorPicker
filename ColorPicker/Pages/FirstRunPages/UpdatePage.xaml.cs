@@ -22,37 +22,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
-using ColorPicker.Windows;
 using System.Windows;
+using System.Windows.Controls;
 
-namespace ColorPicker
+namespace ColorPicker.Pages.FirstRunPages
 {
 	/// <summary>
-	/// Interaction logic for App.xaml
+	/// Interaction logic for UpdatePage.xaml
 	/// </summary>
-	public partial class App : Application
+	public partial class UpdatePage : Page
 	{
-		protected override void OnStartup(StartupEventArgs e)
+		public UpdatePage()
 		{
-			SettingsManager.Load(); // Load settings
-			HistoryManager.Load(); // Load the color history
+			InitializeComponent();
+			InitUI(); // Load the UI
+		}
 
-			Global.ChangeTheme(); // Change the theme
-			Global.ChangeLanguage(); // Change the language
+		private void InitUI()
+		{
+			CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
+			NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
+		}
 
-			Global.SettingsPage = new(); // Create a new SettingsPage
-			Global.PickerPage = new(); // Create a new PickerPage
-			Global.ConverterPage = new(); // Create a new ConverterPage
-			Global.PalettePage = new(); // Create a new ConverterPage
+		private void CheckUpdatesOnStartChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.CheckUpdatesOnStart = CheckUpdatesOnStartChk.IsChecked.Value; // Set
+			SettingsManager.Save(); // Save changes
+		}
 
-			if (Global.Settings.IsFirstRun.Value)
-			{
-				new FirstRunWindow().Show(); // Show the "First run" experience
-			}
-			else
-			{
-				new MainWindow().Show(); // Launch ColorPicker
-			}
+		private void NotifyUpdatesChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.NotifyUpdates = NotifyUpdatesChk.IsChecked.Value; // Set
+			SettingsManager.Save(); // Save changes
 		}
 	}
 }

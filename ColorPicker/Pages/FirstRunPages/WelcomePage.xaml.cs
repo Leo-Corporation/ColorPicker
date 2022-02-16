@@ -21,38 +21,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Classes;
-using ColorPicker.Windows;
-using System.Windows;
+using System;
+using System.Windows.Controls;
 
-namespace ColorPicker
+namespace ColorPicker.Pages.FirstRunPages
 {
 	/// <summary>
-	/// Interaction logic for App.xaml
+	/// Interaction logic for WelcomePage.xaml
 	/// </summary>
-	public partial class App : Application
+	public partial class WelcomePage : Page
 	{
-		protected override void OnStartup(StartupEventArgs e)
+		public WelcomePage()
 		{
-			SettingsManager.Load(); // Load settings
-			HistoryManager.Load(); // Load the color history
+			InitializeComponent();
+			InitUI(); // Load the UI
+		}
 
-			Global.ChangeTheme(); // Change the theme
-			Global.ChangeLanguage(); // Change the language
-
-			Global.SettingsPage = new(); // Create a new SettingsPage
-			Global.PickerPage = new(); // Create a new PickerPage
-			Global.ConverterPage = new(); // Create a new ConverterPage
-			Global.PalettePage = new(); // Create a new ConverterPage
-
-			if (Global.Settings.IsFirstRun.Value)
-			{
-				new FirstRunWindow().Show(); // Show the "First run" experience
-			}
-			else
-			{
-				new MainWindow().Show(); // Launch ColorPicker
-			}
+		private void InitUI()
+		{
+			WelcomeTxt.Text = $"{Properties.Resources.Welcome}, {Environment.UserName}."; // Say hello to the user
 		}
 	}
 }

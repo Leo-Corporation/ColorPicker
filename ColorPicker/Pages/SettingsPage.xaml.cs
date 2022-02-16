@@ -102,6 +102,11 @@ namespace ColorPicker.Pages
 					Global.Settings.RestorePaletteColorHistory = true; // Set default value
 				}
 
+				if (!Global.Settings.IsFirstRun.HasValue)
+				{
+					Global.Settings.IsFirstRun = true; // Set default value
+				}
+
 				// Load checkboxes
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -404,7 +409,7 @@ namespace ColorPicker.Pages
 			{
 				Global.Settings = new()
 				{
-					CheckUpdatesOnStart = true,
+					CheckUpdatesOnStart = false,
 					IsDarkTheme = false,
 					Language = "_default",
 					NotifyUpdates = true,
@@ -413,7 +418,8 @@ namespace ColorPicker.Pages
 					EnableKeyBoardShortcuts = true,
 					IsThemeSystem = true,
 					RestoreColorHistory = true,
-					RestorePaletteColorHistory = true
+					RestorePaletteColorHistory = true,
+					IsFirstRun = false, // False instead of true because the user just want to reset settings, not go through the "welcome" process again.
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes

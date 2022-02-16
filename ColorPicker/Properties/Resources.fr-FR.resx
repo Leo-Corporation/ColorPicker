@@ -420,4 +420,40 @@
   <data name="Background" xml:space="preserve">
     <value>Arrière plan</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenue</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="WelcomeThanks" xml:space="preserve">
+    <value>Merci d'utiliser ColorPicker ! Commençons !</value>
+  </data>
+  <data name="WelcomePicker" xml:space="preserve">
+    <value>C’est la principale fonctionnalité de ColorPicker ! Obtenez facilement la couleur de n’importe quel pixel de votre écran à l’aide de l’outil Sélecteur. Activez-le à tout moment à l’aide de Maj+S et copiez la couleur RVB à l’aide de Maj+C.</value>
+  </data>
+  <data name="WelcomeConverter" xml:space="preserve">
+    <value>L’outil Convertisseur vous permet de convertir n’importe quel type de couleur, tel que RVB, HEX, HSL, etc., en n’importe quel autre type de couleur.</value>
+  </data>
+  <data name="WelcomePalette" xml:space="preserve">
+    <value>L’outil Palette peut générer différentes palettes de couleurs à partir d’une seule couleur. Vous pouvez obtenir une couleur plus claire ou plus foncée. Vous pouvez également obtenir différentes nuances de la même couleur.</value>
+  </data>
+  <data name="WelcomeChangeTheme" xml:space="preserve">
+    <value>Faites de ColorPicker le vôtre</value>
+  </data>
+  <data name="ChangesApplyAfterRestart" xml:space="preserve">
+    <value>Les modifications seront appliquées après un redémarrage de ColorPicker.</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+    <value>Allons-y</value>
+  </data>
+  <data name="HistorySettings" xml:space="preserve">
+    <value>Paramètres de l'historique.</value>
+  </data>
+  <data name="ManageData" xml:space="preserve">
+    <value>Gérez vos données.</value>
+  </data>
 </root>
