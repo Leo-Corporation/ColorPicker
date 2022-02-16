@@ -989,7 +989,7 @@
 
 			<SolidColorBrush x:Key="Expander.Static.Circle.Stroke" Color="Transparent"/>
 			<SolidColorBrush x:Key="Expander.Static.Circle.Fill" Color="Transparent"/>
-			<SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="{Binding Source={StaticResource Gray}}"/>
+			<SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="{Binding Source={StaticResource DarkGray}}"/>
 			<SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="Transparent"/>
 			<SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="Transparent"/>
 			<SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="{Binding Source={StaticResource Foreground1}}"/>
