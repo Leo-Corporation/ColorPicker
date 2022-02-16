@@ -58,6 +58,7 @@ namespace ColorPicker
 			PageContent.Content = Global.PickerPage; // Set startup page
 
 			Closed += (o, e) => HistoryManager.Save();
+			PageContent.Navigated += (o, e) => AnimatePage();
 		}
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -126,6 +127,7 @@ namespace ColorPicker
 			CheckButton(ConverterTabBtn); // Check the "Converter" button
 
 			PageContent.Navigate(Global.ConverterPage); // Navigate
+
 		}
 
 		private void SettingsTabBtn_Click(object sender, RoutedEventArgs e)
@@ -149,6 +151,22 @@ namespace ColorPicker
 			Topmost = !Topmost; // Pin/Unpin
 			PinBtn.Content = Topmost ? "\uF604" : "\uF602"; // Set text
 			PinToolTip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin; // Set text
+		}
+
+		private void AnimatePage()
+		{
+			Storyboard storyboard = new();
+
+			ThicknessAnimationUsingKeyFrames t = new();
+			t.KeyFrames.Add(new SplineThicknessKeyFrame(new(0, 30, 0, 0), KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
+			t.KeyFrames.Add(new SplineThicknessKeyFrame(new(0), KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.1))));
+			t.AccelerationRatio = 0.5;
+			
+			storyboard.Children.Add(t);
+
+			Storyboard.SetTargetName(t, PageContent.Name);
+			Storyboard.SetTargetProperty(t, new(Frame.MarginProperty));
+			storyboard.Begin(this);
 		}
 	}
 }
