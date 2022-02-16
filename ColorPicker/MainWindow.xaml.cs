@@ -161,7 +161,7 @@ namespace ColorPicker
 			t.KeyFrames.Add(new SplineThicknessKeyFrame(new(0, 30, 0, 0), KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
 			t.KeyFrames.Add(new SplineThicknessKeyFrame(new(0), KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.1))));
 			t.AccelerationRatio = 0.5;
-			
+
 			storyboard.Children.Add(t);
 
 			Storyboard.SetTargetName(t, PageContent.Name);
