@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ColorHelper" Version="1.6.1" />
+    <PackageReference Include="ColorHelper" Version="1.6.2" />
     <PackageReference Include="LeoCorpLibrary" Version="4.4.0.2203" />
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
   </ItemGroup>
