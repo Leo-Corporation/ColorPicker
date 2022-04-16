@@ -58,7 +58,10 @@ namespace ColorPicker.UserControls
 				Color = Color.FromRgb((byte)R, (byte)G, (byte)B)
 			}; // Set background
 			ToolTip.Content = $"{Properties.Resources.RGB}: {R}{s}{G}{s}{B}\n" +
-				$"{Properties.Resources.HEX}: #{ColorHelper.ColorConverter.RgbToHex(new((byte)R, (byte)G, (byte)B))}"; // Set text
+				$"{Properties.Resources.HEX}: #{ColorHelper.ColorConverter.RgbToHex(new((byte)R, (byte)G, (byte)B))}\n" +
+				$"{Properties.Resources.HSV}: {Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)R, (byte)G, (byte)B)))}\n" +
+				$"{Properties.Resources.HSL}: {Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)R, (byte)G, (byte)B)))}\n" +
+				$"{Properties.Resources.CMYK}: {Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B)))}"; // Set text
 		}
 
 		private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
