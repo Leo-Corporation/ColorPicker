@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
+using LeoCorpLibrary;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -66,7 +68,15 @@ namespace ColorPicker.UserControls
 
 		private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			Clipboard.SetText($"{R}{s}{G}{s}{B}"); // Set text
+			Clipboard.SetText(Global.Settings.FavoriteColorType switch
+			{
+				ColorTypes.RGB => $"{R}{s}{G}{s}{B}",
+				ColorTypes.HEX => "#" + (Global.Settings.HEXUseUpperCase.Value ? ColorsConverter.RGBtoHEX(R, G, B).Value.ToUpper() : ColorsConverter.RGBtoHEX(R, G, B).Value.ToLower()),
+				ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)R, (byte)G, (byte)B))),
+				ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)R, (byte)G, (byte)B))),
+				ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B))),
+				_ => $"{R}{s}{G}{s}{B}"
+			}); // Copy
 		}
 	}
 }
