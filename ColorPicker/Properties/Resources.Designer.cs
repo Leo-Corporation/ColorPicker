@@ -277,6 +277,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compact mode.
+        /// </summary>
+        public static string CompactMode {
+            get {
+                return ResourceManager.GetString("CompactMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Converter.
         /// </summary>
         public static string Converter {
@@ -381,6 +390,24 @@ namespace ColorPicker.Properties {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter compact mode.
+        /// </summary>
+        public static string EnterCompactMode {
+            get {
+                return ResourceManager.GetString("EnterCompactMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit compact mode.
+        /// </summary>
+        public static string ExitCompactMode {
+            get {
+                return ResourceManager.GetString("ExitCompactMode", resourceCulture);
             }
         }
         

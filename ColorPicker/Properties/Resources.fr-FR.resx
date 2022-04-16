@@ -459,4 +459,13 @@
   <data name="DefaultColor" xml:space="preserve">
     <value>Type de couleur par défaut</value>
   </data>
+  <data name="EnterCompactMode" xml:space="preserve">
+    <value>Entrer en mode compact</value>
+  </data>
+  <data name="ExitCompactMode" xml:space="preserve">
+    <value>Quitter le mode compact</value>
+  </data>
+  <data name="CompactMode" xml:space="preserve">
+    <value>Mode compact</value>
+  </data>
 </root>
