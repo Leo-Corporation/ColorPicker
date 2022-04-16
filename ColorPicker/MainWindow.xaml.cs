@@ -111,6 +111,8 @@ namespace ColorPicker
 
 			SettingsTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
 			SettingsTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
+
+			CompactModeBtn.Visibility = Visibility.Collapsed; // Hide
 		}
 
 		private void PickerTabBtn_Click(object sender, RoutedEventArgs e)
@@ -122,6 +124,8 @@ namespace ColorPicker
 			Global.PickerPage.CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value != Enums.ColorTypes.HEX
 				? Global.Settings.FavoriteColorType.Value
 				: Enums.ColorTypes.RGB); // Set the "Copy" button text
+
+			CompactModeBtn.Visibility = Visibility.Visible; // Show
 		}
 
 		private void ConverterTabBtn_Click(object sender, RoutedEventArgs e)
