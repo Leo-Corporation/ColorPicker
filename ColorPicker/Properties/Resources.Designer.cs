@@ -367,6 +367,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default color type.
+        /// </summary>
+        public static string DefaultColor {
+            get {
+                return ResourceManager.GetString("DefaultColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {

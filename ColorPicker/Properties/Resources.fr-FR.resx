@@ -456,4 +456,7 @@
   <data name="ManageData" xml:space="preserve">
     <value>Gérez vos données.</value>
   </data>
+  <data name="DefaultColor" xml:space="preserve">
+    <value>Type de couleur par défaut</value>
+  </data>
 </root>
