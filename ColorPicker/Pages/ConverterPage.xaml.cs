@@ -60,7 +60,7 @@ namespace ColorPicker.Pages
 			int r = random.Next(0, 255); // Generate random number between 0 and 255
 			int g = random.Next(0, 255); // Generate random number between 0 and 255
 			int b = random.Next(0, 255); // Generate random number between 0 and 255
-			
+
 			switch ((ColorTypes)ColorTypeComboBox.SelectedIndex)
 			{
 				case ColorTypes.RGB:
@@ -88,7 +88,7 @@ namespace ColorPicker.Pages
 					YTxt.Text = cmyk.Y.ToString(); // Set text
 					KTxt.Text = cmyk.K.ToString(); // Set text
 					break;
-			}		
+			}
 		}
 
 		private void ColorTxt_TextChanged(object sender, TextChangedEventArgs e)

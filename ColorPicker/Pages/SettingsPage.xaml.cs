@@ -136,7 +136,7 @@ namespace ColorPicker.Pages
 				{
 					Global.Settings.RGBSeparator = ";"; // Set
 				}
-					
+
 				// Load FavoriteColorComboBox
 				for (int i = 0; i < Enum.GetValues(typeof(Enums.ColorTypes)).Length; i++)
 				{

@@ -21,7 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.UserControls;
@@ -101,7 +100,7 @@ namespace ColorPicker.Pages
 			// Set copy button text
 			if (Global.Settings.FavoriteColorType.Value != ColorTypes.HEX) // There is already a "Copy HEX" button
 			{
-				CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value); 
+				CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value);
 			}
 
 			// Generate random color
@@ -272,7 +271,7 @@ namespace ColorPicker.Pages
 				_ => $"{r}{sep}{g}{sep}{b}"
 			}); // Copy
 
-			
+
 			RecentColorsDisplayer.Children.Add(new RecentColorItem(r, g, b));
 			HistoryBtn.Visibility = Visibility.Visible;
 		}

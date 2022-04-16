@@ -35,11 +35,11 @@ namespace ColorPicker.Windows
 	/// </summary>
 	public partial class FirstRunWindow : Window
 	{
-		WelcomePage WelcomePage => new(); // PageID = 0
-		TutorialPage TutorialPage => new(); // PageID = 1
-		ThemePage ThemePage => new(); // PageID = 2
-		LanguagePage LanguagePage => new(); // PageID = 3
-		UpdatePage UpdatePage => new(); // PageID = 4
+		static WelcomePage WelcomePage => new(); // PageID = 0
+		static TutorialPage TutorialPage => new(); // PageID = 1
+		static ThemePage ThemePage => new(); // PageID = 2
+		static LanguagePage LanguagePage => new(); // PageID = 3
+		static UpdatePage UpdatePage => new(); // PageID = 4
 
 		int pageID = 0;
 		public FirstRunWindow()
