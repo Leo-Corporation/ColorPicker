@@ -119,6 +119,9 @@ namespace ColorPicker
 			CheckButton(PickerTabBtn); // Check the "Picker" button
 
 			PageContent.Navigate(Global.PickerPage); // Navigate
+			Global.PickerPage.CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value != Enums.ColorTypes.HEX 
+				? Global.Settings.FavoriteColorType.Value 
+				: Enums.ColorTypes.RGB); // Set the "Copy" button text
 		}
 
 		private void ConverterTabBtn_Click(object sender, RoutedEventArgs e)
