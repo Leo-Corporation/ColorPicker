@@ -148,7 +148,11 @@
 
 						<CheckBox Margin="0 5 0 2" x:Name="HEXUseUpperCaseChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.UseUpperCaseHEX}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="HEXUseUpperCaseChk_Checked" Checked="HEXUseUpperCaseChk_Checked"/>
 
-					</StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Static lang:Resources.DefaultColor}" Foreground="{Binding Source={StaticResource Foreground1}}" VerticalAlignment="Center"/>
+                            <ComboBox SelectionChanged="FavoriteColorComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FavoriteColorComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
 				</Expander>
 
 				<Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource Background2}}" Foreground="{Binding Source={StaticResource Foreground1}}">

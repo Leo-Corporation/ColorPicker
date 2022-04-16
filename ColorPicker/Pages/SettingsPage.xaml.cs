@@ -107,6 +107,11 @@ namespace ColorPicker.Pages
 					Global.Settings.IsFirstRun = true; // Set default value
 				}
 
+				if (!Global.Settings.FavoriteColorType.HasValue)
+				{
+					Global.Settings.FavoriteColorType = Enums.ColorTypes.RGB; // Set default value
+				}
+
 				// Load checkboxes
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -131,6 +136,14 @@ namespace ColorPicker.Pages
 				{
 					Global.Settings.RGBSeparator = ";"; // Set
 				}
+					
+				// Load FavoriteColorComboBox
+				for (int i = 0; i < Enum.GetValues(typeof(Enums.ColorTypes)).Length; i++)
+				{
+					FavoriteColorComboBox.Items.Add(Global.ColorTypesToString((Enums.ColorTypes)i));
+				}
+
+				FavoriteColorComboBox.SelectedIndex = (int)Global.Settings.FavoriteColorType; // Set selected index
 
 				RGBSeparatorTxt.Text = Global.Settings.RGBSeparator; // Set text
 
@@ -420,6 +433,7 @@ namespace ColorPicker.Pages
 					RestoreColorHistory = true,
 					RestorePaletteColorHistory = true,
 					IsFirstRun = false, // False instead of true because the user just want to reset settings, not go through the "welcome" process again.
+					FavoriteColorType = Enums.ColorTypes.RGB,
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -450,6 +464,12 @@ namespace ColorPicker.Pages
 		private void RestoreColorPaletteHistoryOnStartChk_Checked(object sender, RoutedEventArgs e)
 		{
 			Global.Settings.RestorePaletteColorHistory = RestoreColorPaletteHistoryOnStartChk.IsChecked; // Set
+			SettingsManager.Save(); // Save changes
+		}
+
+		private void FavoriteColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Global.Settings.FavoriteColorType = (Enums.ColorTypes)FavoriteColorComboBox.SelectedIndex; // Set
 			SettingsManager.Save(); // Save changes
 		}
 	}
