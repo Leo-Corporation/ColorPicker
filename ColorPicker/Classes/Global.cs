@@ -136,6 +136,19 @@ namespace ColorPicker.Classes
 			}; // Return value
 		}
 
+		public static string ColorTypesToCopyString(ColorTypes colorTypes)
+		{
+			return colorTypes switch
+			{
+				ColorTypes.HEX => Properties.Resources.CopyHEX,
+				ColorTypes.RGB => Properties.Resources.CopyRGB,
+				ColorTypes.HSV => Properties.Resources.CopyHSV,
+				ColorTypes.HSL => Properties.Resources.CopyHSL,
+				ColorTypes.CMYK => Properties.Resources.CopyCMYK,
+				_ => Properties.Resources.CopyRGB
+			}; // Return value
+		}
+
 		/// <summary>
 		/// Changes the application's theme.
 		/// </summary>
@@ -206,5 +219,11 @@ namespace ColorPicker.Classes
 					break;
 			}
 		}
+
+		internal static string GetHsvString(ColorHelper.HSV hsv) => $"({hsv.H},{hsv.S},{hsv.V})";
+
+		internal static string GetHslString(ColorHelper.HSL hsl) => $"({hsl.H},{hsl.S},{hsl.L})";
+
+		internal static string GetCmykString(ColorHelper.CMYK cmyk) => $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 	}
 }

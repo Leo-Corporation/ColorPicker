@@ -21,7 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using ColorPicker.UserControls;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
@@ -96,6 +98,12 @@ namespace ColorPicker.Pages
 
 		private void InitUI()
 		{
+			// Set copy button text
+			if (Global.Settings.FavoriteColorType.Value != ColorTypes.HEX) // There is already a "Copy HEX" button
+			{
+				CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value); 
+			}
+
 			// Generate random color
 			Random random = new();
 			int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
@@ -250,8 +258,22 @@ namespace ColorPicker.Pages
 
 		private void CopyBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetText($"{RedSlider.Value}{sep}{GreenSlider.Value}{sep}{BlueSlider.Value}"); // Copy
-			RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
+			int r = (int)RedSlider.Value; // Red
+			int g = (int)GreenSlider.Value; // Green
+			int b = (int)BlueSlider.Value; // Blue
+
+			Clipboard.SetText(Global.Settings.FavoriteColorType switch
+			{
+				ColorTypes.RGB => $"{r}{sep}{g}{sep}{b}",
+				ColorTypes.HEX => "#" + (u ? ColorsConverter.RGBtoHEX(r, g, b).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToLower()),
+				ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)r, (byte)g, (byte)b))),
+				ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)r, (byte)g, (byte)b))),
+				ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)r, (byte)g, (byte)b))),
+				_ => $"{r}{sep}{g}{sep}{b}"
+			}); // Copy
+
+			
+			RecentColorsDisplayer.Children.Add(new RecentColorItem(r, g, b));
 			HistoryBtn.Visibility = Visibility.Visible;
 		}
 
