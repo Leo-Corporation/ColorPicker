@@ -171,5 +171,21 @@ namespace ColorPicker
 			Storyboard.SetTargetProperty(t, new(Frame.MarginProperty));
 			storyboard.Begin(this);
 		}
+
+		bool isCompactModeEnabled = false;
+		private void CompactModeBtn_Click(object sender, RoutedEventArgs e)
+		{
+			isCompactModeEnabled = !isCompactModeEnabled; // Toggle compact mode
+			if (isCompactModeEnabled)
+			{
+				CompactModeToolTip.Content = Properties.Resources.ExitCompactMode; // Set text
+				CompactModeBtn.Content = "\uF160"; // Set icon
+			}
+			else
+			{
+				CompactModeToolTip.Content = Properties.Resources.EnterCompactMode; // Set text
+				CompactModeBtn.Content = "\uF166"; // Set icon
+			}
+		}
 	}
 }
