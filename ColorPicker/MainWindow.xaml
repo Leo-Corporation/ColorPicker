@@ -171,7 +171,7 @@
 							<ColumnDefinition/>
 						</Grid.ColumnDefinitions>
 
-						<StackPanel Margin="10" Grid.Column="0">
+						<StackPanel x:Name="NavBar" Margin="10" Grid.Column="0">
 							<Button Click="PickerTabBtn_Click" x:Name="PickerTabBtn" Margin="5" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontWeight="Bold" Padding="8" Style="{DynamicResource TabButtonStyle}" FontSize="20" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Left" MouseEnter="TabEnter" MouseLeave="TabLeave" Cursor="Hand">
                                 <Grid>
                                     <Grid.ColumnDefinitions>

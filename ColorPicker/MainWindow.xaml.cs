@@ -190,6 +190,16 @@ namespace ColorPicker
 				CompactModeToolTip.Content = Properties.Resources.EnterCompactMode; // Set text
 				CompactModeBtn.Content = "\uF166"; // Set icon
 			}
+			ToggleCompactMode();
+		}
+
+		internal void ToggleCompactMode()
+		{
+			NavBar.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle navbar
+			Header.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle header
+
+			Width = isCompactModeEnabled ? 500 : 800; // Toggle width
+			Height = isCompactModeEnabled ? 250 : 450; // Toggle height
 		}
 	}
 }
