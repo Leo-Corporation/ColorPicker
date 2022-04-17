@@ -727,6 +727,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes..
+        /// </summary>
+        public static string NeedRestartLabel {
+            get {
+                return ResourceManager.GetString("NeedRestartLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes. Do you want to restart now?.
         /// </summary>
         public static string NeedRestartToApplyChanges {

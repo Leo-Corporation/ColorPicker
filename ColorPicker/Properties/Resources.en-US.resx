@@ -480,4 +480,7 @@
   <data name="PressKeys" xml:space="preserve">
     <value>Press a combination of keys.</value>
   </data>
+  <data name="NeedRestartLabel" xml:space="preserve">
+    <value>ColorPicker needs to restart to apply the changes.</value>
+  </data>
 </root>
