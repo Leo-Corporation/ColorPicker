@@ -516,6 +516,7 @@ namespace ColorPicker.Pages
 			{
 				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
 				Global.KeyBoardShortcutsAvailable = true; // Set
+				if (CopyShortcutTxt.Text.Length == 0) CopyShortcutTxt.Text = "Shift+C"; // Set default
 			}
 		}
 
@@ -531,12 +532,13 @@ namespace ColorPicker.Pages
 			{
 				GlobalHook.KeyDown += GlobalHook_KeyDown; // Subscribe
 				SelectShortcutTxt.Text = "";
-				Global.KeyBoardShortcutsAvailable = false; // Set				
+				Global.KeyBoardShortcutsAvailable = false; // Set
 			}
 			else
 			{
 				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
 				Global.KeyBoardShortcutsAvailable = true; // Set
+				if (SelectShortcutTxt.Text.Length == 0) SelectShortcutTxt.Text = "Shift+S"; // Set default
 			}
 		}
 	}
