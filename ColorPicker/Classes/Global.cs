@@ -119,6 +119,11 @@ namespace ColorPicker.Classes
 		}
 
 		/// <summary>
+		/// If the user is trying to new keyboard shortcuts, the value should be false.
+		/// </summary>
+		public static bool KeyBoardShortcutsAvailable { get; set; }
+
+		/// <summary>
 		/// <c>ToString()</c> method for <see cref="ColorTypes"/> enum.
 		/// </summary>
 		/// <param name="colorTypes">The enum.</param>

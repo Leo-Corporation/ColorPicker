@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -41,6 +43,7 @@ namespace ColorPicker.Pages
 	{
 		bool isAvailable;
 		readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
+		private IKeyboardMouseEvents GlobalHook;
 		public SettingsPage()
 		{
 			InitializeComponent();
@@ -55,7 +58,28 @@ namespace ColorPicker.Pages
 					Environment.Exit(0); // Close
 				}
 			};
+			GlobalHook = Hook.GlobalEvents();
+
 			InitUI(); // Load the UI
+		}
+
+		List<string> keys = new();
+		private void GlobalHook_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+			if (keys.Contains(e.KeyCode.ToString()))
+			{
+				return; // Stop
+			}
+
+			keys.Add(e.KeyCode.ToString()); // Add key to list
+			if (selectShortcutInput)
+			{
+				SelectShortcutTxt.Text += (SelectShortcutTxt.Text.Length == 0) ? e.KeyCode.ToString() : $"+{e.KeyCode}";
+			}
+			else
+			{
+				CopyShortcutTxt.Text += (CopyShortcutTxt.Text.Length == 0) ? e.KeyCode.ToString() : $"+{e.KeyCode}";
+			}
 		}
 
 		private async void InitUI()
@@ -471,6 +495,47 @@ namespace ColorPicker.Pages
 		{
 			Global.Settings.FavoriteColorType = (Enums.ColorTypes)FavoriteColorComboBox.SelectedIndex; // Set
 			SettingsManager.Save(); // Save changes
+		}
+
+		bool copyShortcutInput, selectShortcutInput = false;
+		private void EditCopyShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			keys = new(); // Create new list
+			copyShortcutInput = !copyShortcutInput; // Toggle
+			selectShortcutInput = false; // Set
+			PressKeys2Txt.Visibility = copyShortcutInput ? Visibility.Visible : Visibility.Collapsed; // Show/Hide
+
+			if (copyShortcutInput)
+			{
+				GlobalHook.KeyDown += GlobalHook_KeyDown; // Subscribe
+				CopyShortcutTxt.Text = "";
+				Global.KeyBoardShortcutsAvailable = false; // Set
+			}
+			else
+			{
+				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
+				Global.KeyBoardShortcutsAvailable = true; // Set
+			}
+		}
+
+		private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			keys = new(); // Create new list
+			selectShortcutInput = !selectShortcutInput; // Toggle
+			copyShortcutInput = false; // Set
+			PressKeys1Txt.Visibility = selectShortcutInput ? Visibility.Visible : Visibility.Collapsed; // Show/Hide
+
+			if (selectShortcutInput)
+			{
+				GlobalHook.KeyDown += GlobalHook_KeyDown; // Subscribe
+				SelectShortcutTxt.Text = "";
+				Global.KeyBoardShortcutsAvailable = false; // Set				
+			}
+			else
+			{
+				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
+				Global.KeyBoardShortcutsAvailable = true; // Set
+			}
 		}
 	}
 }

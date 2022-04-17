@@ -93,6 +93,8 @@ namespace ColorPicker.Pages
 				miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
 				miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
 			};
+
+			Global.KeyBoardShortcutsAvailable = true;
 		}
 
 		private void InitUI()
@@ -147,7 +149,7 @@ namespace ColorPicker.Pages
 
 		private void HandleSelectKeyboard()
 		{
-			if (Global.Settings.EnableKeyBoardShortcuts.Value)
+			if (Global.Settings.EnableKeyBoardShortcuts.Value && Global.KeyBoardShortcutsAvailable)
 			{
 				if (isRunning)
 				{
@@ -170,7 +172,7 @@ namespace ColorPicker.Pages
 
 		private void HandleCopyKeyboard()
 		{
-			if (Global.Settings.EnableKeyBoardShortcuts.Value)
+			if (Global.Settings.EnableKeyBoardShortcuts.Value && Global.KeyBoardShortcutsAvailable)
 			{
 				if (isRunning)
 				{
