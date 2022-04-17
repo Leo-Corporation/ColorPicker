@@ -136,6 +136,16 @@ namespace ColorPicker.Pages
 					Global.Settings.FavoriteColorType = Enums.ColorTypes.RGB; // Set default value
 				}
 
+				if (string.IsNullOrEmpty(Global.Settings.CopyKeyboardShortcut))
+				{
+					Global.Settings.CopyKeyboardShortcut = "Shift+C"; // Set default value
+				}
+
+				if (string.IsNullOrEmpty(Global.Settings.SelectKeyboardShortcut))
+				{
+					Global.Settings.SelectKeyboardShortcut = "Shift+S"; // Set default value
+				}
+
 				// Load checkboxes
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -458,6 +468,8 @@ namespace ColorPicker.Pages
 					RestorePaletteColorHistory = true,
 					IsFirstRun = false, // False instead of true because the user just want to reset settings, not go through the "welcome" process again.
 					FavoriteColorType = Enums.ColorTypes.RGB,
+					CopyKeyboardShortcut = "Shift+C",
+					SelectKeyboardShortcut = "Shift+S",
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -517,6 +529,9 @@ namespace ColorPicker.Pages
 				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
 				Global.KeyBoardShortcutsAvailable = true; // Set
 				if (CopyShortcutTxt.Text.Length == 0) CopyShortcutTxt.Text = "Shift+C"; // Set default
+
+				Global.Settings.CopyKeyboardShortcut = CopyShortcutTxt.Text; // Set
+				SettingsManager.Save(); // Save changes
 			}
 		}
 
@@ -539,6 +554,9 @@ namespace ColorPicker.Pages
 				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
 				Global.KeyBoardShortcutsAvailable = true; // Set
 				if (SelectShortcutTxt.Text.Length == 0) SelectShortcutTxt.Text = "Shift+S"; // Set default
+
+				Global.Settings.SelectKeyboardShortcut = SelectShortcutTxt.Text; // Set
+				SettingsManager.Save(); // Save changes
 			}
 		}
 	}

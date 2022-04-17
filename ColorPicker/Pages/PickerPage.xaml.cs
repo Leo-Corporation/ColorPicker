@@ -129,8 +129,8 @@ namespace ColorPicker.Pages
 
 			Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
 			{
-				{ Combination.FromString("Shift+C"), HandleCopyKeyboard },
-				{ Combination.FromString("Shift+S"), HandleSelectKeyboard }
+				{ Combination.FromString(Global.Settings.CopyKeyboardShortcut), HandleCopyKeyboard },
+				{ Combination.FromString(Global.Settings.SelectKeyboardShortcut), HandleSelectKeyboard }
 			});
 
 			if (Global.Settings.RestoreColorHistory.Value && Global.ColorContentHistory.PickerColorsRGB.Count > 0)

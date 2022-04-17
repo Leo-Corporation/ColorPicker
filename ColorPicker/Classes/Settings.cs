@@ -92,6 +92,16 @@ namespace ColorPicker.Classes
 		/// The favorite color type of the user.
 		/// </summary>
 		public ColorTypes? FavoriteColorType { get; set; }
+
+		/// <summary>
+		/// The keyboard shortcut used to copy a color when selecting one.
+		/// </summary>
+		public string CopyKeyboardShortcut { get; set; }
+
+		/// <summary>
+		/// The keyboard shortcut used to start the selection of a color.
+		/// </summary>
+		public string SelectKeyboardShortcut { get; set; }
 	}
 
 	/// <summary>
@@ -131,6 +141,8 @@ namespace ColorPicker.Classes
 					RestorePaletteColorHistory = true,
 					IsFirstRun = true,
 					FavoriteColorType = ColorTypes.RGB,
+					CopyKeyboardShortcut = "Shift+C",
+					SelectKeyboardShortcut = "Shift+S",
 				}; // Create a new settings file
 
 				Save(); // Save the changes
