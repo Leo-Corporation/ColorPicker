@@ -313,6 +313,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy color.
+        /// </summary>
+        public static string CopyColor {
+            get {
+                return ResourceManager.GetString("CopyColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy HEX.
         /// </summary>
         public static string CopyHEX {
@@ -390,6 +399,15 @@ namespace ColorPicker.Properties {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit shortcut.
+        /// </summary>
+        public static string EditShortcut {
+            get {
+                return ResourceManager.GetString("EditShortcut", resourceCulture);
             }
         }
         
@@ -772,6 +790,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press a combination of keys..
+        /// </summary>
+        public static string PressKeys {
+            get {
+                return ResourceManager.GetString("PressKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Red.
         /// </summary>
         public static string Red {
@@ -939,6 +966,15 @@ namespace ColorPicker.Properties {
         public static string Size {
             get {
                 return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start selection.
+        /// </summary>
+        public static string StartSelection {
+            get {
+                return ResourceManager.GetString("StartSelection", resourceCulture);
             }
         }
         

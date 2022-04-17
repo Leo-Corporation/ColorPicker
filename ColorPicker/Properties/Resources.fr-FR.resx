@@ -468,4 +468,16 @@
   <data name="CompactMode" xml:space="preserve">
     <value>Mode compact</value>
   </data>
+  <data name="CopyColor" xml:space="preserve">
+    <value>Copier une couleur</value>
+  </data>
+  <data name="StartSelection" xml:space="preserve">
+    <value>Commencer la sélection</value>
+  </data>
+  <data name="EditShortcut" xml:space="preserve">
+    <value>Modifier le raccourci</value>
+  </data>
+  <data name="PressKeys" xml:space="preserve">
+    <value>Appuyez sur une combinaison de touches.</value>
+  </data>
 </root>
