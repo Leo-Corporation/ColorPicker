@@ -463,4 +463,7 @@
   <data name="NeedRestartLabel" xml:space="preserve">
     <value>ColorPicker needs to restart to apply the changes.</value>
   </data>
+  <data name="CreditsAndThanks" xml:space="preserve">
+    <value>Credits and special thanks</value>
+  </data>
 </root>

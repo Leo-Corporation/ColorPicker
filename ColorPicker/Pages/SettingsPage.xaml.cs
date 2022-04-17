@@ -539,6 +539,15 @@ namespace ColorPicker.Pages
 			}
 		}
 
+		private void CreditsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show($"{Properties.Resources.CreditsAndThanks}\n\n" +
+				$"@dependabot\n" +
+				$"@Leo-Peyronnet\n" +
+				$"@wcxu21",
+				Properties.Resources.CreditsAndThanks, MessageBoxButton.OK, MessageBoxImage.Information);
+		}
+
 		private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 		{
 			keys = new(); // Create new list
