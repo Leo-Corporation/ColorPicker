@@ -516,7 +516,7 @@ namespace ColorPicker.Pages
 			copyShortcutInput = !copyShortcutInput; // Toggle
 			selectShortcutInput = false; // Set
 			PressKeys2Txt.Visibility = copyShortcutInput ? Visibility.Visible : Visibility.Collapsed; // Show/Hide
-			EditSelectShortcutBtn.Content = copyShortcutInput ? "\uF295" : "\uF3DE"; // Set text
+			EditCopyShortcutBtn.Content = copyShortcutInput ? "\uF295" : "\uF3DE"; // Set text
 
 			if (copyShortcutInput)
 			{
