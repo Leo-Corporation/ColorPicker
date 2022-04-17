@@ -528,7 +528,7 @@ namespace ColorPicker.Pages
 			{
 				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
 				Global.KeyBoardShortcutsAvailable = true; // Set
-				if (CopyShortcutTxt.Text.Length == 0) CopyShortcutTxt.Text = "Shift+C"; // Set default
+				if (CopyShortcutTxt.Text.Length == 0) CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut; // Set default
 
 				Global.Settings.CopyKeyboardShortcut = CopyShortcutTxt.Text; // Set
 				SettingsManager.Save(); // Save changes
@@ -553,7 +553,7 @@ namespace ColorPicker.Pages
 			{
 				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
 				Global.KeyBoardShortcutsAvailable = true; // Set
-				if (SelectShortcutTxt.Text.Length == 0) SelectShortcutTxt.Text = "Shift+S"; // Set default
+				if (SelectShortcutTxt.Text.Length == 0) SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut; // Set default
 
 				Global.Settings.SelectKeyboardShortcut = SelectShortcutTxt.Text; // Set
 				SettingsManager.Save(); // Save changes
