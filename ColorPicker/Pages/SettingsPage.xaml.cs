@@ -185,6 +185,10 @@ namespace ColorPicker.Pages
 				ThemeApplyBtn.Visibility = Visibility.Hidden; // Hide
 				RGBFormatApplyBtn.Visibility = Visibility.Hidden; // Hide
 
+				// Load ShortcutTextBoxes
+				CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut; // Set text
+				SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut; // Set text
+
 				// Update the UpdateStatusTxt
 				if (Global.Settings.CheckUpdatesOnStart)
 				{
