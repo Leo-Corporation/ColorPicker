@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
-    <Version>4.1.0.2204-pre1</Version>
+    <Version>4.1.0.2204-rc1</Version>
     <Authors>Léo Corporation;wcxu21</Authors>
     <Copyright>© 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
