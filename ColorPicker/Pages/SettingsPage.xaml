@@ -174,7 +174,7 @@
 							</Border>
 							<Button Content="&#xF3DE;" Padding="5" x:Name="EditSelectShortcutBtn" Click="EditSelectShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.NeedRestartToApplyChanges}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+									<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
 								</Button.ToolTip>
 							</Button>
 							<TextBlock x:Name="PressKeys1Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center"/>
@@ -186,7 +186,7 @@
 							</Border>
 							<Button Content="&#xF3DE;" Padding="5" x:Name="EditCopyShortcutBtn" Click="EditCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.NeedRestartToApplyChanges}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+									<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
 								</Button.ToolTip>
 							</Button>
 							<TextBlock x:Name="PressKeys2Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center"/>
