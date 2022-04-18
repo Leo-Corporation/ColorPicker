@@ -292,7 +292,7 @@
     <value>所有设置都已重置，ColorPicker 现在将重新启动。</value>
   </data>
   <data name="ShortcutsGuide" xml:space="preserve">
-    <value>按 Shift+S 开始/停止选择。 按 Shift+C 复制颜色。</value>
+    <value>按 {0} 开始/停止选择。 按 {1} 复制颜色。</value>
   </data>
   <data name="CopyHSV" xml:space="preserve">
     <value>复制 HSV</value>

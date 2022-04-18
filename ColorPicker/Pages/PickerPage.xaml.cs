@@ -105,6 +105,8 @@ namespace ColorPicker.Pages
 				CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value);
 			}
 
+			ShortcutGuideTxt.Text = string.Format(Properties.Resources.ShortcutsGuide, Global.Settings.SelectKeyboardShortcut, Global.Settings.CopyKeyboardShortcut); // Set shortcut guide text
+
 			// Generate random color
 			Random random = new();
 			int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values

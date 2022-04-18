@@ -970,7 +970,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press Shift+S to start/stop the selection. Press Shift+C to copy the color..
+        ///   Looks up a localized string similar to Press {0} to start/stop the selection. Press {1} to copy the color..
         /// </summary>
         public static string ShortcutsGuide {
             get {
