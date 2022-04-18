@@ -148,6 +148,10 @@
 
 						<CheckBox Margin="0 5 0 2" x:Name="HEXUseUpperCaseChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.UseUpperCaseHEX}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="HEXUseUpperCaseChk_Checked" Checked="HEXUseUpperCaseChk_Checked"/>
 
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{x:Static lang:Resources.DefaultColor}" Foreground="{Binding Source={StaticResource Foreground1}}" VerticalAlignment="Center"/>
+							<ComboBox SelectionChanged="FavoriteColorComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FavoriteColorComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
+						</StackPanel>
 					</StackPanel>
 				</Expander>
 
@@ -161,8 +165,34 @@
 							</StackPanel>
 						</StackPanel>
 					</Expander.Header>
-					<CheckBox Margin="10" x:Name="UseKeyboardShortcutsChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.UseKeyboardShortcuts}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="UseKeyboardShortcutsChk_Checked" Checked="UseKeyboardShortcutsChk_Checked"/>
-
+					<StackPanel>
+						<CheckBox Margin="10" x:Name="UseKeyboardShortcutsChk" Style="{DynamicResource CheckBoxStyle1}" Content="{x:Static lang:Resources.UseKeyboardShortcuts}" BorderThickness="3" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" VerticalContentAlignment="Center" Unchecked="UseKeyboardShortcutsChk_Checked" Checked="UseKeyboardShortcutsChk_Checked"/>
+						<TextBlock Text="{x:Static lang:Resources.StartSelection}" Margin="10 0 0 0"/>
+						<StackPanel Orientation="Horizontal">
+							<Border Background="{Binding Source={StaticResource Gray}}" Padding="5" Margin="10 5 0 5" CornerRadius="5" HorizontalAlignment="Left">
+								<TextBlock x:Name="SelectShortcutTxt" Text="Shift+S" FontFamily="Consolas"/>
+							</Border>
+							<Button Content="&#xF3DE;" Padding="5" x:Name="EditSelectShortcutBtn" Click="EditSelectShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+								</Button.ToolTip>
+							</Button>
+							<TextBlock x:Name="PressKeys1Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center"/>
+						</StackPanel>
+						<TextBlock Text="{x:Static lang:Resources.CopyColor}" Margin="10 0 0 0"/>
+						<StackPanel Orientation="Horizontal">
+							<Border Background="{Binding Source={StaticResource Gray}}" Padding="5" Margin="10 5 0 5" CornerRadius="5" HorizontalAlignment="Left">
+								<TextBlock x:Name="CopyShortcutTxt" Text="Shift+S" FontFamily="Consolas"/>
+							</Border>
+							<Button Content="&#xF3DE;" Padding="5" x:Name="EditCopyShortcutBtn" Click="EditCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+								</Button.ToolTip>
+							</Button>
+							<TextBlock x:Name="PressKeys2Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center"/>
+						</StackPanel>
+						<TextBlock Text="{x:Static lang:Resources.NeedRestartLabel}" TextWrapping="Wrap" FontStyle="Italic" Margin="10,5,0,5"/>
+					</StackPanel>
 				</Expander>
 
 				<Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource Background2}}" Foreground="{Binding Source={StaticResource Foreground1}}">
@@ -227,13 +257,20 @@
 							</StackPanel>
 						</StackPanel>
 					</Expander.Header>
-					<Button Click="Button_Click" Padding="5" Margin="10" Background="{x:Null}" Foreground="{Binding Source={StaticResource AccentColor}}" FontSize="14" FontWeight="Bold" Cursor="Hand" Style="{DynamicResource LinkButtonStyle}" HorizontalAlignment="Left">
-						<StackPanel Orientation="Horizontal">
-							<TextBlock Text="&#xF583;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontWeight="Regular" Margin="0,0,10,0" VerticalAlignment="Center"/>
-							<TextBlock Text="{x:Static lang:Resources.SeeLicenses}" VerticalAlignment="Center"/>
-						</StackPanel>
-					</Button>
-
+					<StackPanel>
+						<Button Click="Button_Click" Padding="5" Margin="10,10,10,0" Background="{x:Null}" Foreground="{Binding Source={StaticResource AccentColor}}" FontSize="14" FontWeight="Bold" Cursor="Hand" Style="{DynamicResource LinkButtonStyle}" HorizontalAlignment="Left">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="&#xF583;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontWeight="Regular" Margin="0,0,10,0" VerticalAlignment="Center"/>
+								<TextBlock Text="{x:Static lang:Resources.SeeLicenses}" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+						<Button x:Name="CreditsBtn" Foreground="{Binding Source={StaticResource AccentColor}}" FontSize="14" FontWeight="Bold" Cursor="Hand" Click="CreditsBtn_Click" HorizontalAlignment="Left" Style="{DynamicResource LinkButtonStyle}" Padding="5" Margin="10,0,10,10" Background="{x:Null}">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="&#xF583;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontWeight="Regular" Margin="0,0,10,0" VerticalAlignment="Center"/>
+								<TextBlock Text="{x:Static lang:Resources.CreditsAndThanks}" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+					</StackPanel>
 				</Expander>
 			</StackPanel>
 		</Grid>

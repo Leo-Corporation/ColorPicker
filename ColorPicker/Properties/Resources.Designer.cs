@@ -277,6 +277,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compact mode.
+        /// </summary>
+        public static string CompactMode {
+            get {
+                return ResourceManager.GetString("CompactMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Converter.
         /// </summary>
         public static string Converter {
@@ -300,6 +309,15 @@ namespace ColorPicker.Properties {
         public static string CopyCMYK {
             get {
                 return ResourceManager.GetString("CopyCMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy color.
+        /// </summary>
+        public static string CopyColor {
+            get {
+                return ResourceManager.GetString("CopyColor", resourceCulture);
             }
         }
         
@@ -340,6 +358,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credits and special thanks.
+        /// </summary>
+        public static string CreditsAndThanks {
+            get {
+                return ResourceManager.GetString("CreditsAndThanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
         public static string Dark {
@@ -367,11 +394,47 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default color type.
+        /// </summary>
+        public static string DefaultColor {
+            get {
+                return ResourceManager.GetString("DefaultColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit shortcut.
+        /// </summary>
+        public static string EditShortcut {
+            get {
+                return ResourceManager.GetString("EditShortcut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter compact mode.
+        /// </summary>
+        public static string EnterCompactMode {
+            get {
+                return ResourceManager.GetString("EnterCompactMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit compact mode.
+        /// </summary>
+        public static string ExitCompactMode {
+            get {
+                return ResourceManager.GetString("ExitCompactMode", resourceCulture);
             }
         }
         
@@ -673,6 +736,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes..
+        /// </summary>
+        public static string NeedRestartLabel {
+            get {
+                return ResourceManager.GetString("NeedRestartLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes. Do you want to restart now?.
         /// </summary>
         public static string NeedRestartToApplyChanges {
@@ -732,6 +804,15 @@ namespace ColorPicker.Properties {
         public static string Pin {
             get {
                 return ResourceManager.GetString("Pin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press a combination of keys..
+        /// </summary>
+        public static string PressKeys {
+            get {
+                return ResourceManager.GetString("PressKeys", resourceCulture);
             }
         }
         
@@ -889,7 +970,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press Shift+S to start/stop the selection. Press Shift+C to copy the color..
+        ///   Looks up a localized string similar to Press {0} to start/stop the selection. Press {1} to copy the color..
         /// </summary>
         public static string ShortcutsGuide {
             get {
@@ -903,6 +984,15 @@ namespace ColorPicker.Properties {
         public static string Size {
             get {
                 return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start selection.
+        /// </summary>
+        public static string StartSelection {
+            get {
+                return ResourceManager.GetString("StartSelection", resourceCulture);
             }
         }
         

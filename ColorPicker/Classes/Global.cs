@@ -24,6 +24,7 @@ SOFTWARE.
 using ColorPicker.Enums;
 using ColorPicker.Pages;
 using LeoCorpLibrary;
+using LeoCorpLibrary.Enums;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace ColorPicker.Classes
 		/// <summary>
 		/// The current version of ColorPicker.
 		/// </summary>
-		public static string Version => "4.0.0.2202";
+		public static string Version => "4.1.0.2204";
 
 		/// <summary>
 		/// List of the available languages.
@@ -118,6 +119,11 @@ namespace ColorPicker.Classes
 		}
 
 		/// <summary>
+		/// If the user is trying to new keyboard shortcuts, the value should be false.
+		/// </summary>
+		public static bool KeyBoardShortcutsAvailable { get; set; }
+
+		/// <summary>
 		/// <c>ToString()</c> method for <see cref="ColorTypes"/> enum.
 		/// </summary>
 		/// <param name="colorTypes">The enum.</param>
@@ -132,6 +138,19 @@ namespace ColorPicker.Classes
 				ColorTypes.HSL => Properties.Resources.HSL,
 				ColorTypes.CMYK => Properties.Resources.CMYK,
 				_ => Properties.Resources.RGB
+			}; // Return value
+		}
+
+		public static string ColorTypesToCopyString(ColorTypes colorTypes)
+		{
+			return colorTypes switch
+			{
+				ColorTypes.HEX => Properties.Resources.CopyHEX,
+				ColorTypes.RGB => Properties.Resources.CopyRGB,
+				ColorTypes.HSV => Properties.Resources.CopyHSV,
+				ColorTypes.HSL => Properties.Resources.CopyHSL,
+				ColorTypes.CMYK => Properties.Resources.CopyCMYK,
+				_ => Properties.Resources.CopyRGB
 			}; // Return value
 		}
 
@@ -205,5 +224,11 @@ namespace ColorPicker.Classes
 					break;
 			}
 		}
+
+		internal static string GetHsvString(ColorHelper.HSV hsv) => $"({hsv.H},{hsv.S},{hsv.V})";
+
+		internal static string GetHslString(ColorHelper.HSL hsl) => $"({hsl.H},{hsl.S},{hsl.L})";
+
+		internal static string GetCmykString(ColorHelper.CMYK cmyk) => $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 	}
 }

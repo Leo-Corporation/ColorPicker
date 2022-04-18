@@ -292,7 +292,7 @@
     <value>所有设置都已重置，ColorPicker 现在将重新启动。</value>
   </data>
   <data name="ShortcutsGuide" xml:space="preserve">
-    <value>按 Shift+S 开始/停止选择。 按 Shift+C 复制颜色。</value>
+    <value>按 {0} 开始/停止选择。 按 {1} 复制颜色。</value>
   </data>
   <data name="CopyHSV" xml:space="preserve">
     <value>复制 HSV</value>
@@ -455,5 +455,35 @@
   </data>
   <data name="ManageData" xml:space="preserve">
     <value>Manage your data.</value>
+  </data>
+  <data name="DefaultColor" xml:space="preserve">
+    <value>Default color type</value>
+  </data>
+  <data name="EnterCompactMode" xml:space="preserve">
+    <value>Enter compact mode</value>
+  </data>
+  <data name="ExitCompactMode" xml:space="preserve">
+    <value>Exit compact mode</value>
+  </data>
+  <data name="CompactMode" xml:space="preserve">
+    <value>Compact mode</value>
+  </data>
+  <data name="CopyColor" xml:space="preserve">
+    <value>Copy color</value>
+  </data>
+  <data name="StartSelection" xml:space="preserve">
+    <value>Start selection</value>
+  </data>
+  <data name="EditShortcut" xml:space="preserve">
+    <value>Edit shortcut</value>
+  </data>
+  <data name="PressKeys" xml:space="preserve">
+    <value>Press a combination of keys.</value>
+  </data>
+  <data name="NeedRestartLabel" xml:space="preserve">
+    <value>ColorPicker needs to restart to apply the changes.</value>
+  </data>
+  <data name="CreditsAndThanks" xml:space="preserve">
+    <value>Credits and special thanks</value>
   </data>
 </root>

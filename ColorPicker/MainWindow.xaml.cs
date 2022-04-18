@@ -111,6 +111,8 @@ namespace ColorPicker
 
 			SettingsTabBtn.Foreground = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the foreground
 			SettingsTabBtn.Background = new SolidColorBrush { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()) }; // Set the background
+
+			CompactModeBtn.Visibility = Visibility.Collapsed; // Hide
 		}
 
 		private void PickerTabBtn_Click(object sender, RoutedEventArgs e)
@@ -119,6 +121,11 @@ namespace ColorPicker
 			CheckButton(PickerTabBtn); // Check the "Picker" button
 
 			PageContent.Navigate(Global.PickerPage); // Navigate
+			Global.PickerPage.CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value != Enums.ColorTypes.HEX
+				? Global.Settings.FavoriteColorType.Value
+				: Enums.ColorTypes.RGB); // Set the "Copy" button text
+
+			CompactModeBtn.Visibility = Visibility.Visible; // Show
 		}
 
 		private void ConverterTabBtn_Click(object sender, RoutedEventArgs e)
@@ -167,6 +174,32 @@ namespace ColorPicker
 			Storyboard.SetTargetName(t, PageContent.Name);
 			Storyboard.SetTargetProperty(t, new(Frame.MarginProperty));
 			storyboard.Begin(this);
+		}
+
+		bool isCompactModeEnabled = false;
+		private void CompactModeBtn_Click(object sender, RoutedEventArgs e)
+		{
+			isCompactModeEnabled = !isCompactModeEnabled; // Toggle compact mode
+			if (isCompactModeEnabled)
+			{
+				CompactModeToolTip.Content = Properties.Resources.ExitCompactMode; // Set text
+				CompactModeBtn.Content = "\uF160"; // Set icon
+			}
+			else
+			{
+				CompactModeToolTip.Content = Properties.Resources.EnterCompactMode; // Set text
+				CompactModeBtn.Content = "\uF166"; // Set icon
+			}
+			ToggleCompactMode();
+		}
+
+		internal void ToggleCompactMode()
+		{
+			NavBar.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle navbar
+			Header.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle header
+
+			Width = isCompactModeEnabled ? 500 : 800; // Toggle width
+			Height = isCompactModeEnabled ? 250 : 450; // Toggle height
 		}
 	}
 }

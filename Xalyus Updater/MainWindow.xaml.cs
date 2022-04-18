@@ -48,7 +48,7 @@ namespace Xalyus_Updater
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-        WebClient client = new(); // Webclient
+		readonly WebClient client = new(); // Webclient
         public MainWindow()
 		{
 			InitializeComponent();

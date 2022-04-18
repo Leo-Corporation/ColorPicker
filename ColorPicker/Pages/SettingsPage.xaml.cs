@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -41,6 +43,7 @@ namespace ColorPicker.Pages
 	{
 		bool isAvailable;
 		readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
+		private IKeyboardMouseEvents GlobalHook;
 		public SettingsPage()
 		{
 			InitializeComponent();
@@ -55,7 +58,28 @@ namespace ColorPicker.Pages
 					Environment.Exit(0); // Close
 				}
 			};
+			GlobalHook = Hook.GlobalEvents();
+
 			InitUI(); // Load the UI
+		}
+
+		List<string> keys = new();
+		private void GlobalHook_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+			if (keys.Contains(e.KeyCode.ToString()))
+			{
+				return; // Stop
+			}
+
+			keys.Add(e.KeyCode.ToString()); // Add key to list
+			if (selectShortcutInput)
+			{
+				SelectShortcutTxt.Text += (SelectShortcutTxt.Text.Length == 0) ? e.KeyCode.ToString() : $"+{e.KeyCode}";
+			}
+			else
+			{
+				CopyShortcutTxt.Text += (CopyShortcutTxt.Text.Length == 0) ? e.KeyCode.ToString() : $"+{e.KeyCode}";
+			}
 		}
 
 		private async void InitUI()
@@ -107,6 +131,21 @@ namespace ColorPicker.Pages
 					Global.Settings.IsFirstRun = true; // Set default value
 				}
 
+				if (!Global.Settings.FavoriteColorType.HasValue)
+				{
+					Global.Settings.FavoriteColorType = Enums.ColorTypes.RGB; // Set default value
+				}
+
+				if (string.IsNullOrEmpty(Global.Settings.CopyKeyboardShortcut))
+				{
+					Global.Settings.CopyKeyboardShortcut = "Shift+C"; // Set default value
+				}
+
+				if (string.IsNullOrEmpty(Global.Settings.SelectKeyboardShortcut))
+				{
+					Global.Settings.SelectKeyboardShortcut = "Shift+S"; // Set default value
+				}
+
 				// Load checkboxes
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -132,11 +171,23 @@ namespace ColorPicker.Pages
 					Global.Settings.RGBSeparator = ";"; // Set
 				}
 
+				// Load FavoriteColorComboBox
+				for (int i = 0; i < Enum.GetValues(typeof(Enums.ColorTypes)).Length; i++)
+				{
+					FavoriteColorComboBox.Items.Add(Global.ColorTypesToString((Enums.ColorTypes)i));
+				}
+
+				FavoriteColorComboBox.SelectedIndex = (int)Global.Settings.FavoriteColorType; // Set selected index
+
 				RGBSeparatorTxt.Text = Global.Settings.RGBSeparator; // Set text
 
 				LangApplyBtn.Visibility = Visibility.Hidden; // Hide
 				ThemeApplyBtn.Visibility = Visibility.Hidden; // Hide
 				RGBFormatApplyBtn.Visibility = Visibility.Hidden; // Hide
+
+				// Load ShortcutTextBoxes
+				CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut; // Set text
+				SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut; // Set text
 
 				// Update the UpdateStatusTxt
 				if (Global.Settings.CheckUpdatesOnStart)
@@ -420,6 +471,9 @@ namespace ColorPicker.Pages
 					RestoreColorHistory = true,
 					RestorePaletteColorHistory = true,
 					IsFirstRun = false, // False instead of true because the user just want to reset settings, not go through the "welcome" process again.
+					FavoriteColorType = Enums.ColorTypes.RGB,
+					CopyKeyboardShortcut = "Shift+C",
+					SelectKeyboardShortcut = "Shift+S",
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes
@@ -451,6 +505,72 @@ namespace ColorPicker.Pages
 		{
 			Global.Settings.RestorePaletteColorHistory = RestoreColorPaletteHistoryOnStartChk.IsChecked; // Set
 			SettingsManager.Save(); // Save changes
+		}
+
+		private void FavoriteColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Global.Settings.FavoriteColorType = (Enums.ColorTypes)FavoriteColorComboBox.SelectedIndex; // Set
+			SettingsManager.Save(); // Save changes
+		}
+
+		bool copyShortcutInput, selectShortcutInput = false;
+		private void EditCopyShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			keys = new(); // Create new list
+			copyShortcutInput = !copyShortcutInput; // Toggle
+			selectShortcutInput = false; // Set
+			PressKeys2Txt.Visibility = copyShortcutInput ? Visibility.Visible : Visibility.Collapsed; // Show/Hide
+			EditCopyShortcutBtn.Content = copyShortcutInput ? "\uF295" : "\uF3DE"; // Set text
+
+			if (copyShortcutInput)
+			{
+				GlobalHook.KeyDown += GlobalHook_KeyDown; // Subscribe
+				CopyShortcutTxt.Text = "";
+				Global.KeyBoardShortcutsAvailable = false; // Set
+			}
+			else
+			{
+				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
+				Global.KeyBoardShortcutsAvailable = true; // Set
+				if (CopyShortcutTxt.Text.Length == 0) CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut; // Set default
+
+				Global.Settings.CopyKeyboardShortcut = CopyShortcutTxt.Text; // Set
+				SettingsManager.Save(); // Save changes
+			}
+		}
+
+		private void CreditsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show($"{Properties.Resources.CreditsAndThanks}\n\n" +
+				$"@dependabot\n" +
+				$"@Leo-Peyronnet\n" +
+				$"@wcxu21",
+				Properties.Resources.CreditsAndThanks, MessageBoxButton.OK, MessageBoxImage.Information);
+		}
+
+		private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			keys = new(); // Create new list
+			selectShortcutInput = !selectShortcutInput; // Toggle
+			copyShortcutInput = false; // Set
+			PressKeys1Txt.Visibility = selectShortcutInput ? Visibility.Visible : Visibility.Collapsed; // Show/Hide
+			EditSelectShortcutBtn.Content = selectShortcutInput ? "\uF295" : "\uF3DE"; // Set text
+
+			if (selectShortcutInput)
+			{
+				GlobalHook.KeyDown += GlobalHook_KeyDown; // Subscribe
+				SelectShortcutTxt.Text = "";
+				Global.KeyBoardShortcutsAvailable = false; // Set
+			}
+			else
+			{
+				GlobalHook.KeyDown -= GlobalHook_KeyDown; // Unsubscribe
+				Global.KeyBoardShortcutsAvailable = true; // Set
+				if (SelectShortcutTxt.Text.Length == 0) SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut; // Set default
+
+				Global.Settings.SelectKeyboardShortcut = SelectShortcutTxt.Text; // Set
+				SettingsManager.Save(); // Save changes
+			}
 		}
 	}
 }

@@ -272,7 +272,7 @@
     <value>All settings have been reset, ColorPicker will now restart.</value>
   </data>
   <data name="ShortcutsGuide" xml:space="preserve">
-    <value>Press Shift+S to start/stop the selection. Press Shift+C to copy the color.</value>
+    <value>Press {0} to start/stop the selection. Press {1} to copy the color.</value>
   </data>
   <data name="CopyHSV" xml:space="preserve">
     <value>Copy HSV</value>
@@ -435,5 +435,35 @@
   </data>
   <data name="ManageData" xml:space="preserve">
     <value>Manage your data.</value>
+  </data>
+  <data name="DefaultColor" xml:space="preserve">
+    <value>Default color type</value>
+  </data>
+  <data name="EnterCompactMode" xml:space="preserve">
+    <value>Enter compact mode</value>
+  </data>
+  <data name="ExitCompactMode" xml:space="preserve">
+    <value>Exit compact mode</value>
+  </data>
+  <data name="CompactMode" xml:space="preserve">
+    <value>Compact mode</value>
+  </data>
+  <data name="CopyColor" xml:space="preserve">
+    <value>Copy color</value>
+  </data>
+  <data name="StartSelection" xml:space="preserve">
+    <value>Start selection</value>
+  </data>
+  <data name="EditShortcut" xml:space="preserve">
+    <value>Edit shortcut</value>
+  </data>
+  <data name="PressKeys" xml:space="preserve">
+    <value>Press a combination of keys.</value>
+  </data>
+  <data name="NeedRestartLabel" xml:space="preserve">
+    <value>ColorPicker needs to restart to apply the changes.</value>
+  </data>
+  <data name="CreditsAndThanks" xml:space="preserve">
+    <value>Credits and special thanks</value>
   </data>
 </root>

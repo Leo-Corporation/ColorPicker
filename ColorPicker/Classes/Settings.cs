@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Enums;
 using LeoCorpLibrary;
 using System;
 using System.Diagnostics;
@@ -86,6 +87,21 @@ namespace ColorPicker.Classes
 		/// True if this is the first time ColorPicker is launched.
 		/// </summary>
 		public bool? IsFirstRun { get; set; }
+
+		/// <summary>
+		/// The favorite color type of the user.
+		/// </summary>
+		public ColorTypes? FavoriteColorType { get; set; }
+
+		/// <summary>
+		/// The keyboard shortcut used to copy a color when selecting one.
+		/// </summary>
+		public string CopyKeyboardShortcut { get; set; }
+
+		/// <summary>
+		/// The keyboard shortcut used to start the selection of a color.
+		/// </summary>
+		public string SelectKeyboardShortcut { get; set; }
 	}
 
 	/// <summary>
@@ -124,6 +140,9 @@ namespace ColorPicker.Classes
 					RestoreColorHistory = true,
 					RestorePaletteColorHistory = true,
 					IsFirstRun = true,
+					FavoriteColorType = ColorTypes.RGB,
+					CopyKeyboardShortcut = "Shift+C",
+					SelectKeyboardShortcut = "Shift+S",
 				}; // Create a new settings file
 
 				Save(); // Save the changes

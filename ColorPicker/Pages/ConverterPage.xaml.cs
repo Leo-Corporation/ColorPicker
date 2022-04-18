@@ -47,19 +47,48 @@ namespace ColorPicker.Pages
 
 		private void InitUI()
 		{
-			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.RGB)); // Add
-			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HEX)); // Add
-			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HSV)); // Add
-			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.HSL)); // Add
-			ColorTypeComboBox.Items.Add(Global.ColorTypesToString(ColorTypes.CMYK)); // Add
-			ColorTypeComboBox.SelectedIndex = 0; // Set index
+			// Load ColorTypeComboBox
+			for (int i = 0; i < Enum.GetValues(typeof(ColorTypes)).Length; i++)
+			{
+				ColorTypeComboBox.Items.Add(Global.ColorTypesToString((ColorTypes)i)); // Add
+			}
+
+			ColorTypeComboBox.SelectedIndex = (int)Global.Settings.FavoriteColorType; // Set index
 
 			// Generate random color
 			Random random = new(); // Create new random
 			int r = random.Next(0, 255); // Generate random number between 0 and 255
 			int g = random.Next(0, 255); // Generate random number between 0 and 255
 			int b = random.Next(0, 255); // Generate random number between 0 and 255
-			ColorTxt.Text = $"{r}{sep}{g}{sep}{b}"; // Set text
+
+			switch ((ColorTypes)ColorTypeComboBox.SelectedIndex)
+			{
+				case ColorTypes.RGB:
+					ColorTxt.Text = $"{r}{sep}{g}{sep}{b}"; // Set text
+					break;
+				case ColorTypes.HEX:
+					ColorTxt.Text = $"#{ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b))}";
+					break;
+				case ColorTypes.HSV:
+					var hsv = ColorHelper.ColorConverter.RgbToHsv(new((byte)r, (byte)g, (byte)b)); // Convert
+					HueTxt.Text = hsv.H.ToString(); // Set text
+					SatTxt.Text = hsv.S.ToString(); // Set text
+					ValTxt.Text = hsv.V.ToString(); // Set text
+					break;
+				case ColorTypes.HSL:
+					var hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)r, (byte)g, (byte)b)); // Convert
+					HTxt.Text = hsl.H.ToString(); // Set text
+					STxt.Text = hsl.S.ToString(); // Set text
+					LTxt.Text = hsl.L.ToString(); // Set text
+					break;
+				case ColorTypes.CMYK:
+					var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new((byte)r, (byte)g, (byte)b)); // Convert
+					CTxt.Text = cmyk.C.ToString(); // Set text
+					MTxt.Text = cmyk.M.ToString(); // Set text
+					YTxt.Text = cmyk.Y.ToString(); // Set text
+					KTxt.Text = cmyk.K.ToString(); // Set text
+					break;
+			}
 		}
 
 		private void ColorTxt_TextChanged(object sender, TextChangedEventArgs e)
