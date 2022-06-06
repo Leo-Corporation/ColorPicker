@@ -39,14 +39,18 @@ namespace ColorPicker.UserControls
 		int R { get; init; }
 		int G { get; init; }
 		int B { get; init; }
+
+		int[] CurrentColor;
 		public RecentColorItem(int r, int g, int b, bool addToHistory = true)
 		{
 			InitializeComponent();
 			R = r; G = g; B = b; // Set
+			CurrentColor = new int[] { R, G, B }; // Set the current color
+
 
 			if (Global.Settings.RestoreColorHistory.Value && addToHistory)
 			{
-				Global.ColorContentHistory.PickerColorsRGB.Add(new int[] { R, G, B });
+				Global.ColorContentHistory.PickerColorsRGB.Add(CurrentColor);
 			}
 
 			InitUI(); // Load the UI
@@ -77,6 +81,25 @@ namespace ColorPicker.UserControls
 				ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B))),
 				_ => $"{R}{s}{G}{s}{B}"
 			}); // Copy
+		}
+
+		private void Border_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			try
+			{
+				foreach (int[] item in Global.ColorContentHistory.PickerColorsRGB)
+				{
+					if (item[0] == R && item[1] == G && item[2] == B)
+					{
+						Global.ColorContentHistory.PickerColorsRGB.Remove(item);
+						break;
+					}
+				}
+
+				(Parent as WrapPanel).Children.Remove(this); // Remove from Wrap panel
+				HistoryManager.Save(); // Save changes
+			}
+			catch { }
 		}
 	}
 }

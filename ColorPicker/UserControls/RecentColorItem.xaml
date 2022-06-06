@@ -6,7 +6,7 @@
 			 xmlns:local="clr-namespace:ColorPicker.UserControls"
 			 mc:Ignorable="d" 
 			 Height="50" Width="50" Margin="5">
-	<Border x:Name="Border" d:Background="#fff" CornerRadius="10" Cursor="Hand" MouseLeftButtonUp="Border_MouseLeftButtonUp">
+	<Border x:Name="Border" d:Background="#fff" CornerRadius="10" Cursor="Hand" MouseLeftButtonUp="Border_MouseLeftButtonUp" MouseRightButtonUp="Border_MouseRightButtonUp">
 		<Border.ToolTip>
 			<ToolTip x:Name="ToolTip" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
 		</Border.ToolTip>
