@@ -47,6 +47,10 @@ namespace ColorPicker.Windows
 			{
 				FontComboBox.Items.Add(fontFamily.Name);
 			}
+			if (FontComboBox.Items.Contains("Arial"))
+			{
+				FontComboBox.Text = "Arial"; 
+			}
 		}
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
