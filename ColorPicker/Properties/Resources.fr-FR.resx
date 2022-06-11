@@ -486,4 +486,7 @@
   <data name="CreditsAndThanks" xml:space="preserve">
     <value>Crédits et remerciements</value>
   </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tâches</value>
+  </data>
 </root>
