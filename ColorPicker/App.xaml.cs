@@ -51,7 +51,9 @@ namespace ColorPicker
 			}
 			else
 			{
-				new MainWindow().Show(); // Launch ColorPicker
+				int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
+
+				new MainWindow(pageID == null ? null : (Enums.Pages)pageID).Show(); // Launch ColorPicker
 				Global.CreateJumpLists(); // Create the jump lists
 			}
 		}
