@@ -37,6 +37,7 @@ namespace ColorPicker
 	public partial class MainWindow : Window
 	{
 		private Button CheckedButton { get; set; }
+		private Enums.Pages StartPage { get; init; }
 
 		readonly ColorAnimation colorAnimation = new()
 		{
@@ -44,9 +45,11 @@ namespace ColorPicker
 			To = (Color)ColorConverter.ConvertFromString(App.Current.Resources["Background1"].ToString()),
 			Duration = new(TimeSpan.FromSeconds(0.2d))
 		};
-		public MainWindow()
+		public MainWindow(Enums.Pages? pages = Enums.Pages.Picker)
 		{
 			InitializeComponent();
+			StartPage = pages ?? Enums.Pages.Picker; // Set the startup page of ColorPicker
+			
 			InitUI();
 		}
 
@@ -54,8 +57,26 @@ namespace ColorPicker
 		{
 			HelloTxt.Text = Global.GetHiSentence; // Set the "Hello" message
 
-			CheckButton(PickerTabBtn); // Check the start page button
-			PageContent.Content = Global.PickerPage; // Set startup page
+			// Pin state
+			Topmost = Global.Settings.IsPinned.Value; // Set the window to be pinned or not
+			PinBtn.Content = Topmost ? "\uF604" : "\uF602"; // Set text
+			PinToolTip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin; // Set text
+
+			CheckButton(StartPage switch
+			{
+				Enums.Pages.Picker => PickerTabBtn,
+				Enums.Pages.Converter => ConverterTabBtn,
+				Enums.Pages.Palette => PaletteTabBtn,
+				_ => PickerTabBtn
+			}); // Check the start page button
+			
+			PageContent.Content = StartPage switch
+			{
+				Enums.Pages.Picker => Global.PickerPage,
+				Enums.Pages.Converter => Global.ConverterPage,
+				Enums.Pages.Palette => Global.PalettePage,
+				_ => Global.PickerPage
+			}; // Set startup page
 
 			Closed += (o, e) => HistoryManager.Save();
 			PageContent.Navigated += (o, e) => AnimatePage();
@@ -158,6 +179,9 @@ namespace ColorPicker
 			Topmost = !Topmost; // Pin/Unpin
 			PinBtn.Content = Topmost ? "\uF604" : "\uF602"; // Set text
 			PinToolTip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin; // Set text
+
+			Global.Settings.IsPinned = Topmost; // Set the "is pinned" setting
+			SettingsManager.Save(); // Save the settings
 		}
 
 		private void AnimatePage()

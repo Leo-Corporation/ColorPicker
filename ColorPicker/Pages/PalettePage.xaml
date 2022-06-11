@@ -41,7 +41,11 @@
 				</Grid>
 				<StackPanel x:Name="PaletteContent">
 					<StackPanel Orientation="Horizontal">
-						<Border x:Name="ColorDisplayer" CornerRadius="10" Margin="10" Grid.Column="0" Height="50" Width="50" HorizontalAlignment="Left"/>
+                        <Border x:Name="ColorDisplayer" CornerRadius="10" Margin="10" Grid.Column="0" Height="50" Width="50" HorizontalAlignment="Left" MouseLeftButtonUp="ColorDisplayer_MouseLeftButtonUp" Cursor="Hand">
+                            <Border.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.SelectColor}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+                            </Border.ToolTip>
+                        </Border>
 						<ComboBox x:Name="ColorTypeComboBox" Foreground="{Binding Source={StaticResource Foreground1}}" Style="{DynamicResource ComboBoxStyle1}" Margin="10,0,0,0" BorderThickness="2" Padding="5" VerticalAlignment="Center" SelectedIndex="0">
 							<ComboBoxItem Content="{x:Static lang:Resources.RGB}"/>
 							<ComboBoxItem Content="{x:Static lang:Resources.HEX}"/>

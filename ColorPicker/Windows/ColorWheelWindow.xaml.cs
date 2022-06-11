@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using LeoCorpLibrary;
 using System.Drawing;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -36,15 +38,51 @@ namespace ColorPicker.Windows
 	/// </summary>
 	public partial class ColorWheelWindow : Window
 	{
-		bool isRunning = false;
+		bool isRunning, selectionMode = false;
+		readonly TextBox ParentTextBox;
 		readonly DispatcherTimer dispatcherTimer = new();
 
 		int r, g, b; // RGB values
 		string hex; // HEX value
+		ColorTypes colorTypeForSelection;
 
 		public ColorWheelWindow()
 		{
 			InitializeComponent();
+
+			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
+			dispatcherTimer.Tick += (o, e) =>
+			{
+				Bitmap bitmap = new(1, 1);
+				Graphics GFX = Graphics.FromImage(bitmap);
+				GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+				var pixel = bitmap.GetPixel(0, 0);
+
+				RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
+				GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
+				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
+
+				r = pixel.R;
+				g = pixel.G;
+				b = pixel.B;
+
+				// Convert to HEX
+				bool u = Global.Settings.HEXUseUpperCase.Value;
+				var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
+				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+				hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+
+				ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
+			};
+		}
+
+		public ColorWheelWindow(bool selectMode, TextBox textBox, ColorTypes colorType = ColorTypes.RGB)
+		{
+			InitializeComponent();
+
+			selectionMode = selectMode; // Set selection mode
+			ParentTextBox = textBox; // Set textbox
+			colorTypeForSelection = colorType; // Set color type
 
 			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
 			dispatcherTimer.Tick += (o, e) =>
@@ -84,23 +122,35 @@ namespace ColorPicker.Windows
 
 		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
 		{
-			ColorDisplayer.Visibility = Visibility.Visible; // Show
-			ColorInforPanel.Visibility = Visibility.Visible; // Show
-
-			CopyBtn.Visibility = Visibility.Visible; // Show
-			CopyHEXBtn.Visibility = Visibility.Visible; // Show
-
-			if (!isRunning)
+			if (!selectionMode)
 			{
-				dispatcherTimer.Start(); // Start
-				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
-				isRunning = true;
+				ColorDisplayer.Visibility = Visibility.Visible; // Show
+				ColorInforPanel.Visibility = Visibility.Visible; // Show
+
+				CopyBtn.Visibility = Visibility.Visible; // Show
+				CopyHEXBtn.Visibility = Visibility.Visible; // Show
+
+				if (!isRunning)
+				{
+					dispatcherTimer.Start(); // Start
+					SelectColorBtn.Content = Properties.Resources.Stop; // Set text
+					isRunning = true;
+				}
+				else
+				{
+					dispatcherTimer.Stop(); // Stop
+					SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
+					isRunning = false;
+				}
 			}
 			else
 			{
-				dispatcherTimer.Stop(); // Stop
-				SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
-				isRunning = false;
+				ParentTextBox.Text = colorTypeForSelection switch
+				{
+					ColorTypes.HEX => hex, // Set text with HEX color
+					_ => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}" // Set text with RGB color
+				};
+				Close(); // Close
 			}
 		}
 

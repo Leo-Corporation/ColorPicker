@@ -47,6 +47,10 @@ namespace ColorPicker.Windows
 			{
 				FontComboBox.Items.Add(fontFamily.Name);
 			}
+			if (FontComboBox.Items.Contains("Arial"))
+			{
+				FontComboBox.Text = "Arial"; 
+			}
 		}
 
 		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -61,9 +65,13 @@ namespace ColorPicker.Windows
 
 		private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
-			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
-			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			try
+			{
+				RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+				ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+				BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			}
+			catch {	}
 		}
 
 		private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)

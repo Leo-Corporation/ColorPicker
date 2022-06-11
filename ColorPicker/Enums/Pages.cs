@@ -21,41 +21,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Classes;
-using ColorPicker.Windows;
-using System.Windows;
+namespace ColorPicker.Enums;
 
-namespace ColorPicker
+public enum Pages
 {
 	/// <summary>
-	/// Interaction logic for App.xaml
+	/// The <see cref="ColorPicker.Pages.PickerPage"/> of ColorPicker.
 	/// </summary>
-	public partial class App : Application
-	{
-		protected override void OnStartup(StartupEventArgs e)
-		{
-			SettingsManager.Load(); // Load settings
-			HistoryManager.Load(); // Load the color history
+	Picker,
 
-			Global.ChangeTheme(); // Change the theme
-			Global.ChangeLanguage(); // Change the language
+	/// <summary>
+	/// The <see cref="ColorPicker.Pages.ConverterPage"/> of ColorPicker.
+	/// </summary>
+	Converter,
 
-			Global.SettingsPage = new(); // Create a new SettingsPage
-			Global.PickerPage = new(); // Create a new PickerPage
-			Global.ConverterPage = new(); // Create a new ConverterPage
-			Global.PalettePage = new(); // Create a new ConverterPage
-
-			if (Global.Settings.IsFirstRun.Value)
-			{
-				new FirstRunWindow().Show(); // Show the "First run" experience
-			}
-			else
-			{
-				int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
-
-				new MainWindow(pageID == null ? null : (Enums.Pages)pageID).Show(); // Launch ColorPicker
-				Global.CreateJumpLists(); // Create the jump lists
-			}
-		}
-	}
+	/// <summary>
+	/// The <see cref="ColorPicker.Pages.PalettePage"/> of ColorPicker.
+	/// </summary>
+	Palette
 }
