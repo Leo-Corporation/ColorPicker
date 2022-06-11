@@ -146,6 +146,11 @@ namespace ColorPicker.Pages
 					Global.Settings.SelectKeyboardShortcut = "Shift+S"; // Set default value
 				}
 
+				if (!Global.Settings.IsPinned.HasValue)
+				{
+					Global.Settings.IsPinned = false; // Set default value
+				}
+
 				// Load checkboxes
 				CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 				NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -474,6 +479,7 @@ namespace ColorPicker.Pages
 					FavoriteColorType = Enums.ColorTypes.RGB,
 					CopyKeyboardShortcut = "Shift+C",
 					SelectKeyboardShortcut = "Shift+S",
+					IsPinned = false,
 				}; // Create default settings
 
 				SettingsManager.Save(); // Save the changes

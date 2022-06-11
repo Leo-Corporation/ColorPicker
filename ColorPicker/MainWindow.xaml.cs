@@ -174,6 +174,9 @@ namespace ColorPicker
 			Topmost = !Topmost; // Pin/Unpin
 			PinBtn.Content = Topmost ? "\uF604" : "\uF602"; // Set text
 			PinToolTip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin; // Set text
+
+			Global.Settings.IsPinned = Topmost; // Set the "is pinned" setting
+			SettingsManager.Save(); // Save the settings
 		}
 
 		private void AnimatePage()

@@ -102,6 +102,11 @@ namespace ColorPicker.Classes
 		/// The keyboard shortcut used to start the selection of a color.
 		/// </summary>
 		public string SelectKeyboardShortcut { get; set; }
+
+		/// <summary>
+		/// True if the window is pinned
+		/// </summary>
+		public bool? IsPinned { get; set; }
 	}
 
 	/// <summary>
@@ -143,6 +148,7 @@ namespace ColorPicker.Classes
 					FavoriteColorType = ColorTypes.RGB,
 					CopyKeyboardShortcut = "Shift+C",
 					SelectKeyboardShortcut = "Shift+S",
+					IsPinned = false,
 				}; // Create a new settings file
 
 				Save(); // Save the changes
