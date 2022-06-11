@@ -57,6 +57,11 @@ namespace ColorPicker
 		{
 			HelloTxt.Text = Global.GetHiSentence; // Set the "Hello" message
 
+			// Pin state
+			Topmost = Global.Settings.IsPinned.Value; // Set the window to be pinned or not
+			PinBtn.Content = Topmost ? "\uF604" : "\uF602"; // Set text
+			PinToolTip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin; // Set text
+
 			CheckButton(StartPage switch
 			{
 				Enums.Pages.Picker => PickerTabBtn,
