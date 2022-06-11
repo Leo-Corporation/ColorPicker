@@ -23,7 +23,9 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using ColorPicker.UserControls;
+using ColorPicker.Windows;
 using LeoCorpLibrary.Extensions;
 using System;
 using System.Collections.Generic;
@@ -42,6 +44,7 @@ namespace ColorPicker.Pages
 		RGB[] CurrentColorPalette { get; set; }
 		string CurrentRGBColor { get; set; }
 		internal List<string> SavedColorPalettes { get; set; }
+
 		public PalettePage()
 		{
 			InitializeComponent();
@@ -307,6 +310,11 @@ namespace ColorPicker.Pages
 				SavedColorPalettes.Add(CurrentRGBColor); // Add to saved palettes
 				HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette, HistoryDisplayer));
 			}
+		}
+
+		private void ColorDisplayer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			new ColorWheelWindow(true, RGBTxt, (ColorTypes)ColorTypeComboBox.SelectedIndex).Show(); // Show window
 		}
 	}
 }
