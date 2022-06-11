@@ -28,8 +28,10 @@ using LeoCorpLibrary.Enums;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
+using System.Windows.Shell;
 
 namespace ColorPicker.Classes
 {
@@ -230,5 +232,43 @@ namespace ColorPicker.Classes
 		internal static string GetHslString(ColorHelper.HSL hsl) => $"({hsl.H},{hsl.S},{hsl.L})";
 
 		internal static string GetCmykString(ColorHelper.CMYK cmyk) => $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
+
+		internal static void CreateJumpLists()
+		{
+			JumpList jumpList = new (); // Create a jump list
+
+			jumpList.JumpItems.Add(new JumpTask
+			{
+				Title = Properties.Resources.Picker,
+				Arguments = "/page 0",
+				Description = Properties.Resources.WelcomePicker,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			}); // Add Picker jump task
+
+			jumpList.JumpItems.Add(new JumpTask
+			{
+				Title = Properties.Resources.Converter,
+				Arguments = "/page 1",
+				Description = Properties.Resources.WelcomeConverter,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			}); // Add Converter jump task
+
+			jumpList.JumpItems.Add(new JumpTask
+			{
+				Title = Properties.Resources.Palette,
+				Arguments = "/page 2",
+				Description = Properties.Resources.WelcomePalette,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			}); // Add Picker jump task
+
+			jumpList.ShowRecentCategory = false; // Hide the recent category
+			jumpList.ShowFrequentCategory = false; // Hide the frequent category
+
+
+			JumpList.SetJumpList(Application.Current, jumpList); // Set the jump list
+		}
 	}
 }

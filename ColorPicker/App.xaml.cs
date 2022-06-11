@@ -52,6 +52,7 @@ namespace ColorPicker
 			else
 			{
 				new MainWindow().Show(); // Launch ColorPicker
+				Global.CreateJumpLists(); // Create the jump lists
 			}
 		}
 	}
