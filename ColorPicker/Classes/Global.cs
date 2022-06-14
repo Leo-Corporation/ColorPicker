@@ -33,242 +33,241 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Shell;
 
-namespace ColorPicker.Classes
+namespace ColorPicker.Classes;
+
+/// <summary>
+/// The <see cref="Global"/> class contains various methods and properties.
+/// </summary>
+public static class Global
 {
 	/// <summary>
-	/// The <see cref="Global"/> class contains various methods and properties.
+	/// The current version of ColorPicker.
 	/// </summary>
-	public static class Global
+	public static string Version => "4.2.0.2206";
+
+	/// <summary>
+	/// List of the available languages.
+	/// </summary>
+	public static List<string> LanguageList => new() { "English (United States)", "Français (France)", "中文（简体）" };
+
+	/// <summary>
+	/// List of the available languages codes.
+	/// </summary>
+	public static List<string> LanguageCodeList => new() { "en-US", "fr-FR", "zh-CN" };
+
+	/// <summary>
+	/// The <see cref="Pages.PickerPage"/>.
+	/// </summary>
+	public static PickerPage PickerPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.ConverterPage"/>.
+	/// </summary>
+	public static ConverterPage ConverterPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.PalettePage"/>.
+	/// </summary>
+	public static PalettePage PalettePage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPage"/>.
+	/// </summary>
+	public static SettingsPage SettingsPage { get; set; }
+
+	/// <summary>
+	/// Settings of ColorPicker.
+	/// </summary>
+	public static Settings Settings { get; set; }
+
+	/// <summary>
+	/// The content of the history of ColorPicker.
+	/// </summary>
+	public static ColorContentHistory ColorContentHistory { get; set; }
+
+	/// <summary>
+	/// Last version link.
+	/// </summary>
+	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/Version.txt";
+
+	/// <summary>
+	/// Gets the "Hi" sentence message.
+	/// </summary>
+	public static string GetHiSentence
 	{
-		/// <summary>
-		/// The current version of ColorPicker.
-		/// </summary>
-		public static string Version => "4.2.0.2206";
-
-		/// <summary>
-		/// List of the available languages.
-		/// </summary>
-		public static List<string> LanguageList => new() { "English (United States)", "Français (France)", "中文（简体）" };
-
-		/// <summary>
-		/// List of the available languages codes.
-		/// </summary>
-		public static List<string> LanguageCodeList => new() { "en-US", "fr-FR", "zh-CN" };
-
-		/// <summary>
-		/// The <see cref="Pages.PickerPage"/>.
-		/// </summary>
-		public static PickerPage PickerPage { get; set; }
-
-		/// <summary>
-		/// The <see cref="Pages.ConverterPage"/>.
-		/// </summary>
-		public static ConverterPage ConverterPage { get; set; }
-
-		/// <summary>
-		/// The <see cref="Pages.PalettePage"/>.
-		/// </summary>
-		public static PalettePage PalettePage { get; set; }
-
-		/// <summary>
-		/// The <see cref="Pages.SettingsPage"/>.
-		/// </summary>
-		public static SettingsPage SettingsPage { get; set; }
-
-		/// <summary>
-		/// Settings of ColorPicker.
-		/// </summary>
-		public static Settings Settings { get; set; }
-
-		/// <summary>
-		/// The content of the history of ColorPicker.
-		/// </summary>
-		public static ColorContentHistory ColorContentHistory { get; set; }
-
-		/// <summary>
-		/// Last version link.
-		/// </summary>
-		public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/Version.txt";
-
-		/// <summary>
-		/// Gets the "Hi" sentence message.
-		/// </summary>
-		public static string GetHiSentence
+		get
 		{
-			get
+			if (DateTime.Now.Hour >= 21 && DateTime.Now.Hour <= 7) // If between 9PM & 7AM
 			{
-				if (DateTime.Now.Hour >= 21 && DateTime.Now.Hour <= 7) // If between 9PM & 7AM
-				{
-					return Properties.Resources.GoodNight + ", " + Environment.UserName + "."; // Return the correct value
-				}
-				else if (DateTime.Now.Hour >= 7 && DateTime.Now.Hour <= 12) // If between 7AM - 12PM
-				{
-					return Properties.Resources.Hi + ", " + Environment.UserName + "."; // Return the correct value
-				}
-				else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour <= 17) // If between 12PM - 5PM
-				{
-					return Properties.Resources.GoodAfternoon + ", " + Environment.UserName + "."; // Return the correct value
-				}
-				else if (DateTime.Now.Hour >= 17 && DateTime.Now.Hour <= 21) // If between 5PM - 9PM
-				{
-					return Properties.Resources.GoodEvening + ", " + Environment.UserName + "."; // Return the correct value
-				}
-				else
-				{
-					return Properties.Resources.Hi + ", " + Environment.UserName + "."; // Return the correct value
-				}
+				return Properties.Resources.GoodNight + ", " + Environment.UserName + "."; // Return the correct value
 			}
-		}
-
-		/// <summary>
-		/// If the user is trying to new keyboard shortcuts, the value should be false.
-		/// </summary>
-		public static bool KeyBoardShortcutsAvailable { get; set; }
-
-		/// <summary>
-		/// <c>ToString()</c> method for <see cref="ColorTypes"/> enum.
-		/// </summary>
-		/// <param name="colorTypes">The enum.</param>
-		/// <returns>A <see cref="string"/> value.</returns>
-		public static string ColorTypesToString(ColorTypes colorTypes)
-		{
-			return colorTypes switch
+			else if (DateTime.Now.Hour >= 7 && DateTime.Now.Hour <= 12) // If between 7AM - 12PM
 			{
-				ColorTypes.HEX => Properties.Resources.HEX,
-				ColorTypes.RGB => Properties.Resources.RGB,
-				ColorTypes.HSV => Properties.Resources.HSV,
-				ColorTypes.HSL => Properties.Resources.HSL,
-				ColorTypes.CMYK => Properties.Resources.CMYK,
-				_ => Properties.Resources.RGB
-			}; // Return value
-		}
-
-		public static string ColorTypesToCopyString(ColorTypes colorTypes)
-		{
-			return colorTypes switch
-			{
-				ColorTypes.HEX => Properties.Resources.CopyHEX,
-				ColorTypes.RGB => Properties.Resources.CopyRGB,
-				ColorTypes.HSV => Properties.Resources.CopyHSV,
-				ColorTypes.HSL => Properties.Resources.CopyHSL,
-				ColorTypes.CMYK => Properties.Resources.CopyCMYK,
-				_ => Properties.Resources.CopyRGB
-			}; // Return value
-		}
-
-		/// <summary>
-		/// Changes the application's theme.
-		/// </summary>
-		public static void ChangeTheme()
-		{
-			App.Current.Resources.MergedDictionaries.Clear();
-			ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
-
-			if (!Settings.IsThemeSystem.HasValue)
-			{
-				Settings.IsThemeSystem = false;
+				return Properties.Resources.Hi + ", " + Environment.UserName + "."; // Return the correct value
 			}
-
-			if (Settings.IsThemeSystem.Value)
+			else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour <= 17) // If between 12PM - 5PM
 			{
-				Settings.IsDarkTheme = IsSystemThemeDark(); // Set
+				return Properties.Resources.GoodAfternoon + ", " + Environment.UserName + "."; // Return the correct value
 			}
-
-			if (Settings.IsDarkTheme) // If the dark theme is on
+			else if (DateTime.Now.Hour >= 17 && DateTime.Now.Hour <= 21) // If between 5PM - 9PM
 			{
-				resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
+				return Properties.Resources.GoodEvening + ", " + Environment.UserName + "."; // Return the correct value
 			}
 			else
 			{
-				resourceDictionary.Source = new Uri("..\\Themes\\Light.xaml", UriKind.Relative); // Add source
-			}
-
-			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
-		}
-
-		public static bool IsSystemThemeDark()
-		{
-			if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
-			{
-				return false; // Avoid errors on older OSs
-			}
-
-			var t = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", "1");
-			return t switch
-			{
-				0 => true,
-				1 => false,
-				_ => false
-			}; // Return
-		}
-
-		/// <summary>
-		/// Changes the application's language.
-		/// </summary>
-		public static void ChangeLanguage()
-		{
-			switch (Global.Settings.Language) // For each case
-			{
-				case "_default": // No language
-					break;
-				case "en-US": // English (US)
-					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US"); // Change
-					break;
-
-				case "fr-FR": // French (FR)
-					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
-					break;
-
-				case "zh-CN": // Chinese (CN)
-					Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
-					break;
-				default: // No language
-					break;
+				return Properties.Resources.Hi + ", " + Environment.UserName + "."; // Return the correct value
 			}
 		}
+	}
 
-		internal static string GetHsvString(ColorHelper.HSV hsv) => $"({hsv.H},{hsv.S},{hsv.V})";
+	/// <summary>
+	/// If the user is trying to new keyboard shortcuts, the value should be false.
+	/// </summary>
+	public static bool KeyBoardShortcutsAvailable { get; set; }
 
-		internal static string GetHslString(ColorHelper.HSL hsl) => $"({hsl.H},{hsl.S},{hsl.L})";
-
-		internal static string GetCmykString(ColorHelper.CMYK cmyk) => $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
-
-		internal static void CreateJumpLists()
+	/// <summary>
+	/// <c>ToString()</c> method for <see cref="ColorTypes"/> enum.
+	/// </summary>
+	/// <param name="colorTypes">The enum.</param>
+	/// <returns>A <see cref="string"/> value.</returns>
+	public static string ColorTypesToString(ColorTypes colorTypes)
+	{
+		return colorTypes switch
 		{
-			JumpList jumpList = new (); // Create a jump list
+			ColorTypes.HEX => Properties.Resources.HEX,
+			ColorTypes.RGB => Properties.Resources.RGB,
+			ColorTypes.HSV => Properties.Resources.HSV,
+			ColorTypes.HSL => Properties.Resources.HSL,
+			ColorTypes.CMYK => Properties.Resources.CMYK,
+			_ => Properties.Resources.RGB
+		}; // Return value
+	}
 
-			jumpList.JumpItems.Add(new JumpTask
-			{
-				Title = Properties.Resources.Picker,
-				Arguments = "/page 0",
-				Description = Properties.Resources.WelcomePicker,
-				CustomCategory = Properties.Resources.Tasks,
-				IconResourcePath = Assembly.GetEntryAssembly().Location
-			}); // Add Picker jump task
+	public static string ColorTypesToCopyString(ColorTypes colorTypes)
+	{
+		return colorTypes switch
+		{
+			ColorTypes.HEX => Properties.Resources.CopyHEX,
+			ColorTypes.RGB => Properties.Resources.CopyRGB,
+			ColorTypes.HSV => Properties.Resources.CopyHSV,
+			ColorTypes.HSL => Properties.Resources.CopyHSL,
+			ColorTypes.CMYK => Properties.Resources.CopyCMYK,
+			_ => Properties.Resources.CopyRGB
+		}; // Return value
+	}
 
-			jumpList.JumpItems.Add(new JumpTask
-			{
-				Title = Properties.Resources.Converter,
-				Arguments = "/page 1",
-				Description = Properties.Resources.WelcomeConverter,
-				CustomCategory = Properties.Resources.Tasks,
-				IconResourcePath = Assembly.GetEntryAssembly().Location
-			}); // Add Converter jump task
+	/// <summary>
+	/// Changes the application's theme.
+	/// </summary>
+	public static void ChangeTheme()
+	{
+		App.Current.Resources.MergedDictionaries.Clear();
+		ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
 
-			jumpList.JumpItems.Add(new JumpTask
-			{
-				Title = Properties.Resources.Palette,
-				Arguments = "/page 2",
-				Description = Properties.Resources.WelcomePalette,
-				CustomCategory = Properties.Resources.Tasks,
-				IconResourcePath = Assembly.GetEntryAssembly().Location
-			}); // Add Picker jump task
-
-			jumpList.ShowRecentCategory = false; // Hide the recent category
-			jumpList.ShowFrequentCategory = false; // Hide the frequent category
-
-
-			JumpList.SetJumpList(Application.Current, jumpList); // Set the jump list
+		if (!Settings.IsThemeSystem.HasValue)
+		{
+			Settings.IsThemeSystem = false;
 		}
+
+		if (Settings.IsThemeSystem.Value)
+		{
+			Settings.IsDarkTheme = IsSystemThemeDark(); // Set
+		}
+
+		if (Settings.IsDarkTheme) // If the dark theme is on
+		{
+			resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
+		}
+		else
+		{
+			resourceDictionary.Source = new Uri("..\\Themes\\Light.xaml", UriKind.Relative); // Add source
+		}
+
+		App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+	}
+
+	public static bool IsSystemThemeDark()
+	{
+		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
+		{
+			return false; // Avoid errors on older OSs
+		}
+
+		var t = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", "1");
+		return t switch
+		{
+			0 => true,
+			1 => false,
+			_ => false
+		}; // Return
+	}
+
+	/// <summary>
+	/// Changes the application's language.
+	/// </summary>
+	public static void ChangeLanguage()
+	{
+		switch (Global.Settings.Language) // For each case
+		{
+			case "_default": // No language
+				break;
+			case "en-US": // English (US)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US"); // Change
+				break;
+
+			case "fr-FR": // French (FR)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
+				break;
+
+			case "zh-CN": // Chinese (CN)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
+				break;
+			default: // No language
+				break;
+		}
+	}
+
+	internal static string GetHsvString(ColorHelper.HSV hsv) => $"({hsv.H},{hsv.S},{hsv.V})";
+
+	internal static string GetHslString(ColorHelper.HSL hsl) => $"({hsl.H},{hsl.S},{hsl.L})";
+
+	internal static string GetCmykString(ColorHelper.CMYK cmyk) => $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
+
+	internal static void CreateJumpLists()
+	{
+		JumpList jumpList = new (); // Create a jump list
+
+		jumpList.JumpItems.Add(new JumpTask
+		{
+			Title = Properties.Resources.Picker,
+			Arguments = "/page 0",
+			Description = Properties.Resources.WelcomePicker,
+			CustomCategory = Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly().Location
+		}); // Add Picker jump task
+
+		jumpList.JumpItems.Add(new JumpTask
+		{
+			Title = Properties.Resources.Converter,
+			Arguments = "/page 1",
+			Description = Properties.Resources.WelcomeConverter,
+			CustomCategory = Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly().Location
+		}); // Add Converter jump task
+
+		jumpList.JumpItems.Add(new JumpTask
+		{
+			Title = Properties.Resources.Palette,
+			Arguments = "/page 2",
+			Description = Properties.Resources.WelcomePalette,
+			CustomCategory = Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly().Location
+		}); // Add Picker jump task
+
+		jumpList.ShowRecentCategory = false; // Hide the recent category
+		jumpList.ShowFrequentCategory = false; // Hide the frequent category
+
+
+		JumpList.SetJumpList(Application.Current, jumpList); // Set the jump list
 	}
 }

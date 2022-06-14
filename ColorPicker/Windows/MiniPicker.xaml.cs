@@ -28,36 +28,35 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace ColorPicker.Windows
+namespace ColorPicker.Windows;
+
+/// <summary>
+/// Interaction logic for MiniPicker.xaml
+/// </summary>
+public partial class MiniPicker : Window
 {
-	/// <summary>
-	/// Interaction logic for MiniPicker.xaml
-	/// </summary>
-	public partial class MiniPicker : Window
+	internal DispatcherTimer timer = new() { Interval = new(0, 0, 0, 0, 1) };
+	readonly bool u = Global.Settings.HEXUseUpperCase.Value;
+	public MiniPicker()
 	{
-		internal DispatcherTimer timer = new() { Interval = new(0, 0, 0, 0, 1) };
-		readonly bool u = Global.Settings.HEXUseUpperCase.Value;
-		public MiniPicker()
+		InitializeComponent();
+		timer.Tick += (o, e) =>
 		{
-			InitializeComponent();
-			timer.Tick += (o, e) =>
-			{
-				Bitmap bitmap = new(1, 1);
-				Graphics GFX = Graphics.FromImage(bitmap);
-				GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
-				var pixel = bitmap.GetPixel(0, 0);
+			Bitmap bitmap = new(1, 1);
+			Graphics GFX = Graphics.FromImage(bitmap);
+			GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+			var pixel = bitmap.GetPixel(0, 0);
 
-				ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
+			ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
 
-				// Convert to HEX
-				var hexColor = ColorsConverter.RGBtoHEX(pixel); // Convert
+			// Convert to HEX
+			var hexColor = ColorsConverter.RGBtoHEX(pixel); // Convert
 
-				// Display
-				RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
-				GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
-				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
-				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hexColor.Value.ToUpper() : hexColor.Value)}"; // Set text
-			};
-		}
+			// Display
+			RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
+			GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
+			BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hexColor.Value.ToUpper() : hexColor.Value)}"; // Set text
+		};
 	}
 }
