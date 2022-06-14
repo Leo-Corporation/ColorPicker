@@ -25,37 +25,36 @@ using ColorPicker.Classes;
 using ColorPicker.Windows;
 using System.Windows;
 
-namespace ColorPicker
+namespace ColorPicker;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-	/// <summary>
-	/// Interaction logic for App.xaml
-	/// </summary>
-	public partial class App : Application
+	protected override void OnStartup(StartupEventArgs e)
 	{
-		protected override void OnStartup(StartupEventArgs e)
+		SettingsManager.Load(); // Load settings
+		HistoryManager.Load(); // Load the color history
+
+		Global.ChangeTheme(); // Change the theme
+		Global.ChangeLanguage(); // Change the language
+
+		Global.SettingsPage = new(); // Create a new SettingsPage
+		Global.PickerPage = new(); // Create a new PickerPage
+		Global.ConverterPage = new(); // Create a new ConverterPage
+		Global.PalettePage = new(); // Create a new ConverterPage
+
+		if (Global.Settings.IsFirstRun.Value)
 		{
-			SettingsManager.Load(); // Load settings
-			HistoryManager.Load(); // Load the color history
+			new FirstRunWindow().Show(); // Show the "First run" experience
+		}
+		else
+		{
+			int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
 
-			Global.ChangeTheme(); // Change the theme
-			Global.ChangeLanguage(); // Change the language
-
-			Global.SettingsPage = new(); // Create a new SettingsPage
-			Global.PickerPage = new(); // Create a new PickerPage
-			Global.ConverterPage = new(); // Create a new ConverterPage
-			Global.PalettePage = new(); // Create a new ConverterPage
-
-			if (Global.Settings.IsFirstRun.Value)
-			{
-				new FirstRunWindow().Show(); // Show the "First run" experience
-			}
-			else
-			{
-				int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
-
-				new MainWindow(pageID == null ? null : (Enums.Pages)pageID).Show(); // Launch ColorPicker
-				Global.CreateJumpLists(); // Create the jump lists
-			}
+			new MainWindow(pageID == null ? null : (Enums.Pages)pageID).Show(); // Launch ColorPicker
+			Global.CreateJumpLists(); // Create the jump lists
 		}
 	}
 }

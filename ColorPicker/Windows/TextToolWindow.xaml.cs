@@ -27,105 +27,104 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ColorPicker.Windows
+namespace ColorPicker.Windows;
+
+/// <summary>
+/// Interaction logic for TextToolWindow.xaml
+/// </summary>
+public partial class TextToolWindow : Window
 {
-	/// <summary>
-	/// Interaction logic for TextToolWindow.xaml
-	/// </summary>
-	public partial class TextToolWindow : Window
+	public TextToolWindow()
 	{
-		public TextToolWindow()
+		InitializeComponent();
+		InitUI();
+	}
+
+	private void InitUI()
+	{
+		System.Drawing.Text.InstalledFontCollection installedFonts = new();
+		foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
 		{
-			InitializeComponent();
-			InitUI();
+			FontComboBox.Items.Add(fontFamily.Name);
 		}
-
-		private void InitUI()
+		if (FontComboBox.Items.Contains("Arial"))
 		{
-			System.Drawing.Text.InstalledFontCollection installedFonts = new();
-			foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
-			{
-				FontComboBox.Items.Add(fontFamily.Name);
-			}
-			if (FontComboBox.Items.Contains("Arial"))
-			{
-				FontComboBox.Text = "Arial"; 
-			}
+			FontComboBox.Text = "Arial"; 
 		}
+	}
 
-		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+	{
+		WindowState = WindowState.Minimized; // Minimize the window
+	}
+
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
+
+	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		try
 		{
-			WindowState = WindowState.Minimized; // Minimize the window
+			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
 		}
+		catch {	}
+	}
 
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
+	}
+
+	private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
 		{
-			Close(); // Close the window
+			RegularTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+			ItalicTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+			BoldTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
 		}
+		catch { }
+	}
 
-		private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		System.Windows.Forms.ColorDialog colorDialog = new()
 		{
-			try
-			{
-				RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
-				ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
-				BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
-			}
-			catch {	}
+			AllowFullOpen = true,
+		}; // Create color picker/dialog
+
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+		{
+			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			ForegroundBorder.Background = color;
+
+			RegularTxt.Foreground = color; // Set foreground color
+			ItalicTxt.Foreground = color; // Set foreground color
+			BoldTxt.Foreground = color; // Set foreground color
 		}
+	}
 
-		private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		System.Windows.Forms.ColorDialog colorDialog = new()
 		{
-			Regex regex = new("[^0-9]+");
-			e.Handled = regex.IsMatch(e.Text);
-		}
+			AllowFullOpen = true,
+		}; // Create color picker/dialog
 
-		private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
 		{
-			try
-			{
-				RegularTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
-				ItalicTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
-				BoldTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
-			}
-			catch { }
-		}
+			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			BackgroundBorder.Background = color;
 
-		private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			System.Windows.Forms.ColorDialog colorDialog = new()
-			{
-				AllowFullOpen = true,
-			}; // Create color picker/dialog
-
-			if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
-			{
-				var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
-				ForegroundBorder.Background = color;
-
-				RegularTxt.Foreground = color; // Set foreground color
-				ItalicTxt.Foreground = color; // Set foreground color
-				BoldTxt.Foreground = color; // Set foreground color
-			}
-		}
-
-		private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			System.Windows.Forms.ColorDialog colorDialog = new()
-			{
-				AllowFullOpen = true,
-			}; // Create color picker/dialog
-
-			if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
-			{
-				var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
-				BackgroundBorder.Background = color;
-
-				RegularTxt.Background = color; // Set background color
-				ItalicTxt.Background = color; // Set background color
-				BoldTxt.Background = color; // Set background color
-				TextPanel.Background = color; // Set background color
-			}
+			RegularTxt.Background = color; // Set background color
+			ItalicTxt.Background = color; // Set background color
+			BoldTxt.Background = color; // Set background color
+			TextPanel.Background = color; // Set background color
 		}
 	}
 }

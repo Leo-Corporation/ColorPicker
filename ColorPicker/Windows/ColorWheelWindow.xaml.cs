@@ -31,141 +31,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace ColorPicker.Windows
+namespace ColorPicker.Windows;
+
+/// <summary>
+/// Interaction logic for ColorWheelWindow.xaml
+/// </summary>
+public partial class ColorWheelWindow : Window
 {
-	/// <summary>
-	/// Interaction logic for ColorWheelWindow.xaml
-	/// </summary>
-	public partial class ColorWheelWindow : Window
+	bool isRunning, selectionMode = false;
+	readonly TextBox ParentTextBox;
+	readonly DispatcherTimer dispatcherTimer = new();
+
+	int r, g, b; // RGB values
+	string hex; // HEX value
+	ColorTypes colorTypeForSelection;
+
+	public ColorWheelWindow()
 	{
-		bool isRunning, selectionMode = false;
-		readonly TextBox ParentTextBox;
-		readonly DispatcherTimer dispatcherTimer = new();
+		InitializeComponent();
 
-		int r, g, b; // RGB values
-		string hex; // HEX value
-		ColorTypes colorTypeForSelection;
-
-		public ColorWheelWindow()
+		dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
+		dispatcherTimer.Tick += (o, e) =>
 		{
-			InitializeComponent();
-
-			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
-			dispatcherTimer.Tick += (o, e) =>
-			{
-				Bitmap bitmap = new(1, 1);
-				Graphics GFX = Graphics.FromImage(bitmap);
-				GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
-				var pixel = bitmap.GetPixel(0, 0);
-
-				RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
-				GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
-				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
-
-				r = pixel.R;
-				g = pixel.G;
-				b = pixel.B;
-
-				// Convert to HEX
-				bool u = Global.Settings.HEXUseUpperCase.Value;
-				var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
-				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
-				hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
-
-				ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
-			};
-		}
-
-		public ColorWheelWindow(bool selectMode, TextBox textBox, ColorTypes colorType = ColorTypes.RGB)
-		{
-			InitializeComponent();
-
-			selectionMode = selectMode; // Set selection mode
-			ParentTextBox = textBox; // Set textbox
-			colorTypeForSelection = colorType; // Set color type
-
-			dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
-			dispatcherTimer.Tick += (o, e) =>
-			{
-				Bitmap bitmap = new(1, 1);
-				Graphics GFX = Graphics.FromImage(bitmap);
-				GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
-				var pixel = bitmap.GetPixel(0, 0);
-
-				RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
-				GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
-				BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
-
-				r = pixel.R;
-				g = pixel.G;
-				b = pixel.B;
-
-				// Convert to HEX
-				bool u = Global.Settings.HEXUseUpperCase.Value;
-				var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
-				HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
-				hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
-
-				ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
-			};
-		}
-
-		private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
-		{
-			WindowState = WindowState.Minimized; // Minimize the window
-		}
-
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
-
-		private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
-		{
-			if (!selectionMode)
-			{
-				ColorDisplayer.Visibility = Visibility.Visible; // Show
-				ColorInforPanel.Visibility = Visibility.Visible; // Show
-
-				CopyBtn.Visibility = Visibility.Visible; // Show
-				CopyHEXBtn.Visibility = Visibility.Visible; // Show
-
-				if (!isRunning)
-				{
-					dispatcherTimer.Start(); // Start
-					SelectColorBtn.Content = Properties.Resources.Stop; // Set text
-					isRunning = true;
-				}
-				else
-				{
-					dispatcherTimer.Stop(); // Stop
-					SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
-					isRunning = false;
-				}
-			}
-			else
-			{
-				ParentTextBox.Text = colorTypeForSelection switch
-				{
-					ColorTypes.HEX => hex, // Set text with HEX color
-					_ => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}" // Set text with RGB color
-				};
-				Close(); // Close
-			}
-		}
-
-		private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			ColorDisplayer.Visibility = Visibility.Visible; // Show
-			ColorInforPanel.Visibility = Visibility.Visible; // Show
-
-			CopyBtn.Visibility = Visibility.Visible; // Show
-			CopyHEXBtn.Visibility = Visibility.Visible; // Show
-			SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
-
-			dispatcherTimer.Stop(); // Stop
-			isRunning = false;
-
 			Bitmap bitmap = new(1, 1);
 			Graphics GFX = Graphics.FromImage(bitmap);
 			GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
@@ -186,29 +73,141 @@ namespace ColorPicker.Windows
 			hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
-		}
+		};
+	}
 
-		private void Image_MouseLeave(object sender, MouseEventArgs e)
-		{
-			dispatcherTimer.Stop(); // Stop
-		}
+	public ColorWheelWindow(bool selectMode, TextBox textBox, ColorTypes colorType = ColorTypes.RGB)
+	{
+		InitializeComponent();
 
-		private void Image_MouseEnter(object sender, MouseEventArgs e)
+		selectionMode = selectMode; // Set selection mode
+		ParentTextBox = textBox; // Set textbox
+		colorTypeForSelection = colorType; // Set color type
+
+		dispatcherTimer.Interval = new(0, 0, 0, 0, 1); // Interval
+		dispatcherTimer.Tick += (o, e) =>
 		{
-			if (isRunning)
+			Bitmap bitmap = new(1, 1);
+			Graphics GFX = Graphics.FromImage(bitmap);
+			GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+			var pixel = bitmap.GetPixel(0, 0);
+
+			RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
+			GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
+			BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
+
+			r = pixel.R;
+			g = pixel.G;
+			b = pixel.B;
+
+			// Convert to HEX
+			bool u = Global.Settings.HEXUseUpperCase.Value;
+			var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
+			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+			hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+
+			ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
+		};
+	}
+
+	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+	{
+		WindowState = WindowState.Minimized; // Minimize the window
+	}
+
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
+
+	private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (!selectionMode)
+		{
+			ColorDisplayer.Visibility = Visibility.Visible; // Show
+			ColorInforPanel.Visibility = Visibility.Visible; // Show
+
+			CopyBtn.Visibility = Visibility.Visible; // Show
+			CopyHEXBtn.Visibility = Visibility.Visible; // Show
+
+			if (!isRunning)
 			{
-				dispatcherTimer.Start();
+				dispatcherTimer.Start(); // Start
+				SelectColorBtn.Content = Properties.Resources.Stop; // Set text
+				isRunning = true;
+			}
+			else
+			{
+				dispatcherTimer.Stop(); // Stop
+				SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
+				isRunning = false;
 			}
 		}
-
-		private void CopyBtn_Click(object sender, RoutedEventArgs e)
+		else
 		{
-			Clipboard.SetText($"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"); // Copy
+			ParentTextBox.Text = colorTypeForSelection switch
+			{
+				ColorTypes.HEX => hex, // Set text with HEX color
+				_ => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}" // Set text with RGB color
+			};
+			Close(); // Close
 		}
+	}
 
-		private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
+	private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		ColorDisplayer.Visibility = Visibility.Visible; // Show
+		ColorInforPanel.Visibility = Visibility.Visible; // Show
+
+		CopyBtn.Visibility = Visibility.Visible; // Show
+		CopyHEXBtn.Visibility = Visibility.Visible; // Show
+		SelectColorBtn.Content = Properties.Resources.SelectColor; // Set text
+
+		dispatcherTimer.Stop(); // Stop
+		isRunning = false;
+
+		Bitmap bitmap = new(1, 1);
+		Graphics GFX = Graphics.FromImage(bitmap);
+		GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+		var pixel = bitmap.GetPixel(0, 0);
+
+		RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
+		GreenTxt.Text = $"{Properties.Resources.GreenP} {pixel.G}"; // Set text
+		BlueTxt.Text = $"{Properties.Resources.BlueP} {pixel.B}"; // Set text
+
+		r = pixel.R;
+		g = pixel.G;
+		b = pixel.B;
+
+		// Convert to HEX
+		bool u = Global.Settings.HEXUseUpperCase.Value;
+		var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
+		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+		hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
+
+		ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
+	}
+
+	private void Image_MouseLeave(object sender, MouseEventArgs e)
+	{
+		dispatcherTimer.Stop(); // Stop
+	}
+
+	private void Image_MouseEnter(object sender, MouseEventArgs e)
+	{
+		if (isRunning)
 		{
-			Clipboard.SetText(hex); // Copy HEX
+			dispatcherTimer.Start();
 		}
+	}
+
+	private void CopyBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"); // Copy
+	}
+
+	private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(hex); // Copy HEX
 	}
 }

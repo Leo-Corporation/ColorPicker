@@ -22,17 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace ColorPicker.Enums
+namespace ColorPicker.Enums;
+
+/// <summary>
+/// The <see cref="ColorTypes"/> enum.
+/// </summary>
+public enum ColorTypes
 {
-	/// <summary>
-	/// The <see cref="ColorTypes"/> enum.
-	/// </summary>
-	public enum ColorTypes
-	{
-		RGB,
-		HEX,
-		HSV,
-		HSL,
-		CMYK
-	}
+	RGB,
+	HEX,
+	HSV,
+	HSL,
+	CMYK
 }
