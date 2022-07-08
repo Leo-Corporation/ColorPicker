@@ -489,4 +489,10 @@
   <data name="Tasks" xml:space="preserve">
     <value>Tâches</value>
   </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Démarrage</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+    <value>Sélectionnez la page de démarrage par défaut.</value>
+  </data>
 </root>
