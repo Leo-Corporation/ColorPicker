@@ -430,7 +430,7 @@ public partial class SettingsPage : Page
 	private void Border_MouseLeave(object sender, MouseEventArgs e)
 	{
 		Border border = (Border)sender;
-		if (border != CheckedBorder)
+		if (border != CheckedBorder && border != PageCheckedBorder)
 		{
 			border.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 		}
@@ -554,19 +554,35 @@ public partial class SettingsPage : Page
 			Properties.Resources.CreditsAndThanks, MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
+	private void RefreshStartupBorders()
+	{
+		PickerPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color
+		ConverterPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color
+		PalettePageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color		
+
+		PageCheckedBorder.BorderBrush = new SolidColorBrush() { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set color
+	}
+
+	Border PageCheckedBorder { get; set; }
 	private void PickerPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-
+		PageCheckedBorder = PickerPageBorder; // Set
+		PickerPageRadioBtn.IsChecked = true;
+		RefreshStartupBorders(); // Refresh
 	}
 
 	private void ConverterPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-
+		PageCheckedBorder = ConverterPageBorder; // Set
+		ConverterPageRadioBtn.IsChecked = true;
+		RefreshStartupBorders(); // Refresh
 	}
 
 	private void PalettePageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-
+		PageCheckedBorder = PalettePageBorder; // Set
+		PalettePageRadioBtn.IsChecked = true;
+		RefreshStartupBorders(); // Refresh
 	}
 
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)

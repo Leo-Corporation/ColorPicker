@@ -170,19 +170,19 @@
 						<Border x:Name="PickerPageBorder" CornerRadius="10" Margin="5" Background="{Binding Source={StaticResource Background1}}" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="PickerPageBorder_MouseLeftButtonUp">
 							<StackPanel	Orientation="Vertical">
                                 <TextBlock Text="&#xF2FC;" Margin="20" FontSize="64" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center"/>
-								<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="GeneratePageRadioBtn" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.Picker}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#2153E0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2"/>
+								<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="PickerPageRadioBtn" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.Picker}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#2153E0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2"/>
 							</StackPanel>
 						</Border>
 						<Border x:Name="ConverterPageBorder" CornerRadius="10" Margin="5" Background="{Binding Source={StaticResource Background1}}" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="ConverterPageBorder_MouseLeftButtonUp">
 							<StackPanel	Orientation="Vertical">
                                 <TextBlock Text="&#xF18E;" Margin="20" FontSize="64" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center"/>
-								<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="StrengthPageRadioBtn" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.Converter}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#2153E0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2"/>
+								<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="ConverterPageRadioBtn" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.Converter}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#2153E0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2"/>
 							</StackPanel>
 						</Border>
 						<Border x:Name="PalettePageBorder" CornerRadius="10" Margin="5" Background="{Binding Source={StaticResource Background1}}" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="PalettePageBorder_MouseLeftButtonUp">
 							<StackPanel	Orientation="Vertical">
                                 <TextBlock Text="&#xF2F6;" Margin="20" FontSize="64" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center"/>
-								<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="EncryptionPageRadioBtn" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.Palette}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#2153E0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2"/>
+								<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="PalettePageRadioBtn" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.Palette}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#2153E0" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2"/>
 							</StackPanel>
 						</Border>
 					</StackPanel>
