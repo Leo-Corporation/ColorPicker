@@ -86,10 +86,15 @@ public partial class SettingsPage : Page
 	{
 		try
 		{
+			if (Global.Settings.StartupPage is null) Global.Settings.StartupPage = Enums.Pages.Picker; // Set default startup page
+
 			// Load RadioButtons
 			DarkRadioBtn.IsChecked = Global.Settings.IsDarkTheme; // Change IsChecked property
 			LightRadioBtn.IsChecked = !Global.Settings.IsDarkTheme; // Change IsChecked property
 			SystemRadioBtn.IsChecked = Global.Settings.IsThemeSystem; // Change IsChecked property
+			PickerPageRadioBtn.IsChecked = Global.Settings.StartupPage == Enums.Pages.Picker; // Change IsChecked property
+			ConverterPageRadioBtn.IsChecked = Global.Settings.StartupPage == Enums.Pages.Converter; // Change IsChecked property
+			PalettePageRadioBtn.IsChecked = Global.Settings.StartupPage == Enums.Pages.Palette; // Change IsChecked property
 
 			// Borders
 			if (DarkRadioBtn.IsChecked.Value)
@@ -175,6 +180,22 @@ public partial class SettingsPage : Page
 			{
 				Global.Settings.RGBSeparator = ";"; // Set
 			}
+
+			// Load default startup page section
+			if (PickerPageRadioBtn.IsChecked.Value)
+			{
+				PageCheckedBorder = PickerPageBorder; // Set
+			}
+			else if (ConverterPageRadioBtn.IsChecked.Value)
+			{
+				PageCheckedBorder = ConverterPageBorder; // Set
+			}
+			else if (PalettePageRadioBtn.IsChecked.Value)
+			{
+				PageCheckedBorder = PalettePageBorder; // Set
+			}
+
+			RefreshStartupBorders();
 
 			// Load FavoriteColorComboBox
 			for (int i = 0; i < Enum.GetValues(typeof(Enums.ColorTypes)).Length; i++)
@@ -480,6 +501,7 @@ public partial class SettingsPage : Page
 				CopyKeyboardShortcut = "Shift+C",
 				SelectKeyboardShortcut = "Shift+S",
 				IsPinned = false,
+				StartupPage = Enums.Pages.Picker,
 			}; // Create default settings
 
 			SettingsManager.Save(); // Save the changes
@@ -569,6 +591,9 @@ public partial class SettingsPage : Page
 		PageCheckedBorder = PickerPageBorder; // Set
 		PickerPageRadioBtn.IsChecked = true;
 		RefreshStartupBorders(); // Refresh
+
+		Global.Settings.StartupPage = Enums.Pages.Picker; // Set
+		SettingsManager.Save(); // Save changes
 	}
 
 	private void ConverterPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -576,6 +601,9 @@ public partial class SettingsPage : Page
 		PageCheckedBorder = ConverterPageBorder; // Set
 		ConverterPageRadioBtn.IsChecked = true;
 		RefreshStartupBorders(); // Refresh
+
+		Global.Settings.StartupPage = Enums.Pages.Converter; // Set
+		SettingsManager.Save(); // Save changes
 	}
 
 	private void PalettePageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -583,6 +611,9 @@ public partial class SettingsPage : Page
 		PageCheckedBorder = PalettePageBorder; // Set
 		PalettePageRadioBtn.IsChecked = true;
 		RefreshStartupBorders(); // Refresh
+
+		Global.Settings.StartupPage = Enums.Pages.Palette; // Set
+		SettingsManager.Save(); // Save changes
 	}
 
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
