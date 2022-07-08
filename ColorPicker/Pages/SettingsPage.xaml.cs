@@ -554,6 +554,21 @@ public partial class SettingsPage : Page
 			Properties.Resources.CreditsAndThanks, MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
+	private void PickerPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+
+	}
+
+	private void ConverterPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+
+	}
+
+	private void PalettePageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+
+	}
+
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 	{
 		keys = new(); // Create new list
