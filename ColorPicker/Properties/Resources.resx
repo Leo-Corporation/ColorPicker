@@ -475,4 +475,7 @@
   <data name="StartupPage" xml:space="preserve">
     <value>Select the default startup page.</value>
   </data>
+  <data name="OpenSourceMention" xml:space="preserve">
+    <value>Open Source - Made with ❤️ in France</value>
+  </data>
 </root>
