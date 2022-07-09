@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
-    <Version>4.3.0.2207-pre1</Version>
+    <Version>4.3.0.2207-rc1</Version>
     <Authors>Léo Corporation;wcxu21</Authors>
     <Copyright>© 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -20,8 +20,6 @@
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Fonts\Hauora-ExtraBold.ttf" />
     <None Remove="Fonts\Hauora-Regular.ttf" />
-    <None Remove="Fonts\Montserrat-Bold.ttf" />
-    <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Images\BackgroundBlack.png" />
     <None Remove="Images\BackgroundWhite.png" />
     <None Remove="Images\ColorPicker.png" />
@@ -67,12 +65,6 @@
 		</Resource>
 		<Resource Include="Fonts\Hauora-Regular.ttf">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Fonts\Montserrat-Bold.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Fonts\Montserrat-Regular.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Images\BackgroundBlack.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
