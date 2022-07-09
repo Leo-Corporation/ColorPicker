@@ -49,7 +49,7 @@ public partial class MainWindow : Window
 	{
 		InitializeComponent();
 		StartPage = pages ?? Enums.Pages.Picker; // Set the startup page of ColorPicker
-		
+
 		InitUI();
 	}
 
@@ -69,7 +69,7 @@ public partial class MainWindow : Window
 			Enums.Pages.Palette => PaletteTabBtn,
 			_ => PickerTabBtn
 		}); // Check the start page button
-		
+
 		PageContent.Content = StartPage switch
 		{
 			Enums.Pages.Picker => Global.PickerPage,
@@ -231,7 +231,7 @@ public partial class MainWindow : Window
 			CompactModeToolTip.Content = Properties.Resources.EnterCompactMode; // Set text
 			CompactModeBtn.Content = "\uF166"; // Set icon
 		}
-		
+
 		NavBar.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle navbar
 		Header.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle header
 

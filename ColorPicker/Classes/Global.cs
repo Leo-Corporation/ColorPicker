@@ -235,7 +235,7 @@ public static class Global
 
 	internal static void CreateJumpLists()
 	{
-		JumpList jumpList = new (); // Create a jump list
+		JumpList jumpList = new(); // Create a jump list
 
 		jumpList.JumpItems.Add(new JumpTask
 		{
