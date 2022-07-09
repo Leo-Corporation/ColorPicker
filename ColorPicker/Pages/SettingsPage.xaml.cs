@@ -616,6 +616,11 @@ public partial class SettingsPage : Page
 		SettingsManager.Save(); // Save changes
 	}
 
+	private void CompactChk_Checked(object sender, RoutedEventArgs e)
+	{
+
+	}
+
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 	{
 		keys = new(); // Create new list
