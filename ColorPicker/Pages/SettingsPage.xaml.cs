@@ -156,6 +156,11 @@ public partial class SettingsPage : Page
 				Global.Settings.IsPinned = false; // Set default value
 			}
 
+			if (!Global.Settings.UseCompactMode.HasValue)
+			{
+				Global.Settings.UseCompactMode = false; // Set default value
+			}
+
 			// Load checkboxes
 			CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 			NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -165,6 +170,8 @@ public partial class SettingsPage : Page
 
 			RestoreColorHistoryOnStartChk.IsChecked = Global.Settings.RestoreColorHistory; // Set
 			RestoreColorPaletteHistoryOnStartChk.IsChecked = Global.Settings.RestorePaletteColorHistory; // Set
+
+			CompactChk.IsChecked = Global.Settings.UseCompactMode; // Set
 
 			// Load LangComboBox
 			LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
@@ -502,6 +509,7 @@ public partial class SettingsPage : Page
 				SelectKeyboardShortcut = "Shift+S",
 				IsPinned = false,
 				StartupPage = Enums.Pages.Picker,
+				UseCompactMode = false,
 			}; // Create default settings
 
 			SettingsManager.Save(); // Save the changes
@@ -618,7 +626,8 @@ public partial class SettingsPage : Page
 
 	private void CompactChk_Checked(object sender, RoutedEventArgs e)
 	{
-
+		Global.Settings.UseCompactMode = CompactChk.IsChecked; // Set
+		SettingsManager.Save(); // Save changes
 	}
 
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)

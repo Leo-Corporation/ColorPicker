@@ -80,6 +80,18 @@ public partial class MainWindow : Window
 
 		Closed += (o, e) => HistoryManager.Save();
 		PageContent.Navigated += (o, e) => AnimatePage();
+
+		// Toggle on/off "compact mode"
+		if (Global.Settings.UseCompactMode.Value && StartPage == Enums.Pages.Picker)
+		{
+			ToggleCompactMode();
+		}
+
+		CompactModeBtn.Visibility = StartPage switch
+		{
+			Enums.Pages.Picker => Visibility.Visible,
+			_ => Visibility.Collapsed
+		}; // Hide the button if the startup page is not the Picker page
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -203,6 +215,11 @@ public partial class MainWindow : Window
 	bool isCompactModeEnabled = false;
 	private void CompactModeBtn_Click(object sender, RoutedEventArgs e)
 	{
+		ToggleCompactMode();
+	}
+
+	internal void ToggleCompactMode()
+	{
 		isCompactModeEnabled = !isCompactModeEnabled; // Toggle compact mode
 		if (isCompactModeEnabled)
 		{
@@ -214,11 +231,7 @@ public partial class MainWindow : Window
 			CompactModeToolTip.Content = Properties.Resources.EnterCompactMode; // Set text
 			CompactModeBtn.Content = "\uF166"; // Set icon
 		}
-		ToggleCompactMode();
-	}
-
-	internal void ToggleCompactMode()
-	{
+		
 		NavBar.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle navbar
 		Header.Visibility = isCompactModeEnabled ? Visibility.Collapsed : Visibility.Visible; // Toggle header
 
