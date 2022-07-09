@@ -1105,6 +1105,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use compact mode when launching ColorPicker.
+        /// </summary>
+        public static string UseCompactMode {
+            get {
+                return ResourceManager.GetString("UseCompactMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use keyboard shortcuts.
         /// </summary>
         public static string UseKeyboardShortcuts {

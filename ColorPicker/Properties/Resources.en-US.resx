@@ -498,4 +498,7 @@
   <data name="OpenSourceMention" xml:space="preserve">
     <value>Open Source - Made with ❤️ in France</value>
   </data>
+  <data name="UseCompactMode" xml:space="preserve">
+    <value>Use compact mode when launching ColorPicker</value>
+  </data>
 </root>
