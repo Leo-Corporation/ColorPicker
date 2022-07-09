@@ -107,6 +107,16 @@ public class Settings
 	/// True if the window is pinned
 	/// </summary>
 	public bool? IsPinned { get; set; }
+
+	/// <summary>
+	/// The startup page of ColorPicker.
+	/// </summary>
+	public Enums.Pages? StartupPage { get; set; }
+
+	/// <summary>
+	/// True if ColorPicker should enable compact mode on start.
+	/// </summary>
+	public bool? UseCompactMode { get; set; }
 }
 
 /// <summary>
@@ -149,6 +159,8 @@ public static class SettingsManager
 				CopyKeyboardShortcut = "Shift+C",
 				SelectKeyboardShortcut = "Shift+S",
 				IsPinned = false,
+				StartupPage = Enums.Pages.Picker,
+				UseCompactMode = false,
 			}; // Create a new settings file
 
 			Save(); // Save the changes

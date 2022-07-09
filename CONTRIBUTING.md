@@ -14,15 +14,15 @@ To contribute to this project, you will need to have some prerequisites:
 You will also need to have the following tools:
 
 - Microsoft Visual Studio 2019
-  - .NET Desktop Developpement
+  - .NET Desktop Development
   - Microsoft Blend
 - Git
-- (*optionnal*) Microsoft Visual Studio Code
+- (*optional*) Microsoft Visual Studio Code
 
 ## Writing code
 Make you follow the following guidelines:
 
-1) Use Tabs: To format your code, use tabs intead of spaces:
+1) Use Tabs: To format your code, use tabs instead of spaces:
 ~~~ cs
 class Car
 {
@@ -51,7 +51,7 @@ if (x < y) // If y is bigger than x
     Console.WriteLine("y is bigger than x"); // Print text
 }
 
-// Dont do this
+// Don't do this
 if (x < y) // If y is bigger than x
     Console.WriteLine("y is bigger than x"); // Print text
 ~~~

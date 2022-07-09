@@ -86,10 +86,15 @@ public partial class SettingsPage : Page
 	{
 		try
 		{
+			if (Global.Settings.StartupPage is null) Global.Settings.StartupPage = Enums.Pages.Picker; // Set default startup page
+
 			// Load RadioButtons
 			DarkRadioBtn.IsChecked = Global.Settings.IsDarkTheme; // Change IsChecked property
 			LightRadioBtn.IsChecked = !Global.Settings.IsDarkTheme; // Change IsChecked property
 			SystemRadioBtn.IsChecked = Global.Settings.IsThemeSystem; // Change IsChecked property
+			PickerPageRadioBtn.IsChecked = Global.Settings.StartupPage == Enums.Pages.Picker; // Change IsChecked property
+			ConverterPageRadioBtn.IsChecked = Global.Settings.StartupPage == Enums.Pages.Converter; // Change IsChecked property
+			PalettePageRadioBtn.IsChecked = Global.Settings.StartupPage == Enums.Pages.Palette; // Change IsChecked property
 
 			// Borders
 			if (DarkRadioBtn.IsChecked.Value)
@@ -151,6 +156,11 @@ public partial class SettingsPage : Page
 				Global.Settings.IsPinned = false; // Set default value
 			}
 
+			if (!Global.Settings.UseCompactMode.HasValue)
+			{
+				Global.Settings.UseCompactMode = false; // Set default value
+			}
+
 			// Load checkboxes
 			CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 			NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -160,6 +170,8 @@ public partial class SettingsPage : Page
 
 			RestoreColorHistoryOnStartChk.IsChecked = Global.Settings.RestoreColorHistory; // Set
 			RestoreColorPaletteHistoryOnStartChk.IsChecked = Global.Settings.RestorePaletteColorHistory; // Set
+
+			CompactChk.IsChecked = Global.Settings.UseCompactMode; // Set
 
 			// Load LangComboBox
 			LangComboBox.Items.Add(Properties.Resources.Default); // Add "default"
@@ -175,6 +187,22 @@ public partial class SettingsPage : Page
 			{
 				Global.Settings.RGBSeparator = ";"; // Set
 			}
+
+			// Load default startup page section
+			if (PickerPageRadioBtn.IsChecked.Value)
+			{
+				PageCheckedBorder = PickerPageBorder; // Set
+			}
+			else if (ConverterPageRadioBtn.IsChecked.Value)
+			{
+				PageCheckedBorder = ConverterPageBorder; // Set
+			}
+			else if (PalettePageRadioBtn.IsChecked.Value)
+			{
+				PageCheckedBorder = PalettePageBorder; // Set
+			}
+
+			RefreshStartupBorders();
 
 			// Load FavoriteColorComboBox
 			for (int i = 0; i < Enum.GetValues(typeof(Enums.ColorTypes)).Length; i++)
@@ -430,7 +458,7 @@ public partial class SettingsPage : Page
 	private void Border_MouseLeave(object sender, MouseEventArgs e)
 	{
 		Border border = (Border)sender;
-		if (border != CheckedBorder)
+		if (border != CheckedBorder && border != PageCheckedBorder)
 		{
 			border.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 		}
@@ -480,6 +508,8 @@ public partial class SettingsPage : Page
 				CopyKeyboardShortcut = "Shift+C",
 				SelectKeyboardShortcut = "Shift+S",
 				IsPinned = false,
+				StartupPage = Enums.Pages.Picker,
+				UseCompactMode = false,
 			}; // Create default settings
 
 			SettingsManager.Save(); // Save the changes
@@ -552,6 +582,52 @@ public partial class SettingsPage : Page
 			$"@Leo-Peyronnet\n" +
 			$"@wcxu21",
 			Properties.Resources.CreditsAndThanks, MessageBoxButton.OK, MessageBoxImage.Information);
+	}
+
+	private void RefreshStartupBorders()
+	{
+		PickerPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color
+		ConverterPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color
+		PalettePageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color		
+
+		PageCheckedBorder.BorderBrush = new SolidColorBrush() { Color = (Color)ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set color
+	}
+
+	Border PageCheckedBorder { get; set; }
+	private void PickerPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		PageCheckedBorder = PickerPageBorder; // Set
+		PickerPageRadioBtn.IsChecked = true;
+		RefreshStartupBorders(); // Refresh
+
+		Global.Settings.StartupPage = Enums.Pages.Picker; // Set
+		SettingsManager.Save(); // Save changes
+	}
+
+	private void ConverterPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		PageCheckedBorder = ConverterPageBorder; // Set
+		ConverterPageRadioBtn.IsChecked = true;
+		RefreshStartupBorders(); // Refresh
+
+		Global.Settings.StartupPage = Enums.Pages.Converter; // Set
+		SettingsManager.Save(); // Save changes
+	}
+
+	private void PalettePageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		PageCheckedBorder = PalettePageBorder; // Set
+		PalettePageRadioBtn.IsChecked = true;
+		RefreshStartupBorders(); // Refresh
+
+		Global.Settings.StartupPage = Enums.Pages.Palette; // Set
+		SettingsManager.Save(); // Save changes
+	}
+
+	private void CompactChk_Checked(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.UseCompactMode = CompactChk.IsChecked; // Set
+		SettingsManager.Save(); // Save changes
 	}
 
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)

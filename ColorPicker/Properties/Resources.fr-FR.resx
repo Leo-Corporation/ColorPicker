@@ -489,4 +489,16 @@
   <data name="Tasks" xml:space="preserve">
     <value>Tâches</value>
   </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Démarrage</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+    <value>Sélectionnez la page de démarrage par défaut.</value>
+  </data>
+  <data name="OpenSourceMention" xml:space="preserve">
+    <value>Open Source - Made with ❤️ in France</value>
+  </data>
+  <data name="UseCompactMode" xml:space="preserve">
+    <value>Utiliser le mode compact lors du lancement de ColorPicker</value>
+  </data>
 </root>

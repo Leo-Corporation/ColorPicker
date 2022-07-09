@@ -8,7 +8,7 @@
 	  mc:Ignorable="d" 
 	  Foreground="{Binding Source={StaticResource Foreground1}}"
 	  d:DesignHeight="350" d:DesignWidth="560"
-	  FontFamily="../Fonts/#Montserrat"
+	  FontFamily="../Fonts/#Hauora"
 	  Title="PalettePage">
 
 	<ScrollViewer HorizontalScrollBarVisibility="Hidden" Template="{DynamicResource ScrollViewerControlTemplate}" CanContentScroll="True" Height="344">

@@ -772,6 +772,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Source - Made with ❤️ in France.
+        /// </summary>
+        public static string OpenSourceMention {
+            get {
+                return ResourceManager.GetString("OpenSourceMention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Palette.
         /// </summary>
         public static string Palette {
@@ -997,6 +1006,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Startup.
+        /// </summary>
+        public static string Startup {
+            get {
+                return ResourceManager.GetString("Startup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the default startup page..
+        /// </summary>
+        public static string StartupPage {
+            get {
+                return ResourceManager.GetString("StartupPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop.
         /// </summary>
         public static string Stop {
@@ -1074,6 +1101,15 @@ namespace ColorPicker.Properties {
         public static string UpToDate {
             get {
                 return ResourceManager.GetString("UpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use compact mode when launching ColorPicker.
+        /// </summary>
+        public static string UseCompactMode {
+            get {
+                return ResourceManager.GetString("UseCompactMode", resourceCulture);
             }
         }
         

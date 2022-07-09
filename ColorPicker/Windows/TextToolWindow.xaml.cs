@@ -49,7 +49,7 @@ public partial class TextToolWindow : Window
 		}
 		if (FontComboBox.Items.Contains("Arial"))
 		{
-			FontComboBox.Text = "Arial"; 
+			FontComboBox.Text = "Arial";
 		}
 	}
 
@@ -71,7 +71,7 @@ public partial class TextToolWindow : Window
 			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
 			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)

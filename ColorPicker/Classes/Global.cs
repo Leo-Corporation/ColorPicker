@@ -43,7 +43,7 @@ public static class Global
 	/// <summary>
 	/// The current version of ColorPicker.
 	/// </summary>
-	public static string Version => "4.2.1.2206";
+	public static string Version => "4.3.0.2207";
 
 	/// <summary>
 	/// List of the available languages.
@@ -235,7 +235,7 @@ public static class Global
 
 	internal static void CreateJumpLists()
 	{
-		JumpList jumpList = new (); // Create a jump list
+		JumpList jumpList = new(); // Create a jump list
 
 		jumpList.JumpItems.Add(new JumpTask
 		{

@@ -1,87 +1,76 @@
-﻿<Page x:Class="ColorPicker.Pages.ConverterPage"
-	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	  xmlns:local="clr-namespace:ColorPicker.Pages"
-	  xmlns:lang="clr-namespace:ColorPicker.Properties"
-	  mc:Ignorable="d" 
-	  Foreground="{Binding Source={StaticResource Foreground1}}"
-	  d:DesignHeight="350" d:DesignWidth="560"
-	  FontFamily="../Fonts/#Montserrat"
-	  Title="ConverterPage">
+﻿<Page x:Class="ColorPicker.Pages.ConverterPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:ColorPicker.Pages" xmlns:lang="clr-namespace:ColorPicker.Properties" mc:Ignorable="d" Foreground="{Binding Source={StaticResource Foreground1}}" d:DesignHeight="350" d:DesignWidth="560" FontFamily="../Fonts/#Hauora" Title="ConverterPage">
 
 	<Grid>
 		<Grid>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition Height="Auto"/>
+				<RowDefinition />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 
 			<StackPanel Margin="10,40,10,5" Grid.Row="0">
-				<TextBlock Text="{x:Static lang:Resources.Converter}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="16"/>
+				<TextBlock Text="{x:Static lang:Resources.Converter}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="16" />
 				<Grid>
 					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition/>
-						<RowDefinition/>
-						<RowDefinition/>
+						<RowDefinition Height="Auto" />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
 					</Grid.RowDefinitions>
 
 					<StackPanel Grid.Row="0" Orientation="Horizontal">
-						<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.ColorType}" VerticalAlignment="Center"/>
-						<ComboBox x:Name="ColorTypeComboBox" SelectionChanged="ColorTypeComboBox_SelectionChanged" Foreground="{Binding Source={StaticResource Foreground1}}" Style="{DynamicResource ComboBoxStyle1}" Margin="10,0,0,0" BorderThickness="2" Padding="5" VerticalAlignment="Center"/>
+						<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.ColorType}" VerticalAlignment="Center" />
+						<ComboBox x:Name="ColorTypeComboBox" SelectionChanged="ColorTypeComboBox_SelectionChanged" Foreground="{Binding Source={StaticResource Foreground1}}" Style="{DynamicResource ComboBoxStyle1}" Margin="10,0,0,0" BorderThickness="2" Padding="5" VerticalAlignment="Center" />
 						<Grid VerticalAlignment="Center">
-							<TextBox Visibility="Visible" MinHeight="24" x:Name="ColorTxt" TextChanged="ColorTxt_TextChanged" Width="150" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center"/>
+							<TextBox Visibility="Visible" MinHeight="24" x:Name="ColorTxt" TextChanged="ColorTxt_TextChanged" Width="150" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" />
 							<Grid x:Name="HSVGrid" Visibility="Collapsed" Margin="10,0,0,0" VerticalAlignment="Center">
 								<StackPanel Orientation="Horizontal">
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.H}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="HueTxt" MinHeight="24" TextChanged="HueTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.H}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="HueTxt" MinHeight="24" TextChanged="HueTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.S}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="SatTxt" MinHeight="24" TextChanged="SatTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.S}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="SatTxt" MinHeight="24" TextChanged="SatTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.V}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="ValTxt" MinHeight="24" TextChanged="ValTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.V}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="ValTxt" MinHeight="24" TextChanged="ValTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 								</StackPanel>
 							</Grid>
 							<Grid x:Name="HSLGrid" Visibility="Collapsed" Margin="10,0,0,0" VerticalAlignment="Center">
 								<StackPanel Orientation="Horizontal">
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.H}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="HTxt" MinHeight="24" TextChanged="HTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.H}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="HTxt" MinHeight="24" TextChanged="HTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.S}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="STxt" MinHeight="24" TextChanged="STxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.S}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="STxt" MinHeight="24" TextChanged="STxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.L}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="LTxt" MinHeight="24" TextChanged="LTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.L}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="LTxt" MinHeight="24" TextChanged="LTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 								</StackPanel>
 							</Grid>
 							<Grid x:Name="CMYKGrid" Visibility="Collapsed" Margin="10,0,0,0" VerticalAlignment="Center">
 								<StackPanel Orientation="Horizontal">
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.C}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="CTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.C}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="CTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.M}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="MTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.M}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="MTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.Y}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="YTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.Y}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="YTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 									<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-										<TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.K}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-										<TextBox x:Name="KTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}"/>
+										<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.K}" Margin="10,0,0,0" VerticalAlignment="Center" />
+										<TextBox x:Name="KTxt" MinHeight="24" TextChanged="CTxt_TextChanged" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
 									</StackPanel>
 								</StackPanel>
 							</Grid>
@@ -89,60 +78,60 @@
 					</StackPanel>
 
 					<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
-						<TextBlock x:Name="IconValidMsgTxt" FontSize="18" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,10,0" VerticalAlignment="Center"/>
-						<TextBlock x:Name="ValidMsgTxt" FontWeight="Bold" FontSize="12" VerticalAlignment="Center"/>
+						<TextBlock x:Name="IconValidMsgTxt" FontSize="18" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,10,0" VerticalAlignment="Center" />
+						<TextBlock x:Name="ValidMsgTxt" FontWeight="ExtraBold" FontSize="12" VerticalAlignment="Center" />
 					</StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Grid.Row="2">
-                        <Border x:Name="ColorDisplayer" CornerRadius="10" Margin="10" d:Background="Red" Grid.Column="0" Height="100" Width="100"/>
-                        <Grid Margin="0,10,0,0" VerticalAlignment="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+					<StackPanel Orientation="Horizontal" Grid.Row="2">
+						<Border x:Name="ColorDisplayer" CornerRadius="10" Margin="10" d:Background="Red" Grid.Column="0" Height="100" Width="100" />
+						<Grid Margin="0,10,0,0" VerticalAlignment="Center">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
 
-                            <TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.RGB}" x:Name="RGBTxt" VerticalAlignment="Center"/>
-                            <TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HEX}" x:Name="HEXTxt" Grid.Row="1" VerticalAlignment="Center"/>
-                            <TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HSV}" x:Name="HSVTxt" Grid.Row="2" VerticalAlignment="Center"/>
-                            <TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.HSL}" x:Name="HSLTxt" Grid.Row="3" VerticalAlignment="Center"/>
-                            <TextBlock FontWeight="Bold" FontSize="14" Text="{x:Static lang:Resources.CMYK}" x:Name="CMYKTxt" Grid.Row="4" VerticalAlignment="Center"/>
+							<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.RGB}" x:Name="RGBTxt" VerticalAlignment="Center" />
+							<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.HEX}" x:Name="HEXTxt" Grid.Row="1" VerticalAlignment="Center" />
+							<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.HSV}" x:Name="HSVTxt" Grid.Row="2" VerticalAlignment="Center" />
+							<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.HSL}" x:Name="HSLTxt" Grid.Row="3" VerticalAlignment="Center" />
+							<TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.CMYK}" x:Name="CMYKTxt" Grid.Row="4" VerticalAlignment="Center" />
 
-                            <Button x:Name="CopyBtn" Click="CopyBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.CopyRGB}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
-                                </Button.ToolTip>
-                            </Button>
-                            <Button x:Name="CopyHEXBtn" Click="CopyHEXBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.CopyHEX}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
-                                </Button.ToolTip>
-                            </Button>
-                            <Button x:Name="CopyHSVBtn" Click="CopyHSVBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.CopyHSV}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
-                                </Button.ToolTip>
-                            </Button>
-                            <Button x:Name="CopyHSLBtn" Click="CopyHSLBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.CopyHSL}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
-                                </Button.ToolTip>
-                            </Button>
-                            <Button x:Name="CopyCMYKBtn" Click="CopyCMYKBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.CopyCMYK}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
-                                </Button.ToolTip>
-                            </Button>
-                        </Grid>
-                    </StackPanel>
-                </Grid>
+							<Button x:Name="CopyBtn" Click="CopyBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.CopyRGB}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+								</Button.ToolTip>
+							</Button>
+							<Button x:Name="CopyHEXBtn" Click="CopyHEXBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.CopyHEX}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+								</Button.ToolTip>
+							</Button>
+							<Button x:Name="CopyHSVBtn" Click="CopyHSVBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.CopyHSV}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+								</Button.ToolTip>
+							</Button>
+							<Button x:Name="CopyHSLBtn" Click="CopyHSLBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.CopyHSL}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+								</Button.ToolTip>
+							</Button>
+							<Button x:Name="CopyCMYKBtn" Click="CopyCMYKBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.CopyCMYK}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+								</Button.ToolTip>
+							</Button>
+						</Grid>
+					</StackPanel>
+				</Grid>
 			</StackPanel>
 		</Grid>
 	</Grid>
