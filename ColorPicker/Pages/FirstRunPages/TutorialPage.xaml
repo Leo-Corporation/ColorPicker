@@ -1,21 +1,12 @@
-﻿<Page x:Class="ColorPicker.Pages.FirstRunPages.TutorialPage"
-	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	  xmlns:local="clr-namespace:ColorPicker.Pages.FirstRunPages"
-	  xmlns:lang="clr-namespace:ColorPicker.Properties"
-	  mc:Ignorable="d" FontFamily="..\..\Fonts\#Montserrat"
-	  d:DesignHeight="450" d:DesignWidth="800" Foreground="{Binding Source={StaticResource Foreground1}}"
-	  Title="TutorialPage">
+﻿<Page x:Class="ColorPicker.Pages.FirstRunPages.TutorialPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:ColorPicker.Pages.FirstRunPages" xmlns:lang="clr-namespace:ColorPicker.Properties" mc:Ignorable="d" FontFamily="..\..\Fonts\#Hauora" d:DesignHeight="450" d:DesignWidth="800" Foreground="{Binding Source={StaticResource Foreground1}}" Title="TutorialPage">
 
 	<Grid>
 		<StackPanel Margin="10">
 			<StackPanel Orientation="Horizontal" Margin="50,0,0,0">
 				<Border Width="31" Height="31" BorderThickness="2" CornerRadius="16" Background="{Binding Source={StaticResource LightAccentColor}}" BorderBrush="{Binding Source={StaticResource AccentColor}}" Padding="8">
-					<TextBlock Foreground="{Binding Source={StaticResource AccentColor}}" Text="&#xF2FC;" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<TextBlock Foreground="{Binding Source={StaticResource AccentColor}}" Text="&#xF2FC;" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" />
 				</Border>
-				<TextBlock Text="{x:Static lang:Resources.Picker}" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+				<TextBlock Text="{x:Static lang:Resources.Picker}" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,0,0" />
 
 				<StackPanel.Triggers>
 					<EventTrigger RoutedEvent="Loaded">
@@ -30,13 +21,13 @@
 					</EventTrigger>
 				</StackPanel.Triggers>
 			</StackPanel>
-			<TextBlock Text="{x:Static lang:Resources.WelcomePicker}" Margin="41,0,0,0" FontSize="14" TextWrapping="Wrap"/>
+			<TextBlock Text="{x:Static lang:Resources.WelcomePicker}" Margin="41,0,0,0" FontSize="14" TextWrapping="Wrap" />
 
 			<StackPanel Orientation="Horizontal" Margin="50,0,0,0">
 				<Border Width="31" Height="31" BorderThickness="2" CornerRadius="16" Background="{Binding Source={StaticResource LightAccentColor}}" BorderBrush="{Binding Source={StaticResource AccentColor}}" Padding="8">
-					<TextBlock Foreground="{Binding Source={StaticResource AccentColor}}" Text="&#xF18E;" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<TextBlock Foreground="{Binding Source={StaticResource AccentColor}}" Text="&#xF18E;" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" />
 				</Border>
-				<TextBlock Text="{x:Static lang:Resources.Converter}" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+				<TextBlock Text="{x:Static lang:Resources.Converter}" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,0,0" />
 
 				<StackPanel.Triggers>
 					<EventTrigger RoutedEvent="Loaded">
@@ -51,13 +42,13 @@
 					</EventTrigger>
 				</StackPanel.Triggers>
 			</StackPanel>
-			<TextBlock Text="{x:Static lang:Resources.WelcomeConverter}" Margin="41,0,0,0" FontSize="14" TextWrapping="Wrap" Height="52.1"/>
+			<TextBlock Text="{x:Static lang:Resources.WelcomeConverter}" Margin="41,0,0,0" FontSize="14" TextWrapping="Wrap" Height="52.1" />
 
 			<StackPanel Orientation="Horizontal" Margin="50,0,0,0">
 				<Border Width="31" Height="31" BorderThickness="2" CornerRadius="16" Background="{Binding Source={StaticResource LightAccentColor}}" BorderBrush="{Binding Source={StaticResource AccentColor}}" Padding="8">
-					<TextBlock Foreground="{Binding Source={StaticResource AccentColor}}" Text="&#xF2F6;" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<TextBlock Foreground="{Binding Source={StaticResource AccentColor}}" Text="&#xF2F6;" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" />
 				</Border>
-				<TextBlock Text="{x:Static lang:Resources.Palette}" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+				<TextBlock Text="{x:Static lang:Resources.Palette}" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,0,0" />
 
 				<StackPanel.Triggers>
 					<EventTrigger RoutedEvent="Loaded">
@@ -72,7 +63,7 @@
 					</EventTrigger>
 				</StackPanel.Triggers>
 			</StackPanel>
-			<TextBlock Text="{x:Static lang:Resources.WelcomePalette}" Margin="41,0,0,0" FontSize="14" TextWrapping="Wrap"/>
+			<TextBlock Text="{x:Static lang:Resources.WelcomePalette}" Margin="41,0,0,0" FontSize="14" TextWrapping="Wrap" />
 		</StackPanel>
 	</Grid>
 </Page>
