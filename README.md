@@ -55,10 +55,10 @@ There is currently two keyboard shortcuts for ColorPicker, starting with version
 
 ## Contribute
 To contribute to the project, you'll need:
-- Visual Studio 2019 v16.8 or higher
+- Visual Studio 2022 v17.0 or higher
   - .NET Desktop Development
   - Git
-- .NET 5
+- .NET 6
 - (*optional*) Inno Setup v6.1 or higher
 
 
