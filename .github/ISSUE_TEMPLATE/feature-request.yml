@@ -16,8 +16,8 @@ body:
     required: true
 - type: textarea
   attributes:
-    label: Other informations
-    description: If you have other informations, like mockups, etc., put them here.
-    placeholder: Add other informations here.
+    label: Other information
+    description: If you have other information, like mockups, etc., put them here.
+    placeholder: Add other information here.
   validations:
     required: false
