@@ -11,6 +11,6 @@ body:
   attributes:
     label: Description of your issue
     description: Describe the problem.
-    placeholder: Descirbe here your issue.
+    placeholder: Describe here your issue.
   validations:
     required: true
