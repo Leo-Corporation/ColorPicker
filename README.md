@@ -38,7 +38,7 @@ ColorPicker is written in C# .NET 5 using WPF.
 
 ## Features
 - Pick a color from your screen
-- Pick a color manually with the inituitive UI
+- Pick a color manually with the intuitive UI
 - Pick a color randomly
 - Color History
 - Convert colors to another type (RGB, HEX, HSL, HSV, CMYK)
@@ -46,20 +46,20 @@ ColorPicker is written in C# .NET 5 using WPF.
 - Keyboard shortcuts
 - Customizable through settings
 
-## Keyboard shotcuts
+## Keyboard shortcuts
 There is currently two keyboard shortcuts for ColorPicker, starting with version 3.3:
 - <kbd>Shift+S</kbd> - Start/Stop color selection
 - <kbd>Shift+C</kbd> - Copy the selected color on screen
 
-> Note: You can disable keyboard shortcuts in settings.
+> Note: You can disable or edit keyboard shortcuts in settings.
 
 ## Contribute
 To contribute to the project, you'll need:
 - Visual Studio 2019 v16.8 or higher
-  - .NET Desktop Developpement
+  - .NET Desktop Development
   - Git
 - .NET 5
-- (*optionnal*) Inno Setup v6.1 or higher
+- (*optional*) Inno Setup v6.1 or higher
 
 
 [Click here](https://github.com/Leo-Corporation/ColorPicker/blob/main/CONTRIBUTING.md) to see the full guidelines.
