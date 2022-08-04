@@ -853,6 +853,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset keyboard shortcuts.
+        /// </summary>
+        public static string ResetKeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("ResetKeyboardShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset settings.
         /// </summary>
         public static string ResetSettings {

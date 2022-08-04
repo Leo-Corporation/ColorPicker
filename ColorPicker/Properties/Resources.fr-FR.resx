@@ -501,4 +501,7 @@
   <data name="UseCompactMode" xml:space="preserve">
     <value>Utiliser le mode compact lors du lancement de ColorPicker</value>
   </data>
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
+    <value>Réinitialiser les raccourcis clavier</value>
+  </data>
 </root>
