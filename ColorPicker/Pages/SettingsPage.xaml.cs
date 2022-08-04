@@ -630,6 +630,13 @@ public partial class SettingsPage : Page
 		SettingsManager.Save(); // Save changes
 	}
 
+	private void ResetSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SelectShortcutTxt.Text = "Shift+S"; // Set default value (Shift+S) to textbox
+		Global.Settings.SelectKeyboardShortcut = "Shift+S"; // Set default value
+		SettingsManager.Save(); // Save changes
+	}
+
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 	{
 		keys = new(); // Create new list
