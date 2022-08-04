@@ -221,6 +221,11 @@
 									<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 								</Button.ToolTip>
 							</Button>
+                            <Button Content="&#xF19A;" Padding="5" x:Name="ResetCopyShortcutBtn" Click="ResetCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0 5 5 5" VerticalAlignment="Center">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.ResetKeyboardShortcuts}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+                                </Button.ToolTip>
+                            </Button>
 							<TextBlock x:Name="PressKeys2Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center" />
 						</StackPanel>
 						<TextBlock Text="{x:Static lang:Resources.NeedRestartLabel}" TextWrapping="Wrap" FontStyle="Italic" Margin="10,5,0,5" />

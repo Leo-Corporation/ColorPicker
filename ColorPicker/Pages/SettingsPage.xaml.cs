@@ -637,6 +637,13 @@ public partial class SettingsPage : Page
 		SettingsManager.Save(); // Save changes
 	}
 
+	private void ResetCopyShortcutBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CopyShortcutTxt.Text = "Shift+C"; // Set default value (Shift+C) to textbox
+		Global.Settings.CopyKeyboardShortcut = "Shift+C"; // Set default value
+		SettingsManager.Save(); // Save changes
+	}
+
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 	{
 		keys = new(); // Create new list
