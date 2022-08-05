@@ -702,7 +702,8 @@ public partial class SettingsPage : Page
 
 	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-
+		Global.Settings.TextToolFont = FontComboBox.SelectedItem.ToString(); // Set
+		SettingsManager.Save(); // Save changes
 	}
 
 	private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)

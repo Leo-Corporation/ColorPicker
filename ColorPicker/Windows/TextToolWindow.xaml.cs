@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,10 +48,7 @@ public partial class TextToolWindow : Window
 		{
 			FontComboBox.Items.Add(fontFamily.Name);
 		}
-		if (FontComboBox.Items.Contains("Arial"))
-		{
-			FontComboBox.Text = "Arial";
-		}
+		FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
