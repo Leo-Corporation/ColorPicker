@@ -710,7 +710,19 @@ public partial class SettingsPage : Page
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
+		System.Windows.Forms.ColorDialog colorDialog = new()
+		{
+			AllowFullOpen = true,
+		}; // Create color picker/dialog
 
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+		{
+			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			BackgroundBorder.Background = color;
+
+			Global.Settings.TextToolBackgroundColor = "#" + ColorHelper.ColorConverter.RgbToHex(new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B)).Value; // Set color
+			SettingsManager.Save(); // Save changes
+		}
 	}
 
 	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

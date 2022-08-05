@@ -63,6 +63,20 @@ public partial class TextToolWindow : Window
 
 			ForegroundBorder.Background = foreColor; // Set the border color
 		}
+
+		if (Global.Settings.TextToolBackgroundColor != "_default")
+		{
+			var rgbBack = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolBackgroundColor));
+			var backColor = new SolidColorBrush { Color = Color.FromRgb(rgbBack.R, rgbBack.G, rgbBack.B) };
+
+			RegularTxt.Background = backColor; // Set the background color
+			ItalicTxt.Background = backColor; // Set the background color
+			BoldTxt.Background = backColor; // Set the background color
+
+			BackgroundBorder.Background = backColor; // Set the border color
+			TextPanel.Background = backColor; // Set background color
+
+		}
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
