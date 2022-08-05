@@ -22,6 +22,8 @@
     <None Remove="Fonts\Hauora-Regular.ttf" />
     <None Remove="Images\BackgroundBlack.png" />
     <None Remove="Images\BackgroundWhite.png" />
+    <None Remove="Images\ColorDisc.png" />
+    <None Remove="Images\ColorDisc2.png" />
     <None Remove="Images\ColorPicker.png" />
     <None Remove="Images\ColorWheel.png" />
     <None Remove="Images\DarkTheme.png" />
@@ -71,6 +73,12 @@
 		</Resource>
 		<Resource Include="Images\BackgroundWhite.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\ColorDisc.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\ColorDisc2.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Images\ColorPicker.png">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
