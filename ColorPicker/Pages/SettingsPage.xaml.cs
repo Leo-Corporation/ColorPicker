@@ -181,6 +181,28 @@ public partial class SettingsPage : Page
 				Global.Settings.TextToolBackgroundColor = "_default"; // Set default value
 			}
 
+			// Load TextTool section
+			System.Drawing.Text.InstalledFontCollection installedFonts = new();
+			foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
+			{
+				FontComboBox.Items.Add(fontFamily.Name);
+			}
+			FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
+
+			FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString(); // Set default value
+
+			if (Global.Settings.TextToolFontColor != "_default")
+			{
+				var fore = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolFontColor));
+				ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(fore.R, fore.G, fore.B) }; // Set default value 
+			}
+
+			if (Global.Settings.TextToolBackgroundColor != "_default")
+			{
+				var back = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolBackgroundColor));
+				BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(back.R, back.G, back.B) }; // Set default value 
+			}
+
 			// Load checkboxes
 			CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 			NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
