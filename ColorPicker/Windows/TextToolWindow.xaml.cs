@@ -51,6 +51,18 @@ public partial class TextToolWindow : Window
 		FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
 
 		FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString(); // Set the default font size
+
+		if (Global.Settings.TextToolFontColor != "_default")
+		{
+			var rgbFore = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolFontColor));
+			var foreColor = new SolidColorBrush { Color = Color.FromRgb(rgbFore.R, rgbFore.G, rgbFore.B) };
+
+			RegularTxt.Foreground = foreColor; // Set the foreground color
+			ItalicTxt.Foreground = foreColor; // Set foreground color
+			BoldTxt.Foreground = foreColor; // Set foreground color
+
+			ForegroundBorder.Background = foreColor; // Set the border color
+		}
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
