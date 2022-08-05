@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
-    <Version>4.3.0.2207</Version>
+    <Version>4.4.0.2208</Version>
     <Authors>Léo Corporation;wcxu21</Authors>
     <Copyright>© 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -17,11 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Fonts\Hauora-ExtraBold.ttf" />
     <None Remove="Fonts\Hauora-Regular.ttf" />
     <None Remove="Images\BackgroundBlack.png" />
     <None Remove="Images\BackgroundWhite.png" />
+    <None Remove="Images\ColorDisc.png" />
+    <None Remove="Images\ColorDisc2.png" />
     <None Remove="Images\ColorPicker.png" />
     <None Remove="Images\ColorWheel.png" />
     <None Remove="Images\DarkTheme.png" />
@@ -30,8 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ColorHelper" Version="1.6.2" />
-    <PackageReference Include="LeoCorpLibrary" Version="4.8.0.2207" />
+    <PackageReference Include="ColorHelper" Version="1.8.0" />
+    <PackageReference Include="LeoCorpLibrary" Version="4.9.0.2208" />
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
   </ItemGroup>
 
@@ -57,6 +60,9 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Fonts\FluentSystemIcons-Filled.ttf">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
 		<Resource Include="Fonts\FluentSystemIcons-Regular.ttf">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
@@ -71,6 +77,12 @@
 		</Resource>
 		<Resource Include="Images\BackgroundWhite.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\ColorDisc.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\ColorDisc2.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Images\ColorPicker.png">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>

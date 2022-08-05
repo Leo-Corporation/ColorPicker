@@ -204,7 +204,12 @@
 									<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 								</Button.ToolTip>
 							</Button>
-							<TextBlock x:Name="PressKeys1Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center" />
+                            <Button Content="&#xF19A;" Padding="5" x:Name="ResetSelectShortcutBtn" Click="ResetSelectShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0 5 5 5" VerticalAlignment="Center">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.ResetKeyboardShortcuts}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+                                </Button.ToolTip>
+                            </Button>
+                            <TextBlock x:Name="PressKeys1Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center" />
 						</StackPanel>
 						<TextBlock Text="{x:Static lang:Resources.CopyColor}" Margin="10 0 0 0" />
 						<StackPanel Orientation="Horizontal">
@@ -216,6 +221,11 @@
 									<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 								</Button.ToolTip>
 							</Button>
+                            <Button Content="&#xF19A;" Padding="5" x:Name="ResetCopyShortcutBtn" Click="ResetCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource TabButtonStyle}" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0 5 5 5" VerticalAlignment="Center">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.ResetKeyboardShortcuts}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+                                </Button.ToolTip>
+                            </Button>
 							<TextBlock x:Name="PressKeys2Txt" Text="{x:Static lang:Resources.PressKeys}" Visibility="Collapsed" VerticalAlignment="Center" />
 						</StackPanel>
 						<TextBlock Text="{x:Static lang:Resources.NeedRestartLabel}" TextWrapping="Wrap" FontStyle="Italic" Margin="10,5,0,5" />
@@ -239,7 +249,44 @@
 					</StackPanel>
 				</Expander>
 
-				<Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource Background2}}" Foreground="{Binding Source={StaticResource Foreground1}}">
+                <Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource Background2}}" Foreground="{Binding Source={StaticResource Foreground1}}">
+                    <Expander.Header>
+                        <StackPanel Margin="10 15" Orientation="Horizontal">
+                            <TextBlock Text="&#xF793;" FontSize="22" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
+                            <StackPanel>
+                                <TextBlock Text="{x:Static lang:Resources.TextTool}" FontSize="18" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="10,0,0,0" />
+                                <TextBlock Text="{x:Static lang:Resources.TextToolSettings}" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Expander.Header>
+
+                    <StackPanel Margin="10">
+                        <TextBlock Text="{x:Static lang:Resources.Font}" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <ComboBox IsEditable="True" MinWidth="100" MaxWidth="150" SelectionChanged="FontComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FontComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Center" />
+                        <TextBlock Text="{x:Static lang:Resources.Size}" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <TextBox Visibility="Visible" MinHeight="24" x:Name="FontSizeTxt" Width="50" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" PreviewTextInput="FontSizeTxt_PreviewTextInput" TextChanged="FontSizeTxt_TextChanged" Text="16" HorizontalAlignment="Left" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition MinHeight="30" Height="Auto"/>
+                                <RowDefinition MinHeight="30" Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Text="{x:Static lang:Resources.Foreground}" VerticalAlignment="Center" Margin="10,0,10,0" />
+                            <Border Margin="2" x:Name="ForegroundBorder" BorderThickness="2" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="5" Background="{Binding Source={StaticResource Foreground1}}" BorderBrush="#59ADFF" Width="28.6266666666667" Cursor="Hand" Grid.Column="1" />
+                            <TextBlock Text="{x:Static lang:Resources.Background}" VerticalAlignment="Center" Margin="10,0,10,0" Grid.Row="1" />
+                            <Border Margin="2" x:Name="BackgroundBorder" BorderThickness="2" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="5" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#59ADFF" Width="28.6266666666667" Cursor="Hand" Grid.Column="1" Grid.Row="1" />
+
+                        </Grid>                       
+                    </StackPanel>
+                </Expander>
+
+
+                <Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource Background2}}" Foreground="{Binding Source={StaticResource Foreground1}}">
 					<Expander.Header>
 						<StackPanel Margin="10 15" Orientation="Horizontal">
 							<TextBlock Text="&#xF419;" FontSize="22" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />

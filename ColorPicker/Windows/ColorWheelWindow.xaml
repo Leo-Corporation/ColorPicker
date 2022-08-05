@@ -83,15 +83,23 @@
 						<ColumnDefinition Width="*" />
 						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
 					<TextBlock Foreground="{Binding Source={StaticResource Foreground1}}" Text="{x:Static lang:Resources.ColorWheel}" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,0,0" />
 
-					<Button Grid.Column="1" FontSize="14" Content="&#xFC75;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="MinimizeBtn" Click="MinimizeBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="WheelBtn" Click="WheelBtn_Click" Content="&#xF2BC;" FontFamily="/Fonts/#FluentSystemIcons-Filled" HorizontalAlignment="Stretch" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Background="{Binding Source={StaticResource AccentColor}}" FontWeight="ExtraBold" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Center" />
+                        <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="PaletteBtn" Click="PaletteBtn_Click" Content="&#xF2F6;" FontFamily="/Fonts/#FluentSystemIcons-Filled" HorizontalAlignment="Stretch" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{x:Null}" FontWeight="ExtraBold" Margin="5,0,0,0" Grid.Row="2" VerticalAlignment="Center" />
+                        <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="DiscBtn" Click="DiscBtn_Click" Content="&#xF2BA;" FontFamily="/Fonts/#FluentSystemIcons-Regular" HorizontalAlignment="Stretch" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{x:Null}" FontWeight="ExtraBold" Margin="5,0,0,0" Grid.Row="2" VerticalAlignment="Center" />
+
+                    </StackPanel>
+                    
+					<Button Grid.Column="2" FontSize="14" Content="&#xFC75;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="MinimizeBtn" Click="MinimizeBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.Minimize}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 						</Button.ToolTip>
 					</Button>
-					<Button Grid.Column="2" FontSize="14" Content="&#xF36B;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="CloseBtn" Click="CloseBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarCloseButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
+					<Button Grid.Column="3" FontSize="14" Content="&#xF36B;" FontFamily="/Fonts/#FluentSystemIcons-Regular" Name="CloseBtn" Click="CloseBtn_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarCloseButtonStyle}" Background="Transparent" Width="46" Height="32" Foreground="{Binding Source={StaticResource Foreground1}}">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.Close}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 						</Button.ToolTip>
@@ -106,7 +114,7 @@
 						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
 
-					<Image Cursor="Cross" MouseLeftButtonUp="Image_MouseLeftButtonUp" Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350" VerticalAlignment="Center" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" />
+					<Image x:Name="WheelImg" Cursor="Cross" MouseLeftButtonUp="Image_MouseLeftButtonUp" Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350" VerticalAlignment="Center" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" />
 
 					<Grid Grid.Column="1" Margin="10" MinWidth="100" VerticalAlignment="Center">
 						<Grid.RowDefinitions>

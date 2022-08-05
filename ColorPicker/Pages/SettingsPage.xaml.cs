@@ -29,6 +29,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -159,6 +160,48 @@ public partial class SettingsPage : Page
 			if (!Global.Settings.UseCompactMode.HasValue)
 			{
 				Global.Settings.UseCompactMode = false; // Set default value
+			}
+
+			if (string.IsNullOrEmpty(Global.Settings.TextToolFont))
+			{
+				Global.Settings.TextToolFont = "Arial"; // Set default value
+			}
+
+			if (!Global.Settings.TextToolFontSize.HasValue)
+			{
+				Global.Settings.TextToolFontSize = 16; // Set default value
+			}
+
+			if (string.IsNullOrEmpty(Global.Settings.TextToolFontColor))
+			{
+				Global.Settings.TextToolFontColor = "_default"; // Set default value
+			}
+
+			if (string.IsNullOrEmpty(Global.Settings.TextToolBackgroundColor))
+			{
+				Global.Settings.TextToolBackgroundColor = "_default"; // Set default value
+			}
+
+			// Load TextTool section
+			System.Drawing.Text.InstalledFontCollection installedFonts = new();
+			foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
+			{
+				FontComboBox.Items.Add(fontFamily.Name);
+			}
+			FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
+
+			FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString(); // Set default value
+
+			if (Global.Settings.TextToolFontColor != "_default")
+			{
+				var fore = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolFontColor));
+				ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(fore.R, fore.G, fore.B) }; // Set default value 
+			}
+
+			if (Global.Settings.TextToolBackgroundColor != "_default")
+			{
+				var back = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolBackgroundColor));
+				BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(back.R, back.G, back.B) }; // Set default value 
 			}
 
 			// Load checkboxes
@@ -510,6 +553,10 @@ public partial class SettingsPage : Page
 				IsPinned = false,
 				StartupPage = Enums.Pages.Picker,
 				UseCompactMode = false,
+				TextToolFont = "Arial",
+				TextToolFontSize = 16,
+				TextToolFontColor = "_default", // Default value depends of the theme
+				TextToolBackgroundColor = "_default",
 			}; // Create default settings
 
 			SettingsManager.Save(); // Save the changes
@@ -628,6 +675,75 @@ public partial class SettingsPage : Page
 	{
 		Global.Settings.UseCompactMode = CompactChk.IsChecked; // Set
 		SettingsManager.Save(); // Save changes
+	}
+
+	private void ResetSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SelectShortcutTxt.Text = "Shift+S"; // Set default value (Shift+S) to textbox
+		Global.Settings.SelectKeyboardShortcut = "Shift+S"; // Set default value
+		SettingsManager.Save(); // Save changes
+	}
+
+	private void ResetCopyShortcutBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CopyShortcutTxt.Text = "Shift+C"; // Set default value (Shift+C) to textbox
+		Global.Settings.CopyKeyboardShortcut = "Shift+C"; // Set default value
+		SettingsManager.Save(); // Save changes
+	}
+
+	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		System.Windows.Forms.ColorDialog colorDialog = new()
+		{
+			AllowFullOpen = true,
+		}; // Create color picker/dialog
+
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+		{
+			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			ForegroundBorder.Background = color;
+
+			Global.Settings.TextToolFontColor = "#" + ColorHelper.ColorConverter.RgbToHex(new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B)).Value; // Set color
+			SettingsManager.Save(); // Save changes
+		}
+	}
+
+	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		System.Windows.Forms.ColorDialog colorDialog = new()
+		{
+			AllowFullOpen = true,
+		}; // Create color picker/dialog
+
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+		{
+			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			BackgroundBorder.Background = color;
+
+			Global.Settings.TextToolBackgroundColor = "#" + ColorHelper.ColorConverter.RgbToHex(new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B)).Value; // Set color
+			SettingsManager.Save(); // Save changes
+		}
+	}
+
+	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		Global.Settings.TextToolFont = FontComboBox.SelectedItem.ToString(); // Set
+		SettingsManager.Save(); // Save changes
+	}
+
+	private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
+	}
+
+	private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		if (!string.IsNullOrEmpty(FontSizeTxt.Text) && !string.IsNullOrWhiteSpace(FontSizeTxt.Text))
+		{
+			Global.Settings.TextToolFontSize = int.Parse(FontSizeTxt.Text); // Set
+			SettingsManager.Save(); // Save changes 
+		}
 	}
 
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)

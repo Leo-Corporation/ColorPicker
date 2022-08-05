@@ -43,7 +43,7 @@ public static class Global
 	/// <summary>
 	/// The current version of ColorPicker.
 	/// </summary>
-	public static string Version => "4.3.0.2207";
+	public static string Version => "4.4.0.2208";
 
 	/// <summary>
 	/// List of the available languages.

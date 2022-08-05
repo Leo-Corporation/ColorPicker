@@ -481,4 +481,13 @@
   <data name="UseCompactMode" xml:space="preserve">
     <value>Use compact mode when launching ColorPicker</value>
   </data>
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
+    <value>Reset keyboard shortcuts</value>
+  </data>
+  <data name="TextToolSettings" xml:space="preserve">
+    <value>Default settings of the Text tool.</value>
+  </data>
+  <data name="UseDefaultColors" xml:space="preserve">
+    <value>Use default colors</value>
+  </data>
 </root>

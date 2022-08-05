@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,9 +48,34 @@ public partial class TextToolWindow : Window
 		{
 			FontComboBox.Items.Add(fontFamily.Name);
 		}
-		if (FontComboBox.Items.Contains("Arial"))
+		FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
+
+		FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString(); // Set the default font size
+
+		if (Global.Settings.TextToolFontColor != "_default")
 		{
-			FontComboBox.Text = "Arial";
+			var rgbFore = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolFontColor));
+			var foreColor = new SolidColorBrush { Color = Color.FromRgb(rgbFore.R, rgbFore.G, rgbFore.B) };
+
+			RegularTxt.Foreground = foreColor; // Set the foreground color
+			ItalicTxt.Foreground = foreColor; // Set foreground color
+			BoldTxt.Foreground = foreColor; // Set foreground color
+
+			ForegroundBorder.Background = foreColor; // Set the border color
+		}
+
+		if (Global.Settings.TextToolBackgroundColor != "_default")
+		{
+			var rgbBack = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolBackgroundColor));
+			var backColor = new SolidColorBrush { Color = Color.FromRgb(rgbBack.R, rgbBack.G, rgbBack.B) };
+
+			RegularTxt.Background = backColor; // Set the background color
+			ItalicTxt.Background = backColor; // Set the background color
+			BoldTxt.Background = backColor; // Set the background color
+
+			BackgroundBorder.Background = backColor; // Set the border color
+			TextPanel.Background = backColor; // Set background color
+
 		}
 	}
 

@@ -24,11 +24,13 @@ SOFTWARE.
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using LeoCorpLibrary;
+using System;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace ColorPicker.Windows;
@@ -74,6 +76,17 @@ public partial class ColorWheelWindow : Window
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
 		};
+	}
+
+	private void UncheckAllTabs()
+	{
+		WheelBtn.Foreground = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the color back to its default value
+		DiscBtn.Foreground = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the color back to its default value
+		PaletteBtn.Foreground = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["Foreground1"].ToString()) }; // Set the color back to its default value
+
+		WheelBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background color
+		DiscBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background color
+		PaletteBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background color
 	}
 
 	public ColorWheelWindow(bool selectMode, TextBox textBox, ColorTypes colorType = ColorTypes.RGB)
@@ -191,6 +204,49 @@ public partial class ColorWheelWindow : Window
 	private void Image_MouseLeave(object sender, MouseEventArgs e)
 	{
 		dispatcherTimer.Stop(); // Stop
+	}
+
+	private void WheelBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UncheckAllTabs(); // Uncheck all tabs
+		WheelBtn.Foreground = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["WindowButtonsHoverForeground1"].ToString()) }; // Set the color back to its default value
+		WheelBtn.Background = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set the color back to its default value
+
+		BitmapImage img = new();
+		img.BeginInit();
+		img.UriSource = new Uri("pack://application:,,,/ColorPicker;component/Images/ColorWheel.png");
+		img.EndInit();
+
+		WheelImg.Source = img; // Set the image source
+	}
+
+	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UncheckAllTabs(); // Uncheck all tabs
+		PaletteBtn.Foreground = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["WindowButtonsHoverForeground1"].ToString()) }; // Set the color back to its default value
+		PaletteBtn.Background = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set the color back to its default value
+
+		BitmapImage img = new();
+		img.BeginInit();
+		img.UriSource = new Uri("pack://application:,,,/ColorPicker;component/Images/ColorDisc.png");
+		img.EndInit();
+
+		WheelImg.Source = img; // Set the image source
+
+	}
+
+	private void DiscBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UncheckAllTabs(); // Uncheck all tabs
+		DiscBtn.Foreground = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["WindowButtonsHoverForeground1"].ToString()) }; // Set the color back to its default value
+		DiscBtn.Background = new SolidColorBrush { Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(App.Current.Resources["AccentColor"].ToString()) }; // Set the color back to its default value
+
+		BitmapImage img = new();
+		img.BeginInit();
+		img.UriSource = new Uri("pack://application:,,,/ColorPicker;component/Images/ColorDisc2.png");
+		img.EndInit();
+
+		WheelImg.Source = img; // Set the image source
 	}
 
 	private void Image_MouseEnter(object sender, MouseEventArgs e)

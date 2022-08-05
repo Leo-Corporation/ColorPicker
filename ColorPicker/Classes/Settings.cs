@@ -117,6 +117,26 @@ public class Settings
 	/// True if ColorPicker should enable compact mode on start.
 	/// </summary>
 	public bool? UseCompactMode { get; set; }
+
+	/// <summary>
+	///	The default font of the Text tool.
+	/// </summary>
+	public string TextToolFont { get; set; }
+
+	/// <summary>
+	/// The default font size of the Text tool.
+	/// </summary>
+	public int? TextToolFontSize { get; set; }
+
+	/// <summary>
+	/// The default foreground color of the Text tool.
+	/// </summary>
+	public string TextToolFontColor { get; set; }
+
+	/// <summary>
+	/// The default background color of the Text tool.
+	/// </summary>
+	public string TextToolBackgroundColor { get; set; }
 }
 
 /// <summary>
@@ -161,6 +181,10 @@ public static class SettingsManager
 				IsPinned = false,
 				StartupPage = Enums.Pages.Picker,
 				UseCompactMode = false,
+				TextToolFont = "Arial",
+				TextToolFontSize = 16,
+				TextToolFontColor = "_default", // Default value depends of the theme
+				TextToolBackgroundColor = "_default",
 			}; // Create a new settings file
 
 			Save(); // Save the changes

@@ -105,7 +105,13 @@ public partial class PickerPage : Page
 			CopyBtn.Content = Global.ColorTypesToCopyString(Global.Settings.FavoriteColorType.Value);
 		}
 
-		ShortcutGuideTxt.Text = string.Format(Properties.Resources.ShortcutsGuide, Global.Settings.SelectKeyboardShortcut, Global.Settings.CopyKeyboardShortcut); // Set shortcut guide text
+		ShortcutGuideTxt.Text = string.Format(Properties.Resources.ShortcutsGuide, Global.Settings.SelectKeyboardShortcut, Global.Settings.CopyKeyboardShortcut)
+			.Replace("LControlKey", "Ctrl") // Simplify key names
+			.Replace("RControlKey", "Ctrl")
+			.Replace("LShiftKey", "Shift")
+			.Replace("RShiftKey", "Shift")
+			.Replace("LMenu", "Alt")
+			.Replace("RMenu", "Alt Gr"); // Set shortcut guide text
 
 		// Generate random color
 		Random random = new();
