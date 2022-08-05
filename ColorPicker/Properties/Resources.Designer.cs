@@ -1069,6 +1069,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default settings of the Text tool..
+        /// </summary>
+        public static string TextToolSettings {
+            get {
+                return ResourceManager.GetString("TextToolSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string Theme {
@@ -1119,6 +1128,15 @@ namespace ColorPicker.Properties {
         public static string UseCompactMode {
             get {
                 return ResourceManager.GetString("UseCompactMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use default colors.
+        /// </summary>
+        public static string UseDefaultColors {
+            get {
+                return ResourceManager.GetString("UseDefaultColors", resourceCulture);
             }
         }
         
