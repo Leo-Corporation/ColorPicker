@@ -117,6 +117,26 @@ public class Settings
 	/// True if ColorPicker should enable compact mode on start.
 	/// </summary>
 	public bool? UseCompactMode { get; set; }
+
+	/// <summary>
+	///	The default font of the Text tool.
+	/// </summary>
+	public string TextToolFont { get; set; }
+
+	/// <summary>
+	/// The default font size of the Text tool.
+	/// </summary>
+	public int? TextToolFontSize { get; set; }
+
+	/// <summary>
+	/// The default foreground color of the Text tool.
+	/// </summary>
+	public string TextToolFontColor { get; set; }
+
+	/// <summary>
+	/// The default background color of the Text tool.
+	/// </summary>
+	public string TextTooBackgroundColor { get; set; }
 }
 
 /// <summary>
