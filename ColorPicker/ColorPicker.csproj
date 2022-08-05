@@ -17,6 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Fonts\Hauora-ExtraBold.ttf" />
     <None Remove="Fonts\Hauora-Regular.ttf" />
@@ -59,6 +60,9 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Fonts\FluentSystemIcons-Filled.ttf">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
 		<Resource Include="Fonts\FluentSystemIcons-Regular.ttf">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
