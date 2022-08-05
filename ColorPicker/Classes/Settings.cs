@@ -136,7 +136,7 @@ public class Settings
 	/// <summary>
 	/// The default background color of the Text tool.
 	/// </summary>
-	public string TextTooBackgroundColor { get; set; }
+	public string TextToolBackgroundColor { get; set; }
 }
 
 /// <summary>
@@ -181,6 +181,10 @@ public static class SettingsManager
 				IsPinned = false,
 				StartupPage = Enums.Pages.Picker,
 				UseCompactMode = false,
+				TextToolFont = "Arial",
+				TextToolFontSize = 16,
+				TextToolFontColor = "_default", // Default value depends of the theme
+				TextToolBackgroundColor = "_default",
 			}; // Create a new settings file
 
 			Save(); // Save the changes

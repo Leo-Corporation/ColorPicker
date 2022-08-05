@@ -161,6 +161,26 @@ public partial class SettingsPage : Page
 				Global.Settings.UseCompactMode = false; // Set default value
 			}
 
+			if (string.IsNullOrEmpty(Global.Settings.TextToolFont))
+			{
+				Global.Settings.TextToolFont = "Arial"; // Set default value
+			}
+
+			if (!Global.Settings.TextToolFontSize.HasValue)
+			{
+				Global.Settings.TextToolFontSize = 16; // Set default value
+			}
+
+			if (string.IsNullOrEmpty(Global.Settings.TextToolFontColor))
+			{
+				Global.Settings.TextToolFontColor = "_default"; // Set default value
+			}
+
+			if (string.IsNullOrEmpty(Global.Settings.TextToolBackgroundColor))
+			{
+				Global.Settings.TextToolBackgroundColor = "_default"; // Set default value
+			}
+
 			// Load checkboxes
 			CheckUpdatesOnStartChk.IsChecked = Global.Settings.CheckUpdatesOnStart; // Set
 			NotifyUpdatesChk.IsChecked = Global.Settings.NotifyUpdates; // Set
@@ -510,6 +530,10 @@ public partial class SettingsPage : Page
 				IsPinned = false,
 				StartupPage = Enums.Pages.Picker,
 				UseCompactMode = false,
+				TextToolFont = "Arial",
+				TextToolFontSize = 16,
+				TextToolFontColor = "_default", // Default value depends of the theme
+				TextToolBackgroundColor = "_default",
 			}; // Create default settings
 
 			SettingsManager.Save(); // Save the changes
