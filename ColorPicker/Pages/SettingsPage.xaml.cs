@@ -668,6 +668,31 @@ public partial class SettingsPage : Page
 		SettingsManager.Save(); // Save changes
 	}
 
+	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+
+	}
+
+	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+
+	}
+
+	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+
+	}
+
+	private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	{
+
+	}
+
+	private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+
+	}
+
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 	{
 		keys = new(); // Create new list
