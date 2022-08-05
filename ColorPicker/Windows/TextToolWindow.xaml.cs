@@ -49,6 +49,8 @@ public partial class TextToolWindow : Window
 			FontComboBox.Items.Add(fontFamily.Name);
 		}
 		FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
+
+		FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString(); // Set the default font size
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)

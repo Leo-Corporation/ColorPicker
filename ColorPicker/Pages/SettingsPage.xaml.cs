@@ -29,6 +29,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -708,12 +709,17 @@ public partial class SettingsPage : Page
 
 	private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
 	{
-
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
 	}
 
 	private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
 	{
-
+		if (!string.IsNullOrEmpty(FontSizeTxt.Text) && !string.IsNullOrWhiteSpace(FontSizeTxt.Text))
+		{
+			Global.Settings.TextToolFontSize = int.Parse(FontSizeTxt.Text); // Set
+			SettingsManager.Save(); // Save changes 
+		}
 	}
 
 	private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
