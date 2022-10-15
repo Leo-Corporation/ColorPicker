@@ -67,7 +67,9 @@ public partial class RecentColorItem : UserControl
 			$"{Properties.Resources.HEX}: #{ColorHelper.ColorConverter.RgbToHex(new((byte)R, (byte)G, (byte)B))}\n" +
 			$"{Properties.Resources.HSV}: {Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)R, (byte)G, (byte)B)))}\n" +
 			$"{Properties.Resources.HSL}: {Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)R, (byte)G, (byte)B)))}\n" +
-			$"{Properties.Resources.CMYK}: {Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B)))}"; // Set text
+			$"{Properties.Resources.CMYK}: {Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B)))}\n" +
+			$"{Properties.Resources.YIQ}: {Global.GetYiqString(ColorHelper.ColorConverter.RgbToYiq(new((byte)R, (byte)G, (byte)B))).Replace("\n", "")}\n" +
+			$"{Properties.Resources.XYZ}: {Global.GetXyzString(ColorHelper.ColorConverter.RgbToXyz(new((byte)R, (byte)G, (byte)B))).Replace("\n", "")}"; // Set text
 	}
 
 	private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -79,6 +81,8 @@ public partial class RecentColorItem : UserControl
 			ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)R, (byte)G, (byte)B))),
 			ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)R, (byte)G, (byte)B))),
 			ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B))),
+			ColorTypes.YIQ => Global.GetYiqString(ColorHelper.ColorConverter.RgbToYiq(new((byte)R, (byte)G, (byte)B))),
+			ColorTypes.XYZ => Global.GetXyzString(ColorHelper.ColorConverter.RgbToXyz(new((byte)R, (byte)G, (byte)B))),
 			_ => $"{R}{s}{G}{s}{B}"
 		}); // Copy
 	}
