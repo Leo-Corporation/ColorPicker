@@ -90,6 +90,22 @@
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>
+                            <Grid x:Name="YIQGrid" Visibility="Collapsed" Margin="10,0,0,0" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.Y}" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        <TextBox x:Name="YQTxt" MinHeight="24" TextChanged="YQTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.I}" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        <TextBox x:Name="ITxt" MinHeight="24" TextChanged="YQTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.Q}" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        <TextBox x:Name="QTxt" MinHeight="24" TextChanged="YQTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
                         </Grid>
 					</StackPanel>
 
@@ -162,9 +178,16 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.XYZ}" x:Name="XYZTxt" VerticalAlignment="Center" />
+                                <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.YIQ}" x:Name="YIQTxt" VerticalAlignment="Center" />
+                                <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.XYZ}" x:Name="XYZTxt" VerticalAlignment="Center" Grid.Row="1" />
 
-                                <Button x:Name="CopyXYZBtn" Click="CopyXYZBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+                                <Button x:Name="CopyYIQBtn" Click="CopyYIQBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+                                    <Button.ToolTip>
+                                        <ToolTip Content="{x:Static lang:Resources.CopyYIQ}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
+                                    </Button.ToolTip>
+                                </Button>
+                                
+                                <Button x:Name="CopyXYZBtn" Click="CopyXYZBtn_Click" Content="&#xF32C;" HorizontalAlignment="Left" Padding="5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="2" Grid.Column="1" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Grid.Row="1">
                                     <Button.ToolTip>
                                         <ToolTip Content="{x:Static lang:Resources.CopyXYZ}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
                                     </Button.ToolTip>
