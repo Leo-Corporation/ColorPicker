@@ -319,7 +319,7 @@
     <value>M</value>
   </data>
   <data name="Y" xml:space="preserve">
-    <value>J</value>
+    <value>Y</value>
   </data>
   <data name="K" xml:space="preserve">
     <value>N</value>
@@ -509,5 +509,17 @@
   </data>
   <data name="UseDefaultColors" xml:space="preserve">
     <value>Utiliser les couleurs par défaut</value>
+  </data>
+  <data name="XYZ" xml:space="preserve">
+    <value>XYZ</value>
+  </data>
+  <data name="CopyXYZ" xml:space="preserve">
+    <value>Copier XYZ</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value>Z</value>
   </data>
 </root>

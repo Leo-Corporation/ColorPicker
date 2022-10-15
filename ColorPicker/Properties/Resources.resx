@@ -490,4 +490,16 @@
   <data name="UseDefaultColors" xml:space="preserve">
     <value>Use default colors</value>
   </data>
+  <data name="XYZ" xml:space="preserve">
+    <value>XYZ</value>
+  </data>
+  <data name="CopyXYZ" xml:space="preserve">
+    <value>Copy XYZ</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value>Z</value>
+  </data>
 </root>
