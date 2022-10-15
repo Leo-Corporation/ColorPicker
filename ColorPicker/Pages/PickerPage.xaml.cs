@@ -278,6 +278,7 @@ public partial class PickerPage : Page
 			ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)r, (byte)g, (byte)b))),
 			ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)r, (byte)g, (byte)b))),
 			ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)r, (byte)g, (byte)b))),
+			ColorTypes.XYZ => Global.GetXyzString(ColorHelper.ColorConverter.RgbToXyz(new((byte)r, (byte)g, (byte)b))).Replace("\n", ""),
 			_ => $"{r}{sep}{g}{sep}{b}"
 		}); // Copy
 
