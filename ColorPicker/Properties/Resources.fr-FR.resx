@@ -522,4 +522,16 @@
   <data name="Z" xml:space="preserve">
     <value>Z</value>
   </data>
+  <data name="YIQ" xml:space="preserve">
+    <value>YIQ</value>
+  </data>
+  <data name="CopyYIQ" xml:space="preserve">
+    <value>Copier YIQ</value>
+  </data>
+  <data name="I" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="Q" xml:space="preserve">
+    <value>Q</value>
+  </data>
 </root>

@@ -367,6 +367,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy YIQ.
+        /// </summary>
+        public static string CopyYIQ {
+            get {
+                return ResourceManager.GetString("CopyYIQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Credits and special thanks.
         /// </summary>
         public static string CreditsAndThanks {
@@ -588,6 +597,15 @@ namespace ColorPicker.Properties {
         public static string HSV {
             get {
                 return ResourceManager.GetString("HSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I.
+        /// </summary>
+        public static string I {
+            get {
+                return ResourceManager.GetString("I", resourceCulture);
             }
         }
         
@@ -831,6 +849,15 @@ namespace ColorPicker.Properties {
         public static string PressKeys {
             get {
                 return ResourceManager.GetString("PressKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Q.
+        /// </summary>
+        public static string Q {
+            get {
+                return ResourceManager.GetString("Q", resourceCulture);
             }
         }
         
@@ -1263,6 +1290,15 @@ namespace ColorPicker.Properties {
         public static string Y {
             get {
                 return ResourceManager.GetString("Y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YIQ.
+        /// </summary>
+        public static string YIQ {
+            get {
+                return ResourceManager.GetString("YIQ", resourceCulture);
             }
         }
         

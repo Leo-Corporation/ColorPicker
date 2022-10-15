@@ -34,5 +34,6 @@ public enum ColorTypes
 	HSV,
 	HSL,
 	CMYK,
+	YIQ,
 	XYZ
 }

@@ -140,6 +140,7 @@ public static class Global
 			ColorTypes.HSL => Properties.Resources.HSL,
 			ColorTypes.CMYK => Properties.Resources.CMYK,
 			ColorTypes.XYZ => Properties.Resources.XYZ,
+			ColorTypes.YIQ => Properties.Resources.YIQ,
 			_ => Properties.Resources.RGB
 		}; // Return value
 	}
@@ -154,6 +155,7 @@ public static class Global
 			ColorTypes.HSL => Properties.Resources.CopyHSL,
 			ColorTypes.CMYK => Properties.Resources.CopyCMYK,
 			ColorTypes.XYZ => Properties.Resources.CopyXYZ,
+			ColorTypes.YIQ => Properties.Resources.CopyYIQ,
 			_ => Properties.Resources.CopyRGB
 		}; // Return value
 	}
@@ -235,7 +237,9 @@ public static class Global
 
 	internal static string GetCmykString(ColorHelper.CMYK cmyk) => $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 
-	internal static string GetXyzString(ColorHelper.XYZ xyz) => $"({xyz.X};\n{xyz.Y};\n{xyz.Z})";
+	internal static string GetXyzString(ColorHelper.XYZ xyz) => $"{xyz.X};\n{xyz.Y};\n{xyz.Z}";
+
+	internal static string GetYiqString(ColorHelper.YIQ yiq) => $"{yiq.Y};\n{yiq.I};\n{yiq.Q}";
 
 	internal static void CreateJumpLists()
 	{
