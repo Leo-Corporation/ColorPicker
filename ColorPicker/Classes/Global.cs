@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Shell;
 
 namespace ColorPicker.Classes;
@@ -277,5 +278,41 @@ public static class Global
 
 
 		JumpList.SetJumpList(Application.Current, jumpList); // Set the jump list
+	}
+
+	public static double GetLuminance(int r, int g, int b)
+	{
+		int[] rgb = { r, g, b };
+		double[] res = new double[3];
+
+		int i = 0;
+		foreach (int val in rgb)
+		{
+			double v = val / 255d;
+			res[i] = v <= 0.03928 ? v / 12.92 : Math.Pow((v + 0.055) / 1.055, 2.4);
+			i++;
+		}
+
+		return res[0] * 0.2126 + res[1] * 0.7152 + res[2] * 0.0722;
+	}
+
+
+	public static (string, SolidColorBrush) GetContrast(int[] rgb1, int[] rgb2)
+	{
+		var lum1 = GetLuminance(rgb1[0], rgb1[1], rgb1[2]);
+		var lum2 = GetLuminance(rgb2[0], rgb2[1], rgb2[2]);
+
+		var brightest = Math.Max(lum1, lum2);
+		var darkest = Math.Min(lum1, lum2);
+
+		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
+
+		SolidColorBrush backgroundBrush;
+		if (result > 7) backgroundBrush = new() { Color = Color.FromRgb(0, 171, 78) };
+		else backgroundBrush = new() { Color = Color.FromRgb(0, 171, 78) };
+		if (result <= 3) backgroundBrush = new() { Color = Color.FromRgb(255, 0, 0) };
+		if (result >= 3 && result <= 4.5) backgroundBrush = new() { Color = Color.FromRgb(255, 122, 41) };
+		if (result >= 4.5 && result <= 7) backgroundBrush = new() { Color = Color.FromRgb(0, 127, 255) };
+		return (result.ToString(), backgroundBrush);
 	}
 }

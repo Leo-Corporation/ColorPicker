@@ -51,11 +51,14 @@ public partial class TextToolWindow : Window
 		FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
 
 		FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString(); // Set the default font size
+		foreground = System.Drawing.Color.FromArgb(0, 0, 0);
+		background = System.Drawing.Color.FromArgb(255, 255, 255);
 
 		if (Global.Settings.TextToolFontColor != "_default")
 		{
 			var rgbFore = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolFontColor));
 			var foreColor = new SolidColorBrush { Color = Color.FromRgb(rgbFore.R, rgbFore.G, rgbFore.B) };
+			foreground = System.Drawing.Color.FromArgb(rgbFore.R, rgbFore.G, rgbFore.B);
 
 			RegularTxt.Foreground = foreColor; // Set the foreground color
 			ItalicTxt.Foreground = foreColor; // Set foreground color
@@ -68,6 +71,7 @@ public partial class TextToolWindow : Window
 		{
 			var rgbBack = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolBackgroundColor));
 			var backColor = new SolidColorBrush { Color = Color.FromRgb(rgbBack.R, rgbBack.G, rgbBack.B) };
+			background = System.Drawing.Color.FromArgb(rgbBack.R, rgbBack.G, rgbBack.B);
 
 			RegularTxt.Background = backColor; // Set the background color
 			ItalicTxt.Background = backColor; // Set the background color
@@ -77,6 +81,7 @@ public partial class TextToolWindow : Window
 			TextPanel.Background = backColor; // Set background color
 
 		}
+		(ContrastTxt.Text, ContrastBorder.Background) = Global.GetContrast(new int[] { foreground.R, foreground.G, foreground.B }, new int[] { background.R, background.G, background.B });
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -117,6 +122,7 @@ public partial class TextToolWindow : Window
 		catch { }
 	}
 
+	System.Drawing.Color foreground, background;
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		System.Windows.Forms.ColorDialog colorDialog = new()
@@ -127,11 +133,13 @@ public partial class TextToolWindow : Window
 		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
 		{
 			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			foreground = colorDialog.Color;
 			ForegroundBorder.Background = color;
 
 			RegularTxt.Foreground = color; // Set foreground color
 			ItalicTxt.Foreground = color; // Set foreground color
 			BoldTxt.Foreground = color; // Set foreground color
+			(ContrastTxt.Text, ContrastBorder.Background) = Global.GetContrast(new int[] { foreground.R, foreground.G, foreground.B }, new int[] { background.R, background.G, background.B });
 		}
 	}
 
@@ -145,12 +153,14 @@ public partial class TextToolWindow : Window
 		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
 		{
 			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			background = colorDialog.Color;
 			BackgroundBorder.Background = color;
 
 			RegularTxt.Background = color; // Set background color
 			ItalicTxt.Background = color; // Set background color
 			BoldTxt.Background = color; // Set background color
 			TextPanel.Background = color; // Set background color
+			(ContrastTxt.Text, ContrastBorder.Background) = Global.GetContrast(new int[] { foreground.R, foreground.G, foreground.B }, new int[] { background.R, background.G, background.B });
 		}
 	}
 }
