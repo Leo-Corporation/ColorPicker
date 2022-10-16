@@ -1276,6 +1276,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Y.
+        /// </summary>
+        public static string XY {
+            get {
+                return ResourceManager.GetString("XY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to XYZ.
         /// </summary>
         public static string XYZ {

@@ -319,7 +319,7 @@
     <value>M</value>
   </data>
   <data name="Y" xml:space="preserve">
-    <value>Y</value>
+    <value>J</value>
   </data>
   <data name="K" xml:space="preserve">
     <value>N</value>
@@ -533,5 +533,8 @@
   </data>
   <data name="Q" xml:space="preserve">
     <value>Q</value>
+  </data>
+  <data name="XY" xml:space="preserve">
+    <value>Y</value>
   </data>
 </root>
