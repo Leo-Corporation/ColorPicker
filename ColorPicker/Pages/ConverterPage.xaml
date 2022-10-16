@@ -81,7 +81,7 @@
                                         <TextBox x:Name="XTxt" MinHeight="24" TextChanged="XTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.Y}" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.XY}" Margin="10,0,0,0" VerticalAlignment="Center" />
                                         <TextBox x:Name="XYTxt" MinHeight="24" TextChanged="XTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -93,7 +93,7 @@
                             <Grid x:Name="YIQGrid" Visibility="Collapsed" Margin="10,0,0,0" VerticalAlignment="Center">
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.Y}" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        <TextBlock FontWeight="ExtraBold" FontSize="14" Text="{x:Static lang:Resources.XY}" Margin="10,0,0,0" VerticalAlignment="Center" />
                                         <TextBox x:Name="YQTxt" MinHeight="24" TextChanged="YQTxt_TextChanged" Width="70" Style="{DynamicResource TextBoxStyle1}" BorderBrush="{Binding Source={StaticResource AccentColor}}" CaretBrush="{Binding Source={StaticResource Foreground1}}" BorderThickness="2" Margin="10,0,0,0" VerticalAlignment="Center" Background="{Binding Source={StaticResource Background1}}" Foreground="{Binding Source={StaticResource Foreground1}}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
