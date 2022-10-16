@@ -56,7 +56,7 @@ public partial class SettingsPage : Page
 			{
 				Global.PickerPage.miniPicker.Close();
 				Env.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
-				Environment.Exit(0); // Close
+				Application.Current.Shutdown(); // Close
 			}
 		};
 		GlobalHook = Hook.GlobalEvents();
@@ -317,7 +317,7 @@ public partial class SettingsPage : Page
 				if (MessageBox.Show(Properties.Resources.InstallConfirmMsg, $"{Properties.Resources.InstallVersion} {lastVersion}", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
 				{
 					Env.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
-					Environment.Exit(0); // Close
+					Application.Current.Shutdown(); // Close
 				}
 			}
 			else
@@ -353,7 +353,7 @@ public partial class SettingsPage : Page
 		if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.ColorPicker, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
 			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe"); // Start
-			Environment.Exit(0); // Close
+			Application.Current.Shutdown(); // Close
 		}
 	}
 
@@ -564,7 +564,7 @@ public partial class SettingsPage : Page
 
 			MessageBox.Show(Properties.Resources.SettingsReset, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Information);
 			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
-			Environment.Exit(0); // Quit
+			Application.Current.Shutdown(); // Quit
 		}
 	}
 

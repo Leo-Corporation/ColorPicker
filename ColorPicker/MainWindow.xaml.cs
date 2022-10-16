@@ -78,7 +78,11 @@ public partial class MainWindow : Window
 			_ => Global.PickerPage
 		}; // Set startup page
 
-		Closed += (o, e) => HistoryManager.Save();
+		Closed += (o, e) =>
+		{
+			HistoryManager.Save();
+			Application.Current.Shutdown();
+		};
 		PageContent.Navigated += (o, e) => AnimatePage();
 
 		// Toggle on/off "compact mode"
@@ -102,7 +106,7 @@ public partial class MainWindow : Window
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)
 	{
 		HistoryManager.Save();
-		Environment.Exit(0); // Quit
+		Application.Current.Shutdown(); // Quit
 	}
 
 	private void TabEnter(object sender, MouseEventArgs e)
