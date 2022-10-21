@@ -114,6 +114,10 @@
 						<Border x:Name="ForegroundBorder" BorderThickness="2" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="5" Background="{Binding Source={StaticResource Foreground1}}" BorderBrush="#59ADFF" Width="28.6266666666667" Cursor="Hand" />
 						<TextBlock Text="{x:Static lang:Resources.Background}" VerticalAlignment="Center" Margin="10,0,10,0" />
 						<Border x:Name="BackgroundBorder" BorderThickness="2" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="5" Background="{Binding Source={StaticResource Background1}}" BorderBrush="#59ADFF" Width="28.6266666666667" Cursor="Hand" />
+						<Border x:Name="ContrastBorder" CornerRadius="5" Background="{Binding Source={StaticResource Gray}}" Width="60" Cursor="Hand" Margin="10,0,0,0" >
+							<TextBlock x:Name="ContrastTxt" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold"/>
+						</Border>
+
 					</StackPanel>
 
 					<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerControlTemplate}" Grid.Row="1">

@@ -56,15 +56,60 @@ public partial class PalettePage : Page
 		// Initialize list
 		SavedColorPalettes = new(); // Init list
 
+		// Load ColorTypeComboBox
+		for (int i = 0; i < Enum.GetValues(typeof(ColorTypes)).Length; i++)
+		{
+			ColorTypeComboBox.Items.Add(Global.ColorTypesToString((ColorTypes)i)); // Add
+		}
+
+		ColorTypeComboBox.SelectedIndex = (int)Global.Settings.FavoriteColorType; // Set index
+
 		// Generate random color
-		int r, g, b;
-		Random random = new();
+		Random random = new(); // Create new random
+		byte r = (byte)random.Next(0, 255); // Generate random number between 0 and 255
+		byte g = (byte)random.Next(0, 255); // Generate random number between 0 and 255
+		byte b = (byte)random.Next(0, 255); // Generate random number between 0 and 255
 
-		r = random.Next(0, 255); // Generate random number between 0 and 255
-		g = random.Next(0, 255); // Generate random number between 0 and 255
-		b = random.Next(0, 255); // Generate random number between 0 and 255
-
-		RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+		switch ((ColorTypes)ColorTypeComboBox.SelectedIndex)
+		{
+			case ColorTypes.RGB:
+				RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+				break;
+			case ColorTypes.HEX:
+				RGBTxt.Text = $"#{ColorHelper.ColorConverter.RgbToHex(new(r, g, b))}";
+				break;
+			case ColorTypes.HSV:
+				var hsv = ColorHelper.ColorConverter.RgbToHsv(new(r, g, b)); // Convert
+				HueTxt.Text = hsv.H.ToString(); // Set text
+				SatTxt.Text = hsv.S.ToString(); // Set text
+				ValTxt.Text = hsv.V.ToString(); // Set text
+				break;
+			case ColorTypes.HSL:
+				var hsl = ColorHelper.ColorConverter.RgbToHsl(new(r, g, b)); // Convert
+				HTxt.Text = hsl.H.ToString(); // Set text
+				STxt.Text = hsl.S.ToString(); // Set text
+				LTxt.Text = hsl.L.ToString(); // Set text
+				break;
+			case ColorTypes.CMYK:
+				var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new(r, g, b)); // Convert
+				CTxt.Text = cmyk.C.ToString(); // Set text
+				MTxt.Text = cmyk.M.ToString(); // Set text
+				YTxt.Text = cmyk.Y.ToString(); // Set text
+				KTxt.Text = cmyk.K.ToString(); // Set text
+				break;
+			case ColorTypes.XYZ:
+				var xyz = ColorHelper.ColorConverter.RgbToXyz(new(r, g, b)); // Convert
+				XTxt.Text = xyz.X.ToString();
+				XYTxt.Text = xyz.Y.ToString();
+				ZTxt.Text = xyz.Z.ToString();
+				break;
+			case ColorTypes.YIQ:
+				var yiq = ColorHelper.ColorConverter.RgbToYiq(new(r, g, b)); // Convert
+				YQTxt.Text = yiq.Y.ToString();
+				ITxt.Text = yiq.I.ToString();
+				QTxt.Text = yiq.Q.ToString();
+				break;
+		}
 
 		// History
 		if (Global.Settings.RestorePaletteColorHistory.Value && Global.ColorContentHistory.PaletteColorsRGB.Count > 0)
@@ -112,26 +157,45 @@ public partial class PalettePage : Page
 	{
 		try
 		{
+			byte[] rgb;
+			if (ColorTypeComboBox.SelectedIndex == 0)
+			{
+				var split = RGBTxt.Text.Split(Global.Settings.RGBSeparator, StringSplitOptions.None);
+				rgb = new byte[]
+				{
+				(byte)int.Parse(split[0]),
+				(byte)int.Parse(split[1]),
+				(byte)int.Parse(split[2])
+				};
+			}
+			else
+			{
+				rgb = new byte[]
+				{
+				ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).R,
+				ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).G,
+				ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).B
+				};
+			}
+			GeneratePalette(rgb);
+		}
+		catch {	}
+	}
+
+	private void GeneratePalette(byte[] rgb)
+	{
+		try
+		{
 			bool u = Global.Settings.HEXUseUpperCase.Value;
 
 			// Set default color
-			string[] rgb;
-			rgb = ColorTypeComboBox.SelectedIndex switch
-			{
-				0 => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
-				1 => new string[] {
-					ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).R.ToString(),
-					ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).G.ToString(),
-					ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).B.ToString()
-				},
-				_ => RGBTxt.Text.Split(new string[] { Global.Settings.RGBSeparator }, StringSplitOptions.None),
-			};
 
-			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
-			BaseShade.Background = new SolidColorBrush { Color = Color.FromRgb((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])) };
+
+			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb[0], rgb[1], rgb[2]) };
+			BaseShade.Background = new SolidColorBrush { Color = Color.FromRgb(rgb[0], rgb[1], rgb[2]) };
 
 			// Get shades
-			HSL hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
+			HSL hsl = ColorHelper.ColorConverter.RgbToHsl(new(rgb[0], rgb[1], rgb[2]));
 
 			var shades = GetShades(hsl); // Get shades
 			var shades1 = GetShades(ColorHelper.ColorConverter.RgbToHsl(shades[0])); // Get shades
@@ -140,7 +204,7 @@ public partial class PalettePage : Page
 
 			string hex1 = ColorHelper.ColorConverter.RgbToHex(shades[0]).Value; // Dark
 			string hex2 = ColorHelper.ColorConverter.RgbToHex(shades[1]).Value; // Regular
-			string hex3 = ColorHelper.ColorConverter.RgbToHex(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2]))).Value;
+			string hex3 = ColorHelper.ColorConverter.RgbToHex(new(rgb[0], rgb[1], rgb[2])).Value;
 			string hex4 = ColorHelper.ColorConverter.RgbToHex(shades[2]).Value; // Tint shade
 			string hex5 = ColorHelper.ColorConverter.RgbToHex(shades1[0]).Value; // Dark shade
 			string hex6 = ColorHelper.ColorConverter.RgbToHex(shades1[1]).Value; // Dark regular
@@ -235,7 +299,7 @@ public partial class PalettePage : Page
 
 			// History
 			RGB[] c1 = shades.Append(shades1);
-			CurrentColorPalette = c1.Append(shades[0], new RGB((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
+			CurrentColorPalette = c1.Append(shades[0], new RGB(rgb[0], rgb[1], rgb[2]));
 			CurrentRGBColor = $"{rgb[0]};{rgb[1]};{rgb[2]}";
 		}
 		catch
@@ -315,5 +379,147 @@ public partial class PalettePage : Page
 	private void ColorDisplayer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		new ColorWheelWindow(true, RGBTxt, (ColorTypes)ColorTypeComboBox.SelectedIndex).Show(); // Show window
+	}
+
+	private void ColorTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		RGBTxt.Text = ""; // Clear
+		RGBTxt.MaxLength = ColorTypeComboBox.SelectedIndex switch
+		{
+			0 => 11,
+			1 => 7,
+			_ => 11
+		}; // Set max length
+
+		HueTxt.Text = ""; // Clear
+		SatTxt.Text = ""; // Clear
+		ValTxt.Text = ""; // Clear
+
+		HTxt.Text = ""; // Clear
+		STxt.Text = ""; // Clear
+		LTxt.Text = ""; // Clear
+
+		CTxt.Text = ""; // Clear
+		MTxt.Text = ""; // Clear
+		YTxt.Text = ""; // Clear
+		KTxt.Text = ""; // Clear
+
+		XTxt.Text = ""; // Clear
+		XYTxt.Text = ""; // Clear
+		ZTxt.Text = ""; // Clear
+
+		YQTxt.Text = ""; // Clear
+		ITxt.Text = ""; // Clear
+		QTxt.Text = ""; // Clear
+
+		switch (ColorTypeComboBox.SelectedIndex)
+		{
+			case 0: // RGB
+				RGBTxt.Visibility = Visibility.Visible; // Show
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
+				break;
+			case 1: // HEX
+				RGBTxt.Visibility = Visibility.Visible; // Show
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
+				break;
+			case 2: // HSV
+				RGBTxt.Visibility = Visibility.Collapsed; // Hide
+				HSVGrid.Visibility = Visibility.Visible; // Show
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
+				break;
+			case 3: // HSL
+				RGBTxt.Visibility = Visibility.Collapsed; // Hide
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Visible; // Show
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
+				break;
+			case 4: // CMYK
+				RGBTxt.Visibility = Visibility.Collapsed; // Hide
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Visible; // Show
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
+				break;
+			case 5: // YIQ
+				RGBTxt.Visibility = Visibility.Collapsed; // Hide
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Visible; // Show
+				break;
+			case 6: // XYZ
+				RGBTxt.Visibility = Visibility.Collapsed; // Hide
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Visible; // Show
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
+				break;
+		}
+	}
+
+	private void HueTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			RGB rgb = ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(HueTxt.Text), (byte)int.Parse(SatTxt.Text), (byte)int.Parse(ValTxt.Text)));
+			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
+		}
+		catch { }
+	}
+
+	private void HTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			RGB rgb = ColorHelper.ColorConverter.HslToRgb(new(int.Parse(HTxt.Text), (byte)int.Parse(STxt.Text), (byte)int.Parse(LTxt.Text)));
+			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
+		}
+		catch {	}
+	}
+
+	private void CTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			RGB rgb = ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(CTxt.Text), (byte)int.Parse(MTxt.Text), (byte)int.Parse(YTxt.Text), (byte)int.Parse(KTxt.Text)));
+			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
+		}
+		catch { }
+	}
+
+	private void XTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			RGB rgb = ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(XTxt.Text), double.Parse(XYTxt.Text), double.Parse(ZTxt.Text)));
+			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
+		}
+		catch {	}
+	}
+
+	private void YQTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			RGB rgb = ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(YQTxt.Text), double.Parse(ITxt.Text), double.Parse(QTxt.Text)));
+			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
+		}
+		catch { }
 	}
 }

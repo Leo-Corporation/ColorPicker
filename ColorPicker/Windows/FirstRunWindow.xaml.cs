@@ -55,7 +55,7 @@ public partial class FirstRunWindow : Window
 
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Environment.Exit(0); // Exit
+		Application.Current.Shutdown(); // Exit
 	}
 
 	private void NextBtn_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ public partial class FirstRunWindow : Window
 			SettingsManager.Save();
 
 			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe"); // Start
-			Environment.Exit(0); // Close
+			Application.Current.Shutdown(); // Close
 		}
 	}
 }

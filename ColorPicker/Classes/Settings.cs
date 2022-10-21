@@ -256,7 +256,7 @@ public static class SettingsManager
 
 				// Restart app
 				Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe"); // Start app
-				Environment.Exit(0); // Quit
+				Application.Current.Shutdown(); // Quit
 			}
 		}
 		catch (Exception ex)

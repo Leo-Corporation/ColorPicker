@@ -36,7 +36,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class ConverterPage : Page
 {
-	string rgbColor, hexColor, hsvColor, hslColor, cmykColor = "";
+	string rgbColor, hexColor, hsvColor, hslColor, cmykColor, yiqColor, xyzColor = "";
 	readonly string sep = Global.Settings.RGBSeparator; // Set
 	readonly bool u = Global.Settings.HEXUseUpperCase.Value; // Set
 	public ConverterPage()
@@ -88,6 +88,18 @@ public partial class ConverterPage : Page
 				YTxt.Text = cmyk.Y.ToString(); // Set text
 				KTxt.Text = cmyk.K.ToString(); // Set text
 				break;
+			case ColorTypes.XYZ:
+				var xyz = ColorHelper.ColorConverter.RgbToXyz(new((byte)r, (byte)g, (byte)b)); // Convert
+				XTxt.Text = xyz.X.ToString();
+				XYTxt.Text = xyz.Y.ToString();
+				ZTxt.Text = xyz.Z.ToString();
+				break;
+			case ColorTypes.YIQ:
+				var yiq = ColorHelper.ColorConverter.RgbToYiq(new((byte)r, (byte)g, (byte)b)); // Convert
+				YQTxt.Text = yiq.Y.ToString();
+				ITxt.Text = yiq.I.ToString();
+				QTxt.Text = yiq.Q.ToString();
+				break;
 		}
 	}
 
@@ -103,18 +115,24 @@ public partial class ConverterPage : Page
 					var hsv = ColorsConverter.RGBtoHSV(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])); // Convert
 					var hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 					var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
+					var xyz = ColorHelper.ColorConverter.RgbToXyz(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
+					var yiq = ColorHelper.ColorConverter.RgbToYiq(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
 
 					RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
 					HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value)}"; // Set text
 					HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 					HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 					CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
+					XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
+					YIQTxt.Text = $"{Properties.Resources.YIQ}\n{Global.GetYiqString(yiq)}";
 
 					rgbColor = $"{rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
 					hexColor = $"#{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToLower())}"; // Set text
 					hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 					hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 					cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
+					xyzColor = Global.GetXyzString(xyz);
+					yiqColor = Global.GetYiqString(yiq);
 				}
 				else if (ColorTypeComboBox.Text == Properties.Resources.HEX)
 				{
@@ -123,18 +141,24 @@ public partial class ConverterPage : Page
 					var hsv = ColorsConverter.RGBtoHSV(rgb); // Convert
 					var hsl = ColorHelper.ColorConverter.HexToHsl(new(hex)); // Convert
 					var cmyk = ColorHelper.ColorConverter.HexToCmyk(new(hex));
+					var xyz = ColorHelper.ColorConverter.HexToXyz(new(hex));
+					var yiq = ColorHelper.ColorConverter.HexToYiq(new(hex));
 
 					RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 					HEXTxt.Text = $"{Properties.Resources.HEX} {(u ? hex.ToUpper() : hex)}"; // Set text
 					HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
 					HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 					CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
+					XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
+					YIQTxt.Text = $"{Properties.Resources.YIQ}\n{Global.GetYiqString(yiq)}";
 
 					rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 					hexColor = $"{(u ? hex.ToUpper() : hex)}"; // Set text
 					hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
 					hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 					cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
+					xyzColor = Global.GetXyzString(xyz);
+					yiqColor = Global.GetYiqString(yiq);
 				}
 
 				string[] rC = rgbColor.Split(new string[] { sep }, StringSplitOptions.None); // Split
@@ -184,18 +208,24 @@ public partial class ConverterPage : Page
 			var hex = ColorsConverter.RGBtoHEX(rgb.R, rgb.G, rgb.B); // Convert
 			var hsl = ColorHelper.ColorConverter.RgbToHsl(rgb); // Convert
 			var cmyk = ColorHelper.ColorConverter.HsvToCmyk(new(h, (byte)s, (byte)v));
+			var xyz = ColorHelper.ColorConverter.HsvToXyz(new(h, (byte)s, (byte)v));
+			var yiq = ColorHelper.ColorConverter.HsvToYiq(new(h, (byte)s, (byte)v));
 
 			RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 			HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 			HSVTxt.Text = $"{Properties.Resources.HSV} ({h},{s},{v})"; // Set text
 			HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 			CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
+			XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
+			YIQTxt.Text = $"{Properties.Resources.YIQ}\n{Global.GetYiqString(yiq)}";
 
 			rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 			hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 			hsvColor = $"({h},{s},{v})"; // Set
 			hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 			cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
+			xyzColor = Global.GetXyzString(xyz);
+			yiqColor = Global.GetYiqString(yiq);
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
@@ -222,18 +252,25 @@ public partial class ConverterPage : Page
 			var hex = ColorsConverter.RGBtoHEX(rgb.R, rgb.G, rgb.B); // Convert
 			var hsv = ColorHelper.ColorConverter.RgbToHsv(rgb); // Convert
 			var cmyk = ColorHelper.ColorConverter.HslToCmyk(new(h, (byte)s, (byte)l));
+			var xyz = ColorHelper.ColorConverter.HslToXyz(new(h, (byte)s, (byte)l));
+			var yiq = ColorHelper.ColorConverter.HslToYiq(new((byte)h, (byte)s, (byte)l)); // Convert color
+
 
 			RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 			HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 			HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 			HSLTxt.Text = $"{Properties.Resources.HSL} ({h},{s},{l})"; // Set text
 			CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
+			XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
+			YIQTxt.Text = $"{Properties.Resources.YIQ}\n{Global.GetYiqString(yiq)}";
 
 			hslColor = $"({h},{s},{l})"; // Set
 			hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
 			rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
 			hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set
 			cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
+			xyzColor = Global.GetXyzString(xyz);
+			yiqColor = Global.GetYiqString(yiq);
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
@@ -261,18 +298,107 @@ public partial class ConverterPage : Page
 			var hex = ColorHelper.ColorConverter.CmykToHex(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
 			var hsl = ColorHelper.ColorConverter.CmykToHsl(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
 			var hsv = ColorHelper.ColorConverter.CmykToHsv(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
+			var xyz = ColorHelper.ColorConverter.CmykToXyz(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
+			var yiq = ColorHelper.ColorConverter.CmykToYiq(new((byte)c, (byte)m, (byte)y, (byte)k)); // Convert color
 
 			RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 			HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
 			HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 			HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 			CMYKTxt.Text = $"{Properties.Resources.CMYK} {c},{m},{y},{k}"; // Set text
+			XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
+			YIQTxt.Text = $"{Properties.Resources.YIQ}\n{Global.GetYiqString(yiq)}";
 
 			hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 			hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
 			rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
 			hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set
 			cmykColor = $"{c},{m},{y},{k}"; // Set
+			xyzColor = Global.GetXyzString(xyz);
+			yiqColor = Global.GetYiqString(yiq);
+
+			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
+
+			IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(0, 223, 57) }; // Set foreground color
+			IconValidMsgTxt.Text = "\uF299"; // Set icon
+			ValidMsgTxt.Text = Properties.Resources.ColorValid; // Set text
+		}
+		catch
+		{
+			IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(255, 69, 0) }; // Set foreground color
+			IconValidMsgTxt.Text = "\uF36E"; // Set icon
+			ValidMsgTxt.Text = Properties.Resources.InvalidColor; // Set text
+		}
+	}
+
+	private void ConvertXyz()
+	{
+		try
+		{
+			ColorHelper.XYZ xyz = new(double.Parse(XTxt.Text), double.Parse(XYTxt.Text), double.Parse(ZTxt.Text));
+
+			var rgb = ColorHelper.ColorConverter.XyzToRgb(xyz);
+			var hex = ColorHelper.ColorConverter.XyzToHex(xyz);
+			var hsl = ColorHelper.ColorConverter.XyzToHsl(xyz);
+			var hsv = ColorHelper.ColorConverter.XyzToHsv(xyz);
+			var cmyk = ColorHelper.ColorConverter.XyzToCmyk(xyz);
+
+			RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
+			HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
+			HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
+			HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
+			CMYKTxt.Text = $"{Properties.Resources.CMYK} {Global.GetCmykString(cmyk)}"; // Set text
+			XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
+
+			hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
+			hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
+			rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
+			hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set
+			cmykColor = Global.GetCmykString(cmyk); // Set
+			xyzColor = Global.GetXyzString(xyz);
+
+			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
+
+			IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(0, 223, 57) }; // Set foreground color
+			IconValidMsgTxt.Text = "\uF299"; // Set icon
+			ValidMsgTxt.Text = Properties.Resources.ColorValid; // Set text
+		}
+		catch
+		{
+			IconValidMsgTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(255, 69, 0) }; // Set foreground color
+			IconValidMsgTxt.Text = "\uF36E"; // Set icon
+			ValidMsgTxt.Text = Properties.Resources.InvalidColor; // Set text
+		}
+	}
+
+	private void ConvertYiq()
+	{
+		try
+		{
+			ColorHelper.YIQ yiq = new(double.Parse(YQTxt.Text), double.Parse(ITxt.Text), double.Parse(QTxt.Text));
+
+			var rgb = ColorHelper.ColorConverter.YiqToRgb(yiq);
+			var hex = ColorHelper.ColorConverter.YiqToHex(yiq);
+			var hsl = ColorHelper.ColorConverter.YiqToHsl(yiq);
+			var hsv = ColorHelper.ColorConverter.YiqToHsv(yiq);
+			var cmyk = ColorHelper.ColorConverter.YiqToCmyk(yiq);
+			var xyz = ColorHelper.ColorConverter.YiqToXyz(yiq);
+
+			RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
+			HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set text
+			HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
+			HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
+			CMYKTxt.Text = $"{Properties.Resources.CMYK} {Global.GetCmykString(cmyk)}"; // Set text
+			XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
+			YIQTxt.Text = $"{Properties.Resources.YIQ}\n{Global.GetYiqString(yiq)}";
+
+			hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
+			hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
+			rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set
+			hexColor = $"#{(u ? hex.Value.ToUpper() : hex.Value)}"; // Set
+			cmykColor = Global.GetCmykString(cmyk); // Set
+			xyzColor = Global.GetXyzString(xyz);
+			yiqColor = Global.GetYiqString(yiq);
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
 
@@ -313,6 +439,26 @@ public partial class ConverterPage : Page
 		Clipboard.SetText(cmykColor); // Copy
 	}
 
+	private void XTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		ConvertXyz();
+	}
+
+	private void CopyYIQBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(yiqColor.Replace("\n", "")); // Copy
+	}
+
+	private void YQTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		ConvertYiq();
+	}
+
+	private void CopyXYZBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(xyzColor.Replace("\n", "")); // Copy
+	}
+
 	private void CTxt_TextChanged(object sender, TextChangedEventArgs e)
 	{
 		ConvertCMYK();
@@ -351,6 +497,14 @@ public partial class ConverterPage : Page
 		YTxt.Text = ""; // Clear
 		KTxt.Text = ""; // Clear
 
+		XTxt.Text = ""; // Clear
+		XYTxt.Text = ""; // Clear
+		ZTxt.Text = ""; // Clear
+
+		YQTxt.Text = ""; // Clear
+		ITxt.Text = ""; // Clear
+		QTxt.Text = ""; // Clear
+
 		switch (ColorTypeComboBox.SelectedIndex)
 		{
 			case 0: // RGB
@@ -358,30 +512,56 @@ public partial class ConverterPage : Page
 				HSVGrid.Visibility = Visibility.Collapsed; // Hide
 				HSLGrid.Visibility = Visibility.Collapsed; // Hide
 				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
 				break;
 			case 1: // HEX
 				ColorTxt.Visibility = Visibility.Visible; // Show
 				HSVGrid.Visibility = Visibility.Collapsed; // Hide
 				HSLGrid.Visibility = Visibility.Collapsed; // Hide
 				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
 				break;
 			case 2: // HSV
 				ColorTxt.Visibility = Visibility.Collapsed; // Hide
 				HSVGrid.Visibility = Visibility.Visible; // Show
 				HSLGrid.Visibility = Visibility.Collapsed; // Hide
 				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
 				break;
 			case 3: // HSL
 				ColorTxt.Visibility = Visibility.Collapsed; // Hide
 				HSVGrid.Visibility = Visibility.Collapsed; // Hide
 				HSLGrid.Visibility = Visibility.Visible; // Show
 				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
 				break;
 			case 4: // CMYK
 				ColorTxt.Visibility = Visibility.Collapsed; // Hide
 				HSVGrid.Visibility = Visibility.Collapsed; // Hide
 				HSLGrid.Visibility = Visibility.Collapsed; // Hide
 				CMYKGrid.Visibility = Visibility.Visible; // Show
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
+				break;
+			case 5: // YIQ
+				ColorTxt.Visibility = Visibility.Collapsed; // Hide
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Collapsed; // Hide
+				YIQGrid.Visibility = Visibility.Visible; // Show
+				break;
+			case 6: // XYZ
+				ColorTxt.Visibility = Visibility.Collapsed; // Hide
+				HSVGrid.Visibility = Visibility.Collapsed; // Hide
+				HSLGrid.Visibility = Visibility.Collapsed; // Hide
+				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
+				XYZGrid.Visibility = Visibility.Visible; // Show
+				YIQGrid.Visibility = Visibility.Collapsed; // Hide
 				break;
 		}
 	}
