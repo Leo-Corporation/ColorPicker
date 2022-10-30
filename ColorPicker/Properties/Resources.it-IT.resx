@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>ColorPicker</value>
+  </data>
+  <data name="Picker" xml:space="preserve">
+    <value>Picker</value>
+  </data>
+  <data name="Converter" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Hi" xml:space="preserve">
+    <value>Ciao</value>
+  </data>
+  <data name="GoodAfternoon" xml:space="preserve">
+    <value>Buon pomeriggio</value>
+  </data>
+  <data name="GoodNight" xml:space="preserve">
+    <value>Buona notte</value>
+  </data>
+  <data name="GoodEvening" xml:space="preserve">
+    <value>Buona sera</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Rosso</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Blu</value>
+  </data>
+  <data name="RGB" xml:space="preserve">
+    <value>RGB</value>
+  </data>
+  <data name="HEX" xml:space="preserve">
+    <value>HEX</value>
+  </data>
+  <data name="RedP" xml:space="preserve">
+    <value>Rosso:</value>
+  </data>
+  <data name="GreenP" xml:space="preserve">
+    <value>Verde:</value>
+  </data>
+  <data name="BlueP" xml:space="preserve">
+    <value>Blu:</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Seleziona colore</value>
+  </data>
+  <data name="HEXP" xml:space="preserve">
+    <value>HEX:</value>
+  </data>
+  <data name="CopyRGB" xml:space="preserve">
+    <value>Copia RGB</value>
+  </data>
+  <data name="CopyHEX" xml:space="preserve">
+    <value>Copia HEX</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ColorType" xml:space="preserve">
+    <value>Tipo di colore</value>
+  </data>
+  <data name="ColorValid" xml:space="preserve">
+    <value>Il colore è valido.</value>
+  </data>
+  <data name="InvalidColor" xml:space="preserve">
+    <value>Il colore non è valido.</value>
+  </data>
+  <data name="HSV" xml:space="preserve">
+    <value>HSV</value>
+  </data>
+  <data name="H" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="S" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="V" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="Updates" xml:space="preserve">
+    <value>Aggiornamenti</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Installa</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Scuro</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Chiaro</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Applica</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="ChangeTheme" xml:space="preserve">
+    <value>Cambia il tema di ColorPicker.</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Controllo aggiornamenti</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Cambia la lingua di ColorPicker.</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+    <value>ColorPicker è aggiornato.</value>
+  </data>
+  <data name="InstallConfirmMsg" xml:space="preserve">
+    <value>Per installare gli aggiornamenti, ColorPicker dev'essere riavviato. Vuoi continuare?</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versione</value>
+  </data>
+  <data name="InstallVersion" xml:space="preserve">
+    <value>Installa versione</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>A proposito</value>
+  </data>
+  <data name="AvailableUpdates" xml:space="preserve">
+    <value>Aggiornamenti disponibili.</value>
+  </data>
+  <data name="NeedRestartToApplyChanges" xml:space="preserve">
+    <value>Per applicare le modifiche, ColorPicker dev'essere riavviato. Vuoi riavviare adesso?</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>Licenze</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+    <value>Guarda le licenze</value>
+  </data>
+  <data name="CheckUpdatesOnStart" xml:space="preserve">
+    <value>Controlla gli aggiornamenti all'avvio</value>
+  </data>
+  <data name="NotifyUpdates" xml:space="preserve">
+    <value>Mostra una notifica quando sono disponibili nuovi aggiornamenti</value>
+  </data>
+  <data name="CheckUpdatesDisabledOnStart" xml:space="preserve">
+    <value>Il controllo degli aggiornamenti all'avvio è disabilitato.</value>
+  </data>
+  <data name="UnableToCheckUpdates" xml:space="preserve">
+    <value>Impossibile controllare gli aggiornamenti</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+    <value>Ripristino impostazioni</value>
+  </data>
+  <data name="ResetSettingsConfirmMsg" xml:space="preserve">
+    <value>Sei sicuro di voler ripristinare tutte le impostazioni?</value>
+  </data>
+  <data name="SettingsReset" xml:space="preserve">
+    <value>Tutte le impostazioni sono state ripristinate, ColorPicker verrà riavviato in questo momento.</value>
+  </data>
+  <data name="ShortcutsGuide" xml:space="preserve">
+    <value>Premi {0} per iniziare/fermare la selezione. Premi {1} per copiare il colore.</value>
+  </data>
+  <data name="CopyHSV" xml:space="preserve">
+    <value>Copia HSV</value>
+  </data>
+  <data name="HSL" xml:space="preserve">
+    <value>HSL</value>
+  </data>
+  <data name="L" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="CopyHSL" xml:space="preserve">
+    <value>Copia HSL</value>
+  </data>
+  <data name="CMYK" xml:space="preserve">
+    <value>CMYK</value>
+  </data>
+  <data name="CopyCMYK" xml:space="preserve">
+    <value>Copia CMYK</value>
+  </data>
+  <data name="C" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="M" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="K" xml:space="preserve">
+    <value>K</value>
+  </data>
+  <data name="ColorFormatting" xml:space="preserve">
+    <value>Formato del colore</value>
+  </data>
+  <data name="RGBSeparator" xml:space="preserve">
+    <value>Separatore RGB</value>
+  </data>
+  <data name="ColorFormattingDesc" xml:space="preserve">
+    <value>Opzioni sul formato del colore.</value>
+  </data>
+  <data name="InvalidValueRGB" xml:space="preserve">
+    <value>Per favore inserisci un valore valido.</value>
+  </data>
+  <data name="UseUpperCaseHEX" xml:space="preserve">
+    <value>Usa le maiuscole per i colori HEX</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importa le impostazioni</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Esporta le impostazioni</value>
+  </data>
+  <data name="SettingsExportedSucessMsg" xml:space="preserve">
+    <value>Le impostazioni sono state esportate con successo.</value>
+  </data>
+  <data name="SettingsImportedMsg" xml:space="preserve">
+    <value>Le impostazioni sono state importate con successo. Per terminare il processo, ColorPicker verrà riavviato in questo momento.</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+    <value>Scorciatoie da tastiera</value>
+  </data>
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
+    <value>Usa le scorciatoie da tastiera</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>Cronologia</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>Minimizza</value>
+  </data>
+  <data name="PickRandomColor" xml:space="preserve">
+    <value>Genera un colore casuale</value>
+  </data>
+  <data name="Palette" xml:space="preserve">
+    <value>Palette</value>
+  </data>
+  <data name="Shades" xml:space="preserve">
+    <value>Tonalità</value>
+  </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>Luminosità</value>
+  </data>
+  <data name="AddToHistory" xml:space="preserve">
+    <value>Aggiungi alla cronologia</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="Regenerate" xml:space="preserve">
+    <value>Rigenera</value>
+  </data>
+  <data name="RestoreColorHistory" xml:space="preserve">
+    <value>Ricarica la cronologia dei colori all'avvio</value>
+  </data>
+  <data name="RestorePaletteHistory" xml:space="preserve">
+    <value>Ricarica la cronologia delle palette all'avvio</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Contrassegna</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>Togli il contrassegno</value>
+  </data>
+  <data name="ColorWheel" xml:space="preserve">
+    <value>Ruota dei colori</value>
+  </data>
+  <data name="TextTool" xml:space="preserve">
+    <value>Strumento di testo</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Benvenuto</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Prossimo</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="WelcomeThanks" xml:space="preserve">
+    <value>Grazie per utilizzare ColorPicker! Iniziamo!</value>
+  </data>
+  <data name="WelcomePicker" xml:space="preserve">
+    <value>Questa è la funzionalità principale di ColorPicker! Ottieni facilmente il colore di qualsiasi pixel sul tuo schermo con lo strumento Picker. Abilitalo in qualsiasi momento usando Shift+S, e copia il colore RGB usando Shift+C.</value>
+  </data>
+  <data name="WelcomeConverter" xml:space="preserve">
+    <value>Lo strumento Converter ti permette di convertire qualsiasi tipo di colore, come RGB, HEX, HSL, etc., in qualsiasi altro tipo di colore.</value>
+  </data>
+  <data name="WelcomePalette" xml:space="preserve">
+    <value>Lo strumento Palette tool può generare diverse palette di colori partendo da un singolo colore. Puoi ottenere un colore più chiaro o più scuro. Puoi ottenere anche diverse tonalità dello stesso colore.</value>
+  </data>
+  <data name="WelcomeChangeTheme" xml:space="preserve">
+    <value>Fai tuo ColorPicker</value>
+  </data>
+  <data name="ChangesApplyAfterRestart" xml:space="preserve">
+    <value>Le modifiche verranno applicate dopo un riavvio di ColorPicker.</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+    <value>Partiamo</value>
+  </data>
+  <data name="HistorySettings" xml:space="preserve">
+    <value>Impostazioni della cronologia.</value>
+  </data>
+  <data name="ManageData" xml:space="preserve">
+    <value>Gestisci i tuoi dati.</value>
+  </data>
+  <data name="DefaultColor" xml:space="preserve">
+    <value>Tipo di colore predefinito</value>
+  </data>
+  <data name="EnterCompactMode" xml:space="preserve">
+    <value>Entra in modalità compatta</value>
+  </data>
+  <data name="ExitCompactMode" xml:space="preserve">
+    <value>Esci dalla modalità compatta</value>
+  </data>
+  <data name="CompactMode" xml:space="preserve">
+    <value>Modalità compatta</value>
+  </data>
+  <data name="CopyColor" xml:space="preserve">
+    <value>Copia colore</value>
+  </data>
+  <data name="StartSelection" xml:space="preserve">
+    <value>Inizia la selezione</value>
+  </data>
+  <data name="EditShortcut" xml:space="preserve">
+    <value>Modifica le scorciatoie</value>
+  </data>
+  <data name="PressKeys" xml:space="preserve">
+    <value>Premi una combinazione di tasti.</value>
+  </data>
+  <data name="NeedRestartLabel" xml:space="preserve">
+    <value>ColorPicker dev'essere riavviato per applicare le modifiche.</value>
+  </data>
+  <data name="CreditsAndThanks" xml:space="preserve">
+    <value>Crediti e ringraziamenti speciali</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Compiti</value>
+  </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Avvio</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+    <value>Seleziona la pagina di avvio predefinita.</value>
+  </data>
+  <data name="OpenSourceMention" xml:space="preserve">
+    <value>Open Source - Made with ❤️ in France</value>
+  </data>
+  <data name="UseCompactMode" xml:space="preserve">
+    <value>Utilizzare la modalità compatta quando si avvia ColorPicker</value>
+  </data>
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
+    <value>Ripristina le scorciatoie da tastiera</value>
+  </data>
+  <data name="TextToolSettings" xml:space="preserve">
+    <value>Impostazioni predefinite dello strumento di testo.</value>
+  </data>
+  <data name="UseDefaultColors" xml:space="preserve">
+    <value>Usa i colori predefiniti</value>
+  </data>
+  <data name="XYZ" xml:space="preserve">
+    <value>XYZ</value>
+  </data>
+  <data name="CopyXYZ" xml:space="preserve">
+    <value>Copia XYZ</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="YIQ" xml:space="preserve">
+    <value>YIQ</value>
+  </data>
+  <data name="CopyYIQ" xml:space="preserve">
+    <value>Copia YIQ</value>
+  </data>
+  <data name="I" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="Q" xml:space="preserve">
+    <value>Q</value>
+  </data>
+  <data name="XY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+</root>
