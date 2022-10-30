@@ -64,7 +64,8 @@ public partial class LanguagePage : Page
 		{
 			"English (United States)" => Global.LanguageCodeList[0], // Set the settings value
 			"Français (France)" => Global.LanguageCodeList[1], // Set the settings value
-			"中文（简体）" => Global.LanguageCodeList[2], // Set the settings value
+			"Italiano (Italia)" => Global.LanguageCodeList[2],
+			"中文（简体）" => Global.LanguageCodeList[3], // Set the settings value
 			_ => "_default" // Set the settings value
 		};
 		SettingsManager.Save(); // Save the changes

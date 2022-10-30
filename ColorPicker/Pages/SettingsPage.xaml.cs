@@ -399,7 +399,8 @@ public partial class SettingsPage : Page
 		{
 			"English (United States)" => Global.LanguageCodeList[0], // Set the settings value
 			"Français (France)" => Global.LanguageCodeList[1], // Set the settings value
-			"中文（简体）" => Global.LanguageCodeList[2], // Set the settings value
+			"Italiano (Italia)" => Global.LanguageCodeList[2], // Set the settings value
+			"中文（简体）" => Global.LanguageCodeList[3], // Set the settings value
 			_ => "_default" // Set the settings value
 		};
 		SettingsManager.Save(); // Save the changes
@@ -627,6 +628,7 @@ public partial class SettingsPage : Page
 		MessageBox.Show($"{Properties.Resources.CreditsAndThanks}\n\n" +
 			$"@dependabot\n" +
 			$"@Leo-Peyronnet\n" +
+			$"@OCTIPI1\n" +
 			$"@wcxu21",
 			Properties.Resources.CreditsAndThanks, MessageBoxButton.OK, MessageBoxImage.Information);
 	}
