@@ -49,12 +49,12 @@ public static class Global
 	/// <summary>
 	/// List of the available languages.
 	/// </summary>
-	public static List<string> LanguageList => new() { "English (United States)", "Français (France)", "中文（简体）" };
+	public static List<string> LanguageList => new() { "English (United States)", "Français (France)", "Italiano (Italia)", "中文（简体）" };
 
 	/// <summary>
 	/// List of the available languages codes.
 	/// </summary>
-	public static List<string> LanguageCodeList => new() { "en-US", "fr-FR", "zh-CN" };
+	public static List<string> LanguageCodeList => new() { "en-US", "fr-FR", "it-IT", "zh-CN" };
 
 	/// <summary>
 	/// The <see cref="Pages.PickerPage"/>.
@@ -212,24 +212,8 @@ public static class Global
 	/// </summary>
 	public static void ChangeLanguage()
 	{
-		switch (Global.Settings.Language) // For each case
-		{
-			case "_default": // No language
-				break;
-			case "en-US": // English (US)
-				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US"); // Change
-				break;
-
-			case "fr-FR": // French (FR)
-				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
-				break;
-
-			case "zh-CN": // Chinese (CN)
-				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
-				break;
-			default: // No language
-				break;
-		}
+		if (Settings.Language == "_default") return;
+		Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Language); // Change
 	}
 
 	internal static string GetHsvString(ColorHelper.HSV hsv) => $"({hsv.H},{hsv.S},{hsv.V})";
