@@ -51,8 +51,8 @@ public partial class TextToolWindow : Window
 		FontComboBox.Text = FontComboBox.Items.Contains(Global.Settings.TextToolFont) ? Global.Settings.TextToolFont : "Arial"; // Set default value
 
 		FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString(); // Set the default font size
-		foreground = System.Drawing.Color.FromArgb(0, 0, 0);
-		background = System.Drawing.Color.FromArgb(255, 255, 255);
+		foreground = Global.Settings.IsDarkTheme ? System.Drawing.Color.FromArgb(255, 255, 255) : System.Drawing.Color.FromArgb(0, 0, 0);
+		background = Global.Settings.IsDarkTheme ? System.Drawing.Color.FromArgb(0, 0, 0) : System.Drawing.Color.FromArgb(255, 255, 255);
 
 		if (Global.Settings.TextToolFontColor != "_default")
 		{
