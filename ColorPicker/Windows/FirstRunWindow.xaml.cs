@@ -23,7 +23,6 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Pages.FirstRunPages;
-using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;

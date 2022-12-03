@@ -179,7 +179,7 @@ public partial class PalettePage : Page
 			}
 			GeneratePalette(rgb);
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void GeneratePalette(byte[] rgb)
@@ -490,7 +490,7 @@ public partial class PalettePage : Page
 			RGB rgb = ColorHelper.ColorConverter.HslToRgb(new(int.Parse(HTxt.Text), (byte)int.Parse(STxt.Text), (byte)int.Parse(LTxt.Text)));
 			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void CTxt_TextChanged(object sender, TextChangedEventArgs e)
@@ -510,7 +510,7 @@ public partial class PalettePage : Page
 			RGB rgb = ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(XTxt.Text), double.Parse(XYTxt.Text), double.Parse(ZTxt.Text)));
 			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void YQTxt_TextChanged(object sender, TextChangedEventArgs e)
