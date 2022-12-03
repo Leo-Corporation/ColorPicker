@@ -87,10 +87,12 @@
 					</Button>
 				</StackPanel>
 			</StackPanel>
-			<WrapPanel Orientation="Horizontal" x:Name="RecentColorsDisplayer" Visibility="Collapsed">
-				<Button x:Name="ClearRecentColorsBtn" Click="ClearRecentColorsBtn_Click" Content="&#xF34D;" HorizontalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="5" Height="50" Width="50" FontSize="24" />
-				<!-- Items added in code -->
-			</WrapPanel>
+			<ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Visibility="Collapsed" x:Name="ScrollHistory" Height="230">
+				<WrapPanel Orientation="Horizontal" x:Name="RecentColorsDisplayer">
+					<Button x:Name="ClearRecentColorsBtn" Click="ClearRecentColorsBtn_Click" Content="&#xF34D;" HorizontalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Padding="10,5,10,5" Style="{DynamicResource TabButtonStyle}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background2}}" Margin="5" Height="50" Width="50" FontSize="24" />
+					<!-- Items added in code -->
+				</WrapPanel>
+			</ScrollViewer>
 		</StackPanel>
 
 		<Border x:Name="border" Background="{Binding Source={StaticResource LightAccentColor}}" CornerRadius="5" Padding="10" Margin="10,10,10,0" Grid.Row="1">

@@ -303,7 +303,7 @@ public partial class PickerPage : Page
 			border.Visibility = Visibility.Collapsed; // Hide
 			ContentDisplayer.Visibility = Visibility.Collapsed; // Hide 
 
-			RecentColorsDisplayer.Visibility = Visibility.Visible; // Show
+			ScrollHistory.Visibility = Visibility.Visible; // Show
 			HistoryBtn.Content = "\uF36A"; // Set text
 		}
 		else
@@ -311,7 +311,7 @@ public partial class PickerPage : Page
 			border.Visibility = Visibility.Visible; // Show
 			ContentDisplayer.Visibility = Visibility.Visible; // Show 
 
-			RecentColorsDisplayer.Visibility = Visibility.Collapsed; // Hide
+			ScrollHistory.Visibility = Visibility.Collapsed; // Hide
 			HistoryBtn.Content = "\uF47F"; // Set text
 		}
 		if (RecentColorsDisplayer.Children.Count < 2)
