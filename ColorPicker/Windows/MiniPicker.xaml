@@ -1,10 +1,14 @@
-﻿<Window x:Class="ColorPicker.Windows.MiniPicker" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ColorPicker.Windows" xmlns:lang="clr-namespace:ColorPicker.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Foreground="{Binding Source={StaticResource Foreground1}}" Title="MiniPicker" Height="120" Width="270" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None" Topmost="True" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="Transparent">
+﻿<Window x:Class="ColorPicker.Windows.MiniPicker" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ColorPicker.Windows" xmlns:lang="clr-namespace:ColorPicker.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Foreground="{Binding Source={StaticResource Foreground1}}" Title="MiniPicker" Height="150" Width="270" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None" Topmost="True" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="Transparent">
 	<Border CornerRadius="15" Margin="10" Background="{Binding Source={StaticResource Background1}}">
 		<Border.Effect>
 			<DropShadowEffect BlurRadius="10" ShadowDepth="-5" Opacity="0.2" />
 		</Border.Effect>
 
 		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition />
@@ -18,6 +22,9 @@
 				<TextBlock x:Name="BlueTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.BlueP}" />
 				<TextBlock x:Name="HEXTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEXP}" />
 			</StackPanel>
+
+			<TextBlock Margin="10 0 10 10" x:Name="CoordsTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEXP}" Grid.Row="1" />
+
 		</Grid>
 	</Border>
 </Window>

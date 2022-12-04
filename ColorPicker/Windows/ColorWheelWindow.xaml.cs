@@ -23,7 +23,6 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
-using LeoCorpLibrary;
 using System;
 using System.Drawing;
 using System.Windows;
@@ -57,7 +56,7 @@ public partial class ColorWheelWindow : Window
 		{
 			Bitmap bitmap = new(1, 1);
 			Graphics GFX = Graphics.FromImage(bitmap);
-			GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+			GFX.CopyFromScreen(System.Windows.Forms.Cursor.Position, new System.Drawing.Point(0, 0), bitmap.Size);
 			var pixel = bitmap.GetPixel(0, 0);
 
 			RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
@@ -70,7 +69,7 @@ public partial class ColorWheelWindow : Window
 
 			// Convert to HEX
 			bool u = Global.Settings.HEXUseUpperCase.Value;
-			var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
+			var h = ColorHelper.ColorConverter.RgbToHex(new(pixel.R, pixel.G, pixel.B)); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 			hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 
@@ -102,7 +101,7 @@ public partial class ColorWheelWindow : Window
 		{
 			Bitmap bitmap = new(1, 1);
 			Graphics GFX = Graphics.FromImage(bitmap);
-			GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+			GFX.CopyFromScreen(System.Windows.Forms.Cursor.Position, new System.Drawing.Point(0, 0), bitmap.Size);
 			var pixel = bitmap.GetPixel(0, 0);
 
 			RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
@@ -115,7 +114,7 @@ public partial class ColorWheelWindow : Window
 
 			// Convert to HEX
 			bool u = Global.Settings.HEXUseUpperCase.Value;
-			var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
+			var h = ColorHelper.ColorConverter.RgbToHex(new(pixel.R, pixel.G, pixel.B)); // Convert
 			HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 			hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 
@@ -181,7 +180,7 @@ public partial class ColorWheelWindow : Window
 
 		Bitmap bitmap = new(1, 1);
 		Graphics GFX = Graphics.FromImage(bitmap);
-		GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+		GFX.CopyFromScreen(System.Windows.Forms.Cursor.Position, new System.Drawing.Point(0, 0), bitmap.Size);
 		var pixel = bitmap.GetPixel(0, 0);
 
 		RedTxt.Text = $"{Properties.Resources.RedP} {pixel.R}"; // Set text
@@ -194,7 +193,7 @@ public partial class ColorWheelWindow : Window
 
 		// Convert to HEX
 		bool u = Global.Settings.HEXUseUpperCase.Value;
-		var h = ColorsConverter.RGBtoHEX(pixel.R, pixel.G, pixel.B); // Convert
+		var h = ColorHelper.ColorConverter.RgbToHex(new(pixel.R, pixel.G, pixel.B)); // Convert
 		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 		hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 

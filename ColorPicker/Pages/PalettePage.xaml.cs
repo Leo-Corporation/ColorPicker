@@ -26,7 +26,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.UserControls;
 using ColorPicker.Windows;
-using LeoCorpLibrary.Extensions;
+using PeyrSharp.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -179,7 +179,7 @@ public partial class PalettePage : Page
 			}
 			GeneratePalette(rgb);
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void GeneratePalette(byte[] rgb)
@@ -318,12 +318,49 @@ public partial class PalettePage : Page
 		g = random.Next(0, 255); // Generate random number between 0 and 255
 		b = random.Next(0, 255); // Generate random number between 0 and 255
 
-		RGBTxt.Text = ColorTypeComboBox.SelectedIndex switch
+		switch (ColorTypeComboBox.SelectedIndex)
 		{
-			0 => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}", // Set text
-			1 => $"#{(Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToLower())}", // Set text
-			_ => $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}" // Set text
-		};
+			case 0: // RGB
+				RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+				break;
+			case 1: // HEX
+				RGBTxt.Text = $"#{(Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToLower())}"; // Set text
+				break;
+			case 2: // HSV
+				var hsv = ColorHelper.ColorConverter.RgbToHsv(new((byte)r, (byte)g, (byte)b));
+				HueTxt.Text = hsv.H.ToString();
+				SatTxt.Text = hsv.S.ToString();
+				ValTxt.Text = hsv.V.ToString();
+				break;
+			case 3: // HSL
+				var hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)r, (byte)g, (byte)b));
+				HTxt.Text = hsl.H.ToString();
+				STxt.Text = hsl.S.ToString();
+				LTxt.Text = hsl.L.ToString();
+				break;
+			case 4: // CMYK
+				var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new((byte)r, (byte)g, (byte)b));
+				CTxt.Text = cmyk.C.ToString();
+				MTxt.Text = cmyk.M.ToString();
+				YTxt.Text = cmyk.Y.ToString();
+				KTxt.Text = cmyk.K.ToString();
+				break;
+			case 5: // YIQ
+				var yiq = ColorHelper.ColorConverter.RgbToYiq(new((byte)r, (byte)g, (byte)b));
+				YQTxt.Text = yiq.Y.ToString();
+				ITxt.Text = yiq.I.ToString();
+				QTxt.Text = yiq.Q.ToString();
+				break;
+			case 6: // XYZ
+				var xyz = ColorHelper.ColorConverter.RgbToXyz(new((byte)r, (byte)g, (byte)b));
+				XTxt.Text = xyz.X.ToString();
+				XYTxt.Text = xyz.Y.ToString();
+				ZTxt.Text = xyz.Z.ToString();
+				break;
+			default:
+				RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
+				break;
+		}
 	}
 
 	private static string GetRgbStringFromBorder(Border border)
@@ -490,7 +527,7 @@ public partial class PalettePage : Page
 			RGB rgb = ColorHelper.ColorConverter.HslToRgb(new(int.Parse(HTxt.Text), (byte)int.Parse(STxt.Text), (byte)int.Parse(LTxt.Text)));
 			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void CTxt_TextChanged(object sender, TextChangedEventArgs e)
@@ -510,7 +547,7 @@ public partial class PalettePage : Page
 			RGB rgb = ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(XTxt.Text), double.Parse(XYTxt.Text), double.Parse(ZTxt.Text)));
 			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void YQTxt_TextChanged(object sender, TextChangedEventArgs e)

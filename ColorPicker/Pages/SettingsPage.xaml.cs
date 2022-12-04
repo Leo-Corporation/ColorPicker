@@ -23,8 +23,9 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using Gma.System.MouseKeyHook;
-using LeoCorpLibrary;
 using Microsoft.Win32;
+using PeyrSharp.Core;
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -55,7 +56,7 @@ public partial class SettingsPage : Page
 			if (MessageBox.Show(Properties.Resources.InstallConfirmMsg, $"{Properties.Resources.InstallVersion} {lastVersion}", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
 			{
 				Global.PickerPage.miniPicker.Close();
-				Env.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
+				Sys.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
 				Application.Current.Shutdown(); // Close
 			}
 		};
@@ -268,7 +269,7 @@ public partial class SettingsPage : Page
 			// Update the UpdateStatusTxt
 			if (Global.Settings.CheckUpdatesOnStart)
 			{
-				if (await NetworkConnection.IsAvailableAsync())
+				if (await Internet.IsAvailableAsync())
 				{
 					isAvailable = Update.IsAvailable(Global.Version, await Update.GetLastVersionAsync(Global.LastVersionLink));
 
@@ -309,14 +310,14 @@ public partial class SettingsPage : Page
 
 	private async void RefreshInstallBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (await NetworkConnection.IsAvailableAsync()) // If there is Internet
+		if (await Internet.IsAvailableAsync()) // If there is Internet
 		{
 			if (isAvailable) // If there is updates
 			{
 				string lastVersion = await Update.GetLastVersionAsync(Global.LastVersionLink); // Get last version
 				if (MessageBox.Show(Properties.Resources.InstallConfirmMsg, $"{Properties.Resources.InstallVersion} {lastVersion}", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
 				{
-					Env.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
+					Sys.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
 					Application.Current.Shutdown(); // Close
 				}
 			}

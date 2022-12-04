@@ -23,7 +23,6 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
-using LeoCorpLibrary;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -59,30 +58,32 @@ public partial class RecentColorItem : UserControl
 	readonly string s = Global.Settings.RGBSeparator; // Set
 	private void InitUI()
 	{
+		(byte r, byte g, byte b) = ((byte)R, (byte)G, (byte)B);
 		Border.Background = new SolidColorBrush
 		{
-			Color = Color.FromRgb((byte)R, (byte)G, (byte)B)
+			Color = Color.FromRgb(r, g, b)
 		}; // Set background
 		ToolTip.Content = $"{Properties.Resources.RGB}: {R}{s}{G}{s}{B}\n" +
-			$"{Properties.Resources.HEX}: #{ColorHelper.ColorConverter.RgbToHex(new((byte)R, (byte)G, (byte)B))}\n" +
-			$"{Properties.Resources.HSV}: {Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)R, (byte)G, (byte)B)))}\n" +
-			$"{Properties.Resources.HSL}: {Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)R, (byte)G, (byte)B)))}\n" +
-			$"{Properties.Resources.CMYK}: {Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B)))}\n" +
-			$"{Properties.Resources.YIQ}: {Global.GetYiqString(ColorHelper.ColorConverter.RgbToYiq(new((byte)R, (byte)G, (byte)B))).Replace("\n", "")}\n" +
-			$"{Properties.Resources.XYZ}: {Global.GetXyzString(ColorHelper.ColorConverter.RgbToXyz(new((byte)R, (byte)G, (byte)B))).Replace("\n", "")}"; // Set text
+			$"{Properties.Resources.HEX}: #{ColorHelper.ColorConverter.RgbToHex(new(r, g, b))}\n" +
+			$"{Properties.Resources.HSV}: {Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new(r, g, b)))}\n" +
+			$"{Properties.Resources.HSL}: {Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new(r, g, b)))}\n" +
+			$"{Properties.Resources.CMYK}: {Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new(r, g, b)))}\n" +
+			$"{Properties.Resources.YIQ}: {Global.GetYiqString(ColorHelper.ColorConverter.RgbToYiq(new(r, g, b))).Replace("\n", "")}\n" +
+			$"{Properties.Resources.XYZ}: {Global.GetXyzString(ColorHelper.ColorConverter.RgbToXyz(new(r, g, b))).Replace("\n", "")}"; // Set text
 	}
 
 	private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
+		(byte r, byte g, byte b) = ((byte)R, (byte)G, (byte)B);
 		Clipboard.SetText(Global.Settings.FavoriteColorType switch
 		{
 			ColorTypes.RGB => $"{R}{s}{G}{s}{B}",
-			ColorTypes.HEX => "#" + (Global.Settings.HEXUseUpperCase.Value ? ColorsConverter.RGBtoHEX(R, G, B).Value.ToUpper() : ColorsConverter.RGBtoHEX(R, G, B).Value.ToLower()),
-			ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)R, (byte)G, (byte)B))),
-			ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)R, (byte)G, (byte)B))),
-			ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)R, (byte)G, (byte)B))),
-			ColorTypes.YIQ => Global.GetYiqString(ColorHelper.ColorConverter.RgbToYiq(new((byte)R, (byte)G, (byte)B))),
-			ColorTypes.XYZ => Global.GetXyzString(ColorHelper.ColorConverter.RgbToXyz(new((byte)R, (byte)G, (byte)B))),
+			ColorTypes.HEX => "#" + (Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(r, g, b)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new(r, g, b)).Value.ToLower()),
+			ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new(r, g, b))),
+			ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new(r, g, b))),
+			ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new(r, g, b))),
+			ColorTypes.YIQ => Global.GetYiqString(ColorHelper.ColorConverter.RgbToYiq(new(r, g, b))),
+			ColorTypes.XYZ => Global.GetXyzString(ColorHelper.ColorConverter.RgbToXyz(new(r, g, b))),
 			_ => $"{R}{s}{G}{s}{B}"
 		}); // Copy
 	}
