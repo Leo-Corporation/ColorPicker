@@ -26,7 +26,6 @@ using ColorPicker.Enums;
 using ColorPicker.UserControls;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
-using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -60,7 +59,7 @@ public partial class PickerPage : Page
 		{
 			Bitmap bitmap = new(1, 1);
 			Graphics GFX = Graphics.FromImage(bitmap);
-			GFX.CopyFromScreen(Env.GetMouseCursorPosition(), new System.Drawing.Point(0, 0), bitmap.Size);
+			GFX.CopyFromScreen(System.Windows.Forms.Cursor.Position, new System.Drawing.Point(0, 0), bitmap.Size);
 			var pixel = bitmap.GetPixel(0, 0);
 
 			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(pixel.R, pixel.G, pixel.B) }; // Set color
@@ -90,8 +89,8 @@ public partial class PickerPage : Page
 			}
 
 			double factor = scaling / 100d; // Calculate factor
-			miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
-			miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
+			miniPicker.Left = System.Windows.Forms.Cursor.Position.X / factor; // Define position
+			miniPicker.Top = System.Windows.Forms.Cursor.Position.Y / factor + 5; // Define position
 		};
 
 		Global.KeyBoardShortcutsAvailable = true;
@@ -124,7 +123,7 @@ public partial class PickerPage : Page
 		BlueSlider.Value = b; // Set value
 
 		// Convert to HEX
-		var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
+		var hex = ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)); // Convert
 		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hex.Value.ToUpper() : hex.Value)}";
 
 		if (Global.Settings.EnableKeyBoardShortcuts is null)
@@ -197,7 +196,7 @@ public partial class PickerPage : Page
 		ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		RedValueTxt.Text = RedSlider.Value.ToString(); // Set text
 
-		var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
+		var h = ColorHelper.ColorConverter.RgbToHex(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)); // Convert
 		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 	}
 
@@ -207,7 +206,7 @@ public partial class PickerPage : Page
 		ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		GreenValueTxt.Text = GreenSlider.Value.ToString(); // Set text
 
-		var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
+		var h = ColorHelper.ColorConverter.RgbToHex(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)); // Convert
 		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 	}
 
@@ -217,7 +216,7 @@ public partial class PickerPage : Page
 		ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		BlueValueTxt.Text = BlueSlider.Value.ToString(); // Set text
 
-		var h = ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value); // Convert
+		var h = ColorHelper.ColorConverter.RgbToHex(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)); // Convert
 		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 	}
 
@@ -251,8 +250,8 @@ public partial class PickerPage : Page
 			}
 
 			double factor = scaling / 100d; // Calculate factor
-			miniPicker.Left = Env.GetMouseCursorPositionWPF().X / factor; // Define position
-			miniPicker.Top = Env.GetMouseCursorPositionWPF().Y / factor + 5; // Define position
+			miniPicker.Left = System.Windows.Forms.Cursor.Position.X / factor; // Define position
+			miniPicker.Top = System.Windows.Forms.Cursor.Position.Y / factor + 5; // Define position
 			miniPicker.Show(); // Show
 		}
 		else
@@ -274,7 +273,7 @@ public partial class PickerPage : Page
 		Clipboard.SetText(Global.Settings.FavoriteColorType switch
 		{
 			ColorTypes.RGB => $"{r}{sep}{g}{sep}{b}",
-			ColorTypes.HEX => "#" + (u ? ColorsConverter.RGBtoHEX(r, g, b).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToLower()),
+			ColorTypes.HEX => "#" + (u ? ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)).Value.ToLower()),
 			ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new((byte)r, (byte)g, (byte)b))),
 			ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new((byte)r, (byte)g, (byte)b))),
 			ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new((byte)r, (byte)g, (byte)b))),
@@ -291,7 +290,7 @@ public partial class PickerPage : Page
 	private void CopyHEXBtn_Click(object sender, RoutedEventArgs e)
 	{
 		u = Global.Settings.HEXUseUpperCase.Value;
-		Clipboard.SetText("#" + (u ? ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToUpper() : ColorsConverter.RGBtoHEX((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value).Value.ToLower())); // Copy
+		Clipboard.SetText("#" + (u ? ColorHelper.ColorConverter.RgbToHex(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)).Value.ToLower())); // Copy
 		RecentColorsDisplayer.Children.Add(new RecentColorItem((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value));
 		HistoryBtn.Visibility = Visibility.Visible;
 	}
@@ -358,7 +357,7 @@ public partial class PickerPage : Page
 		BlueSlider.Value = b; // Set value
 
 		// Convert to HEX
-		var hex = ColorsConverter.RGBtoHEX(r, g, b); // Convert
+		var hex = ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)); // Convert
 		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? hex.Value.ToUpper() : hex.Value)}";
 	}
 

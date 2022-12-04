@@ -21,9 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
-using LeoCorpLibrary;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -112,23 +112,26 @@ public partial class ConverterPage : Page
 				if (ColorTypeComboBox.Text == Properties.Resources.RGB)
 				{
 					string[] rgb = ColorTxt.Text.Split(new string[] { sep }, StringSplitOptions.None); // Split
-					var hsv = ColorsConverter.RGBtoHSV(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])); // Convert
-					var hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
-					var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
-					var xyz = ColorHelper.ColorConverter.RgbToXyz(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
-					var yiq = ColorHelper.ColorConverter.RgbToYiq(new((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2])));
+					(byte r, byte g, byte b) = ((byte)int.Parse(rgb[0]), (byte)int.Parse(rgb[1]), (byte)int.Parse(rgb[2]));
+
+					var rgb_color = new RGB(r, g, b);
+					var hsv = ColorHelper.ColorConverter.RgbToHsv(rgb_color); // Convert
+					var hsl = ColorHelper.ColorConverter.RgbToHsl(rgb_color);
+					var cmyk = ColorHelper.ColorConverter.RgbToCmyk(rgb_color);
+					var xyz = ColorHelper.ColorConverter.RgbToXyz(rgb_color);
+					var yiq = ColorHelper.ColorConverter.RgbToYiq(rgb_color);
 
 					RGBTxt.Text = $"{Properties.Resources.RGB} {rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
-					HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value)}"; // Set text
-					HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
+					HEXTxt.Text = $"{Properties.Resources.HEX} #{(u ? ColorHelper.ColorConverter.RgbToHex(rgb_color).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(rgb_color).Value.ToLower())}"; // Set text
+					HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 					HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 					CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 					XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
 					YIQTxt.Text = $"{Properties.Resources.YIQ}\n{Global.GetYiqString(yiq)}";
 
 					rgbColor = $"{rgb[0]}{sep}{rgb[1]}{sep}{rgb[2]}"; // Set text
-					hexColor = $"#{(u ? ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToUpper() : ColorsConverter.RGBtoHEX(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])).Value.ToLower())}"; // Set text
-					hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
+					hexColor = $"#{(u ? ColorHelper.ColorConverter.RgbToHex(rgb_color).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(rgb_color).Value.ToLower())}"; // Set text
+					hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
 					hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 					cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
 					xyzColor = Global.GetXyzString(xyz);
@@ -136,9 +139,9 @@ public partial class ConverterPage : Page
 				}
 				else if (ColorTypeComboBox.Text == Properties.Resources.HEX)
 				{
-					var rgb = ColorsConverter.HEXtoRGB(new() { Value = ColorTxt.Text }); // Convert
+					var rgb = ColorHelper.ColorConverter.HexToRgb(new HEX(ColorTxt.Text)); // Convert
 					string hex = ColorTxt.Text.StartsWith("#") ? ColorTxt.Text : "#" + ColorTxt.Text; // Set
-					var hsv = ColorsConverter.RGBtoHSV(rgb); // Convert
+					var hsv = ColorHelper.ColorConverter.RgbToHsv(rgb); // Convert
 					var hsl = ColorHelper.ColorConverter.HexToHsl(new(hex)); // Convert
 					var cmyk = ColorHelper.ColorConverter.HexToCmyk(new(hex));
 					var xyz = ColorHelper.ColorConverter.HexToXyz(new(hex));
@@ -146,7 +149,7 @@ public partial class ConverterPage : Page
 
 					RGBTxt.Text = $"{Properties.Resources.RGB} {rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 					HEXTxt.Text = $"{Properties.Resources.HEX} {(u ? hex.ToUpper() : hex)}"; // Set text
-					HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set text
+					HSVTxt.Text = $"{Properties.Resources.HSV} ({hsv.H},{hsv.S},{hsv.V})"; // Set text
 					HSLTxt.Text = $"{Properties.Resources.HSL} ({hsl.H},{hsl.S},{hsl.L})"; // Set text
 					CMYKTxt.Text = $"{Properties.Resources.CMYK} {cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
 					XYZTxt.Text = $"{Properties.Resources.XYZ}\n{Global.GetXyzString(xyz)}";
@@ -154,7 +157,7 @@ public partial class ConverterPage : Page
 
 					rgbColor = $"{rgb.R}{sep}{rgb.G}{sep}{rgb.B}"; // Set text
 					hexColor = $"{(u ? hex.ToUpper() : hex)}"; // Set text
-					hsvColor = $"({hsv.Hue},{hsv.Saturation},{hsv.Value})"; // Set
+					hsvColor = $"({hsv.H},{hsv.S},{hsv.V})"; // Set
 					hslColor = $"({hsl.H},{hsl.S},{hsl.L})"; // Set
 					cmykColor = $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}"; // Set
 					xyzColor = Global.GetXyzString(xyz);
@@ -205,7 +208,7 @@ public partial class ConverterPage : Page
 			int s = int.Parse(SatTxt.Text); // Parse
 			int v = int.Parse(ValTxt.Text); // Parse
 			var rgb = ColorHelper.ColorConverter.HsvToRgb(new(h, (byte)s, (byte)v)); // Convert
-			var hex = ColorsConverter.RGBtoHEX(rgb.R, rgb.G, rgb.B); // Convert
+			var hex = ColorHelper.ColorConverter.RgbToHex(new(rgb.R, rgb.G, rgb.B)); // Convert
 			var hsl = ColorHelper.ColorConverter.RgbToHsl(rgb); // Convert
 			var cmyk = ColorHelper.ColorConverter.HsvToCmyk(new(h, (byte)s, (byte)v));
 			var xyz = ColorHelper.ColorConverter.HsvToXyz(new(h, (byte)s, (byte)v));
@@ -249,7 +252,7 @@ public partial class ConverterPage : Page
 			int s = int.Parse(STxt.Text); // Parse
 			int l = int.Parse(LTxt.Text); // Parse
 			var rgb = ColorHelper.ColorConverter.HslToRgb(new(h, (byte)s, (byte)l)); // Convert
-			var hex = ColorsConverter.RGBtoHEX(rgb.R, rgb.G, rgb.B); // Convert
+			var hex = ColorHelper.ColorConverter.RgbToHex(new(rgb.R, rgb.G, rgb.B)); // Convert
 			var hsv = ColorHelper.ColorConverter.RgbToHsv(rgb); // Convert
 			var cmyk = ColorHelper.ColorConverter.HslToCmyk(new(h, (byte)s, (byte)l));
 			var xyz = ColorHelper.ColorConverter.HslToXyz(new(h, (byte)s, (byte)l));

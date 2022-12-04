@@ -24,7 +24,6 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
-using LeoCorpLibrary;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -112,7 +111,7 @@ public partial class PaletteHistoryItem : UserControl
 		Clipboard.SetText(Global.Settings.FavoriteColorType switch
 		{
 			ColorTypes.RGB => $"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}",
-			ColorTypes.HEX => "#" + (Global.Settings.HEXUseUpperCase.Value ? ColorsConverter.RGBtoHEX(color.R, color.G, color.B).Value.ToUpper() : ColorsConverter.RGBtoHEX(color.R, color.G, color.B).Value.ToLower()),
+			ColorTypes.HEX => "#" + (Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToLower()),
 			ColorTypes.HSV => Global.GetHsvString(ColorHelper.ColorConverter.RgbToHsv(new(color.R, color.G, color.B))),
 			ColorTypes.HSL => Global.GetHslString(ColorHelper.ColorConverter.RgbToHsl(new(color.R, color.G, color.B))),
 			ColorTypes.CMYK => Global.GetCmykString(ColorHelper.ColorConverter.RgbToCmyk(new(color.R, color.G, color.B))),

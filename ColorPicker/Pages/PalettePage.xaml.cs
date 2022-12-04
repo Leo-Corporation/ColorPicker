@@ -26,7 +26,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.UserControls;
 using ColorPicker.Windows;
-using LeoCorpLibrary.Extensions;
+using PeyrSharp.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Windows;

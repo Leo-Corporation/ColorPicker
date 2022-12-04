@@ -23,8 +23,8 @@ SOFTWARE.
 */
 using ColorPicker.Enums;
 using ColorPicker.Pages;
-using LeoCorpLibrary;
-using LeoCorpLibrary.Enums;
+using PeyrSharp.Env;
+using PeyrSharp.Enums;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -193,7 +193,7 @@ public static class Global
 
 	public static bool IsSystemThemeDark()
 	{
-		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
+		if (Sys.CurrentWindowsVersion != WindowsVersion.Windows10 && Sys.CurrentWindowsVersion != WindowsVersion.Windows11)
 		{
 			return false; // Avoid errors on older OSs
 		}

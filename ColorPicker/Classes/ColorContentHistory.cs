@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
@@ -48,14 +48,14 @@ public static class HistoryManager
 	/// </summary>
 	public static void Save()
 	{
-		string path = Env.AppDataPath + @"\Léo Corporation\ColorPicker\ColorHistory.xml"; // The path of the file
+		string path = FileSys.AppDataPath + @"\Léo Corporation\ColorPicker\ColorHistory.xml"; // The path of the file
 
 		XmlSerializer xmlSerializer = new(typeof(ColorContentHistory)); // XML Serializer
 
-		if (!Directory.Exists(Env.AppDataPath + @"\Léo Corporation\ColorPicker")) // If the directory doesn't exist
+		if (!Directory.Exists(FileSys.AppDataPath + @"\Léo Corporation\ColorPicker")) // If the directory doesn't exist
 		{
-			Directory.CreateDirectory(Env.AppDataPath + @"\Léo Corporation\"); // Create the directory
-			Directory.CreateDirectory(Env.AppDataPath + @"\Léo Corporation\ColorPicker"); // Create the directory
+			Directory.CreateDirectory(FileSys.AppDataPath + @"\Léo Corporation\"); // Create the directory
+			Directory.CreateDirectory(FileSys.AppDataPath + @"\Léo Corporation\ColorPicker"); // Create the directory
 		}
 
 		StreamWriter streamWriter = new(path); // The place where the file is going to be written
@@ -69,7 +69,7 @@ public static class HistoryManager
 	/// </summary>
 	public static void Load()
 	{
-		string path = Env.AppDataPath + @"\Léo Corporation\ColorPicker\ColorHistory.xml"; // The path of the settings file
+		string path = FileSys.AppDataPath + @"\Léo Corporation\ColorPicker\ColorHistory.xml"; // The path of the settings file
 
 		if (File.Exists(path)) // If the file exist
 		{
