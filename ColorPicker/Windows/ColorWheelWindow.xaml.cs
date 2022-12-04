@@ -23,7 +23,6 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
-using PeyrSharp.Env;
 using System;
 using System.Drawing;
 using System.Windows;
@@ -194,7 +193,7 @@ public partial class ColorWheelWindow : Window
 
 		// Convert to HEX
 		bool u = Global.Settings.HEXUseUpperCase.Value;
-		var h = ColorHelper.ColorConverter.RgbToHex(new (pixel.R, pixel.G, pixel.B)); // Convert
+		var h = ColorHelper.ColorConverter.RgbToHex(new(pixel.R, pixel.G, pixel.B)); // Convert
 		HEXTxt.Text = $"{Properties.Resources.HEXP} #{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 		hex = $"#{(u ? h.Value.ToUpper() : h.Value.ToLower())}";
 

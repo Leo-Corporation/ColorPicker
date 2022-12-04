@@ -23,8 +23,9 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using Gma.System.MouseKeyHook;
-using PeyrSharp.Env;
 using Microsoft.Win32;
+using PeyrSharp.Core;
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -34,7 +35,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using PeyrSharp.Core;
 
 namespace ColorPicker.Pages;
 
