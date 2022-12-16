@@ -1,7 +1,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/Leo-Corporation/ColorPicker)
 ![GitHub issues](https://img.shields.io/github/issues/Leo-Corporation/ColorPicker)
 ![GitHub](https://img.shields.io/github/license/Leo-Corporation/ColorPicker)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Leo-Corporation/ColorPicker/.NET%20Desktop)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Leo-Corporation/ColorPicker/dotnet-desktop.yml?branch=main)
 ![Using PeyrSharp](https://img.shields.io/badge/using-PeyrSharp-DD00FF?logo=nuget)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker)
 
