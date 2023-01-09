@@ -35,7 +35,7 @@
   <ItemGroup>
     <PackageReference Include="ColorHelper" Version="1.8.0" />
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
-    <PackageReference Include="PeyrSharp" Version="1.1.0.2212" />
+    <PackageReference Include="PeyrSharp" Version="1.2.0.2301" />
   </ItemGroup>
 
   <ItemGroup>
