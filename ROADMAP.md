@@ -85,4 +85,4 @@ To recap, the user interface looks similar to the one used in InternetTest Pro. 
 ColorPicker Max intends to use the long-term supported .NET 6 (LTS). The app is written using C# and the Windows Presentation Framework (WPF). The following libraries/NuGet packages will be used:
 - ColorHelper, to manage the conversion between each color types.
 - PeyrSharp, to avoid having to implement some basic methods.
--Synethia, to design a unique experience for each user (dashboard).
+- Synethia, to design a unique experience for each user (dashboard).
