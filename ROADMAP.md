@@ -1,5 +1,5 @@
 # Roadmap for ColorPicker Max
-![Banner]()
+![Banner](https://github.com/Leo-Corporation/LeoCorp-Docs/raw/master/Images/ColorPicker%20Max%20Banner.png)
 
 ## Introduction
 ColorPicker Max, codename “Project Spectrum” is the next major iteration of Léo Corporation’s popular software ColorPicker. This new version will be written using the latest features of .NET and C#. It will be a complete rewrite of ColorPicker from the ground up. It will include a brand-new designed based on InternetTest Pro’s. It will also feature an integration with the newly launched Synethia algorithm library.
