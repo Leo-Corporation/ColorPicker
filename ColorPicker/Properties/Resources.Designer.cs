@@ -61,6 +61,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CMYK.
+        /// </summary>
+        public static string CMYK {
+            get {
+                return ResourceManager.GetString("CMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker.
         /// </summary>
         public static string ColorPicker {
@@ -106,6 +115,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HEX.
+        /// </summary>
+        public static string HEX {
+            get {
+                return ResourceManager.GetString("HEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hi.
         /// </summary>
         public static string Hi {
@@ -133,6 +151,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HSL.
+        /// </summary>
+        public static string HSL {
+            get {
+                return ResourceManager.GetString("HSL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HSV.
+        /// </summary>
+        public static string HSV {
+            get {
+                return ResourceManager.GetString("HSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Picker.
         /// </summary>
         public static string Picker {
@@ -147,6 +183,15 @@ namespace ColorPicker.Properties {
         public static string Pinned {
             get {
                 return ResourceManager.GetString("Pinned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RGB.
+        /// </summary>
+        public static string RGB {
+            get {
+                return ResourceManager.GetString("RGB", resourceCulture);
             }
         }
         
@@ -174,6 +219,33 @@ namespace ColorPicker.Properties {
         public static string Tools {
             get {
                 return ResourceManager.GetString("Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XYZ.
+        /// </summary>
+        public static string XYZ {
+            get {
+                return ResourceManager.GetString("XYZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YIQ.
+        /// </summary>
+        public static string YIQ {
+            get {
+                return ResourceManager.GetString("YIQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YUV.
+        /// </summary>
+        public static string YUV {
+            get {
+                return ResourceManager.GetString("YUV", resourceCulture);
             }
         }
     }

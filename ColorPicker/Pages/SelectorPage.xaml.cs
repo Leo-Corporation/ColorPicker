@@ -55,6 +55,8 @@ public partial class SelectorPage : Page
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.Picker} > {Properties.Resources.Selector}";
+		(RedSlider.Value, GreenSlider.Value, BlueSlider.Value) = Global.GenerateRandomColor();
+		LoadDetails();
 
 		timer.Interval = new(0, 0, 0, 0, 1); // Interval
 		timer.Tick += (o, e) =>
@@ -68,6 +70,7 @@ public partial class SelectorPage : Page
 			RedSlider.Value = pixel.R; // Set value
 			GreenSlider.Value = pixel.G; // Set value
 			BlueSlider.Value = pixel.B; // Set value
+			LoadDetails();
 		};
 	}
 
@@ -76,6 +79,7 @@ public partial class SelectorPage : Page
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		RedValueTxt.Text = RedSlider.Value.ToString(); // Set text
+		LoadDetails();
 	}
 
 	private void GreenSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -83,6 +87,7 @@ public partial class SelectorPage : Page
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		GreenValueTxt.Text = GreenSlider.Value.ToString(); // Set text
+		LoadDetails();
 	}
 
 	private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -90,6 +95,7 @@ public partial class SelectorPage : Page
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		BlueValueTxt.Text = BlueSlider.Value.ToString(); // Set text
+		LoadDetails();
 	}
 
 	bool selecting = false;
@@ -103,5 +109,60 @@ public partial class SelectorPage : Page
 	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		(RedSlider.Value, GreenSlider.Value, BlueSlider.Value) = Global.GenerateRandomColor();
+		LoadDetails();
+	}
+
+	ColorInfo ColorInfo { get; set; }
+	private void LoadDetails()
+	{
+		ColorInfo = new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value));
+		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
+		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
+		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
+		HslTxt.Text = $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}";
+		CmykTxt.Text = $"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}";
+		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}.., {ColorInfo.XYZ.Y:0.00}.., {ColorInfo.XYZ.Z:0.00}..";
+		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}.., {ColorInfo.YIQ.I:0.00}.., {ColorInfo.YIQ.Q:0.00}..";
+		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}.., {ColorInfo.YUV.U:0.00}.., {ColorInfo.YUV.V:0.00}..";
+	}
+
+	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.YIQ.Y}, {ColorInfo.YIQ.I}, {ColorInfo.YIQ.Q}");
+	}
+
+	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.XYZ.X}, {ColorInfo.XYZ.Y}, {ColorInfo.XYZ.Z}");
+	}
+
+	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
+	}
+
+	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.YUV.Y}, {ColorInfo.YUV.U}, {ColorInfo.YUV.V}");
+	}
+
+	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HslTxt.Text);
+	}
+
+	private void CopyHsvBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HsvTxt.Text);
+	}
+
+	private void CopyHexBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HexTxt.Text);
+	}
+
+	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(RgbTxt.Text);
 	}
 }

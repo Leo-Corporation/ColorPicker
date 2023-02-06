@@ -67,4 +67,6 @@ public static class Global
 		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
 		return (r, g, b);
 	}
+
+	
 }

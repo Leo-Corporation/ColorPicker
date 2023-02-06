@@ -136,4 +136,28 @@
   <data name="Picker" xml:space="preserve">
     <value>Picker</value>
   </data>
+  <data name="RGB" xml:space="preserve">
+    <value>RGB</value>
+  </data>
+  <data name="HEX" xml:space="preserve">
+    <value>HEX</value>
+  </data>
+  <data name="HSV" xml:space="preserve">
+    <value>HSV</value>
+  </data>
+  <data name="HSL" xml:space="preserve">
+    <value>HSL</value>
+  </data>
+  <data name="CMYK" xml:space="preserve">
+    <value>CMYK</value>
+  </data>
+  <data name="XYZ" xml:space="preserve">
+    <value>XYZ</value>
+  </data>
+  <data name="YIQ" xml:space="preserve">
+    <value>YIQ</value>
+  </data>
+  <data name="YUV" xml:space="preserve">
+    <value>YUV</value>
+  </data>
 </root>
