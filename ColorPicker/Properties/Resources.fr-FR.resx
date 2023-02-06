@@ -120,31 +120,40 @@
   <data name="ColorPicker" xml:space="preserve">
     <value>ColorPicker</value>
   </data>
-	<data name="Hi" xml:space="preserve">
+  <data name="Hi" xml:space="preserve">
 	<value>Bonjour</value>
   </data>
-	<data name="GoodAfternoon" xml:space="preserve">
+  <data name="GoodAfternoon" xml:space="preserve">
 	<value>Bonne après-midi</value>
   </data>
-	<data name="GoodNight" xml:space="preserve">
+  <data name="GoodNight" xml:space="preserve">
 	<value>Bonne nuit</value>
   </data>
-	<data name="GoodEvening" xml:space="preserve">
+  <data name="GoodEvening" xml:space="preserve">
 	<value>Bonne soirée</value>
   </data>
-	<data name="Pinned" xml:space="preserve">
+  <data name="Pinned" xml:space="preserve">
 	<value>Épinglé</value>
   </data>
-	<data name="Home" xml:space="preserve">
+  <data name="Home" xml:space="preserve">
 	<value>Accueil</value>
   </data>
-	<data name="Settings" xml:space="preserve">
+  <data name="Settings" xml:space="preserve">
 	<value>Paramètres</value>
   </data>
-	<data name="History" xml:space="preserve">
+  <data name="History" xml:space="preserve">
 	<value>Historique</value>
   </data>
-	<data name="Tools" xml:space="preserve">
+  <data name="Tools" xml:space="preserve">
 	<value>Outils</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="Selector" xml:space="preserve">
+    <value>Sélecteur</value>
+  </data>
+  <data name="Picker" xml:space="preserve">
+    <value>Picker</value>
   </data>
 </root>

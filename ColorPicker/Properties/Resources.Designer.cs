@@ -70,6 +70,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Good afternoon.
         /// </summary>
         public static string GoodAfternoon {
@@ -124,11 +133,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Picker.
+        /// </summary>
+        public static string Picker {
+            get {
+                return ResourceManager.GetString("Picker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pinned.
         /// </summary>
         public static string Pinned {
             get {
                 return ResourceManager.GetString("Pinned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selector.
+        /// </summary>
+        public static string Selector {
+            get {
+                return ResourceManager.GetString("Selector", resourceCulture);
             }
         }
         
