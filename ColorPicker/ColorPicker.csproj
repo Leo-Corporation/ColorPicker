@@ -14,6 +14,7 @@
     <Version>5.0.0.2302-pre1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>logo.png</PackageIcon>
+    <ApplicationIcon>CPM.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,10 @@
     <None Remove="Fonts\Hauora-Regular.ttf" />
     <None Remove="Images\CPM.png" />
     <None Remove="Images\LightBackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CPM.ico" />
   </ItemGroup>
 
   <ItemGroup>
