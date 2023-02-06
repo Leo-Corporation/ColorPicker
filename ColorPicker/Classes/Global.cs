@@ -34,6 +34,8 @@ public static class Global
 {
 	public static SelectorPage? SelectorPage { get; set; }
 
+	public static Bookmarks Bookmarks { get; set; }
+
 	public static string HiSentence
 	{
 		get
@@ -66,7 +68,5 @@ public static class Global
 		Random random = new();
 		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
 		return (r, g, b);
-	}
-
-	
+	}	
 }

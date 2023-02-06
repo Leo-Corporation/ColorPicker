@@ -165,4 +165,16 @@ public partial class SelectorPage : Page
 	{
 		Clipboard.SetText(RgbTxt.Text);
 	}
+
+	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
+		{
+			Global.Bookmarks.ColorBookmarks.Remove(HexTxt.Text);
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
+		BookmarkBtn.Content = "\uF1F8";
+	}
 }
