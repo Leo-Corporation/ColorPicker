@@ -23,7 +23,7 @@
 			<TextBlock x:Name="TitleTxt" d:Text="{x:Static lang:Resources.Selector}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
 		</StackPanel>
 
-		<Border Grid.Row="1" Background="{Binding Source={StaticResource CardBackground}}" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="10" CornerRadius="10">
+		<Border MinWidth="440" Grid.Row="1" Background="{Binding Source={StaticResource CardBackground}}" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="10" CornerRadius="10">
 			<Border.Effect>
 				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 			</Border.Effect>
@@ -31,8 +31,9 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition/>
+					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
-				<Border x:Name="ColorBorder" Height="75" Width="75" CornerRadius="50" d:Background="#ff0000" Margin="10"/>
+				<Border x:Name="ColorBorder" Height="75" Width="75" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
 
 				<Grid Grid.Column="1" VerticalAlignment="Center">
 					<Grid.RowDefinitions>
@@ -41,21 +42,22 @@
 						<RowDefinition />
 					</Grid.RowDefinitions>
 
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-						<ColumnDefinition />
-						<ColumnDefinition />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+						<ColumnDefinition Width="35"/>
 					</Grid.ColumnDefinitions>
 
-					<Slider Style="{DynamicResource SliderStyle1}" x:Name="RedSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" ValueChanged="RedSlider_ValueChanged" Grid.Column="1" SmallChange="1" Foreground="#FF4500" BorderBrush="#FF4500" />
-					<TextBlock x:Name="RedValueTxt" d:Text="255" Grid.Column="2" FontWeight="ExtraBold" FontSize="14" />
+					<Slider Style="{DynamicResource SliderStyle1}" x:Name="RedSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" ValueChanged="RedSlider_ValueChanged" Grid.Column="0" SmallChange="1" Foreground="#FF4500" BorderBrush="#FF4500" VerticalAlignment="Center" />
+					<TextBlock Margin="3" x:Name="RedValueTxt" d:Text="255" Grid.Column="2" FontWeight="ExtraBold" FontSize="14" HorizontalAlignment="Center" />
 
-					<Slider Style="{DynamicResource SliderStyle1}" x:Name="GreenSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="1" ValueChanged="GreenSlider_ValueChanged" Grid.Column="1" SmallChange="1" BorderBrush="#00df39" Foreground="#00df39" />
-					<TextBlock x:Name="GreenValueTxt" d:Text="255" Grid.Column="2" Grid.Row="1" FontWeight="ExtraBold" FontSize="14" />
+					<Slider Style="{DynamicResource SliderStyle1}" x:Name="GreenSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="1" ValueChanged="GreenSlider_ValueChanged" Grid.Column="0" SmallChange="1" BorderBrush="#00df39" Foreground="#00df39" VerticalAlignment="Center" />
+                    <TextBlock Margin="3" x:Name="GreenValueTxt" d:Text="255" Grid.Column="2" Grid.Row="1" FontWeight="ExtraBold" FontSize="14" HorizontalAlignment="Center" />
 
-					<Slider Style="{DynamicResource SliderStyle1}" x:Name="BlueSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="2" ValueChanged="BlueSlider_ValueChanged" Grid.Column="1" SmallChange="1" Foreground="#4169E1" BorderBrush="#4169E1" />
-					<TextBlock x:Name="BlueValueTxt" d:Text="255" Grid.Column="2" Grid.Row="2" FontWeight="ExtraBold" FontSize="14" />
+					<Slider Style="{DynamicResource SliderStyle1}" x:Name="BlueSlider" Width="255" Maximum="255" Minimum="0" IsSnapToTickEnabled="True" Grid.Row="2" ValueChanged="BlueSlider_ValueChanged" Grid.Column="0" SmallChange="1" Foreground="#4169E1" BorderBrush="#4169E1" VerticalAlignment="Center" />
+                    <TextBlock Margin="3" x:Name="BlueValueTxt" d:Text="255" Grid.Column="2" Grid.Row="2" FontWeight="ExtraBold" FontSize="14" HorizontalAlignment="Center" />
 				</Grid>
+
+				<Button x:Name="SelectBtn" Click="SelectBtn_Click" Grid.Column="2" Margin="10 0 0 0" Content="&#xFD3F;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 			</Grid>
 		</Border>
 

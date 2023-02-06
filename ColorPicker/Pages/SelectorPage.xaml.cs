@@ -36,6 +36,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -43,6 +44,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class SelectorPage : Page
 {
+	readonly DispatcherTimer timer = new();
 	public SelectorPage()
 	{
 		InitializeComponent();
@@ -52,6 +54,20 @@ public partial class SelectorPage : Page
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.Picker} > {Properties.Resources.Selector}";
+
+		timer.Interval = new(0, 0, 0, 0, 1); // Interval
+		timer.Tick += (o, e) =>
+		{
+			// Get the pixel from the screen
+			System.Drawing.Bitmap bitmap = new(1, 1); // Create a bitmap where the color of the pixel is going to be copied
+			System.Drawing.Graphics GFX = System.Drawing.Graphics.FromImage(bitmap);
+			GFX.CopyFromScreen(System.Windows.Forms.Cursor.Position, new System.Drawing.Point(0, 0), bitmap.Size); // Get the color of the pixel at the mouse position
+			var pixel = bitmap.GetPixel(0, 0); // Copy to the bitmap
+
+			RedSlider.Value = pixel.R; // Set value
+			GreenSlider.Value = pixel.G; // Set value
+			BlueSlider.Value = pixel.B; // Set value
+		};
 	}
 
 	private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -65,13 +81,21 @@ public partial class SelectorPage : Page
 	{
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
-		GreenValueTxt.Text = RedSlider.Value.ToString(); // Set text
+		GreenValueTxt.Text = GreenSlider.Value.ToString(); // Set text
 	}
 
 	private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	{
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
-		BlueValueTxt.Text = RedSlider.Value.ToString(); // Set text
+		BlueValueTxt.Text = BlueSlider.Value.ToString(); // Set text
+	}
+
+	bool selecting = false;
+	private void SelectBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (selecting) timer.Stop();
+		else timer.Start();
+		selecting = !selecting;
 	}
 }
