@@ -180,4 +180,7 @@
   <data name="YUV" xml:space="preserve">
     <value>YUV</value>
   </data>
+  <data name="Bookmarks" xml:space="preserve">
+    <value>Bookmarks</value>
+  </data>
 </root>

@@ -133,4 +133,19 @@ public partial class MainWindow : Window
 		MaxHeight = currentScreen.WorkingArea.Height / factor + 5; // Set max size
 		MaxWidth = currentScreen.WorkingArea.Width / factor + 5; // Set max size
 	}
+
+	private void HomePageBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
+
+	private void BookmarksPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
+
+	private void SettingsPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
 }
