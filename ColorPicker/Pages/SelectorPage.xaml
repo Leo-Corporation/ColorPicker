@@ -33,7 +33,7 @@
 					<ColumnDefinition/>
 					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
-				<Border x:Name="ColorBorder" Height="75" Width="75" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
+				<Border Cursor="Hand" MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" x:Name="ColorBorder" Height="75" Width="75" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
 
 				<Grid Grid.Column="1" VerticalAlignment="Center">
 					<Grid.RowDefinitions>
