@@ -46,4 +46,24 @@ public partial class MainWindow : Window
 	{
 		InitializeComponent();
 	}
+
+	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
+
+	private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
+
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
+
+	private void PinBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
 }
