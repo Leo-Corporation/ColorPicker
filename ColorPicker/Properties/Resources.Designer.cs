@@ -88,6 +88,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ColorPicker Max.
+        /// </summary>
+        public static string ColorPickerMax {
+            get {
+                return ResourceManager.GetString("ColorPickerMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {

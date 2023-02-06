@@ -183,4 +183,7 @@
   <data name="Bookmarks" xml:space="preserve">
     <value>Bookmarks</value>
   </data>
+  <data name="ColorPickerMax" xml:space="preserve">
+    <value>ColorPicker Max</value>
+  </data>
 </root>

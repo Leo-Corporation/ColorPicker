@@ -6,6 +6,14 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
+    <Copyright>© 2023</Copyright>
+    <Authors>Léo Corporation</Authors>
+    <Title>ColorPicker</Title>
+    <Description>Maximize your creativity.</Description>
+    <RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
+    <Version>5.0.0.2302-pre1</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +21,15 @@
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Fonts\Hauora-ExtraBold.ttf" />
     <None Remove="Fonts\Hauora-Regular.ttf" />
+    <None Remove="Images\CPM.png" />
     <None Remove="Images\LightBackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.github\images\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +47,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\Hauora-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\CPM.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\LightBackground.png">

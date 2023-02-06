@@ -3,11 +3,11 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:local="clr-namespace:ColorPicker"
+		xmlns:local="clr-namespace:ColorPicker" Icon="Images/CPM.png"
 		xmlns:lang="clr-namespace:ColorPicker.Properties"
 		Foreground="{Binding Source={StaticResource Foreground1}}"
 		FontFamily="/Fonts/#Hauora" mc:Ignorable="d"
-		Title="C" MinHeight="500" MinWidth="500" Height="600" Width="950" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent" ResizeMode="CanResize">
+		Title="{x:Static lang:Resources.ColorPickerMax}" MinHeight="500" MinWidth="500" Height="600" Width="950" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent" ResizeMode="CanResize">
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="32" ResizeBorderThickness="10"/>
 	</WindowChrome.WindowChrome>
