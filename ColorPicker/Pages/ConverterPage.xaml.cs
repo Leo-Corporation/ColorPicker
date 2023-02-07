@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -53,6 +55,14 @@ public partial class ConverterPage : Page
 	{
 		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.Converter}";
 		RgbBtn_Click(RgbBtn, null);
+		try
+		{
+			(int r, int g, int b) = Global.GenerateRandomColor();
+			Txt1.Text = r.ToString();
+			Txt2.Text = g.ToString();
+			Txt3.Text = b.ToString();
+		}
+		catch { }
 	}
 
 	Button SelectedColorBtn { get; set; }
@@ -80,6 +90,91 @@ public partial class ConverterPage : Page
 	}
 
 	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	ColorInfo ColorInfo { get; set; }
+
+	private RGB ConvertToRgb()
+	{
+		if (SelectedColorBtn == RgbBtn) return new((byte)int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text));
+		if (SelectedColorBtn == HexBtn) return ColorHelper.ColorConverter.HexToRgb(new(Txt5.Text));
+		else if (SelectedColorBtn == HsvBtn) return ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == HslBtn) return ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == CmykBtn) return ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text),
+											 (byte)int.Parse(Txt4.Text)));
+		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+	}
+
+	private void LoadDetails()
+	{
+		ColorInfo = new ColorInfo(ConvertToRgb());
+		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
+		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
+		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
+		HslTxt.Text = $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}";
+		CmykTxt.Text = $"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}";
+		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}.., {ColorInfo.XYZ.Y:0.00}.., {ColorInfo.XYZ.Z:0.00}..";
+		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}.., {ColorInfo.YIQ.I:0.00}.., {ColorInfo.YIQ.Q:0.00}..";
+		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}.., {ColorInfo.YUV.U:0.00}.., {ColorInfo.YUV.V:0.00}..";
+
+		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+
+	}
+
+	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.YIQ.Y}, {ColorInfo.YIQ.I}, {ColorInfo.YIQ.Q}");
+	}
+
+	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.XYZ.X}, {ColorInfo.XYZ.Y}, {ColorInfo.XYZ.Z}");
+	}
+
+	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
+	}
+
+	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.YUV.Y}, {ColorInfo.YUV.U}, {ColorInfo.YUV.V}");
+	}
+
+	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HslTxt.Text);
+	}
+
+	private void CopyHsvBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HsvTxt.Text);
+	}
+
+	private void CopyHexBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HexTxt.Text);
+	}
+
+	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(RgbTxt.Text);
+	}
 
 	private void HideAllInput()
 	{
@@ -90,11 +185,11 @@ public partial class ConverterPage : Page
 		DisplayText5.Visibility = Visibility.Collapsed; // Special textbox for hex
 
 		// Clear text to avoid errors
-		DisplayText1.Text = "";
-		DisplayText2.Text = "";
-		DisplayText3.Text = "";
-		DisplayText4.Text = "";
-		DisplayText5.Text = ""; // Special textbox for hex
+		Txt1.Text = "";
+		Txt2.Text = "";
+		Txt3.Text = "";
+		Txt4.Text = "";
+		Txt5.Text = ""; // Special textbox for hex
 
 		B1.Visibility = Visibility.Collapsed;
 		B2.Visibility = Visibility.Collapsed;
@@ -169,5 +264,13 @@ public partial class ConverterPage : Page
 			DisplayText2.Text = "U";
 			DisplayText3.Text = "V";
 		}
+	}
+
+	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			LoadDetails();
+		}catch { }
 	}
 }

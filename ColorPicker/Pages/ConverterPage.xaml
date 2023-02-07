@@ -56,7 +56,7 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt1" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox x:Name="Txt1" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText2" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
@@ -65,38 +65,204 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt2" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+                            <TextBox x:Name="Txt2" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText3" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
-                    <Border x:Name="B3" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
+					<Border x:Name="B3" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
 						<Border.Effect>
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt3" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox x:Name="Txt3" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
-                    <TextBlock Visibility="Collapsed" x:Name="DisplayText4" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
+					<TextBlock Visibility="Collapsed" x:Name="DisplayText4" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
 					<Border x:Name="B4" Visibility="Collapsed"  Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
 						<Border.Effect>
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt4" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox x:Name="Txt4" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
-                    <TextBlock Visibility="Collapsed" x:Name="DisplayText5" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
-                    <Border x:Name="B5" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="100" CornerRadius="5" HorizontalAlignment="Center">
-                        <Border.Effect>
-                            <DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-                        </Border.Effect>
-                        <Grid>
-                            <TextBox x:Name="Txt5" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" d:Text="123" Background="Transparent" TextAlignment="Center"/>
-                        </Grid>
-                    </Border>
-                </StackPanel>
+					<TextBlock Visibility="Collapsed" x:Name="DisplayText5" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
+					<Border x:Name="B5" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="100" CornerRadius="5" HorizontalAlignment="Center">
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+						<Grid>
+							<TextBox x:Name="Txt5" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+						</Grid>
+					</Border>
+				</StackPanel>
 			</Grid>
 		</Border>
+		<StackPanel Margin="10" Orientation="Horizontal" Grid.Row="2">
+			<TextBlock Text="&#xF4A4;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
+			<TextBlock Text="{x:Static lang:Resources.Details}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
+		</StackPanel>
+
+		<WrapPanel x:Name="DetailsWrap" Grid.Row="3" Margin="0,0,0,20" Orientation="Horizontal">
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.RGB}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyRgbBtn" Click="CopyRgbBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="RgbTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.HEX}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyHexBtn" Click="CopyHexBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="HexTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.HSV}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyHsvBtn" Click="CopyHsvBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="HsvTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.HSL}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyHslBtn" Click="CopyHslBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="HslTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.CMYK}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyCmykBtn" Click="CopyCmykBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="CmykTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.XYZ}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyXyzBtn" Click="CopyXyzBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="XyzTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.YIQ}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyYiqBtn" Click="CopyYiqBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="YiqTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<Border MinWidth="150" CornerRadius="5" Margin="5" Padding="5" Background="{Binding Source={StaticResource CardBackground}}" HorizontalAlignment="Left">
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+				</Border.Effect>
+
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Text="{x:Static lang:Resources.YUV}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button x:Name="CopyYuvBtn" Click="CopyYuvBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+						<TextBlock x:Name="YuvTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
+					</StackPanel>
+				</Grid>
+			</Border>
+		</WrapPanel>
 	</Grid>
 </Page>
