@@ -24,7 +24,6 @@ SOFTWARE.
 using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +34,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -96,15 +96,19 @@ public partial class ChromaticWheelPage : Page
 
 	private void WheelImg_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		Bitmap bitmap = new(1, 1);
-		Graphics GFX = Graphics.FromImage(bitmap);
+		System.Drawing.Bitmap bitmap = new(1, 1);
+		System.Drawing.Graphics GFX = System.Drawing.Graphics.FromImage(bitmap);
 		GFX.CopyFromScreen(System.Windows.Forms.Cursor.Position, new System.Drawing.Point(0, 0), bitmap.Size);
 		var pixel = bitmap.GetPixel(0, 0);
 		LoadDetails(new(new(pixel.R, pixel.G, pixel.B)));
+		PreviewBorder.Visibility = Visibility.Visible;
 	}
 
 	private void LoadDetails(ColorInfo colorInfo)
 	{
+		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B) };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B) };
+
 		ColorInfo = ColorInfo;
 		RgbTxt.Text = $"{colorInfo.RGB.R}; {colorInfo.RGB.G}; {colorInfo.RGB.B}";
 		HexTxt.Text = $"#{colorInfo.HEX.Value}";
@@ -115,7 +119,7 @@ public partial class ChromaticWheelPage : Page
 		YiqTxt.Text = $"{colorInfo.YIQ.Y:0.00}.., {colorInfo.YIQ.I:0.00}.., {colorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{colorInfo.YUV.Y:0.00}.., {colorInfo.YUV.U:0.00}.., {colorInfo.YUV.V:0.00}..";
 	}
-	ColorInfo ColorInfo { get; set; }
+	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
 	private void UnCheckAllButtons()
 	{
 		CircleBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
