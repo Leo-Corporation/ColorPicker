@@ -70,6 +70,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chromatic wheel.
+        /// </summary>
+        public static string ChromaticWheel {
+            get {
+                return ResourceManager.GetString("ChromaticWheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CMYK.
         /// </summary>
         public static string CMYK {
@@ -93,6 +102,33 @@ namespace ColorPicker.Properties {
         public static string ColorPickerMax {
             get {
                 return ResourceManager.GetString("ColorPickerMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color Tools.
+        /// </summary>
+        public static string ColorTools {
+            get {
+                return ResourceManager.GetString("ColorTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Converter.
+        /// </summary>
+        public static string Converter {
+            get {
+                return ResourceManager.GetString("Converter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creation.
+        /// </summary>
+        public static string Creation {
+            get {
+                return ResourceManager.GetString("Creation", resourceCulture);
             }
         }
         
@@ -129,6 +165,15 @@ namespace ColorPicker.Properties {
         public static string GoodNight {
             get {
                 return ResourceManager.GetString("GoodNight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gradient.
+        /// </summary>
+        public static string Gradient {
+            get {
+                return ResourceManager.GetString("Gradient", resourceCulture);
             }
         }
         
@@ -187,6 +232,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Palette.
+        /// </summary>
+        public static string Palette {
+            get {
+                return ResourceManager.GetString("Palette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Picker.
         /// </summary>
         public static string Picker {
@@ -228,6 +282,15 @@ namespace ColorPicker.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        public static string TextTool {
+            get {
+                return ResourceManager.GetString("TextTool", resourceCulture);
             }
         }
         

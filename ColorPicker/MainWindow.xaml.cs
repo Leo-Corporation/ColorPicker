@@ -33,6 +33,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -50,16 +51,33 @@ public partial class MainWindow : Window
 		GC.Collect();
 	}
 
+	DoubleAnimation expandAnimation = new()
+	{
+		From = 0,
+		To = 180,
+		Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+	};
+
+	DoubleAnimation collapseAnimation = new()
+	{
+		From = 180,
+		To = 0,
+		Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+	};
+
 	private void InitUI()
 	{
 		StateChanged += (o, e) => HandleWindowStateChanged();
 		Loaded += (o, e) => HandleWindowStateChanged();
 		LocationChanged += (o, e) => HandleWindowStateChanged();
-
+		SizeChanged += (o, e) =>
+		{
+			PageScroller.Height = (ActualHeight - (GridRow1.ActualHeight + 68) > 0) ? ActualHeight - (GridRow1.ActualHeight + 68) : 0; // Set the scroller height
+			ActionsScrollViewer.Height = ActualHeight - SideBarTop.ActualHeight - GridRow1.ActualHeight - 60;
+		};
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 
 		//TODO: Add page system
-		PageDisplayer.Navigate(Global.SelectorPage);
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -147,5 +165,120 @@ public partial class MainWindow : Window
 	private void SettingsPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 
+	}
+
+	private void PickerBtn_Click(object sender, RoutedEventArgs e)
+	{
+		bool expanded = PickerPanel.Visibility == Visibility.Visible;
+		PickerPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible; // Show/hide the picker panel
+
+		Storyboard storyboard = new(); // Create a storyboard
+
+		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
+		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "PickerRotator");
+		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
+
+		storyboard.Begin(this); // Animate the picker panel
+	}
+
+	private void SelectorPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButton();
+		CheckButton(SelectorPageBtn);
+
+		PageDisplayer.Navigate(Global.SelectorPage);
+	}
+
+	private void ChromaticPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButton();
+		CheckButton(ChromaticPageBtn);
+	}
+
+	private void CheckButton(Button button, bool isSpecial = false)
+	{
+		if (isSpecial)
+		{
+			button.Background = new SolidColorBrush(Global.GetColorFromResource("Background1"));
+		}
+		else
+		{
+			button.Background = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+			button.Foreground = new SolidColorBrush(Global.GetColorFromResource("WindowButtonsHoverForeground1"));
+		}
+	}
+
+	private void UnCheckAllButton()
+	{
+		// Background
+		HomePageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		BookmarksPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		SettingsPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+
+		SelectorPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		ChromaticPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		ConverterPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		TextPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		PalettePageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		GradientPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+
+		SelectorPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+		ChromaticPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+		ConverterPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+		TextPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+		PalettePageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+		GradientPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+	}
+
+	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		bool expanded = ColorToolsPanel.Visibility == Visibility.Visible;
+		ColorToolsPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible; // Show/hide the picker panel
+
+		Storyboard storyboard = new(); // Create a storyboard
+
+		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
+		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "ColorToolsRotator");
+		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
+
+		storyboard.Begin(this); // Animate the picker panel
+	}
+
+	private void ConverterPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButton();
+		CheckButton(ConverterPageBtn);
+	}
+
+	private void TextPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButton();
+		CheckButton(TextPageBtn);
+	}
+
+	private void CreationBtn_Click(object sender, RoutedEventArgs e)
+	{
+		bool expanded = CreationPanel.Visibility == Visibility.Visible;
+		CreationPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible; // Show/hide the picker panel
+
+		Storyboard storyboard = new(); // Create a storyboard
+
+		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
+		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "CreationRotator");
+		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
+
+		storyboard.Begin(this); // Animate the picker panel
+	}
+
+	private void PalettePageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButton();
+		CheckButton(PalettePageBtn);
+	}
+
+	private void GradientPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButton();
+		CheckButton(GradientPageBtn);
 	}
 }

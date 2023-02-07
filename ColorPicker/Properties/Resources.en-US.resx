@@ -186,4 +186,25 @@
   <data name="ColorPickerMax" xml:space="preserve">
     <value>ColorPicker Max</value>
   </data>
+  <data name="ChromaticWheel" xml:space="preserve">
+    <value>Chromatic wheel</value>
+  </data>
+  <data name="ColorTools" xml:space="preserve">
+    <value>Color Tools</value>
+  </data>
+  <data name="Creation" xml:space="preserve">
+    <value>Creation</value>
+  </data>
+  <data name="Converter" xml:space="preserve">
+    <value>Converter</value>
+  </data>
+  <data name="TextTool" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Palette" xml:space="preserve">
+    <value>Palette</value>
+  </data>
+  <data name="Gradient" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
 </root>
