@@ -250,6 +250,8 @@ public partial class MainWindow : Window
 	{
 		UnCheckAllButton();
 		CheckButton(ConverterPageBtn);
+
+		PageDisplayer.Navigate(Global.ConverterPage);
 	}
 
 	private void TextPageBtn_Click(object sender, RoutedEventArgs e)

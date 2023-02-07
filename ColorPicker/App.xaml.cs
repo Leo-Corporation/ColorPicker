@@ -41,6 +41,7 @@ public partial class App : Application
 		// Pages
 		Global.SelectorPage = new();
 		Global.ChromaticWheelPage = new();
+		Global.ConverterPage = new();
 
 		// Bookmarks system
 		Global.Bookmarks = new()

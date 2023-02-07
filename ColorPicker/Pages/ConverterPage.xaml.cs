@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,10 +46,128 @@ public partial class ConverterPage : Page
 	public ConverterPage()
 	{
 		InitializeComponent();
+		InitUI();
 	}
 
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.Converter}";
+		RgbBtn_Click(RgbBtn, null);
+	}
+
+	Button SelectedColorBtn { get; set; }
+	private void UnCheckAllButtons()
+	{
+		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HexBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HsvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HslBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		CmykBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+	}
+
+	// Note: This event handler is used for all the choices
+	private void RgbBtn_Click(object sender, RoutedEventArgs? e)
+	{
+		var btn = (Button)sender;
+
+		UnCheckAllButtons();
+		CheckButton(btn);
+		SelectedColorBtn = btn;
+		LoadInputUI();
+	}
+
+	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+
+	private void HideAllInput()
+	{
+		DisplayText1.Visibility = Visibility.Collapsed;
+		DisplayText2.Visibility = Visibility.Collapsed;
+		DisplayText3.Visibility = Visibility.Collapsed;
+		DisplayText4.Visibility = Visibility.Collapsed;
+		DisplayText5.Visibility = Visibility.Collapsed; // Special textbox for hex
+
+		// Clear text to avoid errors
+		DisplayText1.Text = "";
+		DisplayText2.Text = "";
+		DisplayText3.Text = "";
+		DisplayText4.Text = "";
+		DisplayText5.Text = ""; // Special textbox for hex
+
+		B1.Visibility = Visibility.Collapsed;
+		B2.Visibility = Visibility.Collapsed;
+		B3.Visibility = Visibility.Collapsed;
+		B4.Visibility = Visibility.Collapsed;
+		B5.Visibility = Visibility.Collapsed; // Special textbox for hex
+	}
+
+	private void LoadInputUI()
+	{
+		HideAllInput();
+		if (SelectedColorBtn != HexBtn)
+		{
+			DisplayText1.Visibility = Visibility.Visible;
+			DisplayText2.Visibility = Visibility.Visible;
+			DisplayText3.Visibility = Visibility.Visible;
+			DisplayText4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
+
+			B1.Visibility = Visibility.Visible;
+			B2.Visibility = Visibility.Visible;
+			B3.Visibility = Visibility.Visible;
+			B4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
+		}
+
+		if (SelectedColorBtn == RgbBtn)
+		{
+			DisplayText1.Text = "R";
+			DisplayText2.Text = "G";
+			DisplayText3.Text = "B";			
+		}
+		else if (SelectedColorBtn == HexBtn)
+		{
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.HEX;
+			B5.Visibility = Visibility.Visible;
+		}
+		else if (SelectedColorBtn == HsvBtn)
+		{
+			DisplayText1.Text = "H";
+			DisplayText2.Text = "S";
+			DisplayText3.Text = "V";
+		}
+		else if (SelectedColorBtn == HslBtn)
+		{
+			DisplayText1.Text = "H";
+			DisplayText2.Text = "S";
+			DisplayText3.Text = "L";
+		}
+		else if (SelectedColorBtn == CmykBtn)
+		{
+			DisplayText1.Text = "C";
+			DisplayText2.Text = "M";
+			DisplayText3.Text = "Y";
+			DisplayText4.Text = "K";
+		}
+		else if (SelectedColorBtn == XyzBtn)
+		{
+			DisplayText1.Text = "X";
+			DisplayText2.Text = "Y";
+			DisplayText3.Text = "Z";
+		}
+		else if (SelectedColorBtn == YiqBtn)
+		{
+			DisplayText1.Text = "Y";
+			DisplayText2.Text = "I";
+			DisplayText3.Text = "Q";
+		}
+		else if (SelectedColorBtn == YuvBtn)
+		{
+			DisplayText1.Text = "Y";
+			DisplayText2.Text = "U";
+			DisplayText3.Text = "V";
+		}
 	}
 }
