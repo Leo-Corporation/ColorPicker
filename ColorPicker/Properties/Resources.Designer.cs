@@ -79,6 +79,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Circle.
+        /// </summary>
+        public static string Circle {
+            get {
+                return ResourceManager.GetString("Circle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CMYK.
         /// </summary>
         public static string CMYK {
@@ -138,6 +147,15 @@ namespace ColorPicker.Properties {
         public static string Details {
             get {
                 return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disc.
+        /// </summary>
+        public static string Disc {
+            get {
+                return ResourceManager.GetString("Disc", resourceCulture);
             }
         }
         
@@ -282,6 +300,15 @@ namespace ColorPicker.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shades.
+        /// </summary>
+        public static string Shades {
+            get {
+                return ResourceManager.GetString("Shades", resourceCulture);
             }
         }
         

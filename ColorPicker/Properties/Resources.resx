@@ -187,4 +187,13 @@
   <data name="Gradient" xml:space="preserve">
     <value>Gradient</value>
   </data>
+  <data name="Circle" xml:space="preserve">
+    <value>Circle</value>
+  </data>
+  <data name="Disc" xml:space="preserve">
+    <value>Disc</value>
+  </data>
+  <data name="Shades" xml:space="preserve">
+    <value>Shades</value>
+  </data>
 </root>

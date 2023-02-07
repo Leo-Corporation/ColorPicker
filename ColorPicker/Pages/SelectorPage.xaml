@@ -59,7 +59,7 @@
 
 				<StackPanel Grid.Column="2" Orientation="Horizontal">
 					<Button x:Name="SelectBtn" Click="SelectBtn_Click" Grid.Column="2" Margin="10 0 0 0" Content="&#xFD3F;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-                    <Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="2" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+					<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="2" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 				</StackPanel>
 			</Grid>
 		</Border>

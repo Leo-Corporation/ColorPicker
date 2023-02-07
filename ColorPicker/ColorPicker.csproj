@@ -22,6 +22,9 @@
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Fonts\Hauora-ExtraBold.ttf" />
     <None Remove="Fonts\Hauora-Regular.ttf" />
+    <None Remove="Images\ColorDisc.png" />
+    <None Remove="Images\ColorDisc2.png" />
+    <None Remove="Images\ColorWheel.png" />
     <None Remove="Images\CPM.png" />
     <None Remove="Images\LightBackground.png" />
   </ItemGroup>
@@ -52,6 +55,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\Hauora-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ColorDisc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ColorDisc2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ColorWheel.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\CPM.png">

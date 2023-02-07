@@ -34,6 +34,7 @@ namespace ColorPicker.Classes;
 public static class Global
 {
 	public static SelectorPage? SelectorPage { get; set; }
+	public static ChromaticWheelPage? ChromaticWheelPage { get; set; }
 
 	public static Bookmarks Bookmarks { get; set; }
 

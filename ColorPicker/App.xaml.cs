@@ -40,6 +40,7 @@ public partial class App : Application
 	{
 		// Pages
 		Global.SelectorPage = new();
+		Global.ChromaticWheelPage = new();
 
 		// Bookmarks system
 		Global.Bookmarks = new()

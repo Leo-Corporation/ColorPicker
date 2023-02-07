@@ -193,6 +193,8 @@ public partial class MainWindow : Window
 	{
 		UnCheckAllButton();
 		CheckButton(ChromaticPageBtn);
+
+		PageDisplayer.Navigate(Global.ChromaticWheelPage);
 	}
 
 	private void CheckButton(Button button, bool isSpecial = false)
