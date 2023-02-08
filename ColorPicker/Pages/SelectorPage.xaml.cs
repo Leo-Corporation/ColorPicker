@@ -115,6 +115,7 @@ public partial class SelectorPage : Page
 	ColorInfo ColorInfo { get; set; }
 	private void LoadDetails()
 	{
+		// Load the details section
 		ColorInfo = new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value));
 		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
 		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
@@ -124,6 +125,14 @@ public partial class SelectorPage : Page
 		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
+
+		// Load the bookmark icon
+		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
+		{
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		BookmarkBtn.Content = "\uF1F8";
 	}
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)

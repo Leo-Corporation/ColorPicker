@@ -38,15 +38,15 @@ public partial class App : Application
 {
 	private void Application_Startup(object sender, StartupEventArgs e)
 	{
-		// Pages
-		Global.SelectorPage = new();
-		Global.ChromaticWheelPage = new();
-		Global.ConverterPage = new();
-
 		// Bookmarks system
 		Global.Bookmarks = new()
 		{
 			ColorBookmarks = new()
 		};
+
+		// Pages
+		Global.SelectorPage = new();
+		Global.ChromaticWheelPage = new();
+		Global.ConverterPage = new();		
 	}
 }

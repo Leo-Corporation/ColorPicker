@@ -138,6 +138,14 @@ public partial class ConverterPage : Page
 		ColorValidTxt.Text = Properties.Resources.ColorValid;
 		ColorValidIconTxt.Text = "\uF299";
 		ColorValidIconTxt.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Green") };
+
+		// Load the bookmark icon
+		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
+		{
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		BookmarkBtn.Content = "\uF1F8";
 	}
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
@@ -328,5 +336,17 @@ public partial class ConverterPage : Page
 			}
 		}
 		catch {	}
+	}
+
+	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
+		{
+			Global.Bookmarks.ColorBookmarks.Remove(HexTxt.Text);
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
+		BookmarkBtn.Content = "\uF1F8";
 	}
 }
