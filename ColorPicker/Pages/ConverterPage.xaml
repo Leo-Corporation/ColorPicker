@@ -31,13 +31,14 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
 					<RowDefinition/>
+					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-				<StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="3">
+				<StackPanel Margin="2 10" Orientation="Horizontal" Grid.ColumnSpan="3">
 					<Button x:Name="RgbBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.RGB}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
 					<Button x:Name="HexBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.HEX}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
 					<Button x:Name="HsvBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.HSV}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
@@ -65,7 +66,7 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-                            <TextBox x:Name="Txt2" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox x:Name="Txt2" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText3" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
@@ -95,6 +96,10 @@
 							<TextBox x:Name="Txt5" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
+				</StackPanel>
+				<StackPanel Margin="10 0" Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3">
+					<TextBlock x:Name="ColorValidIconTxt" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="14"/>
+					<TextBlock x:Name="ColorValidTxt" d:Text="Placeholder" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center"/>
 				</StackPanel>
 			</Grid>
 		</Border>

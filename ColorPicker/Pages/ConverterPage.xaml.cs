@@ -134,6 +134,10 @@ public partial class ConverterPage : Page
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 
+		// Show a success message to the user
+		ColorValidTxt.Text = Properties.Resources.ColorValid;
+		ColorValidIconTxt.Text = "\uF299";
+		ColorValidIconTxt.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Green") };
 	}
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
@@ -271,6 +275,13 @@ public partial class ConverterPage : Page
 		try
 		{
 			LoadDetails();
-		}catch { }
+		}
+		catch 
+		{
+			// Show an error message to the user
+			ColorValidTxt.Text = Properties.Resources.InvalidColor;
+			ColorValidIconTxt.Text = "\uF36E";
+			ColorValidIconTxt.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Red") };
+		}
 	}
 }
