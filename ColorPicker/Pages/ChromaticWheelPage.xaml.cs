@@ -109,15 +109,15 @@ public partial class ChromaticWheelPage : Page
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B) };
 
-		ColorInfo = ColorInfo;
+		ColorInfo = colorInfo;
 		RgbTxt.Text = $"{colorInfo.RGB.R}; {colorInfo.RGB.G}; {colorInfo.RGB.B}";
 		HexTxt.Text = $"#{colorInfo.HEX.Value}";
 		HsvTxt.Text = $"{colorInfo.HSV.H}, {colorInfo.HSV.S}, {colorInfo.HSV.V}";
 		HslTxt.Text = $"{colorInfo.HSL.H}, {colorInfo.HSL.S}, {colorInfo.HSL.L}";
 		CmykTxt.Text = $"{colorInfo.CMYK.C}, {colorInfo.CMYK.M}, {colorInfo.CMYK.Y}, {colorInfo.CMYK.K}";
-		XyzTxt.Text = $"{colorInfo.XYZ.X:0.00}.., {colorInfo.XYZ.Y:0.00}.., {colorInfo.XYZ.Z:0.00}..";
-		YiqTxt.Text = $"{colorInfo.YIQ.Y:0.00}.., {colorInfo.YIQ.I:0.00}.., {colorInfo.YIQ.Q:0.00}..";
-		YuvTxt.Text = $"{colorInfo.YUV.Y:0.00}.., {colorInfo.YUV.U:0.00}.., {colorInfo.YUV.V:0.00}..";
+		XyzTxt.Text = $"{colorInfo.XYZ.X:0.00}..; {colorInfo.XYZ.Y:0.00}..; {colorInfo.XYZ.Z:0.00}..";
+		YiqTxt.Text = $"{colorInfo.YIQ.Y:0.00}..; {colorInfo.YIQ.I:0.00}..; {colorInfo.YIQ.Q:0.00}..";
+		YuvTxt.Text = $"{colorInfo.YUV.Y:0.00}..; {colorInfo.YUV.U:0.00}..; {colorInfo.YUV.V:0.00}..";
 	}
 	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
 	private void UnCheckAllButtons()
@@ -131,12 +131,12 @@ public partial class ChromaticWheelPage : Page
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.YIQ.Y}, {ColorInfo.YIQ.I}, {ColorInfo.YIQ.Q}");
+		Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
 	}
 
 	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.XYZ.X}, {ColorInfo.XYZ.Y}, {ColorInfo.XYZ.Z}");
+		Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
 	}
 
 	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
@@ -146,7 +146,7 @@ public partial class ChromaticWheelPage : Page
 
 	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.YUV.Y}, {ColorInfo.YUV.U}, {ColorInfo.YUV.V}");
+		Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
 	}
 
 	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)

@@ -57,7 +57,7 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt1" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt1" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText2" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
@@ -66,7 +66,7 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt2" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt2" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText3" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
@@ -75,7 +75,7 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt3" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt3" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText4" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
@@ -84,7 +84,7 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt4" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt4" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText5" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
@@ -93,7 +93,7 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 						<Grid>
-							<TextBox x:Name="Txt5" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+							<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt5" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
 						</Grid>
 					</Border>
 				</StackPanel>
