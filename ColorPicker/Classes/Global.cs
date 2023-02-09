@@ -116,25 +116,14 @@ public static class Global
 
 	public static RGB[] GetShades(HSL hsl)
 	{
-		// Dark shades
-		HSL darkShade = new(hsl.H, hsl.S, (hsl.L == 30) ? (byte)15 : (byte)30);
-		RGB darkShadeRgb = ColorHelper.ColorConverter.HslToRgb(darkShade);
-
-		// Regular shades
-		var l = hsl.L - 16;
-		HSL regularShade = new(hsl.H, hsl.S, (byte)l);
-		RGB regularShadeRgb = ColorHelper.ColorConverter.HslToRgb(regularShade);
-
-		// Tint shades
-		var s = hsl.S - 20;
-		var l2 = hsl.L + 6;
-
-		HSL tintShade = new(hsl.H, (byte)s, (byte)l2);
-		RGB tintShadeRgb = ColorHelper.ColorConverter.HslToRgb(tintShade);
-
-		RGB[] colors = { ColorHelper.ColorConverter.HslToRgb(hsl), darkShadeRgb, regularShadeRgb, tintShadeRgb };
-
-		return colors;
+		RGB[] colorPalette = new RGB[10];
+		for (int i = 0; i < colorPalette.Length; i++)
+		{
+			int saturation = (i + 1) * 10;
+			HSL hslColor = new(hsl.H, (byte)saturation, hsl.L);
+			colorPalette[i] = ColorHelper.ColorConverter.HslToRgb(hslColor);
+		}
+		return colorPalette;
 	}
 
 }
