@@ -59,43 +59,43 @@
 			: and then encoded with base64 encoding.
 	-->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
+	<xsd:element name="root" msdata:IsDataSet="true">
+	  <xsd:complexType>
+		<xsd:choice maxOccurs="unbounded">
+		  <xsd:element name="data">
+			<xsd:complexType>
+			  <xsd:sequence>
+				<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+				<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+			  </xsd:sequence>
+			  <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+			  <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+			  <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+			</xsd:complexType>
+		  </xsd:element>
+		  <xsd:element name="resheader">
+			<xsd:complexType>
+			  <xsd:sequence>
+				<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+			  </xsd:sequence>
+			  <xsd:attribute name="name" type="xsd:string" use="required" />
+			</xsd:complexType>
+		  </xsd:element>
+		</xsd:choice>
+	  </xsd:complexType>
+	</xsd:element>
   </xsd:schema>
   <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
+	<value>text/microsoft-resx</value>
   </resheader>
   <resheader name="version">
-    <value>1.3</value>
+	<value>1.3</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ColorPicker" xml:space="preserve">
 	<value>ColorPicker</value>
@@ -128,78 +128,90 @@
 	<value>Tools</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Details</value>
+	<value>Details</value>
   </data>
   <data name="Selector" xml:space="preserve">
-    <value>Selector</value>
+	<value>Selector</value>
   </data>
   <data name="Picker" xml:space="preserve">
-    <value>Picker</value>
+	<value>Picker</value>
   </data>
   <data name="RGB" xml:space="preserve">
-    <value>RGB</value>
+	<value>RGB</value>
   </data>
   <data name="HEX" xml:space="preserve">
-    <value>HEX</value>
+	<value>HEX</value>
   </data>
   <data name="HSV" xml:space="preserve">
-    <value>HSV</value>
+	<value>HSV</value>
   </data>
   <data name="HSL" xml:space="preserve">
-    <value>HSL</value>
+	<value>HSL</value>
   </data>
   <data name="CMYK" xml:space="preserve">
-    <value>CMYK</value>
+	<value>CMYK</value>
   </data>
   <data name="XYZ" xml:space="preserve">
-    <value>XYZ</value>
+	<value>XYZ</value>
   </data>
   <data name="YIQ" xml:space="preserve">
-    <value>YIQ</value>
+	<value>YIQ</value>
   </data>
   <data name="YUV" xml:space="preserve">
-    <value>YUV</value>
+	<value>YUV</value>
   </data>
   <data name="Bookmarks" xml:space="preserve">
-    <value>Bookmarks</value>
+	<value>Bookmarks</value>
   </data>
   <data name="ColorPickerMax" xml:space="preserve">
-    <value>ColorPicker Max</value>
+	<value>ColorPicker Max</value>
   </data>
   <data name="ChromaticWheel" xml:space="preserve">
-    <value>Chromatic wheel</value>
+	<value>Chromatic wheel</value>
   </data>
   <data name="ColorTools" xml:space="preserve">
-    <value>Color Tools</value>
+	<value>Color Tools</value>
   </data>
   <data name="Creation" xml:space="preserve">
-    <value>Creation</value>
+	<value>Creation</value>
   </data>
   <data name="Converter" xml:space="preserve">
-    <value>Converter</value>
+	<value>Converter</value>
   </data>
   <data name="TextTool" xml:space="preserve">
-    <value>Text</value>
+	<value>Text</value>
   </data>
   <data name="Palette" xml:space="preserve">
-    <value>Palette</value>
+	<value>Palette</value>
   </data>
   <data name="Gradient" xml:space="preserve">
-    <value>Gradient</value>
+	<value>Gradient</value>
   </data>
   <data name="Circle" xml:space="preserve">
-    <value>Circle</value>
+	<value>Circle</value>
   </data>
   <data name="Disc" xml:space="preserve">
-    <value>Disc</value>
+	<value>Disc</value>
   </data>
   <data name="Shades" xml:space="preserve">
-    <value>Shades</value>
+	<value>Shades</value>
   </data>
   <data name="ColorValid" xml:space="preserve">
-    <value>The color is valid.</value>
+	<value>The color is valid.</value>
   </data>
   <data name="InvalidColor" xml:space="preserve">
-    <value>The color is invalid.</value>
+	<value>The color is invalid.</value>
+  </data>
+	<data name="Font" xml:space="preserve">
+	<value>Font</value>
+  </data>
+	<data name="Size" xml:space="preserve">
+	<value>Size</value>
+  </data>
+	<data name="Foreground" xml:space="preserve">
+	<value>Foreground</value>
+  </data>
+	<data name="Background" xml:space="preserve">
+	<value>Background</value>
   </data>
 </root>

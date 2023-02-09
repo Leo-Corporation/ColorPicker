@@ -21,33 +21,45 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace ColorPicker;
+namespace ColorPicker.Pages;
 /// <summary>
-/// Interaction logic for App.xaml
+/// Interaction logic for TextPage.xaml
 /// </summary>
-public partial class App : Application
+public partial class TextPage : Page
 {
-	private void Application_Startup(object sender, StartupEventArgs e)
+	public TextPage()
 	{
-		// Bookmarks system
-		Global.Bookmarks = new()
-		{
-			ColorBookmarks = new()
-		};
+		InitializeComponent();
+		InitUI();
+	}
 
-		// Pages
-		Global.SelectorPage = new();
-		Global.ChromaticWheelPage = new();
-		Global.ConverterPage = new();		
-		Global.TextPage = new();		
+	private void InitUI()
+	{
+		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.TextTool}";
+	}
+
+	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+
+	}
+
+	private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+
 	}
 }

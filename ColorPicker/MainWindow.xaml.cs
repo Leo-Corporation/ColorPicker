@@ -258,6 +258,8 @@ public partial class MainWindow : Window
 	{
 		UnCheckAllButton();
 		CheckButton(TextPageBtn);
+
+		PageDisplayer.Navigate(Global.TextPage);
 	}
 
 	private void CreationBtn_Click(object sender, RoutedEventArgs e)

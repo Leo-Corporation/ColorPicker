@@ -222,4 +222,16 @@
   <data name="InvalidColor" xml:space="preserve">
     <value>La couleur est invalide.</value>
   </data>
+	<data name="Font" xml:space="preserve">
+    <value>Police</value>
+  </data>
+	<data name="Size" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+	<data name="Foreground" xml:space="preserve">
+    <value>Premier plan</value>
+  </data>
+	<data name="Background" xml:space="preserve">
+    <value>Arrière plan</value>
+  </data>
 </root>
