@@ -222,6 +222,7 @@ public partial class PalettePage : Page
 		{
 			Rectangle rectangle = new()
 			{
+				Cursor = Cursors.Hand,
 				Height = 40,
 				Width = 40,
 				RadiusX = 20,
@@ -234,6 +235,12 @@ public partial class PalettePage : Page
 					Opacity = 0.2,
 					ShadowDepth = 0,
 					Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B)
+				},
+				ToolTip = new ToolTip()
+				{
+					Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
+					Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+					Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
 				}
 			};
 			ShadesPanel.Children.Add(rectangle);
