@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,5 +88,45 @@ public partial class TextPage : Page
 	{
 		Regex regex = new("[^0-9]+");
 		e.Handled = regex.IsMatch(e.Text);
+	}
+
+	System.Drawing.Color foreground, background;
+	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		System.Windows.Forms.ColorDialog colorDialog = new()
+		{
+			AllowFullOpen = true,
+		}; // Create color picker/dialog
+
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+		{
+			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			foreground = colorDialog.Color;
+			ForegroundBorder.Background = color;
+
+			RegularTxt.Foreground = color; // Set foreground color
+			ItalicTxt.Foreground = color; // Set foreground color
+			BoldTxt.Foreground = color; // Set foreground color
+		}
+	}
+
+	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		System.Windows.Forms.ColorDialog colorDialog = new()
+		{
+			AllowFullOpen = true,
+		}; // Create color picker/dialog
+
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+		{
+			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+			background = colorDialog.Color;
+			BackgroundBorder.Background = color;
+
+			RegularTxt.Background = color; // Set background color
+			ItalicTxt.Background = color; // Set background color
+			BoldTxt.Background = color; // Set background color
+			TextPanel.Background = color; // Set background color
+		}
 	}
 }
