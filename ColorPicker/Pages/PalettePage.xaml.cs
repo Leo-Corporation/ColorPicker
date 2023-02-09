@@ -220,15 +220,16 @@ public partial class PalettePage : Page
 		var shades = Global.GetShades(ColorInfo.HSL);
 		for (int i = 0; i < shades.Length; i++)
 		{
-			Rectangle rectangle = new()
+			CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
+			if (i == shades.Length - 1) radius = new(0, 10, 10, 0);
+
+			Border border = new()
 			{
 				Cursor = Cursors.Hand,
-				Height = 40,
-				Width = 40,
-				RadiusX = 20,
-				RadiusY = 20,
-				Margin = new(5),
-				Fill = new SolidColorBrush { Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B) },
+				Height = 50,
+				Width = 50,
+				CornerRadius = radius,
+				Background = new SolidColorBrush { Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B) },
 				Effect = new DropShadowEffect()
 				{
 					BlurRadius = 15,
@@ -244,11 +245,11 @@ public partial class PalettePage : Page
 				},
 			};
 			int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
-			rectangle.MouseLeftButtonUp += (o, e) =>
+			border.MouseLeftButtonUp += (o, e) =>
 			{				
 				Clipboard.SetText($"{shades[j].R};{shades[j].G};{shades[j].B}");
 			};
-			ShadesPanel.Children.Add(rectangle);
+			ShadesPanel.Children.Add(border);
 		}
 	}
 
