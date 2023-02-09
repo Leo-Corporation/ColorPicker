@@ -17,12 +17,17 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 
-		<StackPanel Margin="10" Orientation="Horizontal">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="2">
 			<TextBlock Text="&#xF793;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
 			<TextBlock x:Name="TitleTxt" d:Text="{x:Static lang:Resources.TextTool}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
 		</StackPanel>
 
-		<Border Margin="10" Padding="10" CornerRadius="5" Grid.Row="1" Background="{Binding Source={StaticResource CardBackground}}">
+		<Border Margin="10" Padding="10" CornerRadius="5" Grid.Row="1" Background="{Binding Source={StaticResource CardBackground}}" Grid.ColumnSpan="2">
 			<Border.Effect>
 				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 			</Border.Effect>
@@ -65,6 +70,37 @@
 				<TextBlock x:Name="BoldTxt" FontWeight="ExtraBold" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." TextWrapping="Wrap" Margin="10 5" FontSize="16" />
 				<TextBlock x:Name="ItalicTxt" FontStyle="Italic" Text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." TextWrapping="Wrap" Margin="10 5" FontSize="14" />
 				<TextBlock x:Name="RegularTxt" Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." TextWrapping="Wrap" Margin="10 5" FontSize="14" />
+			</StackPanel>
+		</Border>
+		<Border x:Name="RatioPanel" Margin="10" Padding="10" CornerRadius="5" Grid.Row="2" Background="{Binding Source={StaticResource CardBackground}}" Grid.Column="1" VerticalAlignment="Top">
+			<Border.Effect>
+				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+			</Border.Effect>
+			<StackPanel>
+				<TextBlock Text="{x:Static lang:Resources.Contrast}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" Margin="0,0,0,10" />
+
+				<Grid HorizontalAlignment="Center">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+
+					<Border Background="#00ab4e" CornerRadius="5 5 0 0" Height="30" Width="30"/>
+					<Border Background="#007fff" Height="30" Width="30" Grid.Row="1"/>
+					<Border Background="#ff7a29" Height="30" Width="30" Grid.Row="2"/>
+					<Border Background="#ff0000" CornerRadius="0 0 5 5" Height="30" Width="30" Grid.Row="3"/>
+
+					<TextBlock x:Name="IndicatorArrow" FontSize="22" Margin="5 0" Text="&#xF15C;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Grid.Column="1" VerticalAlignment="Center"/>
+					<TextBlock x:Name="ContrastTxt" Margin="10" d:Text="4.2" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"/>
+				</Grid>
 			</StackPanel>
 		</Border>
 	</Grid>

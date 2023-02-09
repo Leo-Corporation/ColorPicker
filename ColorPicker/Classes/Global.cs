@@ -76,4 +76,39 @@ public static class Global
 		return (r, g, b);
 	}
 	public static Color GetColorFromResource(string resourceName) => (Color)ColorConverter.ConvertFromString(Application.Current.Resources[resourceName].ToString());
+
+	public static double GetLuminance(int r, int g, int b)
+	{
+		int[] rgb = { r, g, b };
+		double[] res = new double[3];
+
+		int i = 0;
+		foreach (int val in rgb)
+		{
+			double v = val / 255d;
+			res[i] = v <= 0.03928 ? v / 12.92 : Math.Pow((v + 0.055) / 1.055, 2.4);
+			i++;
+		}
+
+		return res[0] * 0.2126 + res[1] * 0.7152 + res[2] * 0.0722;
+	}
+
+	public static (string, int) GetContrast(int[] rgb1, int[] rgb2)
+	{
+		var lum1 = GetLuminance(rgb1[0], rgb1[1], rgb1[2]);
+		var lum2 = GetLuminance(rgb2[0], rgb2[1], rgb2[2]);
+
+		var brightest = Math.Max(lum1, lum2);
+		var darkest = Math.Min(lum1, lum2);
+
+		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
+
+		int gridRow;
+		if (result > 7) gridRow = 0;
+		else gridRow = 0;
+		if (result <= 3) gridRow = 3;
+		if (result >= 3 && result <= 4.5) gridRow = 2;
+		if (result >= 4.5 && result <= 7) gridRow = 1;
+		return (result.ToString(), gridRow);
+	}
 }

@@ -60,6 +60,11 @@ public partial class TextPage : Page
 			FontComboBox.Items.Add(fontFamily.Name);
 		}
 		FontComboBox.Text = "Arial";
+
+		// Set default Color
+		foreground = System.Drawing.Color.Black;
+		background = System.Drawing.Color.White;
+		LoadConstrastUI();
 	}
 
 	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -108,6 +113,7 @@ public partial class TextPage : Page
 			ItalicTxt.Foreground = color; // Set foreground color
 			BoldTxt.Foreground = color; // Set foreground color
 		}
+		LoadConstrastUI();
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -128,5 +134,14 @@ public partial class TextPage : Page
 			BoldTxt.Background = color; // Set background color
 			TextPanel.Background = color; // Set background color
 		}
+		LoadConstrastUI();
+	}
+
+	private void LoadConstrastUI()
+	{
+		(string, int) contrast = Global.GetContrast(new int[] { foreground.R, foreground.G, foreground.B }, new int[] { background.R, background.G, background.B });
+		Grid.SetRow(IndicatorArrow, contrast.Item2);
+
+		ContrastTxt.Text = contrast.Item1;
 	}
 }
