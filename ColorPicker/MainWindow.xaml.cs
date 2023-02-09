@@ -280,6 +280,8 @@ public partial class MainWindow : Window
 	{
 		UnCheckAllButton();
 		CheckButton(PalettePageBtn);
+
+		PageDisplayer.Navigate(Global.PalettePage);
 	}
 
 	private void GradientPageBtn_Click(object sender, RoutedEventArgs e)

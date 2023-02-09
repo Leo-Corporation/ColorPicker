@@ -49,5 +49,6 @@ public partial class App : Application
 		Global.ChromaticWheelPage = new();
 		Global.ConverterPage = new();		
 		Global.TextPage = new();		
+		Global.PalettePage = new();		
 	}
 }
