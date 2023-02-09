@@ -214,6 +214,30 @@ public partial class PalettePage : Page
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 
+		// Shades
+		ShadesPanel.Children.Clear();
+
+		var shades = Global.GetShades(ColorInfo.HSL);
+		for (int i = 0; i < shades.Length; i++)
+		{
+			Rectangle rectangle = new()
+			{
+				Height = 40,
+				Width = 40,
+				RadiusX = 20,
+				RadiusY = 20,
+				Margin = new(5),
+				Fill = new SolidColorBrush { Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B) },
+				Effect = new DropShadowEffect()
+				{
+					BlurRadius = 15,
+					Opacity = 0.2,
+					ShadowDepth = 0,
+					Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B)
+				}
+			};
+			ShadesPanel.Children.Add(rectangle);
+		}
 	}
 
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)

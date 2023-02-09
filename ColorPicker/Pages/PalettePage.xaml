@@ -102,5 +102,19 @@
 			</Grid>
 		</Border>
 
+		<Border Margin="10" Background="{Binding Source={StaticResource CardBackground}}" Padding="5" CornerRadius="10" Grid.Row="2">
+			<Border.Effect>
+				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+			</Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{x:Static lang:Resources.Shades}" FontWeight="ExtraBold" Margin="0 0 0 10" VerticalAlignment="Center"/>
+
+                <WrapPanel Grid.Row="1" Orientation="Horizontal" x:Name="ShadesPanel" HorizontalAlignment="Center"/>
+            </Grid>
+        </Border>
 	</Grid>
 </Page>

@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Pages;
 using System;
 using System.Collections.Generic;
@@ -76,7 +77,7 @@ public static class Global
 		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
 		return (r, g, b);
 	}
-	public static Color GetColorFromResource(string resourceName) => (Color)ColorConverter.ConvertFromString(Application.Current.Resources[resourceName].ToString());
+	public static Color GetColorFromResource(string resourceName) => (Color)System.Windows.Media.ColorConverter.ConvertFromString(Application.Current.Resources[resourceName].ToString());
 
 	public static double GetLuminance(int r, int g, int b)
 	{
@@ -112,4 +113,28 @@ public static class Global
 		if (result >= 4.5 && result <= 7) gridRow = 1;
 		return (result.ToString(), gridRow);
 	}
+
+	public static RGB[] GetShades(HSL hsl)
+	{
+		// Dark shades
+		HSL darkShade = new(hsl.H, hsl.S, (hsl.L == 30) ? (byte)15 : (byte)30);
+		RGB darkShadeRgb = ColorHelper.ColorConverter.HslToRgb(darkShade);
+
+		// Regular shades
+		var l = hsl.L - 16;
+		HSL regularShade = new(hsl.H, hsl.S, (byte)l);
+		RGB regularShadeRgb = ColorHelper.ColorConverter.HslToRgb(regularShade);
+
+		// Tint shades
+		var s = hsl.S - 20;
+		var l2 = hsl.L + 6;
+
+		HSL tintShade = new(hsl.H, (byte)s, (byte)l2);
+		RGB tintShadeRgb = ColorHelper.ColorConverter.HslToRgb(tintShade);
+
+		RGB[] colors = { ColorHelper.ColorConverter.HslToRgb(hsl), darkShadeRgb, regularShadeRgb, tintShadeRgb };
+
+		return colors;
+	}
+
 }
