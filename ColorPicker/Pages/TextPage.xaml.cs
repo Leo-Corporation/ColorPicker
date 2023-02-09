@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,15 +52,40 @@ public partial class TextPage : Page
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.TextTool}";
+
+		System.Drawing.Text.InstalledFontCollection installedFonts = new();
+		foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
+		{
+			FontComboBox.Items.Add(fontFamily.Name);
+		}
+		FontComboBox.Text = "Arial";
 	}
 
 	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-
+		try
+		{
+			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+		}
+		catch { }
 	}
 
 	private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
 	{
+		try
+		{
+			RegularTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+			ItalicTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+			BoldTxt.FontSize = int.Parse(FontSizeTxt.Text); // Set font size
+		}
+		catch { }
+	}
 
+	private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
 	}
 }
