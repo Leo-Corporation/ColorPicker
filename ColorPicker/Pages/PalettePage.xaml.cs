@@ -241,7 +241,12 @@ public partial class PalettePage : Page
 					Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
 					Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
 					Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
-				}
+				},
+			};
+			int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
+			rectangle.MouseLeftButtonUp += (o, e) =>
+			{				
+				Clipboard.SetText($"{shades[j].R};{shades[j].G};{shades[j].B}");
 			};
 			ShadesPanel.Children.Add(rectangle);
 		}
