@@ -42,7 +42,7 @@ public static class Global
 
 	public static Bookmarks Bookmarks { get; set; }
 
-	public static string Version => "5.0.0.2302-pre2";
+	public static string Version => "5.0.0.2302-pre3";
 
 	public static string HiSentence
 	{
