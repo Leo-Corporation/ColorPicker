@@ -214,7 +214,7 @@
     <value>Disque</value>
   </data>
   <data name="Shades" xml:space="preserve">
-    <value>Teintes</value>
+    <value>Nuances</value>
   </data>
   <data name="ColorValid" xml:space="preserve">
     <value>La couleur est valide.</value>
@@ -236,5 +236,11 @@
   </data>
   <data name="Contrast" xml:space="preserve">
     <value>Contraste</value>
+  </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>Luminosités</value>
+  </data>
+  <data name="Hues" xml:space="preserve">
+    <value>Teintes</value>
   </data>
 </root>

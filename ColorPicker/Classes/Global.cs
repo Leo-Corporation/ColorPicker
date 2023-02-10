@@ -126,4 +126,16 @@ public static class Global
 		return colorPalette;
 	}
 
+	public static RGB[] GetBrightness(HSL hsl)
+	{
+		RGB[] colorPalette = new RGB[10];
+		for (int i = 0; i < colorPalette.Length; i++)
+		{
+			int luminosity = (i + 1) * 10;
+			HSL hslColor = new(hsl.H, hsl.S, (byte)luminosity);
+			colorPalette[i] = ColorHelper.ColorConverter.HslToRgb(hslColor);
+		}
+		return colorPalette;
+	}
+
 }

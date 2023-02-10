@@ -217,4 +217,10 @@
   <data name="Contrast" xml:space="preserve">
     <value>Contrast</value>
   </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="Hues" xml:space="preserve">
+    <value>Hues</value>
+  </data>
 </root>

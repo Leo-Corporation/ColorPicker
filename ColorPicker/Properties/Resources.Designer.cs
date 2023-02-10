@@ -79,6 +79,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brightness.
+        /// </summary>
+        public static string Brightness {
+            get {
+                return ResourceManager.GetString("Brightness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chromatic wheel.
         /// </summary>
         public static string ChromaticWheel {
@@ -291,6 +300,15 @@ namespace ColorPicker.Properties {
         public static string HSV {
             get {
                 return ResourceManager.GetString("HSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hues.
+        /// </summary>
+        public static string Hues {
+            get {
+                return ResourceManager.GetString("Hues", resourceCulture);
             }
         }
         
