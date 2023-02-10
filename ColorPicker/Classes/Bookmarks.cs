@@ -32,5 +32,6 @@ namespace ColorPicker.Classes
     public class Bookmarks
     {
         public List<string> ColorBookmarks { get; set; }
+        public List<string> PaletteBookmarks { get; set; }
     }
 }

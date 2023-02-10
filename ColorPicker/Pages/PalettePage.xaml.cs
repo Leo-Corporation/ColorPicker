@@ -60,8 +60,9 @@ public partial class PalettePage : Page
 			Txt1.Text = r.ToString();
 			Txt2.Text = g.ToString();
 			Txt3.Text = b.ToString();
+			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
 		}
-		catch { }
+		catch { }		
 	}
 	ColorInfo ColorInfo { get; set; }
 
@@ -259,6 +260,14 @@ public partial class PalettePage : Page
 				else HuePanel.Children.Add(border);
 			} 
 		}
+
+		// Load the bookmark icon
+		if (!Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
+		{
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		BookmarkBtn.Content = "\uF1F8";
 	}
 
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
@@ -317,6 +326,13 @@ public partial class PalettePage : Page
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		//TODO
+		if (Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
+		{
+			Global.Bookmarks.PaletteBookmarks.Remove(ColorInfo.HEX.Value);
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add to color bookmarks
+		BookmarkBtn.Content = "\uF1F8";
 	}
 }

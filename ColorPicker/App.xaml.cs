@@ -41,7 +41,8 @@ public partial class App : Application
 		// Bookmarks system
 		Global.Bookmarks = new()
 		{
-			ColorBookmarks = new()
+			ColorBookmarks = new(),
+			PaletteBookmarks = new()
 		};
 
 		// Pages
