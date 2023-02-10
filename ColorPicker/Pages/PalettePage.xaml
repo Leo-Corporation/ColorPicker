@@ -49,7 +49,7 @@
 					<Button x:Name="YuvBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.YUV}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
 				</StackPanel>
 
-				<Border x:Name="ColorBorder" Height="25" Width="25" CornerRadius="50" d:Background="#ff0000" Margin="5" VerticalAlignment="Center" Grid.Row="1"/>
+				<Border x:Name="ColorBorder" Cursor="Hand" MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" Height="25" Width="25" CornerRadius="50" d:Background="#ff0000" Margin="5" VerticalAlignment="Center" Grid.Row="1"/>
 				<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
 					<TextBlock Visibility="Collapsed" x:Name="DisplayText1" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="0,0,10,0"/>
 					<Border x:Name="B1" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">

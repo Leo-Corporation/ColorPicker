@@ -366,4 +366,15 @@ public partial class PalettePage : Page
 		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
 	}
+
+	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		try
+		{
+			(int r, int g, int b) = Global.GenerateRandomColor();
+			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
+		}
+		catch { }
+		RgbBtn_Click(SelectedColorBtn, null);
+	}
 }
