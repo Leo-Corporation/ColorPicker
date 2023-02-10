@@ -54,15 +54,17 @@ public partial class ConverterPage : Page
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.Converter}";
-		RgbBtn_Click(RgbBtn, null);
 		try
 		{
 			(int r, int g, int b) = Global.GenerateRandomColor();
 			Txt1.Text = r.ToString();
 			Txt2.Text = g.ToString();
 			Txt3.Text = b.ToString();
+
+			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
 		}
 		catch { }
+		RgbBtn_Click(RgbBtn, null);		
 	}
 
 	Button SelectedColorBtn { get; set; }
@@ -223,14 +225,18 @@ public partial class ConverterPage : Page
 			B1.Visibility = Visibility.Visible;
 			B2.Visibility = Visibility.Visible;
 			B3.Visibility = Visibility.Visible;
-			B4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
+			B4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;		
 		}
 
 		if (SelectedColorBtn == RgbBtn)
 		{
 			DisplayText1.Text = "R";
 			DisplayText2.Text = "G";
-			DisplayText3.Text = "B";			
+			DisplayText3.Text = "B";
+
+			Txt1.Text = ColorInfo.RGB.R.ToString();
+			Txt2.Text = ColorInfo.RGB.G.ToString();
+			Txt3.Text = ColorInfo.RGB.B.ToString();
 		}
 		else if (SelectedColorBtn == HexBtn)
 		{
@@ -238,18 +244,28 @@ public partial class ConverterPage : Page
 
 			DisplayText5.Text = Properties.Resources.HEX;
 			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.HEX.Value;
 		}
 		else if (SelectedColorBtn == HsvBtn)
 		{
 			DisplayText1.Text = "H";
 			DisplayText2.Text = "S";
 			DisplayText3.Text = "V";
+
+			Txt1.Text = ColorInfo.HSV.H.ToString();
+			Txt2.Text = ColorInfo.HSV.S.ToString();
+			Txt3.Text = ColorInfo.HSV.V.ToString();
 		}
 		else if (SelectedColorBtn == HslBtn)
 		{
 			DisplayText1.Text = "H";
 			DisplayText2.Text = "S";
 			DisplayText3.Text = "L";
+
+			Txt1.Text = ColorInfo.HSL.H.ToString();
+			Txt2.Text = ColorInfo.HSL.S.ToString();
+			Txt3.Text = ColorInfo.HSL.L.ToString();
 		}
 		else if (SelectedColorBtn == CmykBtn)
 		{
@@ -257,24 +273,41 @@ public partial class ConverterPage : Page
 			DisplayText2.Text = "M";
 			DisplayText3.Text = "Y";
 			DisplayText4.Text = "K";
+
+			Txt1.Text = ColorInfo.CMYK.C.ToString();
+			Txt2.Text = ColorInfo.CMYK.M.ToString();
+			Txt3.Text = ColorInfo.CMYK.Y.ToString();
+			Txt4.Text = ColorInfo.CMYK.K.ToString();
 		}
 		else if (SelectedColorBtn == XyzBtn)
 		{
 			DisplayText1.Text = "X";
 			DisplayText2.Text = "Y";
 			DisplayText3.Text = "Z";
+
+			Txt1.Text = ColorInfo.XYZ.X.ToString();
+			Txt2.Text = ColorInfo.XYZ.Y.ToString();
+			Txt3.Text = ColorInfo.XYZ.Z.ToString();
 		}
 		else if (SelectedColorBtn == YiqBtn)
 		{
 			DisplayText1.Text = "Y";
 			DisplayText2.Text = "I";
 			DisplayText3.Text = "Q";
+
+			Txt1.Text = ColorInfo.YIQ.Y.ToString();
+			Txt2.Text = ColorInfo.YIQ.I.ToString();
+			Txt3.Text = ColorInfo.YIQ.Q.ToString();
 		}
 		else if (SelectedColorBtn == YuvBtn)
 		{
 			DisplayText1.Text = "Y";
 			DisplayText2.Text = "U";
 			DisplayText3.Text = "V";
+
+			Txt1.Text = ColorInfo.YUV.Y.ToString();
+			Txt2.Text = ColorInfo.YUV.U.ToString();
+			Txt3.Text = ColorInfo.YUV.V.ToString();
 		}
 	}
 
