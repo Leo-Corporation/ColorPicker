@@ -216,8 +216,10 @@ public partial class PalettePage : Page
 
 		// Shades
 		ShadesPanel.Children.Clear();
+		BrightnessPanel.Children.Clear();
+		HuePanel.Children.Clear();
 
-		RGB[][] palettes = new[] { Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL) };
+		RGB[][] palettes = new[] { Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL), Global.GetHues(ColorInfo.HSL) };
 		for (int k = 0; k < palettes.Length; k++)
 		{
 			var shades = palettes[k];
@@ -254,6 +256,7 @@ public partial class PalettePage : Page
 				};
 				if (k == 0) ShadesPanel.Children.Add(border);
 				else if (k == 1) BrightnessPanel.Children.Add(border);
+				else HuePanel.Children.Add(border);
 			} 
 		}
 	}

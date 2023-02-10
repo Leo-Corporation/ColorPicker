@@ -138,4 +138,15 @@ public static class Global
 		return colorPalette;
 	}
 
+	public static RGB[] GetHues(HSL hsl)
+	{
+		RGB[] colorPalette = new RGB[10];
+		for (int i = 0; i < colorPalette.Length; i++)
+		{
+			int hue = i * 27;
+			HSL hslColor = new((byte)hue, hsl.S, hsl.L);
+			colorPalette[i] = ColorHelper.ColorConverter.HslToRgb(hslColor);
+		}
+		return colorPalette;
+	}
 }

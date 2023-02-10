@@ -102,26 +102,32 @@
 			</Grid>
 		</Border>
 
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <TextBlock Text="&#xF2F8;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
-                <TextBlock Text="{x:Static lang:Resources.Shades}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
-            </StackPanel>
-            <WrapPanel Grid.Row="1" Orientation="Horizontal" x:Name="ShadesPanel" HorizontalAlignment="Center"/>
+		<Grid Grid.Row="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="2">
+				<TextBlock Text="&#xF2F8;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.Shades}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
+			</StackPanel>
+			<WrapPanel Grid.Row="1" Orientation="Horizontal" x:Name="ShadesPanel" HorizontalAlignment="Center"/>
 
-            <StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="2">
-                <TextBlock Text="&#xF4D7;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
-                <TextBlock Text="{x:Static lang:Resources.Brightness}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
-            </StackPanel>
-            <WrapPanel Grid.Row="3" Orientation="Horizontal" x:Name="BrightnessPanel" HorizontalAlignment="Center"/>
-        </Grid>
-    </Grid>
+			<StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="2">
+				<TextBlock Text="&#xF4D7;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.Brightness}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
+			</StackPanel>
+			<WrapPanel Grid.Row="3" Orientation="Horizontal" x:Name="BrightnessPanel" HorizontalAlignment="Center"/>
+
+			<StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="4">
+				<TextBlock Text="&#xF2BE;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.Hues}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
+			</StackPanel>
+			<WrapPanel Grid.Row="5" Orientation="Horizontal" x:Name="HuePanel" HorizontalAlignment="Center"/>
+		</Grid>
+	</Grid>
 </Page>
