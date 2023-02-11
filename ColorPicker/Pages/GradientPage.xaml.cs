@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,17 @@ public partial class GradientPage : Page
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.Creation} > {Properties.Resources.Gradient}";
+		GenerateRandomGradient();
+	}
+
+	private void GenerateRandomGradient()
+	{
+		from = Global.GenerateRandomColorDrawing();
+		to = Global.GenerateRandomColorDrawing();
+		ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(from.R, from.G, from.B) };
+		BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(to.R, to.G, to.B) };
+
+		LoadGradientUI();
 	}
 
 	private void LoadGradientUI()
@@ -81,6 +93,11 @@ public partial class GradientPage : Page
 			ForegroundBorder.Background = color;
 		}
 		LoadGradientUI();
+	}
+
+	private void GenerateGradientBtn_Click(object sender, RoutedEventArgs e)
+	{
+		GenerateRandomGradient();
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

@@ -78,6 +78,13 @@ public static class Global
 		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
 		return (r, g, b);
 	}
+
+	public static System.Drawing.Color GenerateRandomColorDrawing()
+	{
+		Random random = new();
+		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
+		return System.Drawing.Color.FromArgb(r, g, b);
+	}
 	public static Color GetColorFromResource(string resourceName) => (Color)System.Windows.Media.ColorConverter.ConvertFromString(Application.Current.Resources[resourceName].ToString());
 
 	public static double GetLuminance(int r, int g, int b)
