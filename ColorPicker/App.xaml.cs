@@ -51,5 +51,6 @@ public partial class App : Application
 		Global.ConverterPage = new();		
 		Global.TextPage = new();		
 		Global.PalettePage = new();		
+		Global.GradientPage = new();		
 	}
 }

@@ -288,5 +288,7 @@ public partial class MainWindow : Window
 	{
 		UnCheckAllButton();
 		CheckButton(GradientPageBtn);
+
+		PageDisplayer.Navigate(Global.GradientPage);
 	}
 }

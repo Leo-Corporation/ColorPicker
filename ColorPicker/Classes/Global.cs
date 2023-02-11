@@ -39,6 +39,7 @@ public static class Global
 	public static ConverterPage? ConverterPage { get; set; }
 	public static TextPage? TextPage { get; set; }
 	public static PalettePage? PalettePage { get; set; }
+	public static GradientPage? GradientPage { get; set; }
 
 	public static Bookmarks Bookmarks { get; set; }
 
