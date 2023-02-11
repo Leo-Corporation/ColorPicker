@@ -27,13 +27,13 @@
 			</Border.Effect>
 
 			<StackPanel Orientation="Horizontal">
-				<TextBlock Text="{x:Static lang:Resources.Foreground}" VerticalAlignment="Center" Margin="10,0,10,0" />
+				<TextBlock Text="{x:Static lang:Resources.From}" VerticalAlignment="Center" Margin="10,0,10,0" />
 				<Border x:Name="ForegroundBorder" BorderThickness="0" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Foreground1}}" Width="30" Height="30" Cursor="Hand" >
 					<Border.Effect>
 						<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 					</Border.Effect>
 				</Border>
-				<TextBlock Text="{x:Static lang:Resources.Background}" VerticalAlignment="Center" Margin="10,0,10,0" />
+				<TextBlock Text="{x:Static lang:Resources.To}" VerticalAlignment="Center" Margin="10,0,10,0" />
 				<Border x:Name="BackgroundBorder" BorderThickness="0" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Background1}}" Width="30" Height="30" Cursor="Hand" >
 					<Border.Effect>
 						<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
@@ -42,5 +42,10 @@
 			</StackPanel>
 		</Border>
 
+		<Border x:Name="GradientBorder" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="100" CornerRadius="10">
+			<Border.Effect>
+				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+			</Border.Effect>
+		</Border>
 	</Grid>
 </Page>

@@ -55,7 +55,14 @@ public partial class GradientPage : Page
 
 	private void LoadGradientUI()
 	{
-
+		GradientBorder.Background = new LinearGradientBrush
+		{
+			GradientStops = new GradientStopCollection
+			{
+				new GradientStop(Color.FromRgb(from.R, from.G, from.B), 0),
+				new GradientStop(Color.FromRgb(to.R, to.G, to.B), 1),
+			},
+		};
 	}
 
 	System.Drawing.Color from, to;
@@ -73,6 +80,7 @@ public partial class GradientPage : Page
 			from = colorDialog.Color;
 			ForegroundBorder.Background = color;
 		}
+		LoadGradientUI();
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -89,5 +97,6 @@ public partial class GradientPage : Page
 			to = colorDialog.Color;
 			BackgroundBorder.Background = color;
 		}
+		LoadGradientUI();
 	}
 }

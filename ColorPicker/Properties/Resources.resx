@@ -223,4 +223,10 @@
   <data name="Hues" xml:space="preserve">
     <value>Hues</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
 </root>

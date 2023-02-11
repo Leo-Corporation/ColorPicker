@@ -243,4 +243,10 @@
   <data name="Hues" xml:space="preserve">
     <value>Teintes</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>Depuis</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>À</value>
+  </data>
 </root>
