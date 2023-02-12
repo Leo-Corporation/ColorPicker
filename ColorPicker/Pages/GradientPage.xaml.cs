@@ -48,7 +48,7 @@ public partial class GradientPage : Page
 	public GradientPage()
 	{
 		InitializeComponent();
-		Loaded += (o, e) => InitUI();
+		InitUI();
 	}
 
 	private void InitUI()
@@ -77,15 +77,17 @@ public partial class GradientPage : Page
 				new GradientStop(Color.FromRgb(from.R, from.G, from.B), 0),
 				new GradientStop(Color.FromRgb(to.R, to.G, to.B), 1),
 			},
-			StartPoint = new(0, 0.5),
-			EndPoint = new(1, 0.5),
+			StartPoint = new(0.5, 1),
+			EndPoint = new(0.5, 0),
 			RelativeTransform = new RotateTransform()
 			{
-				Angle = angle == double.NaN ? 0 : angle,
+				Angle = double.IsNaN(angle) ? 0 : angle,
 				CenterX = 0.5,
 				CenterY = 0.5
 			},
 		};
+
+		CssCodeTxt.Text = $"background: linear-gradient({angle}deg, rgba({from.R}, {from.G}, {from.B}, 1) 0%, rgba({to.R}, {to.G}, {to.B}, 1) 100%);";
 	}
 
 	System.Drawing.Color from, to;
@@ -121,6 +123,11 @@ public partial class GradientPage : Page
 	{
 		Regex regex = new("[^0-9]+");
 		e.Handled = regex.IsMatch(e.Text);
+	}
+
+	private void CopyCssBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(CssCodeTxt.Text);
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

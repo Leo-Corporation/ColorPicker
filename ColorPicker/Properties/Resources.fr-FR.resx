@@ -252,4 +252,10 @@
   <data name="Rotation" xml:space="preserve">
     <value>Rotation</value>
   </data>
+  <data name="DevTools" xml:space="preserve">
+    <value>Outils de développement</value>
+  </data>
+  <data name="CSS" xml:space="preserve">
+    <value>CSS</value>
+  </data>
 </root>
