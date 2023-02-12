@@ -88,9 +88,26 @@ public partial class GradientPage : Page
 		};
 
 		CssCodeTxt.Text = $"background: linear-gradient({angle}deg, rgba({from.R}, {from.G}, {from.B}, 1) 0%, rgba({to.R}, {to.G}, {to.B}, 1) 100%);";
+
+		CurrentGradient = new(
+			new()
+			{
+				new(ColorHelper.ColorConverter.RgbToHex(new(from.R, from.G, from.B)).Value, 0),
+				new(ColorHelper.ColorConverter.RgbToHex(new(to.R, to.G, to.B)).Value, 1),
+			}, 
+		angle);
+
+		// Load the bookmark icon
+		if (!Global.Bookmarks.GradientBookmarks.Contains(CurrentGradient))
+		{
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		BookmarkBtn.Content = "\uF1F8";
 	}
 
 	System.Drawing.Color from, to;
+	Gradient CurrentGradient { get; set; }
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		System.Windows.Forms.ColorDialog colorDialog = new()
@@ -128,6 +145,18 @@ public partial class GradientPage : Page
 	private void CopyCssBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Clipboard.SetText(CssCodeTxt.Text);
+	}
+
+	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (Global.Bookmarks.GradientBookmarks.Contains(CurrentGradient))
+		{
+			Global.Bookmarks.GradientBookmarks.Remove(CurrentGradient);
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		Global.Bookmarks.GradientBookmarks.Add(CurrentGradient);
+		BookmarkBtn.Content = "\uF1F8";
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

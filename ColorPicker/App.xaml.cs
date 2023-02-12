@@ -42,7 +42,8 @@ public partial class App : Application
 		Global.Bookmarks = new()
 		{
 			ColorBookmarks = new(),
-			PaletteBookmarks = new()
+			PaletteBookmarks = new(),
+			GradientBookmarks = new()
 		};
 
 		// Pages

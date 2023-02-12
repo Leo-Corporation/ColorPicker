@@ -33,5 +33,21 @@ namespace ColorPicker.Classes
     {
         public List<string> ColorBookmarks { get; set; }
         public List<string> PaletteBookmarks { get; set; }
+        public List<Gradient> GradientBookmarks { get; set; }
+    }
+
+    public record BookmarkGradientStop(string Color, double Stop);
+
+    public sealed record Gradient(List<BookmarkGradientStop> Stops, double Angle)
+    {
+        public bool Equals(Gradient? obj)
+        {
+            if (obj is null || obj.Stops.Count != Stops.Count || obj.Angle != Angle) return false;
+            for (int i = 0; i < obj.Stops.Count; i++)
+            {
+                if (obj.Stops[i] != Stops[i]) return false;
+            }
+            return true;
+        }
     }
 }

@@ -57,8 +57,10 @@
 						<TextBox x:Name="RotateAngleTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="RotateAngleTxt_TextChanged" Text="0" Background="Transparent" TextAlignment="Center" PreviewTextInput="RotateAngleTxt_PreviewTextInput"/>
 					</Border>
 				</StackPanel>
-				<Button x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Grid.Column="2" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-
+				<StackPanel Orientation="Horizontal" Grid.Column="2">
+					<Button x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+					<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="5,0,0,0"/>
+				</StackPanel>
 			</Grid>
 		</Border>
 
