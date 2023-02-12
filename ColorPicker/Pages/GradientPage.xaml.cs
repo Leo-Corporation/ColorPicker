@@ -25,7 +25,9 @@ using ColorPicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,7 +48,7 @@ public partial class GradientPage : Page
 	public GradientPage()
 	{
 		InitializeComponent();
-		InitUI();
+		Loaded += (o, e) => InitUI();
 	}
 
 	private void InitUI()
@@ -67,12 +69,21 @@ public partial class GradientPage : Page
 
 	private void LoadGradientUI()
 	{
+		double.TryParse(RotateAngleTxt.Text, out double angle);
 		GradientBorder.Background = new LinearGradientBrush
 		{
 			GradientStops = new GradientStopCollection
 			{
 				new GradientStop(Color.FromRgb(from.R, from.G, from.B), 0),
 				new GradientStop(Color.FromRgb(to.R, to.G, to.B), 1),
+			},
+			StartPoint = new(0, 0.5),
+			EndPoint = new(1, 0.5),
+			RelativeTransform = new RotateTransform()
+			{
+				Angle = angle == double.NaN ? 0 : angle,
+				CenterX = 0.5,
+				CenterY = 0.5
 			},
 		};
 	}
@@ -98,6 +109,18 @@ public partial class GradientPage : Page
 	private void GenerateGradientBtn_Click(object sender, RoutedEventArgs e)
 	{
 		GenerateRandomGradient();
+	}
+
+	private void RotateAngleTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		if (GradientBorder is null) return;
+		LoadGradientUI();
+	}
+
+	private void RotateAngleTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

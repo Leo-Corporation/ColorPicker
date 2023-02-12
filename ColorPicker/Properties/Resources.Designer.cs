@@ -367,6 +367,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rotation.
+        /// </summary>
+        public static string Rotation {
+            get {
+                return ResourceManager.GetString("Rotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selector.
         /// </summary>
         public static string Selector {

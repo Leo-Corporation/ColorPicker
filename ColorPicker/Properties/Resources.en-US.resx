@@ -249,4 +249,7 @@
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="Rotation" xml:space="preserve">
+    <value>Rotation</value>
+  </data>
 </root>

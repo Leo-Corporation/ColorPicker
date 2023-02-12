@@ -45,6 +45,13 @@
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 					</Border>
+					<TextBlock Text="{x:Static lang:Resources.Rotation}" VerticalAlignment="Center" Margin="10,0,10,0" />
+					<Border x:Name="B1" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+						<TextBox x:Name="RotateAngleTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="RotateAngleTxt_TextChanged" Text="0" Background="Transparent" TextAlignment="Center" PreviewTextInput="RotateAngleTxt_PreviewTextInput"/>
+					</Border>
 				</StackPanel>
 				<Button x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Grid.Column="2" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
