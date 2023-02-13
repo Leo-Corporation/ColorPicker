@@ -143,11 +143,12 @@ public partial class TextPage : Page
 		LoadConstrastUI();
 	}
 
-	private void LoadConstrastUI()
+	internal void LoadConstrastUI()
 	{
 		(string, int) contrast = Global.GetContrast(new int[] { foreground.R, foreground.G, foreground.B }, new int[] { background.R, background.G, background.B });
 		Grid.SetRow(IndicatorArrow, contrast.Item2);
 
 		ContrastTxt.Text = contrast.Item1;
+		Global.SynethiaConfig.ActionsInfo[3].UsageCount++; // Increment the usage counter
 	}
 }

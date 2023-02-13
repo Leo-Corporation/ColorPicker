@@ -62,7 +62,7 @@ public partial class GradientPage : Page
 		GenerateRandomGradient();
 	}
 
-	private void GenerateRandomGradient()
+	internal void GenerateRandomGradient()
 	{
 		from = Global.GenerateRandomColorDrawing();
 		to = Global.GenerateRandomColorDrawing();
@@ -70,6 +70,7 @@ public partial class GradientPage : Page
 		BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(to.R, to.G, to.B) };
 
 		LoadGradientUI();
+		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
 	private void LoadGradientUI()

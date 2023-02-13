@@ -75,7 +75,7 @@ public partial class ChromaticWheelPage : Page
 		WheelImg.Source = img; // Set the image source
 	}
 
-	private void DiscBtn_Click(object sender, RoutedEventArgs e)
+	internal void DiscBtn_Click(object sender, RoutedEventArgs e)
 	{
 		UnCheckAllButtons();
 		CheckButton(DiscBtn);
@@ -85,6 +85,7 @@ public partial class ChromaticWheelPage : Page
 		img.EndInit();
 
 		WheelImg.Source = img; // Set the image source
+		Global.SynethiaConfig.ActionsInfo[1].UsageCount++; // Increment the usage counter
 	}
 
 	private void ShadesBtn_Click(object sender, RoutedEventArgs e)

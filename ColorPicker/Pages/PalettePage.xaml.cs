@@ -373,12 +373,13 @@ public partial class PalettePage : Page
 		BookmarkBtn.Content = "\uF1F8";
 	}
 
-	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	internal void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		try
 		{
 			(int r, int g, int b) = Global.GenerateRandomColor();
 			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
+			Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
 		}
 		catch { }
 		RgbBtn_Click(SelectedColorBtn, null);

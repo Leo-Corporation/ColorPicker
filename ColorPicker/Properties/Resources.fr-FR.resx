@@ -267,4 +267,22 @@
   <data name="Discover" xml:space="preserve">
     <value>Découvrir</value>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Sélectionner une couleur</value>
+  </data>
+  <data name="SelectChomaticDisc" xml:space="preserve">
+    <value>Sélectionner depuis le disque chromatique</value>
+  </data>
+  <data name="ConvertFromRGB" xml:space="preserve">
+    <value>Convertir depuis le RVB</value>
+  </data>
+  <data name="GetContrast" xml:space="preserve">
+    <value>Obtenir le ratio de contraste</value>
+  </data>
+  <data name="GeneratePalette" xml:space="preserve">
+    <value>Générer une palette</value>
+  </data>
+  <data name="GenerateGradient" xml:space="preserve">
+    <value>Générer un dégradé</value>
+  </data>
 </root>

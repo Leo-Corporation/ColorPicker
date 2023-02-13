@@ -127,6 +127,9 @@ public static class Global
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
 	};
 
+	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA" };
+	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient };
+
 	public static (int, int, int) GenerateRandomColor()
 	{
 		Random random = new();

@@ -86,7 +86,7 @@ public partial class ConverterPage : Page
 	}
 
 	// Note: This event handler is used for all the choices
-	private void RgbBtn_Click(object sender, RoutedEventArgs? e)
+	internal void RgbBtn_Click(object sender, RoutedEventArgs? e)
 	{
 		var btn = (Button)sender;
 
@@ -242,6 +242,8 @@ public partial class ConverterPage : Page
 			Txt1.Text = ColorInfo.RGB.R.ToString();
 			Txt2.Text = ColorInfo.RGB.G.ToString();
 			Txt3.Text = ColorInfo.RGB.B.ToString();
+			Global.SynethiaConfig.ActionsInfo[2].UsageCount++; // Increment the usage counter
+
 		}
 		else if (SelectedColorBtn == HexBtn)
 		{

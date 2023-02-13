@@ -103,11 +103,12 @@ public partial class SelectorPage : Page
 	}
 
 	bool selecting = false;
-	private void SelectBtn_Click(object sender, RoutedEventArgs e)
+	internal void SelectBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (selecting) timer.Stop();
 		else timer.Start();
 		selecting = !selecting;
+		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
 	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

@@ -247,4 +247,22 @@
   <data name="Discover" xml:space="preserve">
     <value>Discover</value>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select a color</value>
+  </data>
+  <data name="SelectChomaticDisc" xml:space="preserve">
+    <value>Select from the chromatic disc</value>
+  </data>
+  <data name="ConvertFromRGB" xml:space="preserve">
+    <value>Convert from RGB</value>
+  </data>
+  <data name="GetContrast" xml:space="preserve">
+    <value>Get contrast ratio</value>
+  </data>
+  <data name="GeneratePalette" xml:space="preserve">
+    <value>Generate a palette</value>
+  </data>
+  <data name="GenerateGradient" xml:space="preserve">
+    <value>Generate a gradient</value>
+  </data>
 </root>

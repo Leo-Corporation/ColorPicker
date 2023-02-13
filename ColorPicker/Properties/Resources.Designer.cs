@@ -169,6 +169,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Convert from RGB.
+        /// </summary>
+        public static string ConvertFromRGB {
+            get {
+                return ResourceManager.GetString("ConvertFromRGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation.
         /// </summary>
         public static string Creation {
@@ -246,6 +255,33 @@ namespace ColorPicker.Properties {
         public static string From {
             get {
                 return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate a gradient.
+        /// </summary>
+        public static string GenerateGradient {
+            get {
+                return ResourceManager.GetString("GenerateGradient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate a palette.
+        /// </summary>
+        public static string GeneratePalette {
+            get {
+                return ResourceManager.GetString("GeneratePalette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get contrast ratio.
+        /// </summary>
+        public static string GetContrast {
+            get {
+                return ResourceManager.GetString("GetContrast", resourceCulture);
             }
         }
         
@@ -408,6 +444,24 @@ namespace ColorPicker.Properties {
         public static string Rotation {
             get {
                 return ResourceManager.GetString("Rotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select from the chromatic disc.
+        /// </summary>
+        public static string SelectChomaticDisc {
+            get {
+                return ResourceManager.GetString("SelectChomaticDisc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a color.
+        /// </summary>
+        public static string SelectColor {
+            get {
+                return ResourceManager.GetString("SelectColor", resourceCulture);
             }
         }
         
