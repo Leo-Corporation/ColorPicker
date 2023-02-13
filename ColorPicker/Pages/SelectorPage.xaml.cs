@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
 using Synethia;
 using System;
@@ -50,6 +51,7 @@ public partial class SelectorPage : Page
 	bool code = false; // checks if the code as already been implemented
 	readonly DispatcherTimer timer = new();
 	private readonly IKeyboardMouseEvents keyboardEvents;
+	internal MiniPicker miniPicker = new(); // MiniPicker window
 
 	public SelectorPage()
 	{
@@ -81,6 +83,30 @@ public partial class SelectorPage : Page
 			GreenSlider.Value = pixel.G; // Set value
 			BlueSlider.Value = pixel.B; // Set value
 			LoadDetails();
+
+			// MiniPicker
+			float dpiX, dpiY;
+			double scaling = 100; // Default scaling = 100%
+
+			using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
+			{
+				dpiX = graphics.DpiX; // Get the DPI
+				dpiY = graphics.DpiY; // Get the DPI
+
+				scaling = dpiX switch
+				{
+					96 => 100, // Get the %
+					120 => 125, // Get the %
+					144 => 150, // Get the %
+					168 => 175, // Get the %
+					192 => 200, // Get the % 
+					_ => 100
+				};
+			}
+
+			double factor = scaling / 100d; // Calculate factor
+			miniPicker.Left = System.Windows.Forms.Cursor.Position.X / factor; // Define position
+			miniPicker.Top = System.Windows.Forms.Cursor.Position.Y / factor + 5; // Define position
 		};
 
 		// Register Keyboard Shortcuts
@@ -94,9 +120,8 @@ public partial class SelectorPage : Page
 
 	private void HandleSelectKeyboard()
 	{
-		if (selecting) timer.Stop();
-		else timer.Start();
 		selecting = !selecting;
+		UpdateSelectionState(selecting);
 		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
@@ -132,9 +157,8 @@ public partial class SelectorPage : Page
 	bool selecting = false;
 	internal void SelectBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (selecting) timer.Stop();
-		else timer.Start();
 		selecting = !selecting;
+		UpdateSelectionState(selecting);
 		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
@@ -217,5 +241,21 @@ public partial class SelectorPage : Page
 		}
 		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+	}
+
+	private void UpdateSelectionState(bool selectionOn)
+	{
+		if (selectionOn)
+		{
+			timer.Start();
+			miniPicker.timer.Start(); // Start
+			miniPicker.Show();
+		}
+		else
+		{
+			timer.Stop();
+			miniPicker.timer.Stop(); // Stop
+			miniPicker.Hide();
+		}
 	}
 }

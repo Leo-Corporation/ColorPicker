@@ -70,6 +70,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to B.
+        /// </summary>
+        public static string BlueP {
+            get {
+                return ResourceManager.GetString("BlueP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bookmarks.
         /// </summary>
         public static string Bookmarks {
@@ -331,6 +340,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to G.
+        /// </summary>
+        public static string GreenP {
+            get {
+                return ResourceManager.GetString("GreenP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HEX.
         /// </summary>
         public static string HEX {
@@ -426,6 +444,15 @@ namespace ColorPicker.Properties {
         public static string Pinned {
             get {
                 return ResourceManager.GetString("Pinned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R.
+        /// </summary>
+        public static string RedP {
+            get {
+                return ResourceManager.GetString("RedP", resourceCulture);
             }
         }
         

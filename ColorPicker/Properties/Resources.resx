@@ -265,4 +265,13 @@
   <data name="GenerateGradient" xml:space="preserve">
     <value>Generate a gradient</value>
   </data>
+  <data name="RedP" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="GreenP" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="BlueP" xml:space="preserve">
+    <value>B</value>
+  </data>
 </root>
