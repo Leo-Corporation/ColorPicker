@@ -78,6 +78,10 @@ public partial class MainWindow : Window
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 
 		//TODO: Add page system
+		UnCheckAllButton();
+		CheckButton(HomePageBtn, true);
+
+		PageDisplayer.Navigate(Global.HomePage);
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -154,7 +158,10 @@ public partial class MainWindow : Window
 
 	private void HomePageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		UnCheckAllButton();
+		CheckButton(HomePageBtn, true);
 
+		PageDisplayer.Navigate(Global.HomePage);
 	}
 
 	private void BookmarksPageBtn_Click(object sender, RoutedEventArgs e)

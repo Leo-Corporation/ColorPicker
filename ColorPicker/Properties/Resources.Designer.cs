@@ -214,6 +214,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discover.
+        /// </summary>
+        public static string Discover {
+            get {
+                return ResourceManager.GetString("Discover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Font.
         /// </summary>
         public static string Font {
@@ -237,6 +246,15 @@ namespace ColorPicker.Properties {
         public static string From {
             get {
                 return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get started.
+        /// </summary>
+        public static string GetStarted {
+            get {
+                return ResourceManager.GetString("GetStarted", resourceCulture);
             }
         }
         
@@ -426,6 +444,15 @@ namespace ColorPicker.Properties {
         public static string Size {
             get {
                 return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suggested actions.
+        /// </summary>
+        public static string SuggestedActions {
+            get {
+                return ResourceManager.GetString("SuggestedActions", resourceCulture);
             }
         }
         

@@ -40,6 +40,7 @@ public static class Global
 	public static TextPage? TextPage { get; set; }
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
+	public static HomePage? HomePage { get; set; }
 
 	public static Bookmarks Bookmarks { get; set; }
 
