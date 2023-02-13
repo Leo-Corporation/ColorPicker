@@ -22,7 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Pages;
 using ColorPicker.UserControls;
+using PeyrSharp.Env;
+using Synethia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +79,7 @@ public partial class MainWindow : Window
 			PageScroller.Height = (ActualHeight - (GridRow1.ActualHeight + 68) > 0) ? ActualHeight - (GridRow1.ActualHeight + 68) : 0; // Set the scroller height
 			ActionsScrollViewer.Height = ActualHeight - SideBarTop.ActualHeight - GridRow1.ActualHeight - 60;
 		};
+		Closed += (o, e) => SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 
 		PageCard.OnCardClick += PageCard_OnCardClick;
 
@@ -107,7 +111,7 @@ public partial class MainWindow : Window
 
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)
 	{
-		//LeavePage();
+		LeavePage();
 		Application.Current.Shutdown(); // Close the application
 	}
 
@@ -167,6 +171,7 @@ public partial class MainWindow : Window
 
 	private void HomePageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		LeavePage();
 		UnCheckAllButton();
 		CheckButton(HomePageBtn, true);
 
@@ -175,12 +180,14 @@ public partial class MainWindow : Window
 
 	private void BookmarksPageBtn_Click(object sender, RoutedEventArgs e)
 	{
-
+		LeavePage();
+		UnCheckAllButton();
 	}
 
 	private void SettingsPageBtn_Click(object sender, RoutedEventArgs e)
 	{
-
+		LeavePage();
+		UnCheckAllButton();
 	}
 
 	private void PickerBtn_Click(object sender, RoutedEventArgs e)
@@ -199,18 +206,22 @@ public partial class MainWindow : Window
 
 	private void SelectorPageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		LeavePage();
 		UnCheckAllButton();
 		CheckButton(SelectorPageBtn);
 
 		PageDisplayer.Navigate(Global.SelectorPage);
+		Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void ChromaticPageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		LeavePage();
 		UnCheckAllButton();
 		CheckButton(ChromaticPageBtn);
 
 		PageDisplayer.Navigate(Global.ChromaticWheelPage);
+		Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void CheckButton(Button button, bool isSpecial = false)
@@ -264,18 +275,22 @@ public partial class MainWindow : Window
 
 	private void ConverterPageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		LeavePage();
 		UnCheckAllButton();
 		CheckButton(ConverterPageBtn);
 
 		PageDisplayer.Navigate(Global.ConverterPage);
+		Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void TextPageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		LeavePage();
 		UnCheckAllButton();
 		CheckButton(TextPageBtn);
 
 		PageDisplayer.Navigate(Global.TextPage);
+		Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void CreationBtn_Click(object sender, RoutedEventArgs e)
@@ -294,17 +309,54 @@ public partial class MainWindow : Window
 
 	private void PalettePageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		LeavePage();
 		UnCheckAllButton();
 		CheckButton(PalettePageBtn);
 
 		PageDisplayer.Navigate(Global.PalettePage);
+		Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void GradientPageBtn_Click(object sender, RoutedEventArgs e)
 	{
+		LeavePage();
 		UnCheckAllButton();
 		CheckButton(GradientPageBtn);
 
 		PageDisplayer.Navigate(Global.GradientPage);
+		Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
+	}
+
+	private void LeavePage()
+	{
+		switch (PageDisplayer.Content)
+		{
+			case SelectorPage:
+				Global.SynethiaConfig.PagesInfo[0].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[0].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[0].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[0].EnterUnixTime;
+				break;
+			case ChromaticWheelPage:
+				Global.SynethiaConfig.PagesInfo[1].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[1].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[1].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[1].EnterUnixTime;
+				break;
+			case ConverterPage:
+				Global.SynethiaConfig.PagesInfo[2].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[2].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[2].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[2].EnterUnixTime;
+				break;
+			case TextPage:
+				Global.SynethiaConfig.PagesInfo[3].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[3].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[3].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[3].EnterUnixTime;
+				break;
+			case PalettePage:
+				Global.SynethiaConfig.PagesInfo[4].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[4].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[4].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[4].EnterUnixTime;
+				break;
+			case GradientPage:
+				Global.SynethiaConfig.PagesInfo[5].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[5].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[5].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[5].EnterUnixTime;
+				break;
+			default:
+				break;
+		}
 	}
 }

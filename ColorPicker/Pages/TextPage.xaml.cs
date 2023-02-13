@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using Synethia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,10 +45,15 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class TextPage : Page
 {
+	bool code = false; // checks if the code as already been implemented
+
 	public TextPage()
 	{
 		InitializeComponent();
 		InitUI();
+
+		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 3, ref code); // injects the code in the page
+
 	}
 
 	private void InitUI()

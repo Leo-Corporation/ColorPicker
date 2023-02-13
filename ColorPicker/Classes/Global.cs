@@ -24,6 +24,8 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Enums;
 using ColorPicker.Pages;
+using PeyrSharp.Env;
+using Synethia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +46,32 @@ public static class Global
 	public static HomePage? HomePage { get; set; }
 
 	public static Bookmarks Bookmarks { get; set; }
+
+	public static SynethiaConfig SynethiaConfig { get; set; } = SynethiaManager.Load(SynethiaPath, Default);
+
+	public static SynethiaConfig Default => new()
+	{
+		PagesInfo = new List<PageInfo>()
+		{
+			new PageInfo("Selector"),
+	    	new PageInfo("ChromaticWheel"),
+			new PageInfo("Converter"),
+			new PageInfo("TextTool"),
+			new PageInfo("Palette"),
+			new PageInfo("Gradient")
+		},
+		ActionsInfo = new List<ActionInfo>()
+		{
+			new ActionInfo(0, "Selector.SelectBtn"),
+	    	new ActionInfo(1, "Chromatic.Disc"),
+			new ActionInfo(2, "Converter.FromRgb"),
+			new ActionInfo(3, "TextTool.Contrast"),
+			new ActionInfo(4, "Palette.GeneratePalette"),
+			new ActionInfo(5, "Gradient.GenerateGradient")
+		}
+	};
+
+	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
 
 	public static string Version => "5.0.0.2302-pre4";
 

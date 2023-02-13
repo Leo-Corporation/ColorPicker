@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using Synethia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,10 +46,15 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class PalettePage : Page
 {
+	bool code = false; // checks if the code as already been implemented
+
 	public PalettePage()
 	{
 		InitializeComponent();
 		InitUI();
+
+		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+
 	}
 	private void InitUI()
 	{
