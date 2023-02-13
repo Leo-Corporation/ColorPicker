@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,6 +76,9 @@ public partial class MainWindow : Window
 			PageScroller.Height = (ActualHeight - (GridRow1.ActualHeight + 68) > 0) ? ActualHeight - (GridRow1.ActualHeight + 68) : 0; // Set the scroller height
 			ActionsScrollViewer.Height = ActualHeight - SideBarTop.ActualHeight - GridRow1.ActualHeight - 60;
 		};
+
+		PageCard.OnCardClick += PageCard_OnCardClick;
+
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 
 		//TODO: Add page system
@@ -82,6 +86,11 @@ public partial class MainWindow : Window
 		CheckButton(HomePageBtn, true);
 
 		PageDisplayer.Navigate(Global.HomePage);
+	}
+
+	private void PageCard_OnCardClick(object? sender, PageEventArgs e)
+	{
+		//TODO
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)

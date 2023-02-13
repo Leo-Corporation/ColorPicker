@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorHelper;
+using ColorPicker.Enums;
 using ColorPicker.Pages;
 using System;
 using System.Collections.Generic;
@@ -72,6 +73,31 @@ public static class Global
 			}
 		}
 	}
+
+	public static Dictionary<AppPages, string> AppPagesFilledIcons => new()
+	{
+		{ AppPages.Home, "\uF488" },
+		{ AppPages.Bookmarks, "\uF1F6" },
+		{ AppPages.Settings, "\uF6B3" },
+		{ AppPages.Selector, "\uF9BC" },
+		{ AppPages.ColorWheel, "\uF605" },
+		{ AppPages.Converter, "\uF18E" },
+		{ AppPages.TextTool, "\uF7AB" },
+		{ AppPages.ColorPalette, "\uF2F6" },
+		{ AppPages.ColorGradient, "\uFD3F" },
+	};
+	public static Dictionary<AppPages, string> AppPagesName => new()
+	{
+		{ AppPages.Home, Properties.Resources.Home },
+		{ AppPages.Bookmarks, Properties.Resources.History },
+		{ AppPages.Settings, Properties.Resources.Settings },
+		{ AppPages.Selector, Properties.Resources.Selector },
+		{ AppPages.ColorWheel, Properties.Resources.ChromaticWheel },
+		{ AppPages.Converter, Properties.Resources.Converter },
+		{ AppPages.TextTool, Properties.Resources.TextTool },
+		{ AppPages.ColorPalette, Properties.Resources.Palette },
+		{ AppPages.ColorGradient, Properties.Resources.Gradient },
+	};
 
 	public static (int, int, int) GenerateRandomColor()
 	{
