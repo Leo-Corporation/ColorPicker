@@ -23,6 +23,8 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using Gma.System.MouseKeyHook;
+using Microsoft.Win32;
 using Synethia;
 using System;
 using System.Collections.Generic;
@@ -47,7 +49,6 @@ namespace ColorPicker.Pages;
 public partial class PalettePage : Page
 {
 	bool code = false; // checks if the code as already been implemented
-
 	public PalettePage()
 	{
 		InitializeComponent();
@@ -68,7 +69,7 @@ public partial class PalettePage : Page
 			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
 		}
 		catch { }		
-		RgbBtn_Click(RgbBtn, null);
+		RgbBtn_Click(RgbBtn, null);		
 	}
 	ColorInfo ColorInfo { get; set; }
 

@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using Gma.System.MouseKeyHook;
 using Synethia;
 using System;
 using System.Collections.Generic;
@@ -48,9 +49,14 @@ public partial class SelectorPage : Page
 {
 	bool code = false; // checks if the code as already been implemented
 	readonly DispatcherTimer timer = new();
+	private readonly IKeyboardMouseEvents keyboardEvents;
+
 	public SelectorPage()
 	{
 		InitializeComponent();
+		keyboardEvents = Hook.GlobalEvents();
+
+
 		InitUI();
 
 		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 0, ref code); // injects the code in the page
@@ -76,6 +82,27 @@ public partial class SelectorPage : Page
 			BlueSlider.Value = pixel.B; // Set value
 			LoadDetails();
 		};
+
+		// Register Keyboard Shortcuts
+
+		Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
+		{
+			{ Combination.FromString("Control+Shift+C"), HandleCopyKeyboard },
+			{ Combination.FromString("Control+Shift+S"), HandleSelectKeyboard }
+		});
+	}
+
+	private void HandleSelectKeyboard()
+	{
+		if (selecting) timer.Stop();
+		else timer.Start();
+		selecting = !selecting;
+		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
+	}
+
+	private void HandleCopyKeyboard()
+	{
+		Clipboard.SetText(RgbTxt.Text);
 	}
 
 	private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
