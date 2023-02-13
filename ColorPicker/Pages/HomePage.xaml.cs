@@ -65,5 +65,11 @@ public partial class HomePage : Page
 		{
 			DiscoverPanel.Children.Add(new PageCard(Global.PageInfoToAppPages(relevantPages[i])));
 		}
+
+		// Load "Suggested actions" section
+		for (int i = 0; i < 4; i++)
+		{
+			SuggestedActionsPanel.Children.Add(new ActionCard(Global.SynethiaConfig.MostRelevantActions[i].Id));
+		}
 	}
 }

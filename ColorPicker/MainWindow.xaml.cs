@@ -83,6 +83,7 @@ public partial class MainWindow : Window
 		Closed += (o, e) => SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 
 		PageCard.OnCardClick += PageCard_OnCardClick;
+		ActionCard.OnCardClick += PageCard_OnCardClick;
 
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 
