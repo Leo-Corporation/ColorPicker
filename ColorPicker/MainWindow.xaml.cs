@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using ColorPicker.Pages;
 using ColorPicker.UserControls;
 using PeyrSharp.Env;
@@ -94,7 +95,53 @@ public partial class MainWindow : Window
 
 	private void PageCard_OnCardClick(object? sender, PageEventArgs e)
 	{
-		//TODO
+		switch (e.AppPage)
+		{
+			case AppPages.Selector:
+				UnCheckAllButton();
+				CheckButton(SelectorPageBtn);
+
+				PageDisplayer.Navigate(Global.SelectorPage);
+				Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.ColorWheel:
+				UnCheckAllButton();
+				CheckButton(ChromaticPageBtn);
+
+				PageDisplayer.Navigate(Global.ChromaticWheelPage);
+				Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.Converter:
+				UnCheckAllButton();
+				CheckButton(ConverterPageBtn);
+
+				PageDisplayer.Navigate(Global.ConverterPage);
+				Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.TextTool:
+				UnCheckAllButton();
+				CheckButton(TextPageBtn);
+
+				PageDisplayer.Navigate(Global.TextPage);
+				Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.ColorPalette:
+				UnCheckAllButton();
+				CheckButton(PalettePageBtn);
+
+				PageDisplayer.Navigate(Global.PalettePage);
+				Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.ColorGradient:
+				UnCheckAllButton();
+				CheckButton(GradientPageBtn);
+
+				PageDisplayer.Navigate(Global.GradientPage);
+				Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
+				break;
+			default:
+				break;
+		}
 	}
 
 	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)

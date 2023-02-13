@@ -21,6 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorPicker.Classes;
+using ColorPicker.UserControls;
+using Synethia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,5 +48,22 @@ public partial class HomePage : Page
 	public HomePage()
 	{
 		InitializeComponent();
+		InitUI();
+	}
+
+	internal void InitUI()
+	{
+		List<PageInfo> relevantPages = Global.SynethiaConfig.MostRelevantPages;
+		for (int i = 0; i < 4; i++)
+		{
+			GetStartedPanel.Children.Add(new PageCard(Global.PageInfoToAppPages(relevantPages[i])));
+		}
+		relevantPages.RemoveRange(0, 4); // Remove already added pages; the least releavnt remains
+
+		// Load "Discover" section
+		for (int i = 0; i < relevantPages.Count; i++)
+		{
+			DiscoverPanel.Children.Add(new PageCard(Global.PageInfoToAppPages(relevantPages[i])));
+		}
 	}
 }

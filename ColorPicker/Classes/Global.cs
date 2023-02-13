@@ -54,7 +54,7 @@ public static class Global
 		PagesInfo = new List<PageInfo>()
 		{
 			new PageInfo("Selector"),
-	    	new PageInfo("ChromaticWheel"),
+			new PageInfo("ChromaticWheel"),
 			new PageInfo("Converter"),
 			new PageInfo("TextTool"),
 			new PageInfo("Palette"),
@@ -63,7 +63,7 @@ public static class Global
 		ActionsInfo = new List<ActionInfo>()
 		{
 			new ActionInfo(0, "Selector.SelectBtn"),
-	    	new ActionInfo(1, "Chromatic.Disc"),
+			new ActionInfo(1, "Chromatic.Disc"),
 			new ActionInfo(2, "Converter.FromRgb"),
 			new ActionInfo(3, "TextTool.Contrast"),
 			new ActionInfo(4, "Palette.GeneratePalette"),
@@ -211,5 +211,19 @@ public static class Global
 			colorPalette[i] = ColorHelper.ColorConverter.HslToRgb(hslColor);
 		}
 		return colorPalette;
+	}
+
+	public static AppPages PageInfoToAppPages(PageInfo pageInfo)
+	{
+		return pageInfo.Name switch
+		{
+			"Selector" => AppPages.Selector,
+			"ChromaticWheel" => AppPages.ColorWheel,
+			"Converter" => AppPages.Converter,
+			"TextTool" => AppPages.TextTool,
+			"Palette" => AppPages.ColorPalette,
+			"Gradient" => AppPages.ColorGradient,
+			_ => AppPages.Selector
+		};
 	}
 }
