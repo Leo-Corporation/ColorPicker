@@ -90,6 +90,7 @@ namespace ColorPicker.UserControls
 		{
 			Global.Bookmarks.GradientBookmarks.Remove(Gradient);
 			Global.BookmarksPage.GradientsBookmarks.Children.Remove(this);
+            Global.GradientPage.LoadGradientUI();
 		}
 	}
 }

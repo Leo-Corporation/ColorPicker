@@ -114,6 +114,9 @@ namespace ColorPicker.Pages
 			}
 
 			InitUI(); // Refresh the UI
+			Global.SelectorPage.LoadDetails();
+			Global.GradientPage.LoadGradientUI();
+			Global.PalettePage.InitPaletteUI();
 		}
 
 		private void GradientsBtn_Click(object sender, RoutedEventArgs e)

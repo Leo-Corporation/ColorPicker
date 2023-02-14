@@ -73,7 +73,7 @@ public partial class GradientPage : Page
 		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
-	private void LoadGradientUI()
+	internal void LoadGradientUI()
 	{
 		double.TryParse(RotateAngleTxt.Text, out double angle);
 		GradientBorder.Background = new LinearGradientBrush

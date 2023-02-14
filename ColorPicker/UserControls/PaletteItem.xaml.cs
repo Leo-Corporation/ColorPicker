@@ -117,6 +117,7 @@ namespace ColorPicker.UserControls
 		{
 			Global.Bookmarks.PaletteBookmarks.Remove(HexColor);
 			Global.BookmarksPage.PalettesBookmarks.Children.Remove(this);
+			Global.PalettePage.InitPaletteUI();
 		}
 	}
 }

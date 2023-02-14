@@ -72,6 +72,7 @@ namespace ColorPicker.UserControls
 		{
 			Global.Bookmarks.ColorBookmarks.Remove(HexColor);
 			Global.BookmarksPage.ColorsBookmarks.Children.Remove(this);
+			Global.SelectorPage.LoadDetails();
 		}
 	}
 }

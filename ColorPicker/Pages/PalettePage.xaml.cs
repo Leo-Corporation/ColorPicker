@@ -247,7 +247,7 @@ public partial class PalettePage : Page
 		}
 	}
 
-	private void InitPaletteUI()
+	internal void InitPaletteUI()
 	{
 		ColorInfo = new ColorInfo(ConvertToRgb());
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };

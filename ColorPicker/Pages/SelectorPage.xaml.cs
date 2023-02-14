@@ -169,7 +169,7 @@ public partial class SelectorPage : Page
 	}
 
 	ColorInfo ColorInfo { get; set; }
-	private void LoadDetails()
+	internal void LoadDetails()
 	{
 		// Load the details section
 		ColorInfo = new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value));
