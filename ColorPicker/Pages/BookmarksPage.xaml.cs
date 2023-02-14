@@ -66,9 +66,16 @@ namespace ColorPicker.Pages
 				ColorsBookmarks.Children.Add(new ColorItem(Global.Bookmarks.ColorBookmarks[i]));
 			}
 
+			// Load the "Palettes" bookmarks
 			for (int i = 0; i < Global.Bookmarks.PaletteBookmarks.Count; i++)
 			{
 				PalettesBookmarks.Children.Add(new PaletteItem(Global.Bookmarks.PaletteBookmarks[i]));
+			}
+
+			// Load the "Gradients" bookmarks
+			for (int i = 0; i < Global.Bookmarks.GradientBookmarks.Count; i++)
+			{
+				GradientsBookmarks.Children.Add(new GradientItem(Global.Bookmarks.GradientBookmarks[i]));
 			}
 		}
 
