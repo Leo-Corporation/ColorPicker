@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorHelper;
+using ColorPicker.Classes;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -35,30 +36,36 @@ namespace ColorPicker.UserControls
 	public partial class ColorItem : UserControl
 	{
 		string HexColor { get; init; }
-		RGB RgbColor { get; set; }
+		ColorInfo ColorInfo { get; set; }
 		public ColorItem(string hexColor)
 		{
 			InitializeComponent();
 			HexColor = hexColor;
+			ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(HexColor)));
 
 			InitUI();
 		}
 
 		private void InitUI()
 		{
-			RgbColor = ColorHelper.ColorConverter.HexToRgb(new(HexColor));
-			Color color = Color.FromRgb(RgbColor.R, RgbColor.G, RgbColor.B);
+			Color color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
 
 			ColorBorder.Background = new SolidColorBrush { Color = color };
 			ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
-			
-			RgbTxt.Text = $"{RgbColor.R}; {RgbColor.G}; {RgbColor.B}"; // Set text
+			ColorBorder.ToolTip = new ToolTip()
+			{
+				Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
+				Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+				Content = ColorInfo.ToString()
+			};
+
+			RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}"; // Set text
 			HEXTxt.Text = HexColor; // Set text
 		}
 
 		private void ColorBorder_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			Clipboard.SetText($"{RgbColor.R}; {RgbColor.G}; {RgbColor.B}");
+			Clipboard.SetText($"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}");
 		}
 	}
 }
