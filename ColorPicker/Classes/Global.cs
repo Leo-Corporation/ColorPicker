@@ -74,7 +74,7 @@ public static class Global
 
 	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
 
-	public static string Version => "5.0.0.2302-pre4";
+	public static string Version => "5.0.0.2302-pre5";
 
 	public static string HiSentence
 	{
