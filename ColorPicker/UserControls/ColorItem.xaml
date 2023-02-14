@@ -17,6 +17,7 @@
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
 			<Border Cursor="Hand" x:Name="ColorBorder" MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" Height="60" Width="60" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
@@ -33,7 +34,10 @@
 				</StackPanel>
 			</StackPanel>
 
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <Button Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
+            </StackPanel>
 		</Grid>
 	</Border>
 </UserControl>

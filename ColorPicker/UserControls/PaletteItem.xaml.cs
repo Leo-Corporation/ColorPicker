@@ -112,5 +112,11 @@ namespace ColorPicker.UserControls
 		{
 			Clipboard.SetText($"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}");
 		}
+
+		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.Bookmarks.PaletteBookmarks.Remove(HexColor);
+			Global.BookmarksPage.PalettesBookmarks.Children.Remove(this);
+		}
 	}
 }

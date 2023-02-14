@@ -85,5 +85,11 @@ namespace ColorPicker.UserControls
             ColorBorder.Background = linearGradientBrush;
             AngleTxt.Text = Gradient.Angle.ToString();
         }
-    }
+
+		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.Bookmarks.GradientBookmarks.Remove(Gradient);
+			Global.BookmarksPage.GradientsBookmarks.Children.Remove(this);
+		}
+	}
 }
