@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -39,12 +40,16 @@ public partial class App : Application
 	private void Application_Startup(object sender, StartupEventArgs e)
 	{
 		// Bookmarks system
-		Global.Bookmarks = new()
+		Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>($@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml") ?? new()
 		{
 			ColorBookmarks = new(),
 			PaletteBookmarks = new(),
 			GradientBookmarks = new()
 		};
+
+		if (Global.Bookmarks.ColorBookmarks is null) Global.Bookmarks.ColorBookmarks = new();
+		if (Global.Bookmarks.PaletteBookmarks is null) Global.Bookmarks.PaletteBookmarks = new();
+		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = new();
 
 		// Pages
 		Global.SelectorPage = new();

@@ -80,7 +80,11 @@ public partial class MainWindow : Window
 			PageScroller.Height = (ActualHeight - (GridRow1.ActualHeight + 68) > 0) ? ActualHeight - (GridRow1.ActualHeight + 68) : 0; // Set the scroller height
 			ActionsScrollViewer.Height = ActualHeight - SideBarTop.ActualHeight - GridRow1.ActualHeight - 60;
 		};
-		Closed += (o, e) => SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+		Closed += (o, e) => 
+		{
+			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+			XmlSerializerManager.SaveToXml(Global.Bookmarks, $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml");
+		};
 
 		PageCard.OnCardClick += PageCard_OnCardClick;
 		ActionCard.OnCardClick += PageCard_OnCardClick;

@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ColorPicker.Classes
 {
@@ -36,11 +37,48 @@ namespace ColorPicker.Classes
         public List<Gradient> GradientBookmarks { get; set; }
     }
 
-    public record BookmarkGradientStop(string Color, double Stop);
+	[XmlType("BookmarkGradientStop")]
+	public record BookmarkGradientStop
+	{
+		// Make the properties settable
+		public string Color { get; set; }
+		public double Stop { get; set; }
 
-    public sealed record Gradient(List<BookmarkGradientStop> Stops, double Angle)
-    {
-        public bool Equals(Gradient? obj)
+		// Add a parameterless constructor
+		public BookmarkGradientStop()
+		{
+			// Assign default values to the properties
+			Color = "Black";
+			Stop = 0.0;
+		}
+
+		// Add a constructor with two parameters
+		public BookmarkGradientStop(string color, double stop)
+		{
+			Color = color;
+			Stop = stop;
+		}
+	}
+
+	public class Gradient : IEquatable<Gradient>
+	{
+		public List<BookmarkGradientStop> Stops { get; init; }
+		public double Angle { get; init; }
+
+		// The constructor of the class
+		public Gradient(List<BookmarkGradientStop> stops, double angle)
+		{
+			Stops = stops;
+			Angle = angle;
+		}
+
+        public Gradient()
+        {
+            Stops = new();
+            Angle = 0;
+        }
+
+		public bool Equals(Gradient? obj)
         {
             if (obj is null || obj.Stops.Count != Stops.Count || obj.Angle != Angle) return false;
             for (int i = 0; i < obj.Stops.Count; i++)
@@ -49,5 +87,7 @@ namespace ColorPicker.Classes
             }
             return true;
         }
-    }
+
+		public override bool Equals(object obj) => Equals(obj as Gradient);
+	}
 }
