@@ -294,4 +294,19 @@
   <data name="BlueP" xml:space="preserve">
     <value>B</value>
   </data>
+  <data name="EmptyBookmarks" xml:space="preserve">
+    <value>Vider les signets</value>
+  </data>
+  <data name="Colors" xml:space="preserve">
+    <value>Couleurs</value>
+  </data>
+  <data name="Gradients" xml:space="preserve">
+    <value>Dégradés</value>
+  </data>
+  <data name="Palettes" xml:space="preserve">
+    <value>Palettes</value>
+  </data>
+  <data name="EmptyHistoryMsg" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir vider ces signets ? Cette action est irréversible.</value>
+  </data>
 </root>

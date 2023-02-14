@@ -142,6 +142,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Colors.
+        /// </summary>
+        public static string Colors {
+            get {
+                return ResourceManager.GetString("Colors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color Tools.
         /// </summary>
         public static string ColorTools {
@@ -237,6 +246,24 @@ namespace ColorPicker.Properties {
         public static string Discover {
             get {
                 return ResourceManager.GetString("Discover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty bookmarks.
+        /// </summary>
+        public static string EmptyBookmarks {
+            get {
+                return ResourceManager.GetString("EmptyBookmarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure want to empty these bookmarks? This action is irreversible..
+        /// </summary>
+        public static string EmptyHistoryMsg {
+            get {
+                return ResourceManager.GetString("EmptyHistoryMsg", resourceCulture);
             }
         }
         
@@ -340,6 +367,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gradients.
+        /// </summary>
+        public static string Gradients {
+            get {
+                return ResourceManager.GetString("Gradients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to G.
         /// </summary>
         public static string GreenP {
@@ -426,6 +462,15 @@ namespace ColorPicker.Properties {
         public static string Palette {
             get {
                 return ResourceManager.GetString("Palette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Palettes.
+        /// </summary>
+        public static string Palettes {
+            get {
+                return ResourceManager.GetString("Palettes", resourceCulture);
             }
         }
         

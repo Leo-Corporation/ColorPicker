@@ -274,4 +274,19 @@
   <data name="BlueP" xml:space="preserve">
     <value>B</value>
   </data>
+  <data name="EmptyBookmarks" xml:space="preserve">
+    <value>Empty bookmarks</value>
+  </data>
+  <data name="Colors" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="Gradients" xml:space="preserve">
+    <value>Gradients</value>
+  </data>
+  <data name="Palettes" xml:space="preserve">
+    <value>Palettes</value>
+  </data>
+  <data name="EmptyHistoryMsg" xml:space="preserve">
+    <value>Are you sure want to empty these bookmarks? This action is irreversible.</value>
+  </data>
 </root>
