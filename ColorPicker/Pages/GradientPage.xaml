@@ -58,8 +58,8 @@
 					</Border>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" Grid.Column="2">
-					<Button x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-					<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="5,0,0,0"/>
+                    <Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+					<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="5,0,0,0"/>
 				</StackPanel>
 			</Grid>
 		</Border>
@@ -89,7 +89,7 @@
 				<StackPanel Grid.Row="1">
 					<StackPanel Margin="0 0 0 10" Orientation="Horizontal">
 						<TextBlock Text="{x:Static lang:Resources.CSS}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
-						<Button Margin="10 0" x:Name="CopyCssBtn" Click="CopyCssBtn_Click" Grid.Column="2" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+                        <Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" Margin="10 0" x:Name="CopyCssBtn" Click="CopyCssBtn_Click" Grid.Column="2" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 					</StackPanel>
 					<Border Background="{Binding Source={StaticResource Background2}}" CornerRadius="5">

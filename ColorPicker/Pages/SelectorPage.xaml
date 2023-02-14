@@ -58,8 +58,8 @@
 				</Grid>
 
 				<StackPanel Grid.Column="2" Orientation="Horizontal">
-					<Button x:Name="SelectBtn" Click="SelectBtn_Click" Grid.Column="2" Margin="10 0 0 0" Content="&#xFD3F;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-					<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="2" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+					<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="SelectBtn" Click="SelectBtn_Click" Grid.Column="2" Margin="10 0 0 0" Content="&#xFD3F;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+					<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="2" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 				</StackPanel>
 			</Grid>
 		</Border>
@@ -83,7 +83,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.RGB}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyRgbBtn" Click="CopyRgbBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyRgbBtn" Click="CopyRgbBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="RgbTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>
@@ -103,7 +103,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.HEX}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyHexBtn" Click="CopyHexBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyHexBtn" Click="CopyHexBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="HexTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>
@@ -123,7 +123,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.HSV}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyHsvBtn" Click="CopyHsvBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyHsvBtn" Click="CopyHsvBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="HsvTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>
@@ -143,7 +143,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.HSL}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyHslBtn" Click="CopyHslBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyHslBtn" Click="CopyHslBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="HslTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>
@@ -163,7 +163,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.CMYK}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyCmykBtn" Click="CopyCmykBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyCmykBtn" Click="CopyCmykBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="CmykTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>
@@ -183,7 +183,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.XYZ}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyXyzBtn" Click="CopyXyzBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyXyzBtn" Click="CopyXyzBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="XyzTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>
@@ -203,7 +203,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.YIQ}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyYiqBtn" Click="CopyYiqBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyYiqBtn" Click="CopyYiqBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="YiqTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>
@@ -223,7 +223,7 @@
 
 					<TextBlock Text="{x:Static lang:Resources.YUV}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Button x:Name="CopyYuvBtn" Click="CopyYuvBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+						<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="CopyYuvBtn" Click="CopyYuvBtn_Click" Grid.Column="2" Margin="0,3,3,3" Content="&#xF32C;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 						<TextBlock x:Name="YuvTxt" Text="N/A" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="18"/>
 					</StackPanel>

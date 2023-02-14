@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:ColorPicker.Windows"
 		xmlns:lang="clr-namespace:ColorPicker.Properties"
 		mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Foreground="{Binding Source={StaticResource Foreground1}}" Title="MiniPicker" Width="270" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None" Topmost="True" ResizeMode="NoResize" WindowStartupLocation="Manual" Background="Transparent" Height="120">
-    <Border CornerRadius="15" Margin="10" Background="{Binding Source={StaticResource Background1}}">
+    <Border CornerRadius="15" Margin="10" Background="{Binding Source={StaticResource CardBackground}}">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="-5" Opacity="0.2" />
         </Border.Effect>

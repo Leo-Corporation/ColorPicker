@@ -26,6 +26,7 @@
 	<None Remove="Images\ColorDisc2.png" />
 	<None Remove="Images\ColorWheel.png" />
 	<None Remove="Images\CPM.png" />
+	<None Remove="Images\DarkBackground.png" />
 	<None Remove="Images\LightBackground.png" />
   </ItemGroup>
 
@@ -70,6 +71,9 @@
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</Resource>
 	<Resource Include="Images\CPM.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\DarkBackground.png">
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</Resource>
 	<Resource Include="Images\LightBackground.png">
