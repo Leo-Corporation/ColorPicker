@@ -7,7 +7,7 @@
 			 xmlns:lang="clr-namespace:ColorPicker.Properties"
 			 mc:Ignorable="d" Foreground="{Binding Source={StaticResource Foreground1}}" 
 			 FontFamily="../Fonts/#Hauora"
-			 Height="100" Width="270">
+			 Height="110" Width="300">
 	<Border CornerRadius="10" Margin="10" Background="{Binding Source={StaticResource CardBackground}}">
 		<Border.Effect>
 			<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
@@ -23,7 +23,7 @@
 			<Border x:Name="ColorBorder" Height="60" Width="60" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
 
 
-			<StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center">
+			<StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center" Grid.ColumnSpan="2">
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Text="{x:Static lang:Resources.From}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
 					<TextBlock x:Name="FromTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" Margin="10,0,0,0" />
