@@ -84,6 +84,9 @@ public partial class MainWindow : Window
 
 		PageCard.OnCardClick += PageCard_OnCardClick;
 		ActionCard.OnCardClick += PageCard_OnCardClick;
+		ColorItem.GoClick += PageCard_OnCardClick;
+		PaletteItem.GoClick += PageCard_OnCardClick;
+		GradientItem.GoClick += PageCard_OnCardClick;
 
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 

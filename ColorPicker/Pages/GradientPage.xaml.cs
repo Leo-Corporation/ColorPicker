@@ -112,7 +112,7 @@ public partial class GradientPage : Page
 		BookmarkBtn.Content = "\uF1F8";
 	}
 
-	System.Drawing.Color from, to;
+	internal System.Drawing.Color from, to;
 	Gradient CurrentGradient { get; set; }
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{

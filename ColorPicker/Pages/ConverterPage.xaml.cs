@@ -126,7 +126,7 @@ public partial class ConverterPage : Page
 											 double.Parse(Txt3.Text)));
 	}
 
-	private void LoadDetails()
+	internal void LoadDetails()
 	{
 		ColorInfo = new ColorInfo(ConvertToRgb());
 		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";

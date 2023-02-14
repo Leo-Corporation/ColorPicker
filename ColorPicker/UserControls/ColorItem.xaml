@@ -7,7 +7,7 @@
 			 xmlns:lang="clr-namespace:ColorPicker.Properties"
 			 mc:Ignorable="d" Foreground="{Binding Source={StaticResource Foreground1}}" 
 			 FontFamily="../Fonts/#Hauora"
-			 Height="100" Width="220">
+			 Height="100" Width="250">
 	<Border CornerRadius="10" Margin="10" Background="{Binding Source={StaticResource CardBackground}}">
 		<Border.Effect>
 			<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
@@ -34,10 +34,11 @@
 				</StackPanel>
 			</StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Column="2">
-                <Button Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+			<StackPanel Orientation="Horizontal" Grid.Column="2">
+				<Button Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+				<Button Margin="0 5 5 0" x:Name="GoBtn" Click="GoBtn_Click" Grid.Column="3" Content="&#xF3DE;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
-            </StackPanel>
+			</StackPanel>
 		</Grid>
 	</Border>
 </UserControl>

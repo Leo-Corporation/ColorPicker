@@ -114,7 +114,7 @@ public partial class PalettePage : Page
 	}
 
 	// Note: This event handler is used for all the choices
-	private void RgbBtn_Click(object sender, RoutedEventArgs? e)
+	internal void RgbBtn_Click(object sender, RoutedEventArgs? e)
 	{
 		var btn = (Button)sender;
 

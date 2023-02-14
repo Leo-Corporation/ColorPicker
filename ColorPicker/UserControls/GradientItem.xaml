@@ -7,7 +7,7 @@
 			 xmlns:lang="clr-namespace:ColorPicker.Properties"
 			 mc:Ignorable="d" Foreground="{Binding Source={StaticResource Foreground1}}" 
 			 FontFamily="../Fonts/#Hauora"
-			 Height="100" Width="250">
+			 Height="100" Width="270">
 	<Border CornerRadius="10" Margin="10" Background="{Binding Source={StaticResource CardBackground}}">
 		<Border.Effect>
 			<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
@@ -23,26 +23,26 @@
 			<Border x:Name="ColorBorder" Height="60" Width="60" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
 
 
-            <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static lang:Resources.From}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
-                    <TextBlock x:Name="FromTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" Margin="10,0,0,0" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static lang:Resources.To}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
-                    <TextBlock x:Name="ToTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" Margin="10,0,0,0" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static lang:Resources.Rotation}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
-                    <TextBlock x:Name="AngleTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" Margin="10,0,0,0" />
-                </StackPanel>
-            </StackPanel>
+			<StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{x:Static lang:Resources.From}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<TextBlock x:Name="FromTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" Margin="10,0,0,0" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{x:Static lang:Resources.To}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<TextBlock x:Name="ToTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" Margin="10,0,0,0" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{x:Static lang:Resources.Rotation}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" />
+					<TextBlock x:Name="AngleTxt" FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" Margin="10,0,0,0" />
+				</StackPanel>
+			</StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Column="2">
-                <Button Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-
-            </StackPanel>
-        </Grid>
+			<StackPanel Orientation="Horizontal" Grid.Column="2">
+				<Button Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+				<Button Margin="0 5 5 0" x:Name="GoBtn" Click="GoBtn_Click" Grid.Column="3" Content="&#xF3DE;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+			</StackPanel>
+		</Grid>
 	</Border>
 
 </UserControl>

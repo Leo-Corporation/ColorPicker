@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -73,6 +74,18 @@ namespace ColorPicker.UserControls
 			Global.Bookmarks.ColorBookmarks.Remove(HexColor);
 			Global.BookmarksPage.ColorsBookmarks.Children.Remove(this);
 			Global.SelectorPage.LoadDetails();
+			Global.ConverterPage.LoadDetails();
+		}
+
+		public static event EventHandler<PageEventArgs> GoClick;
+
+		private void GoBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.SelectorPage.RedSlider.Value = ColorInfo.RGB.R;
+			Global.SelectorPage.GreenSlider.Value = ColorInfo.RGB.G;
+			Global.SelectorPage.BlueSlider.Value = ColorInfo.RGB.B;
+
+			GoClick?.Invoke(sender, new(Enums.AppPages.Selector));
 		}
 	}
 }

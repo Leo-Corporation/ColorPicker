@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -118,6 +119,15 @@ namespace ColorPicker.UserControls
 			Global.Bookmarks.PaletteBookmarks.Remove(HexColor);
 			Global.BookmarksPage.PalettesBookmarks.Children.Remove(this);
 			Global.PalettePage.InitPaletteUI();
+		}
+
+		public static event EventHandler<PageEventArgs> GoClick;
+
+		private void GoBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.PalettePage.RgbBtn_Click(Global.PalettePage.HexBtn, e);
+			Global.PalettePage.Txt5.Text = HexColor;
+			GoClick?.Invoke(this, new(Enums.AppPages.ColorPalette));
 		}
 	}
 }
