@@ -230,6 +230,9 @@ public partial class MainWindow : Window
 	{
 		LeavePage();
 		UnCheckAllButton();
+		CheckButton(BookmarksPageBtn, true);
+
+		PageDisplayer.Navigate(Global.BookmarksPage);
 	}
 
 	private void SettingsPageBtn_Click(object sender, RoutedEventArgs e)

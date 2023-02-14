@@ -44,6 +44,7 @@ public static class Global
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
 	public static HomePage? HomePage { get; set; }
+	public static BookmarksPage? BookmarksPage { get; set; }
 
 	public static Bookmarks Bookmarks { get; set; }
 

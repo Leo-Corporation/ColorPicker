@@ -54,5 +54,6 @@ public partial class App : Application
 		Global.PalettePage = new();		
 		Global.GradientPage = new();		
 		Global.HomePage = new();		
+		Global.BookmarksPage = new();		
 	}
 }
