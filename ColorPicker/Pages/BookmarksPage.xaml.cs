@@ -65,6 +65,11 @@ namespace ColorPicker.Pages
 			{
 				ColorsBookmarks.Children.Add(new ColorItem(Global.Bookmarks.ColorBookmarks[i]));
 			}
+
+			for (int i = 0; i < Global.Bookmarks.PaletteBookmarks.Count; i++)
+			{
+				PalettesBookmarks.Children.Add(new PaletteItem(Global.Bookmarks.PaletteBookmarks[i]));
+			}
 		}
 
 		private void ColorsBtn_Click(object sender, RoutedEventArgs e)
