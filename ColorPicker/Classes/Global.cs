@@ -24,6 +24,8 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Enums;
 using ColorPicker.Pages;
+using Microsoft.Win32;
+using PeyrSharp.Enums;
 using PeyrSharp.Env;
 using Synethia;
 using System;
@@ -45,8 +47,10 @@ public static class Global
 	public static GradientPage? GradientPage { get; set; }
 	public static HomePage? HomePage { get; set; }
 	public static BookmarksPage? BookmarksPage { get; set; }
+	public static SettingsPage? SettingsPage { get; set; }
 
 	public static Bookmarks Bookmarks { get; set; }
+	public static Settings Settings { get; set; } = XmlSerializerManager.LoadFromXml<Settings>(SettingsPath) ?? new();
 
 	public static SynethiaConfig SynethiaConfig { get; set; } = SynethiaManager.Load(SynethiaPath, Default);
 
@@ -73,6 +77,8 @@ public static class Global
 	};
 
 	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
+	internal static string BookmarksPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml";
+	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 
 	public static string Version => "5.0.0.2302-pre5";
 
@@ -229,5 +235,47 @@ public static class Global
 			"Gradient" => AppPages.ColorGradient,
 			_ => AppPages.Selector
 		};
+	}
+
+	/// <summary>
+	/// Changes the application's theme.
+	/// </summary>
+	public static void ChangeTheme()
+	{
+		App.Current.Resources.MergedDictionaries.Clear();
+		ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
+
+		bool isDark = Settings.Theme == Themes.Dark;
+		if (Settings.Theme == Themes.System)
+		{
+			isDark = IsSystemThemeDark(); // Set
+		}
+
+		if (isDark) // If the dark theme is on
+		{
+			resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
+		}
+		else
+		{
+			resourceDictionary.Source = new Uri("..\\Themes\\Light.xaml", UriKind.Relative); // Add source
+		}
+
+		App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+	}
+
+	public static bool IsSystemThemeDark()
+	{
+		if (Sys.CurrentWindowsVersion != WindowsVersion.Windows10 && Sys.CurrentWindowsVersion != WindowsVersion.Windows11)
+		{
+			return false; // Avoid errors on older OSs
+		}
+
+		var t = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", "1");
+		return t switch
+		{
+			0 => true,
+			1 => false,
+			_ => false
+		}; // Return
 	}
 }

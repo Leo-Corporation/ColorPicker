@@ -21,46 +21,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Classes;
-using PeyrSharp.Env;
+using ColorPicker.Enums;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace ColorPicker;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
-public partial class App : Application
+namespace ColorPicker.Classes
 {
-	private void Application_Startup(object sender, StartupEventArgs e)
-	{
-		Global.ChangeTheme();
-		// Bookmarks system
-		Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>($@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml") ?? new()
+    public class Settings
+    {
+		public Settings()
 		{
-			ColorBookmarks = new(),
-			PaletteBookmarks = new(),
-			GradientBookmarks = new()
-		};
+			Theme = Themes.System;
+			Language = Languages.Default;
+			UseSynethia = true;
+			IsFirstRun = true;
+		}
 
-		if (Global.Bookmarks.ColorBookmarks is null) Global.Bookmarks.ColorBookmarks = new();
-		if (Global.Bookmarks.PaletteBookmarks is null) Global.Bookmarks.PaletteBookmarks = new();
-		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = new();
-
-		// Pages
-		Global.SelectorPage = new();
-		Global.ChromaticWheelPage = new();
-		Global.ConverterPage = new();		
-		Global.TextPage = new();		
-		Global.PalettePage = new();		
-		Global.GradientPage = new();		
-		Global.HomePage = new();		
-		Global.BookmarksPage = new();
-		Global.SettingsPage = new();
+		public Themes Theme { get; set; }
+		public Languages Language { get; set; }
+		public bool UseSynethia { get; set; }
+		public bool IsFirstRun { get; set; }
 	}
 }

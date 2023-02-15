@@ -245,7 +245,10 @@ public partial class MainWindow : Window
 	private void SettingsPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
+		UnCheckAllButton(); 
+		CheckButton(SettingsPageBtn, true);
+
+		PageDisplayer.Navigate(Global.SettingsPage);
 	}
 
 	private void PickerBtn_Click(object sender, RoutedEventArgs e)
