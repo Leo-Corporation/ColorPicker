@@ -94,11 +94,55 @@ public partial class MainWindow : Window
 
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 
-		//TODO: Add page system
 		UnCheckAllButton();
-		CheckButton(HomePageBtn, true);
+		// Show the appropriate page
+		switch (Global.Settings.DefaultPage)
+		{
+			case AppPages.Home:
+				CheckButton(HomePageBtn, true);
+				break;
+			case AppPages.Bookmarks:
+				CheckButton(BookmarksPageBtn, true);
+				break;
+			case AppPages.Selector:
+				Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
+				CheckButton(SelectorPageBtn);
+				break;
+			case AppPages.ColorWheel:
+				Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
+				CheckButton(ChromaticPageBtn);
+				break;
+			case AppPages.Converter:
+				Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
+				CheckButton(ConverterPageBtn);
+				break;
+			case AppPages.TextTool:
+				Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
+				CheckButton(TextPageBtn);
+				break;
+			case AppPages.ColorPalette:
+				Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
+				CheckButton(PalettePageBtn);
+				break;
+			case AppPages.ColorGradient:
+				Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
+				CheckButton(GradientPageBtn);
+				break;
+			default:
+				break;
+		}
 
-		PageDisplayer.Navigate(Global.HomePage);
+
+		PageDisplayer.Navigate(Global.Settings.DefaultPage switch
+		{
+			AppPages.Selector => Global.SelectorPage,
+			AppPages.ColorWheel => Global.ChromaticWheelPage,
+			AppPages.Converter => Global.ConverterPage,
+			AppPages.TextTool => Global.TextPage,
+			AppPages.ColorPalette => Global.PalettePage,
+			AppPages.ColorGradient => Global.GradientPage,
+			_ => Global.HomePage
+		});
 	}
 
 	private void PageCard_OnCardClick(object? sender, PageEventArgs e)

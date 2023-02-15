@@ -337,25 +337,25 @@
 	<value>Voir les licenses</value>
   </data>
   <data name="ChangeTheme" xml:space="preserve">
-	<value>Changer le thème d'InternetTest.</value>
+	<value>Changer le thème de ColorPicker.</value>
   </data>
   <data name="Language" xml:space="preserve">
 	<value>Langue</value>
   </data>
   <data name="NeedRestartToApplyChanges" xml:space="preserve">
-	<value>InternetTest doit redémarrer pour appliquer les changements. Voulez-vous redémarrer maintenant ?</value>
+	<value>ColorPicker doit redémarrer pour appliquer les changements. Voulez-vous redémarrer maintenant ?</value>
   </data>
   <data name="Default" xml:space="preserve">
 	<value>Par défaut</value>
   </data>
   <data name="UpToDate" xml:space="preserve">
-	<value>InternetTest est à jour.</value>
+	<value>ColorPicker est à jour.</value>
   </data>
   <data name="AvailableUpdates" xml:space="preserve">
 	<value>Des mises à jour sont disponibles.</value>
   </data>
   <data name="InstallConfirmMsg" xml:space="preserve">
-	<value>Pour installer les mises à jour, InternetTest doit redémarrer. Voulez-vous continuer ?</value>
+	<value>Pour installer les mises à jour, ColorPicker doit redémarrer. Voulez-vous continuer ?</value>
   </data>
   <data name="InstallVersion" xml:space="preserve">
 	<value>Installer la version</value>
@@ -364,7 +364,7 @@
 	<value>Version</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
-	<value>Changer la langue d'InternetTest.</value>
+	<value>Changer la langue de ColorPicker.</value>
   </data>
   <data name="NotifyUpdates" xml:space="preserve">
 	<value>Afficher une notification lorsque des mises à jour sont disponibles</value>

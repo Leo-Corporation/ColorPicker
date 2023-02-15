@@ -37,14 +37,18 @@ namespace ColorPicker.Classes
 			Theme = Themes.System;
 			Language = Languages.Default;
 			DefaultColorType = ColorTypes.RGB;
+			DefaultPage = AppPages.Home;
 			UseSynethia = true;
 			IsFirstRun = true;
+			CheckUpdateOnStart = true;
 		}
 
 		public Themes Theme { get; set; }
 		public Languages Language { get; set; }
 		public ColorTypes DefaultColorType { get; set; }
+		public AppPages DefaultPage { get; set; }
 		public bool UseSynethia { get; set; }
 		public bool IsFirstRun { get; set; }
+		public bool CheckUpdateOnStart { get; set; }
 	}
 }

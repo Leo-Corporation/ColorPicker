@@ -76,6 +76,11 @@ namespace ColorPicker.Pages
 
 			// Load the default color type
 			ColorTypeComboBox.SelectedIndex = (int)Global.Settings.DefaultColorType;
+
+			// Load the default page ComboBox
+			PageComboBox.SelectedIndex = (int)Global.Settings.DefaultPage;
+
+			UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
 		}
 
 		Border ThemeSelectedBorder;
@@ -183,6 +188,18 @@ namespace ColorPicker.Pages
 		private void ColorTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			Global.Settings.DefaultColorType = (ColorTypes)ColorTypeComboBox.SelectedIndex;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void PageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Global.Settings.DefaultPage = (AppPages)PageComboBox.SelectedIndex;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void UpdateOnStartChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.CheckUpdateOnStart = UpdateOnStartChk.IsChecked ?? true;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 	}

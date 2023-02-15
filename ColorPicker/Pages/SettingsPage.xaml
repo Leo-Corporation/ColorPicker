@@ -123,6 +123,33 @@
 					</ComboBox>
 				</StackPanel>
 			</Expander>
+			<Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource CardBackground}}" Foreground="{Binding Source={StaticResource Foreground1}}">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xF60F;" FontSize="22" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.OnStart}" FontSize="18" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="10,0,0,0"/>
+							<TextBlock Text="{x:Static lang:Resources.OnStartDescription}" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap"/>
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+				<StackPanel>
+					<StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+						<TextBlock Text="{x:Static lang:Resources.StartupPage}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+						<ComboBox SelectionChanged="PageComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="PageComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Center">
+							<ComboBoxItem Content="{x:Static lang:Resources.Home}"/>
+							<ComboBoxItem Content="{x:Static lang:Resources.Bookmarks}"/>
+							<ComboBoxItem Content="{x:Static lang:Resources.Selector}"/>
+							<ComboBoxItem Content="{x:Static lang:Resources.ChromaticWheel}"/>
+							<ComboBoxItem Content="{x:Static lang:Resources.Converter}"/>
+							<ComboBoxItem Content="{x:Static lang:Resources.TextTool}"/>
+							<ComboBoxItem Content="{x:Static lang:Resources.Palette}"/>
+							<ComboBoxItem Content="{x:Static lang:Resources.Gradient}"/>
+						</ComboBox>
+					</StackPanel>
+					<CheckBox Foreground="{Binding Source={StaticResource Foreground1}}" Content="{x:Static lang:Resources.CheckUpdatesOnStart}" x:Name="UpdateOnStartChk" Style="{DynamicResource CheckBoxStyle1}" Checked="UpdateOnStartChk_Checked" Unchecked="UpdateOnStartChk_Checked" VerticalContentAlignment="Center" BorderThickness="2" Margin="10,0,0,5"/>
+				</StackPanel>
+			</Expander>
 		</StackPanel>
 	</Grid>
 </Page>
