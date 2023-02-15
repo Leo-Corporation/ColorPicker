@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using Gma.System.MouseKeyHook;
 using Microsoft.Win32;
 using Synethia;
@@ -69,7 +70,17 @@ public partial class PalettePage : Page
 			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
 		}
 		catch { }		
-		RgbBtn_Click(RgbBtn, null);		
+		RgbBtn_Click(Global.Settings.DefaultColorType switch
+		{
+			ColorTypes.HEX => HexBtn,
+			ColorTypes.HSV => HsvBtn,
+			ColorTypes.HSL => HslBtn,
+			ColorTypes.CMYK => CmykBtn,
+			ColorTypes.XYZ => XyzBtn,
+			ColorTypes.YIQ => YiqBtn,
+			ColorTypes.YUV => YuvBtn,
+			_ => RgbBtn
+		}, null);		
 	}
 	ColorInfo ColorInfo { get; set; }
 
@@ -291,7 +302,18 @@ public partial class PalettePage : Page
 				int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
 				border.MouseLeftButtonUp += (o, e) =>
 				{
-					Clipboard.SetText($"{shades[j].R};{shades[j].G};{shades[j].B}");
+					var info = new ColorInfo(new(shades[j].R, shades[j].G, shades[j].B));
+					Clipboard.SetText(Global.Settings.DefaultColorType switch
+					{
+						ColorTypes.HEX => info.HEX.Value,
+						ColorTypes.HSV => $"{info.HSV.H},{info.HSV.S},{info.HSV.V}",
+						ColorTypes.HSL => $"{info.HSL.H},{info.HSL.S},{info.HSL.L}",
+						ColorTypes.CMYK => $"{info.CMYK.C},{info.CMYK.M},{info.CMYK.Y},{info.CMYK.K}",
+						ColorTypes.XYZ => $"{info.XYZ.X}; {info.XYZ.Y}; {info.XYZ.Z}",
+						ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
+						ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
+						_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
+					});
 				};
 				if (k == 0) ShadesPanel.Children.Add(border);
 				else if (k == 1) BrightnessPanel.Children.Add(border);

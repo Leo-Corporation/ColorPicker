@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using Synethia;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,17 @@ public partial class ConverterPage : Page
 			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
 		}
 		catch { }
-		RgbBtn_Click(RgbBtn, null);		
+		RgbBtn_Click(Global.Settings.DefaultColorType switch
+		{
+			ColorTypes.HEX => HexBtn,
+			ColorTypes.HSV => HsvBtn,
+			ColorTypes.HSL => HslBtn,
+			ColorTypes.CMYK => CmykBtn,
+			ColorTypes.XYZ => XyzBtn,
+			ColorTypes.YIQ => YiqBtn,
+			ColorTypes.YUV => YuvBtn,
+			_ => RgbBtn
+		}, null);
 	}
 
 	Button SelectedColorBtn { get; set; }

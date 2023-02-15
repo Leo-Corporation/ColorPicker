@@ -73,6 +73,9 @@ namespace ColorPicker.Pages
 				Themes.Dark => DarkBorder,
 				_ => SystemBorder
 			}, null);
+
+			// Load the default color type
+			ColorTypeComboBox.SelectedIndex = (int)Global.Settings.DefaultColorType;
 		}
 
 		Border ThemeSelectedBorder;
@@ -175,6 +178,12 @@ namespace ColorPicker.Pages
 
 			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
 			Application.Current.Shutdown();
+		}
+
+		private void ColorTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Global.Settings.DefaultColorType = (ColorTypes)ColorTypeComboBox.SelectedIndex;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 	}
 }

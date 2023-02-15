@@ -99,6 +99,30 @@
 					</Border>
 				</StackPanel>
 			</Expander>
+			<Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource CardBackground}}" Foreground="{Binding Source={StaticResource Foreground1}}">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xF2F6;" FontSize="22" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.ColorOptions}" FontSize="18" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="10,0,0,0"/>
+							<TextBlock Text="{x:Static lang:Resources.ColorOptionsDesc}" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap"/>
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+				<StackPanel Margin="10" Orientation="Horizontal">
+					<TextBlock Text="{x:Static lang:Resources.DefaultColorType}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+					<ComboBox x:Name="ColorTypeComboBox" SelectionChanged="ColorTypeComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Center">
+						<ComboBoxItem Content="{x:Static lang:Resources.RGB}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.HEX}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.HSV}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.HSL}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.CMYK}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.XYZ}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.YIQ}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.YUV}"/>
+					</ComboBox>
+				</StackPanel>
+			</Expander>
 		</StackPanel>
 	</Grid>
 </Page>

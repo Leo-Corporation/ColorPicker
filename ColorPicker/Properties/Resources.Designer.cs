@@ -178,6 +178,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color Options.
+        /// </summary>
+        public static string ColorOptions {
+            get {
+                return ResourceManager.GetString("ColorOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The way ColorPicker handle colors..
+        /// </summary>
+        public static string ColorOptionsDesc {
+            get {
+                return ResourceManager.GetString("ColorOptionsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker.
         /// </summary>
         public static string ColorPicker {
@@ -300,6 +318,15 @@ namespace ColorPicker.Properties {
         public static string Default {
             get {
                 return ResourceManager.GetString("Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default color type.
+        /// </summary>
+        public static string DefaultColorType {
+            get {
+                return ResourceManager.GetString("DefaultColorType", resourceCulture);
             }
         }
         

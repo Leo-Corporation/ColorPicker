@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
 using Synethia;
@@ -127,7 +128,17 @@ public partial class SelectorPage : Page
 
 	private void HandleCopyKeyboard()
 	{
-		Clipboard.SetText(RgbTxt.Text);
+		Clipboard.SetText(Global.Settings.DefaultColorType switch
+		{
+			ColorTypes.HEX => HexTxt.Text,
+			ColorTypes.HSL => HslTxt.Text,
+			ColorTypes.HSV => HsvTxt.Text,
+			ColorTypes.CMYK => CmykTxt.Text,
+			ColorTypes.XYZ => $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}",
+			ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
+			ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
+			_ => RgbTxt.Text
+		});
 	}
 
 	private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

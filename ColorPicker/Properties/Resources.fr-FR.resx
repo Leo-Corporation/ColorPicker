@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
 	Microsoft ResX Schema 
 	
 	Version 2.0
@@ -59,365 +59,374 @@
 			: using a System.ComponentModel.TypeConverter
 			: and then encoded with base64 encoding.
 	-->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="ColorPicker" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColorPicker" xml:space="preserve">
 	<value>ColorPicker</value>
   </data>
-	<data name="Hi" xml:space="preserve">
+  <data name="Hi" xml:space="preserve">
 	<value>Bonjour</value>
   </data>
-	<data name="GoodAfternoon" xml:space="preserve">
+  <data name="GoodAfternoon" xml:space="preserve">
 	<value>Bonne après-midi</value>
   </data>
-	<data name="GoodNight" xml:space="preserve">
+  <data name="GoodNight" xml:space="preserve">
 	<value>Bonne nuit</value>
   </data>
-	<data name="GoodEvening" xml:space="preserve">
+  <data name="GoodEvening" xml:space="preserve">
 	<value>Bonne soirée</value>
   </data>
-	<data name="Pinned" xml:space="preserve">
+  <data name="Pinned" xml:space="preserve">
 	<value>Épinglé</value>
   </data>
-	<data name="Home" xml:space="preserve">
+  <data name="Home" xml:space="preserve">
 	<value>Accueil</value>
   </data>
-	<data name="Settings" xml:space="preserve">
+  <data name="Settings" xml:space="preserve">
 	<value>Paramètres</value>
   </data>
-	<data name="History" xml:space="preserve">
+  <data name="History" xml:space="preserve">
 	<value>Historique</value>
   </data>
-	<data name="Tools" xml:space="preserve">
+  <data name="Tools" xml:space="preserve">
 	<value>Outils</value>
   </data>
-	<data name="Details" xml:space="preserve">
+  <data name="Details" xml:space="preserve">
 	<value>Détails</value>
   </data>
-	<data name="Selector" xml:space="preserve">
+  <data name="Selector" xml:space="preserve">
 	<value>Sélecteur</value>
   </data>
-	<data name="Picker" xml:space="preserve">
+  <data name="Picker" xml:space="preserve">
 	<value>Picker</value>
   </data>
-	<data name="RGB" xml:space="preserve">
+  <data name="RGB" xml:space="preserve">
 	<value>RVB</value>
   </data>
-	<data name="HEX" xml:space="preserve">
+  <data name="HEX" xml:space="preserve">
 	<value>HEX</value>
   </data>
-	<data name="HSV" xml:space="preserve">
+  <data name="HSV" xml:space="preserve">
 	<value>HSV</value>
   </data>
-	<data name="HSL" xml:space="preserve">
+  <data name="HSL" xml:space="preserve">
 	<value>HSL</value>
   </data>
-	<data name="CMYK" xml:space="preserve">
+  <data name="CMYK" xml:space="preserve">
 	<value>CMJN</value>
   </data>
-	<data name="XYZ" xml:space="preserve">
+  <data name="XYZ" xml:space="preserve">
 	<value>XYZ</value>
   </data>
-	<data name="YIQ" xml:space="preserve">
+  <data name="YIQ" xml:space="preserve">
 	<value>YIQ</value>
   </data>
-	<data name="YUV" xml:space="preserve">
+  <data name="YUV" xml:space="preserve">
 	<value>YUV</value>
   </data>
-	<data name="Bookmarks" xml:space="preserve">
+  <data name="Bookmarks" xml:space="preserve">
 	<value>Signets</value>
   </data>
-	<data name="ColorPickerMax" xml:space="preserve">
+  <data name="ColorPickerMax" xml:space="preserve">
 	<value>ColorPicker Max</value>
   </data>
-	<data name="ChromaticWheel" xml:space="preserve">
+  <data name="ChromaticWheel" xml:space="preserve">
 	<value>Roue chromatique</value>
   </data>
-	<data name="ColorTools" xml:space="preserve">
+  <data name="ColorTools" xml:space="preserve">
 	<value>Outils de Couleur</value>
   </data>
-	<data name="Creation" xml:space="preserve">
+  <data name="Creation" xml:space="preserve">
 	<value>Création</value>
   </data>
-	<data name="Converter" xml:space="preserve">
+  <data name="Converter" xml:space="preserve">
 	<value>Convertisseur</value>
   </data>
-	<data name="TextTool" xml:space="preserve">
+  <data name="TextTool" xml:space="preserve">
 	<value>Texte</value>
   </data>
-	<data name="Palette" xml:space="preserve">
+  <data name="Palette" xml:space="preserve">
 	<value>Palette</value>
   </data>
-	<data name="Gradient" xml:space="preserve">
+  <data name="Gradient" xml:space="preserve">
 	<value>Dégradé</value>
   </data>
-	<data name="Circle" xml:space="preserve">
+  <data name="Circle" xml:space="preserve">
 	<value>Cercle</value>
   </data>
-	<data name="Disc" xml:space="preserve">
+  <data name="Disc" xml:space="preserve">
 	<value>Disque</value>
   </data>
-	<data name="Shades" xml:space="preserve">
+  <data name="Shades" xml:space="preserve">
 	<value>Nuances</value>
   </data>
-	<data name="ColorValid" xml:space="preserve">
+  <data name="ColorValid" xml:space="preserve">
 	<value>La couleur est valide.</value>
   </data>
-	<data name="InvalidColor" xml:space="preserve">
+  <data name="InvalidColor" xml:space="preserve">
 	<value>La couleur est invalide.</value>
   </data>
-	<data name="Font" xml:space="preserve">
+  <data name="Font" xml:space="preserve">
 	<value>Police</value>
   </data>
-	<data name="Size" xml:space="preserve">
+  <data name="Size" xml:space="preserve">
 	<value>Taille</value>
   </data>
-	<data name="Foreground" xml:space="preserve">
+  <data name="Foreground" xml:space="preserve">
 	<value>Premier plan</value>
   </data>
-	<data name="Background" xml:space="preserve">
+  <data name="Background" xml:space="preserve">
 	<value>Arrière plan</value>
   </data>
-	<data name="Contrast" xml:space="preserve">
+  <data name="Contrast" xml:space="preserve">
 	<value>Contraste</value>
   </data>
-	<data name="Brightness" xml:space="preserve">
+  <data name="Brightness" xml:space="preserve">
 	<value>Luminosités</value>
   </data>
-	<data name="Hues" xml:space="preserve">
+  <data name="Hues" xml:space="preserve">
 	<value>Teintes</value>
   </data>
-	<data name="From" xml:space="preserve">
+  <data name="From" xml:space="preserve">
 	<value>Depuis</value>
   </data>
-	<data name="To" xml:space="preserve">
+  <data name="To" xml:space="preserve">
 	<value>À</value>
   </data>
-	<data name="Rotation" xml:space="preserve">
+  <data name="Rotation" xml:space="preserve">
 	<value>Rotation</value>
   </data>
-	<data name="DevTools" xml:space="preserve">
+  <data name="DevTools" xml:space="preserve">
 	<value>Outils de développement</value>
   </data>
-	<data name="CSS" xml:space="preserve">
+  <data name="CSS" xml:space="preserve">
 	<value>CSS</value>
   </data>
-	<data name="GetStarted" xml:space="preserve">
+  <data name="GetStarted" xml:space="preserve">
 	<value>Commencer</value>
   </data>
-	<data name="SuggestedActions" xml:space="preserve">
+  <data name="SuggestedActions" xml:space="preserve">
 	<value>Actions suggérées</value>
   </data>
-	<data name="Discover" xml:space="preserve">
+  <data name="Discover" xml:space="preserve">
 	<value>Découvrir</value>
   </data>
-	<data name="SelectColor" xml:space="preserve">
+  <data name="SelectColor" xml:space="preserve">
 	<value>Sélectionner une couleur</value>
   </data>
-	<data name="SelectChomaticDisc" xml:space="preserve">
+  <data name="SelectChomaticDisc" xml:space="preserve">
 	<value>Sélectionner depuis le disque chromatique</value>
   </data>
-	<data name="ConvertFromRGB" xml:space="preserve">
+  <data name="ConvertFromRGB" xml:space="preserve">
 	<value>Convertir depuis le RVB</value>
   </data>
-	<data name="GetContrast" xml:space="preserve">
+  <data name="GetContrast" xml:space="preserve">
 	<value>Obtenir le ratio de contraste</value>
   </data>
-	<data name="GeneratePalette" xml:space="preserve">
+  <data name="GeneratePalette" xml:space="preserve">
 	<value>Générer une palette</value>
   </data>
-	<data name="GenerateGradient" xml:space="preserve">
+  <data name="GenerateGradient" xml:space="preserve">
 	<value>Générer un dégradé</value>
   </data>
-	<data name="RedP" xml:space="preserve">
+  <data name="RedP" xml:space="preserve">
 	<value>R</value>
   </data>
-	<data name="GreenP" xml:space="preserve">
+  <data name="GreenP" xml:space="preserve">
 	<value>V</value>
   </data>
-	<data name="BlueP" xml:space="preserve">
+  <data name="BlueP" xml:space="preserve">
 	<value>B</value>
   </data>
-	<data name="EmptyBookmarks" xml:space="preserve">
+  <data name="EmptyBookmarks" xml:space="preserve">
 	<value>Vider les signets</value>
   </data>
-	<data name="Colors" xml:space="preserve">
+  <data name="Colors" xml:space="preserve">
 	<value>Couleurs</value>
   </data>
-	<data name="Gradients" xml:space="preserve">
+  <data name="Gradients" xml:space="preserve">
 	<value>Dégradés</value>
   </data>
-	<data name="Palettes" xml:space="preserve">
+  <data name="Palettes" xml:space="preserve">
 	<value>Palettes</value>
   </data>
-	<data name="EmptyHistoryMsg" xml:space="preserve">
+  <data name="EmptyHistoryMsg" xml:space="preserve">
 	<value>Êtes-vous sûr de vouloir vider ces signets ? Cette action est irréversible.</value>
   </data>
-	<data name="CheckUpdate" xml:space="preserve">
+  <data name="CheckUpdate" xml:space="preserve">
 	<value>Rechercher des mises à jour</value>
   </data>
-	<data name="Updates" xml:space="preserve">
+  <data name="Updates" xml:space="preserve">
 	<value>Mises à jour</value>
   </data>
-	<data name="Install" xml:space="preserve">
+  <data name="Install" xml:space="preserve">
 	<value>Installer</value>
   </data>
-	<data name="Theme" xml:space="preserve">
+  <data name="Theme" xml:space="preserve">
 	<value>Thème</value>
   </data>
-	<data name="Light" xml:space="preserve">
+  <data name="Light" xml:space="preserve">
 	<value>Clair</value>
   </data>
-	<data name="Dark" xml:space="preserve">
+  <data name="Dark" xml:space="preserve">
 	<value>Sombre</value>
   </data>
-	<data name="Licenses" xml:space="preserve">
+  <data name="Licenses" xml:space="preserve">
 	<value>Licences</value>
   </data>
-	<data name="Apply" xml:space="preserve">
+  <data name="Apply" xml:space="preserve">
 	<value>Appliquer</value>
   </data>
-	<data name="SeeLicenses" xml:space="preserve">
+  <data name="SeeLicenses" xml:space="preserve">
 	<value>Voir les licenses</value>
   </data>
-	<data name="ChangeTheme" xml:space="preserve">
+  <data name="ChangeTheme" xml:space="preserve">
 	<value>Changer le thème d'InternetTest.</value>
   </data>
-	<data name="Language" xml:space="preserve">
+  <data name="Language" xml:space="preserve">
 	<value>Langue</value>
   </data>
-	<data name="NeedRestartToApplyChanges" xml:space="preserve">
+  <data name="NeedRestartToApplyChanges" xml:space="preserve">
 	<value>InternetTest doit redémarrer pour appliquer les changements. Voulez-vous redémarrer maintenant ?</value>
   </data>
-	<data name="Default" xml:space="preserve">
+  <data name="Default" xml:space="preserve">
 	<value>Par défaut</value>
   </data>
-	<data name="UpToDate" xml:space="preserve">
+  <data name="UpToDate" xml:space="preserve">
 	<value>InternetTest est à jour.</value>
   </data>
-	<data name="AvailableUpdates" xml:space="preserve">
+  <data name="AvailableUpdates" xml:space="preserve">
 	<value>Des mises à jour sont disponibles.</value>
   </data>
-	<data name="InstallConfirmMsg" xml:space="preserve">
+  <data name="InstallConfirmMsg" xml:space="preserve">
 	<value>Pour installer les mises à jour, InternetTest doit redémarrer. Voulez-vous continuer ?</value>
   </data>
-	<data name="InstallVersion" xml:space="preserve">
+  <data name="InstallVersion" xml:space="preserve">
 	<value>Installer la version</value>
   </data>
-	<data name="Version" xml:space="preserve">
+  <data name="Version" xml:space="preserve">
 	<value>Version</value>
   </data>
-	<data name="ChangeLanguage" xml:space="preserve">
+  <data name="ChangeLanguage" xml:space="preserve">
 	<value>Changer la langue d'InternetTest.</value>
   </data>
-	<data name="NotifyUpdates" xml:space="preserve">
+  <data name="NotifyUpdates" xml:space="preserve">
 	<value>Afficher une notification lorsque des mises à jour sont disponibles</value>
   </data>
-	<data name="Notifications" xml:space="preserve">
+  <data name="Notifications" xml:space="preserve">
 	<value>Notifications</value>
   </data>
-	<data name="NotificationsDescription" xml:space="preserve">
+  <data name="NotificationsDescription" xml:space="preserve">
 	<value>Paramètres des notifications.</value>
   </data>
-	<data name="CheckUpdatesOnStart" xml:space="preserve">
+  <data name="CheckUpdatesOnStart" xml:space="preserve">
 	<value>Rechercher des mises à jour lors du démarrage</value>
   </data>
-	<data name="StartupPage" xml:space="preserve">
+  <data name="StartupPage" xml:space="preserve">
 	<value>Page par défaut lors du démarrage</value>
   </data>
-	<data name="OnStart" xml:space="preserve">
+  <data name="OnStart" xml:space="preserve">
 	<value>Lors du démarrage</value>
   </data>
-	<data name="OnStartDescription" xml:space="preserve">
+  <data name="OnStartDescription" xml:space="preserve">
 	<value>Paramètres qui s'appliquent lors du démarrage.</value>
   </data>
-	<data name="DataPrivacy" xml:space="preserve">
+  <data name="DataPrivacy" xml:space="preserve">
 	<value>Données et Vie privée</value>
   </data>
-	<data name="DataDescription" xml:space="preserve">
+  <data name="DataDescription" xml:space="preserve">
 	<value>Gérez vos données et votre vie privée.</value>
   </data>
-	<data name="Import" xml:space="preserve">
+  <data name="Import" xml:space="preserve">
 	<value>Importer les paramètres</value>
   </data>
-	<data name="Export" xml:space="preserve">
+  <data name="Export" xml:space="preserve">
 	<value>Exporter les paramètres</value>
   </data>
-	<data name="SettingsExportedSucessMsg" xml:space="preserve">
+  <data name="SettingsExportedSucessMsg" xml:space="preserve">
 	<value>Les paramètres ont été exportés avec succès.</value>
   </data>
-	<data name="SettingsImportedMsg" xml:space="preserve">
+  <data name="SettingsImportedMsg" xml:space="preserve">
 	<value>Les paramètres ont été importés avec succès. Pour finir le processus, ColorPicker va redémarrer.</value>
   </data>
-	<data name="ResetSettings" xml:space="preserve">
+  <data name="ResetSettings" xml:space="preserve">
 	<value>Réinitialiser les paramètres</value>
   </data>
-	<data name="SynethiaEnable" xml:space="preserve">
+  <data name="SynethiaEnable" xml:space="preserve">
 	<value>Activer l'expérience personnalisée Synethia.</value>
   </data>
-	<data name="ResetSynethia" xml:space="preserve">
+  <data name="ResetSynethia" xml:space="preserve">
 	<value>Réinitialiser les données Synethia</value>
   </data>
-	<data name="ResetSettingsConfirmation" xml:space="preserve">
+  <data name="ResetSettingsConfirmation" xml:space="preserve">
 	<value>Êtes-vous sûr de vouloir réinitialiser tous les paramètres ?</value>
   </data>
-	<data name="SynethiaDeleteMsg" xml:space="preserve">
+  <data name="SynethiaDeleteMsg" xml:space="preserve">
 	<value>Êtes-vous sûr de vouloir réinitialiser toutes les données de Synethia ? Votre expérience personnalisée sera perdue ; Cette action ne peut être annulée.</value>
+  </data>
+  <data name="ColorOptions" xml:space="preserve">
+    <value>Options de couleurs</value>
+  </data>
+  <data name="DefaultColorType" xml:space="preserve">
+    <value>Type de couleur par défaut</value>
+  </data>
+  <data name="ColorOptionsDesc" xml:space="preserve">
+    <value>La manière dont ColorPicker gère les couleurs.</value>
   </data>
 </root>

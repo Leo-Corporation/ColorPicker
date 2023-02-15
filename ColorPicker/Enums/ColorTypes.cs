@@ -21,30 +21,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ColorPicker.Classes
+namespace ColorPicker.Enums
 {
-    public class Settings
+    public enum ColorTypes
     {
-		public Settings()
-		{
-			Theme = Themes.System;
-			Language = Languages.Default;
-			DefaultColorType = ColorTypes.RGB;
-			UseSynethia = true;
-			IsFirstRun = true;
-		}
-
-		public Themes Theme { get; set; }
-		public Languages Language { get; set; }
-		public ColorTypes DefaultColorType { get; set; }
-		public bool UseSynethia { get; set; }
-		public bool IsFirstRun { get; set; }
-	}
+        RGB,
+        HEX,
+        HSV,
+        HSL,
+        CMYK,
+        XYZ,
+        YIQ,
+        YUV
+    }
 }
