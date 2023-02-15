@@ -57,6 +57,9 @@ namespace ColorPicker.Pages
 
 		private void InitUI()
 		{
+			// Select the language
+			LangComboBox.SelectedIndex = (int)Global.Settings.Language;
+
 			// Select the default theme border
 			ThemeSelectedBorder = Global.Settings.Theme switch
 			{
@@ -151,5 +154,27 @@ namespace ColorPicker.Pages
 			Application.Current.Shutdown();
 		}
 
+		private void LangComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			LangApplyBtn.Visibility = Visibility.Visible; // Show apply button
+		}
+
+		private void LangApplyBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.Language = (Languages)LangComboBox.SelectedIndex;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			LangApplyBtn.Visibility = Visibility.Hidden; // Hide apply button
+
+			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+			{
+				return;
+			}
+
+			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
+
+			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
+			Application.Current.Shutdown();
+		}
 	}
 }

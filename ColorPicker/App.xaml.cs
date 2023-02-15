@@ -40,6 +40,7 @@ public partial class App : Application
 	private void Application_Startup(object sender, StartupEventArgs e)
 	{
 		Global.ChangeTheme();
+		Global.ChangeLanguage();
 		// Bookmarks system
 		Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>($@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml") ?? new()
 		{
