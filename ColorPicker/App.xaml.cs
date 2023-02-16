@@ -24,12 +24,6 @@ SOFTWARE.
 using ColorPicker.Classes;
 using ColorPicker.Windows;
 using PeyrSharp.Env;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ColorPicker;
@@ -57,11 +51,11 @@ public partial class App : Application
 		// Pages
 		Global.SelectorPage = new();
 		Global.ChromaticWheelPage = new();
-		Global.ConverterPage = new();		
-		Global.TextPage = new();		
-		Global.PalettePage = new();		
-		Global.GradientPage = new();		
-		Global.HomePage = new();		
+		Global.ConverterPage = new();
+		Global.TextPage = new();
+		Global.PalettePage = new();
+		Global.GradientPage = new();
+		Global.HomePage = new();
 		Global.BookmarksPage = new();
 		Global.SettingsPage = new();
 

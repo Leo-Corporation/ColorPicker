@@ -28,20 +28,10 @@ using ColorPicker.UserControls;
 using PeyrSharp.Env;
 using Synethia;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ColorPicker;
 /// <summary>
@@ -80,7 +70,7 @@ public partial class MainWindow : Window
 			PageScroller.Height = (ActualHeight - (GridRow1.ActualHeight + 68) > 0) ? ActualHeight - (GridRow1.ActualHeight + 68) : 0; // Set the scroller height
 			ActionsScrollViewer.Height = ActualHeight - SideBarTop.ActualHeight - GridRow1.ActualHeight - 60;
 		};
-		Closed += (o, e) => 
+		Closed += (o, e) =>
 		{
 			if (!Global.Settings.UseSynethia) Global.SynethiaConfig = Global.Default;
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
@@ -292,7 +282,7 @@ public partial class MainWindow : Window
 	private void SettingsPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton(); 
+		UnCheckAllButton();
 		CheckButton(SettingsPageBtn, true);
 
 		PageDisplayer.Navigate(Global.SettingsPage);

@@ -24,21 +24,12 @@ SOFTWARE.
 using ColorPicker.Classes;
 using Synethia;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -46,7 +37,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class ChromaticWheelPage : Page
 {
-		bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 
 	public ChromaticWheelPage()
 	{

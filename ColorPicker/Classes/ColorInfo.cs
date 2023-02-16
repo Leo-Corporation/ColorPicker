@@ -22,31 +22,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ColorPicker.Classes
 {
-    public class ColorInfo
-    {
-        public RGB RGB { get; set; }
-        public HEX HEX { get; set; }
-        public HSV HSV { get; set; }
-        public HSL HSL { get; set; }
-        public CMYK CMYK { get; set; }
-        public XYZ XYZ { get; set; }
-        public YIQ YIQ { get; set; }
-        public YUV YUV { get; set; }
+	public class ColorInfo
+	{
+		public RGB RGB { get; set; }
+		public HEX HEX { get; set; }
+		public HSV HSV { get; set; }
+		public HSL HSL { get; set; }
+		public CMYK CMYK { get; set; }
+		public XYZ XYZ { get; set; }
+		public YIQ YIQ { get; set; }
+		public YUV YUV { get; set; }
 
-        public ColorInfo(RGB rgb)
-        {
-            RGB = rgb;
-            HEX = ColorConverter.RgbToHex(rgb);
-            HSV = ColorConverter.RgbToHsv(rgb);
-            HSL = ColorConverter.RgbToHsl(rgb);
+		public ColorInfo(RGB rgb)
+		{
+			RGB = rgb;
+			HEX = ColorConverter.RgbToHex(rgb);
+			HSV = ColorConverter.RgbToHsv(rgb);
+			HSL = ColorConverter.RgbToHsl(rgb);
 			CMYK = ColorConverter.RgbToCmyk(rgb);
 			XYZ = ColorConverter.RgbToXyz(rgb);
 			YIQ = ColorConverter.RgbToYiq(rgb);
@@ -56,13 +51,13 @@ namespace ColorPicker.Classes
 		public override string ToString()
 		{
 			return $"{Properties.Resources.RGB}: {RGB.R};{RGB.G};{RGB.B}\n" +
-                $"{Properties.Resources.HEX}: {HEX.Value}\n" +
-                $"{Properties.Resources.HSV}: {HSV.H},{HSV.S},{HSV.V}\n" +
-                $"{Properties.Resources.HSL}: {HSL.H},{HSL.S},{HSL.L}\n" +
-                $"{Properties.Resources.CMYK}: {CMYK.C},{CMYK.M},{CMYK.Y},{CMYK.K}\n" +
-                $"{Properties.Resources.XYZ}: {XYZ.X:0.00}..; {XYZ.Y:0.00}..; {XYZ.Z:0.00}..\n" +
-                $"{Properties.Resources.YIQ}: {YIQ.Y:0.00}..; {YIQ.I:0.00}..; {YIQ.Q:0.00}..\n" +
-                $"{Properties.Resources.YUV}: {YUV.Y:0.00}..; {YUV.U:0.00}..; {YUV.V:0.00}..";
+				$"{Properties.Resources.HEX}: {HEX.Value}\n" +
+				$"{Properties.Resources.HSV}: {HSV.H},{HSV.S},{HSV.V}\n" +
+				$"{Properties.Resources.HSL}: {HSL.H},{HSL.S},{HSL.L}\n" +
+				$"{Properties.Resources.CMYK}: {CMYK.C},{CMYK.M},{CMYK.Y},{CMYK.K}\n" +
+				$"{Properties.Resources.XYZ}: {XYZ.X:0.00}..; {XYZ.Y:0.00}..; {XYZ.Z:0.00}..\n" +
+				$"{Properties.Resources.YIQ}: {YIQ.Y:0.00}..; {YIQ.I:0.00}..; {YIQ.Q:0.00}..\n" +
+				$"{Properties.Resources.YUV}: {YUV.Y:0.00}..; {YUV.U:0.00}..; {YUV.V:0.00}..";
 		}
 	}
 }

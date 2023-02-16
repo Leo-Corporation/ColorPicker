@@ -36,20 +36,20 @@ namespace ColorPicker.UserControls
 	/// Interaction logic for PaletteItem.xaml
 	/// </summary>
 	public partial class PaletteItem : UserControl
-    {
+	{
 		string HexColor { get; init; }
 		ColorInfo ColorInfo { get; set; }
 		public PaletteItem(string hexColor)
-        {
-            InitializeComponent();
+		{
+			InitializeComponent();
 			HexColor = hexColor;
 			ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(HexColor)));
 
 			InitUI();
 		}
 
-        private void InitUI()
-        {
+		private void InitUI()
+		{
 			// Intitial Color
 			Color color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
 			ColorBorder.Background = new SolidColorBrush { Color = color };

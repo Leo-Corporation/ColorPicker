@@ -25,21 +25,11 @@ using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Synethia;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -47,7 +37,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class ConverterPage : Page
 {
-		bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 
 	public ConverterPage()
 	{
@@ -241,7 +231,7 @@ public partial class ConverterPage : Page
 			B1.Visibility = Visibility.Visible;
 			B2.Visibility = Visibility.Visible;
 			B3.Visibility = Visibility.Visible;
-			B4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;		
+			B4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
 		}
 
 		if (SelectedColorBtn == RgbBtn)
@@ -335,7 +325,7 @@ public partial class ConverterPage : Page
 		{
 			LoadDetails();
 		}
-		catch 
+		catch
 		{
 			// Show an error message to the user
 			ColorValidTxt.Text = Properties.Resources.InvalidColor;
@@ -382,11 +372,11 @@ public partial class ConverterPage : Page
 					Txt2.Text = split[1];
 					Txt3.Text = split[2];
 				}
-				
+
 				e.Handled = true;
 			}
 		}
-		catch {	}
+		catch { }
 	}
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)

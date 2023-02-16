@@ -23,22 +23,11 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using Synethia;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -46,7 +35,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class GradientPage : Page
 {
-		bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 
 	public GradientPage()
 	{
@@ -100,7 +89,7 @@ public partial class GradientPage : Page
 			{
 				new(ColorHelper.ColorConverter.RgbToHex(new(from.R, from.G, from.B)).Value, 0),
 				new(ColorHelper.ColorConverter.RgbToHex(new(to.R, to.G, to.B)).Value, 1),
-			}, 
+			},
 		angle);
 
 		// Load the bookmark icon

@@ -23,19 +23,16 @@ SOFTWARE.
 */
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace ColorPicker.Classes
 {
-    public class Bookmarks
-    {
-        public List<string> ColorBookmarks { get; set; }
-        public List<string> PaletteBookmarks { get; set; }
-        public List<Gradient> GradientBookmarks { get; set; }
-    }
+	public class Bookmarks
+	{
+		public List<string> ColorBookmarks { get; set; }
+		public List<string> PaletteBookmarks { get; set; }
+		public List<Gradient> GradientBookmarks { get; set; }
+	}
 
 	[XmlType("BookmarkGradientStop")]
 	public record BookmarkGradientStop
@@ -72,21 +69,21 @@ namespace ColorPicker.Classes
 			Angle = angle;
 		}
 
-        public Gradient()
-        {
-            Stops = new();
-            Angle = 0;
-        }
+		public Gradient()
+		{
+			Stops = new();
+			Angle = 0;
+		}
 
 		public bool Equals(Gradient? obj)
-        {
-            if (obj is null || obj.Stops.Count != Stops.Count || obj.Angle != Angle) return false;
-            for (int i = 0; i < obj.Stops.Count; i++)
-            {
-                if (obj.Stops[i] != Stops[i]) return false;
-            }
-            return true;
-        }
+		{
+			if (obj is null || obj.Stops.Count != Stops.Count || obj.Angle != Angle) return false;
+			for (int i = 0; i < obj.Stops.Count; i++)
+			{
+				if (obj.Stops[i] != Stops[i]) return false;
+			}
+			return true;
+		}
 
 		public override bool Equals(object obj) => Equals(obj as Gradient);
 	}

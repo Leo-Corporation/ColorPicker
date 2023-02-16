@@ -21,19 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using PeyrSharp.Env;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace ColorPicker.Classes
 {
-    public static class XmlSerializerManager
-    {
+	public static class XmlSerializerManager
+	{
 		// This method takes a generic type T and a string path as parameters
 		// It creates an XmlSerializer for type T and deserializes the object from the xml file at the given path
 		// If the file does not exist, it creates a new instance of type T and serializes it to the file
@@ -98,7 +93,7 @@ namespace ColorPicker.Classes
 			return true;
 			//try
 			//{
-				
+
 			//}
 			//catch (Exception ex)
 			//{
