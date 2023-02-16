@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Windows;
 using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
@@ -63,5 +64,14 @@ public partial class App : Application
 		Global.HomePage = new();		
 		Global.BookmarksPage = new();
 		Global.SettingsPage = new();
+
+		if (!Global.Settings.IsFirstRun)
+		{
+			new MainWindow().Show();
+		}
+		else
+		{
+			new FirstRunWindow().Show();
+		}
 	}
 }

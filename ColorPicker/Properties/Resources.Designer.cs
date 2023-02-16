@@ -61,6 +61,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I agree.
+        /// </summary>
+        public static string Agree {
+            get {
+                return ResourceManager.GetString("Agree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -259,6 +268,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The converter feature of ColorPicker allows you to convert any color type to another one. The color types are RGB, HEX, HSV, HSL, CMYK, XYZ, YIQ and YUV. You can enter a color code in any of these formats and see the corresponding codes in the other formats..
+        /// </summary>
+        public static string ConverterInfo {
+            get {
+                return ResourceManager.GetString("ConverterInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Convert from RGB.
         /// </summary>
         public static string ConvertFromRGB {
@@ -412,6 +430,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Features.
+        /// </summary>
+        public static string Features {
+            get {
+                return ResourceManager.GetString("Features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to ignore this window and continue to ColorPicker?.
+        /// </summary>
+        public static string FirstRunQuitMsg {
+            get {
+                return ResourceManager.GetString("FirstRunQuitMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Font.
         /// </summary>
         public static string Font {
@@ -507,6 +543,15 @@ namespace ColorPicker.Properties {
         public static string Gradient {
             get {
                 return ResourceManager.GetString("Gradient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The gradient feature of ColorPicker lets you generate random two-stops gradients with a specific rotation angle. You can see a preview of the gradient and its CSS code. You can also export the gradient to CSS code and use it in your web design projects..
+        /// </summary>
+        public static string GradientInfo {
+            get {
+                return ResourceManager.GetString("GradientInfo", resourceCulture);
             }
         }
         
@@ -628,6 +673,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Introducing Synethia.
+        /// </summary>
+        public static string IntroducingSynethia {
+            get {
+                return ResourceManager.GetString("IntroducingSynethia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The color is invalid..
         /// </summary>
         public static string InvalidColor {
@@ -651,6 +705,15 @@ namespace ColorPicker.Properties {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s go!.
+        /// </summary>
+        public static string LetsGo {
+            get {
+                return ResourceManager.GetString("LetsGo", resourceCulture);
             }
         }
         
@@ -696,6 +759,24 @@ namespace ColorPicker.Properties {
         public static string NeedRestartToApplyChanges {
             get {
                 return ResourceManager.GetString("NeedRestartToApplyChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No thanks.
+        /// </summary>
+        public static string NoThanks {
+            get {
+                return ResourceManager.GetString("NoThanks", resourceCulture);
             }
         }
         
@@ -889,6 +970,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The selector feature of ColorPicker enables you to choose any color from the screen by moving the cursor over it and pressing a keyboard shortcut. The chosen color will be shown in a preview box and its code will be copied to the clipboard in a desired color type..
+        /// </summary>
+        public static string SelectorInfo {
+            get {
+                return ResourceManager.GetString("SelectorInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
@@ -934,6 +1024,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skip.
+        /// </summary>
+        public static string Skip {
+            get {
+                return ResourceManager.GetString("Skip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start selection.
         /// </summary>
         public static string StartSelection {
@@ -961,6 +1060,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Synethia will then analyze this data to provide a unique experience.
+        /// </summary>
+        public static string SynethiaAnalyze {
+            get {
+                return ResourceManager.GetString("SynethiaAnalyze", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synethia collects data in ColorPicker only.
+        /// </summary>
+        public static string SynethiaDataInfo {
+            get {
+                return ResourceManager.GetString("SynethiaDataInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to reset all Synethia data? Your personalized experience will be lost; This action cannot be canceled..
         /// </summary>
         public static string SynethiaDeleteMsg {
@@ -975,6 +1092,33 @@ namespace ColorPicker.Properties {
         public static string SynethiaEnable {
             get {
                 return ResourceManager.GetString("SynethiaEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Home dashbord will recommand actions based on your usage.
+        /// </summary>
+        public static string SynethiaHome {
+            get {
+                return ResourceManager.GetString("SynethiaHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synethia is an algorithm that personnalizes your experience..
+        /// </summary>
+        public static string SynethiaInfo {
+            get {
+                return ResourceManager.GetString("SynethiaInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your data is stored on your device, anonymously. Absolutely NO data is sent to Léo Corporation..
+        /// </summary>
+        public static string SynethiaPrivacy {
+            get {
+                return ResourceManager.GetString("SynethiaPrivacy", resourceCulture);
             }
         }
         
@@ -1056,6 +1200,15 @@ namespace ColorPicker.Properties {
         public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Everyting is ready.
+        /// </summary>
+        public static string WelcomeReady {
+            get {
+                return ResourceManager.GetString("WelcomeReady", resourceCulture);
             }
         }
         

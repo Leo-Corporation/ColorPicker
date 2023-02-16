@@ -22,8 +22,10 @@
 	<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
 		<value>[base64 mime encoded serialized .NET Framework object]</value>
 	</data>
-	<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-		<value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+	<data name="Icon1" type="System.Drawing.Icon, System.Drawing"
+	mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>[base64 mime encoded string representing a byte array form of the .NET Framework
+	object]</value>
 		<comment>This is a comment</comment>
 	</data>
 				
@@ -112,10 +114,12 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0,
+			Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
+			Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ColorPicker" xml:space="preserve">
 	<value>ColorPicker</value>
@@ -448,15 +452,66 @@
 	<value>Réinitialiser les raccourcis clavier</value>
   </data>
   <data name="StartSelection" xml:space="preserve">
-    <value>Démarrer la sélection</value>
+	<value>Démarrer la sélection</value>
   </data>
   <data name="CopyColor" xml:space="preserve">
-    <value>Copier la couleur</value>
+	<value>Copier la couleur</value>
   </data>
   <data name="TextToolDesc" xml:space="preserve">
-    <value>Paramètre de l'outil de texte.</value>
+	<value>Paramètre de l'outil de texte.</value>
   </data>
   <data name="Max" xml:space="preserve">
-    <value>Max</value>
+	<value>Max</value>
+  </data>
+  <data name="FirstRunQuitMsg" xml:space="preserve">
+	<value>Voulez-vous ignorer cette fenêtre et continuer sur ColorPicker ?</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+	<value>Suivant</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+	<value>Passer</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+	<value>Fonctionnalités</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+	<value>J'accepte</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+	<value>Non merci</value>
+  </data>
+  <data name="IntroducingSynethia" xml:space="preserve">
+	<value>Voici Synethia</value>
+  </data>
+  <data name="SynethiaInfo" xml:space="preserve">
+	<value>Synethia est un algorithme qui personnalise votre expérience.</value>
+  </data>
+  <data name="SynethiaDataInfo" xml:space="preserve">
+	<value>Synethia collecte des données dans ColorPicker uniquement</value>
+  </data>
+  <data name="SynethiaAnalyze" xml:space="preserve">
+	<value>Synethia analysera ensuite ces données pour offrir une expérience unique</value>
+  </data>
+  <data name="SynethiaHome" xml:space="preserve">
+	<value>Le tableau de bord d'accueil recommandera des actions en fonction de votre utilisation</value>
+  </data>
+  <data name="SynethiaPrivacy" xml:space="preserve">
+	<value>Vos données sont stockées sur votre appareil, de manière anonyme. Absolument AUCUNE donnée n'est envoyée à Léo Corporation.</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+	<value>En avant !</value>
+  </data>
+  <data name="WelcomeReady" xml:space="preserve">
+	<value>Tout est prêt</value>
+  </data>
+  <data name="SelectorInfo" xml:space="preserve">
+    <value>La fonction de sélection de ColorPicker vous permet de choisir n'importe quelle couleur à l'écran en déplaçant le curseur sur celle-ci et en appuyant sur un raccourci clavier. La couleur choisie sera affichée dans une boîte d'aperçu et son code sera copié dans le presse-papiers dans le type de couleur souhaité.</value>
+  </data>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>La fonction de conversion de ColorPicker vous permet de convertir tout type de couleur en un autre. Les types de couleurs sont RGB, HEX, HSV, HSL, CMYK, XYZ, YIQ et YUV. Vous pouvez saisir un code couleur dans l'un de ces formats et voir les codes correspondants dans les autres formats.</value>
+  </data>
+  <data name="GradientInfo" xml:space="preserve">
+    <value>La fonction de dégradé de ColorPicker vous permet de générer des dégradés aléatoires à deux niveaux avec un angle de rotation spécifique. Vous pouvez voir un aperçu du dégradé et de son code CSS. Vous pouvez également exporter le dégradé en code CSS et l'utiliser dans vos projets de conception Web.</value>
   </data>
 </root>

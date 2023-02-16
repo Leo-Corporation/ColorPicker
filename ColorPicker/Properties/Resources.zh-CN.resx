@@ -456,15 +456,66 @@
 	<value>重置键盘快捷键</value>
   </data>
   <data name="StartSelection" xml:space="preserve">
-    <value>开始选择</value>
+	<value>开始选择</value>
   </data>
   <data name="CopyColor" xml:space="preserve">
-    <value>复制颜色</value>
+	<value>复制颜色</value>
   </data>
   <data name="TextToolDesc" xml:space="preserve">
-    <value>文本工具设置。</value>
+	<value>文本工具设置。</value>
   </data>
   <data name="Max" xml:space="preserve">
-    <value>Max</value>
+	<value>Max</value>
+  </data>
+  <data name="FirstRunQuitMsg" xml:space="preserve">
+	<value>是否要忽略此窗口并继续进行 ColorPicker？</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+	<value>下一步</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+	<value>跳过</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+	<value>特色</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+	<value>我同意</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+	<value>不，谢谢</value>
+  </data>
+  <data name="IntroducingSynethia" xml:space="preserve">
+	<value>介绍 Synethia</value>
+  </data>
+  <data name="SynethiaInfo" xml:space="preserve">
+	<value>Synethia 是一种将您的体验个性化的算法。</value>
+  </data>
+  <data name="SynethiaDataInfo" xml:space="preserve">
+	<value>Synethia 仅在 ColorPicker 中收集数据</value>
+  </data>
+  <data name="SynethiaAnalyze" xml:space="preserve">
+	<value>然后 Synethia 将分析这些数据以提供独特的体验</value>
+  </data>
+  <data name="SynethiaHome" xml:space="preserve">
+	<value>主页仪表板将根据您的使用情况推荐操作</value>
+  </data>
+  <data name="SynethiaPrivacy" xml:space="preserve">
+	<value>您的数据以匿名方式存储在您的设备上。 绝对不会向 Léo Corporation 发送任何数据。</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+	<value>我们开始！</value>
+  </data>
+  <data name="WelcomeReady" xml:space="preserve">
+	<value>一切准备就绪</value>
+  </data>
+  <data name="SelectorInfo" xml:space="preserve">
+    <value>ColorPicker的选择器功能使你可以通过将光标移到屏幕上并按键盘快捷键来选择任何颜色。所选择的颜色将显示在一个预览框中，其代码将以所需的颜色类型复制到剪贴板中。</value>
+  </data>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>ColorPicker的转换器功能允许你将任何颜色类型转换为另一种类型。颜色类型有RGB、HEX、HSV、HSL、CMYK、XYZ、YIQ和YUV。你可以用这些格式中的任何一种输入颜色代码，并看到其他格式中的相应代码。</value>
+  </data>
+  <data name="GradientInfo" xml:space="preserve">
+    <value>ColorPicker的梯度功能可以让你生成具有特定旋转角度的随机两档梯度。你可以看到梯度的预览和它的CSS代码。你也可以将梯度导出为CSS代码，并在你的网页设计项目中使用。</value>
   </data>
 </root>

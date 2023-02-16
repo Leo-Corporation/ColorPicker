@@ -401,42 +401,93 @@
 	<value>Are you sure you want to reset all Synethia data? Your personalized experience will be lost; This action cannot be canceled.</value>
   </data>
   <data name="ColorOptions" xml:space="preserve">
-    <value>Color Options</value>
+	<value>Color Options</value>
   </data>
   <data name="DefaultColorType" xml:space="preserve">
-    <value>Default color type</value>
+	<value>Default color type</value>
   </data>
   <data name="ColorOptionsDesc" xml:space="preserve">
-    <value>The way ColorPicker handle colors.</value>
+	<value>The way ColorPicker handle colors.</value>
   </data>
   <data name="KeyboardShortcuts" xml:space="preserve">
-    <value>Keyboard shortcuts</value>
+	<value>Keyboard shortcuts</value>
   </data>
   <data name="UseKeyboardShortcuts" xml:space="preserve">
-    <value>Use keyboard shortcuts</value>
+	<value>Use keyboard shortcuts</value>
   </data>
   <data name="EditShortcut" xml:space="preserve">
-    <value>Edit shortcut</value>
+	<value>Edit shortcut</value>
   </data>
   <data name="PressKeys" xml:space="preserve">
-    <value>Press a combination of keys.</value>
+	<value>Press a combination of keys.</value>
   </data>
   <data name="NeedRestartLabel" xml:space="preserve">
-    <value>ColorPicker needs to restart to apply the changes.</value>
+	<value>ColorPicker needs to restart to apply the changes.</value>
   </data>
   <data name="ResetKeyboardShortcuts" xml:space="preserve">
-    <value>Reset keyboard shortcuts</value>
+	<value>Reset keyboard shortcuts</value>
   </data>
   <data name="StartSelection" xml:space="preserve">
-    <value>Start selection</value>
+	<value>Start selection</value>
   </data>
   <data name="CopyColor" xml:space="preserve">
-    <value>Copy color</value>
+	<value>Copy color</value>
   </data>
   <data name="TextToolDesc" xml:space="preserve">
-    <value>Text tool settings.</value>
+	<value>Text tool settings.</value>
   </data>
   <data name="Max" xml:space="preserve">
-    <value>Max</value>
+	<value>Max</value>
+  </data>
+  <data name="FirstRunQuitMsg" xml:space="preserve">
+	<value>Do you want to ignore this window and continue to ColorPicker?</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+	<value>Next</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+	<value>Skip</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+	<value>Features</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+	<value>I agree</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+	<value>No thanks</value>
+  </data>
+  <data name="IntroducingSynethia" xml:space="preserve">
+	<value>Introducing Synethia</value>
+  </data>
+  <data name="SynethiaInfo" xml:space="preserve">
+	<value>Synethia is an algorithm that personnalizes your experience.</value>
+  </data>
+  <data name="SynethiaDataInfo" xml:space="preserve">
+	<value>Synethia collects data in ColorPicker only</value>
+  </data>
+  <data name="SynethiaAnalyze" xml:space="preserve">
+	<value>Synethia will then analyze this data to provide a unique experience</value>
+  </data>
+  <data name="SynethiaHome" xml:space="preserve">
+	<value>The Home dashbord will recommand actions based on your usage</value>
+  </data>
+  <data name="SynethiaPrivacy" xml:space="preserve">
+	<value>Your data is stored on your device, anonymously. Absolutely NO data is sent to Léo Corporation.</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+	<value>Let's go!</value>
+  </data>
+  <data name="WelcomeReady" xml:space="preserve">
+	<value>Everyting is ready</value>
+  </data>
+  <data name="SelectorInfo" xml:space="preserve">
+    <value>The selector feature of ColorPicker enables you to choose any color from the screen by moving the cursor over it and pressing a keyboard shortcut. The chosen color will be shown in a preview box and its code will be copied to the clipboard in a desired color type.</value>
+  </data>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>The converter feature of ColorPicker allows you to convert any color type to another one. The color types are RGB, HEX, HSV, HSL, CMYK, XYZ, YIQ and YUV. You can enter a color code in any of these formats and see the corresponding codes in the other formats.</value>
+  </data>
+  <data name="GradientInfo" xml:space="preserve">
+    <value>The gradient feature of ColorPicker lets you generate random two-stops gradients with a specific rotation angle. You can see a preview of the gradient and its CSS code. You can also export the gradient to CSS code and use it in your web design projects.</value>
   </data>
 </root>
