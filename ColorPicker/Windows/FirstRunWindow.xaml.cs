@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using ColorPicker.Classes;
+using ColorPicker.Pages.FirstRun;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,15 +40,38 @@ using System.Windows.Shapes;
 
 namespace ColorPicker.Windows
 {
-    /// <summary>
-    /// Interaction logic for FirstRunWindow.xaml
-    /// </summary>
-    public partial class FirstRunWindow : Window
-    {
-        public FirstRunWindow()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Interaction logic for FirstRunWindow.xaml
+	/// </summary>
+	public partial class FirstRunWindow : Window
+	{
+		internal WelcomePage welcomePage;
+		internal FeaturesPage featuresPage;
+		internal ThemePage themePage;
+		internal SynethiaPage synethiaPage;
+		internal JumpInPage jumpInPage = new();
+		public FirstRunWindow()
+		{
+			InitializeComponent();
+			welcomePage = new(this);
+			featuresPage = new(this);
+			themePage = new(this);
+			synethiaPage = new(this);
+			ChangePage(0);
+		}
+
+		internal void ChangePage(int pageID)
+		{
+			WindowFrame.Content = pageID switch
+			{
+				0 => welcomePage,
+				1 => featuresPage,
+				2 => themePage,
+				3 => synethiaPage,
+				4 => jumpInPage,
+				_ => welcomePage
+			};
+		}
 
 		private void CloseBtn_Click(object sender, RoutedEventArgs e)
 		{

@@ -67,7 +67,7 @@ namespace ColorPicker.Pages.FirstRun
 			Global.Settings.IsFirstRun = false;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
-			Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\InternetTest.exe");
+			Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\ColorPicker.exe");
 			Application.Current.Shutdown();
 		}
 

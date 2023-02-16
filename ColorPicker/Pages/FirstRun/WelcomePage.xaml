@@ -37,7 +37,7 @@
 				<ComboBoxItem Content="{x:Static lang:Resources.Default}"/>
 				<ComboBoxItem Content="English (United States)"/>
 				<ComboBoxItem Content="French (France)"/>
-				<ComboBoxItem Content="中文（简体）- WIP"/>
+				<ComboBoxItem Content="中文（简体）"/>
 			</ComboBox>
 		</StackPanel>
 	</Grid>

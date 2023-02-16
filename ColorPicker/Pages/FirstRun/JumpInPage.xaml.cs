@@ -58,7 +58,7 @@ namespace ColorPicker.Pages.FirstRun
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 
-			Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\InternetTest.exe");
+			Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\ColorPicker.exe");
 			Application.Current.Shutdown(); // Quit the app
 		}
 	}
