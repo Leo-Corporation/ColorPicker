@@ -49,7 +49,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class PalettePage : Page
 {
-	bool code = false; // checks if the code as already been implemented
+	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 	public PalettePage()
 	{
 		InitializeComponent();
@@ -69,7 +69,7 @@ public partial class PalettePage : Page
 			Txt3.Text = b.ToString();
 			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
 		}
-		catch { }		
+		catch { }
 		RgbBtn_Click(Global.Settings.DefaultColorType switch
 		{
 			ColorTypes.HEX => HexBtn,
@@ -80,7 +80,7 @@ public partial class PalettePage : Page
 			ColorTypes.YIQ => YiqBtn,
 			ColorTypes.YUV => YuvBtn,
 			_ => RgbBtn
-		}, null);		
+		}, null);
 	}
 	ColorInfo ColorInfo { get; set; }
 
@@ -318,7 +318,7 @@ public partial class PalettePage : Page
 				if (k == 0) ShadesPanel.Children.Add(border);
 				else if (k == 1) BrightnessPanel.Children.Add(border);
 				else HuePanel.Children.Add(border);
-			} 
+			}
 		}
 
 		// Load the bookmark icon

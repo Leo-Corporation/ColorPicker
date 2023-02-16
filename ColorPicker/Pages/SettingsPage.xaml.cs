@@ -24,6 +24,7 @@ SOFTWARE.
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Gma.System.MouseKeyHook;
+using Microsoft.Win32;
 using PeyrSharp.Env;
 using Synethia;
 using System;
@@ -102,8 +103,10 @@ namespace ColorPicker.Pages
 			ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(foreground.R, foreground.G, foreground.B) };
 			BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(background.R, background.G, background.B) };
 
+			// Checkboxes
 			UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
 			UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
+			UseSynethiaChk.IsChecked = Global.Settings.UseSynethia;
 		}
 
 		Border ThemeSelectedBorder;
@@ -363,6 +366,98 @@ namespace ColorPicker.Pages
 		{
 			Regex regex = new("[^0-9]+");
 			e.Handled = regex.IsMatch(e.Text);
+		}
+
+		private void ImportBtn_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog openFileDialog = new()
+			{
+				Filter = "XML|*.xml",
+				Title = Properties.Resources.Import
+			}; // Create file dialog
+
+			if (openFileDialog.ShowDialog() ?? true)
+			{
+				Global.Settings = XmlSerializerManager.LoadFromXml<Settings>(openFileDialog.FileName); // Import
+				XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+				MessageBox.Show(Properties.Resources.SettingsImportedMsg, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information); // Show error message
+
+				// Restart app
+				Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe"); // Start app
+				Environment.Exit(0); // Quit
+			}
+		}
+
+		private void ExportBtn_Click(object sender, RoutedEventArgs e)
+		{
+			SaveFileDialog saveFileDialog = new()
+			{
+				FileName = "ColorPickerSettings.xml",
+				Filter = "XML|*.xml",
+				Title = Properties.Resources.Export
+			}; // Create file dialog
+
+			if (saveFileDialog.ShowDialog() ?? true)
+			{
+				XmlSerializerManager.SaveToXml(Global.Settings, saveFileDialog.FileName); // Export games
+				MessageBox.Show(Properties.Resources.SettingsExportedSucessMsg, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information); // Show message
+			}
+		}
+
+
+		private void ResetSettingsLink_Click(object sender, RoutedEventArgs e)
+		{
+			if (MessageBox.Show(Properties.Resources.ResetSettingsConfirmation, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+			{
+				return;
+			}
+
+			Global.Settings = new() { IsFirstRun = false };
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+
+
+			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+			{
+				return;
+			}
+
+			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
+
+			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
+			Application.Current.Shutdown();
+		}
+
+		private void UseSynethiaChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.UseSynethia = UseSynethiaChk.IsChecked ?? true;
+			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
+		}
+
+		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
+		{
+			// Ask the user a confirmation
+			if (MessageBox.Show(Properties.Resources.SynethiaDeleteMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+			{
+				return;
+			}
+
+			// If the user wants to proceed, reset Syenthia config file.
+			Global.SynethiaConfig = Global.Default;
+			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+
+			// Ask the user if they want to restart the application to apply changes.
+			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+			{
+				return;
+			}
+
+			// If the user wants to restart the app, save and quit the app
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
+
+			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe"); // Start a new instance
+			Application.Current.Shutdown(); // Quit this current instance
 		}
 	}
 }

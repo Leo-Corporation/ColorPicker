@@ -82,6 +82,7 @@ public partial class MainWindow : Window
 		};
 		Closed += (o, e) => 
 		{
+			if (!Global.Settings.UseSynethia) Global.SynethiaConfig = Global.Default;
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml");
 		};
@@ -434,6 +435,7 @@ public partial class MainWindow : Window
 
 	private void LeavePage()
 	{
+		if (!Global.Settings.UseSynethia) return;
 		switch (PageDisplayer.Content)
 		{
 			case SelectorPage:

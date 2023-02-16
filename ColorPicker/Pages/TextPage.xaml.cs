@@ -46,7 +46,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class TextPage : Page
 {
-	bool code = false; // checks if the code as already been implemented
+		bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 
 	public TextPage()
 	{

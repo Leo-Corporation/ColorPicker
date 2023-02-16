@@ -49,7 +49,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class SelectorPage : Page
 {
-	bool code = false; // checks if the code as already been implemented
+	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 	readonly DispatcherTimer timer = new();
 	private IKeyboardMouseEvents keyboardEvents = Hook.GlobalEvents();
 	internal MiniPicker miniPicker = new(); // MiniPicker window
