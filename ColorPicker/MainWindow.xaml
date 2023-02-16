@@ -233,7 +233,7 @@
 											<ColumnDefinition Width="*"/>
 											<ColumnDefinition Width="Auto"/>
 										</Grid.ColumnDefinitions>
-										<TextBlock x:Name="PickerIconTxt" Text="&#xFD3F;" FontSize="16" FontFamily="/Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+										<TextBlock x:Name="PickerIconTxt" Text="&#xFD3F;" FontSize="16" FontFamily="/Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 										<TextBlock Text="{x:Static lang:Resources.Picker}" FontWeight="ExtraBold" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" />
 										<TextBlock Text="&#xF2A4;" FontSize="12" FontFamily="/Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center" Grid.Column="2" RenderTransformOrigin="0.5,0.5">
 											<TextBlock.RenderTransform>
@@ -248,10 +248,7 @@
 										<EventTrigger RoutedEvent="MouseEnter">
 											<BeginStoryboard>
 												<Storyboard>
-													<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="PickerIconTxt" BeginTime="00:00:00">
-														<SplineThicknessKeyFrame KeyTime="00:00:00" Value="20,0,0,0" />
-														<SplineThicknessKeyFrame KeyTime="00:00:0.3" Value="0" />
-													</ThicknessAnimationUsingKeyFrames>
+													<DoubleAnimation Storyboard.TargetProperty="FontSize" From="0" To="16" Duration="0:0:0.3" Storyboard.TargetName="PickerIconTxt"/>
 												</Storyboard>
 											</BeginStoryboard>
 										</EventTrigger>
@@ -303,7 +300,13 @@
 											<ColumnDefinition Width="*"/>
 											<ColumnDefinition Width="Auto"/>
 										</Grid.ColumnDefinitions>
-										<TextBlock x:Name="CreationIconTxt" Text="&#xF596;" FontSize="16" FontFamily="/Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+										<TextBlock x:Name="CreationIconTxt" Text="&#xF596;" FontSize="16" FontFamily="/Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+											<TextBlock.RenderTransform>
+												<TransformGroup>
+													<RotateTransform x:Name="CreationIconRotator" Angle="0"/>
+												</TransformGroup>
+											</TextBlock.RenderTransform>
+										</TextBlock>
 										<TextBlock Text="{x:Static lang:Resources.Creation}" FontWeight="ExtraBold" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" />
 										<TextBlock Text="&#xF2A4;" FontSize="12" FontFamily="/Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center" Grid.Column="2" RenderTransformOrigin="0.5,0.5">
 											<TextBlock.RenderTransform>
@@ -318,10 +321,7 @@
 										<EventTrigger RoutedEvent="MouseEnter">
 											<BeginStoryboard>
 												<Storyboard>
-													<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="CreationIconTxt" BeginTime="00:00:00">
-														<SplineThicknessKeyFrame KeyTime="00:00:00" Value="20,0,0,0" />
-														<SplineThicknessKeyFrame KeyTime="00:00:0.3" Value="0" />
-													</ThicknessAnimationUsingKeyFrames>
+													<DoubleAnimation Storyboard.TargetName="CreationIconRotator" Storyboard.TargetProperty="Angle" From="-45" To="0" Duration="0:0:0.3"/>
 												</Storyboard>
 											</BeginStoryboard>
 										</EventTrigger>
