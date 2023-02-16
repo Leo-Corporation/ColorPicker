@@ -464,4 +464,7 @@
   <data name="TextToolDesc" xml:space="preserve">
     <value>文本工具设置。</value>
   </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
 </root>

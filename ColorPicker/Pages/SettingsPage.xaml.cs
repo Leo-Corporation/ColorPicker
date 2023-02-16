@@ -25,6 +25,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Gma.System.MouseKeyHook;
 using Microsoft.Win32;
+using PeyrSharp.Core;
 using PeyrSharp.Env;
 using Synethia;
 using System;
@@ -60,8 +61,12 @@ namespace ColorPicker.Pages
 			InitUI();
 		}
 
-		private void InitUI()
+		readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
+		private async void InitUI()
 		{
+			// About section
+			VersionTxt.Text = Global.Version; // Update the current version label
+
 			// Select the language
 			LangComboBox.SelectedIndex = (int)Global.Settings.Language;
 
@@ -107,6 +112,50 @@ namespace ColorPicker.Pages
 			UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
 			UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
 			UseSynethiaChk.IsChecked = Global.Settings.UseSynethia;
+
+			if (!Global.Settings.CheckUpdateOnStart) return;
+			try
+			{
+				if (!await Internet.IsAvailableAsync()) return;
+				if (!Update.IsAvailable(Global.Version, await Update.GetLastVersionAsync(Global.LastVersionLink))) return;
+			}
+			catch { return; }
+
+			// If updates are available
+			// Update the UI
+			CheckUpdateBtn.Content = Properties.Resources.Install;
+			UpdateTxt.Text = Properties.Resources.AvailableUpdates;
+
+			// Show notification
+			notifyIcon.Visible = true; // Show
+			notifyIcon.ShowBalloonTip(5000, Properties.Resources.ColorPickerMax, Properties.Resources.AvailableUpdates, System.Windows.Forms.ToolTipIcon.Info);
+			notifyIcon.Visible = false; // Hide
+		}
+
+		private async void CheckUpdateBtn_Click(object sender, RoutedEventArgs e)
+		{
+			string lastVersion = await Update.GetLastVersionAsync(Global.LastVersionLink);
+			if (Update.IsAvailable(Global.Version, lastVersion))
+			{
+				UpdateTxt.Text = Properties.Resources.AvailableUpdates;
+
+				if (MessageBox.Show(Properties.Resources.InstallConfirmMsg, $"{Properties.Resources.InstallVersion} {lastVersion}", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.No)
+				{
+					return;
+				}
+
+				// If the user wants to proceed.
+				SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+				XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+				XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
+
+				Sys.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
+				Application.Current.Shutdown(); // Close
+			}
+			else
+			{
+				UpdateTxt.Text = Properties.Resources.UpToDate;
+			}
 		}
 
 		Border ThemeSelectedBorder;
@@ -431,7 +480,17 @@ namespace ColorPicker.Pages
 		private void UseSynethiaChk_Checked(object sender, RoutedEventArgs e)
 		{
 			Global.Settings.UseSynethia = UseSynethiaChk.IsChecked ?? true;
-			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void SeeLicensesBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
+			"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
+			"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
+			"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
+			"PeyrSharp - MIT License - © 2022-2023 Léo Corporation\n" +
+			"ColorPicker - MIT License - © 2021-2023 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 
 		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

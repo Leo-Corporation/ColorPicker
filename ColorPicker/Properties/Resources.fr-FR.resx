@@ -456,4 +456,7 @@
   <data name="TextToolDesc" xml:space="preserve">
     <value>Paramètre de l'outil de texte.</value>
   </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
 </root>
