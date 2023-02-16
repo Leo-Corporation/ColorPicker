@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,6 +43,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace ColorPicker.Pages
 {
@@ -85,6 +87,20 @@ namespace ColorPicker.Pages
 			// Load the keyboard shortcuts section
 			CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut;
 			SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut;
+
+			// Load the Text Tool section
+			System.Drawing.Text.InstalledFontCollection installedFonts = new();
+			foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
+			{
+				FontComboBox.Items.Add(fontFamily.Name);
+			}
+			FontComboBox.Text = Global.Settings.TextToolFont;
+			FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString();
+			ColorHelper.RGB foreground = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolForeground));
+			ColorHelper.RGB background = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolBackground));
+
+			ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(foreground.R, foreground.G, foreground.B) };
+			BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(background.R, background.G, background.B) };
 
 			UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
 			UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
@@ -297,6 +313,56 @@ namespace ColorPicker.Pages
 			CopyShortcutTxt.Text = "Shift+C"; // Set default value (Shift+C) to textbox
 			Global.Settings.CopyKeyboardShortcut = "Shift+C"; // Set default value
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			System.Windows.Forms.ColorDialog colorDialog = new()
+			{
+				AllowFullOpen = true,
+			}; // Create color picker/dialog
+
+			if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+			{
+				var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+				ForegroundBorder.Background = color;
+				Global.Settings.TextToolForeground = ColorHelper.ColorConverter.RgbToHex(new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B)).Value;
+				XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			}
+		}
+
+		private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			System.Windows.Forms.ColorDialog colorDialog = new()
+			{
+				AllowFullOpen = true,
+			}; // Create color picker/dialog
+
+			if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+			{
+				var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
+				BackgroundBorder.Background = color;
+				Global.Settings.TextToolBackground = ColorHelper.ColorConverter.RgbToHex(new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B)).Value;
+				XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			}
+		}
+
+		private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Global.Settings.TextToolFont = FontComboBox.SelectedItem.ToString();
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void FontSizeTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			Global.Settings.TextToolFontSize = int.Parse(FontSizeTxt.Text);
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void FontSizeTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+		{
+			Regex regex = new("[^0-9]+");
+			e.Handled = regex.IsMatch(e.Text);
 		}
 	}
 }

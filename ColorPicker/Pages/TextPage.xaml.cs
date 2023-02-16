@@ -33,6 +33,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -65,11 +66,29 @@ public partial class TextPage : Page
 		{
 			FontComboBox.Items.Add(fontFamily.Name);
 		}
-		FontComboBox.Text = "Arial";
+		FontComboBox.Text = Global.Settings.TextToolFont;
+		FontSizeTxt.Text = Global.Settings.TextToolFontSize.ToString();
 
 		// Set default Color
-		foreground = System.Drawing.Color.Black;
-		background = System.Drawing.Color.White;
+
+		ColorHelper.RGB fgd = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolForeground));
+		ColorHelper.RGB bgd = ColorHelper.ColorConverter.HexToRgb(new(Global.Settings.TextToolBackground));
+
+		foreground = System.Drawing.Color.FromArgb(fgd.R, fgd.G, fgd.B);
+		background = System.Drawing.Color.FromArgb(bgd.R, bgd.G, bgd.B);
+
+		var foreBrush = new SolidColorBrush { Color = Color.FromRgb(fgd.R, fgd.G, fgd.B) }; // Set color
+		var backBrush = new SolidColorBrush { Color = Color.FromRgb(bgd.R, bgd.G, bgd.B) }; // Set color
+
+		RegularTxt.Foreground = foreBrush; // Set foreground color
+		ItalicTxt.Foreground = foreBrush; // Set foreground color
+		BoldTxt.Foreground = foreBrush; // Set foreground color
+
+		RegularTxt.Background = backBrush; // Set background color
+		ItalicTxt.Background = backBrush; // Set background color
+		BoldTxt.Background = backBrush; // Set background color
+		TextPanel.Background = backBrush; // Set background color
+
 		LoadConstrastUI();
 	}
 

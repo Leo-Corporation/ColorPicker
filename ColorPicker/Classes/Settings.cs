@@ -44,6 +44,10 @@ namespace ColorPicker.Classes
 			SelectKeyboardShortcut = "Shift+S";
 			CopyKeyboardShortcut = "Shift+C";
 			UseKeyboardShortcuts = true;
+			TextToolFont = "Arial";
+			TextToolFontSize = 12;
+			TextToolForeground = "#000000";
+			TextToolBackground = "#FFFFFF";
 		}
 
 		public Themes Theme { get; set; }
@@ -56,5 +60,9 @@ namespace ColorPicker.Classes
 		public string SelectKeyboardShortcut { get; set; }
 		public string CopyKeyboardShortcut { get; set; }
 		public bool UseKeyboardShortcuts { get; set; }
+		public string TextToolFont { get; set; }
+		public int TextToolFontSize { get; set; }
+		public string TextToolForeground { get; set; }
+		public string TextToolBackground { get; set; }
 	}
 }

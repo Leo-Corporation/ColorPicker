@@ -167,12 +167,12 @@
 						<Border Background="{Binding Source={StaticResource Background3}}" Padding="5" Margin="10 5 0 5" CornerRadius="5" HorizontalAlignment="Left">
 							<TextBlock x:Name="SelectShortcutTxt" Text="Shift+S" FontFamily="Consolas" />
 						</Border>
-						<Button Content="&#xF3DE;" Padding="5" x:Name="EditSelectShortcutBtn" Click="EditSelectShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
+						<Button Content="&#xF3DE;" Padding="5" x:Name="EditSelectShortcutBtn" Click="EditSelectShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 							</Button.ToolTip>
 						</Button>
-						<Button Content="&#xF19A;" Padding="5" x:Name="ResetSelectShortcutBtn" Click="ResetSelectShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0 5 5 5" VerticalAlignment="Center">
+						<Button Content="&#xF19A;" Padding="5" x:Name="ResetSelectShortcutBtn" Click="ResetSelectShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" Margin="0 5 5 5" VerticalAlignment="Center">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.ResetKeyboardShortcuts}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 							</Button.ToolTip>
@@ -184,12 +184,12 @@
 						<Border Background="{Binding Source={StaticResource Background3}}" Padding="5" Margin="10 5 0 5" CornerRadius="5" HorizontalAlignment="Left">
 							<TextBlock x:Name="CopyShortcutTxt" Text="Shift+S" FontFamily="Consolas" />
 						</Border>
-						<Button Content="&#xF3DE;" Padding="5" x:Name="EditCopyShortcutBtn" Click="EditCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
+						<Button Content="&#xF3DE;" Padding="5" x:Name="EditCopyShortcutBtn" Click="EditCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" Margin="5" VerticalAlignment="Center">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.EditShortcut}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 							</Button.ToolTip>
 						</Button>
-						<Button Content="&#xF19A;" Padding="5" x:Name="ResetCopyShortcutBtn" Click="ResetCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" FontSize="14" Margin="0 5 5 5" VerticalAlignment="Center">
+						<Button Content="&#xF19A;" Padding="5" x:Name="ResetCopyShortcutBtn" Click="ResetCopyShortcutBtn_Click" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Style="{DynamicResource DefaultButton}" Background="{Binding Source={StaticResource Background3}}" Foreground="{Binding Source={StaticResource Foreground1}}" FontSize="14" Margin="0 5 5 5" VerticalAlignment="Center">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.ResetKeyboardShortcuts}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}" />
 							</Button.ToolTip>
@@ -198,6 +198,49 @@
 					</StackPanel>
 					<TextBlock Text="{x:Static lang:Resources.NeedRestartLabel}" TextWrapping="Wrap" FontStyle="Italic" Margin="10,5,0,5" />
 				</StackPanel>
+			</Expander>
+
+			<Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource CardBackground}}" Foreground="{Binding Source={StaticResource Foreground1}}">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+                        <TextBlock Text="&#xF793;" FontSize="22" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.TextTool}" FontSize="18" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="10,0,0,0"/>
+							<TextBlock Text="{x:Static lang:Resources.TextToolDesc}" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap"/>
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+
+				<StackPanel Margin="10" Orientation="Horizontal">
+					<TextBlock Text="{x:Static lang:Resources.Font}" VerticalAlignment="Center" Margin="0,0,10,0" />
+					<Border Background="{Binding Source={StaticResource CardBackground}}" CornerRadius="5">
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+
+						</Border.Effect>
+						<ComboBox IsEditable="True" MinWidth="100" MaxWidth="150" SelectionChanged="FontComboBox_SelectionChanged" BorderThickness="0" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FontComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" />
+					</Border>
+					<TextBlock Text="{x:Static lang:Resources.Size}" VerticalAlignment="Center" Margin="10,0,10,0" />
+					<Border x:Name="B2" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+						<TextBox x:Name="FontSizeTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="FontSizeTxt_TextChanged" Background="Transparent" TextAlignment="Center" PreviewTextInput="FontSizeTxt_PreviewTextInput"/>
+					</Border>
+					<TextBlock Text="{x:Static lang:Resources.Foreground}" VerticalAlignment="Center" Margin="10,0,10,0" />
+					<Border x:Name="ForegroundBorder" BorderThickness="0" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Foreground1}}" Width="30" Height="30" Cursor="Hand" >
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+					</Border>
+					<TextBlock Text="{x:Static lang:Resources.Background}" VerticalAlignment="Center" Margin="10,0,10,0" />
+					<Border x:Name="BackgroundBorder" BorderThickness="0" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Background1}}" Width="30" Height="30" Cursor="Hand" >
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+					</Border>
+				</StackPanel>
+
 			</Expander>
 		</StackPanel>
 	</Grid>

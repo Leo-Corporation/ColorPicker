@@ -453,4 +453,7 @@
   <data name="CopyColor" xml:space="preserve">
     <value>Copier la couleur</value>
   </data>
+  <data name="TextToolDesc" xml:space="preserve">
+    <value>Paramètre de l'outil de texte.</value>
+  </data>
 </root>

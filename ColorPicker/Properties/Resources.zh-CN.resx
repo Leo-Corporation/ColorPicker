@@ -461,4 +461,7 @@
   <data name="CopyColor" xml:space="preserve">
     <value>复制颜色</value>
   </data>
+  <data name="TextToolDesc" xml:space="preserve">
+    <value>文本工具设置。</value>
+  </data>
 </root>
