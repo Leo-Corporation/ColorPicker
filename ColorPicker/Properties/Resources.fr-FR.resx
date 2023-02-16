@@ -514,4 +514,7 @@
   <data name="GradientInfo" xml:space="preserve">
     <value>La fonction de dégradé de ColorPicker vous permet de générer des dégradés aléatoires à deux niveaux avec un angle de rotation spécifique. Vous pouvez voir un aperçu du dégradé et de son code CSS. Vous pouvez également exporter le dégradé en code CSS et l'utiliser dans vos projets de conception Web.</value>
   </data>
+  <data name="WelcomeDesc" xml:space="preserve">
+    <value>Bienvenue dans ColorPicker, l'outil ultime pour choisir, convertir et générer des couleurs.</value>
+  </data>
 </root>

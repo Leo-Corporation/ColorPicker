@@ -510,4 +510,7 @@
   <data name="GradientInfo" xml:space="preserve">
     <value>The gradient feature of ColorPicker lets you generate random two-stops gradients with a specific rotation angle. You can see a preview of the gradient and its CSS code. You can also export the gradient to CSS code and use it in your web design projects.</value>
   </data>
+  <data name="WelcomeDesc" xml:space="preserve">
+    <value>Welcome to ColorPicker, the ultimate tool for picking, converting and generating colors.</value>
+  </data>
 </root>

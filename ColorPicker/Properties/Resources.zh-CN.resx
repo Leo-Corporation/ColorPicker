@@ -518,4 +518,7 @@
   <data name="GradientInfo" xml:space="preserve">
     <value>ColorPicker的梯度功能可以让你生成具有特定旋转角度的随机两档梯度。你可以看到梯度的预览和它的CSS代码。你也可以将梯度导出为CSS代码，并在你的网页设计项目中使用。</value>
   </data>
+  <data name="WelcomeDesc" xml:space="preserve">
+    <value>欢迎来到ColorPicker，这是一款用于挑选、转换和生成颜色的终极工具。</value>
+  </data>
 </root>

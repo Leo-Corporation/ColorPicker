@@ -1204,6 +1204,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome to ColorPicker, the ultimate tool for picking, converting and generating colors..
+        /// </summary>
+        public static string WelcomeDesc {
+            get {
+                return ResourceManager.GetString("WelcomeDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Everyting is ready.
         /// </summary>
         public static string WelcomeReady {
