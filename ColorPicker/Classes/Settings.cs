@@ -41,6 +41,9 @@ namespace ColorPicker.Classes
 			UseSynethia = true;
 			IsFirstRun = true;
 			CheckUpdateOnStart = true;
+			SelectKeyboardShortcut = "Shift+S";
+			CopyKeyboardShortcut = "Shift+C";
+			UseKeyboardShortcuts = true;
 		}
 
 		public Themes Theme { get; set; }
@@ -50,5 +53,8 @@ namespace ColorPicker.Classes
 		public bool UseSynethia { get; set; }
 		public bool IsFirstRun { get; set; }
 		public bool CheckUpdateOnStart { get; set; }
+		public string SelectKeyboardShortcut { get; set; }
+		public string CopyKeyboardShortcut { get; set; }
+		public bool UseKeyboardShortcuts { get; set; }
 	}
 }

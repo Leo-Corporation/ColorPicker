@@ -39,6 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
+	<None Include="..\.editorconfig" Link=".editorconfig" />
 	<None Include="..\.github\images\logo.png">
 	  <Pack>True</Pack>
 	  <PackagePath>\</PackagePath>

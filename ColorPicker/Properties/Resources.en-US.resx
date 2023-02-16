@@ -421,12 +421,36 @@
 	<value>Are you sure you want to reset all Synethia data? Your personalized experience will be lost; This action cannot be canceled.</value>
   </data>
   <data name="ColorOptions" xml:space="preserve">
-    <value>Color Options</value>
+	<value>Color Options</value>
   </data>
   <data name="DefaultColorType" xml:space="preserve">
-    <value>Default color type</value>
+	<value>Default color type</value>
   </data>
   <data name="ColorOptionsDesc" xml:space="preserve">
-    <value>The way ColorPicker handle colors.</value>
+	<value>The way ColorPicker handle colors.</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+	<value>Keyboard shortcuts</value>
+  </data>
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
+	<value>Use keyboard shortcuts</value>
+  </data>
+  <data name="EditShortcut" xml:space="preserve">
+	<value>Edit shortcut</value>
+  </data>
+  <data name="PressKeys" xml:space="preserve">
+	<value>Press a combination of keys.</value>
+  </data>
+  <data name="NeedRestartLabel" xml:space="preserve">
+	<value>ColorPicker needs to restart to apply the changes.</value>
+  </data>
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
+	<value>Reset keyboard shortcuts</value>
+  </data>
+  <data name="StartSelection" xml:space="preserve">
+    <value>Start selection</value>
+  </data>
+  <data name="CopyColor" xml:space="preserve">
+    <value>Copy color</value>
   </data>
 </root>

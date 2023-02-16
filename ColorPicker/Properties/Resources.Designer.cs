@@ -268,6 +268,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy color.
+        /// </summary>
+        public static string CopyColor {
+            get {
+                return ResourceManager.GetString("CopyColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation.
         /// </summary>
         public static string Creation {
@@ -363,6 +372,15 @@ namespace ColorPicker.Properties {
         public static string Discover {
             get {
                 return ResourceManager.GetString("Discover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit shortcut.
+        /// </summary>
+        public static string EditShortcut {
+            get {
+                return ResourceManager.GetString("EditShortcut", resourceCulture);
             }
         }
         
@@ -619,6 +637,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keyboard shortcuts.
+        /// </summary>
+        public static string KeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("KeyboardShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -642,6 +669,15 @@ namespace ColorPicker.Properties {
         public static string Light {
             get {
                 return ResourceManager.GetString("Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes..
+        /// </summary>
+        public static string NeedRestartLabel {
+            get {
+                return ResourceManager.GetString("NeedRestartLabel", resourceCulture);
             }
         }
         
@@ -736,11 +772,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press a combination of keys..
+        /// </summary>
+        public static string PressKeys {
+            get {
+                return ResourceManager.GetString("PressKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to R.
         /// </summary>
         public static string RedP {
             get {
                 return ResourceManager.GetString("RedP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset keyboard shortcuts.
+        /// </summary>
+        public static string ResetKeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("ResetKeyboardShortcuts", resourceCulture);
             }
         }
         
@@ -871,6 +925,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start selection.
+        /// </summary>
+        public static string StartSelection {
+            get {
+                return ResourceManager.GetString("StartSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default page on start.
         /// </summary>
         public static string StartupPage {
@@ -957,6 +1020,15 @@ namespace ColorPicker.Properties {
         public static string UpToDate {
             get {
                 return ResourceManager.GetString("UpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use keyboard shortcuts.
+        /// </summary>
+        public static string UseKeyboardShortcuts {
+            get {
+                return ResourceManager.GetString("UseKeyboardShortcuts", resourceCulture);
             }
         }
         

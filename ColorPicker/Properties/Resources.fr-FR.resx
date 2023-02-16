@@ -421,12 +421,36 @@
 	<value>Êtes-vous sûr de vouloir réinitialiser toutes les données de Synethia ? Votre expérience personnalisée sera perdue ; Cette action ne peut être annulée.</value>
   </data>
   <data name="ColorOptions" xml:space="preserve">
-    <value>Options de couleurs</value>
+	<value>Options de couleurs</value>
   </data>
   <data name="DefaultColorType" xml:space="preserve">
-    <value>Type de couleur par défaut</value>
+	<value>Type de couleur par défaut</value>
   </data>
   <data name="ColorOptionsDesc" xml:space="preserve">
-    <value>La manière dont ColorPicker gère les couleurs.</value>
+	<value>La manière dont ColorPicker gère les couleurs.</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+	<value>Raccourcis clavier</value>
+  </data>
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
+	<value>Utiliser les raccourcis clavier</value>
+  </data>
+  <data name="EditShortcut" xml:space="preserve">
+	<value>Modifier le raccourci</value>
+  </data>
+  <data name="PressKeys" xml:space="preserve">
+	<value>Appuyez sur une combinaison de touches.</value>
+  </data>
+  <data name="NeedRestartLabel" xml:space="preserve">
+	<value>ColorPicker doit redémarrer pour appliquer les changements.</value>
+  </data>
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
+	<value>Réinitialiser les raccourcis clavier</value>
+  </data>
+  <data name="StartSelection" xml:space="preserve">
+    <value>Démarrer la sélection</value>
+  </data>
+  <data name="CopyColor" xml:space="preserve">
+    <value>Copier la couleur</value>
   </data>
 </root>

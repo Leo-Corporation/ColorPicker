@@ -51,13 +51,12 @@ public partial class SelectorPage : Page
 {
 	bool code = false; // checks if the code as already been implemented
 	readonly DispatcherTimer timer = new();
-	private readonly IKeyboardMouseEvents keyboardEvents;
+	private IKeyboardMouseEvents keyboardEvents = Hook.GlobalEvents();
 	internal MiniPicker miniPicker = new(); // MiniPicker window
 
 	public SelectorPage()
 	{
 		InitializeComponent();
-		keyboardEvents = Hook.GlobalEvents();
 
 
 		InitUI();
@@ -111,16 +110,18 @@ public partial class SelectorPage : Page
 		};
 
 		// Register Keyboard Shortcuts
-
+		keyboardEvents = Hook.GlobalEvents();
 		Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
 		{
-			{ Combination.FromString("Control+Shift+C"), HandleCopyKeyboard },
-			{ Combination.FromString("Control+Shift+S"), HandleSelectKeyboard }
+			{ Combination.FromString(Global.Settings.CopyKeyboardShortcut), HandleCopyKeyboard },
+			{ Combination.FromString(Global.Settings.SelectKeyboardShortcut), HandleSelectKeyboard }
 		});
 	}
 
 	private void HandleSelectKeyboard()
 	{
+		if (!Global.Settings.UseKeyboardShortcuts) return;
+
 		selecting = !selecting;
 		UpdateSelectionState(selecting);
 		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
@@ -128,6 +129,8 @@ public partial class SelectorPage : Page
 
 	private void HandleCopyKeyboard()
 	{
+		if (!Global.Settings.UseKeyboardShortcuts) return;
+
 		Clipboard.SetText(Global.Settings.DefaultColorType switch
 		{
 			ColorTypes.HEX => HexTxt.Text,

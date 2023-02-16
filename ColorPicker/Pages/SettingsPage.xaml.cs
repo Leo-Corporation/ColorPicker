@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using Gma.System.MouseKeyHook;
 using PeyrSharp.Env;
 using Synethia;
 using System;
@@ -49,6 +50,7 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class SettingsPage : Page
 	{
+		private IKeyboardMouseEvents keyboardEvents = Hook.GlobalEvents();
 		public SettingsPage()
 		{
 			InitializeComponent();
@@ -80,7 +82,12 @@ namespace ColorPicker.Pages
 			// Load the default page ComboBox
 			PageComboBox.SelectedIndex = (int)Global.Settings.DefaultPage;
 
+			// Load the keyboard shortcuts section
+			CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut;
+			SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut;
+
 			UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
+			UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
 		}
 
 		Border ThemeSelectedBorder;
@@ -114,7 +121,7 @@ namespace ColorPicker.Pages
 			{
 				return;
 			}
-			
+
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 
@@ -200,6 +207,95 @@ namespace ColorPicker.Pages
 		private void UpdateOnStartChk_Checked(object sender, RoutedEventArgs e)
 		{
 			Global.Settings.CheckUpdateOnStart = UpdateOnStartChk.IsChecked ?? true;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		bool selectingKeys = false, fromSelect = false;
+		List<string> pressedKeys = new();
+		private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			EditSelectShortcutBtn.Content = !selectingKeys ? "\uF295" : "\uF3DE"; // Set text
+
+			if (selectingKeys)
+			{
+				keyboardEvents.KeyDown -= KeyboardEvents_KeyDown;
+				EditCopyShortcutBtn.IsEnabled = true;
+				fromSelect = false;
+				if (pressedKeys.Count == 0)
+				{
+					SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut;
+				}
+				else
+				{
+					Global.Settings.SelectKeyboardShortcut = SelectShortcutTxt.Text;
+					XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+				}
+			}
+			else
+			{
+				fromSelect = true;
+				EditCopyShortcutBtn.IsEnabled = false;
+				SelectShortcutTxt.Text = "";
+				keyboardEvents.KeyDown += KeyboardEvents_KeyDown;
+			}
+			selectingKeys = !selectingKeys;
+			pressedKeys.Clear();
+		}
+
+		private void KeyboardEvents_KeyDown(object? sender, System.Windows.Forms.KeyEventArgs e)
+		{
+			if (pressedKeys.Contains(e.KeyCode.ToString())) return;
+			pressedKeys.Add(e.KeyCode.ToString());
+
+			if (fromSelect) SelectShortcutTxt.Text += (SelectShortcutTxt.Text.Length == 0) ? e.KeyCode.ToString() : $"+{e.KeyCode}";
+			else CopyShortcutTxt.Text += (CopyShortcutTxt.Text.Length == 0) ? e.KeyCode.ToString() : $"+{e.KeyCode}";
+		}
+
+		private void ResetSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			SelectShortcutTxt.Text = "Shift+S"; // Set default value (Shift+S) to textbox
+			Global.Settings.SelectKeyboardShortcut = "Shift+S"; // Set default value
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void UseKeyboardShortcutsChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.UseKeyboardShortcuts = UseKeyboardShortcutsChk.IsChecked ?? true;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void EditCopyShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			fromSelect = false;
+			EditCopyShortcutBtn.Content = !selectingKeys ? "\uF295" : "\uF3DE"; // Set text
+			if (selectingKeys)
+			{
+				keyboardEvents.KeyDown -= KeyboardEvents_KeyDown;
+				EditSelectShortcutBtn.IsEnabled = true;
+				if (pressedKeys.Count == 0)
+				{
+					CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut;
+				}
+				else
+				{
+					Global.Settings.CopyKeyboardShortcut = CopyShortcutTxt.Text;
+					XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+				}
+			}
+			else
+			{
+				CopyShortcutTxt.Text = "";
+				keyboardEvents.KeyDown += KeyboardEvents_KeyDown;
+				EditSelectShortcutBtn.IsEnabled = false;
+			}
+			selectingKeys = !selectingKeys;
+			pressedKeys.Clear();
+		}
+
+		private void ResetCopyShortcutBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CopyShortcutTxt.Text = "Shift+C"; // Set default value (Shift+C) to textbox
+			Global.Settings.CopyKeyboardShortcut = "Shift+C"; // Set default value
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 	}
