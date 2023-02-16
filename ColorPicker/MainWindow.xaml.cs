@@ -87,6 +87,8 @@ public partial class MainWindow : Window
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml");
 		};
 
+		WindowState = Global.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal;
+
 		PageCard.OnCardClick += PageCard_OnCardClick;
 		ActionCard.OnCardClick += PageCard_OnCardClick;
 		ColorItem.GoClick += PageCard_OnCardClick;
@@ -236,8 +238,8 @@ public partial class MainWindow : Window
 		WindowBorder.CornerRadius = WindowState == WindowState.Maximized ? new(0) : new(5); // Set
 
 		// Update settings information
-		/*Global.Settings.IsMaximized = WindowState == WindowState.Maximized;
-		SettingsManager.Save();*/
+		Global.Settings.IsMaximized = WindowState == WindowState.Maximized;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 	}
 
 	private void DefineMaximumSize()

@@ -48,6 +48,7 @@ namespace ColorPicker.Classes
 			TextToolFontSize = 12;
 			TextToolForeground = "#000000";
 			TextToolBackground = "#FFFFFF";
+			IsMaximized = false;
 		}
 
 		public Themes Theme { get; set; }
@@ -64,5 +65,6 @@ namespace ColorPicker.Classes
 		public int TextToolFontSize { get; set; }
 		public string TextToolForeground { get; set; }
 		public string TextToolBackground { get; set; }
+		public bool IsMaximized { get; set; }
 	}
 }
