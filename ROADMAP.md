@@ -5,10 +5,10 @@
 ColorPicker Max, codename “Project Spectrum” is the next major iteration of Léo Corporation’s popular software ColorPicker. This new version will be written using the latest features of .NET and C#. It will be a complete rewrite of ColorPicker from the ground up. It will include a brand-new designed based on InternetTest Pro’s. It will also feature an integration with the newly launched Synethia algorithm library.
 
 ## Features
-- [ ]	Picker
-    - [ ]	Selector
+- [x]	Picker
+    - [x]	Selector
         - [x]	Possibility to select a specific color using different sliders.
-        - [ ]	Possibility to select a color from a pixel on the screen.
+        - [x]	Possibility to select a color from a pixel on the screen.
         - [x]	Possibility to choose a color randomly.
         - [x]	All the color’s details should be available on a dedicated panel:
             - [x]	RGB Values are visible next to the sidebar and also in the panel
@@ -32,51 +32,51 @@ ColorPicker Max, codename “Project Spectrum” is the next major iteration of 
         - [x] Possibility to set the font and the font size.
         - [x] Possibility to set the text foreground color and background color.
         - [x] Possibility to get the contrast ratio between the foreground and background color. -> The ratio will be indicated by an arrow alongside a scale.
-- [ ] Creation
-    - [ ] Palette
-        - [ ] Possibility to get different shades of a specified color.
-        - [ ] Possibility to get different brightness of a specified color.
-        - [ ] Possibility to get different hues of a specified color.
-        - [ ] Possibility to bookmark the color palette/save it for later.
-        - [ ] Possibility to set the color in every color type.
-    - [ ] Gradient
-        - [ ] Possibility to generate a random gradient with two stops.
-        - [ ] Possibility to change the rotation of the gradient.
-        - [ ] Possibility to export the gradient as CSS.
-        - [ ] Possibility to bookmark the gradient.
-- [ ] Home
-    - [ ] Dashboard with most relevant features for the user
-    - [ ] Relevant actions are also displayed in a section of the dashboard
-    - [ ] Least relevant features for the user are displayed in the “Discover” section
-- [ ] Bookmarks
-    - [ ] The user interface features the following categories:
-        - [ ] Colors (regular colors)
-        - [ ] Palette (a set of generated colors)
-        - [ ] Gradient (the gradient with all its parameters)
-    - [ ] Possibility to remove a specific color.
-    - [ ] Possibility to remove all bookmarks.
+- [x] Creation
+    - [x] Palette
+        - [x] Possibility to get different shades of a specified color.
+        - [x] Possibility to get different brightness of a specified color.
+        - [x] Possibility to get different hues of a specified color.
+        - [x] Possibility to bookmark the color palette/save it for later.
+        - [x] Possibility to set the color in every color type.
+    - [x] Gradient
+        - [x] Possibility to generate a random gradient with two stops.
+        - [x] Possibility to change the rotation of the gradient.
+        - [x] Possibility to export the gradient as CSS.
+        - [x] Possibility to bookmark the gradient.
+- [x] Home
+    - [x] Dashboard with most relevant features for the user
+    - [x] Relevant actions are also displayed in a section of the dashboard
+    - [x] Least relevant features for the user are displayed in the “Discover” section
+- [x] Bookmarks
+    - [x] The user interface features the following categories:
+        - [x] Colors (regular colors)
+        - [x] Palette (a set of generated colors)
+        - [x] Gradient (the gradient with all its parameters)
+    - [x] Possibility to remove a specific color.
+    - [x] Possibility to remove all bookmarks.
 - Settings
-    - [ ] Possibility to change the theme.
-    - [ ] Possibility to change the language.
-    - [ ] Possibility to set the default color type.
-    - [ ] Possibility to set the default page on start.
-    - [ ] Possibility to customize the keyboard shortcuts.
-    - [ ] Possibility to set the default values of the text tool.
-    - [ ] Possibility to manage the data:
-        - [ ] Reset settings.
-        - [ ] Import/Export settings.
-        - [ ] Enable/disable Synethia .
-    - [ ] About section with update settings and credits (licenses)
-- [ ] Main window
+    - [x] Possibility to change the theme.
+    - [x] Possibility to change the language.
+    - [x] Possibility to set the default color type.
+    - [x] Possibility to set the default page on start.
+    - [x] Possibility to customize the keyboard shortcuts.
+    - [x] Possibility to set the default values of the text tool.
+    - [x] Possibility to manage the data:
+        - [x] Reset settings.
+        - [x] Import/Export settings.
+        - [x] Enable/disable Synethia .
+    - [x] About section with update settings and credits (licenses)
+- [x] Main window
     - [x] The background is a mesh gradient with subtle colors.
     - [x] The window is resizable and responsive.
     - [x] Basic window behavior (maximize, restore, minimize, close)
     - [x] Possibility to pin the window (always on top)
-    - [ ] A side bar is present on the left side:
-        - [ ] Main features are inside of colorful squares (Home, Bookmarks and settings)
-        - [ ] A second category for other features is under the first one
-        - [ ] Each feature is grouped by category; the user can expand a category when clicking on the category button.
-        - [ ] All of the icons are animated.
+    - [x] A side bar is present on the left side:
+        - [x] Main features are inside of colorful squares (Home, Bookmarks and settings)
+        - [x] A second category for other features is under the first one
+        - [x] Each feature is grouped by category; the user can expand a category when clicking on the category button.
+        - [x] All of the icons are animated.
 
 ## User Interface and User eXperience (UI/UX)
 To recap, the user interface looks similar to the one used in InternetTest Pro. The title of the app is shown to user with a welcome message underneath. Each mesh gradient used for the background should adapt to the light or dark theme. Synethia manages the user experience.
