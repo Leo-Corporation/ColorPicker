@@ -23,38 +23,49 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Windows;
+using PeyrSharp.Env;
 using System.Windows;
 
 namespace ColorPicker;
-
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
 public partial class App : Application
 {
-	protected override void OnStartup(StartupEventArgs e)
+	private void Application_Startup(object sender, StartupEventArgs e)
 	{
-		SettingsManager.Load(); // Load settings
-		HistoryManager.Load(); // Load the color history
-
-		Global.ChangeTheme(); // Change the theme
-		Global.ChangeLanguage(); // Change the language
-
-		Global.SettingsPage = new(); // Create a new SettingsPage
-		Global.PickerPage = new(); // Create a new PickerPage
-		Global.ConverterPage = new(); // Create a new ConverterPage
-		Global.PalettePage = new(); // Create a new ConverterPage
-
-		if (Global.Settings.IsFirstRun.Value)
+		Global.ChangeTheme();
+		Global.ChangeLanguage();
+		// Bookmarks system
+		Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>($@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml") ?? new()
 		{
-			new FirstRunWindow().Show(); // Show the "First run" experience
+			ColorBookmarks = new(),
+			PaletteBookmarks = new(),
+			GradientBookmarks = new()
+		};
+
+		if (Global.Bookmarks.ColorBookmarks is null) Global.Bookmarks.ColorBookmarks = new();
+		if (Global.Bookmarks.PaletteBookmarks is null) Global.Bookmarks.PaletteBookmarks = new();
+		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = new();
+
+		// Pages
+		Global.SelectorPage = new();
+		Global.ChromaticWheelPage = new();
+		Global.ConverterPage = new();
+		Global.TextPage = new();
+		Global.PalettePage = new();
+		Global.GradientPage = new();
+		Global.HomePage = new();
+		Global.BookmarksPage = new();
+		Global.SettingsPage = new();
+
+		if (!Global.Settings.IsFirstRun)
+		{
+			new MainWindow().Show();
 		}
 		else
 		{
-			int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
-
-			new MainWindow(pageID == null ? Global.Settings.StartupPage : (Enums.Pages)pageID).Show(); // Launch ColorPicker
-			Global.CreateJumpLists(); // Create the jump lists
+			new FirstRunWindow().Show();
 		}
 	}
 }

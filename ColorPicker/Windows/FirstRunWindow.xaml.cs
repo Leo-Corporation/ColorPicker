@@ -21,67 +21,58 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using ColorPicker.Classes;
-using ColorPicker.Pages.FirstRunPages;
-using System.Diagnostics;
-using System.IO;
+using ColorPicker.Pages.FirstRun;
 using System.Windows;
 
-namespace ColorPicker.Windows;
-
-/// <summary>
-/// Interaction logic for FirstRunWindow.xaml
-/// </summary>
-public partial class FirstRunWindow : Window
+namespace ColorPicker.Windows
 {
-	static WelcomePage WelcomePage => new(); // PageID = 0
-	static TutorialPage TutorialPage => new(); // PageID = 1
-	static ThemePage ThemePage => new(); // PageID = 2
-	static LanguagePage LanguagePage => new(); // PageID = 3
-	static UpdatePage UpdatePage => new(); // PageID = 4
-
-	int pageID = 0;
-	public FirstRunWindow()
+	/// <summary>
+	/// Interaction logic for FirstRunWindow.xaml
+	/// </summary>
+	public partial class FirstRunWindow : Window
 	{
-		InitializeComponent();
-		InitUI(); // Load the UI
-	}
-
-	private void InitUI()
-	{
-		PageViewer.Navigate(WelcomePage); // Show welcome page
-	}
-
-	private void CloseBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Application.Current.Shutdown(); // Exit
-	}
-
-	private void NextBtn_Click(object sender, RoutedEventArgs e)
-	{
-		pageID++; // Increment
-		PageViewer.Navigate(pageID switch
+		internal WelcomePage welcomePage;
+		internal FeaturesPage featuresPage;
+		internal ThemePage themePage;
+		internal SynethiaPage synethiaPage;
+		internal JumpInPage jumpInPage = new();
+		public FirstRunWindow()
 		{
-			0 => WelcomePage,
-			1 => TutorialPage,
-			2 => ThemePage,
-			3 => LanguagePage,
-			4 => UpdatePage,
-			_ => WelcomePage // By default go the home page
-		}); // Navigate to the next page
-
-		if (pageID == 4)
-		{
-			NextTxt.Text = Properties.Resources.LetsGo; // Set text
+			InitializeComponent();
+			welcomePage = new(this);
+			featuresPage = new(this);
+			themePage = new(this);
+			synethiaPage = new(this);
+			ChangePage(0);
 		}
 
-		if (pageID == 5)
+		internal void ChangePage(int pageID)
 		{
-			Global.Settings.IsFirstRun = false;
-			SettingsManager.Save();
+			WindowFrame.Content = pageID switch
+			{
+				0 => welcomePage,
+				1 => featuresPage,
+				2 => themePage,
+				3 => synethiaPage,
+				4 => jumpInPage,
+				_ => welcomePage
+			};
+		}
 
-			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe"); // Start
-			Application.Current.Shutdown(); // Close
+		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (MessageBox.Show(Properties.Resources.FirstRunQuitMsg, Properties.Resources.ColorPickerMax, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+			{
+				new MainWindow().Show();
+				Global.Settings.IsFirstRun = false;
+				Close();
+			}
+			else
+			{
+				Application.Current.Shutdown();
+			}
 		}
 	}
 }

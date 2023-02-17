@@ -1,540 +1,524 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
+  <!-- 
+	Microsoft ResX Schema 
+	
+	Version 2.0
+	
+	The primary goals of this format is to allow a simple XML format 
+	that is mostly human readable. The generation and parsing of the 
+	various data types are done through the TypeConverter classes 
+	associated with the data types.
+	
+	Example:
+	
+	... ado.net/XML headers & schema ...
+	<resheader name="resmimetype">text/microsoft-resx</resheader>
+	<resheader name="version">2.0</resheader>
+	<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+	<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+	<data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+	<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+	<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+		<value>[base64 mime encoded serialized .NET Framework object]</value>
+	</data>
+	<data name="Icon1" type="System.Drawing.Icon, System.Drawing"
+  mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<value>[base64 mime encoded string representing a byte array form of the .NET Framework
+  object]</value>
+		<comment>This is a comment</comment>
+	</data>
+				
+	There are any number of "resheader" rows that contain simple 
+	name/value pairs.
+	
+	Each data row contains a name, and value. The row also contains a 
+	type or mimetype. Type corresponds to a .NET class that support 
+	text/value conversion through the TypeConverter architecture. 
+	Classes that don't support this are serialized and stored with the 
+	mimetype set.
+	
+	The mimetype is used for serialized objects, and tells the 
+	ResXResourceReader how to depersist the object. This is currently not 
+	extensible. For a given mimetype the value must be set accordingly:
+	
+	Note - application/x-microsoft.net.object.binary.base64 is the format 
+	that the ResXResourceWriter will generate, however the reader can 
+	read any of the formats listed below.
+	
+	mimetype: application/x-microsoft.net.object.binary.base64
+	value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+	
+	mimetype: application/x-microsoft.net.object.soap.base64
+	value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
 
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="ColorPicker" xml:space="preserve">
-    <value>ColorPicker</value>
-  </data>
-	<data name="Picker" xml:space="preserve">
-    <value>拾色器</value>
-  </data>
-	<data name="Converter" xml:space="preserve">
-    <value>转换器</value>
-  </data>
-	<data name="Settings" xml:space="preserve">
-    <value>设置</value>
-  </data>
-	<data name="Hi" xml:space="preserve">
-    <value>嗨</value>
-  </data>
-	<data name="GoodAfternoon" xml:space="preserve">
-    <value>下午好</value>
-  </data>
-	<data name="GoodNight" xml:space="preserve">
-    <value>晚安</value>
-  </data>
-	<data name="GoodEvening" xml:space="preserve">
-    <value>晚上好</value>
-  </data>
-	<data name="Copy" xml:space="preserve">
-    <value>复制</value>
-  </data>
-	<data name="Red" xml:space="preserve">
-    <value>红色</value>
-  </data>
-	<data name="Green" xml:space="preserve">
-    <value>绿色</value>
-  </data>
-	<data name="Blue" xml:space="preserve">
-    <value>蓝色</value>
-  </data>
-	<data name="RGB" xml:space="preserve">
-    <value>RGB</value>
+	mimetype: application/x-microsoft.net.object.bytearray.base64
+	value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>
+			System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0,
+			Culture=neutral, PublicKeyToken=b77a5c561934e089
+		</value>
+  </resheader>
+  <resheader name="writer">
+    <value>
+			System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0,
+			Culture=neutral, PublicKeyToken=b77a5c561934e089
+		</value>
+  </resheader>
+  <data name="ColorPickerMax" xml:space="preserve">
+	<value>ColorPicker Max</value>
+  </data>
+  <data name="ColorPicker" xml:space="preserve">
+	<value>ColorPicker</value>
+  </data>
+  <data name="Hi" xml:space="preserve">
+	<value>嗨</value>
+  </data>
+  <data name="GoodAfternoon" xml:space="preserve">
+	<value>下午好</value>
+  </data>
+  <data name="GoodNight" xml:space="preserve">
+	<value>晚安</value>
+  </data>
+  <data name="GoodEvening" xml:space="preserve">
+	<value>晚上好</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+	<value>设置</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+	<value>工具</value>
+  </data>
+  <data name="Pinned" xml:space="preserve">
+	<value>固定</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+	<value>首页</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+	<value>开始使用</value>
   </data>
-	<data name="HEX" xml:space="preserve">
-    <value>HEX</value>
+  <data name="SuggestedActions" xml:space="preserve">
+	<value>推荐操作</value>
   </data>
-	<data name="RedP" xml:space="preserve">
-    <value>红色：</value>
+  <data name="Discover" xml:space="preserve">
+	<value>发现</value>
   </data>
-	<data name="GreenP" xml:space="preserve">
-    <value>绿色：</value>
+  <data name="Details" xml:space="preserve">
+	<value>详细信息</value>
   </data>
-	<data name="BlueP" xml:space="preserve">
-    <value>蓝色：</value>
+  <data name="CheckUpdate" xml:space="preserve">
+	<value>检查更新</value>
   </data>
-	<data name="SelectColor" xml:space="preserve">
-    <value>选择颜色</value>
+  <data name="Updates" xml:space="preserve">
+	<value>更新</value>
   </data>
-	<data name="HEXP" xml:space="preserve">
-    <value>HEX：</value>
+  <data name="Install" xml:space="preserve">
+	<value>安装</value>
   </data>
-	<data name="CopyRGB" xml:space="preserve">
-    <value>复制 RGB</value>
+  <data name="Theme" xml:space="preserve">
+	<value>主题</value>
   </data>
-	<data name="CopyHEX" xml:space="preserve">
-    <value>复制 HEX</value>
+  <data name="Light" xml:space="preserve">
+	<value>浅色模式</value>
   </data>
-	<data name="Stop" xml:space="preserve">
-    <value>停止</value>
+  <data name="Dark" xml:space="preserve">
+	<value>深色模式</value>
   </data>
-	<data name="ColorType" xml:space="preserve">
-    <value>颜色类型</value>
+  <data name="Licenses" xml:space="preserve">
+	<value>许可证</value>
   </data>
-	<data name="ColorValid" xml:space="preserve">
-    <value>该颜色是有效的。</value>
+  <data name="Apply" xml:space="preserve">
+	<value>应用</value>
   </data>
-	<data name="InvalidColor" xml:space="preserve">
-    <value>该颜色是无效的。</value>
+  <data name="SeeLicenses" xml:space="preserve">
+	<value>查看许可证</value>
   </data>
-	<data name="HSV" xml:space="preserve">
-    <value>HSV</value>
+  <data name="ChangeTheme" xml:space="preserve">
+	<value>更改 ColorPicker 主题。</value>
   </data>
-	<data name="H" xml:space="preserve">
-    <value>H</value>
+  <data name="Language" xml:space="preserve">
+	<value>语言</value>
   </data>
-	<data name="S" xml:space="preserve">
-    <value>S</value>
+  <data name="NeedRestartToApplyChanges" xml:space="preserve">
+	<value>ColorPicker需要重新启动以应用这些变化。你想现在重新启动吗？</value>
   </data>
-	<data name="V" xml:space="preserve">
-    <value>V</value>
+  <data name="Default" xml:space="preserve">
+	<value>默认</value>
   </data>
-	<data name="Updates" xml:space="preserve">
-    <value>更新</value>
+  <data name="UpToDate" xml:space="preserve">
+	<value>ColorPicker是最新的。</value>
   </data>
-	<data name="Install" xml:space="preserve">
-    <value>安装</value>
+  <data name="AvailableUpdates" xml:space="preserve">
+	<value>有可用更新。</value>
   </data>
-	<data name="Theme" xml:space="preserve">
-    <value>主题</value>
+  <data name="InstallConfirmMsg" xml:space="preserve">
+	<value>要安装更新，你需要重新启动ColorPicker。你想继续吗？</value>
   </data>
-	<data name="Dark" xml:space="preserve">
-    <value>深色模式</value>
+  <data name="InstallVersion" xml:space="preserve">
+	<value>安装版本</value>
   </data>
-	<data name="Light" xml:space="preserve">
-    <value>浅色模式</value>
+  <data name="Version" xml:space="preserve">
+	<value>版本</value>
   </data>
-	<data name="Default" xml:space="preserve">
-    <value>默认</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+	<value>更改 ColorPicker 的语言。</value>
   </data>
-	<data name="Apply" xml:space="preserve">
-    <value>应用</value>
+  <data name="NotifyUpdates" xml:space="preserve">
+	<value>有可用更新时显示通知</value>
   </data>
-	<data name="Language" xml:space="preserve">
-    <value>语言</value>
+  <data name="Notifications" xml:space="preserve">
+	<value>通知</value>
   </data>
-	<data name="ChangeTheme" xml:space="preserve">
-    <value>更改 ColorPicker 主题。</value>
+  <data name="NotificationsDescription" xml:space="preserve">
+	<value>通知设置。</value>
   </data>
-	<data name="CheckUpdate" xml:space="preserve">
-    <value>检查更新</value>
+  <data name="CheckUpdatesOnStart" xml:space="preserve">
+	<value>启动时检查更新</value>
   </data>
-	<data name="ChangeLanguage" xml:space="preserve">
-    <value>更改 ColorPicker 语言。</value>
+  <data name="StartupPage" xml:space="preserve">
+	<value>启动页面</value>
   </data>
-	<data name="UpToDate" xml:space="preserve">
-    <value>ColorPicker 是最新的。</value>
+  <data name="OnStart" xml:space="preserve">
+	<value>启动时</value>
   </data>
-	<data name="InstallConfirmMsg" xml:space="preserve">
-    <value>要安装更新，ColorPicker 需要重新启动。 你要继续吗？</value>
+  <data name="OnStartDescription" xml:space="preserve">
+	<value>启动时应用的设置。</value>
   </data>
-	<data name="Version" xml:space="preserve">
-    <value>版本</value>
+  <data name="DataPrivacy" xml:space="preserve">
+	<value>数据和隐私</value>
   </data>
-	<data name="InstallVersion" xml:space="preserve">
-    <value>安装版本</value>
+  <data name="DataDescription" xml:space="preserve">
+	<value>管理您的数据和隐私。</value>
   </data>
-	<data name="Name" xml:space="preserve">
-    <value>名称</value>
+  <data name="Import" xml:space="preserve">
+	<value>导入设置</value>
   </data>
-	<data name="About" xml:space="preserve">
-    <value>关于</value>
+  <data name="Export" xml:space="preserve">
+	<value>导出设置</value>
   </data>
-	<data name="AvailableUpdates" xml:space="preserve">
-    <value>有更新可用。</value>
+  <data name="SettingsExportedSucessMsg" xml:space="preserve">
+	<value>设置已成功导出。</value>
   </data>
-	<data name="NeedRestartToApplyChanges" xml:space="preserve">
-    <value>ColorPicker 需要重新启动才能应用更改。 您要立即重新启动吗？</value>
+  <data name="SettingsImportedMsg" xml:space="preserve">
+	<value>设置已成功导入。为了完成这一过程，ColorPicker将重新启动。</value>
   </data>
-	<data name="Licenses" xml:space="preserve">
-    <value>许可证</value>
+  <data name="ResetSettings" xml:space="preserve">
+	<value>重置设置</value>
   </data>
-	<data name="SeeLicenses" xml:space="preserve">
-    <value>查看许可证</value>
+  <data name="SynethiaEnable" xml:space="preserve">
+	<value>启用 Synethia 自定义体验。</value>
   </data>
-	<data name="CheckUpdatesOnStart" xml:space="preserve">
-    <value>启动时检查更新</value>
+  <data name="ResetSynethia" xml:space="preserve">
+	<value>重置 Synethia 数据</value>
   </data>
-	<data name="NotifyUpdates" xml:space="preserve">
-    <value>有可用更新时显示通知</value>
+  <data name="ResetSettingsConfirmation" xml:space="preserve">
+	<value>要安装更新，你需要重新启动ColorPicker。你想继续吗？</value>
   </data>
-	<data name="CheckUpdatesDisabledOnStart" xml:space="preserve">
-    <value>在启动时检查更新被禁用。</value>
+  <data name="SynethiaDeleteMsg" xml:space="preserve">
+	<value>您确定要重置所有 Synethia 数据吗？ 您的个性化体验将会丢失； 此操作无法取消。</value>
   </data>
-	<data name="UnableToCheckUpdates" xml:space="preserve">
-    <value>无法检查更新</value>
+  <data name="XYZ" xml:space="preserve">
+	<value>XYZ</value>
   </data>
-	<data name="Data" xml:space="preserve">
-    <value>数据</value>
+  <data name="YIQ" xml:space="preserve">
+	<value>YIQ</value>
   </data>
-	<data name="ResetSettings" xml:space="preserve">
-    <value>重置设置</value>
+  <data name="YUV" xml:space="preserve">
+	<value>YUV</value>
   </data>
-	<data name="ResetSettingsConfirmMsg" xml:space="preserve">
-    <value>您确定要重置所有设置吗？</value>
+  <data name="RGB" xml:space="preserve">
+	<value>RGB</value>
   </data>
-	<data name="SettingsReset" xml:space="preserve">
-    <value>所有设置都已重置，ColorPicker 现在将重新启动。</value>
+  <data name="RedP" xml:space="preserve">
+	<value>R</value>
   </data>
-	<data name="ShortcutsGuide" xml:space="preserve">
-    <value>按 {0} 开始/停止选择。 按 {1} 复制颜色。</value>
+  <data name="HSV" xml:space="preserve">
+	<value>HSV</value>
   </data>
-	<data name="CopyHSV" xml:space="preserve">
-    <value>复制 HSV</value>
+  <data name="HSL" xml:space="preserve">
+	<value>HSL</value>
   </data>
-	<data name="HSL" xml:space="preserve">
-    <value>HSL</value>
+  <data name="GreenP" xml:space="preserve">
+	<value>G</value>
   </data>
-	<data name="L" xml:space="preserve">
-    <value>L</value>
+  <data name="CSS" xml:space="preserve">
+	<value>CSS</value>
   </data>
-	<data name="CopyHSL" xml:space="preserve">
-    <value>复制 HSL</value>
+  <data name="CMYK" xml:space="preserve">
+	<value>CMYK</value>
   </data>
-	<data name="CMYK" xml:space="preserve">
-    <value>CMYK</value>
+  <data name="BlueP" xml:space="preserve">
+	<value>B</value>
   </data>
-	<data name="CopyCMYK" xml:space="preserve">
-    <value>复制 CMYK</value>
+  <data name="Background" xml:space="preserve">
+	<value>背景介绍</value>
   </data>
-	<data name="C" xml:space="preserve">
-    <value>C</value>
+  <data name="Bookmarks" xml:space="preserve">
+	<value>书签</value>
   </data>
-	<data name="M" xml:space="preserve">
-    <value>M</value>
+  <data name="Brightness" xml:space="preserve">
+	<value>亮度</value>
   </data>
-	<data name="Y" xml:space="preserve">
-    <value>Y</value>
+  <data name="ChromaticWheel" xml:space="preserve">
+	<value>半音阶轮</value>
   </data>
-	<data name="K" xml:space="preserve">
-    <value>K</value>
+  <data name="Circle" xml:space="preserve">
+	<value>圆圈</value>
   </data>
-	<data name="ColorFormatting" xml:space="preserve">
-    <value>颜色格式</value>
+  <data name="ColorOptions" xml:space="preserve">
+	<value>颜色选择</value>
   </data>
-	<data name="RGBSeparator" xml:space="preserve">
-    <value>RGB 分隔符</value>
+  <data name="ColorOptionsDesc" xml:space="preserve">
+	<value>ColorPicker处理颜色的方式。</value>
   </data>
-	<data name="ColorFormattingDesc" xml:space="preserve">
-    <value>颜色格式选项。</value>
+  <data name="Colors" xml:space="preserve">
+	<value>颜色</value>
   </data>
-	<data name="InvalidValueRGB" xml:space="preserve">
-    <value>请输入一个有效的值。</value>
+  <data name="ColorTools" xml:space="preserve">
+	<value>颜色工具</value>
   </data>
-	<data name="UseUpperCaseHEX" xml:space="preserve">
-    <value>使用大写字母表示十六进制颜色</value>
+  <data name="ColorValid" xml:space="preserve">
+	<value>该颜色是有效的。</value>
   </data>
-	<data name="Import" xml:space="preserve">
-    <value>导入设置</value>
+  <data name="Contrast" xml:space="preserve">
+	<value>对比度</value>
   </data>
-	<data name="Export" xml:space="preserve">
-    <value>导出设置</value>
+  <data name="Converter" xml:space="preserve">
+	<value>转换器</value>
   </data>
-	<data name="SettingsExportedSucessMsg" xml:space="preserve">
-    <value>设置导出成功。</value>
+  <data name="ConvertFromRGB" xml:space="preserve">
+	<value>从RGB转换</value>
   </data>
-	<data name="SettingsImportedMsg" xml:space="preserve">
-    <value>已成功导入设置。 为了完成这个过程，ColorPicker 现在将重新启动。</value>
+  <data name="Creation" xml:space="preserve">
+	<value>创造</value>
   </data>
-	<data name="KeyboardShortcuts" xml:space="preserve">
-    <value>键盘快捷键</value>
+  <data name="TextTool" xml:space="preserve">
+	<value>文本</value>
   </data>
-	<data name="UseKeyboardShortcuts" xml:space="preserve">
-    <value>使用键盘快捷键</value>
+  <data name="Palette" xml:space="preserve">
+	<value>调色板</value>
   </data>
-	<data name="System" xml:space="preserve">
-    <value>系统</value>
+  <data name="Palettes" xml:space="preserve">
+	<value>调色板</value>
   </data>
-	<data name="History" xml:space="preserve">
-    <value>历史记录</value>
+  <data name="Picker" xml:space="preserve">
+	<value>挑选器</value>
   </data>
-	<data name="Close" xml:space="preserve">
-    <value>关闭</value>
+  <data name="Rotation" xml:space="preserve">
+	<value>旋转</value>
   </data>
-	<data name="Minimize" xml:space="preserve">
-    <value>最小化</value>
+  <data name="SelectChomaticDisc" xml:space="preserve">
+	<value>从色度盘中选择</value>
   </data>
-	<data name="PickRandomColor" xml:space="preserve">
-    <value>生成随机颜色</value>
+  <data name="SelectColor" xml:space="preserve">
+	<value>选择一种颜色</value>
   </data>
-	<data name="Palette" xml:space="preserve">
-    <value>调色板</value>
+  <data name="Selector" xml:space="preserve">
+	<value>选择器</value>
   </data>
-	<data name="Shades" xml:space="preserve">
-    <value>阴影</value>
+  <data name="Shades" xml:space="preserve">
+	<value>灯罩</value>
   </data>
-	<data name="Brightness" xml:space="preserve">
-    <value>亮度</value>
+  <data name="Size" xml:space="preserve">
+	<value>尺寸</value>
   </data>
-	<data name="AddToHistory" xml:space="preserve">
-    <value>添加到历史记录</value>
+  <data name="To" xml:space="preserve">
+	<value>到</value>
   </data>
-	<data name="Delete" xml:space="preserve">
-    <value>删除</value>
+  <data name="From" xml:space="preserve">
+	<value>到</value>
   </data>
-	<data name="Regenerate" xml:space="preserve">
-    <value>重新生成</value>
+  <data name="Foreground" xml:space="preserve">
+	<value>前景</value>
   </data>
-	<data name="RestoreColorHistory" xml:space="preserve">
-    <value>启动时恢复颜色历史记录</value>
+  <data name="Font" xml:space="preserve">
+	<value>字体</value>
   </data>
-	<data name="RestorePaletteHistory" xml:space="preserve">
-    <value>启动时恢复调色板历史记录</value>
+  <data name="EmptyBookmarks" xml:space="preserve">
+	<value>空的书签</value>
   </data>
-	<data name="Pin" xml:space="preserve">
-    <value>固定</value>
+  <data name="EmptyHistoryMsg" xml:space="preserve">
+	<value>你确定要清空这些书签吗？这个动作是不可逆的。</value>
   </data>
-	<data name="Unpin" xml:space="preserve">
-    <value>取消固定</value>
+  <data name="DefaultColorType" xml:space="preserve">
+	<value>默认的颜色类型</value>
   </data>
-	<data name="ColorWheel" xml:space="preserve">
-    <value>色轮</value>
+  <data name="DevTools" xml:space="preserve">
+	<value>开发者工具</value>
   </data>
-	<data name="TextTool" xml:space="preserve">
-    <value>文本工具</value>
+  <data name="Disc" xml:space="preserve">
+	<value>开发者工具</value>
   </data>
-	<data name="Font" xml:space="preserve">
-    <value>字体</value>
+  <data name="GenerateGradient" xml:space="preserve">
+	<value>生成一个梯度</value>
   </data>
-	<data name="Size" xml:space="preserve">
-    <value>大小</value>
+  <data name="GeneratePalette" xml:space="preserve">
+	<value>生成一个调色板</value>
   </data>
-	<data name="Foreground" xml:space="preserve">
-    <value>前景色</value>
+  <data name="GetContrast" xml:space="preserve">
+	<value>获取对比度</value>
   </data>
-	<data name="Background" xml:space="preserve">
-    <value>背景色</value>
+  <data name="Gradient" xml:space="preserve">
+	<value>梯度</value>
   </data>
-	<data name="Welcome" xml:space="preserve">
-    <value>欢迎使用</value>
+  <data name="Gradients" xml:space="preserve">
+	<value>梯度</value>
   </data>
-	<data name="Next" xml:space="preserve">
-    <value>下一步</value>
+  <data name="HEX" xml:space="preserve">
+	<value>HEX</value>
   </data>
-	<data name="Back" xml:space="preserve">
-    <value>返回</value>
+  <data name="History" xml:space="preserve">
+	<value>历史</value>
   </data>
-	<data name="WelcomeThanks" xml:space="preserve">
-    <value>感谢您使用 ColorPicker！ 让我们开始吧！</value>
+  <data name="Hues" xml:space="preserve">
+	<value>色调</value>
   </data>
-	<data name="WelcomePicker" xml:space="preserve">
-    <value>这是 ColorPicker 的主要功能！ 使用 Picker 工具轻松获取屏幕任何像素的颜色。 使用 Shift+S 随时启用它，并使用 Shift+C 复制 RGB 颜色。</value>
+  <data name="InvalidColor" xml:space="preserve">
+	<value>该颜色是无效的。</value>
   </data>
-	<data name="WelcomeConverter" xml:space="preserve">
-    <value>转换工具允许您将任何颜色类型（例如 RGB、HEX、HSL 等）转换为任何其他颜色类型。</value>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+	<value>键盘快捷键</value>
   </data>
-	<data name="WelcomePalette" xml:space="preserve">
-    <value>调色板工具可以从单一颜色生成不同的调色板。 您可以获得较浅或较深的颜色。 您还可以获得相同颜色的不同色调。</value>
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
+	<value>使用键盘快捷键</value>
   </data>
-	<data name="WelcomeChangeTheme" xml:space="preserve">
-    <value>让 ColorPicker 成为您的</value>
+  <data name="EditShortcut" xml:space="preserve">
+	<value>编辑快捷方式</value>
   </data>
-	<data name="ChangesApplyAfterRestart" xml:space="preserve">
-    <value>重新启动 ColorPicker 后将应用更改。</value>
+  <data name="PressKeys" xml:space="preserve">
+	<value>按组合键。</value>
   </data>
-	<data name="LetsGo" xml:space="preserve">
-    <value>让我们开始吧</value>
+  <data name="NeedRestartLabel" xml:space="preserve">
+	<value>ColorPicker 需要重新启动才能应用更改。</value>
   </data>
-	<data name="HistorySettings" xml:space="preserve">
-    <value>历史记录设置。</value>
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
+	<value>重置键盘快捷键</value>
   </data>
-	<data name="ManageData" xml:space="preserve">
-    <value>管理您的数据。</value>
+  <data name="StartSelection" xml:space="preserve">
+	<value>开始选择</value>
   </data>
-	<data name="DefaultColor" xml:space="preserve">
-    <value>默认颜色类型</value>
+  <data name="CopyColor" xml:space="preserve">
+	<value>复制颜色</value>
   </data>
-	<data name="EnterCompactMode" xml:space="preserve">
-    <value>进入紧凑模式</value>
+  <data name="TextToolDesc" xml:space="preserve">
+	<value>文本工具设置。</value>
   </data>
-	<data name="ExitCompactMode" xml:space="preserve">
-    <value>退出紧凑模式</value>
+  <data name="Max" xml:space="preserve">
+	<value>Max</value>
   </data>
-	<data name="CompactMode" xml:space="preserve">
-    <value>紧凑模式</value>
+  <data name="FirstRunQuitMsg" xml:space="preserve">
+	<value>是否要忽略此窗口并继续进行 ColorPicker？</value>
   </data>
-	<data name="CopyColor" xml:space="preserve">
-    <value>复制颜色</value>
+  <data name="Next" xml:space="preserve">
+	<value>下一步</value>
   </data>
-	<data name="StartSelection" xml:space="preserve">
-    <value>开始选择</value>
+  <data name="Skip" xml:space="preserve">
+	<value>跳过</value>
   </data>
-	<data name="EditShortcut" xml:space="preserve">
-    <value>编辑快捷方式</value>
+  <data name="Features" xml:space="preserve">
+	<value>特色</value>
   </data>
-	<data name="PressKeys" xml:space="preserve">
-    <value>按组合键。</value>
+  <data name="Agree" xml:space="preserve">
+	<value>我同意</value>
   </data>
-	<data name="NeedRestartLabel" xml:space="preserve">
-    <value>ColorPicker 需要重新启动才能应用更改。</value>
+  <data name="NoThanks" xml:space="preserve">
+	<value>不，谢谢</value>
   </data>
-	<data name="CreditsAndThanks" xml:space="preserve">
-    <value>致谢和特别感谢</value>
+  <data name="IntroducingSynethia" xml:space="preserve">
+	<value>介绍 Synethia</value>
   </data>
-	<data name="Tasks" xml:space="preserve">
-    <value>任务</value>
+  <data name="SynethiaInfo" xml:space="preserve">
+	<value>Synethia 是一种将您的体验个性化的算法。</value>
   </data>
-	<data name="Startup" xml:space="preserve">
-    <value>启动</value>
+  <data name="SynethiaDataInfo" xml:space="preserve">
+	<value>Synethia 仅在 ColorPicker 中收集数据</value>
   </data>
-	<data name="StartupPage" xml:space="preserve">
-    <value>选择默认启动页面。</value>
+  <data name="SynethiaAnalyze" xml:space="preserve">
+	<value>然后 Synethia 将分析这些数据以提供独特的体验</value>
   </data>
-	<data name="OpenSourceMention" xml:space="preserve">
-    <value>开源 - 用 ❤ 在法国制造</value>
+  <data name="SynethiaHome" xml:space="preserve">
+	<value>主页仪表板将根据您的使用情况推荐操作</value>
   </data>
-	<data name="UseCompactMode" xml:space="preserve">
-    <value>启动 ColorPicker 时使用精简模式</value>
+  <data name="SynethiaPrivacy" xml:space="preserve">
+	<value>您的数据以匿名方式存储在您的设备上。 绝对不会向 Léo Corporation 发送任何数据。</value>
   </data>
-	<data name="ResetKeyboardShortcuts" xml:space="preserve">
-    <value>重置键盘快捷键</value>
+  <data name="LetsGo" xml:space="preserve">
+	<value>我们开始！</value>
   </data>
-	<data name="TextToolSettings" xml:space="preserve">
-    <value>文本工具的默认设置。</value>
+  <data name="WelcomeReady" xml:space="preserve">
+	<value>一切准备就绪</value>
   </data>
-	<data name="UseDefaultColors" xml:space="preserve">
-    <value>使用默认颜色</value>
+  <data name="SelectorInfo" xml:space="preserve">
+    <value>ColorPicker的选择器功能使你可以通过将光标移到屏幕上并按键盘快捷键来选择任何颜色。所选择的颜色将显示在一个预览框中，其代码将以所需的颜色类型复制到剪贴板中。</value>
   </data>
-	<data name="XYZ" xml:space="preserve">
-    <value>XYZ</value>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>ColorPicker的转换器功能允许你将任何颜色类型转换为另一种类型。颜色类型有RGB、HEX、HSV、HSL、CMYK、XYZ、YIQ和YUV。你可以用这些格式中的任何一种输入颜色代码，并看到其他格式中的相应代码。</value>
   </data>
-	<data name="CopyXYZ" xml:space="preserve">
-    <value>复制 XYZ</value>
+  <data name="GradientInfo" xml:space="preserve">
+    <value>ColorPicker的梯度功能可以让你生成具有特定旋转角度的随机两档梯度。你可以看到梯度的预览和它的CSS代码。你也可以将梯度导出为CSS代码，并在你的网页设计项目中使用。</value>
   </data>
-	<data name="X" xml:space="preserve">
-    <value>X</value>
-  </data>
-	<data name="Z" xml:space="preserve">
-    <value>Z</value>
-  </data>
-	<data name="YIQ" xml:space="preserve">
-    <value>YIQ</value>
-  </data>
-	<data name="CopyYIQ" xml:space="preserve">
-    <value>复制 YIQ</value>
-  </data>
-	<data name="I" xml:space="preserve">
-    <value>I</value>
-  </data>
-	<data name="Q" xml:space="preserve">
-    <value>Q</value>
-  </data>
-	<data name="XY" xml:space="preserve">
-    <value>Y</value>
+  <data name="WelcomeDesc" xml:space="preserve">
+    <value>欢迎来到ColorPicker，这是一款用于挑选、转换和生成颜色的终极工具。</value>
   </data>
 </root>

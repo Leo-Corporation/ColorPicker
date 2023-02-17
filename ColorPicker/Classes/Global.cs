@@ -21,80 +21,67 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Enums;
 using ColorPicker.Pages;
 using Microsoft.Win32;
 using PeyrSharp.Enums;
 using PeyrSharp.Env;
+using Synethia;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shell;
 
 namespace ColorPicker.Classes;
-
-/// <summary>
-/// The <see cref="Global"/> class contains various methods and properties.
-/// </summary>
 public static class Global
 {
-	/// <summary>
-	/// The current version of ColorPicker.
-	/// </summary>
-	public static string Version => "4.6.0.2212";
+	public static SelectorPage? SelectorPage { get; set; }
+	public static ChromaticWheelPage? ChromaticWheelPage { get; set; }
+	public static ConverterPage? ConverterPage { get; set; }
+	public static TextPage? TextPage { get; set; }
+	public static PalettePage? PalettePage { get; set; }
+	public static GradientPage? GradientPage { get; set; }
+	public static HomePage? HomePage { get; set; }
+	public static BookmarksPage? BookmarksPage { get; set; }
+	public static SettingsPage? SettingsPage { get; set; }
 
-	/// <summary>
-	/// List of the available languages.
-	/// </summary>
-	public static List<string> LanguageList => new() { "English (United States)", "Français (France)", "Italiano (Italia)", "中文（简体）" };
+	public static Bookmarks Bookmarks { get; set; }
+	public static Settings Settings { get; set; } = XmlSerializerManager.LoadFromXml<Settings>(SettingsPath) ?? new();
 
-	/// <summary>
-	/// List of the available languages codes.
-	/// </summary>
-	public static List<string> LanguageCodeList => new() { "en-US", "fr-FR", "it-IT", "zh-CN" };
+	public static SynethiaConfig SynethiaConfig { get; set; } = SynethiaManager.Load(SynethiaPath, Default);
 
-	/// <summary>
-	/// The <see cref="Pages.PickerPage"/>.
-	/// </summary>
-	public static PickerPage PickerPage { get; set; }
+	public static SynethiaConfig Default => new()
+	{
+		PagesInfo = new List<PageInfo>()
+		{
+			new PageInfo("Selector"),
+			new PageInfo("ChromaticWheel"),
+			new PageInfo("Converter"),
+			new PageInfo("TextTool"),
+			new PageInfo("Palette"),
+			new PageInfo("Gradient")
+		},
+		ActionsInfo = new List<ActionInfo>()
+		{
+			new ActionInfo(0, "Selector.SelectBtn"),
+			new ActionInfo(1, "Chromatic.Disc"),
+			new ActionInfo(2, "Converter.FromRgb"),
+			new ActionInfo(3, "TextTool.Contrast"),
+			new ActionInfo(4, "Palette.GeneratePalette"),
+			new ActionInfo(5, "Gradient.GenerateGradient")
+		}
+	};
 
-	/// <summary>
-	/// The <see cref="Pages.ConverterPage"/>.
-	/// </summary>
-	public static ConverterPage ConverterPage { get; set; }
+	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
+	internal static string BookmarksPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml";
+	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
+	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	/// <summary>
-	/// The <see cref="Pages.PalettePage"/>.
-	/// </summary>
-	public static PalettePage PalettePage { get; set; }
+	public static string Version => "5.0.0.2302";
 
-	/// <summary>
-	/// The <see cref="Pages.SettingsPage"/>.
-	/// </summary>
-	public static SettingsPage SettingsPage { get; set; }
-
-	/// <summary>
-	/// Settings of ColorPicker.
-	/// </summary>
-	public static Settings Settings { get; set; }
-
-	/// <summary>
-	/// The content of the history of ColorPicker.
-	/// </summary>
-	public static ColorContentHistory ColorContentHistory { get; set; }
-
-	/// <summary>
-	/// Last version link.
-	/// </summary>
-	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/Version.txt";
-
-	/// <summary>
-	/// Gets the "Hi" sentence message.
-	/// </summary>
-	public static string GetHiSentence
+	public static string HiSentence
 	{
 		get
 		{
@@ -121,44 +108,132 @@ public static class Global
 		}
 	}
 
-	/// <summary>
-	/// If the user is trying to new keyboard shortcuts, the value should be false.
-	/// </summary>
-	public static bool KeyBoardShortcutsAvailable { get; set; }
-
-	/// <summary>
-	/// <c>ToString()</c> method for <see cref="ColorTypes"/> enum.
-	/// </summary>
-	/// <param name="colorTypes">The enum.</param>
-	/// <returns>A <see cref="string"/> value.</returns>
-	public static string ColorTypesToString(ColorTypes colorTypes)
+	public static Dictionary<AppPages, string> AppPagesFilledIcons => new()
 	{
-		return colorTypes switch
-		{
-			ColorTypes.HEX => Properties.Resources.HEX,
-			ColorTypes.RGB => Properties.Resources.RGB,
-			ColorTypes.HSV => Properties.Resources.HSV,
-			ColorTypes.HSL => Properties.Resources.HSL,
-			ColorTypes.CMYK => Properties.Resources.CMYK,
-			ColorTypes.XYZ => Properties.Resources.XYZ,
-			ColorTypes.YIQ => Properties.Resources.YIQ,
-			_ => Properties.Resources.RGB
-		}; // Return value
+		{ AppPages.Home, "\uF488" },
+		{ AppPages.Bookmarks, "\uF1F6" },
+		{ AppPages.Settings, "\uF6B3" },
+		{ AppPages.Selector, "\uF9BC" },
+		{ AppPages.ColorWheel, "\uF605" },
+		{ AppPages.Converter, "\uF18E" },
+		{ AppPages.TextTool, "\uF7AB" },
+		{ AppPages.ColorPalette, "\uF2F6" },
+		{ AppPages.ColorGradient, "\uFD3F" },
+	};
+	public static Dictionary<AppPages, string> AppPagesName => new()
+	{
+		{ AppPages.Home, Properties.Resources.Home },
+		{ AppPages.Bookmarks, Properties.Resources.History },
+		{ AppPages.Settings, Properties.Resources.Settings },
+		{ AppPages.Selector, Properties.Resources.Selector },
+		{ AppPages.ColorWheel, Properties.Resources.ChromaticWheel },
+		{ AppPages.Converter, Properties.Resources.Converter },
+		{ AppPages.TextTool, Properties.Resources.TextTool },
+		{ AppPages.ColorPalette, Properties.Resources.Palette },
+		{ AppPages.ColorGradient, Properties.Resources.Gradient },
+	};
+
+	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA" };
+	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient };
+
+	public static (int, int, int) GenerateRandomColor()
+	{
+		Random random = new();
+		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
+		return (r, g, b);
 	}
 
-	public static string ColorTypesToCopyString(ColorTypes colorTypes)
+	public static System.Drawing.Color GenerateRandomColorDrawing()
 	{
-		return colorTypes switch
+		Random random = new();
+		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
+		return System.Drawing.Color.FromArgb(r, g, b);
+	}
+	public static Color GetColorFromResource(string resourceName) => (Color)System.Windows.Media.ColorConverter.ConvertFromString(Application.Current.Resources[resourceName].ToString());
+
+	public static double GetLuminance(int r, int g, int b)
+	{
+		int[] rgb = { r, g, b };
+		double[] res = new double[3];
+
+		int i = 0;
+		foreach (int val in rgb)
 		{
-			ColorTypes.HEX => Properties.Resources.CopyHEX,
-			ColorTypes.RGB => Properties.Resources.CopyRGB,
-			ColorTypes.HSV => Properties.Resources.CopyHSV,
-			ColorTypes.HSL => Properties.Resources.CopyHSL,
-			ColorTypes.CMYK => Properties.Resources.CopyCMYK,
-			ColorTypes.XYZ => Properties.Resources.CopyXYZ,
-			ColorTypes.YIQ => Properties.Resources.CopyYIQ,
-			_ => Properties.Resources.CopyRGB
-		}; // Return value
+			double v = val / 255d;
+			res[i] = v <= 0.03928 ? v / 12.92 : Math.Pow((v + 0.055) / 1.055, 2.4);
+			i++;
+		}
+
+		return res[0] * 0.2126 + res[1] * 0.7152 + res[2] * 0.0722;
+	}
+
+	public static (string, int) GetContrast(int[] rgb1, int[] rgb2)
+	{
+		var lum1 = GetLuminance(rgb1[0], rgb1[1], rgb1[2]);
+		var lum2 = GetLuminance(rgb2[0], rgb2[1], rgb2[2]);
+
+		var brightest = Math.Max(lum1, lum2);
+		var darkest = Math.Min(lum1, lum2);
+
+		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
+
+		int gridRow;
+		if (result > 7) gridRow = 0;
+		else gridRow = 0;
+		if (result <= 3) gridRow = 3;
+		if (result >= 3 && result <= 4.5) gridRow = 2;
+		if (result >= 4.5 && result <= 7) gridRow = 1;
+		return (result.ToString(), gridRow);
+	}
+
+	public static RGB[] GetShades(HSL hsl)
+	{
+		RGB[] colorPalette = new RGB[10];
+		for (int i = 0; i < colorPalette.Length; i++)
+		{
+			int saturation = (i + 1) * 10;
+			HSL hslColor = new(hsl.H, (byte)saturation, hsl.L);
+			colorPalette[i] = ColorHelper.ColorConverter.HslToRgb(hslColor);
+		}
+		return colorPalette;
+	}
+
+	public static RGB[] GetBrightness(HSL hsl)
+	{
+		RGB[] colorPalette = new RGB[10];
+		for (int i = 0; i < colorPalette.Length; i++)
+		{
+			int luminosity = (i + 1) * 10;
+			HSL hslColor = new(hsl.H, hsl.S, (byte)luminosity);
+			colorPalette[i] = ColorHelper.ColorConverter.HslToRgb(hslColor);
+		}
+		return colorPalette;
+	}
+
+	public static RGB[] GetHues(HSL hsl)
+	{
+		RGB[] colorPalette = new RGB[10];
+		for (int i = 0; i < colorPalette.Length; i++)
+		{
+			int hue = i * 27;
+			HSL hslColor = new((byte)hue, hsl.S, hsl.L);
+			colorPalette[i] = ColorHelper.ColorConverter.HslToRgb(hslColor);
+		}
+		return colorPalette;
+	}
+
+	public static AppPages PageInfoToAppPages(PageInfo pageInfo)
+	{
+		return pageInfo.Name switch
+		{
+			"Selector" => AppPages.Selector,
+			"ChromaticWheel" => AppPages.ColorWheel,
+			"Converter" => AppPages.Converter,
+			"TextTool" => AppPages.TextTool,
+			"Palette" => AppPages.ColorPalette,
+			"Gradient" => AppPages.ColorGradient,
+			_ => AppPages.Selector
+		};
 	}
 
 	/// <summary>
@@ -169,17 +244,13 @@ public static class Global
 		App.Current.Resources.MergedDictionaries.Clear();
 		ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
 
-		if (!Settings.IsThemeSystem.HasValue)
+		bool isDark = Settings.Theme == Themes.Dark;
+		if (Settings.Theme == Themes.System)
 		{
-			Settings.IsThemeSystem = false;
+			isDark = IsSystemThemeDark(); // Set
 		}
 
-		if (Settings.IsThemeSystem.Value)
-		{
-			Settings.IsDarkTheme = IsSystemThemeDark(); // Set
-		}
-
-		if (Settings.IsDarkTheme) // If the dark theme is on
+		if (isDark) // If the dark theme is on
 		{
 			resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
 		}
@@ -207,96 +278,25 @@ public static class Global
 		}; // Return
 	}
 
-	/// <summary>
-	/// Changes the application's language.
-	/// </summary>
 	public static void ChangeLanguage()
 	{
-		if (Settings.Language == "_default") return;
-		Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Settings.Language); // Change
-	}
-
-	internal static string GetHsvString(ColorHelper.HSV hsv) => $"({hsv.H},{hsv.S},{hsv.V})";
-
-	internal static string GetHslString(ColorHelper.HSL hsl) => $"({hsl.H},{hsl.S},{hsl.L})";
-
-	internal static string GetCmykString(ColorHelper.CMYK cmyk) => $"{cmyk.C},{cmyk.M},{cmyk.Y},{cmyk.K}";
-
-	internal static string GetXyzString(ColorHelper.XYZ xyz) => $"{xyz.X};\n{xyz.Y};\n{xyz.Z}";
-
-	internal static string GetYiqString(ColorHelper.YIQ yiq) => $"{yiq.Y};\n{yiq.I};\n{yiq.Q}";
-
-	internal static void CreateJumpLists()
-	{
-		JumpList jumpList = new(); // Create a jump list
-
-		jumpList.JumpItems.Add(new JumpTask
+		switch (Settings.Language) // For each case
 		{
-			Title = Properties.Resources.Picker,
-			Arguments = "/page 0",
-			Description = Properties.Resources.WelcomePicker,
-			CustomCategory = Properties.Resources.Tasks,
-			IconResourcePath = Assembly.GetEntryAssembly().Location
-		}); // Add Picker jump task
+			case Languages.Default: // No language
+				break;
+			case Languages.en_US: // English (US)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US"); // Change
+				break;
 
-		jumpList.JumpItems.Add(new JumpTask
-		{
-			Title = Properties.Resources.Converter,
-			Arguments = "/page 1",
-			Description = Properties.Resources.WelcomeConverter,
-			CustomCategory = Properties.Resources.Tasks,
-			IconResourcePath = Assembly.GetEntryAssembly().Location
-		}); // Add Converter jump task
+			case Languages.fr_FR: // French (FR)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
+				break;
 
-		jumpList.JumpItems.Add(new JumpTask
-		{
-			Title = Properties.Resources.Palette,
-			Arguments = "/page 2",
-			Description = Properties.Resources.WelcomePalette,
-			CustomCategory = Properties.Resources.Tasks,
-			IconResourcePath = Assembly.GetEntryAssembly().Location
-		}); // Add Picker jump task
-
-		jumpList.ShowRecentCategory = false; // Hide the recent category
-		jumpList.ShowFrequentCategory = false; // Hide the frequent category
-
-
-		JumpList.SetJumpList(Application.Current, jumpList); // Set the jump list
-	}
-
-	public static double GetLuminance(int r, int g, int b)
-	{
-		int[] rgb = { r, g, b };
-		double[] res = new double[3];
-
-		int i = 0;
-		foreach (int val in rgb)
-		{
-			double v = val / 255d;
-			res[i] = v <= 0.03928 ? v / 12.92 : Math.Pow((v + 0.055) / 1.055, 2.4);
-			i++;
+			case Languages.zh_CN: // Chinese (CN)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
+				break;
+			default: // No language
+				break;
 		}
-
-		return res[0] * 0.2126 + res[1] * 0.7152 + res[2] * 0.0722;
-	}
-
-
-	public static (string, SolidColorBrush) GetContrast(int[] rgb1, int[] rgb2)
-	{
-		var lum1 = GetLuminance(rgb1[0], rgb1[1], rgb1[2]);
-		var lum2 = GetLuminance(rgb2[0], rgb2[1], rgb2[2]);
-
-		var brightest = Math.Max(lum1, lum2);
-		var darkest = Math.Min(lum1, lum2);
-
-		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
-
-		SolidColorBrush backgroundBrush;
-		if (result > 7) backgroundBrush = new() { Color = Color.FromRgb(0, 171, 78) };
-		else backgroundBrush = new() { Color = Color.FromRgb(0, 171, 78) };
-		if (result <= 3) backgroundBrush = new() { Color = Color.FromRgb(255, 0, 0) };
-		if (result >= 3 && result <= 4.5) backgroundBrush = new() { Color = Color.FromRgb(255, 122, 41) };
-		if (result >= 4.5 && result <= 7) backgroundBrush = new() { Color = Color.FromRgb(0, 127, 255) };
-		return (result.ToString(), backgroundBrush);
 	}
 }

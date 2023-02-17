@@ -14,7 +14,7 @@
   <h1 align="center">ColorPicker</h1>
 
   <p align="center">
-    A modern color picking tool for developers.
+    ColorPicker Max is an app that enables you to pick, create and convert colors, preview text colors, generate color palettes and gradients, and more.
     <br />
     <a href="https://www.mediafire.com/file/q46cdenxgyqx0dd/ColorPickerSetup.exe/file"><strong>Download »</strong></a>
     <br />
@@ -28,7 +28,17 @@
 </p>
 
 ## What is it?
-ColorPicker is a modern color picking tool for developers available on Windows. It is intuitive, easy to use, and has a lot of useful and relevant features.
+![Banner](https://github.com/Leo-Corporation/LeoCorp-Docs/raw/master/Images/ColorPicker%20Max%20Banner.png)
+
+ColorPicker Max is a powerful and intuitive color selection and manipulation tool that is designed to make working with color easier and more efficient than ever before. With its wide range of features and tools, ColorPicker Max offers an unprecedented level of control and customization over every aspect of color selection and manipulation.
+
+The app allows you to select a specific color using different sliders, pick a color from a pixel on the screen, or even choose a color randomly. All of the color's details are available in a dedicated panel, including RGB, HEX, HSL, HSV, CMYK, XYZ, YIQ, and YUV values, and hovering over the values reveals a copy button for easy copying to the clipboard. ColorPicker Max also includes a chromatic wheel for easy color selection and a wide range of color tools and converters, including the ability to convert between different color types and preview the results in real-time.
+
+ColorPicker Max also offers a range of creation tools, such as the ability to generate color palettes and gradients, making it easy to create and customize your own unique color schemes. The app also includes a dedicated text tool, which allows you to set the font, font size, text foreground and background color, and get the contrast ratio between the foreground and background color.
+
+The user interface of ColorPicker Max is designed to be easy to use and intuitive, with a mesh gradient background that adapts to the light or dark theme. The app is also highly customizable, with the ability to set your default color type, page on start, keyboard shortcuts, and more.
+
+Overall, ColorPicker Max is a comprehensive color selection and manipulation tool that offers an unprecedented level of customization and control, making it the perfect choice for designers, artists, and anyone who works with color on a regular basis.
 
 ColorPicker is written in C# .NET 6 using WPF.
 
@@ -37,19 +47,22 @@ ColorPicker is written in C# .NET 6 using WPF.
 - [Latest Release](https://github.com/Leo-Corporation/ColorPicker/releases)
 
 ## Features
-- Pick a color from your screen
-- Pick a color manually with the intuitive UI
-- Generate a random color
-- Generate color palettes
-- Color History
-- Convert colors to another type (RGB, HEX, HSL, HSV, CMYK, YIQ, XYZ)
-- Light/Dark theme
-- Keyboard shortcuts
-- Customizable through settings
-- Text preview tool with contrast ratio calculator
+**Top Features of ColorPicker Max:**
+
+1. Advanced color selection options, including sliders, pixel picking, and random selection.
+2. Detailed color information panel with RGB, HEX, HSL, HSV, CMYK, XYZ, YIQ, and YUV values.
+3. Chromatic wheel for easy color selection and multiple wheel options.
+4. Color converter tool with support for multiple color types and automatic text field population.
+5. Text tool for selecting fonts and foreground/background colors, with contrast ratio calculation.
+6. Color palette creation with options for different shades, brightness, and hues.
+7. Gradient generator with adjustable parameters and CSS export.
+8. Bookmarking system for saving colors, palettes, and gradients.
+9. Customizable settings, including theme, language, default color type, and keyboard shortcuts.
+10. Dashboard: see the most relevant features displayed, and access least relevant features in the "Discover" section. (Powered by [Synethia](http://synethia.leocorporation.dev/))
+
 
 ## Keyboard shortcuts
-There is currently two keyboard shortcuts for ColorPicker, starting with version 3.3:
+The default keyboard shortcuts are:
 - <kbd>Shift+S</kbd> - Start/Stop color selection
 - <kbd>Shift+C</kbd> - Copy the selected color on screen
 

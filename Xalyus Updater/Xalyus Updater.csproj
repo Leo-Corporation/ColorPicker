@@ -7,21 +7,18 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Xalyus Updater.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>2.2.0.2204</Version>
+    <Version>1.0.0.2302</Version>
+    <Company>Léo Corporation</Company>
     <Authors>Léo Corporation</Authors>
-    <Copyright>© 2021</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Leo-Corporation/Xalyus-Updater</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Leo-Corporation/Xalyus-Updater</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
+    <Copyright>© 2023</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Xalyus Updater.png" />
+    <None Remove="Resources\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Xalyus Updater.png">
+    <Resource Include="Resources\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

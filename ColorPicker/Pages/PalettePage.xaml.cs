@@ -24,539 +24,375 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
-using ColorPicker.UserControls;
-using ColorPicker.Windows;
-using PeyrSharp.Extensions;
-using System;
-using System.Collections.Generic;
+using Synethia;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 
 namespace ColorPicker.Pages;
-
 /// <summary>
 /// Interaction logic for PalettePage.xaml
 /// </summary>
 public partial class PalettePage : Page
 {
-	RGB[] CurrentColorPalette { get; set; }
-	string CurrentRGBColor { get; set; }
-	internal List<string> SavedColorPalettes { get; set; }
-
+	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 	public PalettePage()
 	{
 		InitializeComponent();
 		InitUI();
-	}
 
+		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+
+	}
 	private void InitUI()
 	{
-		// Initialize list
-		SavedColorPalettes = new(); // Init list
-
-		// Load ColorTypeComboBox
-		for (int i = 0; i < Enum.GetValues(typeof(ColorTypes)).Length; i++)
+		TitleTxt.Text = $"{Properties.Resources.Creation} > {Properties.Resources.Palette}";
+		try
 		{
-			ColorTypeComboBox.Items.Add(Global.ColorTypesToString((ColorTypes)i)); // Add
+			(int r, int g, int b) = Global.GenerateRandomColor();
+			Txt1.Text = r.ToString();
+			Txt2.Text = g.ToString();
+			Txt3.Text = b.ToString();
+			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
+		}
+		catch { }
+		RgbBtn_Click(Global.Settings.DefaultColorType switch
+		{
+			ColorTypes.HEX => HexBtn,
+			ColorTypes.HSV => HsvBtn,
+			ColorTypes.HSL => HslBtn,
+			ColorTypes.CMYK => CmykBtn,
+			ColorTypes.XYZ => XyzBtn,
+			ColorTypes.YIQ => YiqBtn,
+			ColorTypes.YUV => YuvBtn,
+			_ => RgbBtn
+		}, null);
+	}
+	ColorInfo ColorInfo { get; set; }
+
+	private RGB ConvertToRgb()
+	{
+		if (SelectedColorBtn == RgbBtn) return new((byte)int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text));
+		if (SelectedColorBtn == HexBtn) return ColorHelper.ColorConverter.HexToRgb(new(Txt5.Text));
+		else if (SelectedColorBtn == HsvBtn) return ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == HslBtn) return ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == CmykBtn) return ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text),
+											 (byte)int.Parse(Txt4.Text)));
+		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+	}
+
+	Button SelectedColorBtn { get; set; }
+	private void UnCheckAllButtons()
+	{
+		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HexBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HsvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HslBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		CmykBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+	}
+
+	// Note: This event handler is used for all the choices
+	internal void RgbBtn_Click(object sender, RoutedEventArgs? e)
+	{
+		var btn = (Button)sender;
+
+		UnCheckAllButtons();
+		CheckButton(btn);
+		SelectedColorBtn = btn;
+		LoadInputUI();
+	}
+
+	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+
+	private void HideAllInput()
+	{
+		DisplayText1.Visibility = Visibility.Collapsed;
+		DisplayText2.Visibility = Visibility.Collapsed;
+		DisplayText3.Visibility = Visibility.Collapsed;
+		DisplayText4.Visibility = Visibility.Collapsed;
+		DisplayText5.Visibility = Visibility.Collapsed; // Special textbox for hex
+
+		// Clear text to avoid errors
+		Txt1.Text = "";
+		Txt2.Text = "";
+		Txt3.Text = "";
+		Txt4.Text = "";
+		Txt5.Text = ""; // Special textbox for hex
+
+		B1.Visibility = Visibility.Collapsed;
+		B2.Visibility = Visibility.Collapsed;
+		B3.Visibility = Visibility.Collapsed;
+		B4.Visibility = Visibility.Collapsed;
+		B5.Visibility = Visibility.Collapsed; // Special textbox for hex
+	}
+
+	private void LoadInputUI()
+	{
+		HideAllInput();
+		if (SelectedColorBtn != HexBtn)
+		{
+			DisplayText1.Visibility = Visibility.Visible;
+			DisplayText2.Visibility = Visibility.Visible;
+			DisplayText3.Visibility = Visibility.Visible;
+			DisplayText4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
+
+			B1.Visibility = Visibility.Visible;
+			B2.Visibility = Visibility.Visible;
+			B3.Visibility = Visibility.Visible;
+			B4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
 		}
 
-		ColorTypeComboBox.SelectedIndex = (int)Global.Settings.FavoriteColorType; // Set index
-
-		// Generate random color
-		Random random = new(); // Create new random
-		byte r = (byte)random.Next(0, 255); // Generate random number between 0 and 255
-		byte g = (byte)random.Next(0, 255); // Generate random number between 0 and 255
-		byte b = (byte)random.Next(0, 255); // Generate random number between 0 and 255
-
-		switch ((ColorTypes)ColorTypeComboBox.SelectedIndex)
+		if (SelectedColorBtn == RgbBtn)
 		{
-			case ColorTypes.RGB:
-				RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
-				break;
-			case ColorTypes.HEX:
-				RGBTxt.Text = $"#{ColorHelper.ColorConverter.RgbToHex(new(r, g, b))}";
-				break;
-			case ColorTypes.HSV:
-				var hsv = ColorHelper.ColorConverter.RgbToHsv(new(r, g, b)); // Convert
-				HueTxt.Text = hsv.H.ToString(); // Set text
-				SatTxt.Text = hsv.S.ToString(); // Set text
-				ValTxt.Text = hsv.V.ToString(); // Set text
-				break;
-			case ColorTypes.HSL:
-				var hsl = ColorHelper.ColorConverter.RgbToHsl(new(r, g, b)); // Convert
-				HTxt.Text = hsl.H.ToString(); // Set text
-				STxt.Text = hsl.S.ToString(); // Set text
-				LTxt.Text = hsl.L.ToString(); // Set text
-				break;
-			case ColorTypes.CMYK:
-				var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new(r, g, b)); // Convert
-				CTxt.Text = cmyk.C.ToString(); // Set text
-				MTxt.Text = cmyk.M.ToString(); // Set text
-				YTxt.Text = cmyk.Y.ToString(); // Set text
-				KTxt.Text = cmyk.K.ToString(); // Set text
-				break;
-			case ColorTypes.XYZ:
-				var xyz = ColorHelper.ColorConverter.RgbToXyz(new(r, g, b)); // Convert
-				XTxt.Text = xyz.X.ToString();
-				XYTxt.Text = xyz.Y.ToString();
-				ZTxt.Text = xyz.Z.ToString();
-				break;
-			case ColorTypes.YIQ:
-				var yiq = ColorHelper.ColorConverter.RgbToYiq(new(r, g, b)); // Convert
-				YQTxt.Text = yiq.Y.ToString();
-				ITxt.Text = yiq.I.ToString();
-				QTxt.Text = yiq.Q.ToString();
-				break;
+			DisplayText1.Text = "R";
+			DisplayText2.Text = "G";
+			DisplayText3.Text = "B";
+
+			Txt1.Text = ColorInfo.RGB.R.ToString();
+			Txt2.Text = ColorInfo.RGB.G.ToString();
+			Txt3.Text = ColorInfo.RGB.B.ToString();
 		}
-
-		// History
-		if (Global.Settings.RestorePaletteColorHistory.Value && Global.ColorContentHistory.PaletteColorsRGB.Count > 0)
+		else if (SelectedColorBtn == HexBtn)
 		{
-			for (int i = 0; i < Global.ColorContentHistory.PaletteColorsRGB.Count; i++)
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.HEX;
+			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.HEX.Value;
+		}
+		else if (SelectedColorBtn == HsvBtn)
+		{
+			DisplayText1.Text = "H";
+			DisplayText2.Text = "S";
+			DisplayText3.Text = "V";
+
+			Txt1.Text = ColorInfo.HSV.H.ToString();
+			Txt2.Text = ColorInfo.HSV.S.ToString();
+			Txt3.Text = ColorInfo.HSV.V.ToString();
+		}
+		else if (SelectedColorBtn == HslBtn)
+		{
+			DisplayText1.Text = "H";
+			DisplayText2.Text = "S";
+			DisplayText3.Text = "L";
+
+			Txt1.Text = ColorInfo.HSL.H.ToString();
+			Txt2.Text = ColorInfo.HSL.S.ToString();
+			Txt3.Text = ColorInfo.HSL.L.ToString();
+		}
+		else if (SelectedColorBtn == CmykBtn)
+		{
+			DisplayText1.Text = "C";
+			DisplayText2.Text = "M";
+			DisplayText3.Text = "Y";
+			DisplayText4.Text = "K";
+
+			Txt1.Text = ColorInfo.CMYK.C.ToString();
+			Txt2.Text = ColorInfo.CMYK.M.ToString();
+			Txt3.Text = ColorInfo.CMYK.Y.ToString();
+			Txt4.Text = ColorInfo.CMYK.K.ToString();
+		}
+		else if (SelectedColorBtn == XyzBtn)
+		{
+			DisplayText1.Text = "X";
+			DisplayText2.Text = "Y";
+			DisplayText3.Text = "Z";
+
+			Txt1.Text = ColorInfo.XYZ.X.ToString();
+			Txt2.Text = ColorInfo.XYZ.Y.ToString();
+			Txt3.Text = ColorInfo.XYZ.Z.ToString();
+		}
+		else if (SelectedColorBtn == YiqBtn)
+		{
+			DisplayText1.Text = "Y";
+			DisplayText2.Text = "I";
+			DisplayText3.Text = "Q";
+
+			Txt1.Text = ColorInfo.YIQ.Y.ToString();
+			Txt2.Text = ColorInfo.YIQ.I.ToString();
+			Txt3.Text = ColorInfo.YIQ.Q.ToString();
+		}
+		else if (SelectedColorBtn == YuvBtn)
+		{
+			DisplayText1.Text = "Y";
+			DisplayText2.Text = "U";
+			DisplayText3.Text = "V";
+
+			Txt1.Text = ColorInfo.YUV.Y.ToString();
+			Txt2.Text = ColorInfo.YUV.U.ToString();
+			Txt3.Text = ColorInfo.YUV.V.ToString();
+		}
+	}
+
+	internal void InitPaletteUI()
+	{
+		ColorInfo = new ColorInfo(ConvertToRgb());
+		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+
+		// Shades
+		ShadesPanel.Children.Clear();
+		BrightnessPanel.Children.Clear();
+		HuePanel.Children.Clear();
+
+		RGB[][] palettes = new[] { Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL), Global.GetHues(ColorInfo.HSL) };
+		for (int k = 0; k < palettes.Length; k++)
+		{
+			var shades = palettes[k];
+			for (int i = 0; i < shades.Length; i++)
 			{
-				RGB[] restoredColorPalette = new RGB[8];
-				for (int j = 0; j < Global.ColorContentHistory.PaletteColorsRGB[i].Count; j++)
+				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
+				if (i == shades.Length - 1) radius = new(0, 10, 10, 0);
+
+				Border border = new()
 				{
-					restoredColorPalette[j] = new((byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][0],
-						(byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][1],
-						(byte)Global.ColorContentHistory.PaletteColorsRGB[i][j][2]);
+					Cursor = Cursors.Hand,
+					Height = 50,
+					Width = 50,
+					CornerRadius = radius,
+					Background = new SolidColorBrush { Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B) },
+					Effect = new DropShadowEffect()
+					{
+						BlurRadius = 15,
+						Opacity = 0.2,
+						ShadowDepth = 0,
+						Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B)
+					},
+					ToolTip = new ToolTip()
+					{
+						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
+						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
+					},
+				};
+				int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
+				border.MouseLeftButtonUp += (o, e) =>
+				{
+					var info = new ColorInfo(new(shades[j].R, shades[j].G, shades[j].B));
+					Clipboard.SetText(Global.Settings.DefaultColorType switch
+					{
+						ColorTypes.HEX => info.HEX.Value,
+						ColorTypes.HSV => $"{info.HSV.H},{info.HSV.S},{info.HSV.V}",
+						ColorTypes.HSL => $"{info.HSL.H},{info.HSL.S},{info.HSL.L}",
+						ColorTypes.CMYK => $"{info.CMYK.C},{info.CMYK.M},{info.CMYK.Y},{info.CMYK.K}",
+						ColorTypes.XYZ => $"{info.XYZ.X}; {info.XYZ.Y}; {info.XYZ.Z}",
+						ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
+						ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
+						_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
+					});
+				};
+				if (k == 0) ShadesPanel.Children.Add(border);
+				else if (k == 1) BrightnessPanel.Children.Add(border);
+				else HuePanel.Children.Add(border);
+			}
+		}
+
+		// Load the bookmark icon
+		if (!Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
+		{
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		BookmarkBtn.Content = "\uF1F8";
+	}
+
+	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			InitPaletteUI();
+		}
+		catch { }
+	}
+
+	private void Txt1_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+	{
+		if (e.Command == ApplicationCommands.Paste)
+		{
+			e.CanExecute = true;
+			e.Handled = true;
+		}
+	}
+
+	private void Txt1_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+	{
+		try
+		{
+			if (e.Command == ApplicationCommands.Paste)
+			{
+				string text = Clipboard.GetText()
+					.Replace("(", "")
+					.Replace(")", "")
+					.Replace(" ", "");
+				if (SelectedColorBtn == HsvBtn || SelectedColorBtn == HslBtn || SelectedColorBtn == CmykBtn)
+				{
+					var split = text.Split(",");
+					Txt1.Text = split[0];
+					Txt2.Text = split[1];
+					Txt3.Text = split[2];
+					Txt4.Text = split.Length > 3 ? split[3] : "";
+				}
+				else if (SelectedColorBtn == HexBtn)
+				{
+					Txt5.Text = text;
+				}
+				else
+				{
+					var split = text.Split(";");
+					Txt1.Text = split[0];
+					Txt2.Text = split[1];
+					Txt3.Text = split[2];
 				}
 
-				SavedColorPalettes.Add($"{restoredColorPalette[7].R};{restoredColorPalette[7].G};{restoredColorPalette[7].B}"); // Add to saved palettes
-				HistoryDisplayer.Children.Add(new PaletteHistoryItem(restoredColorPalette, HistoryDisplayer, false, Global.ColorContentHistory.PaletteColorsRGB[i]));
+				e.Handled = true;
 			}
 		}
-	}
-
-	private static RGB[] GetShades(HSL hsl)
-	{
-		// Dark shades
-		HSL darkShade = new(hsl.H, hsl.S, (hsl.L == 30) ? (byte)15 : (byte)30);
-		RGB darkShadeRgb = ColorHelper.ColorConverter.HslToRgb(darkShade);
-
-		// Regular shades
-		var l = hsl.L - 16;
-		HSL regularShade = new(hsl.H, hsl.S, (byte)l);
-		RGB regularShadeRgb = ColorHelper.ColorConverter.HslToRgb(regularShade);
-
-		// Tint shades
-		var s = hsl.S - 20;
-		var l2 = hsl.L + 6;
-
-		HSL tintShade = new(hsl.H, (byte)s, (byte)l2);
-		RGB tintShadeRgb = ColorHelper.ColorConverter.HslToRgb(tintShade);
-
-		RGB[] colors = { darkShadeRgb, regularShadeRgb, tintShadeRgb };
-
-		return colors;
-	}
-
-	private void RGBTxt_TextChanged(object sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			byte[] rgb;
-			if (ColorTypeComboBox.SelectedIndex == 0)
-			{
-				var split = RGBTxt.Text.Split(Global.Settings.RGBSeparator, StringSplitOptions.None);
-				rgb = new byte[]
-				{
-				(byte)int.Parse(split[0]),
-				(byte)int.Parse(split[1]),
-				(byte)int.Parse(split[2])
-				};
-			}
-			else
-			{
-				rgb = new byte[]
-				{
-				ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).R,
-				ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).G,
-				ColorHelper.ColorConverter.HexToRgb(new(RGBTxt.Text)).B
-				};
-			}
-			GeneratePalette(rgb);
-		}
 		catch { }
 	}
 
-	private void GeneratePalette(byte[] rgb)
+	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
+		{
+			Global.Bookmarks.PaletteBookmarks.Remove(ColorInfo.HEX.Value);
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add to color bookmarks
+		BookmarkBtn.Content = "\uF1F8";
+	}
+
+	internal void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		try
 		{
-			bool u = Global.Settings.HEXUseUpperCase.Value;
-
-			// Set default color
-
-
-			ColorDisplayer.Background = new SolidColorBrush { Color = Color.FromRgb(rgb[0], rgb[1], rgb[2]) };
-			BaseShade.Background = new SolidColorBrush { Color = Color.FromRgb(rgb[0], rgb[1], rgb[2]) };
-
-			// Get shades
-			HSL hsl = ColorHelper.ColorConverter.RgbToHsl(new(rgb[0], rgb[1], rgb[2]));
-
-			var shades = GetShades(hsl); // Get shades
-			var shades1 = GetShades(ColorHelper.ColorConverter.RgbToHsl(shades[0])); // Get shades
-
-			DBaseShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
-
-			string hex1 = ColorHelper.ColorConverter.RgbToHex(shades[0]).Value; // Dark
-			string hex2 = ColorHelper.ColorConverter.RgbToHex(shades[1]).Value; // Regular
-			string hex3 = ColorHelper.ColorConverter.RgbToHex(new(rgb[0], rgb[1], rgb[2])).Value;
-			string hex4 = ColorHelper.ColorConverter.RgbToHex(shades[2]).Value; // Tint shade
-			string hex5 = ColorHelper.ColorConverter.RgbToHex(shades1[0]).Value; // Dark shade
-			string hex6 = ColorHelper.ColorConverter.RgbToHex(shades1[1]).Value; // Dark regular
-			string hex7 = ColorHelper.ColorConverter.RgbToHex(shades[0]).Value; // Dark base
-			string hex8 = ColorHelper.ColorConverter.RgbToHex(shades1[2]).Value; // Dark tint
-
-			// "Lighter" shades
-
-			DarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[0].R, shades[0].G, shades[0].B) };
-			RegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[1].R, shades[1].G, shades[1].B) };
-			TintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades[2].R, shades[2].G, shades[2].B) };
-
-			DarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex1.ToUpper() : hex1.ToLower())}";
-			RegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[1].R}{Global.Settings.RGBSeparator}{shades[1].G}{Global.Settings.RGBSeparator}{shades[1].B}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex2.ToUpper() : hex2.ToLower())}";
-			BaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {rgb[0]}{Global.Settings.RGBSeparator}{rgb[1]}{Global.Settings.RGBSeparator}{rgb[2]}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex3.ToUpper() : hex3.ToLower())}";
-			TintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[2].R}{Global.Settings.RGBSeparator}{shades[2].G}{Global.Settings.RGBSeparator}{shades[2].B}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex4.ToUpper() : hex4.ToLower())}";
-
-			// "Darker" shades
-
-			DDarkShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[0].R, shades1[0].G, shades1[0].B) };
-			DRegularShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[1].R, shades1[1].G, shades1[1].B) };
-			DTintShade.Background = new SolidColorBrush { Color = Color.FromRgb(shades1[2].R, shades1[2].G, shades1[2].B) };
-
-			DDarkShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[0].R}{Global.Settings.RGBSeparator}{shades1[0].G}{Global.Settings.RGBSeparator}{shades1[0].B}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex5.ToUpper() : hex5.ToLower())}";
-			DRegularShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[1].R}{Global.Settings.RGBSeparator}{shades1[1].G}{Global.Settings.RGBSeparator}{shades1[1].B}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex6.ToUpper() : hex6.ToLower())}";
-			DBaseShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades[0].R}{Global.Settings.RGBSeparator}{shades[0].G}{Global.Settings.RGBSeparator}{shades[0].B}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex7.ToUpper() : hex7.ToLower())}";
-			DTintShadeToolTip.Content = $"{Properties.Resources.RGB}: {shades1[2].R}{Global.Settings.RGBSeparator}{shades1[2].G}{Global.Settings.RGBSeparator}{shades1[2].B}" +
-				$"\n{Properties.Resources.HEX}: #{(u ? hex8.ToUpper() : hex8.ToLower())}";
-
-			// "Brightness" shades
-			// Get colors
-			HSL light1 = new(hsl.H, hsl.S, 90);
-			HSL light2 = new(hsl.H, hsl.S, 84);
-			HSL light3 = new(hsl.H, hsl.S, 72);
-			HSL light4 = new(hsl.H, hsl.S, 60);
-			HSL light5 = new(hsl.H, hsl.S, 48);
-			HSL light6 = new(hsl.H, hsl.S, 36);
-			HSL light7 = new(hsl.H, hsl.S, 24);
-			HSL light8 = new(hsl.H, hsl.S, 12);
-
-			RGB rgbLight1 = ColorHelper.ColorConverter.HslToRgb(light1); // Convert HSL color to RGB
-			RGB rgbLight2 = ColorHelper.ColorConverter.HslToRgb(light2); // Convert HSL color to RGB
-			RGB rgbLight3 = ColorHelper.ColorConverter.HslToRgb(light3); // Convert HSL color to RGB
-			RGB rgbLight4 = ColorHelper.ColorConverter.HslToRgb(light4); // Convert HSL color to RGB
-			RGB rgbLight5 = ColorHelper.ColorConverter.HslToRgb(light5); // Convert HSL color to RGB
-			RGB rgbLight6 = ColorHelper.ColorConverter.HslToRgb(light6); // Convert HSL color to RGB
-			RGB rgbLight7 = ColorHelper.ColorConverter.HslToRgb(light7); // Convert HSL color to RGB
-			RGB rgbLight8 = ColorHelper.ColorConverter.HslToRgb(light8); // Convert HSL color to RGB
-
-			string hexLight1 = u ? ColorHelper.ColorConverter.HslToHex(light1).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light1).Value.ToLower(); // Convert to HEX (tooltips)
-			string hexLight2 = u ? ColorHelper.ColorConverter.HslToHex(light2).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light2).Value.ToLower(); // Convert to HEX (tooltips)
-			string hexLight3 = u ? ColorHelper.ColorConverter.HslToHex(light3).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light3).Value.ToLower(); // Convert to HEX (tooltips)
-			string hexLight4 = u ? ColorHelper.ColorConverter.HslToHex(light4).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light4).Value.ToLower(); // Convert to HEX (tooltips)
-			string hexLight5 = u ? ColorHelper.ColorConverter.HslToHex(light5).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light5).Value.ToLower(); // Convert to HEX (tooltips)
-			string hexLight6 = u ? ColorHelper.ColorConverter.HslToHex(light6).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light6).Value.ToLower(); // Convert to HEX (tooltips)
-			string hexLight7 = u ? ColorHelper.ColorConverter.HslToHex(light7).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light7).Value.ToLower(); // Convert to HEX (tooltips)
-			string hexLight8 = u ? ColorHelper.ColorConverter.HslToHex(light8).Value.ToUpper() : ColorHelper.ColorConverter.HslToHex(light8).Value.ToLower(); // Convert to HEX (tooltips)
-
-			Light1.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight1.R, rgbLight1.G, rgbLight1.B) }; // Set background color
-			Light2.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight2.R, rgbLight2.G, rgbLight2.B) }; // Set background color
-			Light3.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight3.R, rgbLight3.G, rgbLight3.B) }; // Set background color
-			Light4.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight4.R, rgbLight4.G, rgbLight4.B) }; // Set background color
-			Light5.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight5.R, rgbLight5.G, rgbLight5.B) }; // Set background color
-			Light6.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight6.R, rgbLight6.G, rgbLight6.B) }; // Set background color
-			Light7.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight7.R, rgbLight7.G, rgbLight7.B) }; // Set background color
-			Light8.Background = new SolidColorBrush { Color = Color.FromRgb(rgbLight8.R, rgbLight8.G, rgbLight8.B) }; // Set background color
-
-			// Set tool tips text
-			Light1ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight1.R}{Global.Settings.RGBSeparator}{rgbLight1.G}{Global.Settings.RGBSeparator}{rgbLight1.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight1}";
-			Light2ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight2.R}{Global.Settings.RGBSeparator}{rgbLight2.G}{Global.Settings.RGBSeparator}{rgbLight2.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight2}";
-			Light3ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight3.R}{Global.Settings.RGBSeparator}{rgbLight3.G}{Global.Settings.RGBSeparator}{rgbLight3.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight3}";
-			Light4ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight4.R}{Global.Settings.RGBSeparator}{rgbLight4.G}{Global.Settings.RGBSeparator}{rgbLight4.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight4}";
-			Light5ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight5.R}{Global.Settings.RGBSeparator}{rgbLight5.G}{Global.Settings.RGBSeparator}{rgbLight5.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight5}";
-			Light6ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight6.R}{Global.Settings.RGBSeparator}{rgbLight6.G}{Global.Settings.RGBSeparator}{rgbLight6.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight6}";
-			Light7ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight7.R}{Global.Settings.RGBSeparator}{rgbLight7.G}{Global.Settings.RGBSeparator}{rgbLight7.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight7}";
-			Light8ToolTip.Content = $"{Properties.Resources.RGB}: {rgbLight8.R}{Global.Settings.RGBSeparator}{rgbLight8.G}{Global.Settings.RGBSeparator}{rgbLight8.B}" +
-				$"\n{Properties.Resources.HEX}: #{hexLight8}";
-
-			// History
-			RGB[] c1 = shades.Append(shades1);
-			CurrentColorPalette = c1.Append(shades[0], new RGB(rgb[0], rgb[1], rgb[2]));
-			CurrentRGBColor = $"{rgb[0]};{rgb[1]};{rgb[2]}";
-		}
-		catch
-		{
-
-		}
-	}
-
-	private void RandomColorBtn_Click(object sender, RoutedEventArgs e)
-	{
-		// Generate random color
-		int r, g, b;
-		Random random = new();
-
-		r = random.Next(0, 255); // Generate random number between 0 and 255
-		g = random.Next(0, 255); // Generate random number between 0 and 255
-		b = random.Next(0, 255); // Generate random number between 0 and 255
-
-		switch (ColorTypeComboBox.SelectedIndex)
-		{
-			case 0: // RGB
-				RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
-				break;
-			case 1: // HEX
-				RGBTxt.Text = $"#{(Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(new((byte)r, (byte)g, (byte)b)).Value.ToLower())}"; // Set text
-				break;
-			case 2: // HSV
-				var hsv = ColorHelper.ColorConverter.RgbToHsv(new((byte)r, (byte)g, (byte)b));
-				HueTxt.Text = hsv.H.ToString();
-				SatTxt.Text = hsv.S.ToString();
-				ValTxt.Text = hsv.V.ToString();
-				break;
-			case 3: // HSL
-				var hsl = ColorHelper.ColorConverter.RgbToHsl(new((byte)r, (byte)g, (byte)b));
-				HTxt.Text = hsl.H.ToString();
-				STxt.Text = hsl.S.ToString();
-				LTxt.Text = hsl.L.ToString();
-				break;
-			case 4: // CMYK
-				var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new((byte)r, (byte)g, (byte)b));
-				CTxt.Text = cmyk.C.ToString();
-				MTxt.Text = cmyk.M.ToString();
-				YTxt.Text = cmyk.Y.ToString();
-				KTxt.Text = cmyk.K.ToString();
-				break;
-			case 5: // YIQ
-				var yiq = ColorHelper.ColorConverter.RgbToYiq(new((byte)r, (byte)g, (byte)b));
-				YQTxt.Text = yiq.Y.ToString();
-				ITxt.Text = yiq.I.ToString();
-				QTxt.Text = yiq.Q.ToString();
-				break;
-			case 6: // XYZ
-				var xyz = ColorHelper.ColorConverter.RgbToXyz(new((byte)r, (byte)g, (byte)b));
-				XTxt.Text = xyz.X.ToString();
-				XYTxt.Text = xyz.Y.ToString();
-				ZTxt.Text = xyz.Z.ToString();
-				break;
-			default:
-				RGBTxt.Text = $"{r}{Global.Settings.RGBSeparator}{g}{Global.Settings.RGBSeparator}{b}"; // Set text
-				break;
-		}
-	}
-
-	private static string GetRgbStringFromBorder(Border border)
-	{
-		var color = ((SolidColorBrush)border.Background).Color; // Get the color
-
-		return $"{color.R}{Global.Settings.RGBSeparator}{color.G}{Global.Settings.RGBSeparator}{color.B}";
-	}
-
-	private static string GetHexStringFromBorder(Border border)
-	{
-		var color = ((SolidColorBrush)border.Background).Color; // Get the color
-		string hex = Global.Settings.HEXUseUpperCase.Value ? ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToUpper()
-														   : ColorHelper.ColorConverter.RgbToHex(new(color.R, color.G, color.B)).Value.ToLower();
-		return $"#{hex}";
-	}
-
-	private void DarkShade_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	{
-		Clipboard.SetText(ColorTypeComboBox.SelectedIndex switch
-		{
-			0 => GetRgbStringFromBorder((Border)sender),
-			1 => GetHexStringFromBorder((Border)sender),
-			_ => GetRgbStringFromBorder((Border)sender)
-		}); // Copy
-	}
-
-	internal void HistoryBtn_Click(object sender, RoutedEventArgs e)
-	{
-		if (HistoryDisplayer.Visibility == Visibility.Visible)
-		{
-			HistoryDisplayer.Visibility = Visibility.Collapsed;
-			PaletteContent.Visibility = Visibility.Visible;
-			HistoryBtn.Content = "\uF47F"; // Set text
-		}
-		else
-		{
-			HistoryDisplayer.Visibility = Visibility.Visible;
-			PaletteContent.Visibility = Visibility.Collapsed;
-			HistoryBtn.Content = "\uF36A"; // Set text
-		}
-	}
-
-	private void AddToHistoryBtn_Click(object sender, RoutedEventArgs e)
-	{
-		if (!SavedColorPalettes.Contains(CurrentRGBColor))
-		{
-			SavedColorPalettes.Add(CurrentRGBColor); // Add to saved palettes
-			HistoryDisplayer.Children.Add(new PaletteHistoryItem(CurrentColorPalette, HistoryDisplayer));
-		}
-	}
-
-	private void ColorDisplayer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	{
-		new ColorWheelWindow(true, RGBTxt, (ColorTypes)ColorTypeComboBox.SelectedIndex).Show(); // Show window
-	}
-
-	private void ColorTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-	{
-		RGBTxt.Text = ""; // Clear
-		RGBTxt.MaxLength = ColorTypeComboBox.SelectedIndex switch
-		{
-			0 => 11,
-			1 => 7,
-			_ => 11
-		}; // Set max length
-
-		HueTxt.Text = ""; // Clear
-		SatTxt.Text = ""; // Clear
-		ValTxt.Text = ""; // Clear
-
-		HTxt.Text = ""; // Clear
-		STxt.Text = ""; // Clear
-		LTxt.Text = ""; // Clear
-
-		CTxt.Text = ""; // Clear
-		MTxt.Text = ""; // Clear
-		YTxt.Text = ""; // Clear
-		KTxt.Text = ""; // Clear
-
-		XTxt.Text = ""; // Clear
-		XYTxt.Text = ""; // Clear
-		ZTxt.Text = ""; // Clear
-
-		YQTxt.Text = ""; // Clear
-		ITxt.Text = ""; // Clear
-		QTxt.Text = ""; // Clear
-
-		switch (ColorTypeComboBox.SelectedIndex)
-		{
-			case 0: // RGB
-				RGBTxt.Visibility = Visibility.Visible; // Show
-				HSVGrid.Visibility = Visibility.Collapsed; // Hide
-				HSLGrid.Visibility = Visibility.Collapsed; // Hide
-				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
-				XYZGrid.Visibility = Visibility.Collapsed; // Hide
-				YIQGrid.Visibility = Visibility.Collapsed; // Hide
-				break;
-			case 1: // HEX
-				RGBTxt.Visibility = Visibility.Visible; // Show
-				HSVGrid.Visibility = Visibility.Collapsed; // Hide
-				HSLGrid.Visibility = Visibility.Collapsed; // Hide
-				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
-				XYZGrid.Visibility = Visibility.Collapsed; // Hide
-				YIQGrid.Visibility = Visibility.Collapsed; // Hide
-				break;
-			case 2: // HSV
-				RGBTxt.Visibility = Visibility.Collapsed; // Hide
-				HSVGrid.Visibility = Visibility.Visible; // Show
-				HSLGrid.Visibility = Visibility.Collapsed; // Hide
-				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
-				XYZGrid.Visibility = Visibility.Collapsed; // Hide
-				YIQGrid.Visibility = Visibility.Collapsed; // Hide
-				break;
-			case 3: // HSL
-				RGBTxt.Visibility = Visibility.Collapsed; // Hide
-				HSVGrid.Visibility = Visibility.Collapsed; // Hide
-				HSLGrid.Visibility = Visibility.Visible; // Show
-				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
-				XYZGrid.Visibility = Visibility.Collapsed; // Hide
-				YIQGrid.Visibility = Visibility.Collapsed; // Hide
-				break;
-			case 4: // CMYK
-				RGBTxt.Visibility = Visibility.Collapsed; // Hide
-				HSVGrid.Visibility = Visibility.Collapsed; // Hide
-				HSLGrid.Visibility = Visibility.Collapsed; // Hide
-				CMYKGrid.Visibility = Visibility.Visible; // Show
-				XYZGrid.Visibility = Visibility.Collapsed; // Hide
-				YIQGrid.Visibility = Visibility.Collapsed; // Hide
-				break;
-			case 5: // YIQ
-				RGBTxt.Visibility = Visibility.Collapsed; // Hide
-				HSVGrid.Visibility = Visibility.Collapsed; // Hide
-				HSLGrid.Visibility = Visibility.Collapsed; // Hide
-				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
-				XYZGrid.Visibility = Visibility.Collapsed; // Hide
-				YIQGrid.Visibility = Visibility.Visible; // Show
-				break;
-			case 6: // XYZ
-				RGBTxt.Visibility = Visibility.Collapsed; // Hide
-				HSVGrid.Visibility = Visibility.Collapsed; // Hide
-				HSLGrid.Visibility = Visibility.Collapsed; // Hide
-				CMYKGrid.Visibility = Visibility.Collapsed; // Hide
-				XYZGrid.Visibility = Visibility.Visible; // Show
-				YIQGrid.Visibility = Visibility.Collapsed; // Hide
-				break;
-		}
-	}
-
-	private void HueTxt_TextChanged(object sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			RGB rgb = ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(HueTxt.Text), (byte)int.Parse(SatTxt.Text), (byte)int.Parse(ValTxt.Text)));
-			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
+			(int r, int g, int b) = Global.GenerateRandomColor();
+			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
+			Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
 		}
 		catch { }
-	}
-
-	private void HTxt_TextChanged(object sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			RGB rgb = ColorHelper.ColorConverter.HslToRgb(new(int.Parse(HTxt.Text), (byte)int.Parse(STxt.Text), (byte)int.Parse(LTxt.Text)));
-			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
-		}
-		catch { }
-	}
-
-	private void CTxt_TextChanged(object sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			RGB rgb = ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(CTxt.Text), (byte)int.Parse(MTxt.Text), (byte)int.Parse(YTxt.Text), (byte)int.Parse(KTxt.Text)));
-			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
-		}
-		catch { }
-	}
-
-	private void XTxt_TextChanged(object sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			RGB rgb = ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(XTxt.Text), double.Parse(XYTxt.Text), double.Parse(ZTxt.Text)));
-			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
-		}
-		catch { }
-	}
-
-	private void YQTxt_TextChanged(object sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			RGB rgb = ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(YQTxt.Text), double.Parse(ITxt.Text), double.Parse(QTxt.Text)));
-			GeneratePalette(new byte[] { rgb.R, rgb.G, rgb.B });
-		}
-		catch { }
+		RgbBtn_Click(SelectedColorBtn, null);
 	}
 }

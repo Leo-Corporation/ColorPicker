@@ -61,20 +61,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to I agree.
         /// </summary>
-        public static string About {
+        public static string Agree {
             get {
-                return ResourceManager.GetString("About", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add to history.
-        /// </summary>
-        public static string AddToHistory {
-            get {
-                return ResourceManager.GetString("AddToHistory", resourceCulture);
+                return ResourceManager.GetString("Agree", resourceCulture);
             }
         }
         
@@ -97,15 +88,6 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back.
-        /// </summary>
-        public static string Back {
-            get {
-                return ResourceManager.GetString("Back", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Background.
         /// </summary>
         public static string Background {
@@ -115,20 +97,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blue.
-        /// </summary>
-        public static string Blue {
-            get {
-                return ResourceManager.GetString("Blue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blue:.
+        ///   Looks up a localized string similar to B.
         /// </summary>
         public static string BlueP {
             get {
                 return ResourceManager.GetString("BlueP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bookmarks.
+        /// </summary>
+        public static string Bookmarks {
+            get {
+                return ResourceManager.GetString("Bookmarks", resourceCulture);
             }
         }
         
@@ -142,29 +124,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C.
-        /// </summary>
-        public static string C {
-            get {
-                return ResourceManager.GetString("C", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change ColorPicker language..
+        ///   Looks up a localized string similar to Change the language of ColorPicker..
         /// </summary>
         public static string ChangeLanguage {
             get {
                 return ResourceManager.GetString("ChangeLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Changes will be applied after a restart of ColorPicker..
-        /// </summary>
-        public static string ChangesApplyAfterRestart {
-            get {
-                return ResourceManager.GetString("ChangesApplyAfterRestart", resourceCulture);
             }
         }
         
@@ -178,7 +142,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check updates.
+        ///   Looks up a localized string similar to Check for updates.
         /// </summary>
         public static string CheckUpdate {
             get {
@@ -187,16 +151,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Checking updates on start is disabled..
-        /// </summary>
-        public static string CheckUpdatesDisabledOnStart {
-            get {
-                return ResourceManager.GetString("CheckUpdatesDisabledOnStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Check updates on start.
+        ///   Looks up a localized string similar to Check for updates on start.
         /// </summary>
         public static string CheckUpdatesOnStart {
             get {
@@ -205,11 +160,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close.
+        ///   Looks up a localized string similar to Chromatic wheel.
         /// </summary>
-        public static string Close {
+        public static string ChromaticWheel {
             get {
-                return ResourceManager.GetString("Close", resourceCulture);
+                return ResourceManager.GetString("ChromaticWheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Circle.
+        /// </summary>
+        public static string Circle {
+            get {
+                return ResourceManager.GetString("Circle", resourceCulture);
             }
         }
         
@@ -223,20 +187,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color formating.
+        ///   Looks up a localized string similar to Color Options.
         /// </summary>
-        public static string ColorFormatting {
+        public static string ColorOptions {
             get {
-                return ResourceManager.GetString("ColorFormatting", resourceCulture);
+                return ResourceManager.GetString("ColorOptions", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color formatting options..
+        ///   Looks up a localized string similar to The way ColorPicker handle colors..
         /// </summary>
-        public static string ColorFormattingDesc {
+        public static string ColorOptionsDesc {
             get {
-                return ResourceManager.GetString("ColorFormattingDesc", resourceCulture);
+                return ResourceManager.GetString("ColorOptionsDesc", resourceCulture);
             }
         }
         
@@ -250,11 +214,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color type.
+        ///   Looks up a localized string similar to ColorPicker Max.
         /// </summary>
-        public static string ColorType {
+        public static string ColorPickerMax {
             get {
-                return ResourceManager.GetString("ColorType", resourceCulture);
+                return ResourceManager.GetString("ColorPickerMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colors.
+        /// </summary>
+        public static string Colors {
+            get {
+                return ResourceManager.GetString("Colors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color Tools.
+        /// </summary>
+        public static string ColorTools {
+            get {
+                return ResourceManager.GetString("ColorTools", resourceCulture);
             }
         }
         
@@ -268,20 +250,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color wheel.
+        ///   Looks up a localized string similar to Contrast.
         /// </summary>
-        public static string ColorWheel {
+        public static string Contrast {
             get {
-                return ResourceManager.GetString("ColorWheel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Compact mode.
-        /// </summary>
-        public static string CompactMode {
-            get {
-                return ResourceManager.GetString("CompactMode", resourceCulture);
+                return ResourceManager.GetString("Contrast", resourceCulture);
             }
         }
         
@@ -295,20 +268,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy.
+        ///   Looks up a localized string similar to The converter feature of ColorPicker allows you to convert any color type to another one. The color types are RGB, HEX, HSV, HSL, CMYK, XYZ, YIQ and YUV. You can enter a color code in any of these formats and see the corresponding codes in the other formats..
         /// </summary>
-        public static string Copy {
+        public static string ConverterInfo {
             get {
-                return ResourceManager.GetString("Copy", resourceCulture);
+                return ResourceManager.GetString("ConverterInfo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy CMYK.
+        ///   Looks up a localized string similar to Convert from RGB.
         /// </summary>
-        public static string CopyCMYK {
+        public static string ConvertFromRGB {
             get {
-                return ResourceManager.GetString("CopyCMYK", resourceCulture);
+                return ResourceManager.GetString("ConvertFromRGB", resourceCulture);
             }
         }
         
@@ -322,65 +295,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy HEX.
+        ///   Looks up a localized string similar to Creation.
         /// </summary>
-        public static string CopyHEX {
+        public static string Creation {
             get {
-                return ResourceManager.GetString("CopyHEX", resourceCulture);
+                return ResourceManager.GetString("Creation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy HSL.
+        ///   Looks up a localized string similar to CSS.
         /// </summary>
-        public static string CopyHSL {
+        public static string CSS {
             get {
-                return ResourceManager.GetString("CopyHSL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy HSV.
-        /// </summary>
-        public static string CopyHSV {
-            get {
-                return ResourceManager.GetString("CopyHSV", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy RGB.
-        /// </summary>
-        public static string CopyRGB {
-            get {
-                return ResourceManager.GetString("CopyRGB", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy XYZ.
-        /// </summary>
-        public static string CopyXYZ {
-            get {
-                return ResourceManager.GetString("CopyXYZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy YIQ.
-        /// </summary>
-        public static string CopyYIQ {
-            get {
-                return ResourceManager.GetString("CopyYIQ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Credits and special thanks.
-        /// </summary>
-        public static string CreditsAndThanks {
-            get {
-                return ResourceManager.GetString("CreditsAndThanks", resourceCulture);
+                return ResourceManager.GetString("CSS", resourceCulture);
             }
         }
         
@@ -394,11 +322,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data.
+        ///   Looks up a localized string similar to Manage your data and your privacy..
         /// </summary>
-        public static string Data {
+        public static string DataDescription {
             get {
-                return ResourceManager.GetString("Data", resourceCulture);
+                return ResourceManager.GetString("DataDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data and Privacy.
+        /// </summary>
+        public static string DataPrivacy {
+            get {
+                return ResourceManager.GetString("DataPrivacy", resourceCulture);
             }
         }
         
@@ -414,18 +351,45 @@ namespace ColorPicker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Default color type.
         /// </summary>
-        public static string DefaultColor {
+        public static string DefaultColorType {
             get {
-                return ResourceManager.GetString("DefaultColor", resourceCulture);
+                return ResourceManager.GetString("DefaultColorType", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to Details.
         /// </summary>
-        public static string Delete {
+        public static string Details {
             get {
-                return ResourceManager.GetString("Delete", resourceCulture);
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Developer tools.
+        /// </summary>
+        public static string DevTools {
+            get {
+                return ResourceManager.GetString("DevTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disc.
+        /// </summary>
+        public static string Disc {
+            get {
+                return ResourceManager.GetString("Disc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover.
+        /// </summary>
+        public static string Discover {
+            get {
+                return ResourceManager.GetString("Discover", resourceCulture);
             }
         }
         
@@ -439,20 +403,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter compact mode.
+        ///   Looks up a localized string similar to Empty bookmarks.
         /// </summary>
-        public static string EnterCompactMode {
+        public static string EmptyBookmarks {
             get {
-                return ResourceManager.GetString("EnterCompactMode", resourceCulture);
+                return ResourceManager.GetString("EmptyBookmarks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exit compact mode.
+        ///   Looks up a localized string similar to Are you sure want to empty these bookmarks? This action is irreversible..
         /// </summary>
-        public static string ExitCompactMode {
+        public static string EmptyHistoryMsg {
             get {
-                return ResourceManager.GetString("ExitCompactMode", resourceCulture);
+                return ResourceManager.GetString("EmptyHistoryMsg", resourceCulture);
             }
         }
         
@@ -462,6 +426,24 @@ namespace ColorPicker.Properties {
         public static string Export {
             get {
                 return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Features.
+        /// </summary>
+        public static string Features {
+            get {
+                return ResourceManager.GetString("Features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to ignore this window and continue to ColorPicker?.
+        /// </summary>
+        public static string FirstRunQuitMsg {
+            get {
+                return ResourceManager.GetString("FirstRunQuitMsg", resourceCulture);
             }
         }
         
@@ -480,6 +462,51 @@ namespace ColorPicker.Properties {
         public static string Foreground {
             get {
                 return ResourceManager.GetString("Foreground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        public static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate a gradient.
+        /// </summary>
+        public static string GenerateGradient {
+            get {
+                return ResourceManager.GetString("GenerateGradient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate a palette.
+        /// </summary>
+        public static string GeneratePalette {
+            get {
+                return ResourceManager.GetString("GeneratePalette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get contrast ratio.
+        /// </summary>
+        public static string GetContrast {
+            get {
+                return ResourceManager.GetString("GetContrast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get started.
+        /// </summary>
+        public static string GetStarted {
+            get {
+                return ResourceManager.GetString("GetStarted", resourceCulture);
             }
         }
         
@@ -511,29 +538,38 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Green.
+        ///   Looks up a localized string similar to Gradient.
         /// </summary>
-        public static string Green {
+        public static string Gradient {
             get {
-                return ResourceManager.GetString("Green", resourceCulture);
+                return ResourceManager.GetString("Gradient", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Green:.
+        ///   Looks up a localized string similar to The gradient feature of ColorPicker lets you generate random two-stops gradients with a specific rotation angle. You can see a preview of the gradient and its CSS code. You can also export the gradient to CSS code and use it in your web design projects..
+        /// </summary>
+        public static string GradientInfo {
+            get {
+                return ResourceManager.GetString("GradientInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gradients.
+        /// </summary>
+        public static string Gradients {
+            get {
+                return ResourceManager.GetString("Gradients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to G.
         /// </summary>
         public static string GreenP {
             get {
                 return ResourceManager.GetString("GreenP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to H.
-        /// </summary>
-        public static string H {
-            get {
-                return ResourceManager.GetString("H", resourceCulture);
             }
         }
         
@@ -543,15 +579,6 @@ namespace ColorPicker.Properties {
         public static string HEX {
             get {
                 return ResourceManager.GetString("HEX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HEX:.
-        /// </summary>
-        public static string HEXP {
-            get {
-                return ResourceManager.GetString("HEXP", resourceCulture);
             }
         }
         
@@ -574,11 +601,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to History settings..
+        ///   Looks up a localized string similar to Home.
         /// </summary>
-        public static string HistorySettings {
+        public static string Home {
             get {
-                return ResourceManager.GetString("HistorySettings", resourceCulture);
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -601,11 +628,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I.
+        ///   Looks up a localized string similar to Hues.
         /// </summary>
-        public static string I {
+        public static string Hues {
             get {
-                return ResourceManager.GetString("I", resourceCulture);
+                return ResourceManager.GetString("Hues", resourceCulture);
             }
         }
         
@@ -628,7 +655,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To install updates, ColorPicker needs to restart. Do you want to continue?.
+        ///   Looks up a localized string similar to To install updates, ColorPicker needs to restarts. Do you want to continue?.
         /// </summary>
         public static string InstallConfirmMsg {
             get {
@@ -646,29 +673,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Introducing Synethia.
+        /// </summary>
+        public static string IntroducingSynethia {
+            get {
+                return ResourceManager.GetString("IntroducingSynethia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The color is invalid..
         /// </summary>
         public static string InvalidColor {
             get {
                 return ResourceManager.GetString("InvalidColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter a valid value..
-        /// </summary>
-        public static string InvalidValueRGB {
-            get {
-                return ResourceManager.GetString("InvalidValueRGB", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to K.
-        /// </summary>
-        public static string K {
-            get {
-                return ResourceManager.GetString("K", resourceCulture);
             }
         }
         
@@ -682,15 +700,6 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to L.
-        /// </summary>
-        public static string L {
-            get {
-                return ResourceManager.GetString("L", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -700,7 +709,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Let&apos;s go.
+        ///   Looks up a localized string similar to Let&apos;s go!.
         /// </summary>
         public static string LetsGo {
             get {
@@ -727,38 +736,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to M.
+        ///   Looks up a localized string similar to Max.
         /// </summary>
-        public static string M {
+        public static string Max {
             get {
-                return ResourceManager.GetString("M", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Manage your data..
-        /// </summary>
-        public static string ManageData {
-            get {
-                return ResourceManager.GetString("ManageData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Minimize.
-        /// </summary>
-        public static string Minimize {
-            get {
-                return ResourceManager.GetString("Minimize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name.
-        /// </summary>
-        public static string Name {
-            get {
-                return ResourceManager.GetString("Name", resourceCulture);
+                return ResourceManager.GetString("Max", resourceCulture);
             }
         }
         
@@ -790,6 +772,33 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No thanks.
+        /// </summary>
+        public static string NoThanks {
+            get {
+                return ResourceManager.GetString("NoThanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string Notifications {
+            get {
+                return ResourceManager.GetString("Notifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications settings..
+        /// </summary>
+        public static string NotificationsDescription {
+            get {
+                return ResourceManager.GetString("NotificationsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show a notification when updates are available.
         /// </summary>
         public static string NotifyUpdates {
@@ -799,11 +808,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Source - Made with ❤️ in France.
+        ///   Looks up a localized string similar to On start.
         /// </summary>
-        public static string OpenSourceMention {
+        public static string OnStart {
             get {
-                return ResourceManager.GetString("OpenSourceMention", resourceCulture);
+                return ResourceManager.GetString("OnStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings that applies on start..
+        /// </summary>
+        public static string OnStartDescription {
+            get {
+                return ResourceManager.GetString("OnStartDescription", resourceCulture);
             }
         }
         
@@ -817,6 +835,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Palettes.
+        /// </summary>
+        public static string Palettes {
+            get {
+                return ResourceManager.GetString("Palettes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Picker.
         /// </summary>
         public static string Picker {
@@ -826,20 +853,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Generate a random color.
+        ///   Looks up a localized string similar to Pinned.
         /// </summary>
-        public static string PickRandomColor {
+        public static string Pinned {
             get {
-                return ResourceManager.GetString("PickRandomColor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pin.
-        /// </summary>
-        public static string Pin {
-            get {
-                return ResourceManager.GetString("Pin", resourceCulture);
+                return ResourceManager.GetString("Pinned", resourceCulture);
             }
         }
         
@@ -853,38 +871,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Q.
-        /// </summary>
-        public static string Q {
-            get {
-                return ResourceManager.GetString("Q", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Red.
-        /// </summary>
-        public static string Red {
-            get {
-                return ResourceManager.GetString("Red", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Red:.
+        ///   Looks up a localized string similar to R.
         /// </summary>
         public static string RedP {
             get {
                 return ResourceManager.GetString("RedP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Regenerate.
-        /// </summary>
-        public static string Regenerate {
-            get {
-                return ResourceManager.GetString("Regenerate", resourceCulture);
             }
         }
         
@@ -909,27 +900,18 @@ namespace ColorPicker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to reset all settings?.
         /// </summary>
-        public static string ResetSettingsConfirmMsg {
+        public static string ResetSettingsConfirmation {
             get {
-                return ResourceManager.GetString("ResetSettingsConfirmMsg", resourceCulture);
+                return ResourceManager.GetString("ResetSettingsConfirmation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Restore color history on start.
+        ///   Looks up a localized string similar to Reset Synethia data.
         /// </summary>
-        public static string RestoreColorHistory {
+        public static string ResetSynethia {
             get {
-                return ResourceManager.GetString("RestoreColorHistory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Restore color palettes history on start.
-        /// </summary>
-        public static string RestorePaletteHistory {
-            get {
-                return ResourceManager.GetString("RestorePaletteHistory", resourceCulture);
+                return ResourceManager.GetString("ResetSynethia", resourceCulture);
             }
         }
         
@@ -943,20 +925,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RGB separator.
+        ///   Looks up a localized string similar to Rotation.
         /// </summary>
-        public static string RGBSeparator {
+        public static string Rotation {
             get {
-                return ResourceManager.GetString("RGBSeparator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to S.
-        /// </summary>
-        public static string S {
-            get {
-                return ResourceManager.GetString("S", resourceCulture);
+                return ResourceManager.GetString("Rotation", resourceCulture);
             }
         }
         
@@ -970,11 +943,38 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select color.
+        ///   Looks up a localized string similar to Select from the chromatic disc.
+        /// </summary>
+        public static string SelectChomaticDisc {
+            get {
+                return ResourceManager.GetString("SelectChomaticDisc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a color.
         /// </summary>
         public static string SelectColor {
             get {
                 return ResourceManager.GetString("SelectColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selector.
+        /// </summary>
+        public static string Selector {
+            get {
+                return ResourceManager.GetString("Selector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selector feature of ColorPicker enables you to choose any color from the screen by moving the cursor over it and pressing a keyboard shortcut. The chosen color will be shown in a preview box and its code will be copied to the clipboard in a desired color type..
+        /// </summary>
+        public static string SelectorInfo {
+            get {
+                return ResourceManager.GetString("SelectorInfo", resourceCulture);
             }
         }
         
@@ -988,7 +988,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings exported sucessfully..
+        ///   Looks up a localized string similar to Settings have been sucessfully exported..
         /// </summary>
         public static string SettingsExportedSucessMsg {
             get {
@@ -997,20 +997,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings have been imported sucessfully. To finish the process, ColorPicker will now restart..
+        ///   Looks up a localized string similar to Settings were sucessfully imported. To finish the process, ColorPicker is going to restart..
         /// </summary>
         public static string SettingsImportedMsg {
             get {
                 return ResourceManager.GetString("SettingsImportedMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All settings have been reset, ColorPicker will now restart..
-        /// </summary>
-        public static string SettingsReset {
-            get {
-                return ResourceManager.GetString("SettingsReset", resourceCulture);
             }
         }
         
@@ -1024,20 +1015,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press {0} to start/stop the selection. Press {1} to copy the color..
-        /// </summary>
-        public static string ShortcutsGuide {
-            get {
-                return ResourceManager.GetString("ShortcutsGuide", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Size.
         /// </summary>
         public static string Size {
             get {
                 return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip.
+        /// </summary>
+        public static string Skip {
+            get {
+                return ResourceManager.GetString("Skip", resourceCulture);
             }
         }
         
@@ -1051,16 +1042,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Startup.
-        /// </summary>
-        public static string Startup {
-            get {
-                return ResourceManager.GetString("Startup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select the default startup page..
+        ///   Looks up a localized string similar to Default page on start.
         /// </summary>
         public static string StartupPage {
             get {
@@ -1069,34 +1051,79 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop.
+        ///   Looks up a localized string similar to Suggested actions.
         /// </summary>
-        public static string Stop {
+        public static string SuggestedActions {
             get {
-                return ResourceManager.GetString("Stop", resourceCulture);
+                return ResourceManager.GetString("SuggestedActions", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to System.
+        ///   Looks up a localized string similar to Synethia will then analyze this data to provide a unique experience.
         /// </summary>
-        public static string System {
+        public static string SynethiaAnalyze {
             get {
-                return ResourceManager.GetString("System", resourceCulture);
+                return ResourceManager.GetString("SynethiaAnalyze", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tasks.
+        ///   Looks up a localized string similar to Synethia collects data in ColorPicker only.
         /// </summary>
-        public static string Tasks {
+        public static string SynethiaDataInfo {
             get {
-                return ResourceManager.GetString("Tasks", resourceCulture);
+                return ResourceManager.GetString("SynethiaDataInfo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text tool.
+        ///   Looks up a localized string similar to Are you sure you want to reset all Synethia data? Your personalized experience will be lost; This action cannot be canceled..
+        /// </summary>
+        public static string SynethiaDeleteMsg {
+            get {
+                return ResourceManager.GetString("SynethiaDeleteMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Synethia customized experience..
+        /// </summary>
+        public static string SynethiaEnable {
+            get {
+                return ResourceManager.GetString("SynethiaEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Home dashbord will recommand actions based on your usage.
+        /// </summary>
+        public static string SynethiaHome {
+            get {
+                return ResourceManager.GetString("SynethiaHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synethia is an algorithm that personnalizes your experience..
+        /// </summary>
+        public static string SynethiaInfo {
+            get {
+                return ResourceManager.GetString("SynethiaInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your data is stored on your device, anonymously. Absolutely NO data is sent to Léo Corporation..
+        /// </summary>
+        public static string SynethiaPrivacy {
+            get {
+                return ResourceManager.GetString("SynethiaPrivacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
         /// </summary>
         public static string TextTool {
             get {
@@ -1105,11 +1132,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default settings of the Text tool..
+        ///   Looks up a localized string similar to Text tool settings..
         /// </summary>
-        public static string TextToolSettings {
+        public static string TextToolDesc {
             get {
-                return ResourceManager.GetString("TextToolSettings", resourceCulture);
+                return ResourceManager.GetString("TextToolDesc", resourceCulture);
             }
         }
         
@@ -1123,20 +1150,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to check updates.
+        ///   Looks up a localized string similar to To.
         /// </summary>
-        public static string UnableToCheckUpdates {
+        public static string To {
             get {
-                return ResourceManager.GetString("UnableToCheckUpdates", resourceCulture);
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unpin.
+        ///   Looks up a localized string similar to Tools.
         /// </summary>
-        public static string Unpin {
+        public static string Tools {
             get {
-                return ResourceManager.GetString("Unpin", resourceCulture);
+                return ResourceManager.GetString("Tools", resourceCulture);
             }
         }
         
@@ -1159,47 +1186,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use compact mode when launching ColorPicker.
-        /// </summary>
-        public static string UseCompactMode {
-            get {
-                return ResourceManager.GetString("UseCompactMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use default colors.
-        /// </summary>
-        public static string UseDefaultColors {
-            get {
-                return ResourceManager.GetString("UseDefaultColors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Use keyboard shortcuts.
         /// </summary>
         public static string UseKeyboardShortcuts {
             get {
                 return ResourceManager.GetString("UseKeyboardShortcuts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use upper case for HEX colors.
-        /// </summary>
-        public static string UseUpperCaseHEX {
-            get {
-                return ResourceManager.GetString("UseUpperCaseHEX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to V.
-        /// </summary>
-        public static string V {
-            get {
-                return ResourceManager.GetString("V", resourceCulture);
             }
         }
         
@@ -1213,74 +1204,20 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome.
+        ///   Looks up a localized string similar to Welcome to ColorPicker, the ultimate tool for picking, converting and generating colors..
         /// </summary>
-        public static string Welcome {
+        public static string WelcomeDesc {
             get {
-                return ResourceManager.GetString("Welcome", resourceCulture);
+                return ResourceManager.GetString("WelcomeDesc", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Make ColorPicker yours.
+        ///   Looks up a localized string similar to Everyting is ready.
         /// </summary>
-        public static string WelcomeChangeTheme {
+        public static string WelcomeReady {
             get {
-                return ResourceManager.GetString("WelcomeChangeTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Converter tool allows you to convert any color type, such as RGB, HEX, HSL, etc., to any other color type..
-        /// </summary>
-        public static string WelcomeConverter {
-            get {
-                return ResourceManager.GetString("WelcomeConverter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Palette tool can generate different color palettes from a single color. You can get a lighter or darker color. You can also get different shades of the same color..
-        /// </summary>
-        public static string WelcomePalette {
-            get {
-                return ResourceManager.GetString("WelcomePalette", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to It&apos;s the main feature of ColorPicker! Get the color of any pixel of your screen easily using the Picker tool. Enable it at any time using Shift+S, and copy the RGB color using Shift+C..
-        /// </summary>
-        public static string WelcomePicker {
-            get {
-                return ResourceManager.GetString("WelcomePicker", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Thanks for using ColorPicker! Let&apos;s get started!.
-        /// </summary>
-        public static string WelcomeThanks {
-            get {
-                return ResourceManager.GetString("WelcomeThanks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to X.
-        /// </summary>
-        public static string X {
-            get {
-                return ResourceManager.GetString("X", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Y.
-        /// </summary>
-        public static string XY {
-            get {
-                return ResourceManager.GetString("XY", resourceCulture);
+                return ResourceManager.GetString("WelcomeReady", resourceCulture);
             }
         }
         
@@ -1294,15 +1231,6 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Y.
-        /// </summary>
-        public static string Y {
-            get {
-                return ResourceManager.GetString("Y", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to YIQ.
         /// </summary>
         public static string YIQ {
@@ -1312,11 +1240,11 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Z.
+        ///   Looks up a localized string similar to YUV.
         /// </summary>
-        public static string Z {
+        public static string YUV {
             get {
-                return ResourceManager.GetString("Z", resourceCulture);
+                return ResourceManager.GetString("YUV", resourceCulture);
             }
         }
     }

@@ -1,104 +1,120 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>ColorPicker.ico</ApplicationIcon>
-    <Version>4.6.0.2212</Version>
-    <Authors>Léo Corporation;wcxu21</Authors>
-    <Copyright>© 2021</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/Leo-Corporation/ColorPicker</PackageProjectUrl>
-    <Company>Léo Corporation</Company>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net6.0-windows</TargetFramework>
+	<Nullable>enable</Nullable>
+	<UseWPF>true</UseWPF>
+	<UseWindowsForms>True</UseWindowsForms>
+	<Copyright>© 2023</Copyright>
+	<Authors>Léo Corporation</Authors>
+	<Title>ColorPicker</Title>
+	<Description>Maximize your creativity.</Description>
+	<RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
+	<Version>5.0.0.2302</Version>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageIcon>logo.png</PackageIcon>
+	<ApplicationIcon>CPM.ico</ApplicationIcon>
+	<ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
-    <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
-    <None Remove="Fonts\Hauora-ExtraBold.ttf" />
-    <None Remove="Fonts\Hauora-Regular.ttf" />
-    <None Remove="Images\BackgroundBlack.png" />
-    <None Remove="Images\BackgroundWhite.png" />
-    <None Remove="Images\ColorDisc.png" />
-    <None Remove="Images\ColorDisc2.png" />
-    <None Remove="Images\ColorPicker.png" />
-    <None Remove="Images\ColorWheel.png" />
-    <None Remove="Images\DarkTheme.png" />
-    <None Remove="Images\LightTheme.png" />
-    <None Remove="Images\SystemTheme.png" />
+	<None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
+	<None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
+	<None Remove="Fonts\Hauora-ExtraBold.ttf" />
+	<None Remove="Fonts\Hauora-Regular.ttf" />
+	<None Remove="Images\ColorDisc.png" />
+	<None Remove="Images\ColorDisc2.png" />
+	<None Remove="Images\ColorWheel.png" />
+	<None Remove="Images\CPM.png" />
+	<None Remove="Images\DarkBackground.png" />
+	<None Remove="Images\DarkTheme.png" />
+	<None Remove="Images\LightBackground.png" />
+	<None Remove="Images\LightTheme.png" />
+	<None Remove="Images\SystemTheme.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ColorHelper" Version="1.8.0" />
-    <PackageReference Include="MouseKeyHook" Version="5.6.0" />
-    <PackageReference Include="PeyrSharp" Version="1.1.0.2212" />
+	<Content Include="CPM.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+	<None Include="..\.editorconfig" Link=".editorconfig" />
+	<None Include="..\.github\images\logo.png">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Resources.fr-FR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+	<PackageReference Include="ColorHelper" Version="1.8.0" />
+	<PackageReference Include="MouseKeyHook" Version="5.6.0" />
+	<PackageReference Include="PeyrSharp.Core" Version="1.3.0.2302" />
+	<PackageReference Include="PeyrSharp.Env" Version="1.3.0.2302" />
+	<PackageReference Include="Synethia" Version="1.1.1.2302" />
   </ItemGroup>
 
-	<ItemGroup>
-		<Resource Include="Fonts\FluentSystemIcons-Filled.ttf">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Fonts\FluentSystemIcons-Regular.ttf">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Fonts\Hauora-ExtraBold.ttf">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Fonts\Hauora-Regular.ttf">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\BackgroundBlack.png">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\BackgroundWhite.png">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\ColorDisc.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\ColorDisc2.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\ColorPicker.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\ColorWheel.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\DarkTheme.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\LightTheme.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-		<Resource Include="Images\SystemTheme.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Resource>
-	</ItemGroup>
+  <ItemGroup>
+	<Resource Include="Fonts\FluentSystemIcons-Filled.ttf">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Fonts\FluentSystemIcons-Regular.ttf">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Fonts\Hauora-ExtraBold.ttf">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Fonts\Hauora-Regular.ttf">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\ColorDisc.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\ColorDisc2.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\ColorWheel.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\CPM.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\DarkBackground.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\DarkTheme.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\LightBackground.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\LightTheme.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Images\SystemTheme.png">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+	<Compile Update="Properties\Resources.Designer.cs">
+	  <DesignTime>True</DesignTime>
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>Resources.resx</DependentUpon>
+	</Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+	<EmbeddedResource Update="Properties\Resources.en-US.resx">
+	  <Generator>PublicResXFileCodeGenerator</Generator>
+	</EmbeddedResource>
+	<EmbeddedResource Update="Properties\Resources.fr-FR.resx">
+	  <Generator>PublicResXFileCodeGenerator</Generator>
+	</EmbeddedResource>
+	<EmbeddedResource Update="Properties\Resources.resx">
+	  <Generator>PublicResXFileCodeGenerator</Generator>
+	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	</EmbeddedResource>
+  </ItemGroup>
 
 </Project>
