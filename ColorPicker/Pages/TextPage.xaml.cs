@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using Synethia;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -147,6 +148,37 @@ public partial class TextPage : Page
 			BoldTxt.Background = color; // Set background color
 			TextPanel.Background = color; // Set background color
 		}
+		LoadConstrastUI();
+	}
+	Random random = new();
+
+	private void GenerateGradientBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+	{
+		// 1. Generate two random colors
+		int n = random.Next(0, 2); // if n = 0, fg will be light; otherwise, fg will be dark
+
+		var fg = n == 0 ? ColorHelper.ColorGenerator.GetLightRandomColor<ColorHelper.RGB>() : ColorHelper.ColorGenerator.GetDarkRandomColor<ColorHelper.RGB>();
+		var bg = n == 0 ? ColorHelper.ColorGenerator.GetDarkRandomColor<ColorHelper.RGB>() : ColorHelper.ColorGenerator.GetLightRandomColor<ColorHelper.RGB>();
+
+		foreground = System.Drawing.Color.FromArgb(fg.R, fg.G, fg.B);
+		background = System.Drawing.Color.FromArgb(bg.R, bg.G, bg.B);
+
+		SolidColorBrush fgBrush = new() { Color = Color.FromRgb(fg.R, fg.G, fg.B) };
+		SolidColorBrush bgBrush = new() { Color = Color.FromRgb(bg.R, bg.G, bg.B) };
+
+		// 2. Set the background and foreground color
+		BackgroundBorder.Background = bgBrush;
+		RegularTxt.Background = bgBrush; // Set background color
+		ItalicTxt.Background = bgBrush; // Set background color
+		BoldTxt.Background = bgBrush; // Set background color
+		TextPanel.Background = bgBrush; // Set background color
+
+		ForegroundBorder.Background = fgBrush;
+		RegularTxt.Foreground = fgBrush; // Set Foreground color
+		ItalicTxt.Foreground = fgBrush; // Set Foreground color
+		BoldTxt.Foreground = fgBrush; // Set Foreground color
+
+		// 3. Update the contrast UI
 		LoadConstrastUI();
 	}
 

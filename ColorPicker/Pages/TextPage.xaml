@@ -32,35 +32,44 @@
 				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 			</Border.Effect>
 
-			<StackPanel Orientation="Horizontal">
-				<TextBlock Text="{x:Static lang:Resources.Font}" VerticalAlignment="Center" Margin="0,0,10,0" />
-				<Border Background="{Binding Source={StaticResource CardBackground}}" CornerRadius="5">
-					<Border.Effect>
-						<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{x:Static lang:Resources.Font}" VerticalAlignment="Center" Margin="0,0,10,0" />
+					<Border Background="{Binding Source={StaticResource CardBackground}}" CornerRadius="5">
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 
-					</Border.Effect>
-					<ComboBox IsEditable="True" MinWidth="100" MaxWidth="150" SelectionChanged="FontComboBox_SelectionChanged" BorderThickness="0" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FontComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" />
-				</Border>
-				<TextBlock Text="{x:Static lang:Resources.Size}" VerticalAlignment="Center" Margin="10,0,10,0" />
-				<Border x:Name="B2" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
-					<Border.Effect>
-						<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-					</Border.Effect>
-					<TextBox x:Name="FontSizeTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="FontSizeTxt_TextChanged" Text="16" Background="Transparent" TextAlignment="Center" PreviewTextInput="FontSizeTxt_PreviewTextInput"/>
-				</Border>
-				<TextBlock Text="{x:Static lang:Resources.Foreground}" VerticalAlignment="Center" Margin="10,0,10,0" />
-				<Border x:Name="ForegroundBorder" BorderThickness="0" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Foreground1}}" Width="30" Height="30" Cursor="Hand" >
-					<Border.Effect>
-						<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-					</Border.Effect>
-				</Border>
-				<TextBlock Text="{x:Static lang:Resources.Background}" VerticalAlignment="Center" Margin="10,0,10,0" />
-				<Border x:Name="BackgroundBorder" BorderThickness="0" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Background1}}" Width="30" Height="30" Cursor="Hand" >
-					<Border.Effect>
-						<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-					</Border.Effect>
-				</Border>
-			</StackPanel>
+						</Border.Effect>
+						<ComboBox IsEditable="True" MinWidth="100" MaxWidth="150" SelectionChanged="FontComboBox_SelectionChanged" BorderThickness="0" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FontComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" />
+					</Border>
+					<TextBlock Text="{x:Static lang:Resources.Size}" VerticalAlignment="Center" Margin="10,0,10,0" />
+					<Border x:Name="B2" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+						<TextBox x:Name="FontSizeTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="FontSizeTxt_TextChanged" Text="16" Background="Transparent" TextAlignment="Center" PreviewTextInput="FontSizeTxt_PreviewTextInput"/>
+					</Border>
+					<TextBlock Text="{x:Static lang:Resources.Foreground}" VerticalAlignment="Center" Margin="10,0,10,0" />
+					<Border x:Name="ForegroundBorder" BorderThickness="0" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Foreground1}}" Width="30" Height="30" Cursor="Hand" >
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+					</Border>
+					<TextBlock Text="{x:Static lang:Resources.Background}" VerticalAlignment="Center" Margin="10,0,10,0" />
+					<Border x:Name="BackgroundBorder" BorderThickness="0" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Background1}}" Width="30" Height="30" Cursor="Hand" >
+						<Border.Effect>
+							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+						</Border.Effect>
+					</Border>
+				</StackPanel>
+                <Button Grid.Column="2" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+            </Grid>
 		</Border>
 		<Border x:Name="TextPanel" Margin="10" Padding="10" CornerRadius="5" Grid.Row="2" Background="{Binding Source={StaticResource CardBackground}}">
 			<Border.Effect>
