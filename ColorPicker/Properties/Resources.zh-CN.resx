@@ -521,4 +521,7 @@
   <data name="WelcomeDesc" xml:space="preserve">
     <value>欢迎来到ColorPicker，这是一款用于挑选、转换和生成颜色的终极工具。</value>
   </data>
+  <data name="XAML" xml:space="preserve">
+    <value>XAML</value>
+  </data>
 </root>
