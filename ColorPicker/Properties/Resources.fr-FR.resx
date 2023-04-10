@@ -517,4 +517,7 @@
   <data name="WelcomeDesc" xml:space="preserve">
     <value>Bienvenue dans ColorPicker, l'outil ultime pour choisir, convertir et générer des couleurs.</value>
   </data>
+  <data name="XAML" xml:space="preserve">
+    <value>XAML</value>
+  </data>
 </root>
