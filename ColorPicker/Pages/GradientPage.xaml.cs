@@ -81,8 +81,20 @@ public partial class GradientPage : Page
 				CenterY = 0.5
 			},
 		};
-
+		var color1 = ColorHelper.ColorConverter.RgbToHex(new(from.R, from.G, from.B));
+		var color2 = ColorHelper.ColorConverter.RgbToHex(new(to.R, to.G, to.B));
 		CssCodeTxt.Text = $"background: linear-gradient({angle}deg, rgba({from.R}, {from.G}, {from.B}, 1) 0%, rgba({to.R}, {to.G}, {to.B}, 1) 100%);";
+		XamlCodeTxt.Text = $"<Rectangle Width=\"100\" Height=\"100\">\n" +
+			$"\t<Rectangle.Fill>\n" +
+			$"\t\t<LinearGradientBrush StartPoint=\"0.5,1\" EndPoint=\"0.5,0\">\n" +
+			$"\t\t\t<GradientStop Color=\"#{color1}\" Offset=\"0\"/>\n" +
+			$"\t\t\t<GradientStop Color=\"#{color2}\" Offset=\"1\"/>\n" +
+			$"\t\t</LinearGradientBrush>\n" +
+			$"\t</Rectangle.Fill>\n" +
+			$"\t<Rectangle.RenderTransform>\n" +
+			$"\t\t<RotateTransform Angle=\"{(double.IsNaN(angle) ? 0 : angle)}\" CenterX=\"0.5\" CenterY=\"0.5\"/>\n" +
+			$"\t</Rectangle.RenderTransform>\n" +
+			$"</Rectangle>";
 
 		CurrentGradient = new(
 			new()
@@ -152,6 +164,11 @@ public partial class GradientPage : Page
 		}
 		Global.Bookmarks.GradientBookmarks.Add(CurrentGradient);
 		BookmarkBtn.Content = "\uF1F8";
+	}
+
+	private void CopyXamlBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(XamlCodeTxt.Text);
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
