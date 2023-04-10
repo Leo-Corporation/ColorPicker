@@ -28,6 +28,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -49,6 +50,7 @@ public partial class GradientPage : Page
 	{
 		TitleTxt.Text = $"{Properties.Resources.Creation} > {Properties.Resources.Gradient}";
 		GenerateRandomGradient();
+		RgbBtn_Click(RgbBtn, null);
 	}
 
 	internal void GenerateRandomGradient()
@@ -117,19 +119,8 @@ public partial class GradientPage : Page
 	Gradient CurrentGradient { get; set; }
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		System.Windows.Forms.ColorDialog colorDialog = new()
-		{
-			AllowFullOpen = true,
-			FullOpen = true
-		}; // Create color picker/dialog
-
-		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
-		{
-			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
-			from = colorDialog.Color;
-			ForegroundBorder.Background = color;
-		}
-		LoadGradientUI();
+		ColorSelector.IsOpen = true;
+		isColor1 = true;
 	}
 
 	private void GenerateGradientBtn_Click(object sender, RoutedEventArgs e)
@@ -173,18 +164,268 @@ public partial class GradientPage : Page
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		System.Windows.Forms.ColorDialog colorDialog = new()
-		{
-			AllowFullOpen = true,
-			FullOpen = true
-		}; // Create color picker/dialog
+		ColorSelector.IsOpen = true;
+		isColor1 = false;
+	}
+	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
+	bool isColor1 = false;
+	Button SelectedColorBtn { get; set; }
+	private void UnCheckAllButtons()
+	{
+		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HexBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HsvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		HslBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		CmykBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+	}
 
-		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+	// Note: This event handler is used for all the choices
+	internal void RgbBtn_Click(object sender, RoutedEventArgs? e)
+	{
+		var btn = (Button)sender;
+
+		UnCheckAllButtons();
+		CheckButton(btn);
+		SelectedColorBtn = btn;
+		LoadInputUI();
+	}
+
+	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+
+	private void HideAllInput()
+	{
+		DisplayText1.Visibility = Visibility.Collapsed;
+		DisplayText2.Visibility = Visibility.Collapsed;
+		DisplayText3.Visibility = Visibility.Collapsed;
+		DisplayText4.Visibility = Visibility.Collapsed;
+		DisplayText5.Visibility = Visibility.Collapsed; // Special textbox for hex
+
+		// Clear text to avoid errors
+		Txt1.Text = "";
+		Txt2.Text = "";
+		Txt3.Text = "";
+		Txt4.Text = "";
+		Txt5.Text = ""; // Special textbox for hex
+
+		B1.Visibility = Visibility.Collapsed;
+		B2.Visibility = Visibility.Collapsed;
+		B3.Visibility = Visibility.Collapsed;
+		B4.Visibility = Visibility.Collapsed;
+		B5.Visibility = Visibility.Collapsed; // Special textbox for hex
+	}
+
+	private void LoadInputUI()
+	{
+		HideAllInput();
+		if (SelectedColorBtn != HexBtn)
 		{
-			var color = new SolidColorBrush { Color = Color.FromRgb(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B) }; // Set color
-			to = colorDialog.Color;
-			BackgroundBorder.Background = color;
+			DisplayText1.Visibility = Visibility.Visible;
+			DisplayText2.Visibility = Visibility.Visible;
+			DisplayText3.Visibility = Visibility.Visible;
+			DisplayText4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
+
+			B1.Visibility = Visibility.Visible;
+			B2.Visibility = Visibility.Visible;
+			B3.Visibility = Visibility.Visible;
+			B4.Visibility = SelectedColorBtn == CmykBtn ? Visibility.Visible : Visibility.Collapsed;
 		}
+
+		if (SelectedColorBtn == RgbBtn)
+		{
+			DisplayText1.Text = "R";
+			DisplayText2.Text = "G";
+			DisplayText3.Text = "B";
+
+			Txt1.Text = ColorInfo.RGB.R.ToString();
+			Txt2.Text = ColorInfo.RGB.G.ToString();
+			Txt3.Text = ColorInfo.RGB.B.ToString();
+		}
+		else if (SelectedColorBtn == HexBtn)
+		{
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.HEX;
+			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.HEX.Value;
+		}
+		else if (SelectedColorBtn == HsvBtn)
+		{
+			DisplayText1.Text = "H";
+			DisplayText2.Text = "S";
+			DisplayText3.Text = "V";
+
+			Txt1.Text = ColorInfo.HSV.H.ToString();
+			Txt2.Text = ColorInfo.HSV.S.ToString();
+			Txt3.Text = ColorInfo.HSV.V.ToString();
+		}
+		else if (SelectedColorBtn == HslBtn)
+		{
+			DisplayText1.Text = "H";
+			DisplayText2.Text = "S";
+			DisplayText3.Text = "L";
+
+			Txt1.Text = ColorInfo.HSL.H.ToString();
+			Txt2.Text = ColorInfo.HSL.S.ToString();
+			Txt3.Text = ColorInfo.HSL.L.ToString();
+		}
+		else if (SelectedColorBtn == CmykBtn)
+		{
+			DisplayText1.Text = "C";
+			DisplayText2.Text = "M";
+			DisplayText3.Text = "Y";
+			DisplayText4.Text = "K";
+
+			Txt1.Text = ColorInfo.CMYK.C.ToString();
+			Txt2.Text = ColorInfo.CMYK.M.ToString();
+			Txt3.Text = ColorInfo.CMYK.Y.ToString();
+			Txt4.Text = ColorInfo.CMYK.K.ToString();
+		}
+		else if (SelectedColorBtn == XyzBtn)
+		{
+			DisplayText1.Text = "X";
+			DisplayText2.Text = "Y";
+			DisplayText3.Text = "Z";
+
+			Txt1.Text = ColorInfo.XYZ.X.ToString();
+			Txt2.Text = ColorInfo.XYZ.Y.ToString();
+			Txt3.Text = ColorInfo.XYZ.Z.ToString();
+		}
+		else if (SelectedColorBtn == YiqBtn)
+		{
+			DisplayText1.Text = "Y";
+			DisplayText2.Text = "I";
+			DisplayText3.Text = "Q";
+
+			Txt1.Text = ColorInfo.YIQ.Y.ToString();
+			Txt2.Text = ColorInfo.YIQ.I.ToString();
+			Txt3.Text = ColorInfo.YIQ.Q.ToString();
+		}
+		else if (SelectedColorBtn == YuvBtn)
+		{
+			DisplayText1.Text = "Y";
+			DisplayText2.Text = "U";
+			DisplayText3.Text = "V";
+
+			Txt1.Text = ColorInfo.YUV.Y.ToString();
+			Txt2.Text = ColorInfo.YUV.U.ToString();
+			Txt3.Text = ColorInfo.YUV.V.ToString();
+		}
+	}
+
+	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			ColorInfo = new ColorInfo(ConvertToRgb());
+			ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+			ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+
+		}
+		catch { }
+	}
+
+	private void Txt1_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+	{
+		if (e.Command == ApplicationCommands.Paste)
+		{
+			e.CanExecute = true;
+			e.Handled = true;
+		}
+	}
+
+	private void Txt1_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+	{
+		try
+		{
+			if (e.Command == ApplicationCommands.Paste)
+			{
+				string text = Clipboard.GetText()
+					.Replace("(", "")
+					.Replace(")", "")
+					.Replace(" ", "");
+				if (SelectedColorBtn == HsvBtn || SelectedColorBtn == HslBtn || SelectedColorBtn == CmykBtn)
+				{
+					var split = text.Split(",");
+					Txt1.Text = split[0];
+					Txt2.Text = split[1];
+					Txt3.Text = split[2];
+					Txt4.Text = split.Length > 3 ? split[3] : "";
+				}
+				else if (SelectedColorBtn == HexBtn)
+				{
+					Txt5.Text = text;
+				}
+				else
+				{
+					var split = text.Split(";");
+					Txt1.Text = split[0];
+					Txt2.Text = split[1];
+					Txt3.Text = split[2];
+				}
+
+				e.Handled = true;
+			}
+		}
+		catch { }
+	}
+
+	private void SelectColorBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ColorSelector.IsOpen = false;
+		var color = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) }; // Set color
+
+		if (isColor1)
+		{
+			from = System.Drawing.Color.FromArgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
+			ForegroundBorder.Background = color;
+			LoadGradientUI();
+			return;
+		}
+		to = System.Drawing.Color.FromArgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B); 
+		BackgroundBorder.Background = color;
 		LoadGradientUI();
+	}
+
+	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		try
+		{
+			(int r, int g, int b) = Global.GenerateRandomColor();
+			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
+			Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
+		}
+		catch { }
+		RgbBtn_Click(SelectedColorBtn, null);
+	}
+
+	private ColorHelper.RGB ConvertToRgb()
+	{
+		if (SelectedColorBtn == RgbBtn) return new((byte)int.Parse(Txt1.Text),
+			(byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text));
+		if (SelectedColorBtn == HexBtn) return ColorHelper.ColorConverter.HexToRgb(new(Txt5.Text));
+		else if (SelectedColorBtn == HsvBtn) return ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == HslBtn) return ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == CmykBtn) return ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt2.Text),
+											 (byte)int.Parse(Txt3.Text),
+											 (byte)int.Parse(Txt4.Text)));
+		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
+		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
+											 double.Parse(Txt2.Text),
+											 double.Parse(Txt3.Text)));
 	}
 }
