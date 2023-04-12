@@ -48,7 +48,7 @@ public partial class MiniPicker : Window
 			ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(pixel.R, pixel.G, pixel.B) };
 
 			// Convert to HEX
-			var hexColor = ColorHelper.ColorConverter.RgbToHex(new(pixel.R, pixel.R, pixel.B)); // Convert
+			var hexColor = ColorHelper.ColorConverter.RgbToHex(new(pixel.R, pixel.G, pixel.B)); // Convert
 
 			// Display
 			RgbTxt.Text = $"{pixel.R}; {pixel.G}; {pixel.B}"; // Set text
