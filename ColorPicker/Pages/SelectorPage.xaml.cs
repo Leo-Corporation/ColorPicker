@@ -71,9 +71,21 @@ public partial class SelectorPage : Page
 			GFX.CopyFromScreen(System.Windows.Forms.Cursor.Position, new System.Drawing.Point(0, 0), bitmap.Size); // Get the color of the pixel at the mouse position
 			var pixel = bitmap.GetPixel(0, 0); // Copy to the bitmap
 
-			RedSlider.Value = pixel.R; // Set value
-			GreenSlider.Value = pixel.G; // Set value
-			BlueSlider.Value = pixel.B; // Set value
+			switch (ColorTypeComboBox.SelectedIndex)
+			{
+				case 1:
+					var hsv = ColorHelper.ColorConverter.RgbToHsv(new(pixel.R, pixel.G, pixel.B));
+					RedSlider.Value = hsv.H;
+					GreenSlider.Value = hsv.S;
+					BlueSlider.Value = hsv.V;
+					break;
+				default:
+					RedSlider.Value = pixel.R; // Set value
+					GreenSlider.Value = pixel.G; // Set value
+					BlueSlider.Value = pixel.B; // Set value
+					break;
+			}
+			
 			LoadDetails();
 
 			// MiniPicker
@@ -136,26 +148,50 @@ public partial class SelectorPage : Page
 		});
 	}
 
+	private Color GetRgb(int h, int s, int v, bool isHsl = false)
+	{
+		var c = ColorHelper.ColorConverter.HsvToRgb(new(h, (byte)s, (byte)v));
+		return Color.FromRgb(c.R, c.G, c.B);
+	}
+
 	private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	{
-		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
-		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
+		Color color = ColorTypeComboBox.SelectedIndex switch
+		{
+			1 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value),
+			_ => Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)
+		};
+
+		ColorBorder.Background = new SolidColorBrush { Color = color };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
 		RedValueTxt.Text = RedSlider.Value.ToString(); // Set text
 		LoadDetails();
 	}
 
 	private void GreenSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	{
-		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
-		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
+		Color color = ColorTypeComboBox.SelectedIndex switch
+		{
+			1 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value),
+			_ => Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)
+		};
+
+		ColorBorder.Background = new SolidColorBrush { Color = color };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
 		GreenValueTxt.Text = GreenSlider.Value.ToString(); // Set text
 		LoadDetails();
 	}
 
 	private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	{
-		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
-		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value) };
+		Color color = ColorTypeComboBox.SelectedIndex switch
+		{
+			1 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value),
+			_ => Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)
+		};
+
+		ColorBorder.Background = new SolidColorBrush { Color = color };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
 		BlueValueTxt.Text = BlueSlider.Value.ToString(); // Set text
 		LoadDetails();
 	}
@@ -178,7 +214,11 @@ public partial class SelectorPage : Page
 	internal void LoadDetails()
 	{
 		// Load the details section
-		ColorInfo = new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value));
+		ColorInfo = ColorTypeComboBox.SelectedIndex switch 
+		{
+			1 => new ColorInfo(ColorHelper.ColorConverter.HsvToRgb(new((int)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))),
+			_ => new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))
+		};
 		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
 		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
 		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
@@ -262,6 +302,45 @@ public partial class SelectorPage : Page
 			timer.Stop();
 			miniPicker.timer.Stop(); // Stop
 			miniPicker.Hide();
+		}
+	}
+
+	private void ColorTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		LoadSliders();
+	}
+
+	private void LoadSliders()
+	{
+		var current = ColorInfo;
+		switch (ColorTypeComboBox.SelectedIndex)
+		{
+			case 1:
+				RedSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+				GreenSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+				BlueSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+				
+				RedSlider.Maximum = 360;
+				GreenSlider.Maximum = 100;
+				BlueSlider.Maximum = 100;
+
+				RedSlider.Value = current.HSV.H;
+				GreenSlider.Value = current.HSV.S;
+				BlueSlider.Value = current.HSV.V;
+				break;
+			default: // RGB
+				RedSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderRed") };
+				GreenSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderGreen") };
+				BlueSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderBlue") };
+				
+				RedSlider.Maximum = 255;
+				GreenSlider.Maximum = 255;
+				BlueSlider.Maximum = 255;
+
+				RedSlider.Value = current.RGB.R;
+				GreenSlider.Value = current.RGB.G;
+				BlueSlider.Value = current.RGB.B;
+				break;
 		}
 	}
 }
