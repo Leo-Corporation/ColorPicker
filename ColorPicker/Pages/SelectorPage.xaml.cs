@@ -126,6 +126,12 @@ public partial class SelectorPage : Page
 			{ Combination.FromString(Global.Settings.CopyKeyboardShortcut), HandleCopyKeyboard },
 			{ Combination.FromString(Global.Settings.SelectKeyboardShortcut), HandleSelectKeyboard }
 		});
+		ColorTypeComboBox.SelectedIndex = Global.Settings.DefaultColorType switch
+		{
+			ColorTypes.HSV => 1,
+			ColorTypes.HSL => 2,
+			_ => 0
+		};
 	}
 
 	private void HandleSelectKeyboard()
