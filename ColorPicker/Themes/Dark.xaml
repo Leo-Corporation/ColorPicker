@@ -19,4 +19,7 @@
 	<sys:String x:Key="Red">#FF321E</sys:String>
 	<sys:String x:Key="Orange">#ff7a00</sys:String>
 	<sys:String x:Key="DarkGray">#7474B1</sys:String>
+    <sys:String x:Key="SliderRed">#FF4500</sys:String>
+    <sys:String x:Key="SliderGreen">#00DF39</sys:String>
+    <sys:String x:Key="SliderBlue">#4169E1</sys:String>
 </ResourceDictionary>
