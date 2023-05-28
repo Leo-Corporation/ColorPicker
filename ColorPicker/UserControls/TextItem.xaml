@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="ColorPicker.UserControls.TextItem"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:ColorPicker.UserControls"
+			 xmlns:lang="clr-namespace:ColorPicker.Properties"
+			 mc:Ignorable="d" Foreground="{Binding Source={StaticResource Foreground1}}" 
+			 FontFamily="../Fonts/#Hauora"
+			 Height="150" Width="150">
+	<Border CornerRadius="10" Margin="10" Name="BgBorder" d:Background="{Binding Source={StaticResource CardBackground}}">
+		<Border.Effect>
+			<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+		</Border.Effect>
+
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<StackPanel Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+				<TextBlock x:Name="TitleTxt" FontSize="48" Text="Aa" FontWeight="Bold"/>
+				<TextBlock x:Name="TextTxt" FontSize="12" Text="Lorem Ipsum" FontStyle="Italic"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Column="2">
+				<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+				<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" Margin="0 5 5 0" x:Name="GoBtn" Click="GoBtn_Click" Grid.Column="3" Content="&#xF3DE;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+			</StackPanel>
+		</Grid>
+	</Border>
+
+</UserControl>
