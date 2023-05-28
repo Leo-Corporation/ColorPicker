@@ -378,4 +378,11 @@ public partial class SelectorPage : Page
 				break;
 		}
 	}
+	public static event EventHandler<PageEventArgs> GoClick;
+
+	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.PalettePage.InitFromColor(ColorInfo);
+		GoClick?.Invoke(this, new(AppPages.ColorPalette));
+	}
 }
