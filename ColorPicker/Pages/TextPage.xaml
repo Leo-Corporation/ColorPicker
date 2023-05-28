@@ -153,9 +153,11 @@
 						</Border.Effect>
 					</Border>
 				</StackPanel>
-				<Button Grid.Column="2" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-
-			</Grid>
+                <StackPanel Orientation="Horizontal" Grid.Column="2">
+                    <Button Grid.Column="2" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+                    <Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="3" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}"/>
+                </StackPanel>
+            </Grid>
 		</Border>
 		<Border x:Name="TextPanel" Margin="10" Padding="10" CornerRadius="5" Grid.Row="2" Background="{Binding Source={StaticResource CardBackground}}">
 			<Border.Effect>

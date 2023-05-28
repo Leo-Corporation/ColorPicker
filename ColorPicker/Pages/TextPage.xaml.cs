@@ -82,6 +82,35 @@ public partial class TextPage : Page
 
 		LoadConstrastUI();
 		RgbBtn_Click(RgbBtn, null);
+
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
+	}
+
+	internal void InitFromBookmark(BookmarkText bookmarkText)
+	{
+		// Set default Color
+
+		ColorHelper.RGB fgd = ColorHelper.ColorConverter.HexToRgb(new(bookmarkText.ForegroundColor));
+		ColorHelper.RGB bgd = ColorHelper.ColorConverter.HexToRgb(new(bookmarkText.BackgroundColor));
+
+		foreground = System.Drawing.Color.FromArgb(fgd.R, fgd.G, fgd.B);
+		background = System.Drawing.Color.FromArgb(bgd.R, bgd.G, bgd.B);
+
+		var foreBrush = new SolidColorBrush { Color = Color.FromRgb(fgd.R, fgd.G, fgd.B) }; // Set color
+		var backBrush = new SolidColorBrush { Color = Color.FromRgb(bgd.R, bgd.G, bgd.B) }; // Set color
+
+		RegularTxt.Foreground = foreBrush; // Set foreground color
+		ItalicTxt.Foreground = foreBrush; // Set foreground color
+		BoldTxt.Foreground = foreBrush; // Set foreground color
+
+		RegularTxt.Background = backBrush; // Set background color
+		ItalicTxt.Background = backBrush; // Set background color
+		BoldTxt.Background = backBrush; // Set background color
+		TextPanel.Background = backBrush; // Set background color
+
+		LoadConstrastUI();
+		RgbBtn_Click(RgbBtn, null);
 	}
 
 	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -155,6 +184,10 @@ public partial class TextPage : Page
 
 		// 3. Update the contrast UI
 		LoadConstrastUI();
+
+		// 4. Update the bookmark button
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 	}
 
 	internal void LoadConstrastUI()
@@ -190,6 +223,10 @@ public partial class TextPage : Page
 		CheckButton(btn);
 		SelectedColorBtn = btn;
 		LoadInputUI();
+
+		// Update the bookmark button
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 	}
 
 	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
@@ -407,6 +444,19 @@ public partial class TextPage : Page
 		}
 		catch { }
 		RgbBtn_Click(SelectedColorBtn, null);
+	}
+
+	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		if (Global.Bookmarks.TextBookmarks.Contains(bookmarkText))
+		{
+			Global.Bookmarks.TextBookmarks.Remove(bookmarkText);
+			BookmarkBtn.Content = "\uF1F6";
+			return;
+		}
+		Global.Bookmarks.TextBookmarks.Add(bookmarkText); // Add to color bookmarks
+		BookmarkBtn.Content = "\uF1F8";
 	}
 
 	private ColorHelper.RGB ConvertToRgb()
