@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using Synethia;
 using System;
 using System.Windows;
@@ -164,5 +165,12 @@ public partial class ChromaticWheelPage : Page
 	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Clipboard.SetText(RgbTxt.Text);
+	}
+	public static event EventHandler<PageEventArgs> GoClick;
+
+	private void PreviewBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		Global.PalettePage.InitFromColor(ColorInfo);
+		GoClick?.Invoke(this, new(AppPages.ColorPalette));
 	}
 }
