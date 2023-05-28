@@ -62,7 +62,7 @@
 		</StackPanel>
 		<Image x:Name="WheelImg" Cursor="Cross" MouseLeftButtonUp="WheelImg_MouseLeftButtonUp" Grid.Column="0" Source="..\Images\ColorWheel.png" Width="350" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2"/>
 
-		<Border x:Name="PreviewBorder" Visibility="Hidden" Grid.Row="2" Grid.Column="1" Background="{Binding Source={StaticResource CardBackground}}" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="5" CornerRadius="50 0 0 50">
+		<Border x:Name="PreviewBorder" Visibility="Hidden" Grid.Row="2" Grid.Column="1" Background="{Binding Source={StaticResource CardBackground}}" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="5" CornerRadius="50 0 0 50" Cursor="Hand" MouseLeftButtonUp="PreviewBorder_MouseLeftButtonUp">
 			<Border.Effect>
 				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 			</Border.Effect>

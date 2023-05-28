@@ -102,9 +102,12 @@
 					<TextBlock x:Name="ColorValidIconTxt" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="14"/>
 					<TextBlock x:Name="ColorValidTxt" d:Text="Placeholder" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center"/>
 				</StackPanel>
-				<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="3" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="3">
+                    <Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="PaletteBtn" Click="PaletteBtn_Click" Grid.Column="2" Content="&#xF2F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+                    <Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="3" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}"/>
+                </StackPanel>
 
-			</Grid>
+            </Grid>
 		</Border>
 		<StackPanel Margin="10" Orientation="Horizontal" Grid.Row="2">
 			<TextBlock Text="&#xF4A4;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>

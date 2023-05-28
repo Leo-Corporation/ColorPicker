@@ -395,4 +395,11 @@ public partial class PalettePage : Page
 		catch { }
 		RgbBtn_Click(SelectedColorBtn, null);
 	}
+
+	internal void InitFromColor(ColorInfo color)
+	{
+		ColorInfo = color;
+		Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
+		RgbBtn_Click(SelectedColorBtn, null);
+	}
 }

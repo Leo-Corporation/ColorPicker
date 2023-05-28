@@ -47,6 +47,7 @@ public partial class App : Application
 		if (Global.Bookmarks.ColorBookmarks is null) Global.Bookmarks.ColorBookmarks = new();
 		if (Global.Bookmarks.PaletteBookmarks is null) Global.Bookmarks.PaletteBookmarks = new();
 		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = new();
+		if (Global.Bookmarks.TextBookmarks is null) Global.Bookmarks.TextBookmarks = new();
 
 		// Pages
 		Global.SelectorPage = new();

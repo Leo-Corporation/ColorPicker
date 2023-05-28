@@ -47,6 +47,7 @@ namespace ColorPicker.Pages
 			ColorsBookmarks.Children.Clear();
 			PalettesBookmarks.Children.Clear();
 			GradientsBookmarks.Children.Clear();
+			TextBookmarks.Children.Clear();
 
 			// Load the "Colors" bookmarks
 			for (int i = 0; i < Global.Bookmarks.ColorBookmarks.Count; i++)
@@ -64,6 +65,12 @@ namespace ColorPicker.Pages
 			for (int i = 0; i < Global.Bookmarks.GradientBookmarks.Count; i++)
 			{
 				GradientsBookmarks.Children.Add(new GradientItem(Global.Bookmarks.GradientBookmarks[i]));
+			}
+
+			// Load the "Text" bookmarks
+			for (int i = 0; i < Global.Bookmarks.TextBookmarks.Count; i++)
+			{
+				TextBookmarks.Children.Add(new TextItem(Global.Bookmarks.TextBookmarks[i]));
 			}
 		}
 
@@ -96,6 +103,10 @@ namespace ColorPicker.Pages
 			{
 				Global.Bookmarks.PaletteBookmarks.Clear(); // Empty history
 			}
+			else if (TextBookmarks.Visibility == Visibility.Visible)
+			{
+				Global.Bookmarks.TextBookmarks.Clear(); // Empty history
+			}
 			else
 			{
 				Global.Bookmarks.GradientBookmarks.Clear(); // Empty history
@@ -105,6 +116,7 @@ namespace ColorPicker.Pages
 			Global.SelectorPage.LoadDetails();
 			Global.GradientPage.LoadGradientUI();
 			Global.PalettePage.InitPaletteUI();
+			Global.TextPage.InitUI();
 		}
 
 		private void GradientsBtn_Click(object sender, RoutedEventArgs e)
@@ -119,12 +131,21 @@ namespace ColorPicker.Pages
 			ColorsBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 			PaletteBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 			GradientsBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+			TextBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 
 			ColorsBookmarks.Visibility = Visibility.Collapsed;
 			PalettesBookmarks.Visibility = Visibility.Collapsed;
 			GradientsBookmarks.Visibility = Visibility.Collapsed;
+			TextBookmarks.Visibility = Visibility.Collapsed;
 		}
 
 		private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+
+		private void TextBtn_Click(object sender, RoutedEventArgs e)
+		{
+			UnCheckAllButtons();
+			CheckButton(TextBtn);
+			TextBookmarks.Visibility = Visibility.Visible;
+		}
 	}
 }

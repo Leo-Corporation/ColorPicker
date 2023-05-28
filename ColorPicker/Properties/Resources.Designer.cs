@@ -691,6 +691,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press {0} to start or stop selecting a color from your screen..
+        /// </summary>
+        public static string KeyboardSelectionHint {
+            get {
+                return ResourceManager.GetString("KeyboardSelectionHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keyboard shortcuts.
         /// </summary>
         public static string KeyboardShortcuts {

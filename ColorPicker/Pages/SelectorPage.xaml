@@ -59,7 +59,13 @@
 
 				<StackPanel Grid.Column="2" Orientation="Horizontal">
 					<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="SelectBtn" Click="SelectBtn_Click" Grid.Column="2" Margin="10 0 0 0" Content="&#xFD3F;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+					<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="PaletteBtn" Click="PaletteBtn_Click" Grid.Column="2" Content="&#xF2F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 					<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="2" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+					<ComboBox x:Name="ColorTypeComboBox" SelectionChanged="ColorTypeComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="1" Height="22" VerticalAlignment="Top" FontSize="10">
+						<ComboBoxItem Content="{x:Static lang:Resources.RGB}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.HSV}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.HSL}"/>
+					</ComboBox>
 				</StackPanel>
 			</Grid>
 		</Border>

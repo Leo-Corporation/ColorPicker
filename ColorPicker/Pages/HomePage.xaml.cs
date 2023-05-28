@@ -59,5 +59,11 @@ public partial class HomePage : Page
 		{
 			SuggestedActionsPanel.Children.Add(new ActionCard(Global.SynethiaConfig.MostRelevantActions[i].Id));
 		}
+
+		// Keyboard hints
+		KeyboardHintTxt.Text = string.Format(Properties.Resources.KeyboardSelectionHint, Global.Settings.SelectKeyboardShortcut.Replace("LControlKey", "Ctrl")
+			.Replace("LShiftKey", "Shift")
+			.Replace("RShiftKey", "Shift")
+			.Replace("RControlKey", "Ctrl"));
 	}
 }
