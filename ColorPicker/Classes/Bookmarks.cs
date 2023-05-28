@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using PeyrSharp.Core.Converters;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -32,6 +33,39 @@ namespace ColorPicker.Classes
 		public List<string> ColorBookmarks { get; set; }
 		public List<string> PaletteBookmarks { get; set; }
 		public List<Gradient> GradientBookmarks { get; set; }
+		public List<BookmarkText> TextBookmarks { get; set; }
+	}
+
+	public class BookmarkText : IEquatable<BookmarkText>
+	{
+		public string FontFamily { get; init; }
+		public string ForegroundColor { get; init; }
+		public string BackgroundColor { get; init; }
+        public BookmarkText()
+        {
+			FontFamily = "Arial"; // Fallback values
+			ForegroundColor = "#000000";
+			BackgroundColor = "#FFFFFF";
+        }
+
+        public BookmarkText(string font, string fore, string back)
+        {
+			FontFamily = font;
+			ForegroundColor = fore;
+			BackgroundColor = back;
+        }
+
+		public bool Equals(BookmarkText? obj)
+		{
+			if (obj == null || GetType() != obj.GetType())
+			{
+				return false;
+			}
+			return FontFamily == obj.FontFamily && ForegroundColor == obj.ForegroundColor && BackgroundColor == obj.BackgroundColor;
+		}
+
+
+		public override bool Equals(object obj) => Equals(obj as BookmarkText);
 	}
 
 	[XmlType("BookmarkGradientStop")]
