@@ -520,4 +520,7 @@
   <data name="XAML" xml:space="preserve">
     <value>XAML</value>
   </data>
+  <data name="KeyboardSelectionHint" xml:space="preserve">
+    <value>Appuyez sur {0} pour commencer ou arrêter la sélection d'une couleur sur votre écran.</value>
+  </data>
 </root>
