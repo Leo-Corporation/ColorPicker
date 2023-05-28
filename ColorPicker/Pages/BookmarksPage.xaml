@@ -56,6 +56,16 @@
 					<TextBlock Text="{x:Static lang:Resources.Gradients}" FontWeight="ExtraBold" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" />
 				</Grid>
 			</Button>
+			<Button x:Name="TextBtn" Click="TextBtn_Click" Margin="10,2,0,2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Text="&#xF793;" FontSize="14" FontFamily="/Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+					<TextBlock Text="{x:Static lang:Resources.TextTool}" FontWeight="ExtraBold" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" />
+				</Grid>
+			</Button>
 		</StackPanel>
 		<Button x:Name="EmptyHistoryBtn" Click="EmptyHistoryBtn_Click" Margin="10,2,0,2" Foreground="{Binding Source={StaticResource Red}}" Style="{DynamicResource StandardButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
 			<Grid>
@@ -69,8 +79,9 @@
 		</Button>
 		<Grid x:Name="HistoryGrid" Grid.Row="2" Margin="10" Grid.ColumnSpan="3">
 			<WrapPanel x:Name="ColorsBookmarks" Orientation="Horizontal"/>
-            <WrapPanel x:Name="PalettesBookmarks" Visibility="Collapsed"/>
+			<WrapPanel x:Name="PalettesBookmarks" Visibility="Collapsed"/>
 			<WrapPanel x:Name="GradientsBookmarks" Visibility="Collapsed"/>
+			<WrapPanel x:Name="TextBookmarks" Visibility="Collapsed"/>
 		</Grid>
 	</Grid>
 </Page>

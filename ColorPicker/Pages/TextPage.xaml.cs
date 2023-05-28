@@ -48,8 +48,9 @@ public partial class TextPage : Page
 
 	}
 
-	private void InitUI()
+	internal void InitUI()
 	{
+		FontComboBox.Items.Clear();
 		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.TextTool}";
 
 		System.Drawing.Text.InstalledFontCollection installedFonts = new();
@@ -109,6 +110,8 @@ public partial class TextPage : Page
 		BoldTxt.Background = backBrush; // Set background color
 		TextPanel.Background = backBrush; // Set background color
 
+		FontComboBox.SelectedItem = bookmarkText.FontFamily;
+
 		LoadConstrastUI();
 		RgbBtn_Click(RgbBtn, null);
 	}
@@ -120,6 +123,8 @@ public partial class TextPage : Page
 			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
 			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
 			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+			BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 		}
 		catch { }
 	}
