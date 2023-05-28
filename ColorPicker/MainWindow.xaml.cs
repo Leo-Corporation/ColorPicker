@@ -86,6 +86,7 @@ public partial class MainWindow : Window
 		GradientItem.GoClick += PageCard_OnCardClick;
 		ChromaticWheelPage.GoClick += PageCard_OnCardClick;
 		SelectorPage.GoClick += PageCard_OnCardClick;
+		ConverterPage.GoClick += PageCard_OnCardClick;
 
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 

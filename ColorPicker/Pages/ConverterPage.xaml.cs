@@ -25,6 +25,7 @@ using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Synethia;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -389,5 +390,12 @@ public partial class ConverterPage : Page
 		}
 		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+	}
+	public static event EventHandler<PageEventArgs> GoClick;
+
+	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.PalettePage.InitFromColor(ColorInfo);
+		GoClick?.Invoke(this, new(AppPages.ColorPalette));
 	}
 }
