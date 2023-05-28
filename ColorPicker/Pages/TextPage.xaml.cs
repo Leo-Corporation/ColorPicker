@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using Synethia;
 using System;
 using System.Text.RegularExpressions;
@@ -83,7 +84,17 @@ public partial class TextPage : Page
 
 		LoadConstrastUI();
 		RgbBtn_Click(RgbBtn, null);
-
+		SelectedColorBtn = Global.Settings.DefaultColorType switch
+		{
+			ColorTypes.HEX => HexBtn,
+			ColorTypes.HSV => HsvBtn,
+			ColorTypes.HSL => HslBtn,
+			ColorTypes.CMYK => CmykBtn,
+			ColorTypes.XYZ => XyzBtn,
+			ColorTypes.YIQ => YiqBtn,
+			ColorTypes.YUV => YuvBtn,
+			_ => RgbBtn
+		};
 		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
 		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 	}
@@ -104,11 +115,13 @@ public partial class TextPage : Page
 		RegularTxt.Foreground = foreBrush; // Set foreground color
 		ItalicTxt.Foreground = foreBrush; // Set foreground color
 		BoldTxt.Foreground = foreBrush; // Set foreground color
+		ForegroundBorder.Background = foreBrush;
 
 		RegularTxt.Background = backBrush; // Set background color
 		ItalicTxt.Background = backBrush; // Set background color
 		BoldTxt.Background = backBrush; // Set background color
 		TextPanel.Background = backBrush; // Set background color
+		BackgroundBorder.Background = backBrush;
 
 		FontComboBox.SelectedItem = bookmarkText.FontFamily;
 
@@ -150,14 +163,24 @@ public partial class TextPage : Page
 	bool isForeground = false;
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		ColorSelector.IsOpen = true;
 		isForeground = true;
+
+		var bg = ForegroundBorder.Background as SolidColorBrush;
+		ColorInfo = new(new(bg.Color.R, bg.Color.G, bg.Color.B));
+
+		RgbBtn_Click(SelectedColorBtn, null);
+		ColorSelector.IsOpen = true;
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		ColorSelector.IsOpen = true;
 		isForeground = false;
+
+		var bg = BackgroundBorder.Background as SolidColorBrush;
+		ColorInfo = new(new(bg.Color.R, bg.Color.G, bg.Color.B));
+
+		RgbBtn_Click(SelectedColorBtn, null);
+		ColorSelector.IsOpen = true;
 	}
 	Random random = new();
 
