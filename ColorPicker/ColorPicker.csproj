@@ -50,7 +50,7 @@
 	<PackageReference Include="ColorHelper" Version="1.8.1" />
 	<PackageReference Include="MouseKeyHook" Version="5.7.1" />
 	<PackageReference Include="PeyrSharp.Env" Version="1.6.0.2305" />
-	<PackageReference Include="PeyrSharp.Core" Version="1.6.0.2305" />
+	<PackageReference Include="PeyrSharp.Core" Version="1.6.1.2305" />
 	<PackageReference Include="Synethia" Version="1.1.1.2302" />
   </ItemGroup>
 
