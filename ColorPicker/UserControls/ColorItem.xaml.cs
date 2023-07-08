@@ -86,5 +86,45 @@ namespace ColorPicker.UserControls
 
 			GoClick?.Invoke(sender, new(Enums.AppPages.Selector));
 		}
+
+		private void CopyRGB_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}");
+		}
+
+		private void CopyHEX_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"#{ColorInfo.HEX.Value}");
+		}
+
+		private void CopyHSV_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}");
+		}
+
+		private void CopyHSL_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}");
+		}
+
+		private void CopyCMYK_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
+		}
+
+		private void CopyXYZ_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
+		}
+
+		private void CopyYIQ_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
+		}
+
+		private void CopyYUV_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
+		}
 	}
 }

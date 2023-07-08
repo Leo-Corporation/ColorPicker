@@ -20,7 +20,20 @@
 				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
-			<Border Cursor="Hand" x:Name="ColorBorder" MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" Height="60" Width="60" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
+			<Border Cursor="Hand" x:Name="ColorBorder" MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" Height="60" Width="60" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center">
+				<Border.ContextMenu>
+					<ContextMenu Style="{DynamicResource ContextMenuStyle}">
+						<MenuItem x:Name="CopyRGB" Click="CopyRGB_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyRGB}" Style="{DynamicResource MenuStyle}"/>
+						<MenuItem x:Name="CopyHEX" Click="CopyHEX_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyHEX}" Style="{DynamicResource MenuStyle}"/>
+						<MenuItem x:Name="CopyHSV" Click="CopyHSV_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyHSV}" Style="{DynamicResource MenuStyle}"/>
+						<MenuItem x:Name="CopyHSL" Click="CopyHSL_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyHSL}" Style="{DynamicResource MenuStyle}"/>
+						<MenuItem x:Name="CopyCMYK" Click="CopyCMYK_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyCMYK}" Style="{DynamicResource MenuStyle}"/>
+						<MenuItem x:Name="CopyXYZ" Click="CopyXYZ_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyXYZ}" Style="{DynamicResource MenuStyle}"/>
+						<MenuItem x:Name="CopyYIQ" Click="CopyYIQ_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyYIQ}" Style="{DynamicResource MenuStyle}"/>
+						<MenuItem x:Name="CopyYUV" Click="CopyYUV_Click" Foreground="{Binding Source={StaticResource Foreground1}}" Header="{x:Static lang:Resources.CopyYUV}" Style="{DynamicResource MenuStyle}"/>
+					</ContextMenu>
+				</Border.ContextMenu>
+			</Border>
 
 
 			<StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center" Grid.ColumnSpan="8">
