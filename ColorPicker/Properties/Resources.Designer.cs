@@ -286,11 +286,83 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy CMYK.
+        /// </summary>
+        public static string CopyCMYK {
+            get {
+                return ResourceManager.GetString("CopyCMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy color.
         /// </summary>
         public static string CopyColor {
             get {
                 return ResourceManager.GetString("CopyColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy HEX.
+        /// </summary>
+        public static string CopyHEX {
+            get {
+                return ResourceManager.GetString("CopyHEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy HSL.
+        /// </summary>
+        public static string CopyHSL {
+            get {
+                return ResourceManager.GetString("CopyHSL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy HSV.
+        /// </summary>
+        public static string CopyHSV {
+            get {
+                return ResourceManager.GetString("CopyHSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy RGB.
+        /// </summary>
+        public static string CopyRGB {
+            get {
+                return ResourceManager.GetString("CopyRGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy XYZ.
+        /// </summary>
+        public static string CopyXYZ {
+            get {
+                return ResourceManager.GetString("CopyXYZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy YIQ.
+        /// </summary>
+        public static string CopyYIQ {
+            get {
+                return ResourceManager.GetString("CopyYIQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy YUV.
+        /// </summary>
+        public static string CopyYUV {
+            get {
+                return ResourceManager.GetString("CopyYUV", resourceCulture);
             }
         }
         

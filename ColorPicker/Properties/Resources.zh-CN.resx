@@ -527,4 +527,28 @@
   <data name="KeyboardSelectionHint" xml:space="preserve">
     <value>按{0}开始或停止选择屏幕上的颜色。</value>
   </data>
+  <data name="CopyCMYK" xml:space="preserve">
+    <value>复制CMYK</value>
+  </data>
+  <data name="CopyYUV" xml:space="preserve">
+    <value>复制YUV</value>
+  </data>
+  <data name="CopyYIQ" xml:space="preserve">
+    <value>复制YIQ</value>
+  </data>
+  <data name="CopyXYZ" xml:space="preserve">
+    <value>复制XYZ</value>
+  </data>
+  <data name="CopyHSV" xml:space="preserve">
+    <value>复制HSV</value>
+  </data>
+  <data name="CopyHEX" xml:space="preserve">
+    <value>复制HEX</value>
+  </data>
+  <data name="CopyRGB" xml:space="preserve">
+    <value>复制RGB</value>
+  </data>
+  <data name="CopyHSL" xml:space="preserve">
+    <value>复制HSL</value>
+  </data>
 </root>
