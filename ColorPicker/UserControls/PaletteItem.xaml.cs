@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.Windows;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -97,10 +98,16 @@ namespace ColorPicker.UserControls
 							Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
 						},
 					};
+
 					int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
 					border.MouseLeftButtonUp += (o, e) =>
 					{
 						Clipboard.SetText($"{shades[j].R};{shades[j].G};{shades[j].B}");
+					};
+
+					border.MouseRightButtonUp += (o, e) =>
+					{
+						new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(shades[j].R, shades[j].G, shades[j].B) }).Show();
 					};
 					if (k == 0) ShadesPanel.Children.Add(border);
 					else if (k == 1) BrightnessPanel.Children.Add(border);
