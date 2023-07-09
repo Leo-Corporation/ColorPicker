@@ -123,13 +123,13 @@
 				</Grid.ColumnDefinitions>
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Text="{x:Static lang:Resources.From}" VerticalAlignment="Center" Margin="10,0,10,0" />
-					<Border x:Name="ForegroundBorder" BorderThickness="0" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Foreground1}}" Width="30" Height="30" Cursor="Hand" >
+					<Border x:Name="ForegroundBorder" MouseRightButtonUp="ForegroundBorder_MouseRightButtonUp" BorderThickness="0" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Foreground1}}" Width="30" Height="30" Cursor="Hand" >
 						<Border.Effect>
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>
 					</Border>
 					<TextBlock Text="{x:Static lang:Resources.To}" VerticalAlignment="Center" Margin="10,0,10,0" />
-					<Border x:Name="BackgroundBorder" BorderThickness="0" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Background1}}" Width="30" Height="30" Cursor="Hand" >
+                    <Border x:Name="BackgroundBorder" MouseRightButtonUp="ForegroundBorder_MouseRightButtonUp" BorderThickness="0" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Background1}}" Width="30" Height="30" Cursor="Hand" >
 						<Border.Effect>
 							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 						</Border.Effect>

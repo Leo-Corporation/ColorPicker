@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Windows;
 using Synethia;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -400,6 +401,11 @@ public partial class GradientPage : Page
 		}
 		catch { }
 		RgbBtn_Click(SelectedColorBtn, null);
+	}
+
+	private void ForegroundBorder_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
 	}
 
 	private ColorHelper.RGB ConvertToRgb()
