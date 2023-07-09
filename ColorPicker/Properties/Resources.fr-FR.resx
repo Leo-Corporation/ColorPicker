@@ -547,4 +547,19 @@
   <data name="CopyCMYK" xml:space="preserve">
     <value>Copier en CMJN</value>
   </data>
+  <data name="GenerateColor" xml:space="preserve">
+    <value>Générer une couleur aléatoire</value>
+  </data>
+  <data name="AddBookmark" xml:space="preserve">
+    <value>Ajouter aux signets</value>
+  </data>
+  <data name="RemoveBookmark" xml:space="preserve">
+    <value>Retirer des signets</value>
+  </data>
+  <data name="GenerateTextColors" xml:space="preserve">
+    <value>Générer de nouvelles couleurs</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
 </root>

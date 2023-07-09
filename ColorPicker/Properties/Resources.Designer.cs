@@ -61,6 +61,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to bookmarks.
+        /// </summary>
+        public static string AddBookmark {
+            get {
+                return ResourceManager.GetString("AddBookmark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I agree.
         /// </summary>
         public static string Agree {
@@ -430,6 +439,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -547,6 +565,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate a random color.
+        /// </summary>
+        public static string GenerateColor {
+            get {
+                return ResourceManager.GetString("GenerateColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate a gradient.
         /// </summary>
         public static string GenerateGradient {
@@ -561,6 +588,15 @@ namespace ColorPicker.Properties {
         public static string GeneratePalette {
             get {
                 return ResourceManager.GetString("GeneratePalette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate new colors.
+        /// </summary>
+        public static string GenerateTextColors {
+            get {
+                return ResourceManager.GetString("GenerateTextColors", resourceCulture);
             }
         }
         
@@ -957,6 +993,15 @@ namespace ColorPicker.Properties {
         public static string RedP {
             get {
                 return ResourceManager.GetString("RedP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove from bookmarks.
+        /// </summary>
+        public static string RemoveBookmark {
+            get {
+                return ResourceManager.GetString("RemoveBookmark", resourceCulture);
             }
         }
         

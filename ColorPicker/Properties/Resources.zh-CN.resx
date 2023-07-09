@@ -551,4 +551,19 @@
   <data name="CopyHSL" xml:space="preserve">
     <value>复制HSL</value>
   </data>
+  <data name="GenerateColor" xml:space="preserve">
+    <value>生成一个随机的颜色</value>
+  </data>
+  <data name="AddBookmark" xml:space="preserve">
+    <value>添加到书签</value>
+  </data>
+  <data name="RemoveBookmark" xml:space="preserve">
+    <value>从书签中删除</value>
+  </data>
+  <data name="GenerateTextColors" xml:space="preserve">
+    <value>生成新的颜色</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
 </root>
