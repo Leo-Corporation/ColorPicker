@@ -499,4 +499,43 @@
   <data name="KeyboardSelectionHint" xml:space="preserve">
     <value>Press {0} to start or stop selecting a color from your screen.</value>
   </data>
+  <data name="CopyRGB" xml:space="preserve">
+    <value>Copy RGB</value>
+  </data>
+  <data name="CopyHEX" xml:space="preserve">
+    <value>Copy HEX</value>
+  </data>
+  <data name="CopyHSL" xml:space="preserve">
+    <value>Copy HSL</value>
+  </data>
+  <data name="CopyHSV" xml:space="preserve">
+    <value>Copy HSV</value>
+  </data>
+  <data name="CopyXYZ" xml:space="preserve">
+    <value>Copy XYZ</value>
+  </data>
+  <data name="CopyYIQ" xml:space="preserve">
+    <value>Copy YIQ</value>
+  </data>
+  <data name="CopyYUV" xml:space="preserve">
+    <value>Copy YUV</value>
+  </data>
+  <data name="CopyCMYK" xml:space="preserve">
+    <value>Copy CMYK</value>
+  </data>
+  <data name="GenerateColor" xml:space="preserve">
+    <value>Generate a random color</value>
+  </data>
+  <data name="AddBookmark" xml:space="preserve">
+    <value>Add to bookmarks</value>
+  </data>
+  <data name="RemoveBookmark" xml:space="preserve">
+    <value>Remove from bookmarks</value>
+  </data>
+  <data name="GenerateTextColors" xml:space="preserve">
+    <value>Generate new colors</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

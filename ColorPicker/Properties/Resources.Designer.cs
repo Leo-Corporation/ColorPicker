@@ -61,6 +61,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to bookmarks.
+        /// </summary>
+        public static string AddBookmark {
+            get {
+                return ResourceManager.GetString("AddBookmark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I agree.
         /// </summary>
         public static string Agree {
@@ -286,11 +295,83 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy CMYK.
+        /// </summary>
+        public static string CopyCMYK {
+            get {
+                return ResourceManager.GetString("CopyCMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy color.
         /// </summary>
         public static string CopyColor {
             get {
                 return ResourceManager.GetString("CopyColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy HEX.
+        /// </summary>
+        public static string CopyHEX {
+            get {
+                return ResourceManager.GetString("CopyHEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy HSL.
+        /// </summary>
+        public static string CopyHSL {
+            get {
+                return ResourceManager.GetString("CopyHSL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy HSV.
+        /// </summary>
+        public static string CopyHSV {
+            get {
+                return ResourceManager.GetString("CopyHSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy RGB.
+        /// </summary>
+        public static string CopyRGB {
+            get {
+                return ResourceManager.GetString("CopyRGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy XYZ.
+        /// </summary>
+        public static string CopyXYZ {
+            get {
+                return ResourceManager.GetString("CopyXYZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy YIQ.
+        /// </summary>
+        public static string CopyYIQ {
+            get {
+                return ResourceManager.GetString("CopyYIQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy YUV.
+        /// </summary>
+        public static string CopyYUV {
+            get {
+                return ResourceManager.GetString("CopyYUV", resourceCulture);
             }
         }
         
@@ -354,6 +435,15 @@ namespace ColorPicker.Properties {
         public static string DefaultColorType {
             get {
                 return ResourceManager.GetString("DefaultColorType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
@@ -475,6 +565,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate a random color.
+        /// </summary>
+        public static string GenerateColor {
+            get {
+                return ResourceManager.GetString("GenerateColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate a gradient.
         /// </summary>
         public static string GenerateGradient {
@@ -489,6 +588,15 @@ namespace ColorPicker.Properties {
         public static string GeneratePalette {
             get {
                 return ResourceManager.GetString("GeneratePalette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate new colors.
+        /// </summary>
+        public static string GenerateTextColors {
+            get {
+                return ResourceManager.GetString("GenerateTextColors", resourceCulture);
             }
         }
         
@@ -885,6 +993,15 @@ namespace ColorPicker.Properties {
         public static string RedP {
             get {
                 return ResourceManager.GetString("RedP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove from bookmarks.
+        /// </summary>
+        public static string RemoveBookmark {
+            get {
+                return ResourceManager.GetString("RemoveBookmark", resourceCulture);
             }
         }
         

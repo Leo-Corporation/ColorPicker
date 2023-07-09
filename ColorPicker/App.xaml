@@ -1035,17 +1035,17 @@
 					</Trigger>
 				</Style.Triggers>
 			</Style>
-            <Style x:Key="FocusVisual1">
-                <Setter Property="Control.Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+			<Style x:Key="FocusVisual1">
+				<Setter Property="Control.Template">
+					<Setter.Value>
+						<ControlTemplate>
+							<Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
 
-            <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
+			<SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
 			<SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
 			<SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="White"/>
 			<SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="Transparent"/>
@@ -1113,6 +1113,48 @@
 									<Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Static.Background}"/>
 								</Trigger>
 							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style TargetType="MenuItem" x:Key="MenuStyle">
+				<Setter Property="BorderThickness" Value="0" />
+				<Setter Property="OverridesDefaultStyle" Value="True" />
+				<Setter Property="Foreground" Value="{Binding Source={StaticResource Background1}}"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="MenuItem">
+							<Border x:Name="Border" Padding="2" MinWidth="100" CornerRadius="5" Background="{TemplateBinding Background}">
+								<ContentPresenter ContentSource="Header" Margin="2" />                                
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter TargetName="Border" Property="Background" Value="{Binding Source={StaticResource Background2}}" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+			<Style TargetType="ContextMenu" x:Key="ContextMenuStyle">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate>
+							<Border Padding="5" CornerRadius="5" Margin="10" Background="{Binding Source={StaticResource Background1}}">
+								<ScrollViewer
+								Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}"
+								Uid="ScrollViewer_9"
+								CanContentScroll="True">
+									<ItemsPresenter Margin="{TemplateBinding Padding}"
+												SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+												KeyboardNavigation.DirectionalNavigation="Cycle" />
+								</ScrollViewer>
+
+								<Border.Effect>
+									<DropShadowEffect BlurRadius="15" Color="#000" Direction="135" Opacity="0.2" ShadowDepth="0" />
+								</Border.Effect>
+							</Border>
 						</ControlTemplate>
 					</Setter.Value>
 				</Setter>

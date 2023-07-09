@@ -523,4 +523,43 @@
   <data name="KeyboardSelectionHint" xml:space="preserve">
     <value>Appuyez sur {0} pour commencer ou arrêter la sélection d'une couleur sur votre écran.</value>
   </data>
+  <data name="CopyRGB" xml:space="preserve">
+    <value>Copier en RVB</value>
+  </data>
+  <data name="CopyHEX" xml:space="preserve">
+    <value>Copier en HEX</value>
+  </data>
+  <data name="CopyHSL" xml:space="preserve">
+    <value>Copier en HSL</value>
+  </data>
+  <data name="CopyHSV" xml:space="preserve">
+    <value>Copier en HSV</value>
+  </data>
+  <data name="CopyXYZ" xml:space="preserve">
+    <value>Copier en XYZ</value>
+  </data>
+  <data name="CopyYIQ" xml:space="preserve">
+    <value>Copier en YIQ</value>
+  </data>
+  <data name="CopyYUV" xml:space="preserve">
+    <value>Copier en YUV</value>
+  </data>
+  <data name="CopyCMYK" xml:space="preserve">
+    <value>Copier en CMJN</value>
+  </data>
+  <data name="GenerateColor" xml:space="preserve">
+    <value>Générer une couleur aléatoire</value>
+  </data>
+  <data name="AddBookmark" xml:space="preserve">
+    <value>Ajouter aux signets</value>
+  </data>
+  <data name="RemoveBookmark" xml:space="preserve">
+    <value>Retirer des signets</value>
+  </data>
+  <data name="GenerateTextColors" xml:space="preserve">
+    <value>Générer de nouvelles couleurs</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
 </root>

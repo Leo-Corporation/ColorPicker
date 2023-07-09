@@ -24,6 +24,7 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using ColorPicker.Windows;
 using Synethia;
 using System.Windows;
 using System.Windows.Controls;
@@ -286,7 +287,8 @@ public partial class PalettePage : Page
 						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
 						Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
 					},
-				};
+				};				
+
 				int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
 				border.MouseLeftButtonUp += (o, e) =>
 				{
@@ -303,6 +305,11 @@ public partial class PalettePage : Page
 						_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
 					});
 				};
+
+				border.MouseRightButtonUp += (o, e) =>
+				{
+					new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(shades[j].R, shades[j].G, shades[j].B) }).Show();
+				};
 				if (k == 0) ShadesPanel.Children.Add(border);
 				else if (k == 1) BrightnessPanel.Children.Add(border);
 				else HuePanel.Children.Add(border);
@@ -313,9 +320,12 @@ public partial class PalettePage : Page
 		if (!Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
 		{
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
@@ -378,10 +388,13 @@ public partial class PalettePage : Page
 		{
 			Global.Bookmarks.PaletteBookmarks.Remove(ColorInfo.HEX.Value);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	internal void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

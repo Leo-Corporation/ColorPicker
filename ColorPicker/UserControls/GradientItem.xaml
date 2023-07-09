@@ -39,8 +39,16 @@
 			</StackPanel>
 
 			<StackPanel Orientation="Horizontal" Grid.Column="2">
-				<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-				<Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" Margin="0 5 5 0" x:Name="GoBtn" Click="GoBtn_Click" Grid.Column="3" Content="&#xF3DE;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+                <Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" Margin="0 5 5 0" x:Name="DeleteBtn" Click="DeleteBtn_Click" Grid.Column="3" Content="&#xF34D;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+                    <Button.ToolTip>
+                        <ToolTip Content="{x:Static lang:Resources.Delete}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+                    </Button.ToolTip>
+                </Button>
+                <Button Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" Margin="0 5 5 0" x:Name="GoBtn" Click="GoBtn_Click" Grid.Column="3" Content="&#xF3DE;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Top" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+                    <Button.ToolTip>
+                        <ToolTip Content="{x:Static lang:Resources.Details}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+                    </Button.ToolTip>
+                </Button>
 			</StackPanel>
 		</Grid>
 	</Border>

@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Windows;
 using Synethia;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -110,9 +111,12 @@ public partial class GradientPage : Page
 		if (!Global.Bookmarks.GradientBookmarks.Contains(CurrentGradient))
 		{
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	internal System.Drawing.Color from, to;
@@ -151,10 +155,13 @@ public partial class GradientPage : Page
 		{
 			Global.Bookmarks.GradientBookmarks.Remove(CurrentGradient);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.GradientBookmarks.Add(CurrentGradient);
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void CopyXamlBtn_Click(object sender, RoutedEventArgs e)
@@ -400,6 +407,11 @@ public partial class GradientPage : Page
 		}
 		catch { }
 		RgbBtn_Click(SelectedColorBtn, null);
+	}
+
+	private void ForegroundBorder_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
 	}
 
 	private ColorHelper.RGB ConvertToRgb()

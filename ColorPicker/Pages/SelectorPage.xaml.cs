@@ -91,7 +91,7 @@ public partial class SelectorPage : Page
 					BlueSlider.Value = pixel.B; // Set value
 					break;
 			}
-			
+
 			LoadDetails();
 
 			// MiniPicker
@@ -143,21 +143,48 @@ public partial class SelectorPage : Page
 		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
+	List<string> RecentColors = new();
 	private void HandleCopyKeyboard()
 	{
-		if (!Global.Settings.UseKeyboardShortcuts) return;
-
-		Clipboard.SetText(Global.Settings.DefaultColorType switch
+		try
 		{
-			ColorTypes.HEX => HexTxt.Text,
-			ColorTypes.HSL => HslTxt.Text,
-			ColorTypes.HSV => HsvTxt.Text,
-			ColorTypes.CMYK => CmykTxt.Text,
-			ColorTypes.XYZ => $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}",
-			ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
-			ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
-			_ => RgbTxt.Text
-		});
+			if (!Global.Settings.UseKeyboardShortcuts) return;
+
+			Clipboard.SetText(Global.Settings.DefaultColorType switch
+			{
+				ColorTypes.HEX => HexTxt.Text,
+				ColorTypes.HSL => HslTxt.Text,
+				ColorTypes.HSV => HsvTxt.Text,
+				ColorTypes.CMYK => CmykTxt.Text,
+				ColorTypes.XYZ => $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}",
+				ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
+				ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
+				_ => RgbTxt.Text
+			});
+
+			if (RecentColors.Contains(ColorInfo.HEX.ToString())) return;
+			RecentColors.Add(ColorInfo.HEX.ToString());
+
+			Border border = new()
+			{
+				Height = 25,
+				Width = 25,
+				CornerRadius = new(15),
+				Cursor = Cursors.Hand,
+				Margin = new(2),
+				Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) }
+			};
+
+			border.MouseLeftButtonUp += (o, e) =>
+			{
+				var c = ((SolidColorBrush)border.Background).Color;
+				ColorInfo = new(new(c.R, c.G, c.B));
+				LoadSliders();
+			};
+
+			RecentColorsPanel.Children.Add(border);
+		}
+		catch { }
 	}
 
 	private Color GetRgb(int h, int s, int v, bool isHsl = false)
@@ -234,7 +261,7 @@ public partial class SelectorPage : Page
 	internal void LoadDetails()
 	{
 		// Load the details section
-		ColorInfo = ColorTypeComboBox.SelectedIndex switch 
+		ColorInfo = ColorTypeComboBox.SelectedIndex switch
 		{
 			1 => new ColorInfo(ColorHelper.ColorConverter.HsvToRgb(new((int)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))),
 			2 => new ColorInfo(ColorHelper.ColorConverter.HslToRgb(new((int)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))),
@@ -253,9 +280,11 @@ public partial class SelectorPage : Page
 		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
 		{
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
 			return;
 		}
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
@@ -304,10 +333,13 @@ public partial class SelectorPage : Page
 		{
 			Global.Bookmarks.ColorBookmarks.Remove(HexTxt.Text);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void UpdateSelectionState(bool selectionOn)
@@ -340,7 +372,7 @@ public partial class SelectorPage : Page
 				RedSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
 				GreenSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
 				BlueSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
-				
+
 				RedSlider.Maximum = 360;
 				GreenSlider.Maximum = 100;
 				BlueSlider.Maximum = 100;
@@ -367,7 +399,7 @@ public partial class SelectorPage : Page
 				RedSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderRed") };
 				GreenSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderGreen") };
 				BlueSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderBlue") };
-				
+
 				RedSlider.Maximum = 255;
 				GreenSlider.Maximum = 255;
 				BlueSlider.Maximum = 255;
