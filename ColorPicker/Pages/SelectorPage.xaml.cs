@@ -280,9 +280,11 @@ public partial class SelectorPage : Page
 		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
 		{
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
 			return;
 		}
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
@@ -331,10 +333,13 @@ public partial class SelectorPage : Page
 		{
 			Global.Bookmarks.ColorBookmarks.Remove(HexTxt.Text);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void UpdateSelectionState(bool selectionOn)

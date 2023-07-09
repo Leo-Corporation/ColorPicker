@@ -154,8 +154,16 @@
 					</Border>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" Grid.Column="2">
-					<Button Grid.Column="2" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
-					<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="3" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}"/>
+					<Button Grid.Column="2" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.GenerateTextColors}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Button.ToolTip>
+					</Button>
+					<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="3" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}">
+						<Button.ToolTip>
+							<ToolTip x:Name="BookmarkToolTip" Content="{x:Static lang:Resources.AddBookmark}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+						</Button.ToolTip>
+					</Button>
 				</StackPanel>
 			</Grid>
 		</Border>

@@ -152,9 +152,12 @@ public partial class ConverterPage : Page
 		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
 		{
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
@@ -386,10 +389,13 @@ public partial class ConverterPage : Page
 		{
 			Global.Bookmarks.ColorBookmarks.Remove(HexTxt.Text);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 	public static event EventHandler<PageEventArgs> GoClick;
 

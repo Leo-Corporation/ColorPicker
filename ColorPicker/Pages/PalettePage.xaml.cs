@@ -320,9 +320,12 @@ public partial class PalettePage : Page
 		if (!Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
 		{
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
@@ -385,10 +388,13 @@ public partial class PalettePage : Page
 		{
 			Global.Bookmarks.PaletteBookmarks.Remove(ColorInfo.HEX.Value);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	internal void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

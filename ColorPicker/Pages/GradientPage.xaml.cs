@@ -111,9 +111,12 @@ public partial class GradientPage : Page
 		if (!Global.Bookmarks.GradientBookmarks.Contains(CurrentGradient))
 		{
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	internal System.Drawing.Color from, to;
@@ -152,10 +155,13 @@ public partial class GradientPage : Page
 		{
 			Global.Bookmarks.GradientBookmarks.Remove(CurrentGradient);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.GradientBookmarks.Add(CurrentGradient);
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void CopyXamlBtn_Click(object sender, RoutedEventArgs e)

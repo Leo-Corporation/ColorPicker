@@ -482,10 +482,13 @@ public partial class TextPage : Page
 		{
 			Global.Bookmarks.TextBookmarks.Remove(bookmarkText);
 			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
 			return;
 		}
 		Global.Bookmarks.TextBookmarks.Add(bookmarkText); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
 	private void ForegroundBorder_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
