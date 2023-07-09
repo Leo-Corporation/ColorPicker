@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using ColorPicker.Windows;
 using Synethia;
 using System;
 using System.Text.RegularExpressions;
@@ -485,6 +486,11 @@ public partial class TextPage : Page
 		}
 		Global.Bookmarks.TextBookmarks.Add(bookmarkText); // Add to color bookmarks
 		BookmarkBtn.Content = "\uF1F8";
+	}
+
+	private void ForegroundBorder_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
 	}
 
 	private ColorHelper.RGB ConvertToRgb()
