@@ -85,6 +85,10 @@ namespace ColorPicker.Pages
 			CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut;
 			SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut;
 
+			// Load the AI section
+			Global.Settings.ApiKey ??= "";
+			ApiKeyTxt.Password = Global.Settings.ApiKey;
+
 			// Load the Text Tool section
 			System.Drawing.Text.InstalledFontCollection installedFonts = new();
 			foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
@@ -482,6 +486,17 @@ namespace ColorPicker.Pages
 			"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
 			"PeyrSharp - MIT License - © 2022-2023 Léo Corporation\n" +
 			"ColorPicker - MIT License - © 2021-2023 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		}
+
+		private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.ApiKey = ApiKeyTxt.Password;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+        }
+
+		private void ApiKeyTxt_PasswordChanged(object sender, RoutedEventArgs e)
+		{
+			ApiApplyBtn.Visibility = Visibility.Visible;
 		}
 
 		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

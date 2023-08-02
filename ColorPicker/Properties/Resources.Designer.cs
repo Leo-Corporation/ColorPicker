@@ -97,6 +97,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customize AI Generation settings..
+        /// </summary>
+        public static string AISettings {
+            get {
+                return ResourceManager.GetString("AISettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -957,6 +966,15 @@ namespace ColorPicker.Properties {
         public static string OnStartDescription {
             get {
                 return ResourceManager.GetString("OnStartDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OpenAI API Key.
+        /// </summary>
+        public static string OpenAIKey {
+            get {
+                return ResourceManager.GetString("OpenAIKey", resourceCulture);
             }
         }
         

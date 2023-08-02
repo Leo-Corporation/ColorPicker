@@ -572,4 +572,10 @@
   <data name="AIGenerateColor" xml:space="preserve">
     <value>用人工智能生成颜色</value>
   </data>
+  <data name="AISettings" xml:space="preserve">
+    <value>自定义人工智能生成设置</value>
+  </data>
+  <data name="OpenAIKey" xml:space="preserve">
+    <value>OpenAI API 密钥</value>
+  </data>
 </root>

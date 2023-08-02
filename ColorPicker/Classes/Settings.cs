@@ -44,6 +44,7 @@ namespace ColorPicker.Classes
 			TextToolForeground = "#000000";
 			TextToolBackground = "#FFFFFF";
 			IsMaximized = false;
+			ApiKey = "";
 		}
 
 		public Themes Theme { get; set; }
@@ -61,5 +62,6 @@ namespace ColorPicker.Classes
 		public string TextToolForeground { get; set; }
 		public string TextToolBackground { get; set; }
 		public bool IsMaximized { get; set; }
+		public string? ApiKey { get; set; }
 	}
 }

@@ -564,4 +564,10 @@
   <data name="AIGenerateColor" xml:space="preserve">
     <value>Generate colors with AI</value>
   </data>
+  <data name="AISettings" xml:space="preserve">
+    <value>Customize AI Generation settings.</value>
+  </data>
+  <data name="OpenAIKey" xml:space="preserve">
+    <value>OpenAI API Key</value>
+  </data>
 </root>
