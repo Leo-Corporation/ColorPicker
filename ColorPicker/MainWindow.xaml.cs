@@ -62,6 +62,8 @@ public partial class MainWindow : Window
 
 	private void InitUI()
 	{
+		VersionTxt.Text = Global.Version;
+
 		StateChanged += (o, e) => HandleWindowStateChanged();
 		Loaded += (o, e) => HandleWindowStateChanged();
 		LocationChanged += (o, e) => HandleWindowStateChanged();
