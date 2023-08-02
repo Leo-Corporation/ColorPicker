@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
+using System.Windows.Markup.Localizer;
 using System.Windows.Media;
 
 namespace ColorPicker.Classes;
@@ -43,6 +44,7 @@ public static class Global
 	public static TextPage? TextPage { get; set; }
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
+	public static AiGenPage? AiGenPage { get; set; }
 	public static HomePage? HomePage { get; set; }
 	public static BookmarksPage? BookmarksPage { get; set; }
 	public static SettingsPage? SettingsPage { get; set; }
@@ -50,7 +52,7 @@ public static class Global
 	public static Bookmarks Bookmarks { get; set; }
 	public static Settings Settings { get; set; } = XmlSerializerManager.LoadFromXml<Settings>(SettingsPath) ?? new();
 
-	public static SynethiaConfig SynethiaConfig { get; set; } = SynethiaManager.Load(SynethiaPath, Default);
+	public static SynethiaConfig SynethiaConfig { get; set; } = GetSynethiaConfig();
 
 	public static SynethiaConfig Default => new()
 	{
@@ -61,7 +63,8 @@ public static class Global
 			new PageInfo("Converter"),
 			new PageInfo("TextTool"),
 			new PageInfo("Palette"),
-			new PageInfo("Gradient")
+			new PageInfo("Gradient"),
+			new PageInfo("AIGeneration")
 		},
 		ActionsInfo = new List<ActionInfo>()
 		{
@@ -70,7 +73,8 @@ public static class Global
 			new ActionInfo(2, "Converter.FromRgb"),
 			new ActionInfo(3, "TextTool.Contrast"),
 			new ActionInfo(4, "Palette.GeneratePalette"),
-			new ActionInfo(5, "Gradient.GenerateGradient")
+			new ActionInfo(5, "Gradient.GenerateGradient"),
+			new ActionInfo(6, "Ai.GenerateColor")
 		}
 	};
 
@@ -119,6 +123,7 @@ public static class Global
 		{ AppPages.TextTool, "\uF7AB" },
 		{ AppPages.ColorPalette, "\uF2F6" },
 		{ AppPages.ColorGradient, "\uFD3F" },
+		{ AppPages.AIGeneration, "\uF4E5" },
 	};
 	public static Dictionary<AppPages, string> AppPagesName => new()
 	{
@@ -131,10 +136,11 @@ public static class Global
 		{ AppPages.TextTool, Properties.Resources.TextTool },
 		{ AppPages.ColorPalette, Properties.Resources.Palette },
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
+		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
 	};
 
-	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA" };
-	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient };
+	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA", "\uF287" };
+	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient, Properties.Resources.AIGeneration };
 
 	public static (int, int, int) GenerateRandomColor()
 	{
@@ -232,6 +238,7 @@ public static class Global
 			"TextTool" => AppPages.TextTool,
 			"Palette" => AppPages.ColorPalette,
 			"Gradient" => AppPages.ColorGradient,
+			"AIGeneration" => AppPages.AIGeneration,
 			_ => AppPages.Selector
 		};
 	}
@@ -298,5 +305,19 @@ public static class Global
 			default: // No language
 				break;
 		}
+	}
+
+	private static SynethiaConfig GetSynethiaConfig()
+	{
+		var config = SynethiaManager.Load(SynethiaPath, Default);
+
+		for (int i = 0; i < config.PagesInfo.Count; i++)
+		{
+			if (config.PagesInfo[i].Name == "AIGeneration") return config;
+		}
+
+		config.PagesInfo.Add(new("AIGeneration"));
+		config.ActionsInfo.Add(new(6, "Ai.GenerateColor"));
+		return config;
 	}
 }

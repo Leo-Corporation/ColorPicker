@@ -330,6 +330,7 @@
 								<StackPanel x:Name="CreationPanel" Visibility="Collapsed">
 									<Button x:Name="PalettePageBtn" Content="{x:Static lang:Resources.Palette}" FontSize="10" FontWeight="ExtraBold" BorderThickness="0" Style="{DynamicResource DefaultButton}" Padding="5,2,2,2" Background="Transparent" HorizontalContentAlignment="Left" Foreground="{Binding Source={StaticResource AccentColor}}" Margin="10,0,0,0" Click="PalettePageBtn_Click"/>
 									<Button x:Name="GradientPageBtn" Content="{x:Static lang:Resources.Gradient}" FontSize="10" FontWeight="ExtraBold" BorderThickness="0" Style="{DynamicResource DefaultButton}" Padding="5,2,2,2" Background="Transparent" HorizontalContentAlignment="Left" Foreground="{Binding Source={StaticResource AccentColor}}" Margin="10,0,0,0" Click="GradientPageBtn_Click"/>
+									<Button x:Name="AiCreationPageBtn" Content="{x:Static lang:Resources.AIGeneration}" FontSize="10" FontWeight="ExtraBold" BorderThickness="0" Style="{DynamicResource DefaultButton}" Padding="5,2,2,2" Background="Transparent" HorizontalContentAlignment="Left" Foreground="{Binding Source={StaticResource AccentColor}}" Margin="10,0,0,0" Click="AiCreationPageBtn_Click"/>
 								</StackPanel>
 							</StackPanel>
 						</ScrollViewer>
