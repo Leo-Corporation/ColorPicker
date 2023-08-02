@@ -23,21 +23,17 @@ SOFTWARE.
 */
 
 using ColorPicker.Classes;
+using OpenAI.Managers;
+using OpenAI;
 using Synethia;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using OpenAI.ObjectModels.RequestModels;
+using OpenAI.ObjectModels;
+using System.Windows.Media.Effects;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -57,6 +53,9 @@ public partial class AiGenPage : Page
 	ColorInfo ColorInfo { get; set; }
 	internal void LoadDetails()
 	{
+		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+
 		// Load the details section		
 		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
 		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
@@ -108,8 +107,40 @@ public partial class AiGenPage : Page
 		Clipboard.SetText(RgbTxt.Text);
 	}
 
-	private void GenerateBtn_Click(object sender, RoutedEventArgs e)
+	private async void GenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		{
+			return;
+		}
 
+		if (string.IsNullOrEmpty(PromptTxt.Text) || string.IsNullOrWhiteSpace(PromptTxt.Text))
+		{
+			return;
+		}
+
+		try
+		{
+			var openAiService = new OpenAIService(new OpenAiOptions()
+			{
+				ApiKey = Global.Settings.ApiKey ?? ""
+			});
+			var completionResult = await openAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
+			{
+				Messages = new List<ChatMessage>
+				{
+					ChatMessage.FromSystem("GOAL: You are a color generator assistant. The user gives you a prompt to generate a SINGLE color. FORMAT: The color is in hexadecimal format #FFFFFF"),
+					ChatMessage.FromUser(PromptTxt.Text)
+				},
+				Model = Models.Gpt_3_5_Turbo,
+			});
+
+			if (completionResult.Successful)
+			{
+				ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(completionResult.Choices.First().Message.Content)));
+				LoadDetails();
+			}
+		}
+		catch { }
 	}
 }
