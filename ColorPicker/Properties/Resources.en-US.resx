@@ -573,4 +573,10 @@
   <data name="Generate" xml:space="preserve">
     <value>Generate</value>
   </data>
+  <data name="ProvideAPromptMsg" xml:space="preserve">
+    <value>Please provide a prompt to AI.</value>
+  </data>
+  <data name="ProvideAPIKey" xml:space="preserve">
+    <value>Please define an API Key in settings.</value>
+  </data>
 </root>

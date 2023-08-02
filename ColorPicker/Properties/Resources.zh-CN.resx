@@ -573,12 +573,18 @@
     <value>用人工智能生成颜色</value>
   </data>
   <data name="AISettings" xml:space="preserve">
-    <value>自定义人工智能生成设置</value>
+    <value>自定义人工智能生成设置。</value>
   </data>
   <data name="OpenAIKey" xml:space="preserve">
     <value>OpenAI API 密钥</value>
   </data>
   <data name="Generate" xml:space="preserve">
     <value>生成</value>
+  </data>
+  <data name="ProvideAPromptMsg" xml:space="preserve">
+    <value>请提示人工智能。</value>
+  </data>
+  <data name="ProvideAPIKey" xml:space="preserve">
+    <value>请在设置中定义 API 密钥。</value>
   </data>
 </root>

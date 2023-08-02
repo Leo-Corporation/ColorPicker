@@ -1033,6 +1033,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please define an API Key in settings..
+        /// </summary>
+        public static string ProvideAPIKey {
+            get {
+                return ResourceManager.GetString("ProvideAPIKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide a prompt to AI..
+        /// </summary>
+        public static string ProvideAPromptMsg {
+            get {
+                return ResourceManager.GetString("ProvideAPromptMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to R.
         /// </summary>
         public static string RedP {

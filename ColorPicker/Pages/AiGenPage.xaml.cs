@@ -111,14 +111,16 @@ public partial class AiGenPage : Page
 	{
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
 		{
+			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
 		}
 
 		if (string.IsNullOrEmpty(PromptTxt.Text) || string.IsNullOrWhiteSpace(PromptTxt.Text))
 		{
+			MessageBox.Show(Properties.Resources.ProvideAPromptMsg, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
 		}
-
+		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
 		try
 		{
 			var openAiService = new OpenAIService(new OpenAiOptions()
