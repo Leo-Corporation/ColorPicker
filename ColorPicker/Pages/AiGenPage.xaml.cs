@@ -53,4 +53,59 @@ public partial class AiGenPage : Page
 		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
 
 	}
+
+	ColorInfo ColorInfo { get; set; }
+	internal void LoadDetails()
+	{
+		// Load the details section		
+		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
+		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
+		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
+		HslTxt.Text = $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}";
+		CmykTxt.Text = $"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}";
+		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
+		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
+		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
+	}
+
+	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
+	}
+
+	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
+	}
+
+	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
+	}
+
+	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
+	}
+
+	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HslTxt.Text);
+	}
+
+	private void CopyHsvBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HsvTxt.Text);
+	}
+
+	private void CopyHexBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(HexTxt.Text);
+	}
+
+	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(RgbTxt.Text);
+	}
+
 }
