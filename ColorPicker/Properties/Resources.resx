@@ -550,4 +550,7 @@
   <data name="OpenAIKey" xml:space="preserve">
     <value>OpenAI API Key</value>
   </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
 </root>

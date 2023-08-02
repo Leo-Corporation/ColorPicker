@@ -108,4 +108,8 @@ public partial class AiGenPage : Page
 		Clipboard.SetText(RgbTxt.Text);
 	}
 
+	private void GenerateBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
 }

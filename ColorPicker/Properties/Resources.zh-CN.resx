@@ -578,4 +578,7 @@
   <data name="OpenAIKey" xml:space="preserve">
     <value>OpenAI API 密钥</value>
   </data>
+  <data name="Generate" xml:space="preserve">
+    <value>生成</value>
+  </data>
 </root>

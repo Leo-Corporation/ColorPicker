@@ -26,6 +26,20 @@
 			<TextBlock x:Name="TitleTxt" Text="{x:Static lang:Resources.AIGeneration}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
 		</StackPanel>
 
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border x:Name="ColorBorder" Height="75" Width="75" CornerRadius="50" d:Background="#ff0000" Margin="10" VerticalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Border Background="{Binding Source={StaticResource CardBackground}}" Width="250" CornerRadius="5" HorizontalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+                    </Border.Effect>
+                    <TextBox x:Name="PromptTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" d:Text="123" Background="Transparent" TextAlignment="Center"/>
+                </Border>
+                <Button Content="{x:Static lang:Resources.Generate}" x:Name="GenerateBtn" Click="GenerateBtn_Click" FontWeight="Bold" Padding="5 0" Style="{DynamicResource PrimaryButton}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Background="{Binding Source={StaticResource AccentColor}}" BorderThickness="0" Margin="5 0"/>
+            </StackPanel>
+        </StackPanel>
+        
         <StackPanel Margin="10" Orientation="Horizontal" Grid.Row="3">
             <TextBlock Text="&#xF4A4;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
             <TextBlock Text="{x:Static lang:Resources.Details}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
