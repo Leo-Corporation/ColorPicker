@@ -566,4 +566,10 @@
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
   </data>
+  <data name="AIGeneration" xml:space="preserve">
+    <value>新一代人工智能</value>
+  </data>
+  <data name="AIGenerateColor" xml:space="preserve">
+    <value>用人工智能生成颜色</value>
+  </data>
 </root>

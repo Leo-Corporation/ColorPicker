@@ -79,6 +79,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate colors with AI.
+        /// </summary>
+        public static string AIGenerateColor {
+            get {
+                return ResourceManager.GetString("AIGenerateColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AI Generation.
+        /// </summary>
+        public static string AIGeneration {
+            get {
+                return ResourceManager.GetString("AIGeneration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {

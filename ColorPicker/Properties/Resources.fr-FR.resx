@@ -562,4 +562,10 @@
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
+  <data name="AIGeneration" xml:space="preserve">
+    <value>Génération IA</value>
+  </data>
+  <data name="AIGenerateColor" xml:space="preserve">
+    <value>Générer des couleurs avec l'IA</value>
+  </data>
 </root>

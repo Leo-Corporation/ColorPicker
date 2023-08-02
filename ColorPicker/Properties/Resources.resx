@@ -538,4 +538,10 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="AIGeneration" xml:space="preserve">
+    <value>AI Generation</value>
+  </data>
+  <data name="AIGenerateColor" xml:space="preserve">
+    <value>Generate colors with AI</value>
+  </data>
 </root>
