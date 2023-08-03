@@ -65,27 +65,27 @@
 
 		<StackPanel x:Name="PalettePanel" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-				<Border x:Name="C1" Height="50" Width="50" CornerRadius="10 0 0 10" d:Background="#ff0000" VerticalAlignment="Center">
+				<Border x:Name="C1" Height="50" Width="50" CornerRadius="10 0 0 10" d:Background="#ff0000" VerticalAlignment="Center" MouseLeftButtonUp="C1_MouseLeftButtonUp" Cursor="Hand">
 					<Border.Effect>
 						<DropShadowEffect x:Name="C1Shadow" d:Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 					</Border.Effect>
 				</Border>
-				<Border x:Name="C2" Height="50" Width="50" CornerRadius="0" d:Background="#0ff00f" VerticalAlignment="Center">
+				<Border x:Name="C2" Height="50" Width="50" CornerRadius="0" d:Background="#0ff00f" VerticalAlignment="Center" MouseLeftButtonUp="C1_MouseLeftButtonUp" Cursor="Hand">
 					<Border.Effect>
 						<DropShadowEffect x:Name="C2Shadow" d:Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 					</Border.Effect>
 				</Border>
-				<Border x:Name="C3" Height="50" Width="50" CornerRadius="0" d:Background="#468dff" VerticalAlignment="Center">
+				<Border x:Name="C3" Height="50" Width="50" CornerRadius="0" d:Background="#468dff" VerticalAlignment="Center" MouseLeftButtonUp="C1_MouseLeftButtonUp" Cursor="Hand">
 					<Border.Effect>
 						<DropShadowEffect x:Name="C3Shadow" d:Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 					</Border.Effect>
 				</Border>
-				<Border x:Name="C4" Height="50" Width="50" CornerRadius="0" d:Background="#454fde" VerticalAlignment="Center">
+				<Border x:Name="C4" Height="50" Width="50" CornerRadius="0" d:Background="#454fde" VerticalAlignment="Center" MouseLeftButtonUp="C1_MouseLeftButtonUp" Cursor="Hand">
 					<Border.Effect>
 						<DropShadowEffect x:Name="C4Shadow" d:Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 					</Border.Effect>
 				</Border>
-				<Border x:Name="C5" Height="50" Width="50" CornerRadius="0 10 10 0" d:Background="#efa512" VerticalAlignment="Center">
+				<Border x:Name="C5" Height="50" Width="50" CornerRadius="0 10 10 0" d:Background="#efa512" VerticalAlignment="Center" MouseLeftButtonUp="C1_MouseLeftButtonUp" Cursor="Hand">
 					<Border.Effect>
 						<DropShadowEffect x:Name="C5Shadow" d:Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
 					</Border.Effect>

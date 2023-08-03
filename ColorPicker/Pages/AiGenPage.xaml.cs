@@ -246,4 +246,11 @@ public partial class AiGenPage : Page
 		}
 		catch { }
 	}
+
+	private void C1_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	{
+		var bg = (SolidColorBrush)((Border)sender).Background;
+		ColorInfo = new(new(bg.Color.R, bg.Color.G, bg.Color.B));
+		LoadDetails();
+	}
 }
