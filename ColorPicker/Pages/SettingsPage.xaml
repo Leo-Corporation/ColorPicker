@@ -244,7 +244,7 @@
                         </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{x:Static lang:Resources.Model}" Margin="0 0 10 0"/>
+                        <TextBlock Text="{x:Static lang:Resources.Model}" Margin="10 0 10 0" VerticalAlignment="Center"/>
                         <ComboBox SelectionChanged="ModelComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="ModelComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Center">
                             <ComboBoxItem Content="GPT-3.5-Turbo"/>
                             <ComboBoxItem Content="GPT-4"/>
