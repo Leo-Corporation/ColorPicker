@@ -583,4 +583,7 @@
   <data name="ProvideAPromptMsg" xml:space="preserve">
     <value>Veuillez fournir une instruction à l'IA.</value>
   </data>
+  <data name="SingleColor" xml:space="preserve">
+    <value>Couleur unique</value>
+  </data>
 </root>

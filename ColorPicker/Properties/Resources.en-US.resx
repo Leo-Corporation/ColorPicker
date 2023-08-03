@@ -579,4 +579,7 @@
   <data name="ProvideAPIKey" xml:space="preserve">
     <value>Please define an API Key in settings.</value>
   </data>
+  <data name="SingleColor" xml:space="preserve">
+    <value>Single color</value>
+  </data>
 </root>

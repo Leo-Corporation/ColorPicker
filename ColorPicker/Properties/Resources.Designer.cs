@@ -1204,6 +1204,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Single color.
+        /// </summary>
+        public static string SingleColor {
+            get {
+                return ResourceManager.GetString("SingleColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Size.
         /// </summary>
         public static string Size {
