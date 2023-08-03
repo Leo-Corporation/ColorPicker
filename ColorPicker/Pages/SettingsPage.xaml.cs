@@ -89,6 +89,7 @@ namespace ColorPicker.Pages
 			Global.Settings.ApiKey ??= "";
 			Global.Settings.Model ??= "gpt-3.5-turbo";
 			ApiKeyTxt.Password = Global.Settings.ApiKey;
+			ModelComboBox.SelectedIndex = Global.Settings.Model switch { "gpt-4" => 1, _ => 0 };
 
 			// Load the Text Tool section
 			System.Drawing.Text.InstalledFontCollection installedFonts = new();
