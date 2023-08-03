@@ -34,6 +34,9 @@ using System.Windows.Media;
 using OpenAI.ObjectModels.RequestModels;
 using OpenAI.ObjectModels;
 using System.Windows.Media.Effects;
+using System.Text.Json;
+using System;
+using ColorHelper;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -65,6 +68,34 @@ public partial class AiGenPage : Page
 		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
+	}
+
+	private void LoadBorders(string[] colors)
+	{
+		try
+		{
+			RGB[] convertedColors = new RGB[5];
+			for (int i = 0; i < colors.Length; i++)
+			{
+				convertedColors[i] = ColorHelper.ColorConverter.HexToRgb(new(colors[i]));
+			}
+
+			C1.Background = new SolidColorBrush { Color = Color.FromRgb(convertedColors[0].R, convertedColors[0].G, convertedColors[0].B) };
+			C2.Background = new SolidColorBrush { Color = Color.FromRgb(convertedColors[1].R, convertedColors[1].G, convertedColors[1].B) };
+			C3.Background = new SolidColorBrush { Color = Color.FromRgb(convertedColors[2].R, convertedColors[2].G, convertedColors[2].B) };
+			C4.Background = new SolidColorBrush { Color = Color.FromRgb(convertedColors[3].R, convertedColors[3].G, convertedColors[3].B) };
+			C5.Background = new SolidColorBrush { Color = Color.FromRgb(convertedColors[4].R, convertedColors[4].G, convertedColors[4].B) };
+
+			C1Shadow.Color = Color.FromRgb(convertedColors[0].R, convertedColors[0].G, convertedColors[0].B);
+			C2Shadow.Color = Color.FromRgb(convertedColors[1].R, convertedColors[1].G, convertedColors[1].B);
+			C3Shadow.Color = Color.FromRgb(convertedColors[2].R, convertedColors[2].G, convertedColors[2].B);
+			C4Shadow.Color = Color.FromRgb(convertedColors[3].R, convertedColors[3].G, convertedColors[3].B);
+			C5Shadow.Color = Color.FromRgb(convertedColors[4].R, convertedColors[4].G, convertedColors[4].B);
+		}
+		catch (Exception e)
+		{
+			MessageBox.Show(e.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
@@ -141,6 +172,69 @@ public partial class AiGenPage : Page
 			{
 				ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(completionResult.Choices.First().Message.Content)));
 				LoadDetails();
+			}
+		}
+		catch { }
+	}
+
+	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+
+	private void UnCheckAllButtons()
+	{
+		ColorBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		PaletteBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+
+		ColorPanel.Visibility = Visibility.Collapsed;
+		PalettePanel.Visibility = Visibility.Collapsed;
+	}
+	private void ColorBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(ColorBtn);
+		ColorPanel.Visibility = Visibility.Visible;
+	}
+
+	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(PaletteBtn);
+		PalettePanel.Visibility = Visibility.Visible;
+	}
+
+	private async void PaletteGenerateBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		{
+			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
+			return;
+		}
+
+		if (string.IsNullOrEmpty(PalettePromptTxt.Text) || string.IsNullOrWhiteSpace(PalettePromptTxt.Text))
+		{
+			MessageBox.Show(Properties.Resources.ProvideAPromptMsg, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
+			return;
+		}
+		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
+		try
+		{
+			var openAiService = new OpenAIService(new OpenAiOptions()
+			{
+				ApiKey = Global.Settings.ApiKey ?? ""
+			});
+			var completionResult = await openAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
+			{
+				Messages = new List<ChatMessage>
+				{
+					ChatMessage.FromSystem("GOAL: You are a color palette assistant. The user gives you a prompt to generate a EXACLY FIVE colors. FORMAT: ONLY ANWSER LIKE THIS (with colors instead of \"...\"): [\"#FFFFFF\", \"#000000\", \"...\", \"...\", \"...\"]"),
+					ChatMessage.FromUser(PalettePromptTxt.Text)
+				},
+				Model = Models.Gpt_3_5_Turbo,
+			});
+
+			if (completionResult.Successful)
+			{
+				var colors = JsonSerializer.Deserialize<string[]>(completionResult.Choices.First().Message.Content);
+				LoadBorders(colors);
 			}
 		}
 		catch { }
