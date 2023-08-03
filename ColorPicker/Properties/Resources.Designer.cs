@@ -79,6 +79,33 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate colors with AI.
+        /// </summary>
+        public static string AIGenerateColor {
+            get {
+                return ResourceManager.GetString("AIGenerateColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AI Generation.
+        /// </summary>
+        public static string AIGeneration {
+            get {
+                return ResourceManager.GetString("AIGeneration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customize AI Generation settings..
+        /// </summary>
+        public static string AISettings {
+            get {
+                return ResourceManager.GetString("AISettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -565,6 +592,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate.
+        /// </summary>
+        public static string Generate {
+            get {
+                return ResourceManager.GetString("Generate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate a random color.
         /// </summary>
         public static string GenerateColor {
@@ -862,6 +898,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Model.
+        /// </summary>
+        public static string Model {
+            get {
+                return ResourceManager.GetString("Model", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes..
         /// </summary>
         public static string NeedRestartLabel {
@@ -943,6 +988,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OpenAI API Key.
+        /// </summary>
+        public static string OpenAIKey {
+            get {
+                return ResourceManager.GetString("OpenAIKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Palette.
         /// </summary>
         public static string Palette {
@@ -984,6 +1038,24 @@ namespace ColorPicker.Properties {
         public static string PressKeys {
             get {
                 return ResourceManager.GetString("PressKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please define an API Key in settings..
+        /// </summary>
+        public static string ProvideAPIKey {
+            get {
+                return ResourceManager.GetString("ProvideAPIKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide a prompt to AI..
+        /// </summary>
+        public static string ProvideAPromptMsg {
+            get {
+                return ResourceManager.GetString("ProvideAPromptMsg", resourceCulture);
             }
         }
         
@@ -1137,6 +1209,15 @@ namespace ColorPicker.Properties {
         public static string Shades {
             get {
                 return ResourceManager.GetString("Shades", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Single color.
+        /// </summary>
+        public static string SingleColor {
+            get {
+                return ResourceManager.GetString("SingleColor", resourceCulture);
             }
         }
         

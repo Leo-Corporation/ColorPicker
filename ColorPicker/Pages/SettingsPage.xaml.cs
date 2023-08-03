@@ -85,6 +85,12 @@ namespace ColorPicker.Pages
 			CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut;
 			SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut;
 
+			// Load the AI section
+			Global.Settings.ApiKey ??= "";
+			Global.Settings.Model ??= "gpt-3.5-turbo";
+			ApiKeyTxt.Password = Global.Settings.ApiKey;
+			ModelComboBox.SelectedIndex = Global.Settings.Model switch { "gpt-4" => 1, _ => 0 };
+
 			// Load the Text Tool section
 			System.Drawing.Text.InstalledFontCollection installedFonts = new();
 			foreach (System.Drawing.FontFamily fontFamily in installedFonts.Families)
@@ -482,6 +488,24 @@ namespace ColorPicker.Pages
 			"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
 			"PeyrSharp - MIT License - © 2022-2023 Léo Corporation\n" +
 			"ColorPicker - MIT License - © 2021-2023 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		}
+
+		private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.ApiKey = ApiKeyTxt.Password;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void ApiKeyTxt_PasswordChanged(object sender, RoutedEventArgs e)
+		{
+			ApiApplyBtn.Visibility = Visibility.Visible;
+		}
+
+		private void ModelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			string[] supportedModels = { "gpt-3.5-turbo", "gpt-4" };
+			Global.Settings.Model = supportedModels[ModelComboBox.SelectedIndex];
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 
 		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

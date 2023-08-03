@@ -562,4 +562,31 @@
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
+  <data name="AIGeneration" xml:space="preserve">
+    <value>Génération IA</value>
+  </data>
+  <data name="AIGenerateColor" xml:space="preserve">
+    <value>Générer des couleurs avec l'IA</value>
+  </data>
+  <data name="AISettings" xml:space="preserve">
+    <value>Personnaliser les paramètres liés à la Génération IA.</value>
+  </data>
+  <data name="OpenAIKey" xml:space="preserve">
+    <value>Clé d'API OpenAI</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Générer</value>
+  </data>
+  <data name="ProvideAPIKey" xml:space="preserve">
+    <value>Veuillez définir une clé API dans les paramètres.</value>
+  </data>
+  <data name="ProvideAPromptMsg" xml:space="preserve">
+    <value>Veuillez fournir une instruction à l'IA.</value>
+  </data>
+  <data name="SingleColor" xml:space="preserve">
+    <value>Couleur unique</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Modèle</value>
+  </data>
 </root>

@@ -77,6 +77,9 @@ public partial class ActionCard : UserControl
 				Global.GradientPage.GenerateRandomGradient();
 				OnCardClick?.Invoke(this, new(AppPages.ColorGradient));
 				break;
+			case 6:
+				OnCardClick?.Invoke(this, new(AppPages.AIGeneration));
+				break;
 			default:
 				break;
 		}

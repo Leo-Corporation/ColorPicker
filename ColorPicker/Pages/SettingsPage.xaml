@@ -216,8 +216,43 @@
 					<TextBlock Text="{x:Static lang:Resources.NeedRestartLabel}" TextWrapping="Wrap" FontStyle="Italic" Margin="10,5,0,5" />
 				</StackPanel>
 			</Expander>
+            <Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource CardBackground}}" Foreground="{Binding Source={StaticResource Foreground1}}">
+                <Expander.Header>
+                    <StackPanel Margin="10 15" Orientation="Horizontal">
+                        <TextBlock Text="&#xF4DB;" FontSize="22" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+                        <StackPanel>
+                            <TextBlock Text="{x:Static lang:Resources.AIGeneration}" FontSize="18" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="10,0,0,0"/>
+                            <TextBlock Text="{x:Static lang:Resources.AISettings}" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander.Header>
+                <StackPanel>
+                    <StackPanel Margin="10" Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.OpenAIKey}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <Border Background="{Binding Source={StaticResource CardBackground}}" Width="250" CornerRadius="5" HorizontalAlignment="Center">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+                            </Border.Effect>
+                            <PasswordBox x:Name="ApiKeyTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" Background="Transparent" PasswordChanged="ApiKeyTxt_PasswordChanged"/>
+                        </Border>
+                        <Button x:Name="ApiApplyBtn" Background="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}" Padding="10,5,10,5" Style="{StaticResource PrimaryButton}" FontWeight="ExtraBold" Cursor="Hand" VerticalAlignment="Center" Click="ApiApplyBtn_Click" Visibility="Hidden" Margin="10,0,0,0">
+                            <TextBlock Text="&#xF680;" FontWeight="Regular" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0,0,0,0" VerticalAlignment="Center"/>
 
-			<Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource CardBackground}}" Foreground="{Binding Source={StaticResource Foreground1}}">
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Apply}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
+                            </Button.ToolTip>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.Model}" Margin="10 0 10 0" VerticalAlignment="Center"/>
+                        <ComboBox SelectionChanged="ModelComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="ModelComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Center">
+                            <ComboBoxItem Content="GPT-3.5-Turbo"/>
+                            <ComboBoxItem Content="GPT-4"/>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </Expander>
+            <Expander Style="{DynamicResource ExpanderStyle1}" Margin="10,10,10,0" Background="{Binding Source={StaticResource CardBackground}}" Foreground="{Binding Source={StaticResource Foreground1}}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF793;" FontSize="22" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
