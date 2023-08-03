@@ -590,4 +590,7 @@
   <data name="SingleColor" xml:space="preserve">
     <value>单色</value>
   </data>
+  <data name="Model" xml:space="preserve">
+    <value>模型</value>
+  </data>
 </root>

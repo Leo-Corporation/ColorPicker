@@ -87,6 +87,7 @@ namespace ColorPicker.Pages
 
 			// Load the AI section
 			Global.Settings.ApiKey ??= "";
+			Global.Settings.Model ??= "gpt-3.5-turbo";
 			ApiKeyTxt.Password = Global.Settings.ApiKey;
 
 			// Load the Text Tool section
@@ -492,11 +493,18 @@ namespace ColorPicker.Pages
 		{
 			Global.Settings.ApiKey = ApiKeyTxt.Password;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-        }
+		}
 
 		private void ApiKeyTxt_PasswordChanged(object sender, RoutedEventArgs e)
 		{
 			ApiApplyBtn.Visibility = Visibility.Visible;
+		}
+
+		private void ModelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			string[] supportedModels = { "gpt-3.5-turbo", "gpt-4" };
+			Global.Settings.Model = supportedModels[ModelComboBox.SelectedIndex];
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 
 		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

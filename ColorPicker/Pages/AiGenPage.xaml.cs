@@ -172,7 +172,7 @@ public partial class AiGenPage : Page
 					ChatMessage.FromSystem("GOAL: You are a color generator assistant. The user gives you a prompt to generate a SINGLE color. FORMAT: The color is in hexadecimal format #FFFFFF"),
 					ChatMessage.FromUser(PromptTxt.Text)
 				},
-				Model = Models.Gpt_3_5_Turbo,
+				Model = Global.Settings.Model ?? Models.Gpt_3_5_Turbo,
 			});
 
 			if (completionResult.Successful)

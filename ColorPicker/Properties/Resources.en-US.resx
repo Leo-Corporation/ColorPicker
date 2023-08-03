@@ -582,4 +582,7 @@
   <data name="SingleColor" xml:space="preserve">
     <value>Single color</value>
   </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
 </root>
