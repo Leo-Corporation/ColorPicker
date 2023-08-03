@@ -50,7 +50,14 @@ public partial class AiGenPage : Page
 	{
 		InitializeComponent();
 		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+		InitUI();
+	}
 
+	private void InitUI()
+	{
+		UnCheckAllButtons();
+		CheckButton(ColorBtn);
+		ColorPanel.Visibility = Visibility.Visible;
 	}
 
 	ColorInfo ColorInfo { get; set; }
