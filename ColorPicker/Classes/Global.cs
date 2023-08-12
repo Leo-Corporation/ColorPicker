@@ -30,6 +30,7 @@ using PeyrSharp.Env;
 using Synethia;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Markup.Localizer;
@@ -83,7 +84,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "5.4.0.2308";
+	public static string Version => "5.4.1.2308";
 
 	public static string HiSentence
 	{
@@ -319,5 +320,19 @@ public static class Global
 		config.PagesInfo.Add(new("AIGeneration"));
 		config.ActionsInfo.Add(new(6, "Ai.GenerateColor"));
 		return config;
+	}
+
+	public static bool IsSameKeyboardShortcut(string comb1, string comb2)
+	{
+		string[] keys1 = comb1.Split("+");
+		string[] keys2 = comb2.Split("+");
+
+		if (keys1.Length != keys2.Length) return false;
+
+		for (int i = 0; i < keys1.Length; i++)
+		{
+			if (!keys2.Contains(keys1[i])) return false;
+		}
+		return true;
 	}
 }

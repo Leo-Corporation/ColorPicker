@@ -286,7 +286,7 @@ namespace ColorPicker.Pages
 				keyboardEvents.KeyDown -= KeyboardEvents_KeyDown;
 				EditCopyShortcutBtn.IsEnabled = true;
 				fromSelect = false;
-				if (pressedKeys.Count == 0)
+				if (pressedKeys.Count == 0 || Global.IsSameKeyboardShortcut(SelectShortcutTxt.Text, Global.Settings.CopyKeyboardShortcut))
 				{
 					SelectShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut;
 				}
@@ -337,7 +337,7 @@ namespace ColorPicker.Pages
 			{
 				keyboardEvents.KeyDown -= KeyboardEvents_KeyDown;
 				EditSelectShortcutBtn.IsEnabled = true;
-				if (pressedKeys.Count == 0)
+				if (pressedKeys.Count == 0 || Global.IsSameKeyboardShortcut(CopyShortcutTxt.Text, Global.Settings.SelectKeyboardShortcut))
 				{
 					CopyShortcutTxt.Text = Global.Settings.CopyKeyboardShortcut;
 				}
