@@ -120,18 +120,22 @@ public partial class SelectorPage : Page
 		};
 
 		// Register Keyboard Shortcuts
-		keyboardEvents = Hook.GlobalEvents();
-		Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
+		try
 		{
-			{ Combination.FromString(Global.Settings.CopyKeyboardShortcut), HandleCopyKeyboard },
-			{ Combination.FromString(Global.Settings.SelectKeyboardShortcut), HandleSelectKeyboard }
-		});
-		ColorTypeComboBox.SelectedIndex = Global.Settings.DefaultColorType switch
-		{
-			ColorTypes.HSV => 1,
-			ColorTypes.HSL => 2,
-			_ => 0
-		};
+			keyboardEvents = Hook.GlobalEvents();
+			Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
+			{
+				{ Combination.FromString(Global.Settings.CopyKeyboardShortcut), HandleCopyKeyboard },
+				{ Combination.FromString(Global.Settings.SelectKeyboardShortcut), HandleSelectKeyboard }
+			});
+			ColorTypeComboBox.SelectedIndex = Global.Settings.DefaultColorType switch
+			{
+				ColorTypes.HSV => 1,
+				ColorTypes.HSL => 2,
+				_ => 0
+			};
+		}
+		catch { }
 	}
 
 	private void HandleSelectKeyboard()
