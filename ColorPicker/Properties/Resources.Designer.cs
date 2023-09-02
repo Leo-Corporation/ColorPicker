@@ -934,6 +934,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To use AI featues, you need an OpenAI API key..
+        /// </summary>
+        public static string NoApiKeyMsg {
+            get {
+                return ResourceManager.GetString("NoApiKeyMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No thanks.
         /// </summary>
         public static string NoThanks {

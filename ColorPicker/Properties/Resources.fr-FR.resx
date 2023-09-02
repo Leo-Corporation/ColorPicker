@@ -589,4 +589,7 @@
   <data name="Model" xml:space="preserve">
     <value>Modèle</value>
   </data>
+  <data name="NoApiKeyMsg" xml:space="preserve">
+    <value>Pour utiliser les fonctionnalités d'IA, vous avez besoin d'une clé API OpenAI.</value>
+  </data>
 </root>

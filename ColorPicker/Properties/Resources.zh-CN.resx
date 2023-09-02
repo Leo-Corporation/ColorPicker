@@ -593,4 +593,7 @@
   <data name="Model" xml:space="preserve">
     <value>模型</value>
   </data>
+  <data name="NoApiKeyMsg" xml:space="preserve">
+    <value>要使用人工智能功能，您需要一个 OpenAI API 密钥。</value>
+  </data>
 </root>
