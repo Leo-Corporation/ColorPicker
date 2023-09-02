@@ -492,7 +492,62 @@
                     </StackPanel>
                 </Grid>
             </Border>
+            <Border
+                MinWidth="150"
+                Margin="5"
+                Padding="5"
+                HorizontalAlignment="Left"
+                Background="{Binding Source={StaticResource CardBackground}}"
+                CornerRadius="5">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Direction="135"
+                        Opacity="0.2"
+                        ShadowDepth="0"
+                        Color="#000" />
+                </Border.Effect>
 
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        FontWeight="ExtraBold"
+                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Text="{x:Static lang:Resources.DEC}" />
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Button
+                            x:Name="CopyDecBtn"
+                            Grid.Column="2"
+                            Margin="0 3 3 3"
+                            Padding="5"
+                            VerticalAlignment="Top"
+                            Background="{Binding Source={StaticResource Background3}}"
+                            Click="CopyDecBtn_Click"
+                            Content="&#xF32C;"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Style="{DynamicResource DefaultButton}">
+                            <Button.ToolTip>
+                                <ToolTip
+                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Content="{x:Static lang:Resources.CopyDEC}"
+                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                            </Button.ToolTip>
+                        </Button>
+
+                        <TextBlock
+                            x:Name="DecTxt"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="ExtraBold"
+                            Text="N/A" />
+                    </StackPanel>
+                </Grid>
+            </Border>
             <Border
                 MinWidth="150"
                 Margin="5"
