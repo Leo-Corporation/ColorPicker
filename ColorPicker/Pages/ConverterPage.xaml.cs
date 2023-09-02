@@ -366,7 +366,7 @@ public partial class ConverterPage : Page
 					Txt3.Text = split[2];
 					Txt4.Text = split.Length > 3 ? split[3] : "";
 				}
-				else if (SelectedColorBtn == HexBtn || SelectedColorBtn == DecBtn)
+				else if (SelectedColorBtn == HexBtn)
 				{
 					Txt5.Text = text;
 				}
