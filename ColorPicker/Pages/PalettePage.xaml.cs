@@ -376,7 +376,7 @@ public partial class PalettePage : Page
 					Txt3.Text = split[2];
 					Txt4.Text = split.Length > 3 ? split[3] : "";
 				}
-				else if (SelectedColorBtn == HexBtn)
+				else if (SelectedColorBtn == HexBtn || SelectedColorBtn == DecBtn)
 				{
 					Txt5.Text = text;
 				}
