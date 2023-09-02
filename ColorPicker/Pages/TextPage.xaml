@@ -1,212 +1,689 @@
-﻿<Page x:Class="ColorPicker.Pages.TextPage"
-	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	  xmlns:local="clr-namespace:ColorPicker.Pages"
-	  xmlns:lang="clr-namespace:ColorPicker.Properties"
-	  mc:Ignorable="d" Foreground="{Binding Source={StaticResource Foreground1}}"
-	  d:DesignHeight="450" d:DesignWidth="800" FontFamily="..\Fonts\#Hauora"
-	  Title="TextPage">
+﻿<Page
+    x:Class="ColorPicker.Pages.TextPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lang="clr-namespace:ColorPicker.Properties"
+    xmlns:local="clr-namespace:ColorPicker.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TextPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    FontFamily="..\Fonts\#Hauora"
+    Foreground="{Binding Source={StaticResource Foreground1}}"
+    mc:Ignorable="d">
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="Auto"/>
-		</Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
-			<ColumnDefinition Width="Auto"/>
-		</Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-		<Popup x:Name="ColorSelector" IsOpen="False" AllowsTransparency="True" StaysOpen="False" Placement="Mouse">
-			<Border Margin="10" Background="{Binding Source={StaticResource CardBackground}}" Padding="5" CornerRadius="10" Grid.Row="1">
-				<Border.Effect>
-					<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-				</Border.Effect>
+        <Popup
+            x:Name="ColorSelector"
+            AllowsTransparency="True"
+            IsOpen="False"
+            Placement="Mouse"
+            StaysOpen="False">
+            <Border
+                Grid.Row="1"
+                Margin="10"
+                Padding="5"
+                Background="{Binding Source={StaticResource CardBackground}}"
+                CornerRadius="10">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Opacity="0.2"
+                        ShadowDepth="0"
+                        Color="{Binding Source={StaticResource AccentColor}}" />
+                </Border.Effect>
 
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
-					<StackPanel Margin="2" Orientation="Horizontal" Grid.ColumnSpan="3">
-						<Button x:Name="RgbBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.RGB}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-						<Button x:Name="HexBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.HEX}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-						<Button x:Name="HsvBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.HSV}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-						<Button x:Name="HslBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.HSL}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-						<Button x:Name="CmykBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.CMYK}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-						<Button x:Name="XyzBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.XYZ}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-						<Button x:Name="YiqBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.YIQ}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-						<Button x:Name="YuvBtn" Click="RgbBtn_Click" Content="{x:Static lang:Resources.YUV}" FontWeight="ExtraBold" Margin="4 2" Foreground="{Binding Source={StaticResource AccentColor}}" Style="{DynamicResource DefaultButton}" Background="Transparent" BorderThickness="0" Padding="5" HorizontalContentAlignment="Stretch"/>
-					</StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.ColumnSpan="3"
+                        Margin="2"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="RgbBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.RGB}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="HexBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.HEX}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="HsvBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.HSV}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="HslBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.HSL}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="CmykBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.CMYK}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="XyzBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.XYZ}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="YiqBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.YIQ}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="YuvBtn"
+                            Margin="4 2"
+                            Padding="5"
+                            HorizontalContentAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Click="RgbBtn_Click"
+                            Content="{x:Static lang:Resources.YUV}"
+                            FontWeight="ExtraBold"
+                            Foreground="{Binding Source={StaticResource AccentColor}}"
+                            Style="{DynamicResource DefaultButton}" />
+                    </StackPanel>
 
-					<Border x:Name="ColorBorder" MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" Cursor="Hand" Height="25" Width="25" CornerRadius="50" d:Background="#ff0000" Margin="5" VerticalAlignment="Center" Grid.Row="1"/>
-					<StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
-						<TextBlock Visibility="Collapsed" x:Name="DisplayText1" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="0,0,10,0"/>
-						<Border x:Name="B1" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
-							<Border.Effect>
-								<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-							</Border.Effect>
-							<Grid>
-								<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt1" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
-							</Grid>
-						</Border>
-						<TextBlock Visibility="Collapsed" x:Name="DisplayText2" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
-						<Border x:Name="B2" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
-							<Border.Effect>
-								<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-							</Border.Effect>
-							<Grid>
-								<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt2" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
-							</Grid>
-						</Border>
-						<TextBlock Visibility="Collapsed" x:Name="DisplayText3" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
-						<Border x:Name="B3" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
-							<Border.Effect>
-								<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-							</Border.Effect>
-							<Grid>
-								<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt3" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
-							</Grid>
-						</Border>
-						<TextBlock Visibility="Collapsed" x:Name="DisplayText4" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
-						<Border x:Name="B4" Visibility="Collapsed"  Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
-							<Border.Effect>
-								<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-							</Border.Effect>
-							<Grid>
-								<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt4" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
-							</Grid>
-						</Border>
-						<TextBlock Visibility="Collapsed" x:Name="DisplayText5" FontWeight="ExtraBold" VerticalAlignment="Center" Margin="10,0,10,0"/>
-						<Border x:Name="B5" Visibility="Collapsed" Background="{Binding Source={StaticResource CardBackground}}" Width="100" CornerRadius="5" HorizontalAlignment="Center">
-							<Border.Effect>
-								<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-							</Border.Effect>
-							<Grid>
-								<TextBox CommandManager.CanExecute="Txt1_CanExecute" CommandManager.PreviewExecuted="Txt1_PreviewExecuted" x:Name="Txt5" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="Txt1_TextChanged" d:Text="123" Background="Transparent" TextAlignment="Center"/>
-							</Grid>
-						</Border>
-					</StackPanel>
+                    <Border
+                        x:Name="ColorBorder"
+                        Grid.Row="1"
+                        Width="25"
+                        Height="25"
+                        Margin="5"
+                        VerticalAlignment="Center"
+                        d:Background="#ff0000"
+                        CornerRadius="50"
+                        Cursor="Hand"
+                        MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" />
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="DisplayText1"
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            FontWeight="ExtraBold"
+                            Visibility="Collapsed" />
+                        <Border
+                            x:Name="B1"
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{Binding Source={StaticResource CardBackground}}"
+                            CornerRadius="5"
+                            Visibility="Collapsed">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{Binding Source={StaticResource AccentColor}}" />
+                            </Border.Effect>
+                            <Grid>
+                                <TextBox
+                                    x:Name="Txt1"
+                                    Margin="3"
+                                    Padding="3"
+                                    d:Text="123"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    CommandManager.CanExecute="Txt1_CanExecute"
+                                    CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Source={StaticResource DarkGray}}"
+                                    TextAlignment="Center"
+                                    TextChanged="Txt1_TextChanged" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            x:Name="DisplayText2"
+                            Margin="10 0 10 0"
+                            VerticalAlignment="Center"
+                            FontWeight="ExtraBold"
+                            Visibility="Collapsed" />
+                        <Border
+                            x:Name="B2"
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{Binding Source={StaticResource CardBackground}}"
+                            CornerRadius="5"
+                            Visibility="Collapsed">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{Binding Source={StaticResource AccentColor}}" />
+                            </Border.Effect>
+                            <Grid>
+                                <TextBox
+                                    x:Name="Txt2"
+                                    Margin="3"
+                                    Padding="3"
+                                    d:Text="123"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    CommandManager.CanExecute="Txt1_CanExecute"
+                                    CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Source={StaticResource DarkGray}}"
+                                    TextAlignment="Center"
+                                    TextChanged="Txt1_TextChanged" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            x:Name="DisplayText3"
+                            Margin="10 0 10 0"
+                            VerticalAlignment="Center"
+                            FontWeight="ExtraBold"
+                            Visibility="Collapsed" />
+                        <Border
+                            x:Name="B3"
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{Binding Source={StaticResource CardBackground}}"
+                            CornerRadius="5"
+                            Visibility="Collapsed">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{Binding Source={StaticResource AccentColor}}" />
+                            </Border.Effect>
+                            <Grid>
+                                <TextBox
+                                    x:Name="Txt3"
+                                    Margin="3"
+                                    Padding="3"
+                                    d:Text="123"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    CommandManager.CanExecute="Txt1_CanExecute"
+                                    CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Source={StaticResource DarkGray}}"
+                                    TextAlignment="Center"
+                                    TextChanged="Txt1_TextChanged" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            x:Name="DisplayText4"
+                            Margin="10 0 10 0"
+                            VerticalAlignment="Center"
+                            FontWeight="ExtraBold"
+                            Visibility="Collapsed" />
+                        <Border
+                            x:Name="B4"
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{Binding Source={StaticResource CardBackground}}"
+                            CornerRadius="5"
+                            Visibility="Collapsed">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{Binding Source={StaticResource AccentColor}}" />
+                            </Border.Effect>
+                            <Grid>
+                                <TextBox
+                                    x:Name="Txt4"
+                                    Margin="3"
+                                    Padding="3"
+                                    d:Text="123"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    CommandManager.CanExecute="Txt1_CanExecute"
+                                    CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Source={StaticResource DarkGray}}"
+                                    TextAlignment="Center"
+                                    TextChanged="Txt1_TextChanged" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            x:Name="DisplayText5"
+                            Margin="10 0 10 0"
+                            VerticalAlignment="Center"
+                            FontWeight="ExtraBold"
+                            Visibility="Collapsed" />
+                        <Border
+                            x:Name="B5"
+                            Width="100"
+                            HorizontalAlignment="Center"
+                            Background="{Binding Source={StaticResource CardBackground}}"
+                            CornerRadius="5"
+                            Visibility="Collapsed">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{Binding Source={StaticResource AccentColor}}" />
+                            </Border.Effect>
+                            <Grid>
+                                <TextBox
+                                    x:Name="Txt5"
+                                    Margin="3"
+                                    Padding="3"
+                                    d:Text="123"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    CommandManager.CanExecute="Txt1_CanExecute"
+                                    CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Source={StaticResource DarkGray}}"
+                                    TextAlignment="Center"
+                                    TextChanged="Txt1_TextChanged" />
+                            </Grid>
+                        </Border>
+                    </StackPanel>
 
-					<Button Grid.ColumnSpan="3" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="SelectColorBtn" FontWeight="ExtraBold" Click="SelectColorBtn_Click" Content="{x:Static lang:Resources.Apply}" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" />
+                    <Button
+                        x:Name="SelectColorBtn"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="3"
+                        Padding="5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="{Binding Source={StaticResource Background3}}"
+                        Click="SelectColorBtn_Click"
+                        Content="{x:Static lang:Resources.Apply}"
+                        FontWeight="ExtraBold"
+                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                        Style="{DynamicResource DefaultButton}" />
 
-				</Grid>
-			</Border>
+                </Grid>
+            </Border>
 
-		</Popup>
-		
-		<StackPanel Margin="10" Orientation="Horizontal" Grid.ColumnSpan="2">
-			<TextBlock Text="&#xF793;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource AccentColor}}" VerticalAlignment="Center"/>
-			<TextBlock x:Name="TitleTxt" d:Text="{x:Static lang:Resources.TextTool}" FontSize="14" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,0,0,0"/>
-		</StackPanel>
+        </Popup>
 
-		<Border Margin="10" Padding="10" CornerRadius="5" Grid.Row="1" Background="{Binding Source={StaticResource CardBackground}}" Grid.ColumnSpan="2">
-			<Border.Effect>
-				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-			</Border.Effect>
+        <StackPanel
+            Grid.ColumnSpan="2"
+            Margin="10"
+            Orientation="Horizontal">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                FontSize="16"
+                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Text="&#xF793;" />
+            <TextBlock
+                x:Name="TitleTxt"
+                Margin="5 0 0 0"
+                VerticalAlignment="Center"
+                d:Text="{x:Static lang:Resources.TextTool}"
+                FontSize="14"
+                FontWeight="ExtraBold" />
+        </StackPanel>
 
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto"/>
-					<ColumnDefinition/>
-					<ColumnDefinition Width="Auto"/>
-				</Grid.ColumnDefinitions>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="{x:Static lang:Resources.Font}" VerticalAlignment="Center" Margin="0,0,10,0" />
-					<Border Background="{Binding Source={StaticResource CardBackground}}" CornerRadius="5">
-						<Border.Effect>
-							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
+        <Border
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="10"
+            Padding="10"
+            Background="{Binding Source={StaticResource CardBackground}}"
+            CornerRadius="5">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="15"
+                    Opacity="0.2"
+                    ShadowDepth="0"
+                    Color="{Binding Source={StaticResource AccentColor}}" />
+            </Border.Effect>
 
-						</Border.Effect>
-						<ComboBox IsEditable="True" MinWidth="100" MaxWidth="150" SelectionChanged="FontComboBox_SelectionChanged" BorderThickness="0" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FontComboBox" Background="Transparent" BorderBrush="{Binding Source={StaticResource AccentColor}}" Foreground="{Binding Source={StaticResource Foreground1}}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" />
-					</Border>
-					<TextBlock Text="{x:Static lang:Resources.Size}" VerticalAlignment="Center" Margin="10,0,10,0" />
-					<Border x:Name="B" Background="{Binding Source={StaticResource CardBackground}}" Width="50" CornerRadius="5" HorizontalAlignment="Center">
-						<Border.Effect>
-							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-						</Border.Effect>
-						<TextBox x:Name="FontSizeTxt" Padding="3" Margin="3" BorderThickness="0" FontWeight="Bold" Foreground="{Binding Source={StaticResource DarkGray}}" TextChanged="FontSizeTxt_TextChanged" Text="16" Background="Transparent" TextAlignment="Center" PreviewTextInput="FontSizeTxt_PreviewTextInput"/>
-					</Border>
-					<TextBlock Text="{x:Static lang:Resources.Foreground}" VerticalAlignment="Center" Margin="10,0,10,0" />
-					<Border x:Name="ForegroundBorder" BorderThickness="0" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" MouseRightButtonUp="ForegroundBorder_MouseRightButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Foreground1}}" Width="30" Height="30" Cursor="Hand" >
-						<Border.Effect>
-							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-						</Border.Effect>
-					</Border>
-					<TextBlock Text="{x:Static lang:Resources.Background}" VerticalAlignment="Center" Margin="10,0,10,0" />
-					<Border x:Name="BackgroundBorder" BorderThickness="0" MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp" MouseRightButtonUp="ForegroundBorder_MouseRightButtonUp" CornerRadius="20" Background="{Binding Source={StaticResource Background1}}" Width="30" Height="30" Cursor="Hand" >
-						<Border.Effect>
-							<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-						</Border.Effect>
-					</Border>
-				</StackPanel>
-				<StackPanel Orientation="Horizontal" Grid.Column="2">
-					<Button Grid.Column="2" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}" x:Name="GenerateGradientBtn" Click="GenerateGradientBtn_Click" Content="&#xF191;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular">
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.GenerateTextColors}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
-						</Button.ToolTip>
-					</Button>
-					<Button x:Name="BookmarkBtn" Click="BookmarkBtn_Click" Grid.Column="3" Content="&#xF1F6;" Padding="5" Style="{DynamicResource DefaultButton}" VerticalAlignment="Center" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background3}}">
-						<Button.ToolTip>
-							<ToolTip x:Name="BookmarkToolTip" Content="{x:Static lang:Resources.AddBookmark}" Foreground="{Binding Source={StaticResource Foreground1}}" Background="{Binding Source={StaticResource Background1}}"/>
-						</Button.ToolTip>
-					</Button>
-				</StackPanel>
-			</Grid>
-		</Border>
-		<Border x:Name="TextPanel" Margin="10" Padding="10" CornerRadius="5" Grid.Row="2" Background="{Binding Source={StaticResource CardBackground}}">
-			<Border.Effect>
-				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-			</Border.Effect>
-			<StackPanel>
-				<TextBox x:Name="BoldTxt" FontWeight="ExtraBold" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." TextWrapping="Wrap" Margin="10 5" FontSize="16" BorderThickness="0"/>
-				<TextBox x:Name="ItalicTxt" FontStyle="Italic" Text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." TextWrapping="Wrap" Margin="10 5" FontSize="14"  BorderThickness="0"/>
-				<TextBox x:Name="RegularTxt" Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." TextWrapping="Wrap" Margin="10 5" FontSize="14" BorderThickness="0"/>
-			</StackPanel>
-		</Border>
-		<Border x:Name="RatioPanel" Margin="10" Padding="10" CornerRadius="5" Grid.Row="2" Background="{Binding Source={StaticResource CardBackground}}" Grid.Column="1" VerticalAlignment="Top">
-			<Border.Effect>
-				<DropShadowEffect Color="{Binding Source={StaticResource AccentColor}}" BlurRadius="15" Opacity="0.2" ShadowDepth="0"/>
-			</Border.Effect>
-			<StackPanel>
-				<TextBlock Text="{x:Static lang:Resources.Contrast}" Foreground="{Binding Source={StaticResource DarkGray}}" FontWeight="ExtraBold" Margin="0,0,0,10" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0 0 10 0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static lang:Resources.Font}" />
+                    <Border Background="{Binding Source={StaticResource CardBackground}}" CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{Binding Source={StaticResource AccentColor}}" />
 
-				<Grid HorizontalAlignment="Center">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
+                        </Border.Effect>
+                        <ComboBox
+                            x:Name="FontComboBox"
+                            MinWidth="100"
+                            MaxWidth="150"
+                            Margin="0"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="{Binding Source={StaticResource AccentColor}}"
+                            BorderThickness="0"
+                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            IsEditable="True"
+                            SelectionChanged="FontComboBox_SelectionChanged"
+                            Style="{DynamicResource ComboBoxStyle1}" />
+                    </Border>
+                    <TextBlock
+                        Margin="10 0 10 0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static lang:Resources.Size}" />
+                    <Border
+                        x:Name="B"
+                        Width="50"
+                        HorizontalAlignment="Center"
+                        Background="{Binding Source={StaticResource CardBackground}}"
+                        CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{Binding Source={StaticResource AccentColor}}" />
+                        </Border.Effect>
+                        <TextBox
+                            x:Name="FontSizeTxt"
+                            Margin="3"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Foreground="{Binding Source={StaticResource DarkGray}}"
+                            PreviewTextInput="FontSizeTxt_PreviewTextInput"
+                            Text="16"
+                            TextAlignment="Center"
+                            TextChanged="FontSizeTxt_TextChanged" />
+                    </Border>
+                    <TextBlock
+                        Margin="10 0 10 0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static lang:Resources.Foreground}" />
+                    <Border
+                        x:Name="ForegroundBorder"
+                        Width="30"
+                        Height="30"
+                        Background="{Binding Source={StaticResource Foreground1}}"
+                        BorderThickness="0"
+                        CornerRadius="20"
+                        Cursor="Hand"
+                        MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp"
+                        MouseRightButtonUp="ForegroundBorder_MouseRightButtonUp">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{Binding Source={StaticResource AccentColor}}" />
+                        </Border.Effect>
+                    </Border>
+                    <TextBlock
+                        Margin="10 0 10 0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static lang:Resources.Background}" />
+                    <Border
+                        x:Name="BackgroundBorder"
+                        Width="30"
+                        Height="30"
+                        Background="{Binding Source={StaticResource Background1}}"
+                        BorderThickness="0"
+                        CornerRadius="20"
+                        Cursor="Hand"
+                        MouseLeftButtonUp="BackgroundBorder_MouseLeftButtonUp"
+                        MouseRightButtonUp="ForegroundBorder_MouseRightButtonUp">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{Binding Source={StaticResource AccentColor}}" />
+                        </Border.Effect>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button
+                        x:Name="GenerateGradientBtn"
+                        Grid.Column="2"
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        Background="{Binding Source={StaticResource Background3}}"
+                        Click="GenerateGradientBtn_Click"
+                        Content="&#xF191;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{Binding Source={StaticResource Background1}}"
+                                Content="{x:Static lang:Resources.GenerateTextColors}"
+                                Foreground="{Binding Source={StaticResource Foreground1}}" />
+                        </Button.ToolTip>
+                    </Button>
+                    <Button
+                        x:Name="BookmarkBtn"
+                        Grid.Column="3"
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        Background="{Binding Source={StaticResource Background3}}"
+                        Click="BookmarkBtn_Click"
+                        Content="&#xF1F6;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                x:Name="BookmarkToolTip"
+                                Background="{Binding Source={StaticResource Background1}}"
+                                Content="{x:Static lang:Resources.AddBookmark}"
+                                Foreground="{Binding Source={StaticResource Foreground1}}" />
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border
+            x:Name="TextPanel"
+            Grid.Row="2"
+            Margin="10"
+            Padding="10"
+            Background="{Binding Source={StaticResource CardBackground}}"
+            CornerRadius="5">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="15"
+                    Opacity="0.2"
+                    ShadowDepth="0"
+                    Color="{Binding Source={StaticResource AccentColor}}" />
+            </Border.Effect>
+            <StackPanel>
+                <TextBox
+                    x:Name="BoldTxt"
+                    Margin="10 5"
+                    BorderThickness="0"
+                    FontSize="16"
+                    FontWeight="ExtraBold"
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="ItalicTxt"
+                    Margin="10 5"
+                    BorderThickness="0"
+                    FontSize="14"
+                    FontStyle="Italic"
+                    Text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="RegularTxt"
+                    Margin="10 5"
+                    BorderThickness="0"
+                    FontSize="14"
+                    Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+        <Border
+            x:Name="RatioPanel"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="10"
+            Padding="10"
+            VerticalAlignment="Top"
+            Background="{Binding Source={StaticResource CardBackground}}"
+            CornerRadius="5">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="15"
+                    Opacity="0.2"
+                    ShadowDepth="0"
+                    Color="{Binding Source={StaticResource AccentColor}}" />
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock
+                    Margin="0 0 0 10"
+                    FontWeight="ExtraBold"
+                    Foreground="{Binding Source={StaticResource DarkGray}}"
+                    Text="{x:Static lang:Resources.Contrast}" />
 
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
+                <Grid HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-					<Border Background="#00ab4e" CornerRadius="5 5 0 0" Height="30" Width="30"/>
-					<Border Background="#007fff" Height="30" Width="30" Grid.Row="1"/>
-					<Border Background="#ff7a29" Height="30" Width="30" Grid.Row="2"/>
-					<Border Background="#ff0000" CornerRadius="0 0 5 5" Height="30" Width="30" Grid.Row="3"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-					<TextBlock x:Name="IndicatorArrow" FontSize="22" Margin="5 0" Text="&#xF15C;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Grid.Column="1" VerticalAlignment="Center"/>
-					<TextBlock x:Name="ContrastTxt" Margin="10" d:Text="4.2" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"/>
-				</Grid>
-			</StackPanel>
-		</Border>
-	</Grid>
+                    <Border
+                        Width="30"
+                        Height="30"
+                        Background="#00ab4e"
+                        CornerRadius="5 5 0 0" />
+                    <Border
+                        Grid.Row="1"
+                        Width="30"
+                        Height="30"
+                        Background="#007fff" />
+                    <Border
+                        Grid.Row="2"
+                        Width="30"
+                        Height="30"
+                        Background="#ff7a29" />
+                    <Border
+                        Grid.Row="3"
+                        Width="30"
+                        Height="30"
+                        Background="#ff0000"
+                        CornerRadius="0 0 5 5" />
+
+                    <TextBlock
+                        x:Name="IndicatorArrow"
+                        Grid.Column="1"
+                        Margin="5 0"
+                        VerticalAlignment="Center"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        FontSize="22"
+                        Text="&#xF15C;" />
+                    <TextBlock
+                        x:Name="ContrastTxt"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        d:Text="4.2"
+                        FontSize="14"
+                        FontWeight="Bold" />
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
 </Page>
