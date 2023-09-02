@@ -592,4 +592,10 @@
   <data name="NoApiKeyMsg" xml:space="preserve">
     <value>Pour utiliser les fonctionnalités d'IA, vous avez besoin d'une clé API OpenAI.</value>
   </data>
+  <data name="Decimal" xml:space="preserve">
+    <value>Décimal</value>
+  </data>
+  <data name="DEC" xml:space="preserve">
+    <value>DEC</value>
+  </data>
 </root>
