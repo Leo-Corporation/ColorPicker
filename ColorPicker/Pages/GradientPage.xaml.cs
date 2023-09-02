@@ -187,6 +187,7 @@ public partial class GradientPage : Page
 		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		DecBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 	}
 
 	// Note: This event handler is used for all the choices
@@ -227,7 +228,7 @@ public partial class GradientPage : Page
 	private void LoadInputUI()
 	{
 		HideAllInput();
-		if (SelectedColorBtn != HexBtn)
+		if (SelectedColorBtn != HexBtn && SelectedColorBtn != DecBtn)
 		{
 			DisplayText1.Visibility = Visibility.Visible;
 			DisplayText2.Visibility = Visibility.Visible;
@@ -320,6 +321,15 @@ public partial class GradientPage : Page
 			Txt1.Text = ColorInfo.YUV.Y.ToString();
 			Txt2.Text = ColorInfo.YUV.U.ToString();
 			Txt3.Text = ColorInfo.YUV.V.ToString();
+		}
+		else if (SelectedColorBtn == DecBtn)
+		{
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.DEC;
+			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.DEC.Value.ToString();
 		}
 	}
 
@@ -436,6 +446,7 @@ public partial class GradientPage : Page
 		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == DecBtn) return new DEC(int.Parse(Txt5.Text)).ToRgb();
 		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));

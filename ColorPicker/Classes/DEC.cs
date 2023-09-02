@@ -50,4 +50,12 @@ public class DEC
 		int decimalValue = (rgb.R << 16) | (rgb.G << 8) | rgb.B;
 		return new(decimalValue);
 	}
+
+	public RGB ToRgb()
+	{
+		int red = (Value >> 16) & 255;
+		int green = (Value >> 8) & 255;
+		int blue = Value & 255;
+		return new((byte)red, (byte)green, (byte)blue);
+	}
 }
