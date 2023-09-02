@@ -56,8 +56,13 @@ public partial class AiGenPage : Page
 	private void InitUI()
 	{
 		UnCheckAllButtons();
-		CheckButton(ColorBtn);
-		ColorPanel.Visibility = Visibility.Visible;
+		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
+		{
+			CheckButton(ColorBtn);
+			ColorPanel.Visibility = Visibility.Visible;
+			ApiPlaceholder.Visibility = Visibility.Collapsed;
+			return;
+		}
 	}
 
 	ColorInfo ColorInfo { get; set; }
@@ -196,6 +201,7 @@ public partial class AiGenPage : Page
 	}
 	private void ColorBtn_Click(object sender, RoutedEventArgs e)
 	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(ColorBtn);
 		ColorPanel.Visibility = Visibility.Visible;
@@ -203,6 +209,7 @@ public partial class AiGenPage : Page
 
 	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
 	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(PaletteBtn);
 		PalettePanel.Visibility = Visibility.Visible;
@@ -253,4 +260,11 @@ public partial class AiGenPage : Page
 		ColorInfo = new(new(bg.Color.R, bg.Color.G, bg.Color.B));
 		LoadDetails();
 	}
+
+	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.ApiKey = ApiKeyTxt.Password;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		InitUI();
+    }
 }
