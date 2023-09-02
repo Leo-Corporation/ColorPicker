@@ -139,6 +139,7 @@ public partial class ConverterPage : Page
 		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
+		DecTxt.Text = ColorInfo.DEC.Value.ToString();
 
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
@@ -403,5 +404,10 @@ public partial class ConverterPage : Page
 	{
 		Global.PalettePage.InitFromColor(ColorInfo);
 		GoClick?.Invoke(this, new(AppPages.ColorPalette));
+	}
+
+	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(DecTxt.Text);
 	}
 }
