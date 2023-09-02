@@ -602,4 +602,7 @@
   <data name="DEC" xml:space="preserve">
     <value>DEC</value>
   </data>
+  <data name="CopyDEC" xml:space="preserve">
+    <value>复制十进制</value>
+  </data>
 </root>

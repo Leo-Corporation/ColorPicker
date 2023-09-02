@@ -598,4 +598,7 @@
   <data name="DEC" xml:space="preserve">
     <value>DEC</value>
   </data>
+  <data name="CopyDEC" xml:space="preserve">
+    <value>Copier en Décimal</value>
+  </data>
 </root>

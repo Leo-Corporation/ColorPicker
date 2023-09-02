@@ -340,6 +340,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy Decimal.
+        /// </summary>
+        public static string CopyDEC {
+            get {
+                return ResourceManager.GetString("CopyDEC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy HEX.
         /// </summary>
         public static string CopyHEX {
@@ -444,6 +453,24 @@ namespace ColorPicker.Properties {
         public static string DataPrivacy {
             get {
                 return ResourceManager.GetString("DataPrivacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DEC.
+        /// </summary>
+        public static string DEC {
+            get {
+                return ResourceManager.GetString("DEC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decimal.
+        /// </summary>
+        public static string Decimal {
+            get {
+                return ResourceManager.GetString("Decimal", resourceCulture);
             }
         }
         
