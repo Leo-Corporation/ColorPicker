@@ -241,6 +241,7 @@ public partial class TextPage : Page
 		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		DecBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 	}
 
 	// Note: This event handler is used for all the choices
@@ -285,7 +286,7 @@ public partial class TextPage : Page
 	private void LoadInputUI()
 	{
 		HideAllInput();
-		if (SelectedColorBtn != HexBtn)
+		if (SelectedColorBtn != HexBtn && SelectedColorBtn != DecBtn)
 		{
 			DisplayText1.Visibility = Visibility.Visible;
 			DisplayText2.Visibility = Visibility.Visible;
@@ -379,6 +380,15 @@ public partial class TextPage : Page
 			Txt2.Text = ColorInfo.YUV.U.ToString();
 			Txt3.Text = ColorInfo.YUV.V.ToString();
 		}
+		else if (SelectedColorBtn == DecBtn)
+		{
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.DEC;
+			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.DEC.Value.ToString();
+		}
 	}
 
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
@@ -420,7 +430,7 @@ public partial class TextPage : Page
 					Txt3.Text = split[2];
 					Txt4.Text = split.Length > 3 ? split[3] : "";
 				}
-				else if (SelectedColorBtn == HexBtn)
+				else if (SelectedColorBtn == HexBtn || SelectedColorBtn == DecBtn)
 				{
 					Txt5.Text = text;
 				}
@@ -518,6 +528,7 @@ public partial class TextPage : Page
 		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == DecBtn) return new DEC(int.Parse(Txt5.Text)).ToRgb();
 		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
