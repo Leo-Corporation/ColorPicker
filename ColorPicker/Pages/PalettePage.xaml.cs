@@ -26,6 +26,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -68,6 +69,7 @@ public partial class PalettePage : Page
 			ColorTypes.XYZ => XyzBtn,
 			ColorTypes.YIQ => YiqBtn,
 			ColorTypes.YUV => YuvBtn,
+			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
 	}
@@ -95,6 +97,7 @@ public partial class PalettePage : Page
 		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == DecBtn) return new DEC(int.Parse(Txt5.Text)).ToRgb();
 		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
@@ -111,6 +114,7 @@ public partial class PalettePage : Page
 		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		DecBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 	}
 
 	// Note: This event handler is used for all the choices
@@ -151,7 +155,7 @@ public partial class PalettePage : Page
 	private void LoadInputUI()
 	{
 		HideAllInput();
-		if (SelectedColorBtn != HexBtn)
+		if (SelectedColorBtn != HexBtn && SelectedColorBtn != DecBtn)
 		{
 			DisplayText1.Visibility = Visibility.Visible;
 			DisplayText2.Visibility = Visibility.Visible;
@@ -245,6 +249,15 @@ public partial class PalettePage : Page
 			Txt2.Text = ColorInfo.YUV.U.ToString();
 			Txt3.Text = ColorInfo.YUV.V.ToString();
 		}
+		else if (SelectedColorBtn == DecBtn)
+		{
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.DEC;
+			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.DEC.Value.ToString();
+		}
 	}
 
 	internal void InitPaletteUI()
@@ -302,6 +315,7 @@ public partial class PalettePage : Page
 						ColorTypes.XYZ => $"{info.XYZ.X}; {info.XYZ.Y}; {info.XYZ.Z}",
 						ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
 						ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
+						ColorTypes.DEC => info.DEC.Value.ToString(),
 						_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
 					});
 				};
@@ -364,7 +378,7 @@ public partial class PalettePage : Page
 					Txt3.Text = split[2];
 					Txt4.Text = split.Length > 3 ? split[3] : "";
 				}
-				else if (SelectedColorBtn == HexBtn)
+				else if (SelectedColorBtn == HexBtn || SelectedColorBtn == DecBtn)
 				{
 					Txt5.Text = text;
 				}

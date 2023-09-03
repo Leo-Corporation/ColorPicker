@@ -589,4 +589,16 @@
   <data name="Model" xml:space="preserve">
     <value>Modèle</value>
   </data>
+  <data name="NoApiKeyMsg" xml:space="preserve">
+    <value>Pour utiliser les fonctionnalités d'IA, vous avez besoin d'une clé API OpenAI.</value>
+  </data>
+  <data name="Decimal" xml:space="preserve">
+    <value>Décimal</value>
+  </data>
+  <data name="DEC" xml:space="preserve">
+    <value>DEC</value>
+  </data>
+  <data name="CopyDEC" xml:space="preserve">
+    <value>Copier en Décimal</value>
+  </data>
 </root>

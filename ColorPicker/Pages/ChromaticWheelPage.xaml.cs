@@ -116,6 +116,7 @@ public partial class ChromaticWheelPage : Page
 		XyzTxt.Text = $"{colorInfo.XYZ.X:0.00}..; {colorInfo.XYZ.Y:0.00}..; {colorInfo.XYZ.Z:0.00}..";
 		YiqTxt.Text = $"{colorInfo.YIQ.Y:0.00}..; {colorInfo.YIQ.I:0.00}..; {colorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{colorInfo.YUV.Y:0.00}..; {colorInfo.YUV.U:0.00}..; {colorInfo.YUV.V:0.00}..";
+		DecTxt.Text = colorInfo.DEC.Value.ToString();
 	}
 	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
 	private void UnCheckAllButtons()
@@ -172,5 +173,10 @@ public partial class ChromaticWheelPage : Page
 	{
 		Global.PalettePage.InitFromColor(ColorInfo);
 		GoClick?.Invoke(this, new(AppPages.ColorPalette));
+	}
+
+	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(DecTxt.Text);
 	}
 }

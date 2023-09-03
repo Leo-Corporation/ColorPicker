@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using ColorPicker.Windows;
 using System;
 using System.Windows;
@@ -102,7 +103,19 @@ namespace ColorPicker.UserControls
 					int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
 					border.MouseLeftButtonUp += (o, e) =>
 					{
-						Clipboard.SetText($"{shades[j].R};{shades[j].G};{shades[j].B}");
+						var info = new ColorInfo(new(shades[j].R, shades[j].G, shades[j].B));
+						Clipboard.SetText(Global.Settings.DefaultColorType switch
+						{
+							ColorTypes.HEX => info.HEX.Value,
+							ColorTypes.HSV => $"{info.HSV.H},{info.HSV.S},{info.HSV.V}",
+							ColorTypes.HSL => $"{info.HSL.H},{info.HSL.S},{info.HSL.L}",
+							ColorTypes.CMYK => $"{info.CMYK.C},{info.CMYK.M},{info.CMYK.Y},{info.CMYK.K}",
+							ColorTypes.XYZ => $"{info.XYZ.X}; {info.XYZ.Y}; {info.XYZ.Z}",
+							ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
+							ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
+							ColorTypes.DEC => info.DEC.Value.ToString(),
+							_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
+						});
 					};
 
 					border.MouseRightButtonUp += (o, e) =>
@@ -118,7 +131,18 @@ namespace ColorPicker.UserControls
 
 		private void ColorBorder_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			Clipboard.SetText($"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}");
+			Clipboard.SetText(Global.Settings.DefaultColorType switch
+			{
+				ColorTypes.HEX => ColorInfo.HEX.Value,
+				ColorTypes.HSV => $"{ColorInfo.HSV.H},{ColorInfo.HSV.S},{ColorInfo.HSV.V}",
+				ColorTypes.HSL => $"{ColorInfo.HSL.H},{ColorInfo.HSL.S},{ColorInfo.HSL.L}",
+				ColorTypes.CMYK => $"{ColorInfo.CMYK.C},{ColorInfo.CMYK.M},{ColorInfo.CMYK.Y},{ColorInfo.CMYK.K}",
+				ColorTypes.XYZ => $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}",
+				ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
+				ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
+				ColorTypes.DEC => ColorInfo.DEC.Value.ToString(),
+				_ => $"{ColorInfo.RGB.R};{ColorInfo.RGB.G};{ColorInfo.RGB.B}"
+			});
 		}
 
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)

@@ -56,8 +56,13 @@ public partial class AiGenPage : Page
 	private void InitUI()
 	{
 		UnCheckAllButtons();
-		CheckButton(ColorBtn);
-		ColorPanel.Visibility = Visibility.Visible;
+		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
+		{
+			CheckButton(ColorBtn);
+			ColorPanel.Visibility = Visibility.Visible;
+			ApiPlaceholder.Visibility = Visibility.Collapsed;
+			return;
+		}
 	}
 
 	ColorInfo ColorInfo { get; set; }
@@ -75,6 +80,7 @@ public partial class AiGenPage : Page
 		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
+		DecTxt.Text = ColorInfo.DEC.Value.ToString();
 	}
 
 	private void LoadBorders(string[] colors)
@@ -196,6 +202,7 @@ public partial class AiGenPage : Page
 	}
 	private void ColorBtn_Click(object sender, RoutedEventArgs e)
 	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(ColorBtn);
 		ColorPanel.Visibility = Visibility.Visible;
@@ -203,6 +210,7 @@ public partial class AiGenPage : Page
 
 	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
 	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(PaletteBtn);
 		PalettePanel.Visibility = Visibility.Visible;
@@ -252,5 +260,17 @@ public partial class AiGenPage : Page
 		var bg = (SolidColorBrush)((Border)sender).Background;
 		ColorInfo = new(new(bg.Color.R, bg.Color.G, bg.Color.B));
 		LoadDetails();
+	}
+
+	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.ApiKey = ApiKeyTxt.Password;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		InitUI();
+    }
+
+	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(DecTxt.Text);
 	}
 }

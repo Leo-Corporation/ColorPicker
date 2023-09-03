@@ -70,6 +70,7 @@ public partial class ConverterPage : Page
 			ColorTypes.XYZ => XyzBtn,
 			ColorTypes.YIQ => YiqBtn,
 			ColorTypes.YUV => YuvBtn,
+			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
 	}
@@ -85,6 +86,7 @@ public partial class ConverterPage : Page
 		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		DecBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 	}
 
 	// Note: This event handler is used for all the choices
@@ -123,6 +125,7 @@ public partial class ConverterPage : Page
 		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == DecBtn) return new DEC(int.Parse(Txt5.Text)).ToRgb();
 		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
@@ -139,6 +142,7 @@ public partial class ConverterPage : Page
 		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
+		DecTxt.Text = ColorInfo.DEC.Value.ToString();
 
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
@@ -225,7 +229,7 @@ public partial class ConverterPage : Page
 	private void LoadInputUI()
 	{
 		HideAllInput();
-		if (SelectedColorBtn != HexBtn)
+		if (SelectedColorBtn != HexBtn && SelectedColorBtn != DecBtn)
 		{
 			DisplayText1.Visibility = Visibility.Visible;
 			DisplayText2.Visibility = Visibility.Visible;
@@ -321,6 +325,15 @@ public partial class ConverterPage : Page
 			Txt2.Text = ColorInfo.YUV.U.ToString();
 			Txt3.Text = ColorInfo.YUV.V.ToString();
 		}
+		else if (SelectedColorBtn == DecBtn)
+		{
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.DEC;
+			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.DEC.Value.ToString();
+		}
 	}
 
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
@@ -365,7 +378,7 @@ public partial class ConverterPage : Page
 					Txt3.Text = split[2];
 					Txt4.Text = split.Length > 3 ? split[3] : "";
 				}
-				else if (SelectedColorBtn == HexBtn)
+				else if (SelectedColorBtn == HexBtn || SelectedColorBtn == DecBtn)
 				{
 					Txt5.Text = text;
 				}
@@ -403,5 +416,10 @@ public partial class ConverterPage : Page
 	{
 		Global.PalettePage.InitFromColor(ColorInfo);
 		GoClick?.Invoke(this, new(AppPages.ColorPalette));
+	}
+
+	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(DecTxt.Text);
 	}
 }

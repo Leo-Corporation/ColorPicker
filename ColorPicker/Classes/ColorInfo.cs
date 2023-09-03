@@ -35,6 +35,7 @@ namespace ColorPicker.Classes
 		public XYZ XYZ { get; set; }
 		public YIQ YIQ { get; set; }
 		public YUV YUV { get; set; }
+		public DEC DEC { get; set; }
 
 		public ColorInfo(RGB rgb)
 		{
@@ -46,6 +47,7 @@ namespace ColorPicker.Classes
 			XYZ = ColorConverter.RgbToXyz(rgb);
 			YIQ = ColorConverter.RgbToYiq(rgb);
 			YUV = ColorConverter.RgbToYuv(rgb);
+			DEC = DEC.FromRgb(rgb);
 		}
 
 		public override string ToString()
@@ -55,6 +57,7 @@ namespace ColorPicker.Classes
 				$"{Properties.Resources.HSV}: {HSV.H},{HSV.S},{HSV.V}\n" +
 				$"{Properties.Resources.HSL}: {HSL.H},{HSL.S},{HSL.L}\n" +
 				$"{Properties.Resources.CMYK}: {CMYK.C},{CMYK.M},{CMYK.Y},{CMYK.K}\n" +
+				$"{Properties.Resources.DEC}: {DEC.Value}\n" +
 				$"{Properties.Resources.XYZ}: {XYZ.X:0.00}..; {XYZ.Y:0.00}..; {XYZ.Z:0.00}..\n" +
 				$"{Properties.Resources.YIQ}: {YIQ.Y:0.00}..; {YIQ.I:0.00}..; {YIQ.Q:0.00}..\n" +
 				$"{Properties.Resources.YUV}: {YUV.Y:0.00}..; {YUV.U:0.00}..; {YUV.V:0.00}..";

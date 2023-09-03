@@ -22,18 +22,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace ColorPicker.Enums
+using ColorHelper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ColorPicker.Classes;
+public class DEC
 {
-    public enum ColorTypes
-    {
-        RGB,
-        HEX,
-        HSV,
-        HSL,
-        CMYK,
-        XYZ,
-        YIQ,
-        YUV,
-        DEC
-    }
+	public int Value { get; set; }
+
+	public DEC(int value)
+	{
+		Value = value;
+	}
+
+	public static DEC FromRgb(RGB rgb)
+	{
+		if (rgb.R < 0 || rgb.R > 255 || rgb.G < 0 || rgb.G > 255 || rgb.B < 0 || rgb.B > 255)
+		{
+			throw new ArgumentException("RGB values must be between 0 and 255.");
+		}
+
+		int decimalValue = (rgb.R << 16) | (rgb.G << 8) | rgb.B;
+		return new(decimalValue);
+	}
+
+	public RGB ToRgb()
+	{
+		int red = (Value >> 16) & 255;
+		int green = (Value >> 8) & 255;
+		int blue = Value & 255;
+		return new((byte)red, (byte)green, (byte)blue);
+	}
 }

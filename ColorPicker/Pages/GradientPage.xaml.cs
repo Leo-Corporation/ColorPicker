@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
 using System.Text.RegularExpressions;
@@ -51,7 +52,18 @@ public partial class GradientPage : Page
 	{
 		TitleTxt.Text = $"{Properties.Resources.Creation} > {Properties.Resources.Gradient}";
 		GenerateRandomGradient();
-		RgbBtn_Click(RgbBtn, null);
+		RgbBtn_Click(Global.Settings.DefaultColorType switch
+		{
+			ColorTypes.HEX => HexBtn,
+			ColorTypes.HSV => HsvBtn,
+			ColorTypes.HSL => HslBtn,
+			ColorTypes.CMYK => CmykBtn,
+			ColorTypes.XYZ => XyzBtn,
+			ColorTypes.YIQ => YiqBtn,
+			ColorTypes.YUV => YuvBtn,
+			ColorTypes.DEC => DecBtn,
+			_ => RgbBtn
+		}, null);
 	}
 
 	internal void GenerateRandomGradient()
@@ -123,6 +135,10 @@ public partial class GradientPage : Page
 	Gradient CurrentGradient { get; set; }
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
+		var bg = ForegroundBorder.Background as SolidColorBrush;
+		ColorInfo = new(new(bg.Color.R, bg.Color.G, bg.Color.B));
+		RgbBtn_Click(SelectedColorBtn, null);
+
 		ColorSelector.IsOpen = true;
 		isColor1 = true;
 	}
@@ -171,6 +187,10 @@ public partial class GradientPage : Page
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
+		var bg = BackgroundBorder.Background as SolidColorBrush;
+		ColorInfo = new(new(bg.Color.R, bg.Color.G, bg.Color.B));
+		RgbBtn_Click(SelectedColorBtn, null);
+
 		ColorSelector.IsOpen = true;
 		isColor1 = false;
 	}
@@ -187,6 +207,7 @@ public partial class GradientPage : Page
 		XyzBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YiqBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		YuvBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		DecBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 	}
 
 	// Note: This event handler is used for all the choices
@@ -227,7 +248,7 @@ public partial class GradientPage : Page
 	private void LoadInputUI()
 	{
 		HideAllInput();
-		if (SelectedColorBtn != HexBtn)
+		if (SelectedColorBtn != HexBtn && SelectedColorBtn != DecBtn)
 		{
 			DisplayText1.Visibility = Visibility.Visible;
 			DisplayText2.Visibility = Visibility.Visible;
@@ -321,6 +342,15 @@ public partial class GradientPage : Page
 			Txt2.Text = ColorInfo.YUV.U.ToString();
 			Txt3.Text = ColorInfo.YUV.V.ToString();
 		}
+		else if (SelectedColorBtn == DecBtn)
+		{
+			DisplayText5.Visibility = Visibility.Visible;
+
+			DisplayText5.Text = Properties.Resources.DEC;
+			B5.Visibility = Visibility.Visible;
+
+			Txt5.Text = ColorInfo.DEC.Value.ToString();
+		}
 	}
 
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
@@ -362,7 +392,7 @@ public partial class GradientPage : Page
 					Txt3.Text = split[2];
 					Txt4.Text = split.Length > 3 ? split[3] : "";
 				}
-				else if (SelectedColorBtn == HexBtn)
+				else if (SelectedColorBtn == HexBtn || SelectedColorBtn == DecBtn)
 				{
 					Txt5.Text = text;
 				}
@@ -392,7 +422,7 @@ public partial class GradientPage : Page
 			LoadGradientUI();
 			return;
 		}
-		to = System.Drawing.Color.FromArgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B); 
+		to = System.Drawing.Color.FromArgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
 		BackgroundBorder.Background = color;
 		LoadGradientUI();
 	}
@@ -436,6 +466,7 @@ public partial class GradientPage : Page
 		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
+		else if (SelectedColorBtn == DecBtn) return new DEC(int.Parse(Txt5.Text)).ToRgb();
 		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));

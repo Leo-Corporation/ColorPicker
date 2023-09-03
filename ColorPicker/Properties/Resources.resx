@@ -565,4 +565,16 @@
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="NoApiKeyMsg" xml:space="preserve">
+    <value>To use AI featues, you need an OpenAI API key.</value>
+  </data>
+  <data name="Decimal" xml:space="preserve">
+    <value>Decimal</value>
+  </data>
+  <data name="DEC" xml:space="preserve">
+    <value>DEC</value>
+  </data>
+  <data name="CopyDEC" xml:space="preserve">
+    <value>Copy Decimal</value>
+  </data>
 </root>
