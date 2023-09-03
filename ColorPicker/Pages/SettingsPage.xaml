@@ -358,6 +358,7 @@
                         <ComboBoxItem Content="{x:Static lang:Resources.XYZ}" />
                         <ComboBoxItem Content="{x:Static lang:Resources.YIQ}" />
                         <ComboBoxItem Content="{x:Static lang:Resources.YUV}" />
+                        <ComboBoxItem Content="{x:Static lang:Resources.DEC}" />
                     </ComboBox>
                 </StackPanel>
             </Expander>

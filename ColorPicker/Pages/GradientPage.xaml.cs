@@ -61,6 +61,7 @@ public partial class GradientPage : Page
 			ColorTypes.XYZ => XyzBtn,
 			ColorTypes.YIQ => YiqBtn,
 			ColorTypes.YUV => YuvBtn,
+			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
 	}

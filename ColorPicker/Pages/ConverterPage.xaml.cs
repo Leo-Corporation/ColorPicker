@@ -70,6 +70,7 @@ public partial class ConverterPage : Page
 			ColorTypes.XYZ => XyzBtn,
 			ColorTypes.YIQ => YiqBtn,
 			ColorTypes.YUV => YuvBtn,
+			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
 	}

@@ -74,6 +74,12 @@
                             Header="{x:Static lang:Resources.CopyCMYK}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
+                            x:Name="CopyDEC"
+                            Click="CopyDEC_Click"
+                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Header="{x:Static lang:Resources.CopyDEC}"
+                            Style="{DynamicResource MenuStyle}" />
+                        <MenuItem
                             x:Name="CopyXYZ"
                             Click="CopyXYZ_Click"
                             Foreground="{Binding Source={StaticResource Foreground1}}"

@@ -69,6 +69,7 @@ public partial class PalettePage : Page
 			ColorTypes.XYZ => XyzBtn,
 			ColorTypes.YIQ => YiqBtn,
 			ColorTypes.YUV => YuvBtn,
+			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
 	}
@@ -314,6 +315,7 @@ public partial class PalettePage : Page
 						ColorTypes.XYZ => $"{info.XYZ.X}; {info.XYZ.Y}; {info.XYZ.Z}",
 						ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
 						ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
+						ColorTypes.DEC => info.DEC.Value.ToString(),
 						_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
 					});
 				};

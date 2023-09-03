@@ -94,6 +94,7 @@ public partial class TextPage : Page
 			ColorTypes.XYZ => XyzBtn,
 			ColorTypes.YIQ => YiqBtn,
 			ColorTypes.YUV => YuvBtn,
+			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		};
 		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);

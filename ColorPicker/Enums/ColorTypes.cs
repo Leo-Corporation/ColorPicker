@@ -33,6 +33,7 @@ namespace ColorPicker.Enums
         CMYK,
         XYZ,
         YIQ,
-        YUV
+        YUV,
+        DEC
     }
 }
