@@ -129,6 +129,18 @@
                         Foreground="{Binding Source={StaticResource AccentColor}}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
+                        x:Name="DecBtn"
+                        Margin="4 2"
+                        Padding="5"
+                        HorizontalContentAlignment="Stretch"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="RgbBtn_Click"
+                        Content="{x:Static lang:Resources.DEC}"
+                        FontWeight="ExtraBold"
+                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Style="{DynamicResource DefaultButton}" />
+                    <Button
                         x:Name="XyzBtn"
                         Margin="4 2"
                         Padding="5"
