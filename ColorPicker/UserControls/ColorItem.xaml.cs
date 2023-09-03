@@ -138,5 +138,10 @@ namespace ColorPicker.UserControls
 		{
 			Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
 		}
+
+		private void CopyDEC_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(ColorInfo.DEC.Value.ToString());
+		}
 	}
 }
