@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -65,7 +66,18 @@ namespace ColorPicker.UserControls
 
 		private void ColorBorder_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			Clipboard.SetText($"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}");
+			Clipboard.SetText(Global.Settings.DefaultColorType switch
+			{
+				ColorTypes.HEX => ColorInfo.HEX.Value,
+				ColorTypes.HSV => $"{ColorInfo.HSV.H},{ColorInfo.HSV.S},{ColorInfo.HSV.V}",
+				ColorTypes.HSL => $"{ColorInfo.HSL.H},{ColorInfo.HSL.S},{ColorInfo.HSL.L}",
+				ColorTypes.CMYK => $"{ColorInfo.CMYK.C},{ColorInfo.CMYK.M},{ColorInfo.CMYK.Y},{ColorInfo.CMYK.K}",
+				ColorTypes.XYZ => $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}",
+				ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
+				ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
+				ColorTypes.DEC => ColorInfo.DEC.Value.ToString(),
+				_ => $"{ColorInfo.RGB.R};{ColorInfo.RGB.G};{ColorInfo.RGB.B}"
+			});
 		}
 
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
