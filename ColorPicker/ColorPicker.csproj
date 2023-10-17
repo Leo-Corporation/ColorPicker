@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="Betalgo.OpenAI" Version="7.1.5" />
+	<PackageReference Include="Betalgo.OpenAI" Version="7.3.0" />
 	<PackageReference Include="ColorHelper" Version="1.8.1" />
 	<PackageReference Include="MouseKeyHook" Version="5.7.1" />
 	<PackageReference Include="PeyrSharp.Env" Version="1.9.0.2309" />
