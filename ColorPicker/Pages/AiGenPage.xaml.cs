@@ -294,4 +294,14 @@ public partial class AiGenPage : Page
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
+
+	private void IdeaBtn_Click(object sender, RoutedEventArgs e)
+	{
+		PromptTxt.Text = Global.GetRandomAiPrompt();
+	}
+
+	private void IdeaPaletteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		PalettePromptTxt.Text = Global.GetRandomAiPrompt();
+	}
 }

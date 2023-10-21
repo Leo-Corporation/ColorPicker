@@ -180,6 +180,23 @@
                     FontWeight="Bold"
                     Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}"
                     Style="{DynamicResource PrimaryButton}" />
+                <Button
+                    x:Name="IdeaBtn"
+                    Grid.Column="2"
+                    Padding="5"
+                    Background="{Binding Source={StaticResource Background3}}"
+                    Click="IdeaBtn_Click"
+                    Content="&#xF4DB;"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Style="{DynamicResource DefaultButton}">
+                    <Button.ToolTip>
+                        <ToolTip
+                            Background="{Binding Source={StaticResource Background1}}"
+                            Content="{x:Static lang:Resources.GetIdeas}"
+                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                    </Button.ToolTip>
+                </Button>
             </StackPanel>
         </StackPanel>
 
@@ -320,6 +337,23 @@
                     FontWeight="Bold"
                     Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}"
                     Style="{DynamicResource PrimaryButton}" />
+                <Button
+                    x:Name="IdeaPaletteBtn"
+                    Grid.Column="2"
+                    Padding="5"
+                    Background="{Binding Source={StaticResource Background3}}"
+                    Click="IdeaPaletteBtn_Click"
+                    Content="&#xF4DB;"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Style="{DynamicResource DefaultButton}">
+                    <Button.ToolTip>
+                        <ToolTip
+                            Background="{Binding Source={StaticResource Background1}}"
+                            Content="{x:Static lang:Resources.GetIdeas}"
+                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                    </Button.ToolTip>
+                </Button>
             </StackPanel>
         </StackPanel>
 

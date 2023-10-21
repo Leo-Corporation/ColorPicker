@@ -335,4 +335,11 @@ public static class Global
 		}
 		return true;
 	}
+
+	public static string GetRandomAiPrompt()
+	{
+		Random random = new();
+		string[] prompts = Properties.Resources.AiPrompts.Split(",");
+		return prompts[random.Next(prompts.Length)];
+	}
 }
