@@ -81,6 +81,10 @@ public partial class AiGenPage : Page
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
 		DecTxt.Text = ColorInfo.DEC.Value.ToString();
+
+		// Load the bookmark icon
+		BookmarkBtn.Content = Global.Bookmarks.ColorBookmarks.Contains(ColorInfo.HEX.Value) ? "\uF1F8" : "\uF1F6";
+		BookmarkBtn.Visibility = Visibility.Visible;
 	}
 
 	private void LoadBorders(string[] colors)
@@ -199,13 +203,14 @@ public partial class AiGenPage : Page
 
 		ColorPanel.Visibility = Visibility.Collapsed;
 		PalettePanel.Visibility = Visibility.Collapsed;
+		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 	}
 	private void ColorBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(ColorBtn);
-		ColorPanel.Visibility = Visibility.Visible;
+		ColorPanel.Visibility = Visibility.Visible;		
 	}
 
 	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
@@ -272,5 +277,21 @@ public partial class AiGenPage : Page
 	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Clipboard.SetText(DecTxt.Text);
+	}
+
+	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		var bg = (SolidColorBrush)ColorBorder.Background;
+		string hex = $"#{new ColorInfo(new(bg.Color.R, bg.Color.G, bg.Color.B)).HEX.Value}";
+		if (Global.Bookmarks.ColorBookmarks.Contains(hex))
+		{
+			Global.Bookmarks.ColorBookmarks.Remove(hex);
+			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+			return;
+		}
+		Global.Bookmarks.ColorBookmarks.Add(hex); // Add to color bookmarks
+		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 }
