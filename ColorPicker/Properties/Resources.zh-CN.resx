@@ -605,4 +605,10 @@
   <data name="CopyDEC" xml:space="preserve">
     <value>复制十进制</value>
   </data>
+  <data name="AiPrompts" xml:space="preserve">
+    <value>海洋微风,深红晚霞,魔法森林,电子梦境,沙漠幻影,午夜小夜曲,霓虹星系,金色丰收,薰衣草薄雾,热带天堂,火与冰,神秘月光,翡翠优雅,樱花盛开,南极极光,钢铁之城之光,复古浪漫,蓝宝石梦,琥珀余晖,丝绒之触,蒲公英之愿,城市丛林,玫瑰花瓣低语,冰冻荒原,巧克力美味,港口倒影,风声细语,多彩光谱,柔和梦想,月光草地</value>
+  </data>
+  <data name="GetIdeas" xml:space="preserve">
+    <value>获取创意</value>
+  </data>
 </root>

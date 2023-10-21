@@ -601,4 +601,10 @@
   <data name="CopyDEC" xml:space="preserve">
     <value>Copier en Décimal</value>
   </data>
+  <data name="AiPrompts" xml:space="preserve">
+    <value>Brise marine,Coucher de soleil cramoisi,Forêt enchantée,Rêves électriques,Mirage du désert,Sérénade de minuit,Galaxie néon,Récolte dorée,Brume de lavande,Paradis tropical,Feu et glace,Clair de lune mystique,Élégance émeraude,Fleur de cerisier,Aurore australe,Lumières de la ville d'acier,Romance vintage,Rêves de saphir,Lueur d'ambre,Toucher de velours,Voeux de pissenlit,Jungle urbaine,Chuchotements de pétales de rose,Toundra glacée,Délice au chocolat,Réflexions du port,Vent chuchotant,Spectre vibrant,Rêverie pastel,Méadow au clair de lune</value>
+  </data>
+  <data name="GetIdeas" xml:space="preserve">
+    <value>Obtenir des idées</value>
+  </data>
 </root>
