@@ -148,5 +148,13 @@ namespace ColorPicker.UserControls
 		{
 			MorePopup.IsOpen = true;
         }
+
+		private void EditConverterBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.ConverterPage.ColorInfo = ColorInfo;
+			Global.ConverterPage.LoadDetails(true);
+			GoClick?.Invoke(sender, new(AppPages.Converter));
+		}
+
 	}
 }

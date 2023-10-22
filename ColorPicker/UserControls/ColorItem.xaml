@@ -198,6 +198,14 @@
                                 Content="{x:Static lang:Resources.EditInSelector}"
                                 FontWeight="Bold"
                                 Style="{DynamicResource DefaultButton}" />
+                            <Button
+                                x:Name="EditConverterBtn"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Click="EditConverterBtn_Click"
+                                Content="{x:Static lang:Resources.Convert}"
+                                FontWeight="Bold"
+                                Style="{DynamicResource DefaultButton}" />
                         </StackPanel>
                     </Border>
                 </Popup>
