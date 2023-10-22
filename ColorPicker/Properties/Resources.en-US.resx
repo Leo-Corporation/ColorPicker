@@ -603,4 +603,10 @@
   <data name="GetIdeas" xml:space="preserve">
     <value>Get ideas</value>
   </data>
+  <data name="EditInSelector" xml:space="preserve">
+    <value>Edit in Selector</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>Convert</value>
+  </data>
 </root>

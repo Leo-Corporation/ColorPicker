@@ -611,4 +611,10 @@
   <data name="GetIdeas" xml:space="preserve">
     <value>获取创意</value>
   </data>
+  <data name="EditInSelector" xml:space="preserve">
+    <value>在选择器中编辑</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>转换</value>
+  </data>
 </root>

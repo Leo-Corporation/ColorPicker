@@ -304,6 +304,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Convert.
+        /// </summary>
+        public static string Convert {
+            get {
+                return ResourceManager.GetString("Convert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Converter.
         /// </summary>
         public static string Converter {
@@ -543,6 +552,15 @@ namespace ColorPicker.Properties {
         public static string Discover {
             get {
                 return ResourceManager.GetString("Discover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit in Selector.
+        /// </summary>
+        public static string EditInSelector {
+            get {
+                return ResourceManager.GetString("EditInSelector", resourceCulture);
             }
         }
         

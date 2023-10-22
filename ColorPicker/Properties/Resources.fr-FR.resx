@@ -607,4 +607,10 @@
   <data name="GetIdeas" xml:space="preserve">
     <value>Obtenir des idées</value>
   </data>
+  <data name="EditInSelector" xml:space="preserve">
+    <value>Modifier dans le Sélecteur</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>Convertir</value>
+  </data>
 </root>
