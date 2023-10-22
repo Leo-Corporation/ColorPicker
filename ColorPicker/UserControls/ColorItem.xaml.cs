@@ -156,5 +156,11 @@ namespace ColorPicker.UserControls
 			GoClick?.Invoke(sender, new(AppPages.Converter));
 		}
 
+		private void EditPaletteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.PalettePage.ColorInfo = ColorInfo;
+			Global.PalettePage.InitPaletteUI(true);
+			GoClick?.Invoke(sender, new PageEventArgs(AppPages.ColorPalette));
+		}
 	}
 }

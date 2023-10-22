@@ -206,6 +206,14 @@
                                 Content="{x:Static lang:Resources.Convert}"
                                 FontWeight="Bold"
                                 Style="{DynamicResource DefaultButton}" />
+                            <Button
+                                x:Name="EditPaletteBtn"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Click="EditPaletteBtn_Click"
+                                Content="{x:Static lang:Resources.GeneratePalette}"
+                                FontWeight="Bold"
+                                Style="{DynamicResource DefaultButton}" />
                         </StackPanel>
                     </Border>
                 </Popup>

@@ -73,7 +73,7 @@ public partial class PalettePage : Page
 			_ => RgbBtn
 		}, null);
 	}
-	ColorInfo ColorInfo { get; set; }
+	internal ColorInfo ColorInfo { get; set; }
 
 	private RGB ConvertToRgb()
 	{
@@ -260,9 +260,9 @@ public partial class PalettePage : Page
 		}
 	}
 
-	internal void InitPaletteUI()
+	internal void InitPaletteUI(bool setColor = false)
 	{
-		ColorInfo = new ColorInfo(ConvertToRgb());
+		if (!setColor) ColorInfo = new ColorInfo(ConvertToRgb());
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 
@@ -300,7 +300,7 @@ public partial class PalettePage : Page
 						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
 						Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
 					},
-				};				
+				};
 
 				int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
 				border.MouseLeftButtonUp += (o, e) =>
