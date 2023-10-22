@@ -152,14 +152,14 @@
                     </Button.ToolTip>
                 </Button>
                 <Button
-                    x:Name="GoBtn"
+                    x:Name="MoreBtn"
                     Grid.Column="3"
                     Margin="0 5 5 0"
                     Padding="5"
                     VerticalAlignment="Top"
                     Background="{Binding Source={StaticResource Background3}}"
-                    Click="GoBtn_Click"
-                    Content="&#xF3DE;"
+                    Click="MoreBtn_Click"
+                    Content="&#xFC2E;"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                     Foreground="{Binding Source={StaticResource Foreground1}}"
                     Style="{DynamicResource DefaultButton}">
@@ -170,7 +170,37 @@
                             Foreground="{Binding Source={StaticResource Foreground1}}" />
                     </Button.ToolTip>
                 </Button>
-
+                <Popup
+                    x:Name="MorePopup"
+                    AllowsTransparency="True"
+                    Placement="MousePoint"
+                    PlacementTarget="{Binding MoreBtn}"
+                    StaysOpen="False">
+                    <Border
+                        Margin="10"
+                        Padding="10"
+                        Background="{Binding Source={StaticResource Background1}}"
+                        CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Direction="135"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="#000" />
+                        </Border.Effect>
+                        <StackPanel>
+                            <Button
+                                x:Name="EditSelectorBtn"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Click="GoBtn_Click"
+                                Content="{x:Static lang:Resources.EditInSelector}"
+                                FontWeight="Bold"
+                                Style="{DynamicResource DefaultButton}" />
+                        </StackPanel>
+                    </Border>
+                </Popup>
             </StackPanel>
         </Grid>
     </Border>
