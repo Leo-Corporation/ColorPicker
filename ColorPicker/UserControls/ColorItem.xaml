@@ -197,6 +197,7 @@
                                 Click="GoBtn_Click"
                                 Content="{x:Static lang:Resources.EditInSelector}"
                                 FontWeight="Bold"
+                                Foreground="{Binding Source={StaticResource Foreground1}}"
                                 Style="{DynamicResource DefaultButton}" />
                             <Button
                                 x:Name="EditConverterBtn"
@@ -205,6 +206,7 @@
                                 Click="EditConverterBtn_Click"
                                 Content="{x:Static lang:Resources.Convert}"
                                 FontWeight="Bold"
+                                Foreground="{Binding Source={StaticResource Foreground1}}"
                                 Style="{DynamicResource DefaultButton}" />
                             <Button
                                 x:Name="EditPaletteBtn"
@@ -213,6 +215,7 @@
                                 Click="EditPaletteBtn_Click"
                                 Content="{x:Static lang:Resources.GeneratePalette}"
                                 FontWeight="Bold"
+                                Foreground="{Binding Source={StaticResource Foreground1}}"
                                 Style="{DynamicResource DefaultButton}" />
                         </StackPanel>
                     </Border>
