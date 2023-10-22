@@ -597,4 +597,16 @@
   <data name="CopyDEC" xml:space="preserve">
     <value>Copy Decimal</value>
   </data>
+  <data name="AiPrompts" xml:space="preserve">
+    <value>Ocean Breeze,Crimson Sunset,Enchanted Forest,Electric Dreams,Desert Mirage,Midnight Serenade,Neon Galaxy,Golden Harvest,Lavender Mist,Tropical Paradise,Fire and Ice,Mystic Moonlight,Emerald Elegance,Cherry Blossom,Aurora Australis,Steel City Lights,Vintage Romance,Sapphire Dreams,Amber Afterglow,Velvet Touch,Dandelion Wishes,Urban Jungle,Rose Petal Whispers,Icy Tundra,Chocolate Delight,Harbor Reflections,Whispering Wind,Vibrant Spectrum,Pastel Reverie,Moonlit Meadow</value>
+  </data>
+  <data name="GetIdeas" xml:space="preserve">
+    <value>Get ideas</value>
+  </data>
+  <data name="EditInSelector" xml:space="preserve">
+    <value>Edit in Selector</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>Convert</value>
+  </data>
 </root>

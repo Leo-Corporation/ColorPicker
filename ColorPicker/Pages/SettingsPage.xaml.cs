@@ -25,6 +25,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Gma.System.MouseKeyHook;
 using Microsoft.Win32;
+using OpenAI.Managers;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using Synethia;
@@ -32,6 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -89,7 +91,11 @@ namespace ColorPicker.Pages
 			Global.Settings.ApiKey ??= "";
 			Global.Settings.Model ??= "gpt-3.5-turbo";
 			ApiKeyTxt.Password = Global.Settings.ApiKey;
-			ModelComboBox.SelectedIndex = Global.Settings.Model switch { "gpt-4" => 1, _ => 0 };
+			for (int i = 0; i < Global.Settings.SupportedModels.Length; i++)
+			{
+				ModelComboBox.Items.Add(Global.Settings.SupportedModels[i]);
+			}
+			ModelComboBox.SelectedItem = Global.Settings.Model;
 
 			// Load the Text Tool section
 			System.Drawing.Text.InstalledFontCollection installedFonts = new();
@@ -503,9 +509,30 @@ namespace ColorPicker.Pages
 
 		private void ModelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			string[] supportedModels = { "gpt-3.5-turbo", "gpt-4" };
-			Global.Settings.Model = supportedModels[ModelComboBox.SelectedIndex];
+			try
+			{
+				Global.Settings.Model = Global.Settings.SupportedModels[ModelComboBox.SelectedIndex];
+				XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			}
+			catch { }
+		}
+
+		private async void RefreshModelsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+
+			OpenAIService sdk = new(new() { ApiKey = Global.Settings.ApiKey });
+			var modelList = await sdk.Models.ListModel();
+
+			Global.Settings.SupportedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToArray();
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+
+			ModelComboBox.Items.Clear();
+			for (int i = 0; i < Global.Settings.SupportedModels.Length; i++)
+			{
+				ModelComboBox.Items.Add(Global.Settings.SupportedModels[i]);
+			}
+			ModelComboBox.SelectedItem = Global.Settings.Model;
 		}
 
 		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

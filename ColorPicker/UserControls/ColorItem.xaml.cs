@@ -96,7 +96,7 @@ namespace ColorPicker.UserControls
 			Global.SelectorPage.GreenSlider.Value = ColorInfo.RGB.G;
 			Global.SelectorPage.BlueSlider.Value = ColorInfo.RGB.B;
 
-			GoClick?.Invoke(sender, new(Enums.AppPages.Selector));
+			GoClick?.Invoke(sender, new(AppPages.Selector));
 		}
 
 		private void CopyRGB_Click(object sender, RoutedEventArgs e)
@@ -142,6 +142,25 @@ namespace ColorPicker.UserControls
 		private void CopyDEC_Click(object sender, RoutedEventArgs e)
 		{
 			Clipboard.SetText(ColorInfo.DEC.Value.ToString());
+		}
+
+		private void MoreBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MorePopup.IsOpen = true;
+        }
+
+		private void EditConverterBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.ConverterPage.ColorInfo = ColorInfo;
+			Global.ConverterPage.LoadDetails(true);
+			GoClick?.Invoke(sender, new(AppPages.Converter));
+		}
+
+		private void EditPaletteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Global.PalettePage.ColorInfo = ColorInfo;
+			Global.PalettePage.InitPaletteUI(true);
+			GoClick?.Invoke(sender, new PageEventArgs(AppPages.ColorPalette));
 		}
 	}
 }

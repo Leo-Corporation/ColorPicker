@@ -97,6 +97,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ocean Breeze,Crimson Sunset,Enchanted Forest,Electric Dreams,Desert Mirage,Midnight Serenade,Neon Galaxy,Golden Harvest,Lavender Mist,Tropical Paradise,Fire and Ice,Mystic Moonlight,Emerald Elegance,Cherry Blossom,Aurora Australis,Steel City Lights,Vintage Romance,Sapphire Dreams,Amber Afterglow,Velvet Touch,Dandelion Wishes,Urban Jungle,Rose Petal Whispers,Icy Tundra,Chocolate Delight,Harbor Reflections,Whispering Wind,Vibrant Spectrum,Pastel Reverie,Moonlit Meadow.
+        /// </summary>
+        public static string AiPrompts {
+            get {
+                return ResourceManager.GetString("AiPrompts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customize AI Generation settings..
         /// </summary>
         public static string AISettings {
@@ -291,6 +300,15 @@ namespace ColorPicker.Properties {
         public static string Contrast {
             get {
                 return ResourceManager.GetString("Contrast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert.
+        /// </summary>
+        public static string Convert {
+            get {
+                return ResourceManager.GetString("Convert", resourceCulture);
             }
         }
         
@@ -538,6 +556,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit in Selector.
+        /// </summary>
+        public static string EditInSelector {
+            get {
+                return ResourceManager.GetString("EditInSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit shortcut.
         /// </summary>
         public static string EditShortcut {
@@ -669,6 +696,15 @@ namespace ColorPicker.Properties {
         public static string GetContrast {
             get {
                 return ResourceManager.GetString("GetContrast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get ideas.
+        /// </summary>
+        public static string GetIdeas {
+            get {
+                return ResourceManager.GetString("GetIdeas", resourceCulture);
             }
         }
         

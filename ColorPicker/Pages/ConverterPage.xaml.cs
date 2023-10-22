@@ -101,7 +101,7 @@ public partial class ConverterPage : Page
 	}
 
 	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
-	ColorInfo ColorInfo { get; set; }
+	internal ColorInfo ColorInfo { get; set; }
 
 	private RGB ConvertToRgb()
 	{
@@ -131,9 +131,9 @@ public partial class ConverterPage : Page
 											 double.Parse(Txt3.Text)));
 	}
 
-	internal void LoadDetails()
+	internal void LoadDetails(bool setColor = false)
 	{
-		ColorInfo = new ColorInfo(ConvertToRgb());
+		if (!setColor) ColorInfo = new ColorInfo(ConvertToRgb());
 		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
 		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
 		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";

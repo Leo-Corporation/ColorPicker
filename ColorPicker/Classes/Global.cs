@@ -84,7 +84,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "5.5.0.2309";
+	public static string Version => "5.6.0.2310";
 
 	public static string HiSentence
 	{
@@ -334,5 +334,12 @@ public static class Global
 			if (!keys2.Contains(keys1[i])) return false;
 		}
 		return true;
+	}
+
+	public static string GetRandomAiPrompt()
+	{
+		Random random = new();
+		string[] prompts = Properties.Resources.AiPrompts.Split(",");
+		return prompts[random.Next(prompts.Length)];
 	}
 }
