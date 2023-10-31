@@ -104,6 +104,15 @@ namespace ColorPicker.Pages
 			SplitBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[1] };
 			SplitBorder3.Background = new SolidColorBrush { Color = splitComplementaries[2] };
 			SplitBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[2] };
+
+			// Triadic
+			var triadicComplementaries = Global.GenerateTriadicColors(color);
+			TriadicBorder1.Background = new SolidColorBrush { Color = triadicComplementaries[0] };
+			TriadicBorder1.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[0] };
+			TriadicBorder2.Background = new SolidColorBrush { Color = triadicComplementaries[1] };
+			TriadicBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[1] };
+			TriadicBorder3.Background = new SolidColorBrush { Color = triadicComplementaries[2] };
+			TriadicBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[2] };
 		}
 
 		internal ColorInfo ColorInfo { get; set; }

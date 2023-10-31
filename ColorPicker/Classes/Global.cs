@@ -399,6 +399,28 @@ public static class Global
 		return splitComplementaryColors;
 	}
 
+	public static Color[] GenerateTriadicColors(Color baseColor)
+	{
+		Color[] triadicColors = new Color[3];
+
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the angles for the two additional colors
+		float angle1 = (h + 1.0f / 3.0f) % 1.0f;
+		float angle2 = (h + 2.0f / 3.0f) % 1.0f;
+
+		// Generate the two triadic colors
+		triadicColors[0] = HSLToColor(angle1, s, l);
+		triadicColors[1] = HSLToColor(angle2, s, l);
+
+		// Include the base color as well
+		triadicColors[2] = baseColor;
+
+		return triadicColors;
+	}
+
 	public static void ColorToHSL(Color color, out float h, out float s, out float l)
 	{
 		float r = (float)color.R / 255f;
