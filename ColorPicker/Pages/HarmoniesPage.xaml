@@ -386,7 +386,9 @@
                 Margin="10"
                 HorizontalAlignment="Left"
                 d:Background="White"
-                CornerRadius="10" />
+                CornerRadius="10"
+                Cursor="Hand"
+                MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
         </StackPanel>
     </Grid>
 </Page>

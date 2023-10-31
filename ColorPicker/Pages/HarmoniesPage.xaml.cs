@@ -25,6 +25,7 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using ColorPicker.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,10 +84,14 @@ namespace ColorPicker.Pages
 		internal void InitHarmonies()
 		{
 			ColorInfo = new ColorInfo(ConvertToRgb());
-			ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
-			ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
-			
+			var color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
+			ColorBorder.Background = new SolidColorBrush { Color = color };
+			ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
+
 			// Complementary
+			var complementary = Global.GetComplementaryColor(color);
+			ComplementaryBorder.Background = new SolidColorBrush { Color = complementary };
+			ComplementaryBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = complementary };
 		}
 
 		internal ColorInfo ColorInfo { get; set; }
@@ -340,6 +345,14 @@ namespace ColorPicker.Pages
 			}
 			catch { }
 			RgbBtn_Click(SelectedColorBtn, null);
+		}
+
+		private void ComplementaryBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			new ColorDetailsWindow(new()
+			{
+				Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B)
+			}).Show();
 		}
 	}
 }
