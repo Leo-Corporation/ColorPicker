@@ -617,4 +617,10 @@
   <data name="Convert" xml:space="preserve">
     <value>转换</value>
   </data>
+  <data name="Harmonies" xml:space="preserve">
+    <value>和谐</value>
+  </data>
+  <data name="GetHarmonies" xml:space="preserve">
+    <value>获取和声</value>
+  </data>
 </root>

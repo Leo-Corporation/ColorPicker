@@ -781,6 +781,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Harmonies.
+        /// </summary>
+        public static string Harmonies {
+            get {
+                return ResourceManager.GetString("Harmonies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HEX.
         /// </summary>
         public static string HEX {
