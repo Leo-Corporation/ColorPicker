@@ -295,6 +295,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complementary.
+        /// </summary>
+        public static string Complementary {
+            get {
+                return ResourceManager.GetString("Complementary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contrast.
         /// </summary>
         public static string Contrast {
@@ -696,6 +705,15 @@ namespace ColorPicker.Properties {
         public static string GetContrast {
             get {
                 return ResourceManager.GetString("GetContrast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get harmonies.
+        /// </summary>
+        public static string GetHarmonies {
+            get {
+                return ResourceManager.GetString("GetHarmonies", resourceCulture);
             }
         }
         
@@ -1321,6 +1339,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Split Complementary.
+        /// </summary>
+        public static string SplitComplementary {
+            get {
+                return ResourceManager.GetString("SplitComplementary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start selection.
         /// </summary>
         public static string StartSelection {
@@ -1452,6 +1479,15 @@ namespace ColorPicker.Properties {
         public static string Tools {
             get {
                 return ResourceManager.GetString("Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triadic.
+        /// </summary>
+        public static string Triadic {
+            get {
+                return ResourceManager.GetString("Triadic", resourceCulture);
             }
         }
         

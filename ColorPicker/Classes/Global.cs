@@ -360,4 +360,74 @@ public static class Global
 		string[] prompts = Properties.Resources.AiPrompts.Split(",");
 		return prompts[random.Next(prompts.Length)];
 	}
+
+	public static Color GetComplementaryColor(Color baseColor)
+	{
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the complementary color by adding 0.5 (180 degrees) to the hue
+		float complementaryHue = (h + 0.5f) % 1.0f;
+
+		// Convert the complementary hue back to RGB
+		return HSLToColor(complementaryHue, s, l);
+	}
+	public static void ColorToHSL(Color color, out float h, out float s, out float l)
+	{
+		float r = (float)color.R / 255f;
+		float g = (float)color.G / 255f;
+		float b = (float)color.B / 255f;
+
+		float max = Math.Max(r, Math.Max(g, b));
+		float min = Math.Min(r, Math.Min(g, b));
+
+		// Hue calculation
+		h = 0f;
+		if (max != min)
+		{
+			float delta = max - min;
+			if (max == r)
+				h = (g - b) / delta + (g < b ? 6 : 0);
+			else if (max == g)
+				h = (b - r) / delta + 2;
+			else
+				h = (r - g) / delta + 4;
+			h /= 6f;
+		}
+
+		// Saturation calculation
+		s = max == 0 ? 0 : (max - min) / max;
+
+		// Lightness calculation
+		l = (max + min) / 2f;
+	}
+
+	public static Color HSLToColor(float h, float s, float l)
+	{
+		if (s == 0)
+		{
+			byte gray = (byte)(l * 255);
+			return Color.FromArgb(255, gray, gray, gray);
+		}
+
+		float q = l < 0.5f ? l * (1 + s) : l + s - l * s;
+		float p = 2 * l - q;
+
+		float r = HueToRGB(p, q, h + 1.0f / 3.0f);
+		float g = HueToRGB(p, q, h);
+		float b = HueToRGB(p, q, h - 1.0f / 3.0f);
+
+		return Color.FromArgb(255, (byte)(r * 255), (byte)(g * 255), (byte)(b * 255));
+	}
+
+	private static float HueToRGB(float p, float q, float t)
+	{
+		if (t < 0) t += 1;
+		if (t > 1) t -= 1;
+		if (t < 1.0 / 6.0) return p + (q - p) * 6 * t;
+		if (t < 1.0 / 2.0) return q;
+		if (t < 2.0 / 3.0) return p + (q - p) * (2.0f / 3.0f - t) * 6;
+		return p;
+	}
 }

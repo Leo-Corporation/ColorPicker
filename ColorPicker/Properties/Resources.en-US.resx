@@ -615,4 +615,13 @@
   <data name="GetHarmonies" xml:space="preserve">
     <value>Get harmonies</value>
   </data>
+  <data name="Complementary" xml:space="preserve">
+    <value>Complementary</value>
+  </data>
+  <data name="SplitComplementary" xml:space="preserve">
+    <value>Split Complementary</value>
+  </data>
+  <data name="Triadic" xml:space="preserve">
+    <value>Triadic</value>
+  </data>
 </root>
