@@ -46,6 +46,7 @@ public static class Global
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
 	public static AiGenPage? AiGenPage { get; set; }
+	public static HarmoniesPage? HarmoniesPage { get; set; }
 	public static HomePage? HomePage { get; set; }
 	public static BookmarksPage? BookmarksPage { get; set; }
 	public static SettingsPage? SettingsPage { get; set; }
@@ -65,7 +66,8 @@ public static class Global
 			new PageInfo("TextTool"),
 			new PageInfo("Palette"),
 			new PageInfo("Gradient"),
-			new PageInfo("AIGeneration")
+			new PageInfo("AIGeneration"),
+			new PageInfo("Harmonies"),
 		},
 		ActionsInfo = new List<ActionInfo>()
 		{
@@ -75,7 +77,8 @@ public static class Global
 			new ActionInfo(3, "TextTool.Contrast"),
 			new ActionInfo(4, "Palette.GeneratePalette"),
 			new ActionInfo(5, "Gradient.GenerateGradient"),
-			new ActionInfo(6, "Ai.GenerateColor")
+			new ActionInfo(6, "Ai.GenerateColor"),
+			new ActionInfo(7, "Harmonies.GetHarmony"),
 		}
 	};
 
@@ -125,6 +128,7 @@ public static class Global
 		{ AppPages.ColorPalette, "\uF2F6" },
 		{ AppPages.ColorGradient, "\uFD3F" },
 		{ AppPages.AIGeneration, "\uF4E5" },
+		{ AppPages.Harmonies, "\uFD0F" }
 	};
 	public static Dictionary<AppPages, string> AppPagesName => new()
 	{
@@ -138,10 +142,11 @@ public static class Global
 		{ AppPages.ColorPalette, Properties.Resources.Palette },
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
 		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
+		{ AppPages.Harmonies, Properties.Resources.Harmonies},
 	};
 
-	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA", "\uF287" };
-	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient, Properties.Resources.AIGeneration };
+	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA", "\uF287", "\uFCBA" };
+	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient, Properties.Resources.AIGeneration, Properties.Resources.Harmonies };
 
 	public static (int, int, int) GenerateRandomColor()
 	{
@@ -240,6 +245,7 @@ public static class Global
 			"Palette" => AppPages.ColorPalette,
 			"Gradient" => AppPages.ColorGradient,
 			"AIGeneration" => AppPages.AIGeneration,
+			"Harmonies" => AppPages.Harmonies,
 			_ => AppPages.Selector
 		};
 	}
@@ -312,13 +318,25 @@ public static class Global
 	{
 		var config = SynethiaManager.Load(SynethiaPath, Default);
 
+		bool hasAi = false;
+		bool hasHarmonies = false;
 		for (int i = 0; i < config.PagesInfo.Count; i++)
 		{
-			if (config.PagesInfo[i].Name == "AIGeneration") return config;
+			if (config.PagesInfo[i].Name == "AIGeneration") hasAi = true;
+			if (config.PagesInfo[i].Name == "Harmonies") hasHarmonies = true;
 		}
 
-		config.PagesInfo.Add(new("AIGeneration"));
-		config.ActionsInfo.Add(new(6, "Ai.GenerateColor"));
+		if (!hasAi)
+		{
+			config.PagesInfo.Add(new("AIGeneration"));
+			config.ActionsInfo.Add(new(6, "Ai.GenerateColor"));
+		}
+
+		if (!hasHarmonies)
+		{
+			config.PagesInfo.Add(new("Harmonies"));
+			config.ActionsInfo.Add(new(6, "Harmonies.GetHarmony"));
+		}
 		return config;
 	}
 
