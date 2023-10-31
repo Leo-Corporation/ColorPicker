@@ -373,6 +373,32 @@ public static class Global
 		// Convert the complementary hue back to RGB
 		return HSLToColor(complementaryHue, s, l);
 	}
+
+	public static Color[] GenerateSplitComplementaryColors(Color baseColor)
+	{
+		Color[] splitComplementaryColors = new Color[3];
+
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the angle to the complementary color
+		float complementaryAngle = (h + 0.5f) % 1.0f;
+
+		// Calculate the angles to the split complementary colors
+		float angle1 = (complementaryAngle + 1.0f / 6.0f) % 1.0f;
+		float angle2 = (complementaryAngle + 5.0f / 6.0f) % 1.0f;
+
+		// Generate the split-complementary colors
+		splitComplementaryColors[0] = HSLToColor(angle1, s, l);
+		splitComplementaryColors[1] = HSLToColor(angle2, s, l);
+
+		// Include the base color as well
+		splitComplementaryColors[2] = baseColor;
+
+		return splitComplementaryColors;
+	}
+
 	public static void ColorToHSL(Color color, out float h, out float s, out float l)
 	{
 		float r = (float)color.R / 255f;

@@ -26,6 +26,7 @@ using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Windows;
+using Synethia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,11 +50,13 @@ namespace ColorPicker.Pages
     /// </summary>
     public partial class HarmoniesPage : Page
     {
-        public HarmoniesPage()
+		bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+		public HarmoniesPage()
         {
             InitializeComponent();
             InitUI();
-        }
+			Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 7, ref code); // injects the code in the page
+		}
 
         private void InitUI()
         {
@@ -91,7 +94,16 @@ namespace ColorPicker.Pages
 			// Complementary
 			var complementary = Global.GetComplementaryColor(color);
 			ComplementaryBorder.Background = new SolidColorBrush { Color = complementary };
-			ComplementaryBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = complementary };
+			ComplementaryBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = complementary };
+
+			// Split complementary
+			var splitComplementaries = Global.GenerateSplitComplementaryColors(color);
+			SplitBorder1.Background = new SolidColorBrush { Color = splitComplementaries[0] };
+			SplitBorder1.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[0] };
+			SplitBorder2.Background = new SolidColorBrush { Color = splitComplementaries[1] };
+			SplitBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[1] };
+			SplitBorder3.Background = new SolidColorBrush { Color = splitComplementaries[2] };
+			SplitBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[2] };
 		}
 
 		internal ColorInfo ColorInfo { get; set; }
@@ -349,10 +361,7 @@ namespace ColorPicker.Pages
 
 		private void ComplementaryBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			new ColorDetailsWindow(new()
-			{
-				Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B)
-			}).Show();
+			new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
 		}
 	}
 }
