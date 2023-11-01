@@ -234,6 +234,7 @@ namespace ColorPicker.Pages
 			CheckButton(btn);
 			SelectedColorBtn = btn;
 			LoadInputUI();
+			Global.SynethiaConfig.PagesInfo[7].InteractionCount++;
 		}
 
 		private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
@@ -428,7 +429,7 @@ namespace ColorPicker.Pages
 			{
 				(int r, int g, int b) = Global.GenerateRandomColor();
 				ColorInfo = new(new((byte)r, (byte)g, (byte)b));
-				Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
+				Global.SynethiaConfig.ActionsInfo[7].UsageCount++; // Increment the usage counter
 			}
 			catch { }
 			RgbBtn_Click(SelectedColorBtn, null);

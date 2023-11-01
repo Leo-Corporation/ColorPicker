@@ -335,7 +335,7 @@ public static class Global
 		if (!hasHarmonies)
 		{
 			config.PagesInfo.Add(new("Harmonies"));
-			config.ActionsInfo.Add(new(6, "Harmonies.GetHarmony"));
+			config.ActionsInfo.Add(new(7, "Harmonies.GetHarmony"));
 		}
 		return config;
 	}

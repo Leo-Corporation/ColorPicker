@@ -80,6 +80,10 @@ public partial class ActionCard : UserControl
 			case 6:
 				OnCardClick?.Invoke(this, new(AppPages.AIGeneration));
 				break;
+			case 7:
+				Global.HarmoniesPage.ColorBorder_MouseLeftButtonUp(this, null);
+				OnCardClick?.Invoke(this, new(AppPages.Harmonies));
+				break;
 			default:
 				break;
 		}
