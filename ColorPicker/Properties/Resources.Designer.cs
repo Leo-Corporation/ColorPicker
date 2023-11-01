@@ -115,6 +115,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analogous.
+        /// </summary>
+        public static string Analogous {
+            get {
+                return ResourceManager.GetString("Analogous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -291,6 +300,15 @@ namespace ColorPicker.Properties {
         public static string ColorValid {
             get {
                 return ResourceManager.GetString("ColorValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complementary.
+        /// </summary>
+        public static string Complementary {
+            get {
+                return ResourceManager.GetString("Complementary", resourceCulture);
             }
         }
         
@@ -700,6 +718,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get harmonies.
+        /// </summary>
+        public static string GetHarmonies {
+            get {
+                return ResourceManager.GetString("GetHarmonies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get ideas.
         /// </summary>
         public static string GetIdeas {
@@ -777,6 +804,15 @@ namespace ColorPicker.Properties {
         public static string GreenP {
             get {
                 return ResourceManager.GetString("GreenP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Harmonies.
+        /// </summary>
+        public static string Harmonies {
+            get {
+                return ResourceManager.GetString("Harmonies", resourceCulture);
             }
         }
         
@@ -966,6 +1002,15 @@ namespace ColorPicker.Properties {
         public static string Model {
             get {
                 return ResourceManager.GetString("Model", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monochromatic.
+        /// </summary>
+        public static string Monochromatic {
+            get {
+                return ResourceManager.GetString("Monochromatic", resourceCulture);
             }
         }
         
@@ -1312,6 +1357,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Split Complementary.
+        /// </summary>
+        public static string SplitComplementary {
+            get {
+                return ResourceManager.GetString("SplitComplementary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start selection.
         /// </summary>
         public static string StartSelection {
@@ -1443,6 +1497,15 @@ namespace ColorPicker.Properties {
         public static string Tools {
             get {
                 return ResourceManager.GetString("Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triadic.
+        /// </summary>
+        public static string Triadic {
+            get {
+                return ResourceManager.GetString("Triadic", resourceCulture);
             }
         }
         

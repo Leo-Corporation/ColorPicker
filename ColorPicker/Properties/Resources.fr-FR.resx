@@ -613,4 +613,25 @@
   <data name="Convert" xml:space="preserve">
     <value>Convertir</value>
   </data>
+  <data name="Harmonies" xml:space="preserve">
+    <value>Harmonies</value>
+  </data>
+  <data name="GetHarmonies" xml:space="preserve">
+    <value>Obtenir des harmonies</value>
+  </data>
+  <data name="Complementary" xml:space="preserve">
+    <value>Complementaire</value>
+  </data>
+  <data name="SplitComplementary" xml:space="preserve">
+    <value>Séparé Complémentaire</value>
+  </data>
+  <data name="Triadic" xml:space="preserve">
+    <value>Triadique</value>
+  </data>
+  <data name="Analogous" xml:space="preserve">
+    <value>Analogique</value>
+  </data>
+  <data name="Monochromatic" xml:space="preserve">
+    <value>Monochromatique</value>
+  </data>
 </root>

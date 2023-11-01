@@ -34,5 +34,6 @@ public enum AppPages
 	TextTool,
 	ColorPalette,
 	ColorGradient,
-	AIGeneration
+	AIGeneration,
+	Harmonies
 }

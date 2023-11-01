@@ -617,4 +617,25 @@
   <data name="Convert" xml:space="preserve">
     <value>转换</value>
   </data>
+  <data name="Harmonies" xml:space="preserve">
+    <value>和谐</value>
+  </data>
+  <data name="GetHarmonies" xml:space="preserve">
+    <value>获取和声</value>
+  </data>
+  <data name="Complementary" xml:space="preserve">
+    <value>补充</value>
+  </data>
+  <data name="SplitComplementary" xml:space="preserve">
+    <value>分割互补</value>
+  </data>
+  <data name="Triadic" xml:space="preserve">
+    <value>三位一体</value>
+  </data>
+  <data name="Analogous" xml:space="preserve">
+    <value>类比</value>
+  </data>
+  <data name="Monochromatic" xml:space="preserve">
+    <value>单色</value>
+  </data>
 </root>

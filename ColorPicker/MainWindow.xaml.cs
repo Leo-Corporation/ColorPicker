@@ -131,6 +131,10 @@ public partial class MainWindow : Window
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
 				CheckButton(AiCreationPageBtn);
 				break;
+			case AppPages.Harmonies:
+				Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
+				CheckButton(HarmoniesPageBtn);
+				break;
 			default:
 				break;
 		}
@@ -145,6 +149,7 @@ public partial class MainWindow : Window
 			AppPages.ColorPalette => Global.PalettePage,
 			AppPages.ColorGradient => Global.GradientPage,
 			AppPages.AIGeneration => Global.AiGenPage,
+			AppPages.Harmonies => Global.HarmoniesPage,
 			_ => Global.HomePage
 		});
 	}
@@ -201,6 +206,13 @@ public partial class MainWindow : Window
 
 				PageDisplayer.Navigate(Global.AiGenPage);
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.Harmonies:
+				UnCheckAllButton();
+				CheckButton(HarmoniesPageBtn);
+
+				PageDisplayer.Navigate(Global.HarmoniesPage);
+				Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
 				break;
 			default:
 				break;
@@ -367,6 +379,7 @@ public partial class MainWindow : Window
 		PalettePageBtn.Background = new SolidColorBrush(Colors.Transparent);
 		GradientPageBtn.Background = new SolidColorBrush(Colors.Transparent);
 		AiCreationPageBtn.Background = new SolidColorBrush(Colors.Transparent);
+		HarmoniesPageBtn.Background = new SolidColorBrush(Colors.Transparent);
 
 		SelectorPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
 		ChromaticPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
@@ -375,6 +388,7 @@ public partial class MainWindow : Window
 		PalettePageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
 		GradientPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
 		AiCreationPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+		HarmoniesPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
 	}
 
 	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)
@@ -478,6 +492,10 @@ public partial class MainWindow : Window
 				Global.SynethiaConfig.PagesInfo[6].LeaveUnixTime = Sys.UnixTime;
 				Global.SynethiaConfig.PagesInfo[6].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[6].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[6].EnterUnixTime;
 				break;
+			case HarmoniesPage:
+				Global.SynethiaConfig.PagesInfo[7].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[7].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[7].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[7].EnterUnixTime;
+				break;
 			default:
 				break;
 		}
@@ -491,5 +509,15 @@ public partial class MainWindow : Window
 
 		PageDisplayer.Navigate(Global.AiGenPage);
 		Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
+	}
+
+	private void HarmoniesPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		LeavePage();
+		UnCheckAllButton();
+		CheckButton(HarmoniesPageBtn);
+
+		PageDisplayer.Navigate(Global.HarmoniesPage);
+		Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
 	}
 }

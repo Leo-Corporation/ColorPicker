@@ -589,4 +589,25 @@
   <data name="Convert" xml:space="preserve">
     <value>Convert</value>
   </data>
+  <data name="Harmonies" xml:space="preserve">
+    <value>Harmonies</value>
+  </data>
+  <data name="GetHarmonies" xml:space="preserve">
+    <value>Get harmonies</value>
+  </data>
+  <data name="Complementary" xml:space="preserve">
+    <value>Complementary</value>
+  </data>
+  <data name="SplitComplementary" xml:space="preserve">
+    <value>Split Complementary</value>
+  </data>
+  <data name="Triadic" xml:space="preserve">
+    <value>Triadic</value>
+  </data>
+  <data name="Analogous" xml:space="preserve">
+    <value>Analogous</value>
+  </data>
+  <data name="Monochromatic" xml:space="preserve">
+    <value>Monochromatic</value>
+  </data>
 </root>

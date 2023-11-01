@@ -46,6 +46,7 @@ public static class Global
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
 	public static AiGenPage? AiGenPage { get; set; }
+	public static HarmoniesPage? HarmoniesPage { get; set; }
 	public static HomePage? HomePage { get; set; }
 	public static BookmarksPage? BookmarksPage { get; set; }
 	public static SettingsPage? SettingsPage { get; set; }
@@ -65,7 +66,8 @@ public static class Global
 			new PageInfo("TextTool"),
 			new PageInfo("Palette"),
 			new PageInfo("Gradient"),
-			new PageInfo("AIGeneration")
+			new PageInfo("AIGeneration"),
+			new PageInfo("Harmonies"),
 		},
 		ActionsInfo = new List<ActionInfo>()
 		{
@@ -75,7 +77,8 @@ public static class Global
 			new ActionInfo(3, "TextTool.Contrast"),
 			new ActionInfo(4, "Palette.GeneratePalette"),
 			new ActionInfo(5, "Gradient.GenerateGradient"),
-			new ActionInfo(6, "Ai.GenerateColor")
+			new ActionInfo(6, "Ai.GenerateColor"),
+			new ActionInfo(7, "Harmonies.GetHarmony"),
 		}
 	};
 
@@ -84,7 +87,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "5.6.0.2310";
+	public static string Version => "5.7.0.2311";
 
 	public static string HiSentence
 	{
@@ -125,6 +128,7 @@ public static class Global
 		{ AppPages.ColorPalette, "\uF2F6" },
 		{ AppPages.ColorGradient, "\uFD3F" },
 		{ AppPages.AIGeneration, "\uF4E5" },
+		{ AppPages.Harmonies, "\uFD0F" }
 	};
 	public static Dictionary<AppPages, string> AppPagesName => new()
 	{
@@ -138,10 +142,11 @@ public static class Global
 		{ AppPages.ColorPalette, Properties.Resources.Palette },
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
 		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
+		{ AppPages.Harmonies, Properties.Resources.Harmonies},
 	};
 
-	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA", "\uF287" };
-	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient, Properties.Resources.AIGeneration };
+	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA", "\uF287", "\uFCBA" };
+	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient, Properties.Resources.AIGeneration, Properties.Resources.Harmonies };
 
 	public static (int, int, int) GenerateRandomColor()
 	{
@@ -240,6 +245,7 @@ public static class Global
 			"Palette" => AppPages.ColorPalette,
 			"Gradient" => AppPages.ColorGradient,
 			"AIGeneration" => AppPages.AIGeneration,
+			"Harmonies" => AppPages.Harmonies,
 			_ => AppPages.Selector
 		};
 	}
@@ -312,13 +318,25 @@ public static class Global
 	{
 		var config = SynethiaManager.Load(SynethiaPath, Default);
 
+		bool hasAi = false;
+		bool hasHarmonies = false;
 		for (int i = 0; i < config.PagesInfo.Count; i++)
 		{
-			if (config.PagesInfo[i].Name == "AIGeneration") return config;
+			if (config.PagesInfo[i].Name == "AIGeneration") hasAi = true;
+			if (config.PagesInfo[i].Name == "Harmonies") hasHarmonies = true;
 		}
 
-		config.PagesInfo.Add(new("AIGeneration"));
-		config.ActionsInfo.Add(new(6, "Ai.GenerateColor"));
+		if (!hasAi)
+		{
+			config.PagesInfo.Add(new("AIGeneration"));
+			config.ActionsInfo.Add(new(6, "Ai.GenerateColor"));
+		}
+
+		if (!hasHarmonies)
+		{
+			config.PagesInfo.Add(new("Harmonies"));
+			config.ActionsInfo.Add(new(7, "Harmonies.GetHarmony"));
+		}
 		return config;
 	}
 
@@ -341,5 +359,168 @@ public static class Global
 		Random random = new();
 		string[] prompts = Properties.Resources.AiPrompts.Split(",");
 		return prompts[random.Next(prompts.Length)];
+	}
+
+	public static Color[] GenerateMonochromaticColors(Color baseColor, int count, int steps)
+	{
+		Color[] monochromaticColors = new Color[count];
+
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the step size for adjusting the lightness
+		float step = (1.0f - l) / steps;
+
+		// Generate monochromatic colors with different lightness values
+		for (int i = 0; i < count; i++)
+		{
+			float newL = l + i * step;
+			monochromaticColors[i] = HSLToColor(h, s, newL);
+		}
+
+		return monochromaticColors;
+	}
+
+	public static Color[] GenerateAnalogousColors(Color baseColor, int count, int angle = 30)
+	{
+		// Ensure that the angle is within the valid range (0-360 degrees).
+		angle %= 360;
+
+		Color[] analogousColors = new Color[count];
+
+		// Convert the base color to HSL
+		ColorToHSL(baseColor, out float h, out float s, out float l);
+
+		// Calculate the step size for changing the hue
+		float step = (float)(2 * Math.PI * angle / 360) / count;
+
+		// Generate analogous colors by adjusting the hue
+		for (int i = 0; i < count; i++)
+		{
+			float newHue = (h + i * step) % 1.0f;
+			Color analogousColor = HSLToColor(newHue, s, l);
+			analogousColors[i] = analogousColor;
+		}
+
+		return analogousColors;
+	}
+
+	public static Color GetComplementaryColor(Color baseColor)
+	{
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the complementary color by adding 0.5 (180 degrees) to the hue
+		float complementaryHue = (h + 0.5f) % 1.0f;
+
+		// Convert the complementary hue back to RGB
+		return HSLToColor(complementaryHue, s, l);
+	}
+
+	public static Color[] GenerateSplitComplementaryColors(Color baseColor)
+	{
+		Color[] splitComplementaryColors = new Color[3];
+
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the angle to the complementary color
+		float complementaryAngle = (h + 0.5f) % 1.0f;
+
+		// Calculate the angles to the split complementary colors
+		float angle1 = (complementaryAngle + 1.0f / 12.0f) % 1.0f;
+		float angle2 = (complementaryAngle + 11.0f / 12.0f) % 1.0f;
+
+		// Generate the split-complementary colors
+		splitComplementaryColors[0] = HSLToColor(angle1, s, l);
+		splitComplementaryColors[1] = HSLToColor(angle2, s, l);
+
+		// Include the base color as well
+		splitComplementaryColors[2] = baseColor;
+
+		return splitComplementaryColors;
+	}
+
+	public static Color[] GenerateTriadicColors(Color baseColor)
+	{
+		Color[] triadicColors = new Color[3];
+
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the angles for the two additional colors
+		float angle1 = (h + 1.0f / 3.0f) % 1.0f;
+		float angle2 = (h + 2.0f / 3.0f) % 1.0f;
+
+		// Generate the two triadic colors
+		triadicColors[0] = HSLToColor(angle1, s, l);
+		triadicColors[1] = HSLToColor(angle2, s, l);
+
+		// Include the base color as well
+		triadicColors[2] = baseColor;
+
+		return triadicColors;
+	}
+
+	public static void ColorToHSL(Color color, out float h, out float s, out float l)
+	{
+		float r = (float)color.R / 255f;
+		float g = (float)color.G / 255f;
+		float b = (float)color.B / 255f;
+
+		float max = Math.Max(r, Math.Max(g, b));
+		float min = Math.Min(r, Math.Min(g, b));
+
+		// Hue calculation
+		h = 0f;
+		if (max != min)
+		{
+			float delta = max - min;
+			if (max == r)
+				h = (g - b) / delta + (g < b ? 6 : 0);
+			else if (max == g)
+				h = (b - r) / delta + 2;
+			else
+				h = (r - g) / delta + 4;
+			h /= 6f;
+		}
+
+		// Saturation calculation
+		s = max == 0 ? 0 : (max - min) / max;
+
+		// Lightness calculation
+		l = (max + min) / 2f;
+	}
+
+	public static Color HSLToColor(float h, float s, float l)
+	{
+		if (s == 0)
+		{
+			byte gray = (byte)(l * 255);
+			return Color.FromArgb(255, gray, gray, gray);
+		}
+
+		float q = l < 0.5f ? l * (1 + s) : l + s - l * s;
+		float p = 2 * l - q;
+
+		float r = HueToRGB(p, q, h + 1.0f / 3.0f);
+		float g = HueToRGB(p, q, h);
+		float b = HueToRGB(p, q, h - 1.0f / 3.0f);
+
+		return Color.FromArgb(255, (byte)(r * 255), (byte)(g * 255), (byte)(b * 255));
+	}
+
+	private static float HueToRGB(float p, float q, float t)
+	{
+		if (t < 0) t += 1;
+		if (t > 1) t -= 1;
+		if (t < 1.0 / 6.0) return p + (q - p) * 6 * t;
+		if (t < 1.0 / 2.0) return q;
+		if (t < 2.0 / 3.0) return p + (q - p) * (2.0f / 3.0f - t) * 6;
+		return p;
 	}
 }
