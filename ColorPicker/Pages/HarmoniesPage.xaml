@@ -463,7 +463,18 @@
                 Margin="5"
                 FontWeight="Bold"
                 Text="{x:Static lang:Resources.Analogous}" />
-            <StackPanel Margin="10" x:Name="AnalogousPanel" Orientation="Horizontal" />
+            <WrapPanel
+                x:Name="AnalogousPanel"
+                Margin="10"
+                Orientation="Horizontal" />
+            <TextBlock
+                Margin="5"
+                FontWeight="Bold"
+                Text="{x:Static lang:Resources.Monochromatic}" />
+            <WrapPanel
+                x:Name="MonochromaticPanel"
+                Margin="10"
+                Orientation="Horizontal" />
         </StackPanel>
     </Grid>
 </Page>

@@ -361,6 +361,27 @@ public static class Global
 		return prompts[random.Next(prompts.Length)];
 	}
 
+	public static Color[] GenerateMonochromaticColors(Color baseColor, int count, int steps)
+	{
+		Color[] monochromaticColors = new Color[count];
+
+		// Convert the base color to HSL
+		float h, s, l;
+		ColorToHSL(baseColor, out h, out s, out l);
+
+		// Calculate the step size for adjusting the lightness
+		float step = (1.0f - l) / steps;
+
+		// Generate monochromatic colors with different lightness values
+		for (int i = 0; i < count; i++)
+		{
+			float newL = l + i * step;
+			monochromaticColors[i] = HSLToColor(h, s, newL);
+		}
+
+		return monochromaticColors;
+	}
+
 	public static Color[] GenerateAnalogousColors(Color baseColor, int count, int angle = 30)
 	{
 		// Ensure that the angle is within the valid range (0-360 degrees).

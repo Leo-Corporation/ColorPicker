@@ -142,9 +142,42 @@ namespace ColorPicker.Pages
 						Content = new ColorInfo(new(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B)).ToString()
 					},
 				};
-				border.MouseLeftButtonUp += ColorBorder_MouseLeftButtonUp;
+				border.MouseLeftButtonUp += ComplementaryBorder_MouseLeftButtonUp;
 
 				AnalogousPanel.Children.Add(border);
+			}
+
+			// Monochromatic
+			MonochromaticPanel.Children.Clear();
+			var monoColors = Global.GenerateMonochromaticColors(color, 6, 6);
+			for (int i = 0; i < monoColors.Length; i++)
+			{
+				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
+				if (i == monoColors.Length - 1) radius = new(0, 10, 10, 0);
+				Border border = new()
+				{
+					Cursor = Cursors.Hand,
+					Height = 50,
+					Width = 50,
+					CornerRadius = radius,
+					Background = new SolidColorBrush { Color = Color.FromRgb(monoColors[i].R, monoColors[i].G, monoColors[i].B) },
+					Effect = new DropShadowEffect()
+					{
+						BlurRadius = 15,
+						Opacity = 0.2,
+						ShadowDepth = 0,
+						Color = Color.FromRgb(monoColors[i].R, monoColors[i].G, monoColors[i].B)
+					},
+					ToolTip = new ToolTip()
+					{
+						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
+						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Content = new ColorInfo(new(monoColors[i].R, monoColors[i].G, monoColors[i].B)).ToString()
+					},
+				};
+				border.MouseLeftButtonUp += ComplementaryBorder_MouseLeftButtonUp;
+
+				MonochromaticPanel.Children.Add(border);
 			}
 		}
 
