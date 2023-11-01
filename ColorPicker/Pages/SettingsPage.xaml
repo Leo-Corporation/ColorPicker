@@ -416,6 +416,8 @@
                             <ComboBoxItem Content="{x:Static lang:Resources.TextTool}" />
                             <ComboBoxItem Content="{x:Static lang:Resources.Palette}" />
                             <ComboBoxItem Content="{x:Static lang:Resources.Gradient}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.AIGeneration}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.Harmonies}" />
                         </ComboBox>
                     </StackPanel>
                     <CheckBox
@@ -689,8 +691,7 @@
                             BorderThickness="2"
                             Foreground="{Binding Source={StaticResource Foreground1}}"
                             SelectionChanged="ModelComboBox_SelectionChanged"
-                            Style="{DynamicResource ComboBoxStyle1}">
-                        </ComboBox>
+                            Style="{DynamicResource ComboBoxStyle1}" />
                         <Button
                             x:Name="RefreshModelsBtn"
                             Margin="0 0 10 0"
