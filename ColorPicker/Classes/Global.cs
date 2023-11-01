@@ -386,8 +386,8 @@ public static class Global
 		float complementaryAngle = (h + 0.5f) % 1.0f;
 
 		// Calculate the angles to the split complementary colors
-		float angle1 = (complementaryAngle + 1.0f / 6.0f) % 1.0f;
-		float angle2 = (complementaryAngle + 5.0f / 6.0f) % 1.0f;
+		float angle1 = (complementaryAngle + 1.0f / 12.0f) % 1.0f;
+		float angle2 = (complementaryAngle + 11.0f / 12.0f) % 1.0f;
 
 		// Generate the split-complementary colors
 		splitComplementaryColors[0] = HSLToColor(angle1, s, l);
