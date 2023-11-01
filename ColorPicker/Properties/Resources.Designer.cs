@@ -115,6 +115,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analogous.
+        /// </summary>
+        public static string Analogous {
+            get {
+                return ResourceManager.GetString("Analogous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -993,6 +1002,15 @@ namespace ColorPicker.Properties {
         public static string Model {
             get {
                 return ResourceManager.GetString("Model", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monochromatic.
+        /// </summary>
+        public static string Monochromatic {
+            get {
+                return ResourceManager.GetString("Monochromatic", resourceCulture);
             }
         }
         

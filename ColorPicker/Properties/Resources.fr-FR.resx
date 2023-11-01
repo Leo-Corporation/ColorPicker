@@ -628,4 +628,10 @@
   <data name="Triadic" xml:space="preserve">
     <value>Triadique</value>
   </data>
+  <data name="Analogous" xml:space="preserve">
+    <value>Analogique</value>
+  </data>
+  <data name="Monochromatic" xml:space="preserve">
+    <value>Monochromatique</value>
+  </data>
 </root>

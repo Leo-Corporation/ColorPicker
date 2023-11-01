@@ -632,4 +632,10 @@
   <data name="Triadic" xml:space="preserve">
     <value>三位一体</value>
   </data>
+  <data name="Analogous" xml:space="preserve">
+    <value>类比</value>
+  </data>
+  <data name="Monochromatic" xml:space="preserve">
+    <value>单色</value>
+  </data>
 </root>
