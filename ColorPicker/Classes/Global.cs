@@ -361,6 +361,30 @@ public static class Global
 		return prompts[random.Next(prompts.Length)];
 	}
 
+	public static Color[] GenerateAnalogousColors(Color baseColor, int count, int angle = 30)
+	{
+		// Ensure that the angle is within the valid range (0-360 degrees).
+		angle %= 360;
+
+		Color[] analogousColors = new Color[count];
+
+		// Convert the base color to HSL
+		ColorToHSL(baseColor, out float h, out float s, out float l);
+
+		// Calculate the step size for changing the hue
+		float step = (float)(2 * Math.PI * angle / 360) / count;
+
+		// Generate analogous colors by adjusting the hue
+		for (int i = 0; i < count; i++)
+		{
+			float newHue = (h + i * step) % 1.0f;
+			Color analogousColor = HSLToColor(newHue, s, l);
+			analogousColors[i] = analogousColor;
+		}
+
+		return analogousColors;
+	}
+
 	public static Color GetComplementaryColor(Color baseColor)
 	{
 		// Convert the base color to HSL

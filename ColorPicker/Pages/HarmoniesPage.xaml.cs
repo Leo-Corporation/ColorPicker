@@ -113,6 +113,39 @@ namespace ColorPicker.Pages
 			TriadicBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[1] };
 			TriadicBorder3.Background = new SolidColorBrush { Color = triadicComplementaries[2] };
 			TriadicBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[2] };
+
+			// Analogous
+			AnalogousPanel.Children.Clear();
+			var analogousColors = Global.GenerateAnalogousColors(color, 6, 15);
+			for (int i = 0; i < analogousColors.Length; i++)
+			{
+				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
+				if (i == analogousColors.Length - 1) radius = new(0, 10, 10, 0);
+				Border border = new()
+				{
+					Cursor = Cursors.Hand,
+					Height = 50,
+					Width = 50,
+					CornerRadius = radius,
+					Background = new SolidColorBrush { Color = Color.FromRgb(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B) },
+					Effect = new DropShadowEffect()
+					{
+						BlurRadius = 15,
+						Opacity = 0.2,
+						ShadowDepth = 0,
+						Color = Color.FromRgb(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B)
+					},
+					ToolTip = new ToolTip()
+					{
+						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
+						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Content = new ColorInfo(new(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B)).ToString()
+					},
+				};
+				border.MouseLeftButtonUp += ColorBorder_MouseLeftButtonUp;
+
+				AnalogousPanel.Children.Add(border);
+			}
 		}
 
 		internal ColorInfo ColorInfo { get; set; }

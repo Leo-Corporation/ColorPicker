@@ -459,6 +459,11 @@
                     Cursor="Hand"
                     MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
             </StackPanel>
+            <TextBlock
+                Margin="5"
+                FontWeight="Bold"
+                Text="{x:Static lang:Resources.Analogous}" />
+            <StackPanel Margin="10" x:Name="AnalogousPanel" Orientation="Horizontal" />
         </StackPanel>
     </Grid>
 </Page>
