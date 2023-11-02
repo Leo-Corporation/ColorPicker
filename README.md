@@ -54,7 +54,7 @@ Click on the first link below to download the setup of ColorPicker Max.
 
 ### Portable
 
-Be aware that some feature, such as automatic updates are not available in portable mode. Click on the link below to download the portable version of ColorPicker Max.
+Be aware that some features, such as automatic updates are not available in portable mode. Click on the link below to download the portable version of ColorPicker Max.
 
 - [Donwload Portable](https://www.mediafire.com/file/k4lvwqxtv1kmmvh/ColorPickerMaxPortable.exe/file)
 
