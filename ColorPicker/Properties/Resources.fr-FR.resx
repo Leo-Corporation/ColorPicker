@@ -634,4 +634,7 @@
   <data name="Monochromatic" xml:space="preserve">
     <value>Monochromatique</value>
   </data>
+  <data name="PortableNoAutoUpdates" xml:space="preserve">
+    <value>Les mises à jour automatiques ne sont pas disponibles en mode portable, veuillez télécharger ColorPicker Max à nouveau.</value>
+  </data>
 </root>
