@@ -16,7 +16,7 @@
   <p align="center">
     ColorPicker Max is an app that enables you to pick, create and convert colors, preview text colors, generate color palettes and gradients, and more.
     <br />
-    <a href="https://www.mediafire.com/file/q46cdenxgyqx0dd/ColorPickerSetup.exe/file"><strong>Download »</strong></a>
+    <a href="https://tinyurl.com/DownloadColorPickerMax"><strong>Download »</strong></a>
     <br />
     <a href="https://github.com/Leo-Corporation/ColorPicker/issues/new?assignees=&labels=bug&template=bug-report.yml&title=%5BBug%5D+">Report Bug</a>
     ·
@@ -43,7 +43,7 @@ Overall, ColorPicker Max is a comprehensive color selection and manipulation too
 ColorPicker is written in C# .NET 6 using WPF.
 
 ## Download
-- [Download](https://www.mediafire.com/file/q46cdenxgyqx0dd/ColorPickerSetup.exe/file)
+- [Download](https://tinyurl.com/DownloadColorPickerMax)
 - [Latest Release](https://github.com/Leo-Corporation/ColorPicker/releases)
 
 ## Features
