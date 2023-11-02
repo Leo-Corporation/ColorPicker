@@ -28,6 +28,7 @@
 </p>
 
 ## What is it?
+
 ![Banner](https://github.com/Leo-Corporation/LeoCorp-Docs/raw/master/Images/ColorPicker%20Max%20Banner.png)
 
 ColorPicker Max is a powerful and intuitive color selection and manipulation tool that is designed to make working with color easier and more efficient than ever before. With its wide range of features and tools, ColorPicker Max offers an unprecedented level of control and customization over every aspect of color selection and manipulation.
@@ -43,10 +44,22 @@ Overall, ColorPicker Max is a comprehensive color selection and manipulation too
 ColorPicker is written in C# .NET 6 using WPF.
 
 ## Download
-- [Download](https://tinyurl.com/DownloadColorPickerMax)
-- [Latest Release](https://github.com/Leo-Corporation/ColorPicker/releases)
+
+### Setup
+
+Click on the first link below to download the setup of ColorPicker Max.
+
+- [Download Setup](https://tinyurl.com/DownloadColorPickerMax)
+- [Latest Release Changelog](https://github.com/Leo-Corporation/ColorPicker/releases)
+
+### Portable
+
+Be aware that some feature, such as automatic updates are not available in portable mode. Click on the link below to download the portable version of ColorPicker Max.
+
+- [Donwload Portable](https://www.mediafire.com/file/k4lvwqxtv1kmmvh/ColorPickerMaxPortable.exe/file)
 
 ## Features
+
 **Top Features of ColorPicker Max:**
 
 1. Advanced color selection options, including sliders, pixel picking, and random selection.
@@ -60,41 +73,46 @@ ColorPicker is written in C# .NET 6 using WPF.
 9. Customizable settings, including theme, language, default color type, and keyboard shortcuts.
 10. Dashboard: see the most relevant features displayed, and access least relevant features in the "Discover" section. (Powered by [Synethia](http://synethia.leocorporation.dev/))
 
-
 ## Keyboard shortcuts
+
 The default keyboard shortcuts are:
+
 - <kbd>Shift+S</kbd> - Start/Stop color selection
 - <kbd>Shift+C</kbd> - Copy the selected color on screen
 
-> **Note** 
+> **Note**
 > You can disable or edit keyboard shortcuts in settings.
 
 ## Contribute
+
 To contribute to the project, you'll need:
+
 - Visual Studio 2022 v17.0 or higher
   - .NET Desktop Development
   - Git
 - .NET 6
-- (*optional*) Inno Setup v6.1 or higher
-
+- (_optional_) Inno Setup v6.1 or higher
 
 [Click here](https://github.com/Leo-Corporation/ColorPicker/blob/main/CONTRIBUTING.md) to see the full guidelines.
 
 ## Branches
+
 This Git repo has always two branches:
 
-| Name | Release | Description |
-| :--: | :-----: | :---------: |
-| `main` | ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker) | Stable versions |
+|  Name   |                                                                      Release                                                                      |              Description               |
+| :-----: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------: |
+| `main`  |                      ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker)                      |            Stable versions             |
 | `vNext` | ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker?include_prereleases) | Next version of ColorPicker (unstable) |
 
 > **Note**
 > Other branches can also - of course - exist.
 
 ## License
+
 This project is under the [MIT License](https://github.com/Leo-Corporation/ColorPicker/blob/main/LICENSE).
 
 ## Translations Credits
+
 Special thanks to:
 
 - [@OCTIPI1](https://github.com/OCTIPI1) for Italian
