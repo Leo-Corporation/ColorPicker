@@ -1150,6 +1150,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic updates are not available in portable mode, please download ColorPicker Max again..
+        /// </summary>
+        public static string PortableNoAutoUpdates {
+            get {
+                return ResourceManager.GetString("PortableNoAutoUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press a combination of keys..
         /// </summary>
         public static string PressKeys {

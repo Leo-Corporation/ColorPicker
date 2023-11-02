@@ -11,11 +11,12 @@
 	<Title>ColorPicker</Title>
 	<Description>Maximize your creativity.</Description>
 	<RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
-	<Version>5.7.0.2311</Version>
+	<Version>5.7.1.2311</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageIcon>logo.png</PackageIcon>
 	<ApplicationIcon>CPM.ico</ApplicationIcon>
 	<ApplicationManifest>app.manifest</ApplicationManifest>
+	<PublishSingleFile>true</PublishSingleFile>
   </PropertyGroup>
 
   <ItemGroup>

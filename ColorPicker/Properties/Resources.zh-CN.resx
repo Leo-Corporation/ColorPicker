@@ -638,4 +638,7 @@
   <data name="Monochromatic" xml:space="preserve">
     <value>单色</value>
   </data>
+  <data name="PortableNoAutoUpdates" xml:space="preserve">
+    <value>便携模式下无法进行自动更新，请重新下载 ColorPicker Max</value>
+  </data>
 </root>
