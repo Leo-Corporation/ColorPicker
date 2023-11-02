@@ -58,7 +58,11 @@ namespace ColorPicker.Pages
 		private async void InitUI()
 		{
 			// About section
-			VersionTxt.Text = Global.Version; // Update the current version label
+#if PORTABLE
+		VersionTxt.Text = Global.Version + " (Portable)";
+#else
+			VersionTxt.Text = Global.Version;
+#endif
 
 			// Select the language
 			LangComboBox.SelectedIndex = (int)Global.Settings.Language;
@@ -142,10 +146,15 @@ namespace ColorPicker.Pages
 			{
 				UpdateTxt.Text = Properties.Resources.AvailableUpdates;
 
+#if PORTABLE
+				MessageBox.Show(Properties.Resources.PortableNoAutoUpdates, $"{Properties.Resources.InstallVersion} {lastVersion}", MessageBoxButton.OK, MessageBoxImage.Information);
+				return;
+#else
 				if (MessageBox.Show(Properties.Resources.InstallConfirmMsg, $"{Properties.Resources.InstallVersion} {lastVersion}", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.No)
 				{
 					return;
 				}
+#endif
 
 				// If the user wants to proceed.
 				SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);

@@ -62,7 +62,11 @@ public partial class MainWindow : Window
 
 	private void InitUI()
 	{
+#if PORTABLE
+		VersionTxt.Text = Global.Version + " (Portable)";
+#else
 		VersionTxt.Text = Global.Version;
+#endif
 
 		StateChanged += (o, e) => HandleWindowStateChanged();
 		Loaded += (o, e) => HandleWindowStateChanged();
