@@ -25,21 +25,25 @@
     <SolidColorBrush x:Key="SliderBlue" Color="#4169E1" />
     <Color
         x:Key="Accent"
+        A="255"
         B="255"
         G="165"
         R="63" />
     <Color
         x:Key="LightAccent"
+        A="255"
         B="112"
         G="60"
         R="0" />
     <Color
         x:Key="Foreground"
+        A="255"
         B="0"
         G="0"
         R="0" />
     <Color
         x:Key="DarkGrayColor"
+        A="255"
         B="177"
         G="116"
         R="116" />
