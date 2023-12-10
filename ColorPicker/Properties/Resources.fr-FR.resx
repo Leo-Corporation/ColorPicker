@@ -637,4 +637,7 @@
   <data name="PortableNoAutoUpdates" xml:space="preserve">
     <value>Les mises à jour automatiques ne sont pas disponibles en mode portable, veuillez télécharger ColorPicker Max à nouveau.</value>
   </data>
+  <data name="EmptyAiPlaceholder" xml:space="preserve">
+    <value>Saisissez une instruction pour générer des couleurs en utilisant la puissance de l'IA</value>
+  </data>
 </root>
