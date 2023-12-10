@@ -113,6 +113,9 @@ public partial class AiGenPage : Page
 			C3Shadow.Color = Color.FromRgb(convertedColors[2].R, convertedColors[2].G, convertedColors[2].B);
 			C4Shadow.Color = Color.FromRgb(convertedColors[3].R, convertedColors[3].G, convertedColors[3].B);
 			C5Shadow.Color = Color.FromRgb(convertedColors[4].R, convertedColors[4].G, convertedColors[4].B);
+
+			PaletteBordersPanel.Visibility = Visibility.Visible;
+			EmptyPalettePlaceholder.Visibility = Visibility.Collapsed;
 		}
 		catch (Exception e)
 		{

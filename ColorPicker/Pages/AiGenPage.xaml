@@ -135,7 +135,6 @@
             Grid.Row="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            d:Visibility="Visible"
             Visibility="Collapsed">
             <Border
                 x:Name="ColorBorder"
@@ -217,11 +216,22 @@
             Grid.Row="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            d:Visibility="Visible"
             Visibility="Collapsed">
+            <StackPanel x:Name="EmptyPalettePlaceholder" Margin="10">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    FontSize="32"
+                    Text="&#xF2F6;" />
+                <TextBlock HorizontalAlignment="Center" Text="{x:Static lang:Resources.EmptyAiPlaceholder}" />
+            </StackPanel>
             <StackPanel
+                x:Name="PaletteBordersPanel"
                 Margin="10"
                 HorizontalAlignment="Center"
-                Orientation="Horizontal">
+                Orientation="Horizontal"
+                Visibility="Collapsed">
                 <Border
                     x:Name="C1"
                     Width="50"
@@ -314,7 +324,7 @@
                 </Border>
 
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Border
                     Width="250"
                     HorizontalAlignment="Center"
