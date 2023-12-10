@@ -94,6 +94,7 @@ namespace ColorPicker.Pages.FirstRun
 			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 			Global.Settings.Theme = Themes.Light;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			Global.ChangeTheme();
 		}
 
 		private void DarkBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -103,6 +104,7 @@ namespace ColorPicker.Pages.FirstRun
 			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 			Global.Settings.Theme = Themes.Dark;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			Global.ChangeTheme();
 		}
 
 		private void SystemBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -112,6 +114,7 @@ namespace ColorPicker.Pages.FirstRun
 			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 			Global.Settings.Theme = Themes.System;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			Global.ChangeTheme();
 		}
 	}
 }
