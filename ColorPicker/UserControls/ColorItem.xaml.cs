@@ -147,7 +147,7 @@ namespace ColorPicker.UserControls
 		private void MoreBtn_Click(object sender, RoutedEventArgs e)
 		{
 			MorePopup.IsOpen = true;
-        }
+		}
 
 		private void EditConverterBtn_Click(object sender, RoutedEventArgs e)
 		{

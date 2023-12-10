@@ -195,7 +195,7 @@ namespace ColorPicker.Pages
 			ThemeSelectedBorder = (Border)sender;
 			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 			Global.Settings.Theme = Themes.Light;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);			
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);

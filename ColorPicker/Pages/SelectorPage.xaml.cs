@@ -426,5 +426,5 @@ public partial class SelectorPage : Page
 	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Clipboard.SetText(DecTxt.Text);
-    }
+	}
 }

@@ -24,18 +24,15 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Enums;
 using ColorPicker.Pages;
-using ColorPicker.Properties;
 using Microsoft.Win32;
 using PeyrSharp.Enums;
 using PeyrSharp.Env;
 using Synethia;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Threading;
 using System.Windows;
-using System.Windows.Markup.Localizer;
 using System.Windows.Media;
 
 namespace ColorPicker.Classes;
@@ -481,9 +478,9 @@ public static class Global
 
 	public static void ColorToHSL(Color color, out float h, out float s, out float l)
 	{
-		float r = (float)color.R / 255f;
-		float g = (float)color.G / 255f;
-		float b = (float)color.B / 255f;
+		float r = color.R / 255f;
+		float g = color.G / 255f;
+		float b = color.B / 255f;
 
 		float max = Math.Max(r, Math.Max(g, b));
 		float min = Math.Min(r, Math.Min(g, b));

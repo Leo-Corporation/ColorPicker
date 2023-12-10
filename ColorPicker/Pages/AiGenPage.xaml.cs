@@ -22,21 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using ColorHelper;
 using ColorPicker.Classes;
-using OpenAI.Managers;
 using OpenAI;
+using OpenAI.Managers;
+using OpenAI.ObjectModels;
+using OpenAI.ObjectModels.RequestModels;
 using Synethia;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using OpenAI.ObjectModels.RequestModels;
-using OpenAI.ObjectModels;
 using System.Windows.Media.Effects;
-using System.Text.Json;
-using System;
-using ColorHelper;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -221,7 +221,7 @@ public partial class AiGenPage : Page
 		UnCheckAllButtons();
 		CheckButton(ColorBtn);
 		CheckedButton = ColorBtn;
-		ColorPanel.Visibility = Visibility.Visible;		
+		ColorPanel.Visibility = Visibility.Visible;
 	}
 
 	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
@@ -284,7 +284,7 @@ public partial class AiGenPage : Page
 		Global.Settings.ApiKey = ApiKeyTxt.Password;
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		InitUI();
-    }
+	}
 
 	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
 	{

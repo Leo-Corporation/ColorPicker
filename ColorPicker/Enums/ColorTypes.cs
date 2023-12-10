@@ -24,16 +24,16 @@ SOFTWARE.
 
 namespace ColorPicker.Enums
 {
-    public enum ColorTypes
-    {
-        RGB,
-        HEX,
-        HSV,
-        HSL,
-        CMYK,
-        XYZ,
-        YIQ,
-        YUV,
-        DEC
-    }
+	public enum ColorTypes
+	{
+		RGB,
+		HEX,
+		HSV,
+		HSL,
+		CMYK,
+		XYZ,
+		YIQ,
+		YUV,
+		DEC
+	}
 }
