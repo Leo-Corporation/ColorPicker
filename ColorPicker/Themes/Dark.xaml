@@ -3,24 +3,44 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:String x:Key="Background1">#0A0A1E</sys:String>
-    <sys:String x:Key="Background2">#141428</sys:String>
-    <sys:String x:Key="Background3">#222277</sys:String>
-    <sys:String x:Key="CardBackground">#141446</sys:String>
-    <sys:String x:Key="Foreground1">#FFFFFF</sys:String>
-    <sys:String x:Key="BackgroundImg">/Images/DarkBackground.png</sys:String>
-    <sys:String x:Key="WindowButtonsHover1">#141428</sys:String>
-    <sys:String x:Key="WindowButtonsPressed1">#1E1E32</sys:String>
-    <sys:String x:Key="WindowButtonsHoverForeground1">#ffffff</sys:String>
-    <sys:String x:Key="AccentColor">#3FA5FF</sys:String>
-    <sys:String x:Key="DarkFAccentColor">#003666</sys:String>
-    <sys:String x:Key="LightAccentColor">#003C70</sys:String>
-    <sys:String x:Key="Gray">#5A5A6E</sys:String>
-    <sys:String x:Key="Green">#25DE0F</sys:String>
-    <sys:String x:Key="Red">#FF321E</sys:String>
-    <sys:String x:Key="Orange">#ff7a00</sys:String>
-    <sys:String x:Key="DarkGray">#7474B1</sys:String>
-    <sys:String x:Key="SliderRed">#FF4500</sys:String>
-    <sys:String x:Key="SliderGreen">#00DF39</sys:String>
-    <sys:String x:Key="SliderBlue">#4169E1</sys:String>
+    <SolidColorBrush x:Key="Background1" Color="#0A0A1E" />
+    <SolidColorBrush x:Key="Background2" Color="#141428" />
+    <SolidColorBrush x:Key="Background3" Color="#222277" />
+    <SolidColorBrush x:Key="CardBackground" Color="#141446" />
+    <SolidColorBrush x:Key="Foreground1" Color="#FFFFFF" />
+    <ImageBrush x:Key="BackgroundImg" ImageSource="/Images/DarkBackground.png" />
+    <SolidColorBrush x:Key="WindowButtonsHover1" Color="#141428" />
+    <SolidColorBrush x:Key="WindowButtonsPressed1" Color="#1E1E32" />
+    <SolidColorBrush x:Key="WindowButtonsHoverForeground1" Color="#ffffff" />
+    <SolidColorBrush x:Key="AccentColor" Color="#3FA5FF" />
+    <SolidColorBrush x:Key="DarkFAccentColor" Color="#003666" />
+    <SolidColorBrush x:Key="LightAccentColor" Color="#003C70" />
+    <SolidColorBrush x:Key="Gray" Color="#5A5A6E" />
+    <SolidColorBrush x:Key="Green" Color="#25DE0F" />
+    <SolidColorBrush x:Key="Red" Color="#FF321E" />
+    <SolidColorBrush x:Key="Orange" Color="#ff7a00" />
+    <SolidColorBrush x:Key="DarkGray" Color="#7474B1" />
+    <SolidColorBrush x:Key="SliderRed" Color="#FF4500" />
+    <SolidColorBrush x:Key="SliderGreen" Color="#00DF39" />
+    <SolidColorBrush x:Key="SliderBlue" Color="#4169E1" />
+    <Color
+        x:Key="Accent"
+        B="255"
+        G="165"
+        R="63" />
+    <Color
+        x:Key="LightAccent"
+        B="112"
+        G="60"
+        R="0" />
+    <Color
+        x:Key="Foreground"
+        B="0"
+        G="0"
+        R="0" />
+    <Color
+        x:Key="DarkGrayColor"
+        B="177"
+        G="116"
+        R="116" />
 </ResourceDictionary>
