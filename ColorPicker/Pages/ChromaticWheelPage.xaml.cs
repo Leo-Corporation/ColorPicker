@@ -126,7 +126,8 @@ public partial class ChromaticWheelPage : Page
 		ShadesBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	internal Button CheckedButton;
+	internal void CheckButton(Button button) { button.Background = Global.GetColorFromResource("LightAccentColor"); CheckedButton = button; }
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
 	{

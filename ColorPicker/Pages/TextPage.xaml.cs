@@ -260,7 +260,7 @@ public partial class TextPage : Page
 		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void HideAllInput()
 	{

@@ -43,6 +43,7 @@ public partial class MainWindow : Window
 	{
 		InitializeComponent();
 		InitUI();
+		Global.RefreshButton = () => SettingsPageBtn.Background = Global.GetColorFromResource("Background1");
 		GC.Collect();
 	}
 
@@ -360,12 +361,12 @@ public partial class MainWindow : Window
 	{
 		if (isSpecial)
 		{
-			button.Background = new SolidColorBrush(Global.GetColorFromResource("Background1"));
+			button.Background = Global.GetColorFromResource("Background1");
 		}
 		else
 		{
-			button.Background = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-			button.Foreground = new SolidColorBrush(Global.GetColorFromResource("WindowButtonsHoverForeground1"));
+			button.Background = Global.GetColorFromResource("AccentColor");
+			button.Foreground = Global.GetColorFromResource("WindowButtonsHoverForeground1");
 		}
 	}
 
@@ -385,14 +386,14 @@ public partial class MainWindow : Window
 		AiCreationPageBtn.Background = new SolidColorBrush(Colors.Transparent);
 		HarmoniesPageBtn.Background = new SolidColorBrush(Colors.Transparent);
 
-		SelectorPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-		ChromaticPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-		ConverterPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-		TextPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-		PalettePageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-		GradientPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-		AiCreationPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
-		HarmoniesPageBtn.Foreground = new SolidColorBrush(Global.GetColorFromResource("AccentColor"));
+		SelectorPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
+		ChromaticPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
+		ConverterPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
+		TextPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
+		PalettePageBtn.Foreground = Global.GetColorFromResource("AccentColor");
+		GradientPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
+		AiCreationPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
+		HarmoniesPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
 	}
 
 	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)

@@ -22,21 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using ColorHelper;
 using ColorPicker.Classes;
-using OpenAI.Managers;
 using OpenAI;
+using OpenAI.Managers;
+using OpenAI.ObjectModels;
+using OpenAI.ObjectModels.RequestModels;
 using Synethia;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using OpenAI.ObjectModels.RequestModels;
-using OpenAI.ObjectModels;
 using System.Windows.Media.Effects;
-using System.Text.Json;
-using System;
-using ColorHelper;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -59,6 +59,7 @@ public partial class AiGenPage : Page
 		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
 		{
 			CheckButton(ColorBtn);
+			CheckedButton = ColorBtn;
 			ColorPanel.Visibility = Visibility.Visible;
 			ApiPlaceholder.Visibility = Visibility.Collapsed;
 			return;
@@ -70,6 +71,8 @@ public partial class AiGenPage : Page
 	{
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+		ColorBorder.Visibility = Visibility.Visible;
+		EmptyPlaceholder.Visibility = Visibility.Collapsed;
 
 		// Load the details section		
 		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
@@ -85,6 +88,9 @@ public partial class AiGenPage : Page
 		// Load the bookmark icon
 		BookmarkBtn.Content = Global.Bookmarks.ColorBookmarks.Contains(ColorInfo.HEX.Value) ? "\uF1F8" : "\uF1F6";
 		BookmarkBtn.Visibility = Visibility.Visible;
+
+		DetailsHeader.Visibility = Visibility.Visible;
+		DetailsWrap.Visibility = Visibility.Visible;
 	}
 
 	private void LoadBorders(string[] colors)
@@ -108,6 +114,9 @@ public partial class AiGenPage : Page
 			C3Shadow.Color = Color.FromRgb(convertedColors[2].R, convertedColors[2].G, convertedColors[2].B);
 			C4Shadow.Color = Color.FromRgb(convertedColors[3].R, convertedColors[3].G, convertedColors[3].B);
 			C5Shadow.Color = Color.FromRgb(convertedColors[4].R, convertedColors[4].G, convertedColors[4].B);
+
+			PaletteBordersPanel.Visibility = Visibility.Visible;
+			EmptyPalettePlaceholder.Visibility = Visibility.Collapsed;
 		}
 		catch (Exception e)
 		{
@@ -194,7 +203,8 @@ public partial class AiGenPage : Page
 		catch { }
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	internal Button CheckedButton;
+	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void UnCheckAllButtons()
 	{
@@ -210,7 +220,8 @@ public partial class AiGenPage : Page
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(ColorBtn);
-		ColorPanel.Visibility = Visibility.Visible;		
+		CheckedButton = ColorBtn;
+		ColorPanel.Visibility = Visibility.Visible;
 	}
 
 	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
@@ -218,6 +229,7 @@ public partial class AiGenPage : Page
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(PaletteBtn);
+		CheckedButton = PaletteBtn;
 		PalettePanel.Visibility = Visibility.Visible;
 	}
 
@@ -272,7 +284,7 @@ public partial class AiGenPage : Page
 		Global.Settings.ApiKey = ApiKeyTxt.Password;
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		InitUI();
-    }
+	}
 
 	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
 	{

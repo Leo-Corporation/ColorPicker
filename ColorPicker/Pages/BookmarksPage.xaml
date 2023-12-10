@@ -11,7 +11,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontFamily="../Fonts/#Hauora"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
 
     <Grid>
@@ -29,7 +29,7 @@
                 VerticalAlignment="Center"
                 FontFamily="../Fonts/#FluentSystemIcons-Regular"
                 FontSize="16"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Text="&#xF1F6;" />
             <TextBlock
                 x:Name="TitleTxt"
@@ -52,7 +52,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Click="ColorsBtn_Click"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource DefaultButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -82,7 +82,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Click="PaletteBtn_Click"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource DefaultButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -112,7 +112,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Click="GradientsBtn_Click"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource DefaultButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -142,7 +142,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Click="TextBtn_Click"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource DefaultButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -176,7 +176,7 @@
             Background="Transparent"
             BorderThickness="0"
             Click="EmptyHistoryBtn_Click"
-            Foreground="{Binding Source={StaticResource Red}}"
+            Foreground="{DynamicResource Red}"
             Style="{DynamicResource StandardButton}">
             <Grid>
                 <Grid.ColumnDefinitions>

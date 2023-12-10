@@ -641,4 +641,7 @@
   <data name="PortableNoAutoUpdates" xml:space="preserve">
     <value>便携模式下无法进行自动更新，请重新下载 ColorPicker Max</value>
   </data>
+  <data name="EmptyAiPlaceholder" xml:space="preserve">
+    <value>输入提示，利用人工智能的力量生成颜色</value>
+  </data>
 </root>

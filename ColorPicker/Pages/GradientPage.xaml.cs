@@ -221,7 +221,7 @@ public partial class GradientPage : Page
 		LoadInputUI();
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void HideAllInput()
 	{

@@ -51,10 +51,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource WindowButtonsHover1}}" />
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsHover1}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource WindowButtonsPressed1}}" />
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsPressed1}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -111,7 +111,7 @@
     <Border
         Name="WindowBorder"
         Margin="10"
-        Background="{Binding Source={StaticResource Background1}}"
+        Background="{DynamicResource Background1}"
         BorderThickness="0"
         CornerRadius="5">
         <Grid VerticalAlignment="Stretch">
@@ -174,16 +174,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyRgbBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyRGB}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 
@@ -209,16 +209,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyHexBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyHEX}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 
@@ -244,16 +244,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyHsvBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyHSV}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 
@@ -279,16 +279,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyHslBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyHSL}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 
@@ -314,16 +314,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyCmykBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyCMYK}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 
@@ -349,16 +349,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyXyzBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyXYZ}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 
@@ -384,16 +384,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyYiqBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyYIQ}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 
@@ -419,16 +419,16 @@
                                 Margin="0 3 3 3"
                                 Padding="5"
                                 VerticalAlignment="Top"
-                                Background="{Binding Source={StaticResource Background3}}"
+                                Background="{DynamicResource Background3}"
                                 Click="CopyYuvBtn_Click"
                                 Content="&#xF32C;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 Style="{DynamicResource DefaultButton}">
                                 <Button.ToolTip>
                                     <ToolTip
-                                        Background="{Binding Source={StaticResource Background1}}"
+                                        Background="{DynamicResource Background1}"
                                         Content="{x:Static lang:Resources.CopyYUV}"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                        Foreground="{DynamicResource Foreground1}" />
                                 </Button.ToolTip>
                             </Button>
 

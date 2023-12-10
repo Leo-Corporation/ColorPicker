@@ -9,11 +9,11 @@
     MinWidth="200"
     Margin="5"
     FontFamily="../Fonts/#Hauora"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
     <Border
         Padding="5"
-        Background="{Binding Source={StaticResource CardBackground}}"
+        Background="{DynamicResource CardBackground}"
         CornerRadius="5"
         Cursor="Hand"
         MouseLeftButtonUp="Border_MouseLeftButtonUp">
@@ -35,7 +35,7 @@
                 d:Text="&#xF4DB;"
                 FontFamily="../Fonts/#FluentSystemIcons-Filled"
                 FontSize="26"
-                Foreground="{Binding Source={StaticResource AccentColor}}" />
+                Foreground="{DynamicResource AccentColor}" />
             <TextBlock
                 x:Name="PageNameTxt"
                 Margin="10 0 0 0"

@@ -26,7 +26,6 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
-using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -103,7 +102,7 @@ public partial class PalettePage : Page
 											 double.Parse(Txt3.Text)));
 	}
 
-	Button SelectedColorBtn { get; set; }
+	internal Button SelectedColorBtn { get; set; }
 	private void UnCheckAllButtons()
 	{
 		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -128,7 +127,7 @@ public partial class PalettePage : Page
 		LoadInputUI();
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void HideAllInput()
 	{
@@ -296,8 +295,8 @@ public partial class PalettePage : Page
 					},
 					ToolTip = new ToolTip()
 					{
-						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
-						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Background = Global.GetColorFromResource("Background1"),
+						Foreground = Global.GetColorFromResource("Foreground1"),
 						Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
 					},
 				};

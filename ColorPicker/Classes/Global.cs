@@ -33,7 +33,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows;
-using System.Windows.Markup.Localizer;
 using System.Windows.Media;
 
 namespace ColorPicker.Classes;
@@ -82,12 +81,14 @@ public static class Global
 		}
 	};
 
+	internal static Action RefreshButton { get; set; }
+
 	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
 	internal static string BookmarksPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml";
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "5.7.1.2311";
+	public static string Version => "5.8.0.2312";
 
 	public static string HiSentence
 	{
@@ -161,7 +162,7 @@ public static class Global
 		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
 		return System.Drawing.Color.FromArgb(r, g, b);
 	}
-	public static Color GetColorFromResource(string resourceName) => (Color)System.Windows.Media.ColorConverter.ConvertFromString(Application.Current.Resources[resourceName].ToString());
+	public static SolidColorBrush GetColorFromResource(string resource) => (SolidColorBrush)Application.Current.Resources[resource];
 
 	public static double GetLuminance(int r, int g, int b)
 	{
@@ -253,7 +254,7 @@ public static class Global
 	/// <summary>
 	/// Changes the application's theme.
 	/// </summary>
-	public static void ChangeTheme()
+	public static void ChangeTheme(bool reload = false)
 	{
 		App.Current.Resources.MergedDictionaries.Clear();
 		ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
@@ -274,6 +275,15 @@ public static class Global
 		}
 
 		App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+
+		if (!reload) return;
+		AiGenPage.CheckButton(AiGenPage.CheckedButton);
+		BookmarksPage.CheckButton(BookmarksPage.CheckedButton);
+		ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
+		ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
+		HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
+		PalettePage.CheckButton(PalettePage.SelectedColorBtn);
+		RefreshButton();
 	}
 
 	public static bool IsSystemThemeDark()
@@ -468,9 +478,9 @@ public static class Global
 
 	public static void ColorToHSL(Color color, out float h, out float s, out float l)
 	{
-		float r = (float)color.R / 255f;
-		float g = (float)color.G / 255f;
-		float b = (float)color.B / 255f;
+		float r = color.R / 255f;
+		float g = color.G / 255f;
+		float b = color.B / 255f;
 
 		float max = Math.Max(r, Math.Max(g, b));
 		float min = Math.Min(r, Math.Min(g, b));

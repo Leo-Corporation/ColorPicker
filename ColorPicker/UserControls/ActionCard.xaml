@@ -9,10 +9,10 @@
     Height="30"
     Margin="5 2"
     FontFamily="../Fonts/#Hauroa"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
     <Border
-        Background="{Binding Source={StaticResource LightAccentColor}}"
+        Background="{DynamicResource LightAccentColor}"
         CornerRadius="15"
         Cursor="Hand"
         MouseLeftButtonUp="Border_MouseLeftButtonUp">
@@ -26,7 +26,7 @@
                 d:Text="&#xF4DB;"
                 FontFamily="../Fonts/#FluentSystemIcons-Filled"
                 FontSize="16"
-                Foreground="{Binding Source={StaticResource AccentColor}}" />
+                Foreground="{DynamicResource AccentColor}" />
             <TextBlock
                 x:Name="PageNameTxt"
                 Margin="10 0 0 0"
@@ -35,7 +35,7 @@
                 FontFamily="../Fonts/#Hauora"
                 FontSize="14"
                 FontWeight="ExtraBold"
-                Foreground="{Binding Source={StaticResource AccentColor}}" />
+                Foreground="{DynamicResource AccentColor}" />
         </StackPanel>
     </Border>
 </UserControl>

@@ -27,39 +27,29 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ColorPicker.Pages
 {
-    /// <summary>
-    /// Interaction logic for HarmoniesPage.xaml
-    /// </summary>
-    public partial class HarmoniesPage : Page
-    {
+	/// <summary>
+	/// Interaction logic for HarmoniesPage.xaml
+	/// </summary>
+	public partial class HarmoniesPage : Page
+	{
 		bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 		public HarmoniesPage()
-        {
-            InitializeComponent();
-            InitUI();
+		{
+			InitializeComponent();
+			InitUI();
 			Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 7, ref code); // injects the code in the page
 		}
 
-        private void InitUI()
-        {
+		private void InitUI()
+		{
 			TitleTxt.Text = $"{Properties.Resources.Creation} > {Properties.Resources.Harmonies}";
 			try
 			{
@@ -137,8 +127,8 @@ namespace ColorPicker.Pages
 					},
 					ToolTip = new ToolTip()
 					{
-						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
-						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Background = Global.GetColorFromResource("Background1"),
+						Foreground = Global.GetColorFromResource("Foreground1"),
 						Content = new ColorInfo(new(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B)).ToString()
 					},
 				};
@@ -170,8 +160,8 @@ namespace ColorPicker.Pages
 					},
 					ToolTip = new ToolTip()
 					{
-						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
-						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Background = Global.GetColorFromResource("Background1"),
+						Foreground = Global.GetColorFromResource("Foreground1"),
 						Content = new ColorInfo(new(monoColors[i].R, monoColors[i].G, monoColors[i].B)).ToString()
 					},
 				};
@@ -179,6 +169,16 @@ namespace ColorPicker.Pages
 
 				MonochromaticPanel.Children.Add(border);
 			}
+
+			// Load the bookmark icon
+			if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+			{
+				BookmarkBtn.Content = "\uF1F6";
+				BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+				return;
+			}
+			BookmarkBtn.Content = "\uF1F8";
+			BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 		}
 
 		internal ColorInfo ColorInfo { get; set; }
@@ -211,7 +211,7 @@ namespace ColorPicker.Pages
 												 double.Parse(Txt3.Text)));
 		}
 
-		Button SelectedColorBtn { get; set; }
+		internal Button SelectedColorBtn { get; set; }
 		private void UnCheckAllButtons()
 		{
 			RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -237,7 +237,7 @@ namespace ColorPicker.Pages
 			Global.SynethiaConfig.PagesInfo[7].InteractionCount++;
 		}
 
-		private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+		internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 		private void HideAllInput()
 		{
@@ -438,6 +438,21 @@ namespace ColorPicker.Pages
 		private void ComplementaryBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
+		}
+
+		private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+			{
+				Global.Bookmarks.ColorBookmarks.Remove($"#{ColorInfo.HEX.Value}");
+				BookmarkBtn.Content = "\uF1F6";
+				BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
+				return;
+			}
+			Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+			BookmarkBtn.Content = "\uF1F8";
+			BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 		}
 	}
 }

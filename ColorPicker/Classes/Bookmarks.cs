@@ -21,7 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using PeyrSharp.Core.Converters;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -41,19 +40,19 @@ namespace ColorPicker.Classes
 		public string FontFamily { get; init; }
 		public string ForegroundColor { get; init; }
 		public string BackgroundColor { get; init; }
-        public BookmarkText()
-        {
+		public BookmarkText()
+		{
 			FontFamily = "Arial"; // Fallback values
 			ForegroundColor = "#000000";
 			BackgroundColor = "#FFFFFF";
-        }
+		}
 
-        public BookmarkText(string font, string fore, string back)
-        {
+		public BookmarkText(string font, string fore, string back)
+		{
 			FontFamily = font;
 			ForegroundColor = fore;
 			BackgroundColor = back;
-        }
+		}
 
 		public bool Equals(BookmarkText? obj)
 		{

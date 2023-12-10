@@ -9,12 +9,12 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontFamily="../Fonts/#Hauora"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
     <Border
         Margin="10"
         Padding="10"
-        Background="{Binding Source={StaticResource CardBackground}}"
+        Background="{DynamicResource CardBackground}"
         CornerRadius="10">
         <Border.Effect>
             <DropShadowEffect
@@ -59,7 +59,7 @@
                         VerticalAlignment="Center"
                         FontFamily="../Fonts/#FluentSystemIcons-Regular"
                         FontSize="16"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Text="&#xF2F8;" />
                     <TextBlock
                         Margin="5 0 0 0"
@@ -83,7 +83,7 @@
                         VerticalAlignment="Center"
                         FontFamily="../Fonts/#FluentSystemIcons-Regular"
                         FontSize="16"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Text="&#xF4D7;" />
                     <TextBlock
                         Margin="5 0 0 0"
@@ -107,7 +107,7 @@
                         VerticalAlignment="Center"
                         FontFamily="../Fonts/#FluentSystemIcons-Regular"
                         FontSize="16"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Text="&#xF2BE;" />
                     <TextBlock
                         Margin="5 0 0 0"
@@ -130,17 +130,17 @@
                     Margin="0 5 5 0"
                     Padding="5"
                     VerticalAlignment="Top"
-                    Background="{Binding Source={StaticResource Background3}}"
+                    Background="{DynamicResource Background3}"
                     Click="DeleteBtn_Click"
                     Content="&#xF34D;"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Foreground="{DynamicResource Foreground1}"
                     Style="{DynamicResource DefaultButton}">
                     <Button.ToolTip>
                         <ToolTip
-                            Background="{Binding Source={StaticResource Background1}}"
+                            Background="{DynamicResource Background1}"
                             Content="{x:Static lang:Resources.Delete}"
-                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                            Foreground="{DynamicResource Foreground1}" />
                     </Button.ToolTip>
                 </Button>
                 <Button
@@ -149,17 +149,17 @@
                     Margin="0 5 5 0"
                     Padding="5"
                     VerticalAlignment="Top"
-                    Background="{Binding Source={StaticResource Background3}}"
+                    Background="{DynamicResource Background3}"
                     Click="GoBtn_Click"
                     Content="&#xF3DE;"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Foreground="{DynamicResource Foreground1}"
                     Style="{DynamicResource DefaultButton}">
                     <Button.ToolTip>
                         <ToolTip
-                            Background="{Binding Source={StaticResource Background1}}"
+                            Background="{DynamicResource Background1}"
                             Content="{x:Static lang:Resources.Details}"
-                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                            Foreground="{DynamicResource Foreground1}" />
                     </Button.ToolTip>
                 </Button>
             </StackPanel>
