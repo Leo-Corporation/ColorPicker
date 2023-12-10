@@ -84,6 +84,8 @@ public static class Global
 		}
 	};
 
+	internal static Action RefreshButton { get; set; }
+
 	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
 	internal static string BookmarksPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml";
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
@@ -284,6 +286,7 @@ public static class Global
 		ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
 		HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
 		PalettePage.CheckButton(PalettePage.SelectedColorBtn);
+		RefreshButton();
 	}
 
 	public static bool IsSystemThemeDark()
