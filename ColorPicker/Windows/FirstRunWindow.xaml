@@ -131,11 +131,9 @@
         Name="WindowBorder"
         Margin="10"
         d:Background="#fff"
+        Background="{DynamicResource BackgroundImg}"
         BorderThickness="0"
         CornerRadius="5">
-        <Border.Background>
-            <ImageBrush ImageSource="{Binding Source={StaticResource BackgroundImg}}" />
-        </Border.Background>
         <Grid VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
