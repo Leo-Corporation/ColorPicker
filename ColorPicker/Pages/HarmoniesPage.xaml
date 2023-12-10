@@ -371,7 +371,25 @@
                         </Grid>
                     </Border>
                 </StackPanel>
-
+                <Button
+                    x:Name="BookmarkBtn"
+                    Grid.Column="3"
+                    Padding="5"
+                    VerticalAlignment="Top"
+                    Background="{Binding Source={StaticResource Background3}}"
+                    Click="BookmarkBtn_Click"
+                    Content="&#xF1F6;"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Style="{DynamicResource DefaultButton}">
+                    <Button.ToolTip>
+                        <ToolTip
+                            x:Name="BookmarkToolTip"
+                            Background="{Binding Source={StaticResource Background1}}"
+                            Content="{x:Static lang:Resources.AddBookmark}"
+                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                    </Button.ToolTip>
+                </Button>
             </Grid>
         </Border>
         <StackPanel Grid.Row="2">

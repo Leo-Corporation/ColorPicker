@@ -45,21 +45,21 @@ using System.Windows.Shapes;
 
 namespace ColorPicker.Pages
 {
-    /// <summary>
-    /// Interaction logic for HarmoniesPage.xaml
-    /// </summary>
-    public partial class HarmoniesPage : Page
-    {
+	/// <summary>
+	/// Interaction logic for HarmoniesPage.xaml
+	/// </summary>
+	public partial class HarmoniesPage : Page
+	{
 		bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 		public HarmoniesPage()
-        {
-            InitializeComponent();
-            InitUI();
+		{
+			InitializeComponent();
+			InitUI();
 			Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 7, ref code); // injects the code in the page
 		}
 
-        private void InitUI()
-        {
+		private void InitUI()
+		{
 			TitleTxt.Text = $"{Properties.Resources.Creation} > {Properties.Resources.Harmonies}";
 			try
 			{
@@ -179,6 +179,16 @@ namespace ColorPicker.Pages
 
 				MonochromaticPanel.Children.Add(border);
 			}
+
+			// Load the bookmark icon
+			if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+			{
+				BookmarkBtn.Content = "\uF1F6";
+				BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+				return;
+			}
+			BookmarkBtn.Content = "\uF1F8";
+			BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 		}
 
 		internal ColorInfo ColorInfo { get; set; }
@@ -438,6 +448,21 @@ namespace ColorPicker.Pages
 		private void ComplementaryBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
+		}
+
+		private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+			{
+				Global.Bookmarks.ColorBookmarks.Remove($"#{ColorInfo.HEX.Value}");
+				BookmarkBtn.Content = "\uF1F6";
+				BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
+				return;
+			}
+			Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+			BookmarkBtn.Content = "\uF1F8";
+			BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 		}
 	}
 }
