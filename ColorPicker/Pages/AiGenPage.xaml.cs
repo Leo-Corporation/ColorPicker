@@ -70,6 +70,8 @@ public partial class AiGenPage : Page
 	{
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
+		ColorBorder.Visibility = Visibility.Visible;
+		EmptyPlaceholder.Visibility = Visibility.Collapsed;
 
 		// Load the details section		
 		RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}";
@@ -85,6 +87,9 @@ public partial class AiGenPage : Page
 		// Load the bookmark icon
 		BookmarkBtn.Content = Global.Bookmarks.ColorBookmarks.Contains(ColorInfo.HEX.Value) ? "\uF1F8" : "\uF1F6";
 		BookmarkBtn.Visibility = Visibility.Visible;
+
+		DetailsHeader.Visibility = Visibility.Visible;
+		DetailsWrap.Visibility = Visibility.Visible;
 	}
 
 	private void LoadBorders(string[] colors)
