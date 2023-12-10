@@ -200,7 +200,7 @@ namespace ColorPicker.Pages
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 
-			Global.ChangeTheme();
+			Global.ChangeTheme(true);
 		}
 
 		private void DarkBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -214,7 +214,7 @@ namespace ColorPicker.Pages
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 
-			Global.ChangeTheme();
+			Global.ChangeTheme(true);
 		}
 		private void SystemBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
@@ -227,7 +227,7 @@ namespace ColorPicker.Pages
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 
-			Global.ChangeTheme();
+			Global.ChangeTheme(true);
 		}
 
 		private void LangComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

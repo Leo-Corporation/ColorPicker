@@ -221,7 +221,7 @@ namespace ColorPicker.Pages
 												 double.Parse(Txt3.Text)));
 		}
 
-		Button SelectedColorBtn { get; set; }
+		internal Button SelectedColorBtn { get; set; }
 		private void UnCheckAllButtons()
 		{
 			RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -247,7 +247,7 @@ namespace ColorPicker.Pages
 			Global.SynethiaConfig.PagesInfo[7].InteractionCount++;
 		}
 
-		private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
+		internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 		private void HideAllInput()
 		{

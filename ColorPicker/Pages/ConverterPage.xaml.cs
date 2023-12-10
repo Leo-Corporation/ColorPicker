@@ -75,7 +75,7 @@ public partial class ConverterPage : Page
 		}, null);
 	}
 
-	Button SelectedColorBtn { get; set; }
+	internal Button SelectedColorBtn { get; set; }
 	private void UnCheckAllButtons()
 	{
 		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -100,7 +100,7 @@ public partial class ConverterPage : Page
 		LoadInputUI();
 	}
 
-	private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
+	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 	internal ColorInfo ColorInfo { get; set; }
 
 	private RGB ConvertToRgb()

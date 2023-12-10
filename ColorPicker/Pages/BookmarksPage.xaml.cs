@@ -139,7 +139,8 @@ namespace ColorPicker.Pages
 			TextBookmarks.Visibility = Visibility.Collapsed;
 		}
 
-		private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
+		internal Button CheckedButton;
+		internal void CheckButton(Button button) { button.Background = Global.GetColorFromResource("LightAccentColor"); CheckedButton = button; }
 
 		private void TextBtn_Click(object sender, RoutedEventArgs e)
 		{

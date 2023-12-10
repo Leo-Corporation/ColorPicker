@@ -59,6 +59,7 @@ public partial class AiGenPage : Page
 		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
 		{
 			CheckButton(ColorBtn);
+			CheckedButton = ColorBtn;
 			ColorPanel.Visibility = Visibility.Visible;
 			ApiPlaceholder.Visibility = Visibility.Collapsed;
 			return;
@@ -202,7 +203,8 @@ public partial class AiGenPage : Page
 		catch { }
 	}
 
-	private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
+	internal Button CheckedButton;
+	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void UnCheckAllButtons()
 	{
@@ -218,6 +220,7 @@ public partial class AiGenPage : Page
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(ColorBtn);
+		CheckedButton = ColorBtn;
 		ColorPanel.Visibility = Visibility.Visible;		
 	}
 
@@ -226,6 +229,7 @@ public partial class AiGenPage : Page
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 		UnCheckAllButtons();
 		CheckButton(PaletteBtn);
+		CheckedButton = PaletteBtn;
 		PalettePanel.Visibility = Visibility.Visible;
 	}
 

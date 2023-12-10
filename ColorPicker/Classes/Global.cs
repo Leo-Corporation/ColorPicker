@@ -31,6 +31,7 @@ using PeyrSharp.Env;
 using Synethia;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -254,7 +255,7 @@ public static class Global
 	/// <summary>
 	/// Changes the application's theme.
 	/// </summary>
-	public static void ChangeTheme()
+	public static void ChangeTheme(bool reload = false)
 	{
 		App.Current.Resources.MergedDictionaries.Clear();
 		ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
@@ -275,6 +276,14 @@ public static class Global
 		}
 
 		App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+
+		if (!reload) return;
+		AiGenPage.CheckButton(AiGenPage.CheckedButton);
+		BookmarksPage.CheckButton(BookmarksPage.CheckedButton);
+		ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
+		ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
+		HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
+		PalettePage.CheckButton(PalettePage.SelectedColorBtn);
 	}
 
 	public static bool IsSystemThemeDark()
