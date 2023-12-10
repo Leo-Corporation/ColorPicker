@@ -9,11 +9,11 @@
     Width="250"
     Height="110"
     FontFamily="../Fonts/#Hauora"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
     <Border
         Margin="10"
-        Background="{Binding Source={StaticResource CardBackground}}"
+        Background="{DynamicResource CardBackground}"
         CornerRadius="10">
         <Border.Effect>
             <DropShadowEffect
@@ -46,55 +46,55 @@
                         <MenuItem
                             x:Name="CopyRGB"
                             Click="CopyRGB_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyRGB}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyHEX"
                             Click="CopyHEX_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyHEX}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyHSV"
                             Click="CopyHSV_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyHSV}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyHSL"
                             Click="CopyHSL_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyHSL}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyCMYK"
                             Click="CopyCMYK_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyCMYK}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyDEC"
                             Click="CopyDEC_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyDEC}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyXYZ"
                             Click="CopyXYZ_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyXYZ}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyYIQ"
                             Click="CopyYIQ_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyYIQ}"
                             Style="{DynamicResource MenuStyle}" />
                         <MenuItem
                             x:Name="CopyYUV"
                             Click="CopyYUV_Click"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Header="{x:Static lang:Resources.CopyYUV}"
                             Style="{DynamicResource MenuStyle}" />
                     </ContextMenu>
@@ -110,7 +110,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.RGB}" />
                     <TextBlock
                         x:Name="RgbTxt"
@@ -121,7 +121,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.HEX}" />
                     <TextBlock
                         x:Name="HEXTxt"
@@ -138,17 +138,17 @@
                     Margin="0 5 5 0"
                     Padding="5"
                     VerticalAlignment="Top"
-                    Background="{Binding Source={StaticResource Background3}}"
+                    Background="{DynamicResource Background3}"
                     Click="DeleteBtn_Click"
                     Content="&#xF34D;"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Foreground="{DynamicResource Foreground1}"
                     Style="{DynamicResource DefaultButton}">
                     <Button.ToolTip>
                         <ToolTip
-                            Background="{Binding Source={StaticResource Background1}}"
+                            Background="{DynamicResource Background1}"
                             Content="{x:Static lang:Resources.Delete}"
-                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                            Foreground="{DynamicResource Foreground1}" />
                     </Button.ToolTip>
                 </Button>
                 <Button
@@ -157,17 +157,17 @@
                     Margin="0 5 5 0"
                     Padding="5"
                     VerticalAlignment="Top"
-                    Background="{Binding Source={StaticResource Background3}}"
+                    Background="{DynamicResource Background3}"
                     Click="MoreBtn_Click"
                     Content="&#xFC2E;"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Foreground="{DynamicResource Foreground1}"
                     Style="{DynamicResource DefaultButton}">
                     <Button.ToolTip>
                         <ToolTip
-                            Background="{Binding Source={StaticResource Background1}}"
+                            Background="{DynamicResource Background1}"
                             Content="{x:Static lang:Resources.Details}"
-                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                            Foreground="{DynamicResource Foreground1}" />
                     </Button.ToolTip>
                 </Button>
                 <Popup
@@ -179,7 +179,7 @@
                     <Border
                         Margin="10"
                         Padding="10"
-                        Background="{Binding Source={StaticResource Background1}}"
+                        Background="{DynamicResource Background1}"
                         CornerRadius="10">
                         <Border.Effect>
                             <DropShadowEffect
@@ -197,7 +197,7 @@
                                 Click="GoBtn_Click"
                                 Content="{x:Static lang:Resources.EditInSelector}"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource Foreground1}}"
+                                Foreground="{DynamicResource Foreground1}"
                                 Style="{DynamicResource DefaultButton}" />
                             <Button
                                 x:Name="EditConverterBtn"
@@ -206,7 +206,7 @@
                                 Click="EditConverterBtn_Click"
                                 Content="{x:Static lang:Resources.Convert}"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource Foreground1}}"
+                                Foreground="{DynamicResource Foreground1}"
                                 Style="{DynamicResource DefaultButton}" />
                             <Button
                                 x:Name="EditPaletteBtn"
@@ -215,7 +215,7 @@
                                 Click="EditPaletteBtn_Click"
                                 Content="{x:Static lang:Resources.GeneratePalette}"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource Foreground1}}"
+                                Foreground="{DynamicResource Foreground1}"
                                 Style="{DynamicResource DefaultButton}" />
                         </StackPanel>
                     </Border>

@@ -202,7 +202,7 @@ public partial class AiGenPage : Page
 		catch { }
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void UnCheckAllButtons()
 	{

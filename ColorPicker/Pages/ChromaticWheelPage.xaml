@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontFamily="..\Fonts\#Hauora"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
 
     <Grid>
@@ -35,7 +35,7 @@
                 VerticalAlignment="Center"
                 FontFamily="../Fonts/#FluentSystemIcons-Regular"
                 FontSize="16"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Text="&#xF5FB;" />
             <TextBlock
                 x:Name="TitleTxt"
@@ -59,7 +59,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Click="CircleBtn_Click"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource DefaultButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -89,7 +89,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Click="DiscBtn_Click"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource DefaultButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -119,7 +119,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Click="ShadesBtn_Click"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource DefaultButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -160,7 +160,7 @@
             Padding="5"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="{Binding Source={StaticResource CardBackground}}"
+            Background="{DynamicResource CardBackground}"
             CornerRadius="50 0 0 50"
             Cursor="Hand"
             MouseLeftButtonUp="PreviewBorder_MouseLeftButtonUp"
@@ -170,7 +170,7 @@
                     BlurRadius="15"
                     Opacity="0.2"
                     ShadowDepth="0"
-                    Color="{Binding Source={StaticResource AccentColor}}" />
+                    Color="{DynamicResource Accent}" />
             </Border.Effect>
             <Border
                 x:Name="ColorBorder"
@@ -192,7 +192,7 @@
                 VerticalAlignment="Center"
                 FontFamily="../Fonts/#FluentSystemIcons-Regular"
                 FontSize="16"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Text="&#xF4A4;" />
             <TextBlock
                 Margin="5 0 0 0"
@@ -213,7 +213,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -232,7 +232,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.RGB}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -241,17 +241,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyRgbBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyRGB}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -270,7 +270,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -289,7 +289,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.HEX}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -298,17 +298,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyHexBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyHEX}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -327,7 +327,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -346,7 +346,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.HSV}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -355,17 +355,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyHsvBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyHSV}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -384,7 +384,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -403,7 +403,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.HSL}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -412,17 +412,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyHslBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyHSV}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -441,7 +441,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -460,7 +460,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.CMYK}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -469,17 +469,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyCmykBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyCMYK}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -497,7 +497,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -516,7 +516,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.DEC}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -525,17 +525,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyDecBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyDEC}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -553,7 +553,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -572,7 +572,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.XYZ}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -581,17 +581,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyXyzBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyXYZ}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -610,7 +610,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -629,7 +629,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.YIQ}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -638,17 +638,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyYiqBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyYIQ}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 
@@ -667,7 +667,7 @@
                 Margin="5"
                 Padding="5"
                 HorizontalAlignment="Left"
-                Background="{Binding Source={StaticResource CardBackground}}"
+                Background="{DynamicResource CardBackground}"
                 CornerRadius="5">
                 <Border.Effect>
                     <DropShadowEffect
@@ -686,7 +686,7 @@
 
                     <TextBlock
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource DarkGray}}"
+                        Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.YUV}" />
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Button
@@ -695,17 +695,17 @@
                             Margin="0 3 3 3"
                             Padding="5"
                             VerticalAlignment="Top"
-                            Background="{Binding Source={StaticResource Background3}}"
+                            Background="{DynamicResource Background3}"
                             Click="CopyYuvBtn_Click"
                             Content="&#xF32C;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{Binding Source={StaticResource Foreground1}}"
+                            Foreground="{DynamicResource Foreground1}"
                             Style="{DynamicResource DefaultButton}">
                             <Button.ToolTip>
                                 <ToolTip
-                                    Background="{Binding Source={StaticResource Background1}}"
+                                    Background="{DynamicResource Background1}"
                                     Content="{x:Static lang:Resources.CopyYUV}"
-                                    Foreground="{Binding Source={StaticResource Foreground1}}" />
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Button.ToolTip>
                         </Button>
 

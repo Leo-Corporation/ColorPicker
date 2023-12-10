@@ -24,6 +24,7 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Enums;
 using ColorPicker.Pages;
+using ColorPicker.Properties;
 using Microsoft.Win32;
 using PeyrSharp.Enums;
 using PeyrSharp.Env;
@@ -161,7 +162,7 @@ public static class Global
 		int r = random.Next(0, 255); int g = random.Next(0, 255); int b = random.Next(0, 255); // Generate random values
 		return System.Drawing.Color.FromArgb(r, g, b);
 	}
-	public static Color GetColorFromResource(string resourceName) => (Color)System.Windows.Media.ColorConverter.ConvertFromString(Application.Current.Resources[resourceName].ToString());
+	public static SolidColorBrush GetColorFromResource(string resource) => (SolidColorBrush)Application.Current.Resources[resource];
 
 	public static double GetLuminance(int r, int g, int b)
 	{

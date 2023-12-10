@@ -128,7 +128,7 @@ public partial class PalettePage : Page
 		LoadInputUI();
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void HideAllInput()
 	{
@@ -296,8 +296,8 @@ public partial class PalettePage : Page
 					},
 					ToolTip = new ToolTip()
 					{
-						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
-						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Background = Global.GetColorFromResource("Background1"),
+						Foreground = Global.GetColorFromResource("Foreground1"),
 						Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
 					},
 				};

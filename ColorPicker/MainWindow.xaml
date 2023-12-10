@@ -14,7 +14,7 @@
     AllowsTransparency="True"
     Background="Transparent"
     FontFamily="/Fonts/#Hauora"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     Icon="Images/CPM.png"
     ResizeMode="CanResize"
     WindowStartupLocation="CenterScreen"
@@ -54,10 +54,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource WindowButtonsHover1}}" />
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsHover1}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource WindowButtonsPressed1}}" />
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsPressed1}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -116,11 +116,9 @@
         Name="WindowBorder"
         Margin="10"
         d:Background="#fff"
+        Background="{DynamicResource BackgroundImg}"
         BorderThickness="0"
         CornerRadius="5">
-        <Border.Background>
-            <ImageBrush ImageSource="{Binding Source={StaticResource BackgroundImg}}" />
-        </Border.Background>
         <Grid VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -141,14 +139,14 @@
                         Grid.Column="1"
                         Padding="5 2"
                         VerticalAlignment="Center"
-                        Background="{Binding Source={StaticResource CardBackground}}"
+                        Background="{DynamicResource CardBackground}"
                         CornerRadius="10">
                         <TextBlock
                             x:Name="VersionTxt"
                             d:Text="5.4.0.2308"
                             FontSize="10"
                             FontWeight="SemiBold"
-                            Foreground="{Binding Source={StaticResource DarkGray}}" />
+                            Foreground="{DynamicResource DarkGray}" />
                     </Border>
                     <Button
                         x:Name="PinBtn"
@@ -160,7 +158,7 @@
                         Content="&#xF602;"
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
-                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                        Foreground="{DynamicResource Foreground1}"
                         RenderOptions.EdgeMode="Aliased"
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button
@@ -173,7 +171,7 @@
                         Content="&#xFC75;"
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
-                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                        Foreground="{DynamicResource Foreground1}"
                         RenderOptions.EdgeMode="Aliased"
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button
@@ -186,7 +184,7 @@
                         Content="&#xFA40;"
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
-                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                        Foreground="{DynamicResource Foreground1}"
                         RenderOptions.EdgeMode="Aliased"
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button
@@ -199,7 +197,7 @@
                         Content="&#xF36B;"
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
-                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                        Foreground="{DynamicResource Foreground1}"
                         RenderOptions.EdgeMode="Aliased"
                         Style="{StaticResource TitleBarCloseButtonStyle}" />
                 </Grid>
@@ -267,7 +265,7 @@
                                             VerticalAlignment="Center"
                                             FontFamily="/Fonts/#FluentSystemIcons-Filled"
                                             FontSize="18"
-                                            Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}"
+                                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
                                             Text="&#xF488;" />
                                     </Border>
                                     <TextBlock
@@ -276,7 +274,7 @@
                                         VerticalAlignment="Center"
                                         FontSize="14"
                                         FontWeight="Bold"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                                        Foreground="{DynamicResource Foreground1}"
                                         Text="{x:Static lang:Resources.Home}" />
                                 </Grid>
 
@@ -325,7 +323,7 @@
                                             VerticalAlignment="Center"
                                             FontFamily="/Fonts/#FluentSystemIcons-Filled"
                                             FontSize="18"
-                                            Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}"
+                                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
                                             RenderTransformOrigin="0.5,0.5"
                                             Text="&#xF1F6;" />
                                     </Border>
@@ -335,7 +333,7 @@
                                         VerticalAlignment="Center"
                                         FontSize="14"
                                         FontWeight="Bold"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                                        Foreground="{DynamicResource Foreground1}"
                                         Text="{x:Static lang:Resources.Bookmarks}" />
                                 </Grid>
 
@@ -380,7 +378,7 @@
                                             x:Name="SettingsIconTxt"
                                             FontFamily="/Fonts/#FluentSystemIcons-Filled"
                                             FontSize="18"
-                                            Foreground="{Binding Source={StaticResource WindowButtonsHoverForeground1}}"
+                                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
                                             RenderTransformOrigin="0.5,0.5"
                                             Text="&#xF6B3;">
                                             <TextBlock.RenderTransform>
@@ -396,7 +394,7 @@
                                         VerticalAlignment="Center"
                                         FontSize="14"
                                         FontWeight="Bold"
-                                        Foreground="{Binding Source={StaticResource Foreground1}}"
+                                        Foreground="{DynamicResource Foreground1}"
                                         Text="{x:Static lang:Resources.Settings}" />
                                 </Grid>
 
@@ -436,7 +434,7 @@
                                     Background="Transparent"
                                     BorderThickness="0"
                                     Click="PickerBtn_Click"
-                                    Foreground="{Binding Source={StaticResource AccentColor}}"
+                                    Foreground="{DynamicResource AccentColor}"
                                     Style="{DynamicResource DefaultButton}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -501,7 +499,7 @@
                                         Content="{x:Static lang:Resources.Selector}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                     <Button
                                         x:Name="ChromaticPageBtn"
@@ -514,7 +512,7 @@
                                         Content="{x:Static lang:Resources.ChromaticWheel}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                 </StackPanel>
                                 <Button
@@ -526,7 +524,7 @@
                                     Background="Transparent"
                                     BorderThickness="0"
                                     Click="ColorToolsBtn_Click"
-                                    Foreground="{Binding Source={StaticResource AccentColor}}"
+                                    Foreground="{DynamicResource AccentColor}"
                                     Style="{DynamicResource DefaultButton}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -591,7 +589,7 @@
                                         Content="{x:Static lang:Resources.Converter}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                     <Button
                                         x:Name="TextPageBtn"
@@ -604,7 +602,7 @@
                                         Content="{x:Static lang:Resources.TextTool}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                 </StackPanel>
                                 <Button
@@ -616,7 +614,7 @@
                                     Background="Transparent"
                                     BorderThickness="0"
                                     Click="CreationBtn_Click"
-                                    Foreground="{Binding Source={StaticResource AccentColor}}"
+                                    Foreground="{DynamicResource AccentColor}"
                                     Style="{DynamicResource DefaultButton}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -687,7 +685,7 @@
                                         Content="{x:Static lang:Resources.Palette}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                     <Button
                                         x:Name="HarmoniesPageBtn"
@@ -700,7 +698,7 @@
                                         Content="{x:Static lang:Resources.Harmonies}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                     <Button
                                         x:Name="GradientPageBtn"
@@ -713,7 +711,7 @@
                                         Content="{x:Static lang:Resources.Gradient}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                     <Button
                                         x:Name="AiCreationPageBtn"
@@ -726,7 +724,7 @@
                                         Content="{x:Static lang:Resources.AIGeneration}"
                                         FontSize="10"
                                         FontWeight="ExtraBold"
-                                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                                        Foreground="{DynamicResource AccentColor}"
                                         Style="{DynamicResource DefaultButton}" />
                                 </StackPanel>
                             </StackPanel>

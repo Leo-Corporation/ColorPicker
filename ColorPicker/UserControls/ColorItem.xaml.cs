@@ -55,8 +55,8 @@ namespace ColorPicker.UserControls
 			ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
 			ColorBorder.ToolTip = new ToolTip()
 			{
-				Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
-				Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+				Background = Global.GetColorFromResource("Background1"),
+				Foreground = Global.GetColorFromResource("Foreground1"),
 				Content = ColorInfo.ToString()
 			};
 

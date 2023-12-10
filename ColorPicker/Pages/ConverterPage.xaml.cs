@@ -100,7 +100,7 @@ public partial class ConverterPage : Page
 		LoadInputUI();
 	}
 
-	private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+	private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 	internal ColorInfo ColorInfo { get; set; }
 
 	private RGB ConvertToRgb()
@@ -150,7 +150,7 @@ public partial class ConverterPage : Page
 		// Show a success message to the user
 		ColorValidTxt.Text = Properties.Resources.ColorValid;
 		ColorValidIconTxt.Text = "\uF299";
-		ColorValidIconTxt.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Green") };
+		ColorValidIconTxt.Foreground = Global.GetColorFromResource("Green");
 
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
@@ -347,7 +347,7 @@ public partial class ConverterPage : Page
 			// Show an error message to the user
 			ColorValidTxt.Text = Properties.Resources.InvalidColor;
 			ColorValidIconTxt.Text = "\uF36E";
-			ColorValidIconTxt.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Red") };
+			ColorValidIconTxt.Foreground = Global.GetColorFromResource("Red");
 		}
 	}
 

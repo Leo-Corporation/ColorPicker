@@ -374,9 +374,9 @@ public partial class SelectorPage : Page
 		switch (ColorTypeComboBox.SelectedIndex)
 		{
 			case 1:
-				RedSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
-				GreenSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
-				BlueSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+				RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
+				GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
+				BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
 
 				RedSlider.Maximum = 360;
 				GreenSlider.Maximum = 100;
@@ -387,9 +387,9 @@ public partial class SelectorPage : Page
 				BlueSlider.Value = current.HSV.V;
 				break;
 			case 2:
-				RedSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
-				GreenSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
-				BlueSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+				RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
+				GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
+				BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
 
 				RedSlider.Maximum = 360;
 				GreenSlider.Maximum = 100;
@@ -401,9 +401,9 @@ public partial class SelectorPage : Page
 				break;
 
 			default: // RGB
-				RedSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderRed") };
-				GreenSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderGreen") };
-				BlueSlider.Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("SliderBlue") };
+				RedSlider.Foreground = Global.GetColorFromResource("SliderRed");
+				GreenSlider.Foreground = Global.GetColorFromResource("SliderGreen");
+				BlueSlider.Foreground = Global.GetColorFromResource("SliderBlue");
 
 				RedSlider.Maximum = 255;
 				GreenSlider.Maximum = 255;

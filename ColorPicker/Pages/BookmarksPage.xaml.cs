@@ -139,7 +139,7 @@ namespace ColorPicker.Pages
 			TextBookmarks.Visibility = Visibility.Collapsed;
 		}
 
-		private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+		private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 		private void TextBtn_Click(object sender, RoutedEventArgs e)
 		{

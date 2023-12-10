@@ -137,8 +137,8 @@ namespace ColorPicker.Pages
 					},
 					ToolTip = new ToolTip()
 					{
-						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
-						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Background = Global.GetColorFromResource("Background1"),
+						Foreground = Global.GetColorFromResource("Foreground1"),
 						Content = new ColorInfo(new(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B)).ToString()
 					},
 				};
@@ -170,8 +170,8 @@ namespace ColorPicker.Pages
 					},
 					ToolTip = new ToolTip()
 					{
-						Background = new SolidColorBrush { Color = Global.GetColorFromResource("Background1") },
-						Foreground = new SolidColorBrush { Color = Global.GetColorFromResource("Foreground1") },
+						Background = Global.GetColorFromResource("Background1"),
+						Foreground = Global.GetColorFromResource("Foreground1"),
 						Content = new ColorInfo(new(monoColors[i].R, monoColors[i].G, monoColors[i].B)).ToString()
 					},
 				};
@@ -247,7 +247,7 @@ namespace ColorPicker.Pages
 			Global.SynethiaConfig.PagesInfo[7].InteractionCount++;
 		}
 
-		private void CheckButton(Button button) => button.Background = new SolidColorBrush { Color = Global.GetColorFromResource("LightAccentColor") };
+		private void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 		private void HideAllInput()
 		{

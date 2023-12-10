@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontFamily="..\Fonts\#Hauora"
-    Foreground="{Binding Source={StaticResource Foreground1}}"
+    Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
 
     <Grid>
@@ -24,7 +24,7 @@
                 VerticalAlignment="Center"
                 FontFamily="../Fonts/#FluentSystemIcons-Regular"
                 FontSize="16"
-                Foreground="{Binding Source={StaticResource AccentColor}}"
+                Foreground="{DynamicResource AccentColor}"
                 Text="&#xFD06;" />
             <TextBlock
                 x:Name="TitleTxt"
@@ -38,14 +38,14 @@
             Grid.Row="1"
             Margin="10"
             Padding="5"
-            Background="{Binding Source={StaticResource CardBackground}}"
+            Background="{DynamicResource CardBackground}"
             CornerRadius="10">
             <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="15"
                     Opacity="0.2"
                     ShadowDepth="0"
-                    Color="{Binding Source={StaticResource AccentColor}}" />
+                    Color="{DynamicResource Accent}" />
             </Border.Effect>
 
             <Grid>
@@ -74,7 +74,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.RGB}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="HexBtn"
@@ -86,7 +86,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.HEX}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="HsvBtn"
@@ -98,7 +98,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.HSV}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="HslBtn"
@@ -110,7 +110,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.HSL}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="CmykBtn"
@@ -122,7 +122,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.CMYK}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="DecBtn"
@@ -134,7 +134,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.DEC}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="XyzBtn"
@@ -146,7 +146,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.XYZ}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="YiqBtn"
@@ -158,7 +158,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.YIQ}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                     <Button
                         x:Name="YuvBtn"
@@ -170,7 +170,7 @@
                         Click="RgbBtn_Click"
                         Content="{x:Static lang:Resources.YUV}"
                         FontWeight="ExtraBold"
-                        Foreground="{Binding Source={StaticResource AccentColor}}"
+                        Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
                 </StackPanel>
 
@@ -200,7 +200,7 @@
                         x:Name="B1"
                         Width="50"
                         HorizontalAlignment="Center"
-                        Background="{Binding Source={StaticResource CardBackground}}"
+                        Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
                         Visibility="Collapsed">
                         <Border.Effect>
@@ -208,7 +208,7 @@
                                 BlurRadius="15"
                                 Opacity="0.2"
                                 ShadowDepth="0"
-                                Color="{Binding Source={StaticResource AccentColor}}" />
+                                Color="{DynamicResource Accent}" />
                         </Border.Effect>
                         <Grid>
                             <TextBox
@@ -221,7 +221,7 @@
                                 CommandManager.CanExecute="Txt1_CanExecute"
                                 CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource DarkGray}}"
+                                Foreground="{DynamicResource DarkGray}"
                                 TextAlignment="Center"
                                 TextChanged="Txt1_TextChanged" />
                         </Grid>
@@ -236,7 +236,7 @@
                         x:Name="B2"
                         Width="50"
                         HorizontalAlignment="Center"
-                        Background="{Binding Source={StaticResource CardBackground}}"
+                        Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
                         Visibility="Collapsed">
                         <Border.Effect>
@@ -244,7 +244,7 @@
                                 BlurRadius="15"
                                 Opacity="0.2"
                                 ShadowDepth="0"
-                                Color="{Binding Source={StaticResource AccentColor}}" />
+                                Color="{DynamicResource Accent}" />
                         </Border.Effect>
                         <Grid>
                             <TextBox
@@ -257,7 +257,7 @@
                                 CommandManager.CanExecute="Txt1_CanExecute"
                                 CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource DarkGray}}"
+                                Foreground="{DynamicResource DarkGray}"
                                 TextAlignment="Center"
                                 TextChanged="Txt1_TextChanged" />
                         </Grid>
@@ -272,7 +272,7 @@
                         x:Name="B3"
                         Width="50"
                         HorizontalAlignment="Center"
-                        Background="{Binding Source={StaticResource CardBackground}}"
+                        Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
                         Visibility="Collapsed">
                         <Border.Effect>
@@ -280,7 +280,7 @@
                                 BlurRadius="15"
                                 Opacity="0.2"
                                 ShadowDepth="0"
-                                Color="{Binding Source={StaticResource AccentColor}}" />
+                                Color="{DynamicResource Accent}" />
                         </Border.Effect>
                         <Grid>
                             <TextBox
@@ -293,7 +293,7 @@
                                 CommandManager.CanExecute="Txt1_CanExecute"
                                 CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource DarkGray}}"
+                                Foreground="{DynamicResource DarkGray}"
                                 TextAlignment="Center"
                                 TextChanged="Txt1_TextChanged" />
                         </Grid>
@@ -308,7 +308,7 @@
                         x:Name="B4"
                         Width="50"
                         HorizontalAlignment="Center"
-                        Background="{Binding Source={StaticResource CardBackground}}"
+                        Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
                         Visibility="Collapsed">
                         <Border.Effect>
@@ -316,7 +316,7 @@
                                 BlurRadius="15"
                                 Opacity="0.2"
                                 ShadowDepth="0"
-                                Color="{Binding Source={StaticResource AccentColor}}" />
+                                Color="{DynamicResource Accent}" />
                         </Border.Effect>
                         <Grid>
                             <TextBox
@@ -329,7 +329,7 @@
                                 CommandManager.CanExecute="Txt1_CanExecute"
                                 CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource DarkGray}}"
+                                Foreground="{DynamicResource DarkGray}"
                                 TextAlignment="Center"
                                 TextChanged="Txt1_TextChanged" />
                         </Grid>
@@ -344,7 +344,7 @@
                         x:Name="B5"
                         Width="100"
                         HorizontalAlignment="Center"
-                        Background="{Binding Source={StaticResource CardBackground}}"
+                        Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
                         Visibility="Collapsed">
                         <Border.Effect>
@@ -352,7 +352,7 @@
                                 BlurRadius="15"
                                 Opacity="0.2"
                                 ShadowDepth="0"
-                                Color="{Binding Source={StaticResource AccentColor}}" />
+                                Color="{DynamicResource Accent}" />
                         </Border.Effect>
                         <Grid>
                             <TextBox
@@ -365,7 +365,7 @@
                                 CommandManager.CanExecute="Txt1_CanExecute"
                                 CommandManager.PreviewExecuted="Txt1_PreviewExecuted"
                                 FontWeight="Bold"
-                                Foreground="{Binding Source={StaticResource DarkGray}}"
+                                Foreground="{DynamicResource DarkGray}"
                                 TextAlignment="Center"
                                 TextChanged="Txt1_TextChanged" />
                         </Grid>
@@ -376,18 +376,18 @@
                     Grid.Column="3"
                     Padding="5"
                     VerticalAlignment="Top"
-                    Background="{Binding Source={StaticResource Background3}}"
+                    Background="{DynamicResource Background3}"
                     Click="BookmarkBtn_Click"
                     Content="&#xF1F6;"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                    Foreground="{Binding Source={StaticResource Foreground1}}"
+                    Foreground="{DynamicResource Foreground1}"
                     Style="{DynamicResource DefaultButton}">
                     <Button.ToolTip>
                         <ToolTip
                             x:Name="BookmarkToolTip"
-                            Background="{Binding Source={StaticResource Background1}}"
+                            Background="{DynamicResource Background1}"
                             Content="{x:Static lang:Resources.AddBookmark}"
-                            Foreground="{Binding Source={StaticResource Foreground1}}" />
+                            Foreground="{DynamicResource Foreground1}" />
                     </Button.ToolTip>
                 </Button>
             </Grid>

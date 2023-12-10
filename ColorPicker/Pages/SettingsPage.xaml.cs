@@ -173,7 +173,7 @@ namespace ColorPicker.Pages
 		Border ThemeSelectedBorder;
 		private void Border_MouseEnter(object sender, MouseEventArgs e)
 		{
-			((Border)sender).BorderBrush = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 		}
 
 		private void Border_MouseLeave(object sender, MouseEventArgs e)
@@ -193,60 +193,41 @@ namespace ColorPicker.Pages
 		{
 			ResetBorders();
 			ThemeSelectedBorder = (Border)sender;
-			((Border)sender).BorderBrush = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 			Global.Settings.Theme = Themes.Light;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-
-			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
-			{
-				return;
-			}
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);			
 
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 
-			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
-			Application.Current.Shutdown();
+			Global.ChangeTheme();
 		}
 
 		private void DarkBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			ResetBorders();
 			ThemeSelectedBorder = (Border)sender;
-			((Border)sender).BorderBrush = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 			Global.Settings.Theme = Themes.Dark;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-
-			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
-			{
-				return;
-			}
 
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 
-			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
-			Application.Current.Shutdown();
+			Global.ChangeTheme();
 		}
-
 		private void SystemBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			ResetBorders();
 			ThemeSelectedBorder = (Border)sender;
-			((Border)sender).BorderBrush = new SolidColorBrush { Color = Global.GetColorFromResource("AccentColor") };
+			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 			Global.Settings.Theme = Themes.System;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-
-			if (MessageBox.Show(Properties.Resources.NeedRestartToApplyChanges, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
-			{
-				return;
-			}
 
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 
-			Process.Start(Directory.GetCurrentDirectory() + @"\ColorPicker.exe");
-			Application.Current.Shutdown();
+			Global.ChangeTheme();
 		}
 
 		private void LangComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

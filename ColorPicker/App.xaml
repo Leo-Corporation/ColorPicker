@@ -36,20 +36,20 @@
                                     <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource AccentColor}}" />
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource AccentColor}" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
                                     <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="White" />
 
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource AccentColor}}" />
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource AccentColor}" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
                                     <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="White" />
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="border" Property="Background" Value="Transparent" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{Binding Source={StaticResource Gray}}" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource Gray}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -81,7 +81,7 @@
                                     <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource Background1}}" />
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource Background1}" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
                                     <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="White" />
 
@@ -94,7 +94,7 @@
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="border" Property="Background" Value="Transparent" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{Binding Source={StaticResource Gray}}" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource Gray}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -126,19 +126,19 @@
                                     <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource LightAccentColor}}" />
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{Binding Source={StaticResource LightAccentColor}}" />
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource LightAccentColor}" />
                                     <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>-->
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource LightAccentColor}}" />
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{Binding Source={StaticResource LightAccentColor}}" />
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource LightAccentColor}" />
                                     <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>-->
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="border" Property="Background" Value="Transparent" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{Binding Source={StaticResource Gray}}" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource Gray}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -171,19 +171,19 @@
                                     <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource Background2}}" />
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{Binding Source={StaticResource Background2}}" />
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource Background2}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource Background2}" />
                                     <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>-->
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter TargetName="border" Property="Background" Value="{Binding Source={StaticResource Background2}}" />
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{Binding Source={StaticResource Background2}}" />
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource Background2}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource Background2}" />
                                     <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>-->
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="border" Property="Background" Value="Transparent" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{Binding Source={StaticResource Gray}}" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource Gray}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -221,15 +221,15 @@
                                 <Ellipse
                                     Grid.Row="0"
                                     Grid.RowSpan="2"
-                                    Fill="{Binding Source={StaticResource Gray}}" />
+                                    Fill="{DynamicResource Gray}" />
                                 <Rectangle
                                     Grid.Row="1"
                                     Grid.RowSpan="3"
-                                    Fill="{Binding Source={StaticResource Gray}}" />
+                                    Fill="{DynamicResource Gray}" />
                                 <Ellipse
                                     Grid.Row="3"
                                     Grid.RowSpan="2"
-                                    Fill="{Binding Source={StaticResource Gray}}" />
+                                    Fill="{DynamicResource Gray}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -378,13 +378,13 @@
             </Style>
             <SolidColorBrush x:Key="Expander.Static.Circle.Stroke" Color="Transparent" />
             <SolidColorBrush x:Key="Expander.Static.Circle.Fill" Color="Transparent" />
-            <SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="{Binding Source={StaticResource DarkGray}}" />
+            <SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="{DynamicResource DarkGrayColor}" />
             <SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="Transparent" />
             <SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="Transparent" />
-            <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="{Binding Source={StaticResource Foreground1}}" />
+            <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="{DynamicResource Foreground}" />
             <SolidColorBrush x:Key="Expander.Pressed.Circle.Stroke" Color="Transparent" />
             <SolidColorBrush x:Key="Expander.Pressed.Circle.Fill" Color="Transparent" />
-            <SolidColorBrush x:Key="Expander.Pressed.Arrow.Stroke" Color="{Binding Source={StaticResource Foreground1}}" />
+            <SolidColorBrush x:Key="Expander.Pressed.Arrow.Stroke" Color="{DynamicResource Foreground}" />
             <SolidColorBrush x:Key="Expander.Disabled.Circle.Stroke" Color="Transparent" />
             <SolidColorBrush x:Key="Expander.Disabled.Circle.Fill" Color="Transparent" />
             <SolidColorBrush x:Key="Expander.Disabled.Arrow.Stroke" Color="#FF707070" />
@@ -1165,39 +1165,39 @@
                 <GradientStop Offset="0.0" Color="Transparent" />
                 <GradientStop Offset="1.0" Color="Transparent" />
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="ComboBox.Static.Border" Color="{Binding Source={StaticResource AccentColor}}" />
-            <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="{Binding Source={StaticResource AccentColor}}" />
+            <SolidColorBrush x:Key="ComboBox.Static.Border" Color="{DynamicResource Accent}" />
+            <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="{DynamicResource Accent}" />
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="Transparent" />
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3" />
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent" />
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent" />
             <SolidColorBrush x:Key="TextBox.Static.Background" Color="Transparent" />
             <LinearGradientBrush x:Key="ComboBox.MouseOver.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="{Binding Source={StaticResource AccentColor}}" />
-                <GradientStop Offset="1.0" Color="{Binding Source={StaticResource AccentColor}}" />
+                <GradientStop Offset="0.0" Color="{DynamicResource Accent}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource Accent}" />
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="{Binding Source={StaticResource LightAccentColor}}" />
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="{DynamicResource LightAccent}" />
             <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#fff" />
             <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="Transparent" />
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="{Binding Source={StaticResource LightAccentColor}}" />
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="{DynamicResource LightAccent}" />
             <LinearGradientBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="{Binding Source={StaticResource LightAccentColor}}" />
-                <GradientStop Offset="1.0" Color="{Binding Source={StaticResource LightAccentColor}}" />
+                <GradientStop Offset="0.0" Color="{DynamicResource LightAccent}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource LightAccent}" />
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Border" Color="{Binding Source={StaticResource LightAccentColor}}" />
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Border" Color="{DynamicResource LightAccent}" />
             <LinearGradientBrush x:Key="ComboBox.Pressed.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="{Binding Source={StaticResource AccentColor}}" />
-                <GradientStop Offset="1.0" Color="{Binding Source={StaticResource AccentColor}}" />
+                <GradientStop Offset="0.0" Color="{DynamicResource Accent}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource Accent}" />
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="{Binding Source={StaticResource AccentColor}}" />
+            <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="{DynamicResource Accent}" />
             <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="#fff" />
             <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Background" Color="Transparent" />
-            <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Border" Color="{Binding Source={StaticResource AccentColor}}" />
+            <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Border" Color="{DynamicResource Accent}" />
             <LinearGradientBrush x:Key="ComboBox.Pressed.Editable.Button.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="{Binding Source={StaticResource AccentColor}}" />
-                <GradientStop Offset="1.0" Color="{Binding Source={StaticResource AccentColor}}" />
+                <GradientStop Offset="0.0" Color="{DynamicResource Accent}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource Accent}" />
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="{Binding Source={StaticResource AccentColor}}" />
+            <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="{DynamicResource Accent}" />
             <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="Transparent" />
             <SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="#FFD9D9D9" />
             <SolidColorBrush x:Key="ComboBox.Disabled.Glyph" Color="#FFBFBFBF" />
@@ -1343,7 +1343,7 @@
                             Color="Transparent">
                             <Border
                                 x:Name="dropDownBorder"
-                                Background="{Binding Source={StaticResource Background1}}"
+                                Background="{DynamicResource Background1}"
                                 BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
                                 BorderThickness="1"
                                 CornerRadius="5">
@@ -1431,7 +1431,7 @@
                             Color="Transparent">
                             <Border
                                 x:Name="dropDownBorder"
-                                Background="{Binding Source={StaticResource Background1}}"
+                                Background="{DynamicResource Background1}"
                                 BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
                                 BorderThickness="1"
                                 CornerRadius="5">
@@ -1508,7 +1508,7 @@
             </ControlTemplate>
             <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="BorderBrush" Value="{Binding Source={StaticResource AccentColor}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentColor}" />
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -1549,10 +1549,10 @@
             <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070" />
             <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="White" />
             <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="Transparent" />
-            <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="{Binding Source={StaticResource AccentColor}}" />
+            <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="{DynamicResource Accent}" />
             <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="White" />
             <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="Transparent" />
-            <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="{Binding Source={StaticResource AccentColor}}" />
+            <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="{DynamicResource Accent}" />
             <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="WhiteSmoke" />
             <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6" />
             <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC" />
@@ -1581,7 +1581,7 @@
                                     Margin="1"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    BorderBrush="{Binding Source={StaticResource AccentColor}}"
+                                    BorderBrush="{DynamicResource AccentColor}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="3">
                                     <Grid x:Name="markGrid">
@@ -1637,7 +1637,7 @@
                                 <Trigger Property="IsChecked" Value="true">
                                     <Setter TargetName="optionMark" Property="Opacity" Value="1" />
                                     <Setter TargetName="indeterminateMark" Property="Opacity" Value="0" />
-                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="{Binding Source={StaticResource AccentColor}}" />
+                                    <Setter TargetName="checkBoxBorder" Property="Background" Value="{DynamicResource AccentColor}" />
                                 </Trigger>
                                 <Trigger Property="IsChecked" Value="{x:Null}">
                                     <Setter TargetName="optionMark" Property="Opacity" Value="0" />
@@ -1652,7 +1652,7 @@
             <Style x:Key="MenuStyle" TargetType="MenuItem">
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="OverridesDefaultStyle" Value="True" />
-                <Setter Property="Foreground" Value="{Binding Source={StaticResource Background1}}" />
+                <Setter Property="Foreground" Value="{DynamicResource Background1}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="MenuItem">
@@ -1666,7 +1666,7 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Border" Property="Background" Value="{Binding Source={StaticResource Background2}}" />
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource Background2}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -1681,7 +1681,7 @@
                             <Border
                                 Margin="10"
                                 Padding="5"
-                                Background="{Binding Source={StaticResource Background1}}"
+                                Background="{DynamicResource Background1}"
                                 CornerRadius="5">
                                 <ScrollViewer
                                     Uid="ScrollViewer_9"
