@@ -1420,6 +1420,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Steps.
+        /// </summary>
+        public static string Steps {
+            get {
+                return ResourceManager.GetString("Steps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suggested actions.
         /// </summary>
         public static string SuggestedActions {

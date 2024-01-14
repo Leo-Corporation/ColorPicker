@@ -622,4 +622,7 @@
   <data name="Angle" xml:space="preserve">
     <value>Angle</value>
   </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Steps</value>
+  </data>
 </root>

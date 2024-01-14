@@ -141,7 +141,7 @@ namespace ColorPicker.Pages
 
 			// Monochromatic
 			MonochromaticPanel.Children.Clear();
-			var monoColors = Global.GenerateMonochromaticColors(color, 6, 6);
+			var monoColors = Global.GenerateMonochromaticColors(color, 6, int.Parse(StepsTxt.Text));
 			for (int i = 0; i < monoColors.Length; i++)
 			{
 				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
@@ -475,6 +475,11 @@ namespace ColorPicker.Pages
 				InitHarmonies();
 			}
 			catch { }
+		}
+
+		private void MonochromaticSettingsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MonochromaticPopup.IsOpen = true;
 		}
 	}
 }

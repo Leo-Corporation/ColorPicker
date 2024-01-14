@@ -650,4 +650,7 @@
   <data name="Angle" xml:space="preserve">
     <value>角度</value>
   </data>
+  <data name="Steps" xml:space="preserve">
+    <value>步骤</value>
+  </data>
 </root>
