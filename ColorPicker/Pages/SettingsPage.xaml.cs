@@ -514,7 +514,10 @@ namespace ColorPicker.Pages
 			OpenAIService sdk = new(new() { ApiKey = Global.Settings.ApiKey });
 			var modelList = await sdk.Models.ListModel();
 
-			Global.Settings.SupportedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToArray();
+			var sortedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToList();
+			sortedModels.Sort();
+
+			Global.Settings.SupportedModels = sortedModels.ToArray();
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
 			ModelComboBox.Items.Clear();
