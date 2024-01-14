@@ -653,4 +653,7 @@
   <data name="Steps" xml:space="preserve">
     <value>步骤</value>
   </data>
+  <data name="AmountToGenerate" xml:space="preserve">
+    <value>产生金额</value>
+  </data>
 </root>

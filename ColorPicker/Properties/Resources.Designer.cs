@@ -115,6 +115,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount to generate.
+        /// </summary>
+        public static string AmountToGenerate {
+            get {
+                return ResourceManager.GetString("AmountToGenerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Analogous.
         /// </summary>
         public static string Analogous {

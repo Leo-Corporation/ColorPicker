@@ -649,4 +649,7 @@
   <data name="Steps" xml:space="preserve">
     <value>Pas</value>
   </data>
+  <data name="AmountToGenerate" xml:space="preserve">
+    <value>Nombre de couleurs à générer</value>
+  </data>
 </root>

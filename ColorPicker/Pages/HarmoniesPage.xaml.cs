@@ -108,7 +108,7 @@ namespace ColorPicker.Pages
 
 			// Analogous
 			AnalogousPanel.Children.Clear();
-			var analogousColors = Global.GenerateAnalogousColors(color, 6, int.Parse(AngleTxt.Text));
+			var analogousColors = Global.GenerateAnalogousColors(color, int.Parse(AmountTxt.Text), int.Parse(AngleTxt.Text));
 			for (int i = 0; i < analogousColors.Length; i++)
 			{
 				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);

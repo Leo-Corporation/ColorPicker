@@ -552,36 +552,69 @@
                         ShadowDepth="0"
                         Color="{DynamicResource Accent}" />
                 </Border.Effect>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        Margin="0 0 10 0"
-                        VerticalAlignment="Center"
-                        Text="{x:Static lang:Resources.Angle}" />
-                    <Border
-                        Width="50"
-                        HorizontalAlignment="Center"
-                        Background="{DynamicResource CardBackground}"
-                        CornerRadius="5">
-                        <Border.Effect>
-                            <DropShadowEffect
-                                BlurRadius="15"
-                                Opacity="0.2"
-                                ShadowDepth="0"
-                                Color="{DynamicResource Accent}" />
-                        </Border.Effect>
-                        <TextBox
-                            x:Name="AngleTxt"
-                            Margin="3"
-                            Padding="3"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            FontWeight="Bold"
-                            Foreground="{DynamicResource DarkGray}"
-                            PreviewTextInput="AngleTxt_PreviewTextInput"
-                            Text="15"
-                            TextAlignment="Center"
-                            TextChanged="AngleTxt_TextChanged" />
-                    </Border>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.Angle}" />
+                        <Border
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="AngleTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                PreviewTextInput="AngleTxt_PreviewTextInput"
+                                Text="15"
+                                TextAlignment="Center"
+                                TextChanged="AngleTxt_TextChanged" />
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.AmountToGenerate}" />
+                        <Border
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="AmountTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                PreviewTextInput="AngleTxt_PreviewTextInput"
+                                Text="6"
+                                TextAlignment="Center"
+                                TextChanged="AngleTxt_TextChanged" />
+                        </Border>
+                    </StackPanel>
                 </StackPanel>
             </Border>
         </Popup>
