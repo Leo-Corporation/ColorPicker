@@ -53,7 +53,7 @@ namespace ColorPicker.Classes
 		public override string ToString()
 		{
 			return $"{Properties.Resources.RGB}: {RGB.R};{RGB.G};{RGB.B}\n" +
-				$"{Properties.Resources.HEX}: {HEX.Value}\n" +
+				$"{Properties.Resources.HEX}: {(HEX.Value.StartsWith("#") ? "" : "#")}{HEX.Value}\n" +
 				$"{Properties.Resources.HSV}: {HSV.H},{HSV.S},{HSV.V}\n" +
 				$"{Properties.Resources.HSL}: {HSL.H},{HSL.S},{HSL.L}\n" +
 				$"{Properties.Resources.CMYK}: {CMYK.C},{CMYK.M},{CMYK.Y},{CMYK.K}\n" +
