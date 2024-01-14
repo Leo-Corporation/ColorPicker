@@ -114,7 +114,7 @@ namespace ColorPicker.UserControls
 							ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
 							ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
 							ColorTypes.DEC => info.DEC.Value.ToString(),
-							_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
+							_ => $"{shades[j].R}{Global.Settings.RgbSeparator}{shades[j].G}{Global.Settings.RgbSeparator}{shades[j].B}"
 						});
 					};
 
@@ -141,7 +141,7 @@ namespace ColorPicker.UserControls
 				ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
 				ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
 				ColorTypes.DEC => ColorInfo.DEC.Value.ToString(),
-				_ => $"{ColorInfo.RGB.R};{ColorInfo.RGB.G};{ColorInfo.RGB.B}"
+				_ => $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}"
 			});
 		}
 

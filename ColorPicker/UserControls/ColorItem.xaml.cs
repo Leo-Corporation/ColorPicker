@@ -60,7 +60,7 @@ namespace ColorPicker.UserControls
 				Content = ColorInfo.ToString()
 			};
 
-			RgbTxt.Text = $"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}"; // Set text
+			RgbTxt.Text = $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}"; // Set text
 			HEXTxt.Text = HexColor; // Set text
 		}
 
@@ -76,7 +76,7 @@ namespace ColorPicker.UserControls
 				ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
 				ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
 				ColorTypes.DEC => ColorInfo.DEC.Value.ToString(),
-				_ => $"{ColorInfo.RGB.R};{ColorInfo.RGB.G};{ColorInfo.RGB.B}"
+				_ => $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}"
 			});
 		}
 
@@ -101,7 +101,7 @@ namespace ColorPicker.UserControls
 
 		private void CopyRGB_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetText($"{ColorInfo.RGB.R}; {ColorInfo.RGB.G}; {ColorInfo.RGB.B}");
+			Clipboard.SetText($"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}");
 		}
 
 		private void CopyHEX_Click(object sender, RoutedEventArgs e)

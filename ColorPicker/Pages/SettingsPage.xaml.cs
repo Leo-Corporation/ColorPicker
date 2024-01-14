@@ -84,6 +84,7 @@ namespace ColorPicker.Pages
 			// Load the color option section
 			Global.Settings.RgbSeparator ??= ";";
 			ColorTypeComboBox.SelectedIndex = (int)Global.Settings.DefaultColorType;
+			RgbSeparatorTxt.Text = Global.Settings.RgbSeparator;
 
 			// Load the default page ComboBox
 			PageComboBox.SelectedIndex = (int)Global.Settings.DefaultPage;
@@ -529,7 +530,13 @@ namespace ColorPicker.Pages
 			ModelComboBox.SelectedItem = Global.Settings.Model;
 		}
 
-		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
+		private void RgbSeparatorTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			Global.Settings.RgbSeparator = RgbSeparatorTxt.Text;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+        private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
 		{
 			// Ask the user a confirmation
 			if (MessageBox.Show(Properties.Resources.SynethiaDeleteMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
