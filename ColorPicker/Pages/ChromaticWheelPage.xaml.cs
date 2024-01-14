@@ -108,7 +108,7 @@ public partial class ChromaticWheelPage : Page
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B) };
 
 		ColorInfo = colorInfo;
-		RgbTxt.Text = $"{colorInfo.RGB.R}; {colorInfo.RGB.G}; {colorInfo.RGB.B}";
+		RgbTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
 		HexTxt.Text = $"#{colorInfo.HEX.Value}";
 		HsvTxt.Text = $"{colorInfo.HSV.H}, {colorInfo.HSV.S}, {colorInfo.HSV.V}";
 		HslTxt.Text = $"{colorInfo.HSL.H}, {colorInfo.HSL.S}, {colorInfo.HSL.L}";

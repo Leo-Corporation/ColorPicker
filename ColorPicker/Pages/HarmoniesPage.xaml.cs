@@ -27,6 +27,8 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
+using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -106,7 +108,7 @@ namespace ColorPicker.Pages
 
 			// Analogous
 			AnalogousPanel.Children.Clear();
-			var analogousColors = Global.GenerateAnalogousColors(color, 6, 15);
+			var analogousColors = Global.GenerateAnalogousColors(color, int.Parse(AmountTxt.Text), int.Parse(AngleTxt.Text));
 			for (int i = 0; i < analogousColors.Length; i++)
 			{
 				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
@@ -139,7 +141,7 @@ namespace ColorPicker.Pages
 
 			// Monochromatic
 			MonochromaticPanel.Children.Clear();
-			var monoColors = Global.GenerateMonochromaticColors(color, 6, 6);
+			var monoColors = Global.GenerateMonochromaticColors(color, 6, int.Parse(StepsTxt.Text));
 			for (int i = 0; i < monoColors.Length; i++)
 			{
 				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
@@ -411,7 +413,7 @@ namespace ColorPicker.Pages
 					}
 					else
 					{
-						var split = text.Split(";");
+						var split = text.Split(new string[] { ";", Global.Settings.RgbSeparator ?? ";" }, StringSplitOptions.None);
 						Txt1.Text = split[0];
 						Txt2.Text = split[1];
 						Txt3.Text = split[2];
@@ -453,6 +455,31 @@ namespace ColorPicker.Pages
 			Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
 			BookmarkBtn.Content = "\uF1F8";
 			BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+		}
+
+		private void AnalogousSettingsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			AnalogousPopup.IsOpen = true;
+		}
+
+		private void AngleTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+		{
+			Regex regex = new("[^0-9]+");
+			e.Handled = regex.IsMatch(e.Text);
+		}
+
+		private void AngleTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			try
+			{
+				InitHarmonies();
+			}
+			catch { }
+		}
+
+		private void MonochromaticSettingsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MonochromaticPopup.IsOpen = true;
 		}
 	}
 }

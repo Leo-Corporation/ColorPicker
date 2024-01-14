@@ -437,7 +437,7 @@ public partial class TextPage : Page
 				}
 				else
 				{
-					var split = text.Split(";");
+					var split = text.Split(new string[] { ";", Global.Settings.RgbSeparator ?? ";" }, StringSplitOptions.None);
 					Txt1.Text = split[0];
 					Txt2.Text = split[1];
 					Txt3.Text = split[2];

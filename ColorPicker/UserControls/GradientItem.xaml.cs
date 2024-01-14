@@ -66,8 +66,8 @@ namespace ColorPicker.UserControls
 				linearGradientBrush.GradientStops.Add(new(color, Gradient.Stops[i].Stop));
 
 				// Text
-				if (i == 0) FromTxt.Text = $"{colorInfo.RGB.R}; {colorInfo.RGB.G}; {colorInfo.RGB.B}";
-				if (i == Gradient.Stops.Count - 1) ToTxt.Text = $"{colorInfo.RGB.R}; {colorInfo.RGB.G}; {colorInfo.RGB.B}";
+				if (i == 0) FromTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
+				if (i == Gradient.Stops.Count - 1) ToTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
 
 			}
 

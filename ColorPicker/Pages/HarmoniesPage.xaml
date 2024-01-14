@@ -477,22 +477,197 @@
                     Cursor="Hand"
                     MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
             </StackPanel>
-            <TextBlock
-                Margin="5"
-                FontWeight="Bold"
-                Text="{x:Static lang:Resources.Analogous}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Margin="5"
+                    FontWeight="Bold"
+                    Text="{x:Static lang:Resources.Analogous}" />
+                <Button
+                    x:Name="AnalogousSettingsBtn"
+                    Grid.Column="3"
+                    Padding="5"
+                    VerticalAlignment="Center"
+                    Background="{DynamicResource Background3}"
+                    Click="AnalogousSettingsBtn_Click"
+                    Content="&#xF6AA;"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    Foreground="{DynamicResource Foreground1}"
+                    Style="{DynamicResource DefaultButton}">
+                    <Button.ToolTip>
+                        <ToolTip
+                            Background="{DynamicResource Background1}"
+                            Content="{x:Static lang:Resources.Settings}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
             <WrapPanel
                 x:Name="AnalogousPanel"
                 Margin="10"
                 Orientation="Horizontal" />
-            <TextBlock
-                Margin="5"
-                FontWeight="Bold"
-                Text="{x:Static lang:Resources.Monochromatic}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Margin="5"
+                    FontWeight="Bold"
+                    Text="{x:Static lang:Resources.Monochromatic}" />
+                <Button
+                    x:Name="MonochromaticSettingsBtn"
+                    Grid.Column="3"
+                    Padding="5"
+                    VerticalAlignment="Center"
+                    Background="{DynamicResource Background3}"
+                    Click="MonochromaticSettingsBtn_Click"
+                    Content="&#xF6AA;"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    Foreground="{DynamicResource Foreground1}"
+                    Style="{DynamicResource DefaultButton}">
+                    <Button.ToolTip>
+                        <ToolTip
+                            Background="{DynamicResource Background1}"
+                            Content="{x:Static lang:Resources.Settings}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
             <WrapPanel
                 x:Name="MonochromaticPanel"
                 Margin="10"
                 Orientation="Horizontal" />
         </StackPanel>
+        <Popup
+            x:Name="AnalogousPopup"
+            AllowsTransparency="True"
+            Placement="Top"
+            PlacementTarget="{Binding ElementName=AnalogousSettingsBtn}"
+            StaysOpen="False">
+            <Border
+                Margin="10"
+                Padding="5"
+                Background="{DynamicResource CardBackground}"
+                CornerRadius="10">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Opacity="0.2"
+                        ShadowDepth="0"
+                        Color="{DynamicResource Accent}" />
+                </Border.Effect>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.Angle}" />
+                        <Border
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="AngleTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                PreviewTextInput="AngleTxt_PreviewTextInput"
+                                Text="15"
+                                TextAlignment="Center"
+                                TextChanged="AngleTxt_TextChanged" />
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.AmountToGenerate}" />
+                        <Border
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="AmountTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                PreviewTextInput="AngleTxt_PreviewTextInput"
+                                Text="6"
+                                TextAlignment="Center"
+                                TextChanged="AngleTxt_TextChanged" />
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <Popup
+            x:Name="MonochromaticPopup"
+            AllowsTransparency="True"
+            Placement="Top"
+            PlacementTarget="{Binding ElementName=MonochromaticSettingsBtn}"
+            StaysOpen="False">
+            <Border
+                Margin="10"
+                Padding="5"
+                Background="{DynamicResource CardBackground}"
+                CornerRadius="10">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Opacity="0.2"
+                        ShadowDepth="0"
+                        Color="{DynamicResource Accent}" />
+                </Border.Effect>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0 0 10 0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static lang:Resources.Steps}" />
+                    <Border
+                        Width="50"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource CardBackground}"
+                        CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{DynamicResource Accent}" />
+                        </Border.Effect>
+                        <TextBox
+                            x:Name="StepsTxt"
+                            Margin="3"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource DarkGray}"
+                            PreviewTextInput="AngleTxt_PreviewTextInput"
+                            Text="6"
+                            TextAlignment="Center"
+                            TextChanged="AngleTxt_TextChanged" />
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Page>

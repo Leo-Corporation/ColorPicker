@@ -333,33 +333,64 @@
                         </StackPanel>
                     </StackPanel>
                 </Expander.Header>
-                <StackPanel Margin="10" Orientation="Horizontal">
-                    <TextBlock
-                        Margin="0 0 10 0"
-                        VerticalAlignment="Center"
-                        Text="{x:Static lang:Resources.DefaultColorType}" />
-                    <ComboBox
-                        x:Name="ColorTypeComboBox"
-                        Margin="0 0 10 0"
-                        Padding="5"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Background="Transparent"
-                        BorderBrush="{DynamicResource AccentColor}"
-                        BorderThickness="2"
-                        Foreground="{DynamicResource Foreground1}"
-                        SelectionChanged="ColorTypeComboBox_SelectionChanged"
-                        Style="{DynamicResource ComboBoxStyle1}">
-                        <ComboBoxItem Content="{x:Static lang:Resources.RGB}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.HEX}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.HSV}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.HSL}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.CMYK}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.XYZ}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.YIQ}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.YUV}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.DEC}" />
-                    </ComboBox>
+                <StackPanel>
+                    <StackPanel Margin="10 5" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.DefaultColorType}" />
+                        <ComboBox
+                            x:Name="ColorTypeComboBox"
+                            Margin="0 0 10 0"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="{DynamicResource AccentColor}"
+                            BorderThickness="2"
+                            Foreground="{DynamicResource Foreground1}"
+                            SelectionChanged="ColorTypeComboBox_SelectionChanged"
+                            Style="{DynamicResource ComboBoxStyle1}">
+                            <ComboBoxItem Content="{x:Static lang:Resources.RGB}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.HEX}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.HSV}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.HSL}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.CMYK}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.XYZ}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.YIQ}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.YUV}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.DEC}" />
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="10 5" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.RgbSeparator}" />
+                        <Border
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="RgbSeparatorTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                TextAlignment="Center"
+                                TextChanged="RgbSeparatorTxt_TextChanged" />
+                        </Border>
+                    </StackPanel>
                 </StackPanel>
             </Expander>
             <Expander

@@ -81,8 +81,10 @@ namespace ColorPicker.Pages
 				_ => SystemBorder
 			}, null);
 
-			// Load the default color type
+			// Load the color option section
+			Global.Settings.RgbSeparator ??= ";";
 			ColorTypeComboBox.SelectedIndex = (int)Global.Settings.DefaultColorType;
+			RgbSeparatorTxt.Text = Global.Settings.RgbSeparator;
 
 			// Load the default page ComboBox
 			PageComboBox.SelectedIndex = (int)Global.Settings.DefaultPage;
@@ -482,8 +484,8 @@ namespace ColorPicker.Pages
 			"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
 			"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
 			"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
-			"PeyrSharp - MIT License - © 2022-2023 Léo Corporation\n" +
-			"ColorPicker - MIT License - © 2021-2023 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+			"PeyrSharp - MIT License - © 2022-2024 Devyus\n" +
+			"ColorPicker - MIT License - © 2021-2024 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 
 		private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
@@ -514,7 +516,10 @@ namespace ColorPicker.Pages
 			OpenAIService sdk = new(new() { ApiKey = Global.Settings.ApiKey });
 			var modelList = await sdk.Models.ListModel();
 
-			Global.Settings.SupportedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToArray();
+			var sortedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToList();
+			sortedModels.Sort();
+
+			Global.Settings.SupportedModels = sortedModels.ToArray();
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
 			ModelComboBox.Items.Clear();
@@ -523,6 +528,12 @@ namespace ColorPicker.Pages
 				ModelComboBox.Items.Add(Global.Settings.SupportedModels[i]);
 			}
 			ModelComboBox.SelectedItem = Global.Settings.Model;
+		}
+
+		private void RgbSeparatorTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			Global.Settings.RgbSeparator = RgbSeparatorTxt.Text;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 
 		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

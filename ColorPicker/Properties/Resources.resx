@@ -616,4 +616,16 @@
   <data name="EmptyAiPlaceholder" xml:space="preserve">
     <value>Enter a prompt to generate colors using the power of AI</value>
   </data>
+  <data name="RgbSeparator" xml:space="preserve">
+    <value>RGB Separator</value>
+  </data>
+  <data name="Angle" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Steps</value>
+  </data>
+  <data name="AmountToGenerate" xml:space="preserve">
+    <value>Amount to generate</value>
+  </data>
 </root>

@@ -59,25 +59,25 @@ public static class Global
 	{
 		PagesInfo = new List<PageInfo>()
 		{
-			new PageInfo("Selector"),
-			new PageInfo("ChromaticWheel"),
-			new PageInfo("Converter"),
-			new PageInfo("TextTool"),
-			new PageInfo("Palette"),
-			new PageInfo("Gradient"),
-			new PageInfo("AIGeneration"),
-			new PageInfo("Harmonies"),
+			new("Selector"),
+			new("ChromaticWheel"),
+			new("Converter"),
+			new("TextTool"),
+			new("Palette"),
+			new("Gradient"),
+			new("AIGeneration"),
+			new("Harmonies"),
 		},
 		ActionsInfo = new List<ActionInfo>()
 		{
-			new ActionInfo(0, "Selector.SelectBtn"),
-			new ActionInfo(1, "Chromatic.Disc"),
-			new ActionInfo(2, "Converter.FromRgb"),
-			new ActionInfo(3, "TextTool.Contrast"),
-			new ActionInfo(4, "Palette.GeneratePalette"),
-			new ActionInfo(5, "Gradient.GenerateGradient"),
-			new ActionInfo(6, "Ai.GenerateColor"),
-			new ActionInfo(7, "Harmonies.GetHarmony"),
+			new(0, "Selector.SelectBtn"),
+			new(1, "Chromatic.Disc"),
+			new(2, "Converter.FromRgb"),
+			new(3, "TextTool.Contrast"),
+			new(4, "Palette.GeneratePalette"),
+			new(5, "Gradient.GenerateGradient"),
+			new(6, "Ai.GenerateColor"),
+			new(7, "Harmonies.GetHarmony"),
 		}
 	};
 
@@ -88,7 +88,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "5.8.0.2312";
+	public static string Version => "5.9.0.2401";
 
 	public static string HiSentence
 	{

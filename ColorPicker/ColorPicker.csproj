@@ -6,12 +6,12 @@
 	<Nullable>enable</Nullable>
 	<UseWPF>true</UseWPF>
 	<UseWindowsForms>True</UseWindowsForms>
-	<Copyright>© 2023</Copyright>
+	<Copyright>© 2024</Copyright>
 	<Authors>Léo Corporation</Authors>
 	<Title>ColorPicker</Title>
 	<Description>Maximize your creativity.</Description>
 	<RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
-	<Version>5.8.0.2312</Version>
+	<Version>5.9.0.2401</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageIcon>logo.png</PackageIcon>
 	<ApplicationIcon>CPM.ico</ApplicationIcon>
@@ -99,11 +99,11 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Compile Update="Properties\Resources.Designer.cs">
-	  <DesignTime>True</DesignTime>
-	  <AutoGen>True</AutoGen>
-	  <DependentUpon>Resources.resx</DependentUpon>
-	</Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
