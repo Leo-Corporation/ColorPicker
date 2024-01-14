@@ -536,7 +536,7 @@ namespace ColorPicker.Pages
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 
-        private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
+		private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
 		{
 			// Ask the user a confirmation
 			if (MessageBox.Show(Properties.Resources.SynethiaDeleteMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)

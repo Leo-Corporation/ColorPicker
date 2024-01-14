@@ -460,7 +460,7 @@ namespace ColorPicker.Pages
 		private void AnalogousSettingsBtn_Click(object sender, RoutedEventArgs e)
 		{
 			AnalogousPopup.IsOpen = true;
-        }
+		}
 
 		private void AngleTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
 		{
