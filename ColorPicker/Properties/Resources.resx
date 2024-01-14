@@ -619,4 +619,7 @@
   <data name="RgbSeparator" xml:space="preserve">
     <value>RGB Separator</value>
   </data>
+  <data name="Angle" xml:space="preserve">
+    <value>Angle</value>
+  </data>
 </root>

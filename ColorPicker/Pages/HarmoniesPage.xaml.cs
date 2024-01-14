@@ -28,6 +28,7 @@ using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -107,7 +108,7 @@ namespace ColorPicker.Pages
 
 			// Analogous
 			AnalogousPanel.Children.Clear();
-			var analogousColors = Global.GenerateAnalogousColors(color, 6, 15);
+			var analogousColors = Global.GenerateAnalogousColors(color, 6, int.Parse(AngleTxt.Text));
 			for (int i = 0; i < analogousColors.Length; i++)
 			{
 				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
@@ -454,6 +455,26 @@ namespace ColorPicker.Pages
 			Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
 			BookmarkBtn.Content = "\uF1F8";
 			BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+		}
+
+		private void AnalogousSettingsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			AnalogousPopup.IsOpen = true;
+        }
+
+		private void AngleTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+		{
+			Regex regex = new("[^0-9]+");
+			e.Handled = regex.IsMatch(e.Text);
+		}
+
+		private void AngleTxt_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			try
+			{
+				InitHarmonies();
+			}
+			catch { }
 		}
 	}
 }

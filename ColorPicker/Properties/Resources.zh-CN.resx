@@ -647,4 +647,7 @@
   <data name="RgbSeparator" xml:space="preserve">
     <value>RGB 分色器</value>
   </data>
+  <data name="Angle" xml:space="preserve">
+    <value>角度</value>
+  </data>
 </root>
