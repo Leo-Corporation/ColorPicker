@@ -26,6 +26,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -315,7 +316,7 @@ public partial class PalettePage : Page
 						ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
 						ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
 						ColorTypes.DEC => info.DEC.Value.ToString(),
-						_ => $"{shades[j].R};{shades[j].G};{shades[j].B}"
+						_ => $"{shades[j].R}{Global.Settings.RgbSeparator}{shades[j].G}{Global.Settings.RgbSeparator}{shades[j].B}"
 					});
 				};
 
@@ -383,7 +384,7 @@ public partial class PalettePage : Page
 				}
 				else
 				{
-					var split = text.Split(";");
+					var split = text.Split(new string[] { ";", Global.Settings.RgbSeparator ?? ";" }, StringSplitOptions.None);
 					Txt1.Text = split[0];
 					Txt2.Text = split[1];
 					Txt3.Text = split[2];

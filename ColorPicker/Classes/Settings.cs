@@ -47,6 +47,7 @@ namespace ColorPicker.Classes
 			ApiKey = "";
 			Model = "gpt-3.5-turbo";
 			SupportedModels = new[] { "gpt-3.5-turbo", "gpt-4" };
+			RgbSeparator = ";";
 		}
 
 		public Themes Theme { get; set; }
@@ -67,5 +68,6 @@ namespace ColorPicker.Classes
 		public string? ApiKey { get; set; }
 		public string? Model { get; set; }
 		public string[]? SupportedModels { get; set; }
+		public string? RgbSeparator { get; set; }
 	}
 }

@@ -25,6 +25,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -398,7 +399,7 @@ public partial class GradientPage : Page
 				}
 				else
 				{
-					var split = text.Split(";");
+					var split = text.Split(new string[] { ";", Global.Settings.RgbSeparator ?? ";" }, StringSplitOptions.None);
 					Txt1.Text = split[0];
 					Txt2.Text = split[1];
 					Txt3.Text = split[2];

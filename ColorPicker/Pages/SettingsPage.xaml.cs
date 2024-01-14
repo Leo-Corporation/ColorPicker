@@ -81,7 +81,8 @@ namespace ColorPicker.Pages
 				_ => SystemBorder
 			}, null);
 
-			// Load the default color type
+			// Load the color option section
+			Global.Settings.RgbSeparator ??= ";";
 			ColorTypeComboBox.SelectedIndex = (int)Global.Settings.DefaultColorType;
 
 			// Load the default page ComboBox
