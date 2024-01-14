@@ -622,7 +622,7 @@
             x:Name="MonochromaticPopup"
             AllowsTransparency="True"
             Placement="Top"
-            PlacementTarget="{Binding ElementName=AnalogousSettingsBtn}"
+            PlacementTarget="{Binding ElementName=MonochromaticSettingsBtn}"
             StaysOpen="False">
             <Border
                 Margin="10"
