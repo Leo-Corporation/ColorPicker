@@ -640,4 +640,7 @@
   <data name="EmptyAiPlaceholder" xml:space="preserve">
     <value>Saisissez une instruction pour générer des couleurs en utilisant la puissance de l'IA</value>
   </data>
+  <data name="RgbSeparator" xml:space="preserve">
+    <value>Séparateur RGB</value>
+  </data>
 </root>

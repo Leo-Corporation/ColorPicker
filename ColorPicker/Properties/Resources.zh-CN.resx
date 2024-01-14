@@ -644,4 +644,7 @@
   <data name="EmptyAiPlaceholder" xml:space="preserve">
     <value>输入提示，利用人工智能的力量生成颜色</value>
   </data>
+  <data name="RgbSeparator" xml:space="preserve">
+    <value>RGB 分色器</value>
+  </data>
 </root>
