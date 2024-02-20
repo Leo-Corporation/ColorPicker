@@ -54,16 +54,15 @@ public partial class HomePage : Page
 			DiscoverPanel.Children.Add(new PageCard(Global.PageInfoToAppPages(relevantPages[i])));
 		}
 
-		// Load "Suggested actions" section
-		for (int i = 0; i < 4; i++)
-		{
-			SuggestedActionsPanel.Children.Add(new ActionCard(Global.SynethiaConfig.MostRelevantActions[i].Id));
-		}
-
 		// Keyboard hints
 		KeyboardHintTxt.Text = string.Format(Properties.Resources.KeyboardSelectionHint, Global.Settings.SelectKeyboardShortcut.Replace("LControlKey", "Ctrl")
 			.Replace("LShiftKey", "Shift")
 			.Replace("RShiftKey", "Shift")
 			.Replace("RControlKey", "Ctrl"));
+	}
+
+	private void SelectColor_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	{
+		Global.SelectorPage.SelectBtn_Click(sender, e);
 	}
 }

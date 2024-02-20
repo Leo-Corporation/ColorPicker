@@ -75,7 +75,35 @@
         <WrapPanel
             x:Name="SuggestedActionsPanel"
             Grid.Row="4"
-            Orientation="Horizontal" />
+            Orientation="Horizontal">
+            <Border
+                x:Name="SelectColor"
+                Margin="5 0"
+                Background="{DynamicResource LightAccentColor}"
+                CornerRadius="15"
+                Cursor="Hand"
+                MouseLeftButtonUp="SelectColor_MouseLeftButtonUp">
+                <StackPanel
+                    Margin="10 5"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Filled"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xFD48;" />
+                    <TextBlock
+                        Margin="10 0 0 0"
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#Hauora"
+                        FontSize="14"
+                        FontWeight="ExtraBold"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="{x:Static lang:Resources.SelectColor}" />
+                </StackPanel>
+            </Border>
+        </WrapPanel>
 
         <StackPanel
             Grid.Row="5"
