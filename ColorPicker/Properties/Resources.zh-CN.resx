@@ -656,4 +656,10 @@
   <data name="AmountToGenerate" xml:space="preserve">
     <value>产生金额</value>
   </data>
+  <data name="FirstColor" xml:space="preserve">
+    <value>第一种颜色</value>
+  </data>
+  <data name="SecondColor" xml:space="preserve">
+    <value>第一种颜色</value>
+  </data>
 </root>

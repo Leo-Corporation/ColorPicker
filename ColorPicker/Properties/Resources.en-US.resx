@@ -648,4 +648,10 @@
   <data name="AmountToGenerate" xml:space="preserve">
     <value>Amount to generate</value>
   </data>
+  <data name="FirstColor" xml:space="preserve">
+    <value>First color</value>
+  </data>
+  <data name="SecondColor" xml:space="preserve">
+    <value>Second color</value>
+  </data>
 </root>

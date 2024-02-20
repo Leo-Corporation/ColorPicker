@@ -655,6 +655,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First color.
+        /// </summary>
+        public static string FirstColor {
+            get {
+                return ResourceManager.GetString("FirstColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to ignore this window and continue to ColorPicker?.
         /// </summary>
         public static string FirstRunQuitMsg {
@@ -1290,6 +1299,15 @@ namespace ColorPicker.Properties {
         public static string Rotation {
             get {
                 return ResourceManager.GetString("Rotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second color.
+        /// </summary>
+        public static string SecondColor {
+            get {
+                return ResourceManager.GetString("SecondColor", resourceCulture);
             }
         }
         

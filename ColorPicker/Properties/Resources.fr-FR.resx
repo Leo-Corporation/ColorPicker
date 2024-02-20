@@ -652,4 +652,10 @@
   <data name="AmountToGenerate" xml:space="preserve">
     <value>Nombre de couleurs à générer</value>
   </data>
+  <data name="FirstColor" xml:space="preserve">
+    <value>Première couleur</value>
+  </data>
+  <data name="SecondColor" xml:space="preserve">
+    <value>Seconde couleur</value>
+  </data>
 </root>

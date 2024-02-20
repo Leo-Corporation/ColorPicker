@@ -6,6 +6,7 @@
     xmlns:lang="clr-namespace:ColorPicker.Properties"
     xmlns:local="clr-namespace:ColorPicker.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="Home"
     Title="HomePage"
     d:Background="White"
     d:DesignHeight="450"
@@ -103,6 +104,33 @@
                         Text="{x:Static lang:Resources.SelectColor}" />
                 </StackPanel>
             </Border>
+            <Border
+                x:Name="Contrast"
+                Margin="5 0"
+                Background="{DynamicResource LightAccentColor}"
+                CornerRadius="15"
+                Cursor="Hand"
+                MouseLeftButtonUp="Contrast_MouseLeftButtonUp">
+                <StackPanel
+                    Margin="10 5"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Filled"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xFD1B;" />
+                    <TextBlock
+                        Margin="10 0 0 0"
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#Hauora"
+                        FontSize="14"
+                        FontWeight="ExtraBold"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="{x:Static lang:Resources.GetContrast}" />
+                </StackPanel>
+            </Border>
         </WrapPanel>
 
         <StackPanel
@@ -127,5 +155,124 @@
             x:Name="DiscoverPanel"
             Grid.Row="6"
             Orientation="Horizontal" />
+
+        <Popup
+            x:Name="ContrastPopup"
+            AllowsTransparency="True"
+            Placement="Center"
+            PlacementTarget="{Binding ElementName=Home}"
+            PopupAnimation="Fade"
+            StaysOpen="False">
+            <Border
+                Margin="10"
+                Padding="10"
+                Background="{DynamicResource Background1}"
+                CornerRadius="5">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="10"
+                        Opacity="0.4"
+                        RenderingBias="Performance"
+                        ShadowDepth="0"
+                        Color="Black" />
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.FirstColor}" />
+                    <Border
+                        Grid.Column="1"
+                        Width="100"
+                        Margin="5 0"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource CardBackground}"
+                        CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{DynamicResource Accent}" />
+                        </Border.Effect>
+                        <TextBox
+                            x:Name="Color1Txt"
+                            Margin="3"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource DarkGray}" />
+                    </Border>
+                    <TextBlock
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.SecondColor}" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="100"
+                        Margin="5 0"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource CardBackground}"
+                        CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{DynamicResource Accent}" />
+                        </Border.Effect>
+                        <TextBox
+                            x:Name="Color2Txt"
+                            Margin="3"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource DarkGray}" />
+                    </Border>
+                    <Border
+                        x:Name="ContrastBorder"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Margin="5"
+                        Padding="5"
+                        Background="{DynamicResource AccentColor}"
+                        CornerRadius="5">
+                        <TextBlock
+                            x:Name="ContrastTxt"
+                            HorizontalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                            Text="{x:Static lang:Resources.Contrast}" />
+                    </Border>
+                    <Button
+                        x:Name="GetContrastBtn"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Margin="5"
+                        Padding="3"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource LightAccentColor}"
+                        Click="GetContrastBtn_Click"
+                        Content="{x:Static lang:Resources.GetContrast}"
+                        FontWeight="Bold"
+                        Foreground="{DynamicResource AccentColor}"
+                        Style="{DynamicResource DefaultButton}" />
+                </Grid>
+            </Border>
+        </Popup>
     </Grid>
 </Page>

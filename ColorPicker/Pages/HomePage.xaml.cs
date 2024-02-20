@@ -21,11 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.UserControls;
 using Synethia;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -64,5 +66,32 @@ public partial class HomePage : Page
 	private void SelectColor_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 	{
 		Global.SelectorPage.SelectBtn_Click(sender, e);
+	}
+
+	private void GetContrastBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+	{
+		try
+		{
+			var color1 = ColorHelper.ColorConverter.HexToRgb(new(Color1Txt.Text));
+			var color2 = ColorHelper.ColorConverter.HexToRgb(new(Color2Txt.Text));
+			var contrast = Global.GetContrast(new int[] { color1.R, color1.G, color1.B }, new int[] { color2.R, color2.G, color2.B });
+			ContrastTxt.Text = $"{Properties.Resources.Contrast}: {contrast.Item1}";
+			ContrastBorder.Background = contrast.Item2 switch
+			{
+				0 => Global.GetColorFromResource("Green"),
+				1 => Global.GetColorFromResource("SliderBlue"),
+				2 => Global.GetColorFromResource("Orange"),
+				_ => Global.GetColorFromResource("Red"),
+			};
+		}
+		catch
+		{
+
+		}
+	}
+
+	private void Contrast_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	{
+		ContrastPopup.IsOpen = true;
 	}
 }
