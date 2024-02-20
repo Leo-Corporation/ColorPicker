@@ -266,7 +266,7 @@
 	<value>Commencer</value>
   </data>
   <data name="SuggestedActions" xml:space="preserve">
-	<value>Actions suggérées</value>
+	<value>Actions rapides</value>
   </data>
   <data name="Discover" xml:space="preserve">
 	<value>Découvrir</value>

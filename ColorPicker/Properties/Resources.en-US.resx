@@ -262,7 +262,7 @@
 	<value>Get started</value>
   </data>
   <data name="SuggestedActions" xml:space="preserve">
-	<value>Suggested actions</value>
+	<value>Quick actions</value>
   </data>
   <data name="Discover" xml:space="preserve">
 	<value>Discover</value>
