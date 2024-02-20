@@ -131,6 +131,33 @@
                         Text="{x:Static lang:Resources.GetContrast}" />
                 </StackPanel>
             </Border>
+            <Border
+                x:Name="Palette"
+                Margin="5 0"
+                Background="{DynamicResource LightAccentColor}"
+                CornerRadius="15"
+                Cursor="Hand"
+                MouseLeftButtonUp="Palette_MouseLeftButtonUp">
+                <StackPanel
+                    Margin="10 5"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Filled"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xF2F6;" />
+                    <TextBlock
+                        Margin="10 0 0 0"
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#Hauora"
+                        FontSize="14"
+                        FontWeight="ExtraBold"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="{x:Static lang:Resources.GeneratePalette}" />
+                </StackPanel>
+            </Border>
         </WrapPanel>
 
         <StackPanel
@@ -271,6 +298,49 @@
                         FontWeight="Bold"
                         Foreground="{DynamicResource AccentColor}"
                         Style="{DynamicResource DefaultButton}" />
+                </Grid>
+            </Border>
+        </Popup>
+        <Popup
+            x:Name="PalettePopup"
+            AllowsTransparency="True"
+            Placement="Center"
+            PlacementTarget="{Binding ElementName=Home}"
+            PopupAnimation="Fade"
+            StaysOpen="False">
+            <Border
+                Margin="10"
+                Padding="10"
+                Background="{DynamicResource Background1}"
+                CornerRadius="5">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="10"
+                        Opacity="0.4"
+                        RenderingBias="Performance"
+                        ShadowDepth="0"
+                        Color="Black" />
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Border
+                        x:Name="ColorBorder"
+                        Width="60"
+                        Height="60"
+                        Margin="10"
+                        VerticalAlignment="Center"
+                        d:Background="#ff0000"
+                        CornerRadius="50"
+                        Cursor="Hand"
+                        MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" />
+                    <WrapPanel
+                        x:Name="PalettePanel"
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal" VerticalAlignment="Center" />
                 </Grid>
             </Border>
         </Popup>
