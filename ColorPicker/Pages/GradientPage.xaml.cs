@@ -445,6 +445,18 @@ public partial class GradientPage : Page
 		new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
 	}
 
+	private void ExpandCssBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CssBorder.Visibility = CssBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+		ExpandCssBtn.Content = CssBorder.Visibility == Visibility.Visible ? "\uF2B7" : "\uF2A4";
+	}
+
+	private void ExpandXamlBtn_Click(object sender, RoutedEventArgs e)
+	{
+		XamlBorder.Visibility = XamlBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+		ExpandXamlBtn.Content = XamlBorder.Visibility == Visibility.Visible ? "\uF2B7" : "\uF2A4";
+	}
+
 	private ColorHelper.RGB ConvertToRgb()
 	{
 		if (SelectedColorBtn == RgbBtn) return new((byte)int.Parse(Txt1.Text),
