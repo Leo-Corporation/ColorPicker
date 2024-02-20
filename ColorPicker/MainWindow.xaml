@@ -236,13 +236,14 @@
                                 Margin="0 10"
                                 FontWeight="Bold"
                                 Text="{x:Static lang:Resources.Pinned}" />
-                            <Button
+                            <RadioButton
                                 x:Name="HomePageBtn"
                                 HorizontalContentAlignment="Left"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Click="HomePageBtn_Click"
-                                Style="{DynamicResource StandardButton}">
+                                GroupName="NavBar"
+                                Style="{DynamicResource NavBarButton}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -278,7 +279,7 @@
                                         Text="{x:Static lang:Resources.Home}" />
                                 </Grid>
 
-                                <Button.Triggers>
+                                <RadioButton.Triggers>
                                     <EventTrigger RoutedEvent="MouseEnter">
                                         <BeginStoryboard>
                                             <Storyboard>
@@ -291,16 +292,17 @@
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger>
-                                </Button.Triggers>
-                            </Button>
-                            <Button
+                                </RadioButton.Triggers>
+                            </RadioButton>
+                            <RadioButton
                                 x:Name="BookmarksPageBtn"
                                 Margin="0 5 0 0"
                                 HorizontalContentAlignment="Left"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Click="BookmarksPageBtn_Click"
-                                Style="{DynamicResource StandardButton}">
+                                GroupName="NavBar"
+                                Style="{DynamicResource NavBarButton}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -337,7 +339,7 @@
                                         Text="{x:Static lang:Resources.Bookmarks}" />
                                 </Grid>
 
-                                <Button.Triggers>
+                                <RadioButton.Triggers>
                                     <EventTrigger RoutedEvent="MouseEnter">
                                         <BeginStoryboard>
                                             <Storyboard>
@@ -352,16 +354,17 @@
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger>
-                                </Button.Triggers>
-                            </Button>
-                            <Button
+                                </RadioButton.Triggers>
+                            </RadioButton>
+                            <RadioButton
                                 x:Name="SettingsPageBtn"
                                 Margin="0 5 0 0"
                                 HorizontalContentAlignment="Left"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 Click="SettingsPageBtn_Click"
-                                Style="{DynamicResource StandardButton}">
+                                GroupName="NavBar"
+                                Style="{DynamicResource NavBarButton}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -398,7 +401,7 @@
                                         Text="{x:Static lang:Resources.Settings}" />
                                 </Grid>
 
-                                <Button.Triggers>
+                                <RadioButton.Triggers>
                                     <EventTrigger RoutedEvent="MouseEnter">
                                         <BeginStoryboard>
                                             <Storyboard>
@@ -411,8 +414,8 @@
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger>
-                                </Button.Triggers>
-                            </Button>
+                                </RadioButton.Triggers>
+                            </RadioButton>
 
                             <TextBlock
                                 Margin="0 10"
@@ -488,7 +491,7 @@
                                     </Button.Triggers>
                                 </Button>
                                 <StackPanel x:Name="PickerPanel" Visibility="Collapsed">
-                                    <Button
+                                    <RadioButton
                                         x:Name="SelectorPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -500,8 +503,9 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
-                                    <Button
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
+                                    <RadioButton
                                         x:Name="ChromaticPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -513,7 +517,8 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
                                 </StackPanel>
                                 <Button
                                     x:Name="ColorToolsBtn"
@@ -578,7 +583,7 @@
                                     </Button.Triggers>
                                 </Button>
                                 <StackPanel x:Name="ColorToolsPanel" Visibility="Collapsed">
-                                    <Button
+                                    <RadioButton
                                         x:Name="ConverterPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -590,8 +595,9 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
-                                    <Button
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
+                                    <RadioButton
                                         x:Name="TextPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -603,7 +609,8 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
                                 </StackPanel>
                                 <Button
                                     x:Name="CreationBtn"
@@ -674,7 +681,7 @@
                                     </Button.Triggers>
                                 </Button>
                                 <StackPanel x:Name="CreationPanel" Visibility="Collapsed">
-                                    <Button
+                                    <RadioButton
                                         x:Name="PalettePageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -686,8 +693,9 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
-                                    <Button
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
+                                    <RadioButton
                                         x:Name="HarmoniesPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -699,8 +707,9 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
-                                    <Button
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
+                                    <RadioButton
                                         x:Name="GradientPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -712,8 +721,9 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
-                                    <Button
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
+                                    <RadioButton
                                         x:Name="AiCreationPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"
@@ -725,7 +735,8 @@
                                         FontSize="10"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource AccentColor}"
-                                        Style="{DynamicResource DefaultButton}" />
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
                                 </StackPanel>
                             </StackPanel>
                         </ScrollViewer>
