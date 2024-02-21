@@ -23,11 +23,15 @@ SOFTWARE.
 */
 
 using ColorPicker.Classes;
+using ColorPicker.UserControls;
+using Microsoft.Win32;
 using Synethia;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,6 +50,7 @@ namespace ColorPicker.Pages;
 public partial class ImageExtractorPage : Page
 {
 	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	List<string> filePaths = new();
 	public ImageExtractorPage()
 	{
 		InitializeComponent();
@@ -58,4 +63,100 @@ public partial class ImageExtractorPage : Page
 		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.ImageExtractor}";
 	}
 
+	private void LoadImageUI()
+	{
+		ImageDisplayer.Children.Clear();
+		for (int i = 0; i < filePaths.Count; i++)
+		{
+			ImageDisplayer.Children.Add(new ImageItem(filePaths[i]));
+		}
+	}
+
+	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		OpenFileDialog openFileDialog = new()
+		{
+			Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.ico|All Files|*.*"
+		};
+		if (openFileDialog.ShowDialog() == true)
+		{
+			filePaths.AddRange(openFileDialog.FileNames);
+			LoadImageUI();
+		}
+	}
+
+	private async void ExtractBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (filePaths.Count == 0) return;
+		ColorDisplayer.Children.Clear();		
+
+		Thread colorExtractionThread = new(() =>
+		{
+			var colors = GetImageColorFrequencies(filePaths[0]);
+
+			// Update the UI on the main thread
+			Application.Current.Dispatcher.Invoke(() =>
+			{
+				foreach (var color in colors)
+				{
+					ColorDisplayer.Children.Add(new ColorFrequenceItem(new ColorHelper.RGB(color.Key.R, color.Key.G, color.Key.B), color.Value));
+				}
+			});
+		});
+
+		colorExtractionThread.Start();
+	}
+
+	static Dictionary<RGB, int> GetImageColorFrequencies(string imagePath)
+	{
+		using (Bitmap image = new(imagePath))
+		{
+			int width = image.Width;
+			int height = image.Height;
+
+			Dictionary<RGB, int> colorFrequencies = new();
+
+			for (int x = 0; x < width; x++)
+			{
+				if (x % 10 != 0) continue;
+				for (int y = 0; y < height; y++)
+				{
+					if (y % 10 != 0) continue;
+					System.Drawing.Color pixelColor = image.GetPixel(x, y);
+					RGB rgbColor = new(pixelColor.R, pixelColor.G, pixelColor.B);
+
+					if (colorFrequencies.ContainsKey(rgbColor))
+						colorFrequencies[rgbColor]++;
+					else
+						colorFrequencies.Add(rgbColor, 1);
+				}
+			}
+
+			return colorFrequencies;
+		}
+	}
+
+	class RGB
+	{
+		public byte R { get; }
+		public byte G { get; }
+		public byte B { get; }
+
+		public RGB(byte r, byte g, byte b)
+		{
+			R = r;
+			G = g;
+			B = b;
+		}
+
+		public override int GetHashCode()
+		{
+			return (R << 16) | (G << 8) | B;
+		}
+
+		public override bool Equals(object? obj)
+		{
+			return obj is RGB rgb && rgb.R == R && rgb.G == G && rgb.B == B;
+		}
+	}
 }

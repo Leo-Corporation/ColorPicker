@@ -17,6 +17,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Margin="10" Orientation="Horizontal">
@@ -34,5 +36,48 @@
                 FontSize="14"
                 FontWeight="ExtraBold" />
         </StackPanel>
+        <StackPanel
+            Grid.Row="1"
+            Margin="5"
+            Orientation="Horizontal">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontWeight="Bold"
+                Text="{x:Static lang:Resources.SelectImages}" />
+            <Button
+                x:Name="BrowseBtn"
+                Margin="5 0"
+                Padding="5 2"
+                Background="{DynamicResource LightAccentColor}"
+                BorderThickness="0"
+                Click="BrowseBtn_Click"
+                Content="{x:Static lang:Resources.Browse}"
+                FontWeight="Bold"
+                Foreground="{DynamicResource AccentColor}"
+                Style="{DynamicResource PrimaryButton}" />
+
+        </StackPanel>
+        <ScrollViewer
+            Grid.Row="2"
+            Height="200"
+            HorizontalScrollBarVisibility="Auto"
+            Style="{DynamicResource ScrollViewerStyle}"
+            VerticalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="ImageDisplayer" Orientation="Horizontal" />
+        </ScrollViewer>
+        <Button
+            x:Name="ExtractBtn"
+            Grid.Row="3"
+            Margin="5"
+            Padding="5 2"
+            HorizontalAlignment="Center"
+            Background="{DynamicResource AccentColor}"
+            BorderThickness="0"
+            Click="ExtractBtn_Click"
+            Content="{x:Static lang:Resources.ExtractColors}"
+            FontWeight="Bold"
+            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+            Style="{DynamicResource PrimaryButton}" />
+        <StackPanel x:Name="ColorDisplayer" Grid.Row="4" />
     </Grid>
 </Page>

@@ -6,8 +6,8 @@
     xmlns:lang="clr-namespace:ColorPicker.Properties"
     xmlns:local="clr-namespace:ColorPicker.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="400"
-    Height="250"
+    Width="350"
+    Height="200"
     mc:Ignorable="d">
     <Border
         Margin="5"
