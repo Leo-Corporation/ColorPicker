@@ -88,29 +88,24 @@ public partial class ImageExtractorPage : Page
 	private async void ExtractBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (filePaths.Count == 0) return;
-		ColorDisplayer.Children.Clear();		
+		ColorDisplayer.Children.Clear();
 
-		Thread colorExtractionThread = new(() =>
+		var colors = await GetImageColorFrequenciesAsync(filePaths[0]);
+
+		int c = 0;
+		foreach (var color in colors)
 		{
-			var colors = GetImageColorFrequencies(filePaths[0]);
-
-			// Update the UI on the main thread
-			Application.Current.Dispatcher.Invoke(() =>
-			{
-				foreach (var color in colors)
-				{
-					ColorDisplayer.Children.Add(new ColorFrequenceItem(new ColorHelper.RGB(color.Key.R, color.Key.G, color.Key.B), color.Value));
-				}
-			});
-		});
-
-		colorExtractionThread.Start();
+			if (c > 20) break;
+			c++;
+			ColorDisplayer.Children.Add(new ColorFrequenceItem(new ColorHelper.RGB(color.Key.R, color.Key.G, color.Key.B), color.Value));
+		}
 	}
 
-	static Dictionary<RGB, int> GetImageColorFrequencies(string imagePath)
+	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(string imagePath)
 	{
-		using (Bitmap image = new(imagePath))
+		return await Task.Run(() =>
 		{
+			using Bitmap image = new(imagePath);
 			int width = image.Width;
 			int height = image.Height;
 
@@ -118,10 +113,8 @@ public partial class ImageExtractorPage : Page
 
 			for (int x = 0; x < width; x++)
 			{
-				if (x % 10 != 0) continue;
 				for (int y = 0; y < height; y++)
 				{
-					if (y % 10 != 0) continue;
 					System.Drawing.Color pixelColor = image.GetPixel(x, y);
 					RGB rgbColor = new(pixelColor.R, pixelColor.G, pixelColor.B);
 
@@ -132,8 +125,8 @@ public partial class ImageExtractorPage : Page
 				}
 			}
 
-			return colorFrequencies;
-		}
+			return colorFrequencies.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+		});
 	}
 
 	class RGB
