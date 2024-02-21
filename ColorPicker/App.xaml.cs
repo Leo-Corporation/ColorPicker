@@ -54,6 +54,7 @@ public partial class App : Application
 		Global.ChromaticWheelPage = new();
 		Global.ConverterPage = new();
 		Global.TextPage = new();
+		Global.ImageExtractorPage = new();
 		Global.PalettePage = new();
 		Global.GradientPage = new();
 		Global.AiGenPage = new();

@@ -42,6 +42,7 @@ public static class Global
 	public static ChromaticWheelPage? ChromaticWheelPage { get; set; }
 	public static ConverterPage? ConverterPage { get; set; }
 	public static TextPage? TextPage { get; set; }
+	public static ImageExtractorPage? ImageExtractorPage { get; set; }
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
 	public static AiGenPage? AiGenPage { get; set; }
@@ -67,6 +68,7 @@ public static class Global
 			new("Gradient"),
 			new("AIGeneration"),
 			new("Harmonies"),
+			new("ImageExtractor"),
 		},
 		ActionsInfo = new List<ActionInfo>()
 		{
@@ -78,6 +80,7 @@ public static class Global
 			new(5, "Gradient.GenerateGradient"),
 			new(6, "Ai.GenerateColor"),
 			new(7, "Harmonies.GetHarmony"),
+			new(8, "ImageExtractor.Import"),
 		}
 	};
 
@@ -129,7 +132,8 @@ public static class Global
 		{ AppPages.ColorPalette, "\uF2F6" },
 		{ AppPages.ColorGradient, "\uFD3F" },
 		{ AppPages.AIGeneration, "\uF4E5" },
-		{ AppPages.Harmonies, "\uFD0F" }
+		{ AppPages.Harmonies, "\uFD0F" },
+		{ AppPages.ImageExtractor, "\uF49B" }
 	};
 	public static Dictionary<AppPages, string> AppPagesName => new()
 	{
@@ -144,6 +148,7 @@ public static class Global
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
 		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
 		{ AppPages.Harmonies, Properties.Resources.Harmonies},
+		{ AppPages.ImageExtractor, Properties.Resources.ImageExtractor},
 	};
 
 	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA", "\uF287", "\uFCBA" };
@@ -247,6 +252,7 @@ public static class Global
 			"Gradient" => AppPages.ColorGradient,
 			"AIGeneration" => AppPages.AIGeneration,
 			"Harmonies" => AppPages.Harmonies,
+			"ImageExtractor" => AppPages.ImageExtractor,
 			_ => AppPages.Selector
 		};
 	}
@@ -330,10 +336,12 @@ public static class Global
 
 		bool hasAi = false;
 		bool hasHarmonies = false;
+		bool hasImageExtractor = false;
 		for (int i = 0; i < config.PagesInfo.Count; i++)
 		{
 			if (config.PagesInfo[i].Name == "AIGeneration") hasAi = true;
 			if (config.PagesInfo[i].Name == "Harmonies") hasHarmonies = true;
+			if (config.PagesInfo[i].Name == "ImageExtractor") hasImageExtractor = true;
 		}
 
 		if (!hasAi)
@@ -346,6 +354,12 @@ public static class Global
 		{
 			config.PagesInfo.Add(new("Harmonies"));
 			config.ActionsInfo.Add(new(7, "Harmonies.GetHarmony"));
+		}
+
+		if (!hasImageExtractor)
+		{
+			config.PagesInfo.Add(new PageInfo("ImageExtractor"));
+			config.ActionsInfo.Add(new(8, "ImageExtractor.Import"));
 		}
 		return config;
 	}

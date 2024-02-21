@@ -611,6 +611,20 @@
                                         Foreground="{DynamicResource AccentColor}"
                                         GroupName="NavBar"
                                         Style="{DynamicResource NavBarToolButton}" />
+                                    <RadioButton
+                                        x:Name="ImageExtractorPageBtn"
+                                        Margin="10 0 0 0"
+                                        Padding="5 2 2 2"
+                                        HorizontalContentAlignment="Left"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Click="ImageExtractorPageBtn_Click"
+                                        Content="{x:Static lang:Resources.ImageExtractor}"
+                                        FontSize="10"
+                                        FontWeight="ExtraBold"
+                                        Foreground="{DynamicResource AccentColor}"
+                                        GroupName="NavBar"
+                                        Style="{DynamicResource NavBarToolButton}" />
                                 </StackPanel>
                                 <Button
                                     x:Name="CreationBtn"

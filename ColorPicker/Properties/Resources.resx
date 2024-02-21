@@ -634,4 +634,7 @@
   <data name="SecondColor" xml:space="preserve">
     <value>Second color</value>
   </data>
+  <data name="ImageExtractor" xml:space="preserve">
+    <value>Image Extractor</value>
+  </data>
 </root>

@@ -916,6 +916,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Image Extractor.
+        /// </summary>
+        public static string ImageExtractor {
+            get {
+                return ResourceManager.GetString("ImageExtractor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import settings.
         /// </summary>
         public static string Import {
@@ -1456,7 +1465,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suggested actions.
+        ///   Looks up a localized string similar to Quick actions.
         /// </summary>
         public static string SuggestedActions {
             get {

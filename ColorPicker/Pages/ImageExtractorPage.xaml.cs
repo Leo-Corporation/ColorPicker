@@ -22,19 +22,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace ColorPicker.Enums;
-public enum AppPages
+using ColorPicker.Classes;
+using Synethia;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ColorPicker.Pages;
+/// <summary>
+/// Interaction logic for ImageExtractionPage.xaml
+/// </summary>
+public partial class ImageExtractorPage : Page
 {
-	Settings = -1, // Special page
-	Home,
-	Bookmarks,
-	Selector,
-	ColorWheel,
-	Converter,
-	TextTool,
-	ColorPalette,
-	ColorGradient,
-	AIGeneration,
-	Harmonies,
-	ImageExtractor
+	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	public ImageExtractorPage()
+	{
+		InitializeComponent();
+		InitUI();
+		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 8, ref code); // injects the code in the page
+	}
+
+	private void InitUI()
+	{
+		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.ImageExtractor}";
+	}
+
 }

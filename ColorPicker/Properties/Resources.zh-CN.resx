@@ -662,4 +662,7 @@
   <data name="SecondColor" xml:space="preserve">
     <value>第一种颜色</value>
   </data>
+  <data name="ImageExtractor" xml:space="preserve">
+    <value>图像提取器</value>
+  </data>
 </root>
