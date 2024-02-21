@@ -681,7 +681,7 @@
     <value>频率</value>
   </data>
   <data name="Precision" xml:space="preserve">
-    <value>精度</value>
+    <value>精度（忽略的像素）</value>
   </data>
   <data name="Pixels" xml:space="preserve">
     <value>像素</value>

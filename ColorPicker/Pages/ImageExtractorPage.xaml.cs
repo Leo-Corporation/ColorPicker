@@ -90,7 +90,9 @@ public partial class ImageExtractorPage : Page
 		if (filePaths.Count == 0) return;
 		ColorDisplayer.Children.Clear();
 
-		var colors = await GetImageColorFrequenciesAsync(filePaths[0]);
+		bool precisionValid = int.TryParse(PrecisionTxt.Text, out var precision);
+
+		var colors = await GetImageColorFrequenciesAsync(filePaths[0], precisionValid ? precision : 10);
 
 		int c = 0;
 		foreach (var color in colors)
@@ -101,7 +103,7 @@ public partial class ImageExtractorPage : Page
 		}
 	}
 
-	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(string imagePath)
+	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(string imagePath, int step)
 	{
 		return await Task.Run(() =>
 		{
@@ -113,8 +115,10 @@ public partial class ImageExtractorPage : Page
 
 			for (int x = 0; x < width; x++)
 			{
+				if (x % step != 0) continue;
 				for (int y = 0; y < height; y++)
 				{
+					if (y % step != 0) continue;
 					System.Drawing.Color pixelColor = image.GetPixel(x, y);
 					RGB rgbColor = new(pixelColor.R, pixelColor.G, pixelColor.B);
 
@@ -151,5 +155,10 @@ public partial class ImageExtractorPage : Page
 		{
 			return obj is RGB rgb && rgb.R == R && rgb.G == G && rgb.B == B;
 		}
+	}
+
+	private void OptionsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		OptionsPopup.IsOpen = true;
 	}
 }

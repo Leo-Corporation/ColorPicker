@@ -653,7 +653,7 @@
     <value>Frequence</value>
   </data>
   <data name="Precision" xml:space="preserve">
-    <value>Precision</value>
+    <value>Precision (pixels to ignore)</value>
   </data>
   <data name="Pixels" xml:space="preserve">
     <value>Pixels</value>

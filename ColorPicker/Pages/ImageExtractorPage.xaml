@@ -55,6 +55,25 @@
                 FontWeight="Bold"
                 Foreground="{DynamicResource AccentColor}"
                 Style="{DynamicResource PrimaryButton}" />
+            <Button
+                x:Name="OptionsBtn"
+                Grid.Column="3"
+                Padding="5"
+                VerticalAlignment="Top"
+                Background="{DynamicResource Background3}"
+                Click="OptionsBtn_Click"
+                Content="&#xF6AA;"
+                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                Foreground="{DynamicResource Foreground1}"
+                Style="{DynamicResource DefaultButton}">
+                <Button.ToolTip>
+                    <ToolTip
+                        x:Name="BookmarkToolTip"
+                        Background="{DynamicResource Background1}"
+                        Content="{x:Static lang:Resources.Settings}"
+                        Foreground="{DynamicResource Foreground1}" />
+                </Button.ToolTip>
+            </Button>
 
         </StackPanel>
         <ScrollViewer
@@ -79,5 +98,59 @@
             Foreground="{DynamicResource WindowButtonsHoverForeground1}"
             Style="{DynamicResource PrimaryButton}" />
         <StackPanel x:Name="ColorDisplayer" Grid.Row="4" />
+
+        <Popup
+            x:Name="OptionsPopup"
+            AllowsTransparency="True"
+            Placement="Bottom"
+            PlacementTarget="{Binding ElementName=OptionsBtn}"
+            PopupAnimation="Fade"
+            StaysOpen="False">
+            <Border
+                Margin="10"
+                Padding="10"
+                Background="{DynamicResource Background1}"
+                CornerRadius="5">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="10"
+                        Opacity="0.4"
+                        RenderingBias="Performance"
+                        ShadowDepth="0"
+                        Color="Black" />
+                </Border.Effect>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="5 0"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.Precision}" />
+                    <Border
+                        Width="50"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource CardBackground}"
+                        CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{DynamicResource Accent}" />
+                        </Border.Effect>
+                        <TextBox
+                            x:Name="PrecisionTxt"
+                            Margin="3"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource DarkGray}"
+                            Text="10"
+                            TextAlignment="Center" />
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Page>
