@@ -50,7 +50,7 @@ namespace ColorPicker.Pages;
 public partial class ImageExtractorPage : Page
 {
 	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
-	List<string> filePaths = new();
+	readonly List<string> filePaths = new();
 	public ImageExtractorPage()
 	{
 		InitializeComponent();
@@ -68,7 +68,7 @@ public partial class ImageExtractorPage : Page
 		ImageDisplayer.Children.Clear();
 		for (int i = 0; i < filePaths.Count; i++)
 		{
-			ImageDisplayer.Children.Add(new ImageItem(filePaths[i]));
+			ImageDisplayer.Children.Add(new ImageItem(filePaths[i], filePaths, LoadImageUI));
 		}
 	}
 

@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,10 +37,15 @@ namespace ColorPicker.UserControls
 	public partial class ImageItem : UserControl
 	{
 		public string Path { get; }
-		public ImageItem(string path)
+		public List<string> Items { get; }
+		public Action Delete { get; }
+
+		public ImageItem(string path, List<string> items, Action delete)
 		{
 			InitializeComponent();
 			Path = path;
+			Items = items;
+			Delete = delete;
 			InitUI();
 		}
 
@@ -67,7 +74,8 @@ namespace ColorPicker.UserControls
 
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			Items.Remove(Path);
+			Delete();
 		}
 	}
 }
