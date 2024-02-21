@@ -661,4 +661,34 @@
   <data name="ImageExtractor" xml:space="preserve">
     <value>Extracteur d'image</value>
   </data>
+  <data name="Color" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="SelectImages" xml:space="preserve">
+    <value>Sélectionner des images</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Parcourir</value>
+  </data>
+  <data name="RemoveImage" xml:space="preserve">
+    <value>Supprimer l'image</value>
+  </data>
+  <data name="Frequence" xml:space="preserve">
+    <value>Fréquence</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>Précision</value>
+  </data>
+  <data name="Pixels" xml:space="preserve">
+    <value>Pixels</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="ExtractColors" xml:space="preserve">
+    <value>Extraire les couleurs</value>
+  </data>
+  <data name="ExtractionInProgress" xml:space="preserve">
+    <value>Les couleurs sont en cours d'extraction, veuillez patienter.</value>
+  </data>
 </root>

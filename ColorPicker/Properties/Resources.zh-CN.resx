@@ -665,4 +665,34 @@
   <data name="ImageExtractor" xml:space="preserve">
     <value>图像提取器</value>
   </data>
+  <data name="Color" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="SelectImages" xml:space="preserve">
+    <value>选择图像</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="RemoveImage" xml:space="preserve">
+    <value>移除图像</value>
+  </data>
+  <data name="Frequence" xml:space="preserve">
+    <value>频率</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>精度</value>
+  </data>
+  <data name="Pixels" xml:space="preserve">
+    <value>像素</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>清晰</value>
+  </data>
+  <data name="ExtractColors" xml:space="preserve">
+    <value>提取颜色</value>
+  </data>
+  <data name="ExtractionInProgress" xml:space="preserve">
+    <value>正在提取颜色，请稍候。</value>
+  </data>
 </root>
