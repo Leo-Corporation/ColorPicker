@@ -70,6 +70,7 @@ public partial class ImageExtractorPage : Page
 		{
 			ImageDisplayer.Children.Add(new ImageItem(filePaths[i], filePaths, LoadImageUI));
 		}
+		ClearBtn.Visibility = filePaths.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
 	}
 
 	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
@@ -160,5 +161,12 @@ public partial class ImageExtractorPage : Page
 	private void OptionsBtn_Click(object sender, RoutedEventArgs e)
 	{
 		OptionsPopup.IsOpen = true;
+	}
+
+	private void ClearBtn_Click(object sender, RoutedEventArgs e)
+	{
+		filePaths.Clear();
+		LoadImageUI();
+		ColorDisplayer.Children.Clear();
 	}
 }
