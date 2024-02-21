@@ -687,4 +687,22 @@
   <data name="ExtractionInProgress" xml:space="preserve">
     <value>Colors are being extracted, please wait.</value>
   </data>
+  <data name="ExportToCSV" xml:space="preserve">
+    <value>Export to CSV</value>
+  </data>
+  <data name="CommaSeparated" xml:space="preserve">
+    <value>Comma-separated (,)</value>
+  </data>
+  <data name="SemiColonSeparated" xml:space="preserve">
+    <value>Semi-colon-separated (;)</value>
+  </data>
+  <data name="SelectFormatItems" xml:space="preserve">
+    <value>Select a format for each item.</value>
+  </data>
+  <data name="ExportShort" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="IncludeFrequence" xml:space="preserve">
+    <value>Include frequence</value>
+  </data>
 </root>

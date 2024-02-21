@@ -23,12 +23,14 @@ SOFTWARE.
 */
 
 using ColorPicker.Classes;
+using ColorPicker.Enums;
 using ColorPicker.UserControls;
 using Microsoft.Win32;
 using Synethia;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -38,10 +40,12 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.LinkLabel;
 
 namespace ColorPicker.Pages;
 /// <summary>
@@ -51,6 +55,7 @@ public partial class ImageExtractorPage : Page
 {
 	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
 	readonly List<string> filePaths = new();
+	private Dictionary<RGB, int> Colors = new();
 	public ImageExtractorPage()
 	{
 		InitializeComponent();
@@ -94,6 +99,7 @@ public partial class ImageExtractorPage : Page
 		bool precisionValid = int.TryParse(PrecisionTxt.Text, out var precision);
 
 		var colors = await GetImageColorFrequenciesAsync(filePaths[0], precisionValid ? precision : 10);
+		Colors = colors;
 
 		int c = 0;
 		foreach (var color in colors)
@@ -168,5 +174,38 @@ public partial class ImageExtractorPage : Page
 		filePaths.Clear();
 		LoadImageUI();
 		ColorDisplayer.Children.Clear();
+	}
+
+	private void ExportBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ExportCSVPopup.IsOpen = true;
+	}
+
+	private void ExportCSVBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SaveFileDialog saveFileDialog = new()
+		{
+			Filter = "CSV Files|*.csv|All Files|*.*"
+		};
+		if (saveFileDialog.ShowDialog() == true)
+		{
+			ExportToCSV(Colors, saveFileDialog.FileName, (CommaRadioBtn.IsChecked ?? true) ? "," : ";", IncludeFrequenceChk.IsChecked ?? false);
+		}
+	}
+
+	private void ExportToCSV(Dictionary<RGB, int> colors, string fileName, string separator, bool includeFreq)
+	{
+		string text = "";
+		foreach (var color in colors)
+		{
+			var hex = ColorHelper.ColorConverter.RgbToHex(new(color.Key.R, color.Key.G, color.Key.B));
+			text += $"#{hex}{separator}{(includeFreq ? color.Value.ToString() + separator : "")}\n";
+		}
+		try
+		{
+			using StreamWriter writer = new(fileName, false, Encoding.UTF8);
+			writer.WriteLine(text);
+		}
+		catch { }
 	}
 }

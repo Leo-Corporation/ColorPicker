@@ -349,6 +349,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comma-separated (,).
+        /// </summary>
+        public static string CommaSeparated {
+            get {
+                return ResourceManager.GetString("CommaSeparated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complementary.
         /// </summary>
         public static string Complementary {
@@ -673,6 +682,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string ExportShort {
+            get {
+                return ResourceManager.GetString("ExportShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export to CSV.
+        /// </summary>
+        public static string ExportToCSV {
+            get {
+                return ResourceManager.GetString("ExportToCSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extract colors.
         /// </summary>
         public static string ExtractColors {
@@ -988,6 +1015,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include frequence.
+        /// </summary>
+        public static string IncludeFrequence {
+            get {
+                return ResourceManager.GetString("IncludeFrequence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install.
         /// </summary>
         public static string Install {
@@ -1267,7 +1303,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Precision.
+        ///   Looks up a localized string similar to Precision (pixels to ignore).
         /// </summary>
         public static string Precision {
             get {
@@ -1429,6 +1465,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a format for each item..
+        /// </summary>
+        public static string SelectFormatItems {
+            get {
+                return ResourceManager.GetString("SelectFormatItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select images.
         /// </summary>
         public static string SelectImages {
@@ -1452,6 +1497,15 @@ namespace ColorPicker.Properties {
         public static string SelectorInfo {
             get {
                 return ResourceManager.GetString("SelectorInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semi-colon-separated (;).
+        /// </summary>
+        public static string SemiColonSeparated {
+            get {
+                return ResourceManager.GetString("SemiColonSeparated", resourceCulture);
             }
         }
         

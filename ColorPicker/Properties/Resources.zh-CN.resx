@@ -695,4 +695,22 @@
   <data name="ExtractionInProgress" xml:space="preserve">
     <value>正在提取颜色，请稍候。</value>
   </data>
+  <data name="ExportToCSV" xml:space="preserve">
+    <value>导出为 CSV</value>
+  </data>
+  <data name="CommaSeparated" xml:space="preserve">
+    <value>逗号分隔 (,)</value>
+  </data>
+  <data name="SemiColonSeparated" xml:space="preserve">
+    <value>用半冒号分隔 (;)</value>
+  </data>
+  <data name="SelectFormatItems" xml:space="preserve">
+    <value>为每个项目选择一种格式。</value>
+  </data>
+  <data name="ExportShort" xml:space="preserve">
+    <value>出口</value>
+  </data>
+  <data name="IncludeFrequence" xml:space="preserve">
+    <value>包括频率</value>
+  </data>
 </root>
