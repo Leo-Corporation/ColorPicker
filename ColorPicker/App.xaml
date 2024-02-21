@@ -332,6 +332,35 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="HorizontalThumb" TargetType="{x:Type Thumb}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition Width="4" />
+                                </Grid.ColumnDefinitions>
+                                <Ellipse
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Fill="{DynamicResource Gray}" />
+                                <Rectangle
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Fill="{DynamicResource Gray}" />
+                                <Ellipse
+                                    Grid.Column="3"
+                                    Grid.ColumnSpan="2"
+                                    Fill="{DynamicResource Gray}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style x:Key="ScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
                 <Setter Property="Template">
                     <Setter.Value>
