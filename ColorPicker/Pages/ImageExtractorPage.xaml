@@ -332,20 +332,25 @@
                     <TextBlock
                         Margin="5 0"
                         FontWeight="Bold"
+                        Foreground="{DynamicResource Foreground1}"
                         Text="{x:Static lang:Resources.SelectFormatItems}" />
                     <RadioButton
                         x:Name="CommaRadioBtn"
                         Margin="10 0"
+                        Background="Transparent"
                         BorderBrush="{DynamicResource AccentColor}"
                         Content="{x:Static lang:Resources.CommaSeparated}"
+                        Foreground="{DynamicResource Foreground1}"
                         GroupName="Format"
                         IsChecked="True"
                         Style="{DynamicResource RadioButtonStyle1}" />
                     <RadioButton
                         x:Name="SemiColonRadioBtn"
                         Margin="10 0"
+                        Background="Transparent"
                         BorderBrush="{DynamicResource AccentColor}"
                         Content="{x:Static lang:Resources.SemiColonSeparated}"
+                        Foreground="{DynamicResource Foreground1}"
                         GroupName="Format"
                         Style="{DynamicResource RadioButtonStyle1}" />
                     <CheckBox
@@ -355,6 +360,7 @@
                         BorderThickness="2"
                         Content="{x:Static lang:Resources.IncludeFrequence}"
                         FontWeight="Bold"
+                        Foreground="{DynamicResource Foreground1}"
                         Style="{DynamicResource CheckBoxStyle1}" />
                     <Button
                         x:Name="ExportCSVBtn"
