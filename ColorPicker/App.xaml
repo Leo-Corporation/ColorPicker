@@ -1789,14 +1789,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Border
                                     x:Name="checkBoxBorder"
-                                    Width="20"
-                                    Height="20"
+                                    Width="15"
+                                    Height="15"
                                     Margin="1"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     BorderBrush="{DynamicResource AccentColor}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="3">
+                                    CornerRadius="2">
                                     <Grid x:Name="markGrid">
                                         <Path
                                             x:Name="optionMark"
