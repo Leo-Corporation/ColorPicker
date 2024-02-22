@@ -189,13 +189,22 @@
                         Color="Black" />
                 </Border.Effect>
 
-                <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
                     <TextBlock
                         Margin="5 0"
                         VerticalAlignment="Center"
                         FontWeight="Bold"
                         Text="{x:Static lang:Resources.Precision}" />
                     <Border
+                        Grid.Column="1"
                         Width="50"
                         HorizontalAlignment="Center"
                         Background="{DynamicResource CardBackground}"
@@ -218,7 +227,40 @@
                             Text="10"
                             TextAlignment="Center" />
                     </Border>
-                </StackPanel>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Margin="5 0"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.NumberColorDisplay}" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="50"
+                        Margin="0 5"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource CardBackground}"
+                        CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="{DynamicResource Accent}" />
+                        </Border.Effect>
+                        <TextBox
+                            x:Name="ColorNumberTxt"
+                            Margin="3"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource DarkGray}"
+                            Text="20"
+                            TextAlignment="Center" />
+                    </Border>
+                </Grid>
             </Border>
         </Popup>
         <Popup

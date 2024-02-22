@@ -1222,6 +1222,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of colors to diplay.
+        /// </summary>
+        public static string NumberColorDisplay {
+            get {
+                return ResourceManager.GetString("NumberColorDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On start.
         /// </summary>
         public static string OnStart {

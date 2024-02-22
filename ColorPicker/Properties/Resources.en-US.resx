@@ -705,4 +705,7 @@
   <data name="IncludeFrequence" xml:space="preserve">
     <value>Include frequence</value>
   </data>
+  <data name="NumberColorDisplay" xml:space="preserve">
+    <value>Number of colors to diplay</value>
+  </data>
 </root>

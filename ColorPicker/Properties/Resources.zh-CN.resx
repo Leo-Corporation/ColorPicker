@@ -713,4 +713,7 @@
   <data name="IncludeFrequence" xml:space="preserve">
     <value>包括频率</value>
   </data>
+  <data name="NumberColorDisplay" xml:space="preserve">
+    <value>Nombre de couleurs à afficher</value>
+  </data>
 </root>

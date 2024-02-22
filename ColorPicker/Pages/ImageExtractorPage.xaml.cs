@@ -103,9 +103,10 @@ public partial class ImageExtractorPage : Page
 		Colors = colors;
 
 		int c = 0;
+		bool hasMaxSpecified = int.TryParse(ColorNumberTxt.Text, out int max);
 		foreach (var color in colors)
 		{
-			if (c > 20) break;
+			if (c > (hasMaxSpecified ? max - 1 : 20)) break;
 			c++;
 			ColorDisplayer.Children.Add(new ColorFrequenceItem(new ColorHelper.RGB(color.Key.R, color.Key.G, color.Key.B), color.Value));
 		}
@@ -139,7 +140,7 @@ public partial class ImageExtractorPage : Page
 							colorFrequencies.Add(rgbColor, 1);
 					}
 				}
-			}			
+			}
 
 			return colorFrequencies.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 		});
