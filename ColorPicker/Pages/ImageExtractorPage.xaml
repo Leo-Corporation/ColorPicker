@@ -92,11 +92,13 @@
 
         </StackPanel>
         <ScrollViewer
+            x:Name="ImageScrollViewer"
             Grid.Row="2"
             Height="200"
             HorizontalScrollBarVisibility="Auto"
             Style="{DynamicResource ScrollViewerStyle}"
-            VerticalScrollBarVisibility="Disabled">
+            VerticalScrollBarVisibility="Disabled"
+            Visibility="Collapsed">
             <StackPanel x:Name="ImageDisplayer" Orientation="Horizontal" />
         </ScrollViewer>
         <Button
