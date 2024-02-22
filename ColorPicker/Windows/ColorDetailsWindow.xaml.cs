@@ -159,12 +159,12 @@ public partial class ColorDetailsWindow : Window
 	}
 
 	private void Border_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-	{		
+	{
 		((Border)sender).Background = HoverForegroundSolidBrush;
 	}
 
 	private void Border_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
 	{
 		((Border)sender).Background = null;
-    }
+	}
 }

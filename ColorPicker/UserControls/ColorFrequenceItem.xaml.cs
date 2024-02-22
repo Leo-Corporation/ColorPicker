@@ -23,49 +23,38 @@ SOFTWARE.
 */
 
 using ColorHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ColorPicker.UserControls
 {
-    /// <summary>
-    /// Interaction logic for ColorFrequenceItem.xaml
-    /// </summary>
-    public partial class ColorFrequenceItem : UserControl
-    {
+	/// <summary>
+	/// Interaction logic for ColorFrequenceItem.xaml
+	/// </summary>
+	public partial class ColorFrequenceItem : UserControl
+	{
 		public RGB Color { get; }
 		public int Freq { get; }
 
 		public ColorFrequenceItem(RGB color, int freq)
-        {
-            InitializeComponent();
+		{
+			InitializeComponent();
 			Color = color;
 			Freq = freq;
 			InitUI();
 		}
 
-        private void InitUI()
-        {
-            ColorBorder.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) };
-            ColorTxt.Text = $"#{ColorHelper.ColorConverter.RgbToHex(Color).Value}";
-            FreqTxt.Text = Freq.ToString();
-        }
+		private void InitUI()
+		{
+			ColorBorder.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) };
+			ColorTxt.Text = $"#{ColorHelper.ColorConverter.RgbToHex(Color).Value}";
+			FreqTxt.Text = Freq.ToString();
+		}
 
 		private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 
-        }
-    }
+		}
+	}
 }

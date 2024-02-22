@@ -352,7 +352,7 @@ public partial class MainWindow : Window
 		PageDisplayer.Navigate(Global.ChromaticWheelPage);
 		Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
 	}
-	
+
 
 	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)
 	{
