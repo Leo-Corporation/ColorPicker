@@ -41,7 +41,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class SelectorPage : Page
 {
-	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 	readonly DispatcherTimer timer = new();
 	private IKeyboardMouseEvents keyboardEvents = Hook.GlobalEvents();
 	internal MiniPicker miniPicker = new(); // MiniPicker window
@@ -147,7 +147,7 @@ public partial class SelectorPage : Page
 		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
-	List<string> RecentColors = new();
+	List<string> RecentColors = [];
 	private void HandleCopyKeyboard()
 	{
 		try

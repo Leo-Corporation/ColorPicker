@@ -274,7 +274,7 @@ namespace ColorPicker.Pages
 		}
 
 		bool selectingKeys = false, fromSelect = false;
-		List<string> pressedKeys = new();
+		List<string> pressedKeys = [];
 		private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 		{
 			EditSelectShortcutBtn.Content = !selectingKeys ? "\uF295" : "\uF3DE"; // Set text

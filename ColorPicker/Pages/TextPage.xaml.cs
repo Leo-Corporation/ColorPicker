@@ -39,7 +39,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class TextPage : Page
 {
-	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 
 	public TextPage()
 	{
@@ -222,7 +222,7 @@ public partial class TextPage : Page
 
 	internal void LoadConstrastUI()
 	{
-		(string, int) contrast = Global.GetContrast(new int[] { foreground.R, foreground.G, foreground.B }, new int[] { background.R, background.G, background.B });
+		(string, int) contrast = Global.GetContrast([foreground.R, foreground.G, foreground.B], [background.R, background.G, background.B]);
 		Grid.SetRow(IndicatorArrow, contrast.Item2);
 
 		ContrastTxt.Text = contrast.Item1;

@@ -39,7 +39,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class PalettePage : Page
 {
-	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 	public PalettePage()
 	{
 		InitializeComponent();
@@ -271,7 +271,7 @@ public partial class PalettePage : Page
 		BrightnessPanel.Children.Clear();
 		HuePanel.Children.Clear();
 
-		RGB[][] palettes = new[] { Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL), Global.GetHues(ColorInfo.HSL) };
+		RGB[][] palettes = [Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL), Global.GetHues(ColorInfo.HSL)];
 		for (int k = 0; k < palettes.Length; k++)
 		{
 			var shades = palettes[k];

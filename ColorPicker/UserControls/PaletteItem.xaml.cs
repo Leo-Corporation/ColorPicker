@@ -69,7 +69,7 @@ namespace ColorPicker.UserControls
 			HuePanel.Children.Clear();
 
 
-			RGB[][] palettes = new[] { Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL), Global.GetHues(ColorInfo.HSL) };
+			RGB[][] palettes = [Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL), Global.GetHues(ColorInfo.HSL)];
 			for (int k = 0; k < palettes.Length; k++)
 			{
 				var shades = palettes[k];

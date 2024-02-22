@@ -25,30 +25,17 @@ using ColorHelper;
 
 namespace ColorPicker.Classes
 {
-	public class ColorInfo
+	public class ColorInfo(RGB rgb)
 	{
-		public RGB RGB { get; set; }
-		public HEX HEX { get; set; }
-		public HSV HSV { get; set; }
-		public HSL HSL { get; set; }
-		public CMYK CMYK { get; set; }
-		public XYZ XYZ { get; set; }
-		public YIQ YIQ { get; set; }
-		public YUV YUV { get; set; }
-		public DEC DEC { get; set; }
-
-		public ColorInfo(RGB rgb)
-		{
-			RGB = rgb;
-			HEX = ColorConverter.RgbToHex(rgb);
-			HSV = ColorConverter.RgbToHsv(rgb);
-			HSL = ColorConverter.RgbToHsl(rgb);
-			CMYK = ColorConverter.RgbToCmyk(rgb);
-			XYZ = ColorConverter.RgbToXyz(rgb);
-			YIQ = ColorConverter.RgbToYiq(rgb);
-			YUV = ColorConverter.RgbToYuv(rgb);
-			DEC = DEC.FromRgb(rgb);
-		}
+		public RGB RGB { get; set; } = rgb;
+		public HEX HEX { get; set; } = ColorConverter.RgbToHex(rgb);
+		public HSV HSV { get; set; } = ColorConverter.RgbToHsv(rgb);
+		public HSL HSL { get; set; } = ColorConverter.RgbToHsl(rgb);
+		public CMYK CMYK { get; set; } = ColorConverter.RgbToCmyk(rgb);
+		public XYZ XYZ { get; set; } = ColorConverter.RgbToXyz(rgb);
+		public YIQ YIQ { get; set; } = ColorConverter.RgbToYiq(rgb);
+		public YUV YUV { get; set; } = ColorConverter.RgbToYuv(rgb);
+		public DEC DEC { get; set; } = DEC.FromRgb(rgb);
 
 		public override string ToString()
 		{

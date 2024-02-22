@@ -41,9 +41,9 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class ImageExtractorPage : Page
 {
-	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
-	readonly List<string> filePaths = new();
-	private Dictionary<RGB, int> Colors = new();
+	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
+	readonly List<string> filePaths = [];
+	private Dictionary<RGB, int> Colors = [];
 	public ImageExtractorPage()
 	{
 		InitializeComponent();
@@ -123,7 +123,7 @@ public partial class ImageExtractorPage : Page
 	{
 		return await Task.Run(() =>
 		{
-			Dictionary<RGB, int> colorFrequencies = new();
+			Dictionary<RGB, int> colorFrequencies = [];
 
 			for (int i = 0; i < imagePaths.Count; i++)
 			{
@@ -141,8 +141,8 @@ public partial class ImageExtractorPage : Page
 						System.Drawing.Color pixelColor = image.GetPixel(x, y);
 						RGB rgbColor = new(pixelColor.R, pixelColor.G, pixelColor.B);
 
-						if (colorFrequencies.ContainsKey(rgbColor))
-							colorFrequencies[rgbColor]++;
+						if (colorFrequencies.TryGetValue(rgbColor, out int value))
+							colorFrequencies[rgbColor] = ++value;
 						else
 							colorFrequencies.Add(rgbColor, 1);
 					}
@@ -153,18 +153,11 @@ public partial class ImageExtractorPage : Page
 		});
 	}
 
-	class RGB
+	class RGB(byte r, byte g, byte b)
 	{
-		public byte R { get; }
-		public byte G { get; }
-		public byte B { get; }
-
-		public RGB(byte r, byte g, byte b)
-		{
-			R = r;
-			G = g;
-			B = b;
-		}
+		public byte R { get; } = r;
+		public byte G { get; } = g;
+		public byte B { get; } = b;
 
 		public override int GetHashCode()
 		{
@@ -206,7 +199,7 @@ public partial class ImageExtractorPage : Page
 		}
 	}
 
-	private void ExportToCSV(Dictionary<RGB, int> colors, string fileName, string separator, bool includeFreq)
+	private static void ExportToCSV(Dictionary<RGB, int> colors, string fileName, string separator, bool includeFreq)
 	{
 		string text = "";
 		foreach (var color in colors)

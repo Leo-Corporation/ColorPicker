@@ -46,7 +46,7 @@ namespace ColorPicker.Classes
 			IsMaximized = false;
 			ApiKey = "";
 			Model = "gpt-3.5-turbo";
-			SupportedModels = new[] { "gpt-3.5-turbo", "gpt-4" };
+			SupportedModels = ["gpt-3.5-turbo", "gpt-4"];
 			RgbSeparator = ";";
 		}
 

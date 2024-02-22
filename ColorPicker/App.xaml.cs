@@ -39,15 +39,15 @@ public partial class App : Application
 		// Bookmarks system
 		Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>($@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml") ?? new()
 		{
-			ColorBookmarks = new(),
-			PaletteBookmarks = new(),
-			GradientBookmarks = new()
+			ColorBookmarks = [],
+			PaletteBookmarks = [],
+			GradientBookmarks = []
 		};
 
-		if (Global.Bookmarks.ColorBookmarks is null) Global.Bookmarks.ColorBookmarks = new();
-		if (Global.Bookmarks.PaletteBookmarks is null) Global.Bookmarks.PaletteBookmarks = new();
-		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = new();
-		if (Global.Bookmarks.TextBookmarks is null) Global.Bookmarks.TextBookmarks = new();
+		if (Global.Bookmarks.ColorBookmarks is null) Global.Bookmarks.ColorBookmarks = [];
+		if (Global.Bookmarks.PaletteBookmarks is null) Global.Bookmarks.PaletteBookmarks = [];
+		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = [];
+		if (Global.Bookmarks.TextBookmarks is null) Global.Bookmarks.TextBookmarks = [];
 
 		// Pages
 		Global.SelectorPage = new();

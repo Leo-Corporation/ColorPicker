@@ -44,7 +44,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class AiGenPage : Page
 {
-	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 
 	public AiGenPage()
 	{

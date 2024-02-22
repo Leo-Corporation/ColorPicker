@@ -26,14 +26,9 @@ using ColorHelper;
 using System;
 
 namespace ColorPicker.Classes;
-public class DEC
+public class DEC(int value)
 {
-	public int Value { get; set; }
-
-	public DEC(int value)
-	{
-		Value = value;
-	}
+	public int Value { get; set; } = value;
 
 	public static DEC FromRgb(RGB rgb)
 	{

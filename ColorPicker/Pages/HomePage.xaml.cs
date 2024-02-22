@@ -79,7 +79,7 @@ public partial class HomePage : Page
 		{
 			var color1 = ColorHelper.ColorConverter.HexToRgb(new(Color1Txt.Text));
 			var color2 = ColorHelper.ColorConverter.HexToRgb(new(Color2Txt.Text));
-			var contrast = Global.GetContrast(new int[] { color1.R, color1.G, color1.B }, new int[] { color2.R, color2.G, color2.B });
+			var contrast = Global.GetContrast([color1.R, color1.G, color1.B], [color2.R, color2.G, color2.B]);
 			ContrastTxt.Text = $"{Properties.Resources.Contrast}: {contrast.Item1}";
 			ContrastBorder.Background = contrast.Item2 switch
 			{

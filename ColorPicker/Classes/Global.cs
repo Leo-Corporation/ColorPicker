@@ -58,8 +58,8 @@ public static class Global
 
 	public static SynethiaConfig Default => new()
 	{
-		PagesInfo = new List<PageInfo>()
-		{
+		PagesInfo =
+		[
 			new("Selector"),
 			new("ChromaticWheel"),
 			new("Converter"),
@@ -69,9 +69,9 @@ public static class Global
 			new("AIGeneration"),
 			new("Harmonies"),
 			new("ImageExtractor"),
-		},
-		ActionsInfo = new List<ActionInfo>()
-		{
+		],
+		ActionsInfo =
+		[
 			new(0, "Selector.SelectBtn"),
 			new(1, "Chromatic.Disc"),
 			new(2, "Converter.FromRgb"),
@@ -81,7 +81,7 @@ public static class Global
 			new(6, "Ai.GenerateColor"),
 			new(7, "Harmonies.GetHarmony"),
 			new(8, "ImageExtractor.Import"),
-		}
+		]
 	};
 
 	internal static Action RefreshButton { get; set; }
@@ -171,7 +171,7 @@ public static class Global
 
 	public static double GetLuminance(int r, int g, int b)
 	{
-		int[] rgb = { r, g, b };
+		int[] rgb = [r, g, b];
 		double[] res = new double[3];
 
 		int i = 0;
@@ -263,7 +263,7 @@ public static class Global
 	public static void ChangeTheme(bool reload = false)
 	{
 		App.Current.Resources.MergedDictionaries.Clear();
-		ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
+		ResourceDictionary resourceDictionary = []; // Create a resource dictionary
 
 		bool isDark = Settings.Theme == Themes.Dark;
 		if (Settings.Theme == Themes.System)
@@ -390,8 +390,7 @@ public static class Global
 		Color[] monochromaticColors = new Color[count];
 
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the step size for adjusting the lightness
 		float step = (1.0f - l) / steps;
@@ -433,8 +432,7 @@ public static class Global
 	public static Color GetComplementaryColor(Color baseColor)
 	{
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the complementary color by adding 0.5 (180 degrees) to the hue
 		float complementaryHue = (h + 0.5f) % 1.0f;
@@ -448,8 +446,7 @@ public static class Global
 		Color[] splitComplementaryColors = new Color[3];
 
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the angle to the complementary color
 		float complementaryAngle = (h + 0.5f) % 1.0f;
@@ -473,8 +470,7 @@ public static class Global
 		Color[] triadicColors = new Color[3];
 
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the angles for the two additional colors
 		float angle1 = (h + 1.0f / 3.0f) % 1.0f;
