@@ -691,4 +691,7 @@
   <data name="Sort" xml:space="preserve">
     <value>Sort</value>
   </data>
+  <data name="ColorsWillDisplayHere" xml:space="preserve">
+    <value>Extracted colors will be displayed here.</value>
+  </data>
 </root>

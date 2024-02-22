@@ -719,4 +719,7 @@
   <data name="Sort" xml:space="preserve">
     <value>分类</value>
   </data>
+  <data name="ColorsWillDisplayHere" xml:space="preserve">
+    <value>提取的颜色将在此处显示。</value>
+  </data>
 </root>

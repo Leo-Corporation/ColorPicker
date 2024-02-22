@@ -715,4 +715,7 @@
   <data name="Sort" xml:space="preserve">
     <value>Trier</value>
   </data>
+  <data name="ColorsWillDisplayHere" xml:space="preserve">
+    <value>Les couleurs extraites seront affichées ici.</value>
+  </data>
 </root>

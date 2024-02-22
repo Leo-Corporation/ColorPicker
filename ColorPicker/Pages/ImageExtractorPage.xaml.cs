@@ -117,6 +117,17 @@ public partial class ImageExtractorPage : Page
 			c++;
 			ColorDisplayer.Children.Add(new ColorFrequenceItem(new ColorHelper.RGB(color.Key.R, color.Key.G, color.Key.B), color.Value));
 		}
+
+		if (ColorDisplayer.Children.Count == 0)
+		{
+			ColorDisplayerBorder.Visibility = Visibility.Collapsed;
+			ColorPlaceholder.Visibility = Visibility.Visible;
+		}
+		else
+		{
+			ColorDisplayerBorder.Visibility = Visibility.Visible;
+			ColorPlaceholder.Visibility = Visibility.Collapsed;
+		}
 	}
 
 	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(List<string> imagePaths, int step, bool ascending)

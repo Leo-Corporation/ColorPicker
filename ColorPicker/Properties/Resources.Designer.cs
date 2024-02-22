@@ -331,6 +331,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extracted colors will be displayed here..
+        /// </summary>
+        public static string ColorsWillDisplayHere {
+            get {
+                return ResourceManager.GetString("ColorsWillDisplayHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color Tools.
         /// </summary>
         public static string ColorTools {
