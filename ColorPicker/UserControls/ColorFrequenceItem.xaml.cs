@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using ColorHelper;
+using ColorPicker.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -54,7 +55,7 @@ namespace ColorPicker.UserControls
 
 		private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-
+			new ColorDetailsWindow(new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) }).Show();
 		}
 	}
 }
