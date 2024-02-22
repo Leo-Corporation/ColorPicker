@@ -82,7 +82,8 @@ public partial class ImageExtractorPage : Page
 	{
 		OpenFileDialog openFileDialog = new()
 		{
-			Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.ico|All Files|*.*"
+			Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.ico|All Files|*.*",
+			Multiselect = true,
 		};
 		if (openFileDialog.ShowDialog() == true)
 		{
@@ -98,7 +99,7 @@ public partial class ImageExtractorPage : Page
 
 		bool precisionValid = int.TryParse(PrecisionTxt.Text, out var precision);
 
-		var colors = await GetImageColorFrequenciesAsync(filePaths[0], precisionValid ? precision : 10);
+		var colors = await GetImageColorFrequenciesAsync(filePaths, precisionValid ? precision : 10);
 		Colors = colors;
 
 		int c = 0;
@@ -110,31 +111,35 @@ public partial class ImageExtractorPage : Page
 		}
 	}
 
-	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(string imagePath, int step)
+	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(List<string> imagePaths, int step)
 	{
 		return await Task.Run(() =>
 		{
-			using Bitmap image = new(imagePath);
-			int width = image.Width;
-			int height = image.Height;
-
 			Dictionary<RGB, int> colorFrequencies = new();
 
-			for (int x = 0; x < width; x++)
+			for (int i = 0; i < imagePaths.Count; i++)
 			{
-				if (x % step != 0) continue;
-				for (int y = 0; y < height; y++)
-				{
-					if (y % step != 0) continue;
-					System.Drawing.Color pixelColor = image.GetPixel(x, y);
-					RGB rgbColor = new(pixelColor.R, pixelColor.G, pixelColor.B);
+				using Bitmap image = new(imagePaths[i]);
+				int width = image.Width;
+				int height = image.Height;
 
-					if (colorFrequencies.ContainsKey(rgbColor))
-						colorFrequencies[rgbColor]++;
-					else
-						colorFrequencies.Add(rgbColor, 1);
+
+				for (int x = 0; x < width; x++)
+				{
+					if (x % step != 0) continue;
+					for (int y = 0; y < height; y++)
+					{
+						if (y % step != 0) continue;
+						System.Drawing.Color pixelColor = image.GetPixel(x, y);
+						RGB rgbColor = new(pixelColor.R, pixelColor.G, pixelColor.B);
+
+						if (colorFrequencies.ContainsKey(rgbColor))
+							colorFrequencies[rgbColor]++;
+						else
+							colorFrequencies.Add(rgbColor, 1);
+					}
 				}
-			}
+			}			
 
 			return colorFrequencies.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 		});
