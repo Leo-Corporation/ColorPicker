@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.UserControls;
@@ -91,16 +92,22 @@ public partial class ImageExtractorPage : Page
 			LoadImageUI();
 		}
 	}
+	bool ascending = false;
 
 	private async void ExtractBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (filePaths.Count == 0) return;
-		ColorDisplayer.Children.Clear();
 
 		bool precisionValid = int.TryParse(PrecisionTxt.Text, out var precision);
 
-		var colors = await GetImageColorFrequenciesAsync(filePaths, precisionValid ? precision : 10);
+		var colors = await GetImageColorFrequenciesAsync(filePaths, precisionValid ? precision : 10, ascending);
 		Colors = colors;
+		LoadColorDisplayer(colors);
+	}
+
+	private void LoadColorDisplayer(Dictionary<RGB, int> colors)
+	{
+		ColorDisplayer.Children.Clear();
 
 		int c = 0;
 		bool hasMaxSpecified = int.TryParse(ColorNumberTxt.Text, out int max);
@@ -112,7 +119,7 @@ public partial class ImageExtractorPage : Page
 		}
 	}
 
-	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(List<string> imagePaths, int step)
+	static async Task<Dictionary<RGB, int>> GetImageColorFrequenciesAsync(List<string> imagePaths, int step, bool ascending)
 	{
 		return await Task.Run(() =>
 		{
@@ -142,7 +149,7 @@ public partial class ImageExtractorPage : Page
 				}
 			}
 
-			return colorFrequencies.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+			return ascending ? colorFrequencies.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value) : colorFrequencies.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 		});
 	}
 
@@ -213,5 +220,14 @@ public partial class ImageExtractorPage : Page
 			writer.WriteLine(text);
 		}
 		catch { }
+	}
+
+	private void SortBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ascending = !ascending;
+		SortBtn.Content = ascending ? "\uF149" : "\uF19C";
+
+		Colors = ascending ? Colors.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value) : Colors.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+		LoadColorDisplayer(Colors);
 	}
 }

@@ -688,4 +688,7 @@
   <data name="NumberColorDisplay" xml:space="preserve">
     <value>Number of colors to diplay</value>
   </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
 </root>

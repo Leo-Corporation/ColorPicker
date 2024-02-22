@@ -716,4 +716,7 @@
   <data name="NumberColorDisplay" xml:space="preserve">
     <value>Nombre de couleurs à afficher</value>
   </data>
+  <data name="Sort" xml:space="preserve">
+    <value>分类</value>
+  </data>
 </root>

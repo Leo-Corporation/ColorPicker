@@ -153,13 +153,35 @@
                     VerticalAlignment="Center"
                     FontWeight="Bold"
                     Text="{x:Static lang:Resources.Color}" />
-                <TextBlock
+                <StackPanel
                     Grid.Row="1"
                     Grid.Column="2"
-                    Margin="5"
-                    VerticalAlignment="Center"
-                    FontWeight="Bold"
-                    Text="{x:Static lang:Resources.Frequence}" />
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Margin="5"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.Frequence}" />
+                    <Button
+                        x:Name="SortBtn"
+                        Grid.Column="3"
+                        Padding="3"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource Background3}"
+                        BorderThickness="0"
+                        Click="SortBtn_Click"
+                        Content="&#xF149;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.SecondColor}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
 
                 <StackPanel
                     x:Name="ColorDisplayer"
