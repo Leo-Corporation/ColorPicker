@@ -718,4 +718,7 @@
   <data name="ColorsWillDisplayHere" xml:space="preserve">
     <value>Les couleurs extraites seront affichées ici.</value>
   </data>
+  <data name="ContrastGrid" xml:space="preserve">
+    <value>Grille de Contraste</value>
+  </data>
 </root>

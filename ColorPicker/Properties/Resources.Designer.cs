@@ -385,6 +385,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contrast Grid.
+        /// </summary>
+        public static string ContrastGrid {
+            get {
+                return ResourceManager.GetString("ContrastGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Convert.
         /// </summary>
         public static string Convert {

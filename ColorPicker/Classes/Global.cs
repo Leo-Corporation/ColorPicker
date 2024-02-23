@@ -42,6 +42,7 @@ public static class Global
 	public static ChromaticWheelPage? ChromaticWheelPage { get; set; }
 	public static ConverterPage? ConverterPage { get; set; }
 	public static TextPage? TextPage { get; set; }
+	public static ContrastPage? ContrastPage { get; set; }
 	public static ImageExtractorPage? ImageExtractorPage { get; set; }
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
@@ -69,6 +70,7 @@ public static class Global
 			new("AIGeneration"),
 			new("Harmonies"),
 			new("ImageExtractor"),
+			new("ContrastGrid"),
 		],
 		ActionsInfo =
 		[
@@ -81,6 +83,7 @@ public static class Global
 			new(6, "Ai.GenerateColor"),
 			new(7, "Harmonies.GetHarmony"),
 			new(8, "ImageExtractor.Import"),
+			new(9, "ContrastGrid.GetContrast"),
 		]
 	};
 
@@ -133,7 +136,8 @@ public static class Global
 		{ AppPages.ColorGradient, "\uFD3F" },
 		{ AppPages.AIGeneration, "\uF4E5" },
 		{ AppPages.Harmonies, "\uFD0F" },
-		{ AppPages.ImageExtractor, "\uF49B" }
+		{ AppPages.ImageExtractor, "\uF49B" },
+		{ AppPages.ContrastGrid, "\uF467" }
 	};
 	public static Dictionary<AppPages, string> AppPagesName => new()
 	{
@@ -149,6 +153,7 @@ public static class Global
 		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
 		{ AppPages.Harmonies, Properties.Resources.Harmonies},
 		{ AppPages.ImageExtractor, Properties.Resources.ImageExtractor},
+		{ AppPages.ContrastGrid, Properties.Resources.ContrastGrid},
 	};
 
 	public static (int, int, int) GenerateRandomColor()
@@ -250,6 +255,7 @@ public static class Global
 			"AIGeneration" => AppPages.AIGeneration,
 			"Harmonies" => AppPages.Harmonies,
 			"ImageExtractor" => AppPages.ImageExtractor,
+			"ContrastGrid" => AppPages.ContrastGrid,
 			_ => AppPages.Selector
 		};
 	}
@@ -334,11 +340,13 @@ public static class Global
 		bool hasAi = false;
 		bool hasHarmonies = false;
 		bool hasImageExtractor = false;
+		bool hasContrastGrid = false;
 		for (int i = 0; i < config.PagesInfo.Count; i++)
 		{
 			if (config.PagesInfo[i].Name == "AIGeneration") hasAi = true;
 			if (config.PagesInfo[i].Name == "Harmonies") hasHarmonies = true;
 			if (config.PagesInfo[i].Name == "ImageExtractor") hasImageExtractor = true;
+			if (config.PagesInfo[i].Name == "ContrastGrid") hasContrastGrid = true;
 		}
 
 		if (!hasAi)
@@ -357,6 +365,12 @@ public static class Global
 		{
 			config.PagesInfo.Add(new PageInfo("ImageExtractor"));
 			config.ActionsInfo.Add(new(8, "ImageExtractor.Import"));
+		}
+
+		if (!hasContrastGrid)
+		{
+			config.PagesInfo.Add(new PageInfo("ContrastGrid"));
+			config.ActionsInfo.Add(new(9, "ContrastGrid.GetContrast"));
 		}
 		return config;
 	}

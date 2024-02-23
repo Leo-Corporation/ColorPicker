@@ -694,4 +694,7 @@
   <data name="ColorsWillDisplayHere" xml:space="preserve">
     <value>Extracted colors will be displayed here.</value>
   </data>
+  <data name="ContrastGrid" xml:space="preserve">
+    <value>Contrast Grid</value>
+  </data>
 </root>

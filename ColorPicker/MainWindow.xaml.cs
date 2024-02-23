@@ -86,7 +86,6 @@ public partial class MainWindow : Window
 		WindowState = Global.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal;
 
 		PageCard.OnCardClick += PageCard_OnCardClick;
-		ActionCard.OnCardClick += PageCard_OnCardClick;
 		ColorItem.GoClick += PageCard_OnCardClick;
 		PaletteItem.GoClick += PageCard_OnCardClick;
 		GradientItem.GoClick += PageCard_OnCardClick;
@@ -142,6 +141,10 @@ public partial class MainWindow : Window
 				Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
 				ImageExtractorPageBtn.IsChecked = true;
 				break;
+			case AppPages.ContrastGrid:
+				Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
+				ContrastGridPageBtn.IsChecked = true;
+				break;
 			default:
 				break;
 		}
@@ -158,6 +161,7 @@ public partial class MainWindow : Window
 			AppPages.AIGeneration => Global.AiGenPage,
 			AppPages.Harmonies => Global.HarmoniesPage,
 			AppPages.ImageExtractor => Global.ImageExtractorPage,
+			AppPages.ContrastGrid => Global.ContrastPage,
 			_ => Global.HomePage
 		});
 	}
@@ -219,6 +223,12 @@ public partial class MainWindow : Window
 
 				PageDisplayer.Navigate(Global.ImageExtractorPage);
 				Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.ContrastGrid:
+				ContrastGridPageBtn.IsChecked = true;
+
+				PageDisplayer.Navigate(Global.ContrastPage);
+				Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
 				break;
 			default:
 				break;
@@ -459,6 +469,10 @@ public partial class MainWindow : Window
 				Global.SynethiaConfig.PagesInfo[8].LeaveUnixTime = Sys.UnixTime;
 				Global.SynethiaConfig.PagesInfo[8].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[8].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[8].EnterUnixTime;
 				break;
+			case ContrastPage:
+				Global.SynethiaConfig.PagesInfo[9].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[9].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[9].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[9].EnterUnixTime;
+				break;
 			default:
 				break;
 		}
@@ -489,5 +503,14 @@ public partial class MainWindow : Window
 
 		PageDisplayer.Navigate(Global.ImageExtractorPage);
 		Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
+	}
+
+	private void ContrastGridPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		LeavePage();
+		ContrastGridPageBtn.IsChecked = true;
+
+		PageDisplayer.Navigate(Global.ContrastPage);
+		Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
 	}
 }
