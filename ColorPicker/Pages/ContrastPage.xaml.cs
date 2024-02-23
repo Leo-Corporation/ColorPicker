@@ -25,9 +25,11 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using ColorPicker.UserControls;
 using Synethia;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -356,6 +358,61 @@ public partial class ContrastPage : Page
 		ColorBorder.Background = new SolidColorBrush { Color = color };
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
 
+		ContrastGrid.Children.Clear();
+
+		List<int> lumValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, ColorInfo.HSL.L];
+		lumValues.Sort();
+		int colorIndex = lumValues.IndexOf(ColorInfo.HSL.L);
+		if (lumValues[colorIndex] - lumValues[colorIndex - 1] > lumValues[colorIndex + 1] - lumValues[colorIndex])
+		{
+			lumValues.RemoveAt(colorIndex + 1);
+		}
+		else
+		{
+			lumValues.RemoveAt(colorIndex - 1);
+		}
+
+		List<HSL> colors = [];
+		for (int i = 0; i < lumValues.Count; i++)
+		{
+			colors.Add(new(ColorInfo.HSL.H, ColorInfo.HSL.S, (byte)lumValues[i]));
+		}
+
+		for (int i = 0; i < colors.Count; i++)
+		{
+			TextBlock textBlock = new()
+			{
+				Text = colors[i].L.ToString(),
+				Foreground = Global.GetColorFromResource("Foreground1"),
+				HorizontalAlignment = HorizontalAlignment.Center,
+				VerticalAlignment = VerticalAlignment.Center,
+				FontWeight = FontWeights.Bold
+			};
+			Grid.SetColumn(textBlock, 10 - i + 1);
+			TextBlock textBlock2 = new()
+			{
+				Text = colors[i].L.ToString(),
+				Foreground = Global.GetColorFromResource("Foreground1"),
+				HorizontalAlignment = HorizontalAlignment.Center,
+				VerticalAlignment = VerticalAlignment.Center,
+				FontWeight = FontWeights.Bold
+			};
+			Grid.SetRow(textBlock2, 10 - i + 1);
+			ContrastGrid.Children.Add(textBlock);
+			ContrastGrid.Children.Add(textBlock2);
+		}
+
+		for (int i = 0; i < colors.Count; i++)
+		{
+			for (int j = 0; j < colors.Count; j++)
+			{
+				var colorItem = new ColorGridItem(colors[i], colors[j]);
+				Grid.SetRow(colorItem, 10 - i + 1);
+				Grid.SetColumn(colorItem, 10 - j + 1);
+				ContrastGrid.Children.Add(colorItem);
+			}
+		}
+
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 		{
@@ -365,5 +422,6 @@ public partial class ContrastPage : Page
 		}
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+
 	}
 }

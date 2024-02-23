@@ -182,7 +182,7 @@
                     Margin="5"
                     VerticalAlignment="Center"
                     d:Background="#ff0000"
-                    CornerRadius="50"
+                    CornerRadius="60"
                     Cursor="Hand"
                     MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" />
                 <StackPanel
@@ -198,7 +198,7 @@
                         Visibility="Collapsed" />
                     <Border
                         x:Name="B1"
-                        Width="50"
+                        Width="60"
                         HorizontalAlignment="Center"
                         Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
@@ -234,7 +234,7 @@
                         Visibility="Collapsed" />
                     <Border
                         x:Name="B2"
-                        Width="50"
+                        Width="60"
                         HorizontalAlignment="Center"
                         Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
@@ -270,7 +270,7 @@
                         Visibility="Collapsed" />
                     <Border
                         x:Name="B3"
-                        Width="50"
+                        Width="60"
                         HorizontalAlignment="Center"
                         Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
@@ -306,7 +306,7 @@
                         Visibility="Collapsed" />
                     <Border
                         x:Name="B4"
-                        Width="50"
+                        Width="60"
                         HorizontalAlignment="Center"
                         Background="{DynamicResource CardBackground}"
                         CornerRadius="5"
@@ -392,5 +392,36 @@
                 </Button>
             </Grid>
         </Border>
+        <Grid x:Name="ContrastGrid" Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </Page>

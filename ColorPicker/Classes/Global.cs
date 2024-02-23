@@ -292,6 +292,8 @@ public static class Global
 		ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
 		HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
 		PalettePage.CheckButton(PalettePage.SelectedColorBtn);
+		ContrastPage.CheckButton(ContrastPage.RgbBtn);
+		ContrastPage.InitGrid();
 		RefreshButton();
 	}
 
