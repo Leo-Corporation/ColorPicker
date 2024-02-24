@@ -82,6 +82,7 @@ public partial class ContrastPage : Page
 			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
+		ScoreAllToggle.IsChecked = true;
 	}
 
 	internal Button SelectedColorBtn { get; set; }
