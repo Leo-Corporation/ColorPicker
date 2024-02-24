@@ -206,6 +206,19 @@ public static class Global
 		return (result.ToString(), gridRow);
 	}
 
+	public static double GetContrastDouble(int[] rgb1, int[] rgb2)
+	{
+		var lum1 = GetLuminance(rgb1[0], rgb1[1], rgb1[2]);
+		var lum2 = GetLuminance(rgb2[0], rgb2[1], rgb2[2]);
+
+		var brightest = Math.Max(lum1, lum2);
+		var darkest = Math.Min(lum1, lum2);
+
+		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
+		
+		return result;
+	}
+
 	public static RGB[] GetShades(HSL hsl)
 	{
 		RGB[] colorPalette = new RGB[10];
@@ -293,7 +306,7 @@ public static class Global
 		HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
 		PalettePage.CheckButton(PalettePage.SelectedColorBtn);
 		ContrastPage.CheckButton(ContrastPage.RgbBtn);
-		ContrastPage.InitGrid();
+		ContrastPage.InitGrid(ContrastPage.contrastLimit);
 		RefreshButton();
 	}
 

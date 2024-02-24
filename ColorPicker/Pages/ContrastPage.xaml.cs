@@ -269,12 +269,12 @@ public partial class ContrastPage : Page
 			Txt5.Text = ColorInfo.DEC.Value.ToString();
 		}
 	}
-
+	internal double contrastLimit = 0;
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
 	{
 		try
 		{
-			InitGrid();
+			InitGrid(contrastLimit);
 		}
 		catch { }
 	}
@@ -351,7 +351,7 @@ public partial class ContrastPage : Page
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 
-	internal void InitGrid()
+	internal void InitGrid(double limit)
 	{
 		ColorInfo = new ColorInfo(ConvertToRgb());
 		var color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
@@ -406,7 +406,7 @@ public partial class ContrastPage : Page
 		{
 			for (int j = 0; j < colors.Count; j++)
 			{
-				var colorItem = new ColorGridItem(colors[i], colors[j]);
+				var colorItem = new ColorGridItem(colors[i], colors[j], limit);
 				Grid.SetRow(colorItem, 10 - i + 1);
 				Grid.SetColumn(colorItem, 10 - j + 1);
 				ContrastGrid.Children.Add(colorItem);
@@ -423,5 +423,23 @@ public partial class ContrastPage : Page
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 
+	}
+
+	private void ScoreAllToggle_Checked(object sender, RoutedEventArgs e)
+	{
+		contrastLimit = 0;
+		InitGrid(contrastLimit);
+	}
+
+	private void ScoreAAToggle_Checked(object sender, RoutedEventArgs e)
+	{
+		contrastLimit = 4.5;
+		InitGrid(contrastLimit);
+	}
+
+	private void ScoreAAAToggle_Checked(object sender, RoutedEventArgs e)
+	{
+		contrastLimit = 7;
+		InitGrid(contrastLimit);
 	}
 }
