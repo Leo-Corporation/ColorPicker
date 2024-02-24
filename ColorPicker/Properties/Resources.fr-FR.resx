@@ -733,4 +733,10 @@
   <data name="ScoreAll" xml:space="preserve">
     <value>Tout</value>
   </data>
+  <data name="ForegroundDetails" xml:space="preserve">
+    <value>Détails de la couleur de premier plan</value>
+  </data>
+  <data name="BackgroundDetails" xml:space="preserve">
+    <value>Détails de la couleur d'arrière-plan</value>
+  </data>
 </root>

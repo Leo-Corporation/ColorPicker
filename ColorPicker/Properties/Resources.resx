@@ -709,4 +709,10 @@
   <data name="ScoreAll" xml:space="preserve">
     <value>All</value>
   </data>
+  <data name="ForegroundDetails" xml:space="preserve">
+    <value>Foreground color details</value>
+  </data>
+  <data name="BackgroundDetails" xml:space="preserve">
+    <value>Background color details</value>
+  </data>
 </root>

@@ -24,6 +24,7 @@ SOFTWARE.
 
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,16 @@ namespace ColorPicker.UserControls
 			RatioTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) };
 
 			RatioTxt.Text = contrast.ToString();
+		}
+
+		private void ForegroundDetails_Click(object sender, RoutedEventArgs e)
+		{
+			new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) }).Show();
+		}
+
+		private void BackgroundDetails_Click(object sender, RoutedEventArgs e)
+		{
+			new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B) }).Show();
 		}
 	}
 }

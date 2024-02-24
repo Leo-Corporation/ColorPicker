@@ -737,4 +737,10 @@
   <data name="ScoreAll" xml:space="preserve">
     <value>全部</value>
   </data>
+  <data name="ForegroundDetails" xml:space="preserve">
+    <value>前景色细节</value>
+  </data>
+  <data name="BackgroundDetails" xml:space="preserve">
+    <value>背景颜色细节</value>
+  </data>
 </root>

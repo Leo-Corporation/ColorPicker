@@ -169,6 +169,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background color detail.
+        /// </summary>
+        public static string BackgroundDetails {
+            get {
+                return ResourceManager.GetString("BackgroundDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to B.
         /// </summary>
         public static string BlueP {
@@ -777,6 +786,15 @@ namespace ColorPicker.Properties {
         public static string Foreground {
             get {
                 return ResourceManager.GetString("Foreground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground color details.
+        /// </summary>
+        public static string ForegroundDetails {
+            get {
+                return ResourceManager.GetString("ForegroundDetails", resourceCulture);
             }
         }
         
