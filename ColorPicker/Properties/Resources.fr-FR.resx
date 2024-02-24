@@ -739,4 +739,7 @@
   <data name="BackgroundDetails" xml:space="preserve">
     <value>Détails de la couleur d'arrière-plan</value>
   </data>
+  <data name="UseUpperCasesHex" xml:space="preserve">
+    <value>Utiliser des majuscules pour les couleurs HEX</value>
+  </data>
 </root>

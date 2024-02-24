@@ -743,4 +743,7 @@
   <data name="BackgroundDetails" xml:space="preserve">
     <value>背景颜色细节</value>
   </data>
+  <data name="UseUpperCasesHex" xml:space="preserve">
+    <value>使用大写字母表示 HEX 颜色</value>
+  </data>
 </root>

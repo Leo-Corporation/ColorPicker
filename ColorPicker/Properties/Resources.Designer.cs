@@ -169,7 +169,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Background color detail.
+        ///   Looks up a localized string similar to Background color details.
         /// </summary>
         public static string BackgroundDetails {
             get {
@@ -1848,6 +1848,15 @@ namespace ColorPicker.Properties {
         public static string UseKeyboardShortcuts {
             get {
                 return ResourceManager.GetString("UseKeyboardShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use upper cases for HEX color.
+        /// </summary>
+        public static string UseUpperCasesHex {
+            get {
+                return ResourceManager.GetString("UseUpperCasesHex", resourceCulture);
             }
         }
         

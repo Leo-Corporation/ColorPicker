@@ -83,8 +83,10 @@ namespace ColorPicker.Pages
 
 			// Load the color option section
 			Global.Settings.RgbSeparator ??= ";";
+			Global.Settings.UseUpperCasesHex ??= false;
 			ColorTypeComboBox.SelectedIndex = (int)Global.Settings.DefaultColorType;
 			RgbSeparatorTxt.Text = Global.Settings.RgbSeparator;
+			UpperCaseHexChk.IsChecked = Global.Settings.UseUpperCasesHex;
 
 			// Load the default page ComboBox
 			PageComboBox.SelectedIndex = (int)Global.Settings.DefaultPage;
@@ -533,6 +535,12 @@ namespace ColorPicker.Pages
 		private void RgbSeparatorTxt_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			Global.Settings.RgbSeparator = RgbSeparatorTxt.Text;
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		}
+
+		private void UpperCaseHexChk_Checked(object sender, RoutedEventArgs e)
+		{
+			Global.Settings.UseUpperCasesHex = UpperCaseHexChk.IsChecked;
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		}
 

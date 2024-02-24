@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using ColorHelper;
+using ColorPicker.Classes;
 using ColorPicker.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -49,7 +50,7 @@ namespace ColorPicker.UserControls
 		private void InitUI()
 		{
 			ColorBorder.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) };
-			ColorTxt.Text = $"#{ColorHelper.ColorConverter.RgbToHex(Color).Value}";
+			ColorTxt.Text = $"#{((Global.Settings.UseUpperCasesHex ?? false) ? ColorHelper.ColorConverter.RgbToHex(Color).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(Color).Value.ToLower())}";
 			FreqTxt.Text = Freq.ToString();
 		}
 

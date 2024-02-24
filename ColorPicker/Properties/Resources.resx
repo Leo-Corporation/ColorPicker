@@ -715,4 +715,7 @@
   <data name="BackgroundDetails" xml:space="preserve">
     <value>Background color details</value>
   </data>
+  <data name="UseUpperCasesHex" xml:space="preserve">
+    <value>Use upper cases for HEX color</value>
+  </data>
 </root>
