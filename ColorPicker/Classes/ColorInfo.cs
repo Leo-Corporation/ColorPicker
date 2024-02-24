@@ -50,7 +50,7 @@ namespace ColorPicker.Classes
 		private static HEX GetHex(RGB rgb)
 		{
 			var hex = ColorConverter.RgbToHex(rgb);
-			hex.Value =  (Global.Settings.UseUpperCasesHex ?? false) ? hex.Value.ToUpper() : hex.Value.ToLower();
+			hex.Value = (Global.Settings.UseUpperCasesHex ?? false) ? hex.Value.ToUpper() : hex.Value.ToLower();
 			return hex;
 		}
 	}

@@ -47,7 +47,7 @@ namespace ColorPicker.Pages
 	/// </summary>
 	public partial class SettingsPage : Page
 	{
-		private IKeyboardMouseEvents keyboardEvents = Hook.GlobalEvents();
+		private readonly IKeyboardMouseEvents keyboardEvents = Hook.GlobalEvents();
 		public SettingsPage()
 		{
 			InitializeComponent();
@@ -276,7 +276,7 @@ namespace ColorPicker.Pages
 		}
 
 		bool selectingKeys = false, fromSelect = false;
-		List<string> pressedKeys = [];
+		readonly List<string> pressedKeys = [];
 		private void EditSelectShortcutBtn_Click(object sender, RoutedEventArgs e)
 		{
 			EditSelectShortcutBtn.Content = !selectingKeys ? "\uF295" : "\uF3DE"; // Set text
@@ -521,7 +521,7 @@ namespace ColorPicker.Pages
 			var sortedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToList();
 			sortedModels.Sort();
 
-			Global.Settings.SupportedModels = sortedModels.ToArray();
+			Global.Settings.SupportedModels = [.. sortedModels];
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
 			ModelComboBox.Items.Clear();

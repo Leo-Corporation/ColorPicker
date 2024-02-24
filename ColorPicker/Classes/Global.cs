@@ -215,7 +215,7 @@ public static class Global
 		var darkest = Math.Min(lum1, lum2);
 
 		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
-		
+
 		return result;
 	}
 
