@@ -697,4 +697,16 @@
   <data name="ContrastGrid" xml:space="preserve">
     <value>Contrast Grid</value>
   </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="ScoreAA" xml:space="preserve">
+    <value>4.5+ (AA)</value>
+  </data>
+  <data name="ScoreAAA" xml:space="preserve">
+    <value>7+ (AAA)</value>
+  </data>
+  <data name="ScoreAll" xml:space="preserve">
+    <value>All</value>
+  </data>
 </root>

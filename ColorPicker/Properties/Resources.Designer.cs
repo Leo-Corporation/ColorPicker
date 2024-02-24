@@ -1456,6 +1456,42 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Score.
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4.5+ (AA).
+        /// </summary>
+        public static string ScoreAA {
+            get {
+                return ResourceManager.GetString("ScoreAA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 7+ (AAA).
+        /// </summary>
+        public static string ScoreAAA {
+            get {
+                return ResourceManager.GetString("ScoreAAA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string ScoreAll {
+            get {
+                return ResourceManager.GetString("ScoreAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Second color.
         /// </summary>
         public static string SecondColor {

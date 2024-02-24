@@ -46,24 +46,32 @@ namespace ColorPicker.UserControls
 	/// </summary>
 	public partial class ColorGridItem : UserControl
 	{
+
 		public RGB ForegroundColor { get; }
 		public RGB BackgroundColor { get; }
 
-		public ColorGridItem(HSL foregroundColor, HSL backgroundColor)
+		public ColorGridItem(HSL foregroundColor, HSL backgroundColor, double limit)
 		{
 			InitializeComponent();
 			ForegroundColor = ColorHelper.ColorConverter.HslToRgb(foregroundColor);
 			BackgroundColor = ColorHelper.ColorConverter.HslToRgb(backgroundColor);
 
-			InitUI();
+			InitUI(limit);
 		}
 
-		private void InitUI()
+		private void InitUI(double limit)
 		{
+			double contrast = Global.GetContrastDouble([ForegroundColor.R, ForegroundColor.G, ForegroundColor.B], [BackgroundColor.R, BackgroundColor.G, BackgroundColor.B]);
+			if (contrast < limit)
+			{
+				ColorBorder.Background = Global.GetColorFromResource("Background2");
+				return;
+			}
+
 			ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B) };
 			RatioTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) };
 
-			RatioTxt.Text = Global.GetContrast([ForegroundColor.R, ForegroundColor.G, ForegroundColor.B], [BackgroundColor.R, BackgroundColor.G, BackgroundColor.B]).Item1;
+			RatioTxt.Text = contrast.ToString();
 		}
 	}
 }
