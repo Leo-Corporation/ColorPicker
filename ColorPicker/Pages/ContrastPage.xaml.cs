@@ -21,12 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
-using ColorPicker.Windows;
+using ColorPicker.UserControls;
 using Synethia;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -35,22 +37,21 @@ using System.Windows.Media.Effects;
 
 namespace ColorPicker.Pages;
 /// <summary>
-/// Interaction logic for PalettePage.xaml
+/// Interaction logic for ContrastPage.xaml
 /// </summary>
-public partial class PalettePage : Page
+public partial class ContrastPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
-	public PalettePage()
+	public ContrastPage()
 	{
 		InitializeComponent();
 		InitUI();
-
-		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
-
+		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 9, ref code); // injects the code in the page
 	}
+
 	private void InitUI()
 	{
-		TitleTxt.Text = $"{Properties.Resources.Creation} > {Properties.Resources.Palette}";
+		TitleTxt.Text = $"{Properties.Resources.ColorTools} > {Properties.Resources.ContrastGrid}";
 		try
 		{
 			(int r, int g, int b) = Global.GenerateRandomColor();
@@ -72,8 +73,10 @@ public partial class PalettePage : Page
 			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
+		ScoreAllToggle.IsChecked = true;
 	}
-	internal ColorInfo ColorInfo { get; set; }
+
+	internal Button SelectedColorBtn { get; set; }
 
 	private RGB ConvertToRgb()
 	{
@@ -103,7 +106,6 @@ public partial class PalettePage : Page
 											 double.Parse(Txt3.Text)));
 	}
 
-	internal Button SelectedColorBtn { get; set; }
 	private void UnCheckAllButtons()
 	{
 		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -117,7 +119,6 @@ public partial class PalettePage : Page
 		DecBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 	}
 
-	// Note: This event handler is used for all the choices
 	internal void RgbBtn_Click(object sender, RoutedEventArgs? e)
 	{
 		var btn = (Button)sender;
@@ -126,9 +127,10 @@ public partial class PalettePage : Page
 		CheckButton(btn);
 		SelectedColorBtn = btn;
 		LoadInputUI();
+		Global.SynethiaConfig.PagesInfo[9].InteractionCount++;
 	}
 
-	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
+	internal static void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void HideAllInput()
 	{
@@ -151,7 +153,7 @@ public partial class PalettePage : Page
 		B4.Visibility = Visibility.Collapsed;
 		B5.Visibility = Visibility.Collapsed; // Special textbox for hex
 	}
-
+	internal ColorInfo ColorInfo { get; set; }
 	private void LoadInputUI()
 	{
 		HideAllInput();
@@ -259,94 +261,12 @@ public partial class PalettePage : Page
 			Txt5.Text = ColorInfo.DEC.Value.ToString();
 		}
 	}
-
-	internal void InitPaletteUI(bool setColor = false)
-	{
-		if (!setColor) ColorInfo = new ColorInfo(ConvertToRgb());
-		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
-		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
-
-		// Shades
-		ShadesPanel.Children.Clear();
-		BrightnessPanel.Children.Clear();
-		HuePanel.Children.Clear();
-
-		RGB[][] palettes = [Global.GetShades(ColorInfo.HSL), Global.GetBrightness(ColorInfo.HSL), Global.GetHues(ColorInfo.HSL)];
-		for (int k = 0; k < palettes.Length; k++)
-		{
-			var shades = palettes[k];
-			for (int i = 0; i < shades.Length; i++)
-			{
-				CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
-				if (i == shades.Length - 1) radius = new(0, 10, 10, 0);
-
-				Border border = new()
-				{
-					Cursor = Cursors.Hand,
-					Height = 50,
-					Width = 50,
-					CornerRadius = radius,
-					Background = new SolidColorBrush { Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B) },
-					Effect = new DropShadowEffect()
-					{
-						BlurRadius = 15,
-						Opacity = 0.2,
-						ShadowDepth = 0,
-						Color = Color.FromRgb(shades[i].R, shades[i].G, shades[i].B)
-					},
-					ToolTip = new ToolTip()
-					{
-						Background = Global.GetColorFromResource("Background1"),
-						Foreground = Global.GetColorFromResource("Foreground1"),
-						Content = new ColorInfo(new(shades[i].R, shades[i].G, shades[i].B)).ToString()
-					},
-				};
-
-				int j = i > shades.Length ? shades.Length - 1 : i; // Avoid index out of range
-				border.MouseLeftButtonUp += (o, e) =>
-				{
-					var info = new ColorInfo(new(shades[j].R, shades[j].G, shades[j].B));
-					Clipboard.SetText(Global.Settings.DefaultColorType switch
-					{
-						ColorTypes.HEX => info.HEX.Value,
-						ColorTypes.HSV => $"{info.HSV.H},{info.HSV.S},{info.HSV.V}",
-						ColorTypes.HSL => $"{info.HSL.H},{info.HSL.S},{info.HSL.L}",
-						ColorTypes.CMYK => $"{info.CMYK.C},{info.CMYK.M},{info.CMYK.Y},{info.CMYK.K}",
-						ColorTypes.XYZ => $"{info.XYZ.X}; {info.XYZ.Y}; {info.XYZ.Z}",
-						ColorTypes.YIQ => $"{info.YIQ.Y}; {info.YIQ.I}; {info.YIQ.Q}",
-						ColorTypes.YUV => $"{info.YUV.Y}; {info.YUV.U}; {info.YUV.V}",
-						ColorTypes.DEC => info.DEC.Value.ToString(),
-						_ => $"{shades[j].R}{Global.Settings.RgbSeparator}{shades[j].G}{Global.Settings.RgbSeparator}{shades[j].B}"
-					});
-				};
-
-				border.MouseRightButtonUp += (o, e) =>
-				{
-					new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(shades[j].R, shades[j].G, shades[j].B) }).Show();
-				};
-				if (k == 0) ShadesPanel.Children.Add(border);
-				else if (k == 1) BrightnessPanel.Children.Add(border);
-				else HuePanel.Children.Add(border);
-			}
-		}
-
-		// Load the bookmark icon
-		if (!Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
-		{
-			BookmarkBtn.Content = "\uF1F6";
-			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
-
-			return;
-		}
-		BookmarkBtn.Content = "\uF1F8";
-		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
-	}
-
+	internal double contrastLimit = 0;
 	private void Txt1_TextChanged(object sender, TextChangedEventArgs e)
 	{
 		try
 		{
-			InitPaletteUI();
+			InitGrid(contrastLimit);
 		}
 		catch { }
 	}
@@ -396,37 +316,122 @@ public partial class PalettePage : Page
 		catch { }
 	}
 
-	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
-	{
-		if (Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
-		{
-			Global.Bookmarks.PaletteBookmarks.Remove(ColorInfo.HEX.Value);
-			BookmarkBtn.Content = "\uF1F6";
-			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
-
-			return;
-		}
-		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add to color bookmarks
-		BookmarkBtn.Content = "\uF1F8";
-		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
-	}
-
 	internal void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		try
 		{
 			(int r, int g, int b) = Global.GenerateRandomColor();
 			ColorInfo = new(new((byte)r, (byte)g, (byte)b));
-			Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
+			Global.SynethiaConfig.ActionsInfo[9].UsageCount++; // Increment the usage counter
 		}
 		catch { }
 		RgbBtn_Click(SelectedColorBtn, null);
 	}
 
-	internal void InitFromColor(ColorInfo color)
+	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		ColorInfo = color;
-		Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
-		RgbBtn_Click(SelectedColorBtn, null);
+		if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+		{
+			Global.Bookmarks.ColorBookmarks.Remove($"#{ColorInfo.HEX.Value}");
+			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
+			return;
+		}
+		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+	}
+
+	internal void InitGrid(double limit)
+	{
+		ColorInfo = new ColorInfo(ConvertToRgb());
+		var color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
+		ColorBorder.Background = new SolidColorBrush { Color = color };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
+
+		ContrastGrid.Children.Clear();
+
+		List<int> lumValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, ColorInfo.HSL.L];
+		lumValues.Sort();
+		int colorIndex = lumValues.IndexOf(ColorInfo.HSL.L);
+		if (lumValues[colorIndex] - lumValues[colorIndex - 1] > lumValues[colorIndex + 1] - lumValues[colorIndex])
+		{
+			lumValues.RemoveAt(colorIndex + 1);
+		}
+		else
+		{
+			lumValues.RemoveAt(colorIndex - 1);
+		}
+
+		List<HSL> colors = [];
+		for (int i = 0; i < lumValues.Count; i++)
+		{
+			colors.Add(new(ColorInfo.HSL.H, ColorInfo.HSL.S, (byte)lumValues[i]));
+		}
+
+		for (int i = 0; i < colors.Count; i++)
+		{
+			TextBlock textBlock = new()
+			{
+				Text = colors[i].L.ToString(),
+				Foreground = Global.GetColorFromResource("Foreground1"),
+				HorizontalAlignment = HorizontalAlignment.Center,
+				VerticalAlignment = VerticalAlignment.Center,
+				FontWeight = FontWeights.Bold
+			};
+			Grid.SetColumn(textBlock, 10 - i + 1);
+			TextBlock textBlock2 = new()
+			{
+				Text = colors[i].L.ToString(),
+				Foreground = Global.GetColorFromResource("Foreground1"),
+				HorizontalAlignment = HorizontalAlignment.Center,
+				VerticalAlignment = VerticalAlignment.Center,
+				FontWeight = FontWeights.Bold
+			};
+			Grid.SetRow(textBlock2, 10 - i + 1);
+			ContrastGrid.Children.Add(textBlock);
+			ContrastGrid.Children.Add(textBlock2);
+		}
+
+		for (int i = 0; i < colors.Count; i++)
+		{
+			for (int j = 0; j < colors.Count; j++)
+			{
+				var colorItem = new ColorGridItem(colors[i], colors[j], limit);
+				Grid.SetRow(colorItem, 10 - i + 1);
+				Grid.SetColumn(colorItem, 10 - j + 1);
+				ContrastGrid.Children.Add(colorItem);
+			}
+		}
+
+		// Load the bookmark icon
+		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+		{
+			BookmarkBtn.Content = "\uF1F6";
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+			return;
+		}
+		BookmarkBtn.Content = "\uF1F8";
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+
+	}
+
+	private void ScoreAllToggle_Checked(object sender, RoutedEventArgs e)
+	{
+		contrastLimit = 0;
+		InitGrid(contrastLimit);
+	}
+
+	private void ScoreAAToggle_Checked(object sender, RoutedEventArgs e)
+	{
+		contrastLimit = 4.5;
+		InitGrid(contrastLimit);
+	}
+
+	private void ScoreAAAToggle_Checked(object sender, RoutedEventArgs e)
+	{
+		contrastLimit = 7;
+		InitGrid(contrastLimit);
 	}
 }

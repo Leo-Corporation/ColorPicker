@@ -42,6 +42,8 @@ public static class Global
 	public static ChromaticWheelPage? ChromaticWheelPage { get; set; }
 	public static ConverterPage? ConverterPage { get; set; }
 	public static TextPage? TextPage { get; set; }
+	public static ContrastPage? ContrastPage { get; set; }
+	public static ImageExtractorPage? ImageExtractorPage { get; set; }
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
 	public static AiGenPage? AiGenPage { get; set; }
@@ -57,8 +59,8 @@ public static class Global
 
 	public static SynethiaConfig Default => new()
 	{
-		PagesInfo = new List<PageInfo>()
-		{
+		PagesInfo =
+		[
 			new("Selector"),
 			new("ChromaticWheel"),
 			new("Converter"),
@@ -67,9 +69,11 @@ public static class Global
 			new("Gradient"),
 			new("AIGeneration"),
 			new("Harmonies"),
-		},
-		ActionsInfo = new List<ActionInfo>()
-		{
+			new("ImageExtractor"),
+			new("ContrastGrid"),
+		],
+		ActionsInfo =
+		[
 			new(0, "Selector.SelectBtn"),
 			new(1, "Chromatic.Disc"),
 			new(2, "Converter.FromRgb"),
@@ -78,7 +82,9 @@ public static class Global
 			new(5, "Gradient.GenerateGradient"),
 			new(6, "Ai.GenerateColor"),
 			new(7, "Harmonies.GetHarmony"),
-		}
+			new(8, "ImageExtractor.Import"),
+			new(9, "ContrastGrid.GetContrast"),
+		]
 	};
 
 	internal static Action RefreshButton { get; set; }
@@ -88,7 +94,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "5.9.0.2401";
+	public static string Version => "6.0.0.2402";
 
 	public static string HiSentence
 	{
@@ -129,7 +135,9 @@ public static class Global
 		{ AppPages.ColorPalette, "\uF2F6" },
 		{ AppPages.ColorGradient, "\uFD3F" },
 		{ AppPages.AIGeneration, "\uF4E5" },
-		{ AppPages.Harmonies, "\uFD0F" }
+		{ AppPages.Harmonies, "\uFD0F" },
+		{ AppPages.ImageExtractor, "\uF49B" },
+		{ AppPages.ContrastGrid, "\uF467" }
 	};
 	public static Dictionary<AppPages, string> AppPagesName => new()
 	{
@@ -144,10 +152,9 @@ public static class Global
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
 		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
 		{ AppPages.Harmonies, Properties.Resources.Harmonies},
+		{ AppPages.ImageExtractor, Properties.Resources.ImageExtractor},
+		{ AppPages.ContrastGrid, Properties.Resources.ContrastGrid},
 	};
-
-	public static string[] ActionsIcons => new string[] { "\uFD48", "\uF2BF", "\uF18B", "\uFD1B", "\uF777", "\uFCBA", "\uF287", "\uFCBA" };
-	public static string[] ActionsString => new string[] { Properties.Resources.SelectColor, Properties.Resources.SelectChomaticDisc, Properties.Resources.ConvertFromRGB, Properties.Resources.GetContrast, Properties.Resources.GeneratePalette, Properties.Resources.GenerateGradient, Properties.Resources.AIGeneration, Properties.Resources.Harmonies };
 
 	public static (int, int, int) GenerateRandomColor()
 	{
@@ -166,7 +173,7 @@ public static class Global
 
 	public static double GetLuminance(int r, int g, int b)
 	{
-		int[] rgb = { r, g, b };
+		int[] rgb = [r, g, b];
 		double[] res = new double[3];
 
 		int i = 0;
@@ -197,6 +204,19 @@ public static class Global
 		if (result >= 3 && result <= 4.5) gridRow = 2;
 		if (result >= 4.5 && result <= 7) gridRow = 1;
 		return (result.ToString(), gridRow);
+	}
+
+	public static double GetContrastDouble(int[] rgb1, int[] rgb2)
+	{
+		var lum1 = GetLuminance(rgb1[0], rgb1[1], rgb1[2]);
+		var lum2 = GetLuminance(rgb2[0], rgb2[1], rgb2[2]);
+
+		var brightest = Math.Max(lum1, lum2);
+		var darkest = Math.Min(lum1, lum2);
+
+		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
+
+		return result;
 	}
 
 	public static RGB[] GetShades(HSL hsl)
@@ -247,6 +267,8 @@ public static class Global
 			"Gradient" => AppPages.ColorGradient,
 			"AIGeneration" => AppPages.AIGeneration,
 			"Harmonies" => AppPages.Harmonies,
+			"ImageExtractor" => AppPages.ImageExtractor,
+			"ContrastGrid" => AppPages.ContrastGrid,
 			_ => AppPages.Selector
 		};
 	}
@@ -257,7 +279,7 @@ public static class Global
 	public static void ChangeTheme(bool reload = false)
 	{
 		App.Current.Resources.MergedDictionaries.Clear();
-		ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
+		ResourceDictionary resourceDictionary = []; // Create a resource dictionary
 
 		bool isDark = Settings.Theme == Themes.Dark;
 		if (Settings.Theme == Themes.System)
@@ -283,6 +305,8 @@ public static class Global
 		ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
 		HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
 		PalettePage.CheckButton(PalettePage.SelectedColorBtn);
+		ContrastPage.CheckButton(ContrastPage.RgbBtn);
+		ContrastPage.InitGrid(ContrastPage.contrastLimit);
 		RefreshButton();
 	}
 
@@ -330,10 +354,14 @@ public static class Global
 
 		bool hasAi = false;
 		bool hasHarmonies = false;
+		bool hasImageExtractor = false;
+		bool hasContrastGrid = false;
 		for (int i = 0; i < config.PagesInfo.Count; i++)
 		{
 			if (config.PagesInfo[i].Name == "AIGeneration") hasAi = true;
 			if (config.PagesInfo[i].Name == "Harmonies") hasHarmonies = true;
+			if (config.PagesInfo[i].Name == "ImageExtractor") hasImageExtractor = true;
+			if (config.PagesInfo[i].Name == "ContrastGrid") hasContrastGrid = true;
 		}
 
 		if (!hasAi)
@@ -346,6 +374,18 @@ public static class Global
 		{
 			config.PagesInfo.Add(new("Harmonies"));
 			config.ActionsInfo.Add(new(7, "Harmonies.GetHarmony"));
+		}
+
+		if (!hasImageExtractor)
+		{
+			config.PagesInfo.Add(new PageInfo("ImageExtractor"));
+			config.ActionsInfo.Add(new(8, "ImageExtractor.Import"));
+		}
+
+		if (!hasContrastGrid)
+		{
+			config.PagesInfo.Add(new PageInfo("ContrastGrid"));
+			config.ActionsInfo.Add(new(9, "ContrastGrid.GetContrast"));
 		}
 		return config;
 	}
@@ -376,8 +416,7 @@ public static class Global
 		Color[] monochromaticColors = new Color[count];
 
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the step size for adjusting the lightness
 		float step = (1.0f - l) / steps;
@@ -419,8 +458,7 @@ public static class Global
 	public static Color GetComplementaryColor(Color baseColor)
 	{
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the complementary color by adding 0.5 (180 degrees) to the hue
 		float complementaryHue = (h + 0.5f) % 1.0f;
@@ -434,8 +472,7 @@ public static class Global
 		Color[] splitComplementaryColors = new Color[3];
 
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the angle to the complementary color
 		float complementaryAngle = (h + 0.5f) % 1.0f;
@@ -459,8 +496,7 @@ public static class Global
 		Color[] triadicColors = new Color[3];
 
 		// Convert the base color to HSL
-		float h, s, l;
-		ColorToHSL(baseColor, out h, out s, out l);
+		ColorToHSL(baseColor, out float h, out float s, out float l);
 
 		// Calculate the angles for the two additional colors
 		float angle1 = (h + 1.0f / 3.0f) % 1.0f;

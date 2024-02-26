@@ -25,6 +25,7 @@ SOFTWARE.
 using ColorPicker.Classes;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace ColorPicker.Windows;
@@ -35,6 +36,7 @@ public partial class ColorDetailsWindow : Window
 {
 	ColorInfo ColorInfo { get; init; }
 	SolidColorBrush BackgroundSolidBrush { get; init; }
+	SolidColorBrush HoverForegroundSolidBrush { get; set; }
 	public ColorDetailsWindow(SolidColorBrush color)
 	{
 		InitializeComponent();
@@ -48,6 +50,7 @@ public partial class ColorDetailsWindow : Window
 		WindowBorder.Background = BackgroundSolidBrush;
 		var bgBtn = IsColorDark(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) ? new SolidColorBrush { Color = ChangeBrightness(BackgroundSolidBrush.Color, 0.5f) } : new SolidColorBrush { Color = ChangeBrightness(BackgroundSolidBrush.Color, -0.5f) };
 		Foreground = bgBtn;
+		HoverForegroundSolidBrush = new SolidColorBrush(Color.FromArgb(50, bgBtn.Color.R, bgBtn.Color.G, bgBtn.Color.B)) ?? BackgroundSolidBrush;
 
 		CopyRgbBtn.Background = bgBtn;
 		CopyHexBtn.Background = bgBtn;
@@ -153,5 +156,15 @@ public partial class ColorDetailsWindow : Window
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Close();
+	}
+
+	private void Border_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+	{
+		((Border)sender).Background = HoverForegroundSolidBrush;
+	}
+
+	private void Border_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+	{
+		((Border)sender).Background = null;
 	}
 }

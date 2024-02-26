@@ -41,7 +41,7 @@ namespace ColorPicker.UserControls
 		public ColorItem(string hexColor)
 		{
 			InitializeComponent();
-			HexColor = hexColor;
+			HexColor = (Global.Settings.UseUpperCasesHex ?? false) ? hexColor.ToUpper() : hexColor.ToLower();
 			ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(HexColor)));
 
 			InitUI();

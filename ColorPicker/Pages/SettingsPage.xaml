@@ -391,6 +391,16 @@
                                 TextChanged="RgbSeparatorTxt_TextChanged" />
                         </Border>
                     </StackPanel>
+                    <CheckBox
+                        x:Name="UpperCaseHexChk"
+                        Margin="10 0 0 5"
+                        VerticalContentAlignment="Center"
+                        BorderThickness="2"
+                        Checked="UpperCaseHexChk_Checked"
+                        Content="{x:Static lang:Resources.UseUpperCasesHex}"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource CheckBoxStyle1}"
+                        Unchecked="UpperCaseHexChk_Checked" />
                 </StackPanel>
             </Expander>
             <Expander

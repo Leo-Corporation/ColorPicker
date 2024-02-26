@@ -8,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static lang:Resources.Details}"
     Width="450"
-    Height="450"
+    Height="520"
     MinWidth="450"
-    MinHeight="450"
+    MinHeight="520"
     AllowsTransparency="True"
     Background="Transparent"
     FontFamily="/Fonts/#Hauora"
@@ -160,16 +160,26 @@
                 Padding="5"
                 Style="{StaticResource WindowMainPanelStyle}">
                 <StackPanel>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.RGB}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.RGB}" />
                             <Button
                                 x:Name="CopyRgbBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -189,22 +199,33 @@
 
                             <TextBlock
                                 x:Name="RgbTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.HEX}" />
                             <Button
                                 x:Name="CopyHexBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -224,22 +245,33 @@
 
                             <TextBlock
                                 x:Name="HexTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.HSV}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.HSV}" />
                             <Button
                                 x:Name="CopyHsvBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -259,22 +291,33 @@
 
                             <TextBlock
                                 x:Name="HsvTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.HSL}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.HSL}" />
                             <Button
                                 x:Name="CopyHslBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -294,22 +337,33 @@
 
                             <TextBlock
                                 x:Name="HslTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.CMYK}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.CMYK}" />
                             <Button
                                 x:Name="CopyCmykBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -329,22 +383,33 @@
 
                             <TextBlock
                                 x:Name="CmykTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.XYZ}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.XYZ}" />
                             <Button
                                 x:Name="CopyXyzBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -364,22 +429,33 @@
 
                             <TextBlock
                                 x:Name="XyzTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.YIQ}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.YIQ}" />
                             <Button
                                 x:Name="CopyYiqBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -399,22 +475,33 @@
 
                             <TextBlock
                                 x:Name="YiqTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.YUV}" />
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.YUV}" />
                             <Button
                                 x:Name="CopyYuvBtn"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0 3 3 3"
                                 Padding="5"
@@ -434,12 +521,13 @@
 
                             <TextBlock
                                 x:Name="YuvTxt"
+                                Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 FontWeight="ExtraBold"
                                 Text="N/A" />
-                        </StackPanel>
-                    </Grid>
+                        </Grid>
+                    </Border>
                 </StackPanel>
             </Border>
         </Grid>

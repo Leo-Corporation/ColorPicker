@@ -41,7 +41,7 @@ The user interface of ColorPicker Max is designed to be easy to use and intuitiv
 
 Overall, ColorPicker Max is a comprehensive color selection and manipulation tool that offers an unprecedented level of customization and control, making it the perfect choice for designers, artists, and anyone who works with color on a regular basis.
 
-ColorPicker is written in C# .NET 6 using WPF.
+ColorPicker is written in C# .NET 8 using WPF.
 
 ## Download
 

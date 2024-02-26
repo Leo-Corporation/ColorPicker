@@ -23,29 +23,40 @@ SOFTWARE.
 */
 
 using ColorHelper;
-using System;
+using ColorPicker.Classes;
+using ColorPicker.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
-namespace ColorPicker.Classes;
-public class DEC(int value)
+namespace ColorPicker.UserControls
 {
-	public int Value { get; set; } = value;
-
-	public static DEC FromRgb(RGB rgb)
+	/// <summary>
+	/// Interaction logic for ColorFrequenceItem.xaml
+	/// </summary>
+	public partial class ColorFrequenceItem : UserControl
 	{
-		if (rgb.R < 0 || rgb.R > 255 || rgb.G < 0 || rgb.G > 255 || rgb.B < 0 || rgb.B > 255)
+		public RGB Color { get; }
+		public int Freq { get; }
+
+		public ColorFrequenceItem(RGB color, int freq)
 		{
-			throw new ArgumentException("RGB values must be between 0 and 255.");
+			InitializeComponent();
+			Color = color;
+			Freq = freq;
+			InitUI();
 		}
 
-		int decimalValue = (rgb.R << 16) | (rgb.G << 8) | rgb.B;
-		return new(decimalValue);
-	}
+		private void InitUI()
+		{
+			ColorBorder.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) };
+			ColorTxt.Text = $"#{((Global.Settings.UseUpperCasesHex ?? false) ? ColorHelper.ColorConverter.RgbToHex(Color).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(Color).Value.ToLower())}";
+			FreqTxt.Text = Freq.ToString();
+		}
 
-	public RGB ToRgb()
-	{
-		int red = (Value >> 16) & 255;
-		int green = (Value >> 8) & 255;
-		int blue = Value & 255;
-		return new((byte)red, (byte)green, (byte)blue);
+		private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			new ColorDetailsWindow(new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) }).Show();
+		}
 	}
 }

@@ -145,7 +145,104 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="NavBarButton" TargetType="{x:Type RadioButton}">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Border
+                                x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6"
+                                SnapsToDevicePixels="true">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Focusable="False"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource Background1}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="White" />
 
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource Background1}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource AccentColor}" />
+                                    <Setter TargetName="border" Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect
+                                                BlurRadius="10"
+                                                Direction="270"
+                                                Opacity="0.1"
+                                                ShadowDepth="0"
+                                                Color="{DynamicResource Accent}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="White" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="border" Property="Background" Value="Transparent" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource Gray}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="NavBarToolButton" TargetType="{x:Type RadioButton}">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Border
+                                x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5"
+                                SnapsToDevicePixels="true">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Focusable="False"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource AccentColor}" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WindowButtonsHoverForeground1}" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource AccentColor}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource LightAccentColor}" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="border" Property="Background" Value="Transparent" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource Gray}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style x:Key="ToolButton" TargetType="{x:Type Button}">
                 <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Template">
@@ -179,6 +276,135 @@
                                     <Setter TargetName="border" Property="Background" Value="{DynamicResource Background2}" />
                                     <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource Background2}" />
                                     <!--<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>-->
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="border" Property="Background" Value="Transparent" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{DynamicResource Gray}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070" />
+            <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121" />
+            <SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButton.MouseOver.Border" Color="{DynamicResource Accent}" />
+            <SolidColorBrush x:Key="RadioButton.MouseOver.Glyph" Color="{DynamicResource Accent}" />
+            <SolidColorBrush x:Key="RadioButton.Pressed.Background" Color="Transparent" />
+            <SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="{DynamicResource Accent}" />
+            <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="{DynamicResource Accent}" />
+            <SolidColorBrush x:Key="RadioButton.Disabled.Background" Color="#FFE6E6E6" />
+            <SolidColorBrush x:Key="RadioButton.Disabled.Border" Color="#FFBCBCBC" />
+            <SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="#FF707070" />
+            <Style x:Key="RadioButtonStyle1" TargetType="{x:Type RadioButton}">
+                <Setter Property="Background" Value="{StaticResource RadioButton.Static.Background}" />
+                <Setter Property="BorderBrush" Value="{StaticResource RadioButton.Static.Border}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Grid
+                                x:Name="templateRoot"
+                                Background="Transparent"
+                                SnapsToDevicePixels="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    x:Name="radioButtonBorder"
+                                    Margin="1 1 2 1"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="100">
+                                    <Grid x:Name="markGrid" Margin="2">
+                                        <Ellipse
+                                            x:Name="optionMark"
+                                            MinWidth="6"
+                                            MinHeight="6"
+                                            Fill="{DynamicResource AccentColor}"
+                                            Opacity="0" />
+                                    </Grid>
+                                </Border>
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Grid.Column="1"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Focusable="False"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="HasContent" Value="true">
+                                    <Setter Property="Padding" Value="4 -1 0 0" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource RadioButton.MouseOver.Background}" />
+                                    <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource RadioButton.MouseOver.Border}" />
+                                    <Setter TargetName="optionMark" Property="Fill" Value="{StaticResource RadioButton.MouseOver.Glyph}" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource RadioButton.Disabled.Background}" />
+                                    <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource RadioButton.Disabled.Border}" />
+                                    <Setter TargetName="optionMark" Property="Fill" Value="{StaticResource RadioButton.Disabled.Glyph}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource RadioButton.Pressed.Background}" />
+                                    <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource RadioButton.Pressed.Border}" />
+                                    <Setter TargetName="optionMark" Property="Fill" Value="{StaticResource RadioButton.Pressed.Glyph}" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="optionMark" Property="Opacity" Value="1" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="{x:Null}">
+                                    <Setter TargetName="optionMark" Property="Opacity" Value="0.56" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="DefaultToggleButton" TargetType="{x:Type RadioButton}">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Border
+                                x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5"
+                                SnapsToDevicePixels="true">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Focusable="False"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource LightAccentColor}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource LightAccentColor}" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource LightAccentColor}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource LightAccentColor}" />
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="border" Property="Background" Value="Transparent" />
@@ -229,6 +455,35 @@
                                 <Ellipse
                                     Grid.Row="3"
                                     Grid.RowSpan="2"
+                                    Fill="{DynamicResource Gray}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="HorizontalThumb" TargetType="{x:Type Thumb}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition Width="4" />
+                                </Grid.ColumnDefinitions>
+                                <Ellipse
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Fill="{DynamicResource Gray}" />
+                                <Rectangle
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    Fill="{DynamicResource Gray}" />
+                                <Ellipse
+                                    Grid.Column="3"
+                                    Grid.ColumnSpan="2"
                                     Fill="{DynamicResource Gray}" />
                             </Grid>
                         </ControlTemplate>
@@ -1576,14 +1831,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Border
                                     x:Name="checkBoxBorder"
-                                    Width="20"
-                                    Height="20"
+                                    Width="15"
+                                    Height="15"
                                     Margin="1"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     BorderBrush="{DynamicResource AccentColor}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="3">
+                                    CornerRadius="2">
                                     <Grid x:Name="markGrid">
                                         <Path
                                             x:Name="optionMark"

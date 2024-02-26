@@ -46,8 +46,9 @@ namespace ColorPicker.Classes
 			IsMaximized = false;
 			ApiKey = "";
 			Model = "gpt-3.5-turbo";
-			SupportedModels = new[] { "gpt-3.5-turbo", "gpt-4" };
+			SupportedModels = ["gpt-3.5-turbo", "gpt-4"];
 			RgbSeparator = ";";
+			UseUpperCasesHex = false;
 		}
 
 		public Themes Theme { get; set; }
@@ -69,5 +70,6 @@ namespace ColorPicker.Classes
 		public string? Model { get; set; }
 		public string[]? SupportedModels { get; set; }
 		public string? RgbSeparator { get; set; }
+		public bool? UseUpperCasesHex { get; set; }
 	}
 }

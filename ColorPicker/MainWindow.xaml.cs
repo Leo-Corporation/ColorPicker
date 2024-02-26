@@ -29,7 +29,6 @@ using PeyrSharp.Env;
 using Synethia;
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
@@ -87,7 +86,6 @@ public partial class MainWindow : Window
 		WindowState = Global.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal;
 
 		PageCard.OnCardClick += PageCard_OnCardClick;
-		ActionCard.OnCardClick += PageCard_OnCardClick;
 		ColorItem.GoClick += PageCard_OnCardClick;
 		PaletteItem.GoClick += PageCard_OnCardClick;
 		GradientItem.GoClick += PageCard_OnCardClick;
@@ -98,47 +96,54 @@ public partial class MainWindow : Window
 
 		HelloTxt.Text = Global.HiSentence; // Show greeting message to the user
 
-		UnCheckAllButton();
 		// Show the appropriate page
 		switch (Global.Settings.DefaultPage)
 		{
 			case AppPages.Home:
-				CheckButton(HomePageBtn, true);
+				HomePageBtn.IsChecked = true;
 				break;
 			case AppPages.Bookmarks:
-				CheckButton(BookmarksPageBtn, true);
+				BookmarksPageBtn.IsChecked = true;
 				break;
 			case AppPages.Selector:
 				Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
-				CheckButton(SelectorPageBtn);
+				SelectorPageBtn.IsChecked = true;
 				break;
 			case AppPages.ColorWheel:
 				Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
-				CheckButton(ChromaticPageBtn);
+				ChromaticPageBtn.IsChecked = true;
 				break;
 			case AppPages.Converter:
 				Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
-				CheckButton(ConverterPageBtn);
+				ConverterPageBtn.IsChecked = true;
 				break;
 			case AppPages.TextTool:
 				Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
-				CheckButton(TextPageBtn);
+				TextPageBtn.IsChecked = true;
 				break;
 			case AppPages.ColorPalette:
 				Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
-				CheckButton(PalettePageBtn);
+				PalettePageBtn.IsChecked = true;
 				break;
 			case AppPages.ColorGradient:
 				Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
-				CheckButton(GradientPageBtn);
+				GradientPageBtn.IsChecked = true;
 				break;
 			case AppPages.AIGeneration:
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
-				CheckButton(AiCreationPageBtn);
+				AiCreationPageBtn.IsChecked = true;
 				break;
 			case AppPages.Harmonies:
 				Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
-				CheckButton(HarmoniesPageBtn);
+				HarmoniesPageBtn.IsChecked = true;
+				break;
+			case AppPages.ImageExtractor:
+				Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
+				ImageExtractorPageBtn.IsChecked = true;
+				break;
+			case AppPages.ContrastGrid:
+				Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
+				ContrastGridPageBtn.IsChecked = true;
 				break;
 			default:
 				break;
@@ -155,6 +160,8 @@ public partial class MainWindow : Window
 			AppPages.ColorGradient => Global.GradientPage,
 			AppPages.AIGeneration => Global.AiGenPage,
 			AppPages.Harmonies => Global.HarmoniesPage,
+			AppPages.ImageExtractor => Global.ImageExtractorPage,
+			AppPages.ContrastGrid => Global.ContrastPage,
 			_ => Global.HomePage
 		});
 	}
@@ -164,60 +171,64 @@ public partial class MainWindow : Window
 		switch (e.AppPage)
 		{
 			case AppPages.Selector:
-				UnCheckAllButton();
-				CheckButton(SelectorPageBtn);
+				SelectorPageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.SelectorPage);
 				Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ColorWheel:
-				UnCheckAllButton();
-				CheckButton(ChromaticPageBtn);
+				ChromaticPageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.ChromaticWheelPage);
 				Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.Converter:
-				UnCheckAllButton();
-				CheckButton(ConverterPageBtn);
+				ConverterPageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.ConverterPage);
 				Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.TextTool:
-				UnCheckAllButton();
-				CheckButton(TextPageBtn);
+				TextPageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.TextPage);
 				Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ColorPalette:
-				UnCheckAllButton();
-				CheckButton(PalettePageBtn);
+				PalettePageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.PalettePage);
 				Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ColorGradient:
-				UnCheckAllButton();
-				CheckButton(GradientPageBtn);
+				GradientPageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.GradientPage);
 				Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.AIGeneration:
-				UnCheckAllButton();
-				CheckButton(AiCreationPageBtn);
+				AiCreationPageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.AiGenPage);
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.Harmonies:
-				UnCheckAllButton();
-				CheckButton(HarmoniesPageBtn);
+				HarmoniesPageBtn.IsChecked = true;
 
 				PageDisplayer.Navigate(Global.HarmoniesPage);
 				Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.ImageExtractor:
+				ImageExtractorPageBtn.IsChecked = true;
+
+				PageDisplayer.Navigate(Global.ImageExtractorPage);
+				Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
+				break;
+			case AppPages.ContrastGrid:
+				ContrastGridPageBtn.IsChecked = true;
+
+				PageDisplayer.Navigate(Global.ContrastPage);
+				Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
 				break;
 			default:
 				break;
@@ -299,8 +310,7 @@ public partial class MainWindow : Window
 	private void HomePageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(HomePageBtn, true);
+		HomePageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.HomePage);
 	}
@@ -308,8 +318,7 @@ public partial class MainWindow : Window
 	private void BookmarksPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(BookmarksPageBtn, true);
+		BookmarksPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.BookmarksPage);
 	}
@@ -317,8 +326,7 @@ public partial class MainWindow : Window
 	private void SettingsPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(SettingsPageBtn, true);
+		SettingsPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.SettingsPage);
 	}
@@ -340,8 +348,7 @@ public partial class MainWindow : Window
 	private void SelectorPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(SelectorPageBtn);
+		SelectorPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.SelectorPage);
 		Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
@@ -350,51 +357,12 @@ public partial class MainWindow : Window
 	private void ChromaticPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(ChromaticPageBtn);
+		ChromaticPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.ChromaticWheelPage);
 		Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
 	}
 
-	private void CheckButton(Button button, bool isSpecial = false)
-	{
-		if (isSpecial)
-		{
-			button.Background = Global.GetColorFromResource("Background1");
-		}
-		else
-		{
-			button.Background = Global.GetColorFromResource("AccentColor");
-			button.Foreground = Global.GetColorFromResource("WindowButtonsHoverForeground1");
-		}
-	}
-
-	private void UnCheckAllButton()
-	{
-		// Background
-		HomePageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		BookmarksPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		SettingsPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-
-		SelectorPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		ChromaticPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		ConverterPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		TextPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		PalettePageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		GradientPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		AiCreationPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-		HarmoniesPageBtn.Background = new SolidColorBrush(Colors.Transparent);
-
-		SelectorPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-		ChromaticPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-		ConverterPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-		TextPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-		PalettePageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-		GradientPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-		AiCreationPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-		HarmoniesPageBtn.Foreground = Global.GetColorFromResource("AccentColor");
-	}
 
 	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)
 	{
@@ -413,8 +381,7 @@ public partial class MainWindow : Window
 	private void ConverterPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(ConverterPageBtn);
+		ConverterPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.ConverterPage);
 		Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
@@ -423,8 +390,7 @@ public partial class MainWindow : Window
 	private void TextPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(TextPageBtn);
+		TextPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.TextPage);
 		Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
@@ -447,8 +413,7 @@ public partial class MainWindow : Window
 	private void PalettePageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(PalettePageBtn);
+		PalettePageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.PalettePage);
 		Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
@@ -457,8 +422,7 @@ public partial class MainWindow : Window
 	private void GradientPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(GradientPageBtn);
+		GradientPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.GradientPage);
 		Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
@@ -501,6 +465,14 @@ public partial class MainWindow : Window
 				Global.SynethiaConfig.PagesInfo[7].LeaveUnixTime = Sys.UnixTime;
 				Global.SynethiaConfig.PagesInfo[7].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[7].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[7].EnterUnixTime;
 				break;
+			case ImageExtractorPage:
+				Global.SynethiaConfig.PagesInfo[8].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[8].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[8].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[8].EnterUnixTime;
+				break;
+			case ContrastPage:
+				Global.SynethiaConfig.PagesInfo[9].LeaveUnixTime = Sys.UnixTime;
+				Global.SynethiaConfig.PagesInfo[9].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[9].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[9].EnterUnixTime;
+				break;
 			default:
 				break;
 		}
@@ -509,8 +481,7 @@ public partial class MainWindow : Window
 	private void AiCreationPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(AiCreationPageBtn);
+		AiCreationPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.AiGenPage);
 		Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
@@ -519,10 +490,27 @@ public partial class MainWindow : Window
 	private void HarmoniesPageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		UnCheckAllButton();
-		CheckButton(HarmoniesPageBtn);
+		HarmoniesPageBtn.IsChecked = true;
 
 		PageDisplayer.Navigate(Global.HarmoniesPage);
 		Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
+	}
+
+	private void ImageExtractorPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		LeavePage();
+		ImageExtractorPageBtn.IsChecked = true;
+
+		PageDisplayer.Navigate(Global.ImageExtractorPage);
+		Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
+	}
+
+	private void ContrastGridPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		LeavePage();
+		ContrastGridPageBtn.IsChecked = true;
+
+		PageDisplayer.Navigate(Global.ContrastPage);
+		Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
 	}
 }

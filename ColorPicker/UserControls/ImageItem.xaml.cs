@@ -21,11 +21,61 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using ColorPicker.Enums;
-using System;
 
-namespace ColorPicker.Classes;
-public class PageEventArgs(AppPages page) : EventArgs
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+
+namespace ColorPicker.UserControls
 {
-	public AppPages AppPage { get; set; } = page;
+	/// <summary>
+	/// Interaction logic for ImageItem.xaml
+	/// </summary>
+	public partial class ImageItem : UserControl
+	{
+		public string Path { get; }
+		public List<string> Items { get; }
+		public Action Delete { get; }
+
+		public ImageItem(string path, List<string> items, Action delete)
+		{
+			InitializeComponent();
+			Path = path;
+			Items = items;
+			Delete = delete;
+			InitUI();
+		}
+
+
+		private void InitUI()
+		{
+			try
+			{
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(Path);
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 256;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+				Img.ImageSource = bitmap;
+			}
+			catch
+			{
+
+			}
+		}
+
+		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Items.Remove(Path);
+			Delete();
+		}
+	}
 }

@@ -262,7 +262,7 @@
 	<value>Get started</value>
   </data>
   <data name="SuggestedActions" xml:space="preserve">
-	<value>Suggested actions</value>
+	<value>Quick actions</value>
   </data>
   <data name="Discover" xml:space="preserve">
 	<value>Discover</value>
@@ -647,5 +647,95 @@
   </data>
   <data name="AmountToGenerate" xml:space="preserve">
     <value>Amount to generate</value>
+  </data>
+  <data name="FirstColor" xml:space="preserve">
+    <value>First color</value>
+  </data>
+  <data name="SecondColor" xml:space="preserve">
+    <value>Second color</value>
+  </data>
+  <data name="ImageExtractor" xml:space="preserve">
+    <value>Image Extractor</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="SelectImages" xml:space="preserve">
+    <value>Select images</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="RemoveImage" xml:space="preserve">
+    <value>Remove image</value>
+  </data>
+  <data name="Frequence" xml:space="preserve">
+    <value>Frequence</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>Precision (pixels to ignore)</value>
+  </data>
+  <data name="Pixels" xml:space="preserve">
+    <value>Pixels</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="ExtractColors" xml:space="preserve">
+    <value>Extract colors</value>
+  </data>
+  <data name="ExtractionInProgress" xml:space="preserve">
+    <value>Colors are being extracted, please wait.</value>
+  </data>
+  <data name="ExportToCSV" xml:space="preserve">
+    <value>Export to CSV</value>
+  </data>
+  <data name="CommaSeparated" xml:space="preserve">
+    <value>Comma-separated (,)</value>
+  </data>
+  <data name="SemiColonSeparated" xml:space="preserve">
+    <value>Semi-colon-separated (;)</value>
+  </data>
+  <data name="SelectFormatItems" xml:space="preserve">
+    <value>Select a format for each item.</value>
+  </data>
+  <data name="ExportShort" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="IncludeFrequence" xml:space="preserve">
+    <value>Include frequence</value>
+  </data>
+  <data name="NumberColorDisplay" xml:space="preserve">
+    <value>Number of colors to diplay</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="ColorsWillDisplayHere" xml:space="preserve">
+    <value>Extracted colors will be displayed here.</value>
+  </data>
+  <data name="ContrastGrid" xml:space="preserve">
+    <value>Contrast Grid</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="ScoreAA" xml:space="preserve">
+    <value>4.5+ (AA)</value>
+  </data>
+  <data name="ScoreAAA" xml:space="preserve">
+    <value>7+ (AAA)</value>
+  </data>
+  <data name="ScoreAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="ForegroundDetails" xml:space="preserve">
+    <value>Foreground color details</value>
+  </data>
+  <data name="BackgroundDetails" xml:space="preserve">
+    <value>Background color details</value>
+  </data>
+  <data name="UseUpperCasesHex" xml:space="preserve">
+    <value>Use upper cases for HEX color</value>
   </data>
 </root>

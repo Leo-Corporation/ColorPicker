@@ -169,6 +169,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background color details.
+        /// </summary>
+        public static string BackgroundDetails {
+            get {
+                return ResourceManager.GetString("BackgroundDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to B.
         /// </summary>
         public static string BlueP {
@@ -192,6 +201,15 @@ namespace ColorPicker.Properties {
         public static string Brightness {
             get {
                 return ResourceManager.GetString("Brightness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse.
+        /// </summary>
+        public static string Browse {
+            get {
+                return ResourceManager.GetString("Browse", resourceCulture);
             }
         }
         
@@ -250,11 +268,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string Clear {
+            get {
+                return ResourceManager.GetString("Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CMYK.
         /// </summary>
         public static string CMYK {
             get {
                 return ResourceManager.GetString("CMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color {
+            get {
+                return ResourceManager.GetString("Color", resourceCulture);
             }
         }
         
@@ -304,6 +340,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extracted colors will be displayed here..
+        /// </summary>
+        public static string ColorsWillDisplayHere {
+            get {
+                return ResourceManager.GetString("ColorsWillDisplayHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color Tools.
         /// </summary>
         public static string ColorTools {
@@ -322,6 +367,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comma-separated (,).
+        /// </summary>
+        public static string CommaSeparated {
+            get {
+                return ResourceManager.GetString("CommaSeparated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complementary.
         /// </summary>
         public static string Complementary {
@@ -336,6 +390,15 @@ namespace ColorPicker.Properties {
         public static string Contrast {
             get {
                 return ResourceManager.GetString("Contrast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contrast Grid.
+        /// </summary>
+        public static string ContrastGrid {
+            get {
+                return ResourceManager.GetString("ContrastGrid", resourceCulture);
             }
         }
         
@@ -646,11 +709,56 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string ExportShort {
+            get {
+                return ResourceManager.GetString("ExportShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export to CSV.
+        /// </summary>
+        public static string ExportToCSV {
+            get {
+                return ResourceManager.GetString("ExportToCSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extract colors.
+        /// </summary>
+        public static string ExtractColors {
+            get {
+                return ResourceManager.GetString("ExtractColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colors are being extracted, please wait..
+        /// </summary>
+        public static string ExtractionInProgress {
+            get {
+                return ResourceManager.GetString("ExtractionInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Features.
         /// </summary>
         public static string Features {
             get {
                 return ResourceManager.GetString("Features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First color.
+        /// </summary>
+        public static string FirstColor {
+            get {
+                return ResourceManager.GetString("FirstColor", resourceCulture);
             }
         }
         
@@ -678,6 +786,24 @@ namespace ColorPicker.Properties {
         public static string Foreground {
             get {
                 return ResourceManager.GetString("Foreground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground color details.
+        /// </summary>
+        public static string ForegroundDetails {
+            get {
+                return ResourceManager.GetString("ForegroundDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequence.
+        /// </summary>
+        public static string Frequence {
+            get {
+                return ResourceManager.GetString("Frequence", resourceCulture);
             }
         }
         
@@ -907,11 +1033,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Image Extractor.
+        /// </summary>
+        public static string ImageExtractor {
+            get {
+                return ResourceManager.GetString("ImageExtractor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import settings.
         /// </summary>
         public static string Import {
             get {
                 return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include frequence.
+        /// </summary>
+        public static string IncludeFrequence {
+            get {
+                return ResourceManager.GetString("IncludeFrequence", resourceCulture);
             }
         }
         
@@ -1114,6 +1258,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of colors to diplay.
+        /// </summary>
+        public static string NumberColorDisplay {
+            get {
+                return ResourceManager.GetString("NumberColorDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On start.
         /// </summary>
         public static string OnStart {
@@ -1177,11 +1330,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pixels.
+        /// </summary>
+        public static string Pixels {
+            get {
+                return ResourceManager.GetString("Pixels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Automatic updates are not available in portable mode, please download ColorPicker Max again..
         /// </summary>
         public static string PortableNoAutoUpdates {
             get {
                 return ResourceManager.GetString("PortableNoAutoUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precision (pixels to ignore).
+        /// </summary>
+        public static string Precision {
+            get {
+                return ResourceManager.GetString("Precision", resourceCulture);
             }
         }
         
@@ -1227,6 +1398,15 @@ namespace ColorPicker.Properties {
         public static string RemoveBookmark {
             get {
                 return ResourceManager.GetString("RemoveBookmark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove image.
+        /// </summary>
+        public static string RemoveImage {
+            get {
+                return ResourceManager.GetString("RemoveImage", resourceCulture);
             }
         }
         
@@ -1294,6 +1474,51 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Score.
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4.5+ (AA).
+        /// </summary>
+        public static string ScoreAA {
+            get {
+                return ResourceManager.GetString("ScoreAA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 7+ (AAA).
+        /// </summary>
+        public static string ScoreAAA {
+            get {
+                return ResourceManager.GetString("ScoreAAA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string ScoreAll {
+            get {
+                return ResourceManager.GetString("ScoreAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second color.
+        /// </summary>
+        public static string SecondColor {
+            get {
+                return ResourceManager.GetString("SecondColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to See licenses.
         /// </summary>
         public static string SeeLicenses {
@@ -1321,6 +1546,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a format for each item..
+        /// </summary>
+        public static string SelectFormatItems {
+            get {
+                return ResourceManager.GetString("SelectFormatItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select images.
+        /// </summary>
+        public static string SelectImages {
+            get {
+                return ResourceManager.GetString("SelectImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selector.
         /// </summary>
         public static string Selector {
@@ -1335,6 +1578,15 @@ namespace ColorPicker.Properties {
         public static string SelectorInfo {
             get {
                 return ResourceManager.GetString("SelectorInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semi-colon-separated (;).
+        /// </summary>
+        public static string SemiColonSeparated {
+            get {
+                return ResourceManager.GetString("SemiColonSeparated", resourceCulture);
             }
         }
         
@@ -1402,6 +1654,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort.
+        /// </summary>
+        public static string Sort {
+            get {
+                return ResourceManager.GetString("Sort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Split Complementary.
         /// </summary>
         public static string SplitComplementary {
@@ -1438,7 +1699,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suggested actions.
+        ///   Looks up a localized string similar to Quick actions.
         /// </summary>
         public static string SuggestedActions {
             get {
@@ -1587,6 +1848,15 @@ namespace ColorPicker.Properties {
         public static string UseKeyboardShortcuts {
             get {
                 return ResourceManager.GetString("UseKeyboardShortcuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use upper cases for HEX color.
+        /// </summary>
+        public static string UseUpperCasesHex {
+            get {
+                return ResourceManager.GetString("UseUpperCasesHex", resourceCulture);
             }
         }
         

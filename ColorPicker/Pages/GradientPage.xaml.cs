@@ -39,7 +39,7 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class GradientPage : Page
 {
-	bool code = Global.Settings.UseSynethia ? false : true; // checks if the code as already been implemented
+	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 
 	public GradientPage()
 	{
@@ -83,11 +83,11 @@ public partial class GradientPage : Page
 		double.TryParse(RotateAngleTxt.Text, out double angle);
 		GradientBorder.Background = new LinearGradientBrush
 		{
-			GradientStops = new GradientStopCollection
-			{
+			GradientStops =
+			[
 				new GradientStop(Color.FromRgb(from.R, from.G, from.B), 0),
 				new GradientStop(Color.FromRgb(to.R, to.G, to.B), 1),
-			},
+			],
 			StartPoint = new(0.5, 1),
 			EndPoint = new(0.5, 0),
 			RelativeTransform = new RotateTransform()
@@ -113,11 +113,10 @@ public partial class GradientPage : Page
 			$"</Rectangle>";
 
 		CurrentGradient = new(
-			new()
-			{
+			[
 				new(ColorHelper.ColorConverter.RgbToHex(new(from.R, from.G, from.B)).Value, 0),
 				new(ColorHelper.ColorConverter.RgbToHex(new(to.R, to.G, to.B)).Value, 1),
-			},
+			],
 		angle);
 
 		// Load the bookmark icon
@@ -443,6 +442,18 @@ public partial class GradientPage : Page
 	private void ForegroundBorder_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
+	}
+
+	private void ExpandCssBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CssBorder.Visibility = CssBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+		ExpandCssBtn.Content = CssBorder.Visibility == Visibility.Visible ? "\uF2B7" : "\uF2A4";
+	}
+
+	private void ExpandXamlBtn_Click(object sender, RoutedEventArgs e)
+	{
+		XamlBorder.Visibility = XamlBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+		ExpandXamlBtn.Content = XamlBorder.Visibility == Visibility.Visible ? "\uF2B7" : "\uF2A4";
 	}
 
 	private ColorHelper.RGB ConvertToRgb()

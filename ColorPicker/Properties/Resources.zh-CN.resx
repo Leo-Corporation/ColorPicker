@@ -159,7 +159,7 @@
 	<value>开始使用</value>
   </data>
   <data name="SuggestedActions" xml:space="preserve">
-	<value>推荐操作</value>
+	<value>快速行动</value>
   </data>
   <data name="Discover" xml:space="preserve">
 	<value>发现</value>
@@ -655,5 +655,95 @@
   </data>
   <data name="AmountToGenerate" xml:space="preserve">
     <value>产生金额</value>
+  </data>
+  <data name="FirstColor" xml:space="preserve">
+    <value>第一种颜色</value>
+  </data>
+  <data name="SecondColor" xml:space="preserve">
+    <value>第一种颜色</value>
+  </data>
+  <data name="ImageExtractor" xml:space="preserve">
+    <value>图像提取器</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="SelectImages" xml:space="preserve">
+    <value>选择图像</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="RemoveImage" xml:space="preserve">
+    <value>移除图像</value>
+  </data>
+  <data name="Frequence" xml:space="preserve">
+    <value>频率</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>精度（忽略的像素）</value>
+  </data>
+  <data name="Pixels" xml:space="preserve">
+    <value>像素</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>清晰</value>
+  </data>
+  <data name="ExtractColors" xml:space="preserve">
+    <value>提取颜色</value>
+  </data>
+  <data name="ExtractionInProgress" xml:space="preserve">
+    <value>正在提取颜色，请稍候。</value>
+  </data>
+  <data name="ExportToCSV" xml:space="preserve">
+    <value>导出为 CSV</value>
+  </data>
+  <data name="CommaSeparated" xml:space="preserve">
+    <value>逗号分隔 (,)</value>
+  </data>
+  <data name="SemiColonSeparated" xml:space="preserve">
+    <value>用半冒号分隔 (;)</value>
+  </data>
+  <data name="SelectFormatItems" xml:space="preserve">
+    <value>为每个项目选择一种格式。</value>
+  </data>
+  <data name="ExportShort" xml:space="preserve">
+    <value>出口</value>
+  </data>
+  <data name="IncludeFrequence" xml:space="preserve">
+    <value>包括频率</value>
+  </data>
+  <data name="NumberColorDisplay" xml:space="preserve">
+    <value>Nombre de couleurs à afficher</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="ColorsWillDisplayHere" xml:space="preserve">
+    <value>提取的颜色将在此处显示。</value>
+  </data>
+  <data name="ContrastGrid" xml:space="preserve">
+    <value>对比网格</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>得分</value>
+  </data>
+  <data name="ScoreAA" xml:space="preserve">
+    <value>4.5+ (AA)</value>
+  </data>
+  <data name="ScoreAAA" xml:space="preserve">
+    <value>7+ (AAA)</value>
+  </data>
+  <data name="ScoreAll" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="ForegroundDetails" xml:space="preserve">
+    <value>前景色细节</value>
+  </data>
+  <data name="BackgroundDetails" xml:space="preserve">
+    <value>背景颜色细节</value>
+  </data>
+  <data name="UseUpperCasesHex" xml:space="preserve">
+    <value>使用大写字母表示 HEX 颜色</value>
   </data>
 </root>

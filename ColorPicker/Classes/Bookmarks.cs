@@ -104,7 +104,7 @@ namespace ColorPicker.Classes
 
 		public Gradient()
 		{
-			Stops = new();
+			Stops = [];
 			Angle = 0;
 		}
 
