@@ -11,7 +11,7 @@
 	<Title>ColorPicker</Title>
 	<Description>Maximize your creativity.</Description>
 	<RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
-	<Version>6.0.0.2402-rc1</Version>
+	<Version>6.0.0.2402</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageIcon>logo.png</PackageIcon>
 	<ApplicationIcon>CPM.ico</ApplicationIcon>
