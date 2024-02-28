@@ -87,7 +87,6 @@ public static class Global
 		]
 	};
 
-	internal static Action RefreshButton { get; set; }
 
 	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
 	internal static string BookmarksPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml";
@@ -278,36 +277,41 @@ public static class Global
 	/// </summary>
 	public static void ChangeTheme(bool reload = false)
 	{
-		App.Current.Resources.MergedDictionaries.Clear();
-		ResourceDictionary resourceDictionary = []; // Create a resource dictionary
-
-		bool isDark = Settings.Theme == Themes.Dark;
-		if (Settings.Theme == Themes.System)
+		try
 		{
-			isDark = IsSystemThemeDark(); // Set
-		}
+			App.Current.Resources.MergedDictionaries.Clear();
+			ResourceDictionary resourceDictionary = []; // Create a resource dictionary
 
-		if (isDark) // If the dark theme is on
+			bool isDark = Settings.Theme == Themes.Dark;
+			if (Settings.Theme == Themes.System)
+			{
+				isDark = IsSystemThemeDark(); // Set
+			}
+
+			if (isDark) // If the dark theme is on
+			{
+				resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
+			}
+			else
+			{
+				resourceDictionary.Source = new Uri("..\\Themes\\Light.xaml", UriKind.Relative); // Add source
+			}
+
+			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+
+			if (!reload) return;
+			BookmarksPage.CheckButton(BookmarksPage.CheckedButton);
+			ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
+			ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
+			HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
+			PalettePage.CheckButton(PalettePage.SelectedColorBtn);
+			ContrastPage.CheckButton(ContrastPage.RgbBtn);
+			ContrastPage.InitGrid(ContrastPage.contrastLimit);
+		}
+		catch (Exception ex)
 		{
-			resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
+			MessageBox.Show(ex.StackTrace, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Error);
 		}
-		else
-		{
-			resourceDictionary.Source = new Uri("..\\Themes\\Light.xaml", UriKind.Relative); // Add source
-		}
-
-		App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
-
-		if (!reload) return;
-		AiGenPage.CheckButton(AiGenPage.CheckedButton);
-		BookmarksPage.CheckButton(BookmarksPage.CheckedButton);
-		ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
-		ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
-		HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
-		PalettePage.CheckButton(PalettePage.SelectedColorBtn);
-		ContrastPage.CheckButton(ContrastPage.RgbBtn);
-		ContrastPage.InitGrid(ContrastPage.contrastLimit);
-		RefreshButton();
 	}
 
 	public static bool IsSystemThemeDark()

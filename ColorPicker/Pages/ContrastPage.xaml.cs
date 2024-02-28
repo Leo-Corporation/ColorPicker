@@ -130,7 +130,7 @@ public partial class ContrastPage : Page
 		Global.SynethiaConfig.PagesInfo[9].InteractionCount++;
 	}
 
-	internal static void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
+	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
 
 	private void HideAllInput()
 	{

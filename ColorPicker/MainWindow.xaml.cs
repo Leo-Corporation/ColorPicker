@@ -42,7 +42,6 @@ public partial class MainWindow : Window
 	{
 		InitializeComponent();
 		InitUI();
-		Global.RefreshButton = () => SettingsPageBtn.Background = Global.GetColorFromResource("Background1");
 		GC.Collect();
 	}
 
