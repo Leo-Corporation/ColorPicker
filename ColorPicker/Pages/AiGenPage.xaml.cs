@@ -49,17 +49,15 @@ public partial class AiGenPage : Page
 	public AiGenPage()
 	{
 		InitializeComponent();
-		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
 		InitUI();
+		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+		ColorBtn.IsChecked = true;
 	}
 
 	private void InitUI()
 	{
-		UnCheckAllButtons();
 		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
 		{
-			CheckButton(ColorBtn);
-			CheckedButton = ColorBtn;
 			ColorPanel.Visibility = Visibility.Visible;
 			ApiPlaceholder.Visibility = Visibility.Collapsed;
 			return;
@@ -203,36 +201,6 @@ public partial class AiGenPage : Page
 		catch { }
 	}
 
-	internal Button CheckedButton;
-	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
-
-	private void UnCheckAllButtons()
-	{
-		ColorBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
-		PaletteBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
-
-		ColorPanel.Visibility = Visibility.Collapsed;
-		PalettePanel.Visibility = Visibility.Collapsed;
-		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
-	}
-	private void ColorBtn_Click(object sender, RoutedEventArgs e)
-	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
-		UnCheckAllButtons();
-		CheckButton(ColorBtn);
-		CheckedButton = ColorBtn;
-		ColorPanel.Visibility = Visibility.Visible;
-	}
-
-	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
-	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
-		UnCheckAllButtons();
-		CheckButton(PaletteBtn);
-		CheckedButton = PaletteBtn;
-		PalettePanel.Visibility = Visibility.Visible;
-	}
-
 	private async void PaletteGenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
@@ -255,11 +223,11 @@ public partial class AiGenPage : Page
 			});
 			var completionResult = await openAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
 			{
-				Messages = new List<ChatMessage>
-				{
+				Messages =
+				[
 					ChatMessage.FromSystem("GOAL: You are a color palette assistant. The user gives you a prompt to generate a EXACLY FIVE colors. FORMAT: ONLY ANWSER LIKE THIS (with colors instead of \"...\"): [\"#FFFFFF\", \"#000000\", \"...\", \"...\", \"...\"]"),
 					ChatMessage.FromUser(PalettePromptTxt.Text)
-				},
+				],
 				Model = Models.Gpt_3_5_Turbo,
 			});
 
@@ -315,5 +283,21 @@ public partial class AiGenPage : Page
 	private void IdeaPaletteBtn_Click(object sender, RoutedEventArgs e)
 	{
 		PalettePromptTxt.Text = Global.GetRandomAiPrompt();
+	}
+
+	private void ColorBtn_Checked(object sender, RoutedEventArgs e)
+	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
+		ColorPanel.Visibility = Visibility.Visible;
+		PalettePanel.Visibility = Visibility.Collapsed;
+	}
+
+	private void PaletteBtn_Checked(object sender, RoutedEventArgs e)
+	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
+		ColorPanel.Visibility = Visibility.Collapsed;
+		PalettePanel.Visibility = Visibility.Visible;
 	}
 }
