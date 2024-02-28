@@ -48,16 +48,17 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button
+            <RadioButton
                 x:Name="ColorBtn"
                 Margin="0 2"
                 Padding="5"
                 HorizontalContentAlignment="Stretch"
                 Background="Transparent"
                 BorderThickness="0"
-                Click="ColorBtn_Click"
+                Checked="ColorBtn_Checked"
                 Foreground="{DynamicResource AccentColor}"
-                Style="{DynamicResource DefaultButton}">
+                GroupName="Toggle"
+                Style="{DynamicResource DefaultToggleButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -77,8 +78,8 @@
                         FontWeight="ExtraBold"
                         Text="{x:Static lang:Resources.SingleColor}" />
                 </Grid>
-            </Button>
-            <Button
+            </RadioButton>
+            <RadioButton
                 x:Name="PaletteBtn"
                 Grid.Column="1"
                 Margin="10 2 0 2"
@@ -86,9 +87,10 @@
                 HorizontalContentAlignment="Stretch"
                 Background="Transparent"
                 BorderThickness="0"
-                Click="PaletteBtn_Click"
+                Checked="PaletteBtn_Checked"
                 Foreground="{DynamicResource AccentColor}"
-                Style="{DynamicResource DefaultButton}">
+                GroupName="Toggle"
+                Style="{DynamicResource DefaultToggleButton}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -108,7 +110,7 @@
                         FontWeight="ExtraBold"
                         Text="{x:Static lang:Resources.Palettes}" />
                 </Grid>
-            </Button>
+            </RadioButton>
             <Button
                 x:Name="BookmarkBtn"
                 Grid.Column="3"
