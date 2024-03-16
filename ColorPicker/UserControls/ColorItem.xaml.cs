@@ -47,6 +47,18 @@ namespace ColorPicker.UserControls
 			InitUI();
 		}
 
+		private int GetIndex()
+		{
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf(HexColor);
+			if (i == -1) i = Global.Bookmarks.ColorBookmarks.IndexOf(HexColor.ToLower());
+			if (i == -1) i = Global.Bookmarks.ColorBookmarks.IndexOf(HexColor.ToUpper());
+			if (i == -1) i = Global.Bookmarks.ColorBookmarks.IndexOf("#" + HexColor.ToLower());
+			if (i == -1) i = Global.Bookmarks.ColorBookmarks.IndexOf("#" + HexColor.ToUpper());
+			if (i == -1) i = Global.Bookmarks.ColorBookmarks.IndexOf(HexColor.ToLower().Replace("#", ""));
+			if (i == -1) i = Global.Bookmarks.ColorBookmarks.IndexOf(HexColor.ToUpper().Replace("#", ""));
+			return i;
+		}
+
 		private void InitUI()
 		{
 			Color color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
@@ -62,6 +74,13 @@ namespace ColorPicker.UserControls
 
 			RgbTxt.Text = $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}"; // Set text
 			HEXTxt.Text = HexColor; // Set text
+			try
+			{
+				NoteTxt.Text = Global.Bookmarks.ColorBookmarksNotes[GetIndex()];
+				NoteToolTip.Content = NoteTxt.Text;
+				NoteIcon.Visibility = string.IsNullOrEmpty(NoteTxt.Text) ? Visibility.Collapsed : Visibility.Visible;
+			}
+			catch { }
 		}
 
 		private void ColorBorder_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -82,7 +101,9 @@ namespace ColorPicker.UserControls
 
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Global.Bookmarks.ColorBookmarks.Remove(HexColor);
+			int index = GetIndex();
+			Global.Bookmarks.ColorBookmarks.RemoveAt(index);
+			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(index);
 			Global.BookmarksPage.ColorsBookmarks.Children.Remove(this);
 			Global.SelectorPage.LoadDetails();
 			Global.ConverterPage.LoadDetails();
@@ -161,6 +182,23 @@ namespace ColorPicker.UserControls
 			Global.PalettePage.ColorInfo = ColorInfo;
 			Global.PalettePage.InitPaletteUI(true);
 			GoClick?.Invoke(sender, new PageEventArgs(AppPages.ColorPalette));
+		}
+
+		private void AddNoteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MorePopup.IsOpen = false;
+			NotePopup.IsOpen = true;
+		}
+
+		private void SaveBtn_Click(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				Global.Bookmarks.ColorBookmarksNotes[GetIndex()] = NoteTxt.Text;
+				NoteToolTip.Content = NoteTxt.Text;
+				NoteIcon.Visibility = string.IsNullOrEmpty(NoteTxt.Text) ? Visibility.Collapsed : Visibility.Visible;
+			}
+			catch { }
 		}
 	}
 }

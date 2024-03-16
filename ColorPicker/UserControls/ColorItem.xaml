@@ -132,6 +132,20 @@
             </StackPanel>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <TextBlock
+                    x:Name="NoteIcon"
+                    Margin="0 6 5 0"
+                    Padding="5"
+                    VerticalAlignment="Top"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    Text="&#xF56C;">
+                    <TextBlock.ToolTip>
+                        <ToolTip
+                            x:Name="NoteToolTip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </TextBlock.ToolTip>
+                </TextBlock>
                 <Button
                     x:Name="DeleteBtn"
                     Grid.Column="3"
@@ -191,6 +205,15 @@
                         </Border.Effect>
                         <StackPanel>
                             <Button
+                                x:Name="AddNoteBtn"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Click="AddNoteBtn_Click"
+                                Content="{x:Static lang:Resources.AddNote}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Foreground1}"
+                                Style="{DynamicResource DefaultButton}" />
+                            <Button
                                 x:Name="EditSelectorBtn"
                                 HorizontalContentAlignment="Left"
                                 Background="Transparent"
@@ -217,6 +240,51 @@
                                 FontWeight="Bold"
                                 Foreground="{DynamicResource Foreground1}"
                                 Style="{DynamicResource DefaultButton}" />
+                        </StackPanel>
+                    </Border>
+                </Popup>
+                <Popup
+                    x:Name="NotePopup"
+                    AllowsTransparency="True"
+                    Placement="MousePoint"
+                    PlacementTarget="{Binding MoreBtn}"
+                    StaysOpen="False">
+                    <Border
+                        Margin="10"
+                        Padding="10"
+                        Background="{DynamicResource Background1}"
+                        CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="15"
+                                Direction="135"
+                                Opacity="0.2"
+                                ShadowDepth="0"
+                                Color="#000" />
+                        </Border.Effect>
+                        <StackPanel>
+                            <Border
+                                Padding="2"
+                                BorderBrush="{DynamicResource AccentColor}"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBox
+                                    x:Name="NoteTxt"
+                                    MinWidth="100"
+                                    MinHeight="50"
+                                    BorderThickness="0" />
+                            </Border>
+                            <Button
+                                x:Name="SaveBtn"
+                                Margin="5"
+                                Padding="5 2"
+                                HorizontalAlignment="Center"
+                                Background="{DynamicResource AccentColor}"
+                                Click="SaveBtn_Click"
+                                Content="{x:Static lang:Resources.Save}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                                Style="{DynamicResource PrimaryButton}" />
                         </StackPanel>
                     </Border>
                 </Popup>

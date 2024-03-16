@@ -407,6 +407,7 @@ public partial class ConverterPage : Page
 			return;
 		}
 		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
+		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}

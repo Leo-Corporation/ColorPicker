@@ -339,6 +339,7 @@ public partial class ContrastPage : Page
 			return;
 		}
 		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
