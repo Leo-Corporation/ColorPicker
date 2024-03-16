@@ -746,4 +746,10 @@
   <data name="UseUpperCasesHex" xml:space="preserve">
     <value>使用大写字母表示 HEX 颜色</value>
   </data>
+  <data name="AddNote" xml:space="preserve">
+    <value>添加备注</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>节省</value>
+  </data>
 </root>
