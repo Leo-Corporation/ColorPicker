@@ -138,6 +138,7 @@
                     Padding="5"
                     VerticalAlignment="Top"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    MouseLeftButtonUp="NoteIcon_MouseLeftButtonUp"
                     Text="&#xF56C;">
                     <TextBlock.ToolTip>
                         <ToolTip

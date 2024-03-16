@@ -200,5 +200,10 @@ namespace ColorPicker.UserControls
 			}
 			catch { }
 		}
+
+		private void NoteIcon_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			NotePopup.IsOpen = true;
+		}
 	}
 }
