@@ -336,7 +336,9 @@ public partial class SelectorPage : Page
 	{
 		if (Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
 		{
-			Global.Bookmarks.ColorBookmarks.Remove(HexTxt.Text);
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf(HexTxt.Text);
+			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
+			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
 			BookmarkBtn.Content = "\uF1F6";
 			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
 

@@ -265,7 +265,9 @@ public partial class AiGenPage : Page
 		string hex = $"#{new ColorInfo(new(bg.Color.R, bg.Color.G, bg.Color.B)).HEX.Value}";
 		if (Global.Bookmarks.ColorBookmarks.Contains(hex))
 		{
-			Global.Bookmarks.ColorBookmarks.Remove(hex);
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf(hex);
+			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
+			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
 			BookmarkBtn.Content = "\uF1F6";
 			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
 			return;

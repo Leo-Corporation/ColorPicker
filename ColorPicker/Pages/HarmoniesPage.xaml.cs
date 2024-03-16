@@ -446,7 +446,9 @@ namespace ColorPicker.Pages
 		{
 			if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 			{
-				Global.Bookmarks.ColorBookmarks.Remove($"#{ColorInfo.HEX.Value}");
+				int i = Global.Bookmarks.ColorBookmarks.IndexOf($"#{ColorInfo.HEX.Value}");
+				Global.Bookmarks.ColorBookmarks.RemoveAt(i);
+				Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
 				BookmarkBtn.Content = "\uF1F6";
 				BookmarkToolTip.Content = Properties.Resources.AddBookmark;
 
