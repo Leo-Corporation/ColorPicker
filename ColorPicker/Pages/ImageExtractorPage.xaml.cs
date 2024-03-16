@@ -66,6 +66,8 @@ public partial class ImageExtractorPage : Page
 		ClearBtn.Visibility = filePaths.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
 
 		ImageScrollViewer.Visibility = ImageDisplayer.Children.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
+		ColorPlaceholder.Visibility = ImageDisplayer.Children.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+		if (ImageDisplayer.Children.Count == 0) ColorDisplayerBorder.Visibility = Visibility.Collapsed;
 	}
 
 	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
