@@ -24,6 +24,7 @@ SOFTWARE.
 using ColorPicker.Classes;
 using ColorPicker.Windows;
 using PeyrSharp.Env;
+using System.Linq;
 using System.Windows;
 
 namespace ColorPicker;
@@ -48,6 +49,11 @@ public partial class App : Application
 		if (Global.Bookmarks.PaletteBookmarks is null) Global.Bookmarks.PaletteBookmarks = [];
 		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = [];
 		if (Global.Bookmarks.TextBookmarks is null) Global.Bookmarks.TextBookmarks = [];
+		if (Global.Bookmarks.ColorBookmarksNotes is null) Global.Bookmarks.ColorBookmarksNotes = Enumerable.Repeat(string.Empty, Global.Bookmarks.ColorBookmarks.Count).ToList();
+		if (Global.Bookmarks.ColorBookmarksNotes.Count < Global.Bookmarks.ColorBookmarks.Count)
+		{
+			Global.Bookmarks.ColorBookmarksNotes.AddRange(Enumerable.Repeat(string.Empty, Global.Bookmarks.ColorBookmarks.Count - Global.Bookmarks.ColorBookmarksNotes.Count));
+		}
 
 		// Pages
 		Global.SelectorPage = new();
