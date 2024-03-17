@@ -273,7 +273,9 @@
                                     x:Name="NoteTxt"
                                     MinWidth="100"
                                     MinHeight="50"
-                                    BorderThickness="0" />
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Foreground="{DynamicResource Foreground1}" />
                             </Border>
                             <Button
                                 x:Name="SaveBtn"
