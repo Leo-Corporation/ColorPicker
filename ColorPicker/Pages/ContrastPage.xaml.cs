@@ -332,13 +332,16 @@ public partial class ContrastPage : Page
 	{
 		if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 		{
-			Global.Bookmarks.ColorBookmarks.Remove($"#{ColorInfo.HEX.Value}");
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf($"#{ColorInfo.HEX.Value}");
+			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
+			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
 			BookmarkBtn.Content = "\uF1F6";
 			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
 
 			return;
 		}
 		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
@@ -405,6 +408,36 @@ public partial class ContrastPage : Page
 			}
 		}
 
+
+		if (ShowHighlight.IsChecked ?? false)
+		{
+			Border ColBorder = new()
+			{
+				Name = "ColBorder",
+				BorderBrush = Global.GetColorFromResource("AccentColor"),
+				BorderThickness = new Thickness(2),
+				CornerRadius = new CornerRadius(5)
+			};
+
+			Border RowBorder = new()
+			{
+				Name = "RowBorder",
+				BorderBrush = Global.GetColorFromResource("AccentColor"),
+				BorderThickness = new Thickness(2),
+				CornerRadius = new CornerRadius(5)
+			};
+
+			Grid.SetColumn(ColBorder, 11 - lumValues.IndexOf(ColorInfo.HSL.L));
+			Grid.SetRow(RowBorder, 11 - lumValues.IndexOf(ColorInfo.HSL.L));
+			Grid.SetRowSpan(ColBorder, 12);
+			Grid.SetColumnSpan(RowBorder, 12);
+			Panel.SetZIndex(ColBorder, 10);
+			Panel.SetZIndex(RowBorder, 10);
+
+			ContrastGrid.Children.Add(ColBorder);
+			ContrastGrid.Children.Add(RowBorder); 
+		}
+
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 		{
@@ -414,7 +447,6 @@ public partial class ContrastPage : Page
 		}
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
-
 	}
 
 	private void ScoreAllToggle_Checked(object sender, RoutedEventArgs e)
@@ -432,6 +464,11 @@ public partial class ContrastPage : Page
 	private void ScoreAAAToggle_Checked(object sender, RoutedEventArgs e)
 	{
 		contrastLimit = 7;
+		InitGrid(contrastLimit);
+	}
+
+	private void ShowHighlight_Checked(object sender, RoutedEventArgs e)
+	{
 		InitGrid(contrastLimit);
 	}
 }

@@ -430,9 +430,17 @@
                 Foreground="{DynamicResource AccentColor}"
                 GroupName="ScoreToggles"
                 Style="{DynamicResource DefaultToggleButton}" />
+            <CheckBox
+                x:Name="ShowHighlight"
+                VerticalContentAlignment="Center"
+                BorderThickness="2"
+                Checked="ShowHighlight_Checked"
+                Content="{x:Static lang:Resources.HighlightColorGrid}"
+                Foreground="{DynamicResource Foreground1}"
+                Style="{DynamicResource CheckBoxStyle1}"
+                Unchecked="ShowHighlight_Checked" />
         </StackPanel>
         <Grid x:Name="ContrastGrid" Grid.Row="3">
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />

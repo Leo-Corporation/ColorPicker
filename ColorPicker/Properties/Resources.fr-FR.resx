@@ -742,4 +742,13 @@
   <data name="UseUpperCasesHex" xml:space="preserve">
     <value>Utiliser des majuscules pour les couleurs HEX</value>
   </data>
+  <data name="AddNote" xml:space="preserve">
+    <value>Ajouter une note</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="HighlightColorGrid" xml:space="preserve">
+    <value>Mettre en évidence la couleur</value>
+  </data>
 </root>

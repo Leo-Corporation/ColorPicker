@@ -57,6 +57,7 @@ public partial class ColorDetailsWindow : Window
 		CopyHsvBtn.Background = bgBtn;
 		CopyHslBtn.Background = bgBtn;
 		CopyCmykBtn.Background = bgBtn;
+		CopyDecBtn.Background = bgBtn;
 		CopyXyzBtn.Background = bgBtn;
 		CopyYiqBtn.Background = bgBtn;
 		CopyYuvBtn.Background = bgBtn;
@@ -69,6 +70,7 @@ public partial class ColorDetailsWindow : Window
 		CopyHsvBtn.Foreground = BackgroundSolidBrush;
 		CopyHslBtn.Foreground = BackgroundSolidBrush;
 		CopyCmykBtn.Foreground = BackgroundSolidBrush;
+		CopyDecBtn.Foreground = BackgroundSolidBrush;
 		CopyXyzBtn.Foreground = BackgroundSolidBrush;
 		CopyYiqBtn.Foreground = BackgroundSolidBrush;
 		CopyYuvBtn.Foreground = BackgroundSolidBrush;
@@ -79,6 +81,7 @@ public partial class ColorDetailsWindow : Window
 		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
 		HslTxt.Text = $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}";
 		CmykTxt.Text = $"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}";
+		DecTxt.Text = $"{ColorInfo.DEC.Value}";
 		XyzTxt.Text = $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}";
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}";
@@ -166,5 +169,10 @@ public partial class ColorDetailsWindow : Window
 	private void Border_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
 	{
 		((Border)sender).Background = null;
+	}
+
+	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetText(DecTxt.Text);
 	}
 }
