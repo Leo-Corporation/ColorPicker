@@ -273,9 +273,15 @@
                                     x:Name="NoteTxt"
                                     MinWidth="100"
                                     MinHeight="50"
+                                    MaxWidth="250"
+                                    MaxHeight="150"
+                                    AcceptsReturn="True"
+                                    AcceptsTab="True"
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    Foreground="{DynamicResource Foreground1}" />
+                                    CaretBrush="{DynamicResource AccentColor}"
+                                    Foreground="{DynamicResource Foreground1}"
+                                    TextWrapping="Wrap" />
                             </Border>
                             <Button
                                 x:Name="SaveBtn"
