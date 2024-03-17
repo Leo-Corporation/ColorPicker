@@ -8,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static lang:Resources.Details}"
     Width="450"
-    Height="520"
+    Height="575"
     MinWidth="450"
-    MinHeight="520"
+    MinHeight="575"
     AllowsTransparency="True"
     Background="Transparent"
     FontFamily="/Fonts/#Hauora"
@@ -383,6 +383,52 @@
 
                             <TextBlock
                                 x:Name="CmykTxt"
+                                Grid.Row="1"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="ExtraBold"
+                                Text="N/A" />
+                        </Grid>
+                    </Border>
+                    <Border
+                        Padding="5"
+                        CornerRadius="10"
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.DEC}" />
+                            <Button
+                                x:Name="CopyDecBtn"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Margin="0 3 3 3"
+                                Padding="5"
+                                VerticalAlignment="Top"
+                                Background="{DynamicResource Background3}"
+                                Click="CopyDecBtn_Click"
+                                Content="&#xF32C;"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                Style="{DynamicResource DefaultButton}">
+                                <Button.ToolTip>
+                                    <ToolTip
+                                        Background="{DynamicResource Background1}"
+                                        Content="{x:Static lang:Resources.CopyDEC}"
+                                        Foreground="{DynamicResource Foreground1}" />
+                                </Button.ToolTip>
+                            </Button>
+
+                            <TextBlock
+                                x:Name="DecTxt"
                                 Grid.Row="1"
                                 VerticalAlignment="Center"
                                 FontSize="18"
