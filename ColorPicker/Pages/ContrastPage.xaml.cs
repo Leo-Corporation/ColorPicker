@@ -409,31 +409,34 @@ public partial class ContrastPage : Page
 		}
 
 
-		Border ColBorder = new()
+		if (ShowHighlight.IsChecked ?? false)
 		{
-			Name = "ColBorder",
-			BorderBrush = Global.GetColorFromResource("AccentColor"),
-			BorderThickness = new Thickness(2),
-			CornerRadius = new CornerRadius(5)
-		};
+			Border ColBorder = new()
+			{
+				Name = "ColBorder",
+				BorderBrush = Global.GetColorFromResource("AccentColor"),
+				BorderThickness = new Thickness(2),
+				CornerRadius = new CornerRadius(5)
+			};
 
-		Border RowBorder = new()
-		{
-			Name = "RowBorder",
-			BorderBrush = Global.GetColorFromResource("AccentColor"),
-			BorderThickness = new Thickness(2),
-			CornerRadius = new CornerRadius(5)
-		};
+			Border RowBorder = new()
+			{
+				Name = "RowBorder",
+				BorderBrush = Global.GetColorFromResource("AccentColor"),
+				BorderThickness = new Thickness(2),
+				CornerRadius = new CornerRadius(5)
+			};
 
-		Grid.SetColumn(ColBorder, 11-lumValues.IndexOf(ColorInfo.HSL.L) );
-		Grid.SetRow(RowBorder, 11-lumValues.IndexOf(ColorInfo.HSL.L));
-		Grid.SetRowSpan(ColBorder, 12);
-		Grid.SetColumnSpan(RowBorder, 12);
-		Panel.SetZIndex(ColBorder, 10);
-		Panel.SetZIndex(RowBorder, 10);
+			Grid.SetColumn(ColBorder, 11 - lumValues.IndexOf(ColorInfo.HSL.L));
+			Grid.SetRow(RowBorder, 11 - lumValues.IndexOf(ColorInfo.HSL.L));
+			Grid.SetRowSpan(ColBorder, 12);
+			Grid.SetColumnSpan(RowBorder, 12);
+			Panel.SetZIndex(ColBorder, 10);
+			Panel.SetZIndex(RowBorder, 10);
 
-		ContrastGrid.Children.Add(ColBorder);
-		ContrastGrid.Children.Add(RowBorder);
+			ContrastGrid.Children.Add(ColBorder);
+			ContrastGrid.Children.Add(RowBorder); 
+		}
 
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
@@ -461,6 +464,11 @@ public partial class ContrastPage : Page
 	private void ScoreAAAToggle_Checked(object sender, RoutedEventArgs e)
 	{
 		contrastLimit = 7;
+		InitGrid(contrastLimit);
+	}
+
+	private void ShowHighlight_Checked(object sender, RoutedEventArgs e)
+	{
 		InitGrid(contrastLimit);
 	}
 }

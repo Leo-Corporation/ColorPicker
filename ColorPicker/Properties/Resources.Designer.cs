@@ -997,6 +997,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Highlight color.
+        /// </summary>
+        public static string HighlightColorGrid {
+            get {
+                return ResourceManager.GetString("HighlightColorGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to History.
         /// </summary>
         public static string History {

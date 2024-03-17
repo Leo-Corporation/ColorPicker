@@ -724,4 +724,7 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="HighlightColorGrid" xml:space="preserve">
+    <value>Highlight color</value>
+  </data>
 </root>

@@ -752,4 +752,7 @@
   <data name="Save" xml:space="preserve">
     <value>节省</value>
   </data>
+  <data name="HighlightColorGrid" xml:space="preserve">
+    <value>高光颜色</value>
+  </data>
 </root>

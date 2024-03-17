@@ -748,4 +748,7 @@
   <data name="Save" xml:space="preserve">
     <value>Enregistrer</value>
   </data>
+  <data name="HighlightColorGrid" xml:space="preserve">
+    <value>Mettre en évidence la couleur</value>
+  </data>
 </root>
