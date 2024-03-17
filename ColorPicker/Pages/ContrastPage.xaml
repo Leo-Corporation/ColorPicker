@@ -432,7 +432,6 @@
                 Style="{DynamicResource DefaultToggleButton}" />
         </StackPanel>
         <Grid x:Name="ContrastGrid" Grid.Row="3">
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />

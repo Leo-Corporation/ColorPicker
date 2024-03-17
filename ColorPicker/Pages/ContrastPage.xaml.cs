@@ -408,6 +408,33 @@ public partial class ContrastPage : Page
 			}
 		}
 
+
+		Border ColBorder = new()
+		{
+			Name = "ColBorder",
+			BorderBrush = Global.GetColorFromResource("AccentColor"),
+			BorderThickness = new Thickness(2),
+			CornerRadius = new CornerRadius(5)
+		};
+
+		Border RowBorder = new()
+		{
+			Name = "RowBorder",
+			BorderBrush = Global.GetColorFromResource("AccentColor"),
+			BorderThickness = new Thickness(2),
+			CornerRadius = new CornerRadius(5)
+		};
+
+		Grid.SetColumn(ColBorder, 11-lumValues.IndexOf(ColorInfo.HSL.L) );
+		Grid.SetRow(RowBorder, 11-lumValues.IndexOf(ColorInfo.HSL.L));
+		Grid.SetRowSpan(ColBorder, 12);
+		Grid.SetColumnSpan(RowBorder, 12);
+		Panel.SetZIndex(ColBorder, 10);
+		Panel.SetZIndex(RowBorder, 10);
+
+		ContrastGrid.Children.Add(ColBorder);
+		ContrastGrid.Children.Add(RowBorder);
+
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 		{
@@ -417,7 +444,6 @@ public partial class ContrastPage : Page
 		}
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
-
 	}
 
 	private void ScoreAllToggle_Checked(object sender, RoutedEventArgs e)
