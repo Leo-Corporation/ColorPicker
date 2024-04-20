@@ -51,8 +51,10 @@ public partial class CollectionItem : UserControl
 	private void InitUI()
 	{
 		CollectionNameTxt.Text = $"{ColorCollection.Name} ({ColorCollection.Colors.Count})";
+		ColorPanel.Children.Clear();
 		for (int i = 0; i < ColorCollection.Colors.Count; i++)
 		{
+			int j = i; // Avoid index out of range issues
 			var color = ColorHelper.ColorConverter.HexToRgb(new(ColorCollection.Colors[i]));
 			Border border = new()
 			{
@@ -76,7 +78,8 @@ public partial class CollectionItem : UserControl
 
 			border.MouseRightButtonUp += (o, e) =>
 			{
-				Global.Bookmarks.ColorCollections[Id].Colors.RemoveAt(i);
+				Global.Bookmarks.ColorCollections[Id].Colors.RemoveAt(j);
+				InitUI();
 			};
 
 			ColorPanel.Children.Add(border);
