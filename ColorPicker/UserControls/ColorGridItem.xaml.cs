@@ -29,49 +29,48 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ColorPicker.UserControls
+namespace ColorPicker.UserControls;
+
+/// <summary>
+/// Interaction logic for ColorGridItem.xaml
+/// </summary>
+public partial class ColorGridItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for ColorGridItem.xaml
-	/// </summary>
-	public partial class ColorGridItem : UserControl
+
+	public RGB ForegroundColor { get; }
+	public RGB BackgroundColor { get; }
+
+	public ColorGridItem(HSL foregroundColor, HSL backgroundColor, double limit)
 	{
+		InitializeComponent();
+		ForegroundColor = ColorHelper.ColorConverter.HslToRgb(foregroundColor);
+		BackgroundColor = ColorHelper.ColorConverter.HslToRgb(backgroundColor);
 
-		public RGB ForegroundColor { get; }
-		public RGB BackgroundColor { get; }
+		InitUI(limit);
+	}
 
-		public ColorGridItem(HSL foregroundColor, HSL backgroundColor, double limit)
+	private void InitUI(double limit)
+	{
+		double contrast = Global.GetContrastDouble([ForegroundColor.R, ForegroundColor.G, ForegroundColor.B], [BackgroundColor.R, BackgroundColor.G, BackgroundColor.B]);
+		if (contrast < limit)
 		{
-			InitializeComponent();
-			ForegroundColor = ColorHelper.ColorConverter.HslToRgb(foregroundColor);
-			BackgroundColor = ColorHelper.ColorConverter.HslToRgb(backgroundColor);
-
-			InitUI(limit);
+			ColorBorder.Background = Global.GetColorFromResource("Background2");
+			return;
 		}
 
-		private void InitUI(double limit)
-		{
-			double contrast = Global.GetContrastDouble([ForegroundColor.R, ForegroundColor.G, ForegroundColor.B], [BackgroundColor.R, BackgroundColor.G, BackgroundColor.B]);
-			if (contrast < limit)
-			{
-				ColorBorder.Background = Global.GetColorFromResource("Background2");
-				return;
-			}
+		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B) };
+		RatioTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) };
 
-			ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B) };
-			RatioTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) };
+		RatioTxt.Text = contrast.ToString();
+	}
 
-			RatioTxt.Text = contrast.ToString();
-		}
+	private void ForegroundDetails_Click(object sender, RoutedEventArgs e)
+	{
+		new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) }).Show();
+	}
 
-		private void ForegroundDetails_Click(object sender, RoutedEventArgs e)
-		{
-			new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) }).Show();
-		}
-
-		private void BackgroundDetails_Click(object sender, RoutedEventArgs e)
-		{
-			new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B) }).Show();
-		}
+	private void BackgroundDetails_Click(object sender, RoutedEventArgs e)
+	{
+		new ColorDetailsWindow(new SolidColorBrush { Color = Color.FromRgb(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B) }).Show();
 	}
 }

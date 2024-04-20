@@ -25,100 +25,99 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace ColorPicker.Classes
+namespace ColorPicker.Classes;
+
+public class Bookmarks
 {
-	public class Bookmarks
+	public List<string> ColorBookmarks { get; set; }
+	public List<string>? ColorBookmarksNotes { get; set; }
+	public List<string> PaletteBookmarks { get; set; }
+	public List<Gradient> GradientBookmarks { get; set; }
+	public List<BookmarkText> TextBookmarks { get; set; }
+}
+
+public class BookmarkText : IEquatable<BookmarkText>
+{
+	public string FontFamily { get; init; }
+	public string ForegroundColor { get; init; }
+	public string BackgroundColor { get; init; }
+	public BookmarkText()
 	{
-		public List<string> ColorBookmarks { get; set; }
-		public List<string>? ColorBookmarksNotes { get; set; }
-		public List<string> PaletteBookmarks { get; set; }
-		public List<Gradient> GradientBookmarks { get; set; }
-		public List<BookmarkText> TextBookmarks { get; set; }
+		FontFamily = "Arial"; // Fallback values
+		ForegroundColor = "#000000";
+		BackgroundColor = "#FFFFFF";
 	}
 
-	public class BookmarkText : IEquatable<BookmarkText>
+	public BookmarkText(string font, string fore, string back)
 	{
-		public string FontFamily { get; init; }
-		public string ForegroundColor { get; init; }
-		public string BackgroundColor { get; init; }
-		public BookmarkText()
-		{
-			FontFamily = "Arial"; // Fallback values
-			ForegroundColor = "#000000";
-			BackgroundColor = "#FFFFFF";
-		}
-
-		public BookmarkText(string font, string fore, string back)
-		{
-			FontFamily = font;
-			ForegroundColor = fore;
-			BackgroundColor = back;
-		}
-
-		public bool Equals(BookmarkText? obj)
-		{
-			if (obj == null || GetType() != obj.GetType())
-			{
-				return false;
-			}
-			return FontFamily == obj.FontFamily && ForegroundColor == obj.ForegroundColor && BackgroundColor == obj.BackgroundColor;
-		}
-
-
-		public override bool Equals(object obj) => Equals(obj as BookmarkText);
+		FontFamily = font;
+		ForegroundColor = fore;
+		BackgroundColor = back;
 	}
 
-	[XmlType("BookmarkGradientStop")]
-	public record BookmarkGradientStop
+	public bool Equals(BookmarkText? obj)
 	{
-		// Make the properties settable
-		public string Color { get; set; }
-		public double Stop { get; set; }
-
-		// Add a parameterless constructor
-		public BookmarkGradientStop()
+		if (obj == null || GetType() != obj.GetType())
 		{
-			// Assign default values to the properties
-			Color = "Black";
-			Stop = 0.0;
+			return false;
 		}
-
-		// Add a constructor with two parameters
-		public BookmarkGradientStop(string color, double stop)
-		{
-			Color = color;
-			Stop = stop;
-		}
+		return FontFamily == obj.FontFamily && ForegroundColor == obj.ForegroundColor && BackgroundColor == obj.BackgroundColor;
 	}
 
-	public class Gradient : IEquatable<Gradient>
+
+	public override bool Equals(object obj) => Equals(obj as BookmarkText);
+}
+
+[XmlType("BookmarkGradientStop")]
+public record BookmarkGradientStop
+{
+	// Make the properties settable
+	public string Color { get; set; }
+	public double Stop { get; set; }
+
+	// Add a parameterless constructor
+	public BookmarkGradientStop()
 	{
-		public List<BookmarkGradientStop> Stops { get; init; }
-		public double Angle { get; init; }
-
-		// The constructor of the class
-		public Gradient(List<BookmarkGradientStop> stops, double angle)
-		{
-			Stops = stops;
-			Angle = angle;
-		}
-
-		public Gradient()
-		{
-			Stops = [];
-			Angle = 0;
-		}
-
-		public bool Equals(Gradient? obj)
-		{
-			if (obj is null || obj.Stops.Count != Stops.Count || obj.Angle != Angle) return false;
-			for (int i = 0; i < obj.Stops.Count; i++)
-			{
-				if (obj.Stops[i] != Stops[i]) return false;
-			}
-			return true;
-		}
-
-		public override bool Equals(object obj) => Equals(obj as Gradient);
+		// Assign default values to the properties
+		Color = "Black";
+		Stop = 0.0;
 	}
+
+	// Add a constructor with two parameters
+	public BookmarkGradientStop(string color, double stop)
+	{
+		Color = color;
+		Stop = stop;
+	}
+}
+
+public class Gradient : IEquatable<Gradient>
+{
+	public List<BookmarkGradientStop> Stops { get; init; }
+	public double Angle { get; init; }
+
+	// The constructor of the class
+	public Gradient(List<BookmarkGradientStop> stops, double angle)
+	{
+		Stops = stops;
+		Angle = angle;
+	}
+
+	public Gradient()
+	{
+		Stops = [];
+		Angle = 0;
+	}
+
+	public bool Equals(Gradient? obj)
+	{
+		if (obj is null || obj.Stops.Count != Stops.Count || obj.Angle != Angle) return false;
+		for (int i = 0; i < obj.Stops.Count; i++)
+		{
+			if (obj.Stops[i] != Stops[i]) return false;
+		}
+		return true;
+	}
+
+	public override bool Equals(object obj) => Equals(obj as Gradient);
 }

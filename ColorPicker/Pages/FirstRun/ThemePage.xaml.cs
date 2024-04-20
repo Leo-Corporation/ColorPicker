@@ -30,91 +30,90 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ColorPicker.Pages.FirstRun
+namespace ColorPicker.Pages.FirstRun;
+
+/// <summary>
+/// Interaction logic for ThemePage.xaml
+/// </summary>
+public partial class ThemePage : Page
 {
-	/// <summary>
-	/// Interaction logic for ThemePage.xaml
-	/// </summary>
-	public partial class ThemePage : Page
+	private FirstRunWindow FirstRunWindow { get; init; }
+	public ThemePage(FirstRunWindow firstRunWindow)
 	{
-		private FirstRunWindow FirstRunWindow { get; init; }
-		public ThemePage(FirstRunWindow firstRunWindow)
-		{
-			InitializeComponent();
-			FirstRunWindow = firstRunWindow; // Set the first run window instance
+		InitializeComponent();
+		FirstRunWindow = firstRunWindow; // Set the first run window instance
 
-			InitUI();
-		}
+		InitUI();
+	}
 
-		private void InitUI()
+	private void InitUI()
+	{
+		// Select the default theme border
+		ThemeSelectedBorder = Global.Settings.Theme switch
 		{
-			// Select the default theme border
-			ThemeSelectedBorder = Global.Settings.Theme switch
-			{
-				Themes.Light => LightBorder,
-				Themes.Dark => DarkBorder,
-				_ => SystemBorder
-			};
-			Border_MouseEnter(Global.Settings.Theme switch
-			{
-				Themes.Light => LightBorder,
-				Themes.Dark => DarkBorder,
-				_ => SystemBorder
-			}, null);
-		}
+			Themes.Light => LightBorder,
+			Themes.Dark => DarkBorder,
+			_ => SystemBorder
+		};
+		Border_MouseEnter(Global.Settings.Theme switch
+		{
+			Themes.Light => LightBorder,
+			Themes.Dark => DarkBorder,
+			_ => SystemBorder
+		}, null);
+	}
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			FirstRunWindow.ChangePage(3);
-		}
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		FirstRunWindow.ChangePage(3);
+	}
 
-		Border ThemeSelectedBorder;
-		private void Border_MouseEnter(object sender, MouseEventArgs e)
-		{
-			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-		}
+	Border ThemeSelectedBorder;
+	private void Border_MouseEnter(object sender, MouseEventArgs e)
+	{
+		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
+	}
 
-		private void Border_MouseLeave(object sender, MouseEventArgs e)
-		{
-			if ((Border)sender == ThemeSelectedBorder) return;
-			((Border)sender).BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-		}
+	private void Border_MouseLeave(object sender, MouseEventArgs e)
+	{
+		if ((Border)sender == ThemeSelectedBorder) return;
+		((Border)sender).BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
+	}
 
-		private void ResetBorders()
-		{
-			LightBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-			DarkBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-			SystemBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-		}
+	private void ResetBorders()
+	{
+		LightBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
+		DarkBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
+		SystemBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
+	}
 
-		private void LightBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			ResetBorders();
-			ThemeSelectedBorder = (Border)sender;
-			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-			Global.Settings.Theme = Themes.Light;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-			Global.ChangeTheme();
-		}
+	private void LightBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		ResetBorders();
+		ThemeSelectedBorder = (Border)sender;
+		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
+		Global.Settings.Theme = Themes.Light;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		Global.ChangeTheme();
+	}
 
-		private void DarkBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			ResetBorders();
-			ThemeSelectedBorder = (Border)sender;
-			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-			Global.Settings.Theme = Themes.Dark;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-			Global.ChangeTheme();
-		}
+	private void DarkBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		ResetBorders();
+		ThemeSelectedBorder = (Border)sender;
+		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
+		Global.Settings.Theme = Themes.Dark;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		Global.ChangeTheme();
+	}
 
-		private void SystemBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			ResetBorders();
-			ThemeSelectedBorder = (Border)sender;
-			((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-			Global.Settings.Theme = Themes.System;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-			Global.ChangeTheme();
-		}
+	private void SystemBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		ResetBorders();
+		ThemeSelectedBorder = (Border)sender;
+		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
+		Global.Settings.Theme = Themes.System;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		Global.ChangeTheme();
 	}
 }

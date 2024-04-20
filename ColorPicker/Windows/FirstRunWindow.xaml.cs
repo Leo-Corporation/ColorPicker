@@ -26,53 +26,52 @@ using ColorPicker.Classes;
 using ColorPicker.Pages.FirstRun;
 using System.Windows;
 
-namespace ColorPicker.Windows
+namespace ColorPicker.Windows;
+
+/// <summary>
+/// Interaction logic for FirstRunWindow.xaml
+/// </summary>
+public partial class FirstRunWindow : Window
 {
-	/// <summary>
-	/// Interaction logic for FirstRunWindow.xaml
-	/// </summary>
-	public partial class FirstRunWindow : Window
+	internal WelcomePage welcomePage;
+	internal FeaturesPage featuresPage;
+	internal ThemePage themePage;
+	internal SynethiaPage synethiaPage;
+	internal JumpInPage jumpInPage = new();
+	public FirstRunWindow()
 	{
-		internal WelcomePage welcomePage;
-		internal FeaturesPage featuresPage;
-		internal ThemePage themePage;
-		internal SynethiaPage synethiaPage;
-		internal JumpInPage jumpInPage = new();
-		public FirstRunWindow()
-		{
-			InitializeComponent();
-			welcomePage = new(this);
-			featuresPage = new(this);
-			themePage = new(this);
-			synethiaPage = new(this);
-			ChangePage(0);
-		}
+		InitializeComponent();
+		welcomePage = new(this);
+		featuresPage = new(this);
+		themePage = new(this);
+		synethiaPage = new(this);
+		ChangePage(0);
+	}
 
-		internal void ChangePage(int pageID)
+	internal void ChangePage(int pageID)
+	{
+		WindowFrame.Content = pageID switch
 		{
-			WindowFrame.Content = pageID switch
-			{
-				0 => welcomePage,
-				1 => featuresPage,
-				2 => themePage,
-				3 => synethiaPage,
-				4 => jumpInPage,
-				_ => welcomePage
-			};
-		}
+			0 => welcomePage,
+			1 => featuresPage,
+			2 => themePage,
+			3 => synethiaPage,
+			4 => jumpInPage,
+			_ => welcomePage
+		};
+	}
 
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (MessageBox.Show(Properties.Resources.FirstRunQuitMsg, Properties.Resources.ColorPickerMax, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			if (MessageBox.Show(Properties.Resources.FirstRunQuitMsg, Properties.Resources.ColorPickerMax, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-			{
-				new MainWindow().Show();
-				Global.Settings.IsFirstRun = false;
-				Close();
-			}
-			else
-			{
-				Application.Current.Shutdown();
-			}
+			new MainWindow().Show();
+			Global.Settings.IsFirstRun = false;
+			Close();
+		}
+		else
+		{
+			Application.Current.Shutdown();
 		}
 	}
 }

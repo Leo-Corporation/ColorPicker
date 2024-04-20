@@ -25,84 +25,83 @@ using System;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace ColorPicker.Classes
+namespace ColorPicker.Classes;
+
+public static class XmlSerializerManager
 {
-	public static class XmlSerializerManager
+	// This method takes a generic type T and a string path as parameters
+	// It creates an XmlSerializer for type T and deserializes the object from the xml file at the given path
+	// If the file does not exist, it creates a new instance of type T and serializes it to the file
+	// It returns the object of type T if the deserialization is successful, and null otherwise
+	public static T? LoadFromXml<T>(string path) where T : new()
 	{
-		// This method takes a generic type T and a string path as parameters
-		// It creates an XmlSerializer for type T and deserializes the object from the xml file at the given path
-		// If the file does not exist, it creates a new instance of type T and serializes it to the file
-		// It returns the object of type T if the deserialization is successful, and null otherwise
-		public static T? LoadFromXml<T>(string path) where T : new()
+		try
 		{
-			try
+			// Check if the file exists
+			if (File.Exists(path))
 			{
-				// Check if the file exists
-				if (File.Exists(path))
-				{
-					// Create an XmlSerializer for type T
-					XmlSerializer serializer = new(typeof(T));
+				// Create an XmlSerializer for type T
+				XmlSerializer serializer = new(typeof(T));
 
-					// Create a StreamReader to read from the file
-					using StreamReader reader = new(path);
+				// Create a StreamReader to read from the file
+				using StreamReader reader = new(path);
 
-					// Deserialize the object from the file
-					T obj = (T)serializer.Deserialize(reader);
+				// Deserialize the object from the file
+				T obj = (T)serializer.Deserialize(reader);
 
-					// Return the object
-					return obj;
-				}
-				else
-				{
-					// Create a new instance of type T
-					T obj = new();
-
-					// Save the object to the file using the SaveToXml method
-					SaveToXml(obj, path);
-
-					// Return the object
-					return obj;
-				}
+				// Return the object
+				return obj;
 			}
-			catch (Exception ex)
+			else
 			{
-				// Handle the exception
-				Console.WriteLine("An error occurred: " + ex.Message);
+				// Create a new instance of type T
+				T obj = new();
 
-				// Return null if an exception is thrown
-				return default;
+				// Save the object to the file using the SaveToXml method
+				SaveToXml(obj, path);
+
+				// Return the object
+				return obj;
 			}
 		}
-
-		// This method takes a generic type T, an object of type T, and a string path as parameters
-		// It creates an XmlSerializer for type T and serializes the object to the xml file at the given path
-		// It returns true if the serialization is successful, and false otherwise
-		public static bool SaveToXml<T>(T obj, string path)
+		catch (Exception ex)
 		{
-			// Create an XmlSerializer for type T
-			XmlSerializer serializer = new(typeof(T));
+			// Handle the exception
+			Console.WriteLine("An error occurred: " + ex.Message);
 
-			// Create a StreamWriter to write to the file
-			StreamWriter writer = new(path);
-
-			// Serialize the object to the file
-			serializer.Serialize(writer, obj);
-
-			writer.Dispose();
-			// Return true if no exception is thrown
-			return true;
-			//try
-			//{
-
-			//}
-			//catch (Exception ex)
-			//{
-			//	// Handle the exception
-			//	Console.WriteLine("An error occurred: " + ex.Message);
-
-			//	// Return false if an exception is thrown
-			//	return false;
-			//}
+			// Return null if an exception is thrown
+			return default;
 		}
+	}
+
+	// This method takes a generic type T, an object of type T, and a string path as parameters
+	// It creates an XmlSerializer for type T and serializes the object to the xml file at the given path
+	// It returns true if the serialization is successful, and false otherwise
+	public static bool SaveToXml<T>(T obj, string path)
+	{
+		// Create an XmlSerializer for type T
+		XmlSerializer serializer = new(typeof(T));
+
+		// Create a StreamWriter to write to the file
+		StreamWriter writer = new(path);
+
+		// Serialize the object to the file
+		serializer.Serialize(writer, obj);
+
+		writer.Dispose();
+		// Return true if no exception is thrown
+		return true;
+		//try
+		//{
+
+		//}
+		//catch (Exception ex)
+		//{
+		//	// Handle the exception
+		//	Console.WriteLine("An error occurred: " + ex.Message);
+
+		//	// Return false if an exception is thrown
+		//	return false;
+		//}
 	}
 }

@@ -29,53 +29,52 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace ColorPicker.UserControls
+namespace ColorPicker.UserControls;
+
+/// <summary>
+/// Interaction logic for ImageItem.xaml
+/// </summary>
+public partial class ImageItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for ImageItem.xaml
-	/// </summary>
-	public partial class ImageItem : UserControl
+	public string Path { get; }
+	public List<string> Items { get; }
+	public Action Delete { get; }
+
+	public ImageItem(string path, List<string> items, Action delete)
 	{
-		public string Path { get; }
-		public List<string> Items { get; }
-		public Action Delete { get; }
+		InitializeComponent();
+		Path = path;
+		Items = items;
+		Delete = delete;
+		InitUI();
+	}
 
-		public ImageItem(string path, List<string> items, Action delete)
+
+	private void InitUI()
+	{
+		try
 		{
-			InitializeComponent();
-			Path = path;
-			Items = items;
-			Delete = delete;
-			InitUI();
+			var bitmap = new BitmapImage();
+			var stream = File.OpenRead(Path);
+			bitmap.BeginInit();
+			bitmap.CacheOption = BitmapCacheOption.OnLoad;
+			bitmap.StreamSource = stream;
+			bitmap.DecodePixelWidth = 256;
+			bitmap.EndInit();
+			stream.Close();
+			stream.Dispose();
+			bitmap.Freeze();
+			Img.ImageSource = bitmap;
 		}
-
-
-		private void InitUI()
+		catch
 		{
-			try
-			{
-				var bitmap = new BitmapImage();
-				var stream = File.OpenRead(Path);
-				bitmap.BeginInit();
-				bitmap.CacheOption = BitmapCacheOption.OnLoad;
-				bitmap.StreamSource = stream;
-				bitmap.DecodePixelWidth = 256;
-				bitmap.EndInit();
-				stream.Close();
-				stream.Dispose();
-				bitmap.Freeze();
-				Img.ImageSource = bitmap;
-			}
-			catch
-			{
 
-			}
 		}
+	}
 
-		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Items.Remove(Path);
-			Delete();
-		}
+	private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Items.Remove(Path);
+		Delete();
 	}
 }
