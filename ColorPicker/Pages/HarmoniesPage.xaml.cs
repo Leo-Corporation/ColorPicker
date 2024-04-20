@@ -74,6 +74,44 @@ public partial class HarmoniesPage : Page
 			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		}, null);
+
+		LoadBookmarkMenu();
+	}
+
+	internal void LoadBookmarkMenu()
+	{
+		CollectionsPanel.Children.Clear();
+		// Load bookmark menu
+		for (int i = 0; i < Global.Bookmarks.ColorCollections.Count; i++)
+		{
+			bool isAddedAlready = Global.Bookmarks.ColorCollections[i].Colors.Contains(ColorInfo.HEX.Value);
+			Button button = new()
+			{
+				Content = isAddedAlready ? string.Format(Properties.Resources.RemoveFrom, Global.Bookmarks.ColorCollections[i].Name) : string.Format(Properties.Resources.AddTo, Global.Bookmarks.ColorCollections[i].Name),
+				HorizontalAlignment = HorizontalAlignment.Stretch,
+				HorizontalContentAlignment = HorizontalAlignment.Left,
+				Background = new SolidColorBrush() { Color = Colors.Transparent },
+				FontWeight = FontWeights.Bold,
+				Style = (Style)FindResource("DefaultButton"),
+				Foreground = Global.GetColorFromResource("Foreground1"),
+			};
+			int j = i; // Avoid index out of range issues
+			button.Click += (o, e) =>
+			{
+				if (Global.Bookmarks.ColorCollections[j].Colors.Contains(ColorInfo.HEX.Value))
+				{
+					Global.Bookmarks.ColorCollections[j].Colors.Remove(ColorInfo.HEX.Value);
+					button.Content = string.Format(Properties.Resources.AddTo, Global.Bookmarks.ColorCollections[j].Name);
+				}
+				else
+				{
+					Global.Bookmarks.ColorCollections[j].Colors.Add(ColorInfo.HEX.Value);
+					button.Content = string.Format(Properties.Resources.RemoveFrom, Global.Bookmarks.ColorCollections[j].Name);
+				}
+			};
+
+			CollectionsPanel.Children.Add(button);
+		}
 	}
 
 	internal void InitHarmonies()
@@ -444,20 +482,7 @@ public partial class HarmoniesPage : Page
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
-		{
-			int i = Global.Bookmarks.ColorBookmarks.IndexOf($"#{ColorInfo.HEX.Value}");
-			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
-			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
-			BookmarkBtn.Content = "\uF1F6";
-			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
-
-			return;
-		}
-		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
-		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
-		BookmarkBtn.Content = "\uF1F8";
-		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+		CollectionsPopup.IsOpen = true;
 	}
 
 	private void AnalogousSettingsBtn_Click(object sender, RoutedEventArgs e)
@@ -483,5 +508,25 @@ public partial class HarmoniesPage : Page
 	private void MonochromaticSettingsBtn_Click(object sender, RoutedEventArgs e)
 	{
 		MonochromaticPopup.IsOpen = true;
+	}
+
+	private void AddRemoveBookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+		{
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf($"#{ColorInfo.HEX.Value}");
+			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
+			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
+			BookmarkBtn.Content = "\uF1F6";
+			AddRemoveBookmarkBtn.Content = Properties.Resources.AddBookmark;
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
+			return;
+		}
+		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
+		BookmarkBtn.Content = "\uF1F8";
+		AddRemoveBookmarkBtn.Content = Properties.Resources.RemoveBookmark;
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 }

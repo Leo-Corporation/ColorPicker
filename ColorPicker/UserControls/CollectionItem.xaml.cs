@@ -80,6 +80,9 @@ public partial class CollectionItem : UserControl
 			{
 				Global.Bookmarks.ColorCollections[Id].Colors.RemoveAt(j);
 				InitUI();
+				Global.SelectorPage.LoadBookmarkMenu();
+				Global.ConverterPage.LoadBookmarkMenu();
+				Global.HarmoniesPage.LoadBookmarkMenu();
 			};
 
 			ColorPanel.Children.Add(border);
