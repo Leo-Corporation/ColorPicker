@@ -628,6 +628,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Describe color.
+        /// </summary>
+        public static string DescribeColor {
+            get {
+                return ResourceManager.GetString("DescribeColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -705,6 +714,15 @@ namespace ColorPicker.Properties {
         public static string EmptyHistoryMsg {
             get {
                 return ResourceManager.GetString("EmptyHistoryMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a color to generate a name.
+        /// </summary>
+        public static string EnterColor {
+            get {
+                return ResourceManager.GetString("EnterColor", resourceCulture);
             }
         }
         
@@ -894,6 +912,15 @@ namespace ColorPicker.Properties {
         public static string GetIdeas {
             get {
                 return ResourceManager.GetString("GetIdeas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate name.
+        /// </summary>
+        public static string GetNameAi {
+            get {
+                return ResourceManager.GetString("GetNameAi", resourceCulture);
             }
         }
         
@@ -1200,6 +1227,15 @@ namespace ColorPicker.Properties {
         public static string Monochromatic {
             get {
                 return ResourceManager.GetString("Monochromatic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         

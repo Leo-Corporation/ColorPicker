@@ -751,4 +751,16 @@
   <data name="HighlightColorGrid" xml:space="preserve">
     <value>Mettre en évidence la couleur</value>
   </data>
+  <data name="DescribeColor" xml:space="preserve">
+    <value>Décrire une couleur</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="GetNameAi" xml:space="preserve">
+    <value>Générer un nom</value>
+  </data>
+  <data name="EnterColor" xml:space="preserve">
+    <value>Saisir une couleur pour générer un nom</value>
+  </data>
 </root>

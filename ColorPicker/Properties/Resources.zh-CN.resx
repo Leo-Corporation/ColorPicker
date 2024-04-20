@@ -755,4 +755,16 @@
   <data name="HighlightColorGrid" xml:space="preserve">
     <value>高光颜色</value>
   </data>
+  <data name="DescribeColor" xml:space="preserve">
+    <value>描述颜色</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="GetNameAi" xml:space="preserve">
+    <value>生成名称</value>
+  </data>
+  <data name="EnterColor" xml:space="preserve">
+    <value>输入颜色生成名称</value>
+  </data>
 </root>
