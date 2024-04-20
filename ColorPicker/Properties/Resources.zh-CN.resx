@@ -767,4 +767,16 @@
   <data name="EnterColor" xml:space="preserve">
     <value>输入颜色生成名称</value>
   </data>
+  <data name="Collections" xml:space="preserve">
+    <value>收藏品</value>
+  </data>
+  <data name="AddToCollection" xml:space="preserve">
+    <value>加入收藏</value>
+  </data>
+  <data name="AddCollection" xml:space="preserve">
+    <value>添加收藏</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
 </root>

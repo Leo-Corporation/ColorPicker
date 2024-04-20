@@ -79,6 +79,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to collection.
+        /// </summary>
+        public static string AddToCollection {
+            get {
+                return ResourceManager.GetString("AddToCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I agree.
         /// </summary>
         public static string Agree {
@@ -291,6 +300,15 @@ namespace ColorPicker.Properties {
         public static string CMYK {
             get {
                 return ResourceManager.GetString("CMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collections.
+        /// </summary>
+        public static string Collections {
+            get {
+                return ResourceManager.GetString("Collections", resourceCulture);
             }
         }
         

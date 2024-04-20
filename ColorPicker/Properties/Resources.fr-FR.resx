@@ -763,4 +763,16 @@
   <data name="EnterColor" xml:space="preserve">
     <value>Saisir une couleur pour générer un nom</value>
   </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Collections</value>
+  </data>
+  <data name="AddToCollection" xml:space="preserve">
+    <value>Ajouter à la collection</value>
+  </data>
+  <data name="AddCollection" xml:space="preserve">
+    <value>Ajouter une collection</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
 </root>
