@@ -41,13 +41,14 @@ public partial class BookmarksPage : Page
 		Loaded += (o, e) => InitUI();
 	}
 
-	private void InitUI()
+	internal void InitUI()
 	{
 		// Clear all items
 		ColorsBookmarks.Children.Clear();
 		PalettesBookmarks.Children.Clear();
 		GradientsBookmarks.Children.Clear();
 		TextBookmarks.Children.Clear();
+		Collections.Children.Clear();
 
 		// Load the "Colors" bookmarks
 		for (int i = 0; i < Global.Bookmarks.ColorBookmarks.Count; i++)
@@ -71,6 +72,12 @@ public partial class BookmarksPage : Page
 		for (int i = 0; i < Global.Bookmarks.TextBookmarks.Count; i++)
 		{
 			TextBookmarks.Children.Add(new TextItem(Global.Bookmarks.TextBookmarks[i]));
+		}
+
+		// Load the "Collections" section
+		for (int i = 0; i < Global.Bookmarks.ColorCollections.Count; i++)
+		{
+			Collections.Children.Add(new CollectionItem(Global.Bookmarks.ColorCollections[i], i));
 		}
 	}
 
@@ -137,6 +144,7 @@ public partial class BookmarksPage : Page
 		PalettesBookmarks.Visibility = Visibility.Collapsed;
 		GradientsBookmarks.Visibility = Visibility.Collapsed;
 		TextBookmarks.Visibility = Visibility.Collapsed;
+		CollectionsGrid.Visibility = Visibility.Collapsed;
 	}
 
 	internal Button CheckedButton;
@@ -147,5 +155,26 @@ public partial class BookmarksPage : Page
 		UnCheckAllButtons();
 		CheckButton(TextBtn);
 		TextBookmarks.Visibility = Visibility.Visible;
+	}
+
+	private void CollectionBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(CollectionBtn);
+		CollectionsGrid.Visibility = Visibility.Visible;
+	}
+
+	private void OpenCollectionPopupBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CollectionCreatorPopup.IsOpen = true;
+	}
+
+	private void AddCollectionBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (string.IsNullOrEmpty(CollectionNameTxt.Text)) return;
+		Global.Bookmarks.ColorCollections.Add(new(CollectionNameTxt.Text));
+		CollectionCreatorPopup.IsOpen = false;
+
+		InitUI();
 	}
 }

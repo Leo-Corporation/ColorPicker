@@ -34,6 +34,7 @@ public class Bookmarks
 	public List<string> PaletteBookmarks { get; set; }
 	public List<Gradient> GradientBookmarks { get; set; }
 	public List<BookmarkText> TextBookmarks { get; set; }
+	public List<ColorCollection>? ColorCollections { get; set; }
 }
 
 public class BookmarkText : IEquatable<BookmarkText>
@@ -120,4 +121,22 @@ public class Gradient : IEquatable<Gradient>
 	}
 
 	public override bool Equals(object obj) => Equals(obj as Gradient);
+}
+
+public class ColorCollection
+{
+	public string Name { get; set; }
+	public List<string> Colors { get; set; }
+
+    public ColorCollection()
+    {
+		Colors = [];
+		Name = "";
+    }
+
+	public ColorCollection(string name)
+	{
+		Name = name;
+		Colors = [];
+	}
 }
