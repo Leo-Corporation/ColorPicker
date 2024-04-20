@@ -757,4 +757,7 @@
   <data name="RemoveFrom" xml:space="preserve">
     <value>Remove from {0}</value>
   </data>
+  <data name="RightClickCollectionMsg" xml:space="preserve">
+    <value>Right click on a color to remove it</value>
+  </data>
 </root>

@@ -785,4 +785,7 @@
   <data name="RemoveFrom" xml:space="preserve">
     <value>从{0}移除</value>
   </data>
+  <data name="RightClickCollectionMsg" xml:space="preserve">
+    <value>右键单击颜色可将其删除</value>
+  </data>
 </root>

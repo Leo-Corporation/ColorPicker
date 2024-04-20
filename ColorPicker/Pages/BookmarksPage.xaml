@@ -242,17 +242,23 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Button
-                    x:Name="OpenCollectionPopupBtn"
-                    Margin="5"
-                    Padding="2"
-                    HorizontalAlignment="Left"
-                    Background="{DynamicResource LightAccentColor}"
-                    Click="OpenCollectionPopupBtn_Click"
-                    Content="{x:Static lang:Resources.AddCollection}"
-                    FontWeight="Bold"
-                    Foreground="{DynamicResource AccentColor}"
-                    Style="{DynamicResource DefaultButton}" />
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="OpenCollectionPopupBtn"
+                        Padding="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource LightAccentColor}"
+                        Click="OpenCollectionPopupBtn_Click"
+                        Content="{x:Static lang:Resources.AddCollection}"
+                        FontWeight="Bold"
+                        Foreground="{DynamicResource AccentColor}"
+                        Style="{DynamicResource DefaultButton}" />
+                    <TextBlock
+                        Margin="5 0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static lang:Resources.RightClickCollectionMsg}" />
+                </StackPanel>
                 <StackPanel x:Name="Collections" Grid.Row="1" />
 
                 <Popup

@@ -1573,6 +1573,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Right click on a color to remove it.
+        /// </summary>
+        public static string RightClickCollectionMsg {
+            get {
+                return ResourceManager.GetString("RightClickCollectionMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rotation.
         /// </summary>
         public static string Rotation {
