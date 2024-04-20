@@ -83,7 +83,7 @@ public partial class ConverterPage : Page
 		// Load bookmark menu
 		for (int i = 0; i < Global.Bookmarks.ColorCollections.Count; i++)
 		{
-			bool isAddedAlready = Global.Bookmarks.ColorCollections[i].Colors.Contains(ColorInfo.HEX.Value);
+			bool isAddedAlready = Global.Bookmarks.ColorCollections[i].Colors.Contains(ColorInfo.HEX.Value) || Global.Bookmarks.ColorCollections[i].Colors.Contains(ColorInfo.HEX.Value[1..]);
 			Button button = new()
 			{
 				Content = isAddedAlready ? string.Format(Properties.Resources.RemoveFrom, Global.Bookmarks.ColorCollections[i].Name) : string.Format(Properties.Resources.AddTo, Global.Bookmarks.ColorCollections[i].Name),

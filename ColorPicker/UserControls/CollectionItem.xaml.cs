@@ -73,6 +73,7 @@ public partial class CollectionItem : UserControl
 			{
 				Global.ConverterPage.ColorInfo = new(color);
 				Global.ConverterPage.LoadDetails(true);
+				Global.ConverterPage.LoadBookmarkMenu();
 				GoClick?.Invoke(this, new(AppPages.Converter));
 			};
 
