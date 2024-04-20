@@ -775,4 +775,10 @@
   <data name="Add" xml:space="preserve">
     <value>Ajouter</value>
   </data>
+  <data name="AddTo" xml:space="preserve">
+    <value>Ajouter à {0}</value>
+  </data>
+  <data name="RemoveFrom" xml:space="preserve">
+    <value>Retirer de {0}</value>
+  </data>
 </root>

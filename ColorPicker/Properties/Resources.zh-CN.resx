@@ -779,4 +779,10 @@
   <data name="Add" xml:space="preserve">
     <value>添加</value>
   </data>
+  <data name="AddTo" xml:space="preserve">
+    <value>添加到 {0}</value>
+  </data>
+  <data name="RemoveFrom" xml:space="preserve">
+    <value>从{0}移除</value>
+  </data>
 </root>

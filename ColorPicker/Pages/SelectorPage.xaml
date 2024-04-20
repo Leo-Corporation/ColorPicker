@@ -216,6 +216,41 @@
                                 Foreground="{DynamicResource Foreground1}" />
                         </Button.ToolTip>
                     </Button>
+                    <Popup
+                        x:Name="CollectionsPopup"
+                        AllowsTransparency="True"
+                        Placement="Center"
+                        PlacementTarget="{Binding ElementName=BookmarkBtn}"
+                        PopupAnimation="Fade"
+                        StaysOpen="False">
+                        <Border
+                            Margin="10"
+                            Padding="10"
+                            Background="{DynamicResource Background1}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="10"
+                                    Opacity="0.4"
+                                    RenderingBias="Performance"
+                                    ShadowDepth="0"
+                                    Color="Black" />
+                            </Border.Effect>
+                            <StackPanel>
+                                <Button
+                                    x:Name="AddRemoveBookmarkBtn"
+                                    HorizontalContentAlignment="Left"
+                                    Background="Transparent"
+                                    Click="AddRemoveBookmarkBtn_Click"
+                                    Content="{x:Static lang:Resources.AddBookmark}"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource Foreground1}"
+                                    Style="{DynamicResource DefaultButton}" />
+                                <StackPanel x:Name="CollectionsPanel" />
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+
                     <ComboBox
                         x:Name="ColorTypeComboBox"
                         Height="22"

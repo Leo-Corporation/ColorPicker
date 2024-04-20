@@ -61,6 +61,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add to bookmarks.
         /// </summary>
         public static string AddBookmark {
@@ -70,11 +79,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add collection.
+        /// </summary>
+        public static string AddCollection {
+            get {
+                return ResourceManager.GetString("AddCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add a note.
         /// </summary>
         public static string AddNote {
             get {
                 return ResourceManager.GetString("AddNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add to {0}.
+        /// </summary>
+        public static string AddTo {
+            get {
+                return ResourceManager.GetString("AddTo", resourceCulture);
             }
         }
         
@@ -1470,6 +1497,15 @@ namespace ColorPicker.Properties {
         public static string RemoveBookmark {
             get {
                 return ResourceManager.GetString("RemoveBookmark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove from {0}.
+        /// </summary>
+        public static string RemoveFrom {
+            get {
+                return ResourceManager.GetString("RemoveFrom", resourceCulture);
             }
         }
         
