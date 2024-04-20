@@ -142,6 +142,7 @@ public partial class SelectorPage : Page
 
 	internal void LoadBookmarkMenu()
 	{
+		CollectionsPanel.Children.Clear();
 		// Load bookmark menu
 		for (int i = 0; i < Global.Bookmarks.ColorCollections.Count; i++)
 		{

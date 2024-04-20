@@ -79,6 +79,8 @@ public partial class BookmarksPage : Page
 		{
 			Collections.Children.Add(new CollectionItem(Global.Bookmarks.ColorCollections[i], i));
 		}
+		Global.SelectorPage.LoadBookmarkMenu();
+		Global.ConverterPage.LoadBookmarkMenu();
 	}
 
 	private void ColorsBtn_Click(object sender, RoutedEventArgs e)

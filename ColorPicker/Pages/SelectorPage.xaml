@@ -219,7 +219,7 @@
                     <Popup
                         x:Name="CollectionsPopup"
                         AllowsTransparency="True"
-                        Placement="Center"
+                        Placement="Bottom"
                         PlacementTarget="{Binding ElementName=BookmarkBtn}"
                         PopupAnimation="Fade"
                         StaysOpen="False">
