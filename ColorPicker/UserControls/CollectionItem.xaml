@@ -64,7 +64,6 @@
             <WrapPanel
                 x:Name="ColorPanel"
                 Grid.Row="1"
-                HorizontalAlignment="Center"
                 Orientation="Horizontal" />
         </Grid>
     </Border>

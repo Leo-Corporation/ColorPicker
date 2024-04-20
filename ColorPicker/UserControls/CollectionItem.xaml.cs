@@ -63,10 +63,16 @@ public partial class CollectionItem : UserControl
 					Color = Color.FromRgb(color.R, color.G, color.B)
 				},
 				Margin = new(5),
-				Height = 25,
-				Width = 25,
+				Height = 50,
+				Width = 50,
 				CornerRadius = new(5),
 				Cursor = Cursors.Hand,
+				ToolTip = new ToolTip()
+				{
+					Content = new ColorInfo(color).ToString(),
+					Foreground = Global.GetColorFromResource("Foreground1"),
+					Background = Global.GetColorFromResource("Background1"),
+				}
 			};
 
 			border.MouseLeftButtonUp += (o, e) =>

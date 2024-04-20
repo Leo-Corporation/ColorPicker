@@ -249,7 +249,7 @@
                     HorizontalAlignment="Left"
                     Background="{DynamicResource LightAccentColor}"
                     Click="OpenCollectionPopupBtn_Click"
-                    Content="{x:Static lang:Resources.AddToCollection}"
+                    Content="{x:Static lang:Resources.AddCollection}"
                     FontWeight="Bold"
                     Foreground="{DynamicResource AccentColor}"
                     Style="{DynamicResource DefaultButton}" />
