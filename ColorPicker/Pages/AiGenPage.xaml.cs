@@ -316,7 +316,7 @@ public partial class AiGenPage : Page
 		PalettePanel.Visibility = Visibility.Collapsed;
 		DescPanel.Visibility = Visibility.Visible;
 	}
-
+	string _colorName = "";
 	private async void DescGenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
@@ -349,9 +349,15 @@ public partial class AiGenPage : Page
 
 			if (completionResult.Successful)
 			{
-				NameTxt.Text = $"{Properties.Resources.Name}: {completionResult.Choices.First().Message.Content}";
+				_colorName = completionResult.Choices.First().Message.Content ?? "";
+				NameTxt.Text = $"{Properties.Resources.Name}: {_colorName}";
 			}
 		}
 		catch { }
+	}
+
+	private void NameTxt_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	{
+		Clipboard.SetText(_colorName);
 	}
 }

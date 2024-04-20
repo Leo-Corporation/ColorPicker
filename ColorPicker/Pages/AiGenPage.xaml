@@ -555,7 +555,9 @@
                 x:Name="NameTxt"
                 Margin="0 10"
                 HorizontalAlignment="Center"
-                FontWeight="SemiBold" />
+                Cursor="Hand"
+                FontWeight="SemiBold"
+                MouseLeftButtonUp="NameTxt_MouseLeftButtonUp" />
         </StackPanel>
 
         <WrapPanel
