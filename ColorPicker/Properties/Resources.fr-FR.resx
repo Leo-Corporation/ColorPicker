@@ -751,4 +751,37 @@
   <data name="HighlightColorGrid" xml:space="preserve">
     <value>Mettre en évidence la couleur</value>
   </data>
+  <data name="DescribeColor" xml:space="preserve">
+    <value>Décrire une couleur</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="GetNameAi" xml:space="preserve">
+    <value>Générer un nom</value>
+  </data>
+  <data name="EnterColor" xml:space="preserve">
+    <value>Saisir une couleur pour générer un nom</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Collections</value>
+  </data>
+  <data name="AddToCollection" xml:space="preserve">
+    <value>Ajouter à la collection</value>
+  </data>
+  <data name="AddCollection" xml:space="preserve">
+    <value>Ajouter une collection</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AddTo" xml:space="preserve">
+    <value>Ajouter à {0}</value>
+  </data>
+  <data name="RemoveFrom" xml:space="preserve">
+    <value>Retirer de {0}</value>
+  </data>
+  <data name="RightClickCollectionMsg" xml:space="preserve">
+    <value>Faites un clic droit sur une couleur pour la supprimer</value>
+  </data>
 </root>

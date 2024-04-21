@@ -28,77 +28,76 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ColorPicker.UserControls
+namespace ColorPicker.UserControls;
+
+/// <summary>
+/// Interaction logic for GradientItem.xaml
+/// </summary>
+public partial class GradientItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for GradientItem.xaml
-	/// </summary>
-	public partial class GradientItem : UserControl
+	Gradient Gradient { get; init; }
+	public GradientItem(Gradient gradient)
 	{
-		Gradient Gradient { get; init; }
-		public GradientItem(Gradient gradient)
-		{
-			InitializeComponent();
-			Gradient = gradient;
+		InitializeComponent();
+		Gradient = gradient;
 
-			InitUI();
-		}
+		InitUI();
+	}
 
-		private void InitUI()
+	private void InitUI()
+	{
+		// Color Border
+		LinearGradientBrush linearGradientBrush = new()
 		{
-			// Color Border
-			LinearGradientBrush linearGradientBrush = new()
+			StartPoint = new(0.5, 1),
+			EndPoint = new(0.5, 0),
+			RelativeTransform = new RotateTransform()
 			{
-				StartPoint = new(0.5, 1),
-				EndPoint = new(0.5, 0),
-				RelativeTransform = new RotateTransform()
-				{
-					Angle = double.IsNaN(Gradient.Angle) ? 0 : Gradient.Angle,
-					CenterX = 0.5,
-					CenterY = 0.5
-				},
-			};
+				Angle = double.IsNaN(Gradient.Angle) ? 0 : Gradient.Angle,
+				CenterX = 0.5,
+				CenterY = 0.5
+			},
+		};
 
-			for (int i = 0; i < Gradient.Stops.Count; i++)
-			{
-				ColorInfo colorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(Gradient.Stops[i].Color)));
-				Color color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B);
-				linearGradientBrush.GradientStops.Add(new(color, Gradient.Stops[i].Stop));
-
-				// Text
-				if (i == 0) FromTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
-				if (i == Gradient.Stops.Count - 1) ToTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
-
-			}
-
-			ColorBorder.Background = linearGradientBrush;
-			AngleTxt.Text = Gradient.Angle.ToString();
-		}
-
-		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		for (int i = 0; i < Gradient.Stops.Count; i++)
 		{
-			Global.Bookmarks.GradientBookmarks.Remove(Gradient);
-			Global.BookmarksPage.GradientsBookmarks.Children.Remove(this);
-			Global.GradientPage.LoadGradientUI();
+			ColorInfo colorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(Gradient.Stops[i].Color)));
+			Color color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B);
+			linearGradientBrush.GradientStops.Add(new(color, Gradient.Stops[i].Stop));
+
+			// Text
+			if (i == 0) FromTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
+			if (i == Gradient.Stops.Count - 1) ToTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
+
 		}
 
-		public static event EventHandler<PageEventArgs> GoClick;
+		ColorBorder.Background = linearGradientBrush;
+		AngleTxt.Text = Gradient.Angle.ToString();
+	}
 
-		private void GoBtn_Click(object sender, RoutedEventArgs e)
-		{
-			RGB rgb = ColorHelper.ColorConverter.HexToRgb(new(Gradient.Stops[0].Color));
-			RGB rgb2 = ColorHelper.ColorConverter.HexToRgb(new(Gradient.Stops[^1].Color));
+	private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Bookmarks.GradientBookmarks.Remove(Gradient);
+		Global.BookmarksPage.GradientsBookmarks.Children.Remove(this);
+		Global.GradientPage.LoadGradientUI();
+	}
 
-			Global.GradientPage.from = System.Drawing.Color.FromArgb(rgb.R, rgb.G, rgb.B);
-			Global.GradientPage.to = System.Drawing.Color.FromArgb(rgb2.R, rgb2.G, rgb2.B);
+	public static event EventHandler<PageEventArgs> GoClick;
 
-			Global.GradientPage.ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) };
-			Global.GradientPage.BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(rgb2.R, rgb2.G, rgb2.B) };
-			Global.GradientPage.RotateAngleTxt.Text = Gradient.Angle.ToString();
+	private void GoBtn_Click(object sender, RoutedEventArgs e)
+	{
+		RGB rgb = ColorHelper.ColorConverter.HexToRgb(new(Gradient.Stops[0].Color));
+		RGB rgb2 = ColorHelper.ColorConverter.HexToRgb(new(Gradient.Stops[^1].Color));
 
-			Global.GradientPage.LoadGradientUI();
+		Global.GradientPage.from = System.Drawing.Color.FromArgb(rgb.R, rgb.G, rgb.B);
+		Global.GradientPage.to = System.Drawing.Color.FromArgb(rgb2.R, rgb2.G, rgb2.B);
 
-			GoClick?.Invoke(sender, new(Enums.AppPages.ColorGradient));
-		}
+		Global.GradientPage.ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) };
+		Global.GradientPage.BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(rgb2.R, rgb2.G, rgb2.B) };
+		Global.GradientPage.RotateAngleTxt.Text = Gradient.Angle.ToString();
+
+		Global.GradientPage.LoadGradientUI();
+
+		GoClick?.Invoke(sender, new(Enums.AppPages.ColorGradient));
 	}
 }

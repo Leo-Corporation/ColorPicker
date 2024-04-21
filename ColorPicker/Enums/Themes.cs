@@ -22,12 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace ColorPicker.Enums
+namespace ColorPicker.Enums;
+
+public enum Themes
 {
-	public enum Themes
-	{
-		Light,
-		Dark,
-		System
-	}
+	Light,
+	Dark,
+	System
 }

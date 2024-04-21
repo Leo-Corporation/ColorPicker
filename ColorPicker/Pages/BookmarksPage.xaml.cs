@@ -27,126 +27,159 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ColorPicker.Pages
+namespace ColorPicker.Pages;
+
+/// <summary>
+/// Interaction logic for BookmarksPage.xaml
+/// </summary>
+public partial class BookmarksPage : Page
 {
-	/// <summary>
-	/// Interaction logic for BookmarksPage.xaml
-	/// </summary>
-	public partial class BookmarksPage : Page
+	public BookmarksPage()
 	{
-		public BookmarksPage()
+		InitializeComponent();
+		CheckButton(ColorsBtn);
+		Loaded += (o, e) => InitUI();
+	}
+
+	internal void InitUI()
+	{
+		// Clear all items
+		ColorsBookmarks.Children.Clear();
+		PalettesBookmarks.Children.Clear();
+		GradientsBookmarks.Children.Clear();
+		TextBookmarks.Children.Clear();
+		Collections.Children.Clear();
+
+		// Load the "Colors" bookmarks
+		for (int i = 0; i < Global.Bookmarks.ColorBookmarks.Count; i++)
 		{
-			InitializeComponent();
-			CheckButton(ColorsBtn);
-			Loaded += (o, e) => InitUI();
+			ColorsBookmarks.Children.Add(new ColorItem(Global.Bookmarks.ColorBookmarks[i]));
 		}
 
-		private void InitUI()
+		// Load the "Palettes" bookmarks
+		for (int i = 0; i < Global.Bookmarks.PaletteBookmarks.Count; i++)
 		{
-			// Clear all items
-			ColorsBookmarks.Children.Clear();
-			PalettesBookmarks.Children.Clear();
-			GradientsBookmarks.Children.Clear();
-			TextBookmarks.Children.Clear();
-
-			// Load the "Colors" bookmarks
-			for (int i = 0; i < Global.Bookmarks.ColorBookmarks.Count; i++)
-			{
-				ColorsBookmarks.Children.Add(new ColorItem(Global.Bookmarks.ColorBookmarks[i]));
-			}
-
-			// Load the "Palettes" bookmarks
-			for (int i = 0; i < Global.Bookmarks.PaletteBookmarks.Count; i++)
-			{
-				PalettesBookmarks.Children.Add(new PaletteItem(Global.Bookmarks.PaletteBookmarks[i]));
-			}
-
-			// Load the "Gradients" bookmarks
-			for (int i = 0; i < Global.Bookmarks.GradientBookmarks.Count; i++)
-			{
-				GradientsBookmarks.Children.Add(new GradientItem(Global.Bookmarks.GradientBookmarks[i]));
-			}
-
-			// Load the "Text" bookmarks
-			for (int i = 0; i < Global.Bookmarks.TextBookmarks.Count; i++)
-			{
-				TextBookmarks.Children.Add(new TextItem(Global.Bookmarks.TextBookmarks[i]));
-			}
+			PalettesBookmarks.Children.Add(new PaletteItem(Global.Bookmarks.PaletteBookmarks[i]));
 		}
 
-		private void ColorsBtn_Click(object sender, RoutedEventArgs e)
+		// Load the "Gradients" bookmarks
+		for (int i = 0; i < Global.Bookmarks.GradientBookmarks.Count; i++)
 		{
-			UnCheckAllButtons();
-			CheckButton(ColorsBtn);
-			ColorsBookmarks.Visibility = Visibility.Visible;
+			GradientsBookmarks.Children.Add(new GradientItem(Global.Bookmarks.GradientBookmarks[i]));
 		}
 
-		private void PaletteBtn_Click(object sender, RoutedEventArgs e)
+		// Load the "Text" bookmarks
+		for (int i = 0; i < Global.Bookmarks.TextBookmarks.Count; i++)
 		{
-			UnCheckAllButtons();
-			CheckButton(PaletteBtn);
-			PalettesBookmarks.Visibility = Visibility.Visible;
+			TextBookmarks.Children.Add(new TextItem(Global.Bookmarks.TextBookmarks[i]));
 		}
 
-		private void EmptyHistoryBtn_Click(object sender, RoutedEventArgs e)
+		// Load the "Collections" section
+		for (int i = 0; i < Global.Bookmarks.ColorCollections.Count; i++)
 		{
-			// If the user doesn't want to empty the history anymore, stop here.
-			if (MessageBox.Show(Properties.Resources.EmptyHistoryMsg, Properties.Resources.EmptyBookmarks, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
-				return;
-
-			// Get the current selected history
-			if (ColorsBookmarks.Visibility == Visibility.Visible)
-			{
-				Global.Bookmarks.ColorBookmarks.Clear(); // Empty history
-			}
-			else if (PalettesBookmarks.Visibility == Visibility.Visible)
-			{
-				Global.Bookmarks.PaletteBookmarks.Clear(); // Empty history
-			}
-			else if (TextBookmarks.Visibility == Visibility.Visible)
-			{
-				Global.Bookmarks.TextBookmarks.Clear(); // Empty history
-			}
-			else
-			{
-				Global.Bookmarks.GradientBookmarks.Clear(); // Empty history
-			}
-
-			InitUI(); // Refresh the UI
-			Global.SelectorPage.LoadDetails();
-			Global.GradientPage.LoadGradientUI();
-			Global.PalettePage.InitPaletteUI();
-			Global.TextPage.InitUI();
+			Collections.Children.Add(new CollectionItem(Global.Bookmarks.ColorCollections[i], i));
 		}
 
-		private void GradientsBtn_Click(object sender, RoutedEventArgs e)
+		Global.SelectorPage.LoadBookmarkMenu();
+		Global.ConverterPage.LoadBookmarkMenu();
+		Global.HarmoniesPage.LoadBookmarkMenu();
+	}
+
+	private void ColorsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(ColorsBtn);
+		ColorsBookmarks.Visibility = Visibility.Visible;
+	}
+
+	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(PaletteBtn);
+		PalettesBookmarks.Visibility = Visibility.Visible;
+	}
+
+	private void EmptyHistoryBtn_Click(object sender, RoutedEventArgs e)
+	{
+		// If the user doesn't want to empty the history anymore, stop here.
+		if (MessageBox.Show(Properties.Resources.EmptyHistoryMsg, Properties.Resources.EmptyBookmarks, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+			return;
+
+		// Get the current selected history
+		if (ColorsBookmarks.Visibility == Visibility.Visible)
 		{
-			UnCheckAllButtons();
-			CheckButton(GradientsBtn);
-			GradientsBookmarks.Visibility = Visibility.Visible;
+			Global.Bookmarks.ColorBookmarks.Clear(); // Empty history
+		}
+		else if (PalettesBookmarks.Visibility == Visibility.Visible)
+		{
+			Global.Bookmarks.PaletteBookmarks.Clear(); // Empty history
+		}
+		else if (TextBookmarks.Visibility == Visibility.Visible)
+		{
+			Global.Bookmarks.TextBookmarks.Clear(); // Empty history
+		}
+		else
+		{
+			Global.Bookmarks.GradientBookmarks.Clear(); // Empty history
 		}
 
-		private void UnCheckAllButtons()
-		{
-			ColorsBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
-			PaletteBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
-			GradientsBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
-			TextBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		InitUI(); // Refresh the UI
+		Global.SelectorPage.LoadDetails();
+		Global.GradientPage.LoadGradientUI();
+		Global.PalettePage.InitPaletteUI();
+		Global.TextPage.InitUI();
+	}
 
-			ColorsBookmarks.Visibility = Visibility.Collapsed;
-			PalettesBookmarks.Visibility = Visibility.Collapsed;
-			GradientsBookmarks.Visibility = Visibility.Collapsed;
-			TextBookmarks.Visibility = Visibility.Collapsed;
-		}
+	private void GradientsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(GradientsBtn);
+		GradientsBookmarks.Visibility = Visibility.Visible;
+	}
 
-		internal Button CheckedButton;
-		internal void CheckButton(Button button) { button.Background = Global.GetColorFromResource("LightAccentColor"); CheckedButton = button; }
+	private void UnCheckAllButtons()
+	{
+		ColorsBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		PaletteBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		GradientsBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		TextBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		CollectionBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 
-		private void TextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			UnCheckAllButtons();
-			CheckButton(TextBtn);
-			TextBookmarks.Visibility = Visibility.Visible;
-		}
+		ColorsBookmarks.Visibility = Visibility.Collapsed;
+		PalettesBookmarks.Visibility = Visibility.Collapsed;
+		GradientsBookmarks.Visibility = Visibility.Collapsed;
+		TextBookmarks.Visibility = Visibility.Collapsed;
+		CollectionsGrid.Visibility = Visibility.Collapsed;
+	}
+
+	internal Button CheckedButton;
+	internal void CheckButton(Button button) { button.Background = Global.GetColorFromResource("LightAccentColor"); CheckedButton = button; }
+
+	private void TextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(TextBtn);
+		TextBookmarks.Visibility = Visibility.Visible;
+	}
+
+	private void CollectionBtn_Click(object sender, RoutedEventArgs e)
+	{
+		UnCheckAllButtons();
+		CheckButton(CollectionBtn);
+		CollectionsGrid.Visibility = Visibility.Visible;
+	}
+
+	private void OpenCollectionPopupBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CollectionCreatorPopup.IsOpen = true;
+	}
+
+	private void AddCollectionBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (string.IsNullOrEmpty(CollectionNameTxt.Text)) return;
+		Global.Bookmarks.ColorCollections.Add(new(CollectionNameTxt.Text));
+		CollectionCreatorPopup.IsOpen = false;
+
+		InitUI();
 	}
 }

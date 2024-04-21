@@ -31,6 +31,7 @@ using OpenAI.ObjectModels.RequestModels;
 using Synethia;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.Json;
 using System.Windows;
@@ -295,6 +296,7 @@ public partial class AiGenPage : Page
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Visible;
 		PalettePanel.Visibility = Visibility.Collapsed;
+		DescPanel.Visibility = Visibility.Collapsed;
 	}
 
 	private void PaletteBtn_Checked(object sender, RoutedEventArgs e)
@@ -303,5 +305,59 @@ public partial class AiGenPage : Page
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Collapsed;
 		PalettePanel.Visibility = Visibility.Visible;
+		DescPanel.Visibility = Visibility.Collapsed;
+	}
+
+	private void DescribeBtn_Checked(object sender, RoutedEventArgs e)
+	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
+		ColorPanel.Visibility = Visibility.Collapsed;
+		PalettePanel.Visibility = Visibility.Collapsed;
+		DescPanel.Visibility = Visibility.Visible;
+	}
+	string _colorName = "";
+	private async void DescGenerateBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		{
+			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
+			return;
+		}
+
+		if (string.IsNullOrEmpty(DescPromptTxt.Text) || string.IsNullOrWhiteSpace(DescPromptTxt.Text))
+		{
+			MessageBox.Show(Properties.Resources.ProvideAPromptMsg, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
+			return;
+		}
+		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
+		try
+		{
+			var openAiService = new OpenAIService(new OpenAiOptions()
+			{
+				ApiKey = Global.Settings.ApiKey ?? ""
+			});
+			var completionResult = await openAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
+			{
+				Messages =
+				[
+					ChatMessage.FromSystem($"GOAL: You are a color name generator assistant. The user gives you a prompt to generate a SINGLE name for a specified color. RESPONDE FORMAT: Only the color name. LANGUAGE: {CultureInfo.CurrentUICulture.Name}"),
+					ChatMessage.FromUser("Generate the name of the color from this prompt: " + DescPromptTxt.Text)
+				],
+				Model = Global.Settings.Model ?? Models.Gpt_3_5_Turbo,
+			});
+
+			if (completionResult.Successful)
+			{
+				_colorName = completionResult.Choices.First().Message.Content ?? "";
+				NameTxt.Text = $"{Properties.Resources.Name}: {_colorName}";
+			}
+		}
+		catch { }
+	}
+
+	private void NameTxt_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	{
+		Clipboard.SetText(_colorName);
 	}
 }

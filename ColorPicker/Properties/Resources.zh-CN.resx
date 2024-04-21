@@ -755,4 +755,37 @@
   <data name="HighlightColorGrid" xml:space="preserve">
     <value>高光颜色</value>
   </data>
+  <data name="DescribeColor" xml:space="preserve">
+    <value>描述颜色</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="GetNameAi" xml:space="preserve">
+    <value>生成名称</value>
+  </data>
+  <data name="EnterColor" xml:space="preserve">
+    <value>输入颜色生成名称</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>收藏品</value>
+  </data>
+  <data name="AddToCollection" xml:space="preserve">
+    <value>加入收藏</value>
+  </data>
+  <data name="AddCollection" xml:space="preserve">
+    <value>添加收藏</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AddTo" xml:space="preserve">
+    <value>添加到 {0}</value>
+  </data>
+  <data name="RemoveFrom" xml:space="preserve">
+    <value>从{0}移除</value>
+  </data>
+  <data name="RightClickCollectionMsg" xml:space="preserve">
+    <value>右键单击颜色可将其删除</value>
+  </data>
 </root>

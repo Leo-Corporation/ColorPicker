@@ -29,34 +29,33 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ColorPicker.UserControls
+namespace ColorPicker.UserControls;
+
+/// <summary>
+/// Interaction logic for ColorFrequenceItem.xaml
+/// </summary>
+public partial class ColorFrequenceItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for ColorFrequenceItem.xaml
-	/// </summary>
-	public partial class ColorFrequenceItem : UserControl
+	public RGB Color { get; }
+	public int Freq { get; }
+
+	public ColorFrequenceItem(RGB color, int freq)
 	{
-		public RGB Color { get; }
-		public int Freq { get; }
+		InitializeComponent();
+		Color = color;
+		Freq = freq;
+		InitUI();
+	}
 
-		public ColorFrequenceItem(RGB color, int freq)
-		{
-			InitializeComponent();
-			Color = color;
-			Freq = freq;
-			InitUI();
-		}
+	private void InitUI()
+	{
+		ColorBorder.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) };
+		ColorTxt.Text = $"#{((Global.Settings.UseUpperCasesHex ?? false) ? ColorHelper.ColorConverter.RgbToHex(Color).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(Color).Value.ToLower())}";
+		FreqTxt.Text = Freq.ToString();
+	}
 
-		private void InitUI()
-		{
-			ColorBorder.Background = new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) };
-			ColorTxt.Text = $"#{((Global.Settings.UseUpperCasesHex ?? false) ? ColorHelper.ColorConverter.RgbToHex(Color).Value.ToUpper() : ColorHelper.ColorConverter.RgbToHex(Color).Value.ToLower())}";
-			FreqTxt.Text = Freq.ToString();
-		}
-
-		private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			new ColorDetailsWindow(new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) }).Show();
-		}
+	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		new ColorDetailsWindow(new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(Color.R, Color.G, Color.B) }).Show();
 	}
 }

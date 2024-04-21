@@ -27,34 +27,33 @@ using ColorPicker.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ColorPicker.Pages.FirstRun
+namespace ColorPicker.Pages.FirstRun;
+
+/// <summary>
+/// Interaction logic for SynethiaPage.xaml
+/// </summary>
+public partial class SynethiaPage : Page
 {
-	/// <summary>
-	/// Interaction logic for SynethiaPage.xaml
-	/// </summary>
-	public partial class SynethiaPage : Page
+	private FirstRunWindow FirstRunWindow { get; init; }
+	public SynethiaPage(FirstRunWindow firstRunWindow)
 	{
-		private FirstRunWindow FirstRunWindow { get; init; }
-		public SynethiaPage(FirstRunWindow firstRunWindow)
-		{
-			InitializeComponent();
-			FirstRunWindow = firstRunWindow;
-		}
+		InitializeComponent();
+		FirstRunWindow = firstRunWindow;
+	}
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Global.Settings.UseSynethia = true;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.UseSynethia = true;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
-			FirstRunWindow.ChangePage(4);
-		}
+		FirstRunWindow.ChangePage(4);
+	}
 
-		private void DisagreeBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Global.Settings.UseSynethia = false;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+	private void DisagreeBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.UseSynethia = false;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
-			FirstRunWindow.ChangePage(4);
-		}
+		FirstRunWindow.ChangePage(4);
 	}
 }

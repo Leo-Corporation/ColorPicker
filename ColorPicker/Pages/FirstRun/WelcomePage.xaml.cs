@@ -29,39 +29,38 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ColorPicker.Pages.FirstRun
+namespace ColorPicker.Pages.FirstRun;
+
+/// <summary>
+/// Interaction logic for WelcomePage.xaml
+/// </summary>
+public partial class WelcomePage : Page
 {
-	/// <summary>
-	/// Interaction logic for WelcomePage.xaml
-	/// </summary>
-	public partial class WelcomePage : Page
+	private FirstRunWindow FirstRunWindow { get; init; }
+
+	public WelcomePage(FirstRunWindow firstRunWindow)
 	{
-		private FirstRunWindow FirstRunWindow { get; init; }
+		InitializeComponent();
+		FirstRunWindow = firstRunWindow;
+		LangComboBox.SelectedIndex = (int)Global.Settings.Language;
+	}
 
-		public WelcomePage(FirstRunWindow firstRunWindow)
-		{
-			InitializeComponent();
-			FirstRunWindow = firstRunWindow;
-			LangComboBox.SelectedIndex = (int)Global.Settings.Language;
-		}
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		FirstRunWindow.ChangePage(1);
+	}
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			FirstRunWindow.ChangePage(1);
-		}
+	private void SkipBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.IsFirstRun = false;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 
-		private void SkipBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Global.Settings.IsFirstRun = false;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\ColorPicker.exe");
+		Application.Current.Shutdown();
+	}
 
-			Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\ColorPicker.exe");
-			Application.Current.Shutdown();
-		}
-
-		private void LangComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			Global.Settings.Language = (Languages)LangComboBox.SelectedIndex;
-		}
+	private void LangComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		Global.Settings.Language = (Languages)LangComboBox.SelectedIndex;
 	}
 }

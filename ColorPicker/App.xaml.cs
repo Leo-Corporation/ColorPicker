@@ -50,6 +50,7 @@ public partial class App : Application
 		if (Global.Bookmarks.GradientBookmarks is null) Global.Bookmarks.GradientBookmarks = [];
 		if (Global.Bookmarks.TextBookmarks is null) Global.Bookmarks.TextBookmarks = [];
 		if (Global.Bookmarks.ColorBookmarksNotes is null) Global.Bookmarks.ColorBookmarksNotes = Enumerable.Repeat(string.Empty, Global.Bookmarks.ColorBookmarks.Count).ToList();
+		if (Global.Bookmarks.ColorCollections is null) Global.Bookmarks.ColorCollections = [];
 		if (Global.Bookmarks.ColorBookmarksNotes.Count < Global.Bookmarks.ColorBookmarks.Count)
 		{
 			Global.Bookmarks.ColorBookmarksNotes.AddRange(Enumerable.Repeat(string.Empty, Global.Bookmarks.ColorBookmarks.Count - Global.Bookmarks.ColorBookmarksNotes.Count));

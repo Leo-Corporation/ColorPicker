@@ -26,23 +26,22 @@ using ColorPicker.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ColorPicker.Pages.FirstRun
-{
-	/// <summary>
-	/// Interaction logic for FeaturesPage.xaml
-	/// </summary>
-	public partial class FeaturesPage : Page
-	{
-		private FirstRunWindow FirstRunWindow { get; init; }
-		public FeaturesPage(FirstRunWindow firstRunWindow)
-		{
-			InitializeComponent();
-			FirstRunWindow = firstRunWindow;
-		}
+namespace ColorPicker.Pages.FirstRun;
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			FirstRunWindow.ChangePage(2);
-		}
+/// <summary>
+/// Interaction logic for FeaturesPage.xaml
+/// </summary>
+public partial class FeaturesPage : Page
+{
+	private FirstRunWindow FirstRunWindow { get; init; }
+	public FeaturesPage(FirstRunWindow firstRunWindow)
+	{
+		InitializeComponent();
+		FirstRunWindow = firstRunWindow;
+	}
+
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		FirstRunWindow.ChangePage(2);
 	}
 }

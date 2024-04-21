@@ -61,6 +61,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add to bookmarks.
         /// </summary>
         public static string AddBookmark {
@@ -70,11 +79,38 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add collection.
+        /// </summary>
+        public static string AddCollection {
+            get {
+                return ResourceManager.GetString("AddCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add a note.
         /// </summary>
         public static string AddNote {
             get {
                 return ResourceManager.GetString("AddNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add to {0}.
+        /// </summary>
+        public static string AddTo {
+            get {
+                return ResourceManager.GetString("AddTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add to collection.
+        /// </summary>
+        public static string AddToCollection {
+            get {
+                return ResourceManager.GetString("AddToCollection", resourceCulture);
             }
         }
         
@@ -291,6 +327,15 @@ namespace ColorPicker.Properties {
         public static string CMYK {
             get {
                 return ResourceManager.GetString("CMYK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collections.
+        /// </summary>
+        public static string Collections {
+            get {
+                return ResourceManager.GetString("Collections", resourceCulture);
             }
         }
         
@@ -628,6 +673,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Describe color.
+        /// </summary>
+        public static string DescribeColor {
+            get {
+                return ResourceManager.GetString("DescribeColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -705,6 +759,15 @@ namespace ColorPicker.Properties {
         public static string EmptyHistoryMsg {
             get {
                 return ResourceManager.GetString("EmptyHistoryMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a color to generate a name.
+        /// </summary>
+        public static string EnterColor {
+            get {
+                return ResourceManager.GetString("EnterColor", resourceCulture);
             }
         }
         
@@ -894,6 +957,15 @@ namespace ColorPicker.Properties {
         public static string GetIdeas {
             get {
                 return ResourceManager.GetString("GetIdeas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate name.
+        /// </summary>
+        public static string GetNameAi {
+            get {
+                return ResourceManager.GetString("GetNameAi", resourceCulture);
             }
         }
         
@@ -1204,6 +1276,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ColorPicker needs to restart to apply the changes..
         /// </summary>
         public static string NeedRestartLabel {
@@ -1420,6 +1501,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove from {0}.
+        /// </summary>
+        public static string RemoveFrom {
+            get {
+                return ResourceManager.GetString("RemoveFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove image.
         /// </summary>
         public static string RemoveImage {
@@ -1479,6 +1569,15 @@ namespace ColorPicker.Properties {
         public static string RgbSeparator {
             get {
                 return ResourceManager.GetString("RgbSeparator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right click on a color to remove it.
+        /// </summary>
+        public static string RightClickCollectionMsg {
+            get {
+                return ResourceManager.GetString("RightClickCollectionMsg", resourceCulture);
             }
         }
         

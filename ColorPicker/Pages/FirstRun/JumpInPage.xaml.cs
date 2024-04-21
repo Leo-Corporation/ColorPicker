@@ -28,26 +28,25 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ColorPicker.Pages.FirstRun
+namespace ColorPicker.Pages.FirstRun;
+
+/// <summary>
+/// Interaction logic for JumpInPage.xaml
+/// </summary>
+public partial class JumpInPage : Page
 {
-	/// <summary>
-	/// Interaction logic for JumpInPage.xaml
-	/// </summary>
-	public partial class JumpInPage : Page
+	public JumpInPage()
 	{
-		public JumpInPage()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
+	}
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Global.Settings.IsFirstRun = false;
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.IsFirstRun = false;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 
-			Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\ColorPicker.exe");
-			Application.Current.Shutdown(); // Quit the app
-		}
+		Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\ColorPicker.exe");
+		Application.Current.Shutdown(); // Quit the app
 	}
 }
