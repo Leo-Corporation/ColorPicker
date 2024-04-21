@@ -143,6 +143,7 @@ public partial class BookmarksPage : Page
 		PaletteBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		GradientsBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 		TextBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
+		CollectionBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
 
 		ColorsBookmarks.Visibility = Visibility.Collapsed;
 		PalettesBookmarks.Visibility = Visibility.Collapsed;
