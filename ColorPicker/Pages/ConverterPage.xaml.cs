@@ -190,6 +190,8 @@ public partial class ConverterPage : Page
 		ColorValidIconTxt.Text = "\uF299";
 		ColorValidIconTxt.Foreground = Global.GetColorFromResource("Green");
 
+		LoadBookmarkMenu();
+
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
 		{

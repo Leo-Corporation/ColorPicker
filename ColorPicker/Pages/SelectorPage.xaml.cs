@@ -319,6 +319,8 @@ public partial class SelectorPage : Page
 		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
 		DecTxt.Text = ColorInfo.DEC.Value.ToString();
 
+		LoadBookmarkMenu();
+
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
 		{

@@ -210,6 +210,8 @@ public partial class HarmoniesPage : Page
 			MonochromaticPanel.Children.Add(border);
 		}
 
+		LoadBookmarkMenu();
+
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 		{
