@@ -457,7 +457,7 @@
 	<value>文本工具设置。</value>
   </data>
 	<data name="Max" xml:space="preserve">
-	<value>最大</value>
+	<value>Max</value>
   </data>
 	<data name="FirstRunQuitMsg" xml:space="preserve">
 	<value>您想忽略此窗口并继续使用 ColorPicker 吗？</value>
