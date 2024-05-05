@@ -50,9 +50,6 @@
                                 RecognizesAccessKey="True" />
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsHover1}" />
-                            </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsPressed1}" />
                             </Trigger>
@@ -130,6 +127,20 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Button
+                        x:Name="PinBtn"
+                        Grid.Column="1"
+                        Width="46"
+                        Height="32"
+                        Background="Transparent"
+                        Click="PinBtn_Click"
+                        Content="&#xF602;"
+                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                        FontSize="14"
+                        MouseEnter="PinBtn_MouseEnter"
+                        MouseLeave="PinBtn_MouseLeave"
+                        RenderOptions.EdgeMode="Aliased"
+                        Style="{StaticResource TitleBarButtonStyle}" />
+                    <Button
                         x:Name="MinimizeBtn"
                         Grid.Column="2"
                         Width="46"
@@ -139,6 +150,8 @@
                         Content="&#xFC75;"
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
+                        MouseEnter="PinBtn_MouseEnter"
+                        MouseLeave="PinBtn_MouseLeave"
                         RenderOptions.EdgeMode="Aliased"
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button

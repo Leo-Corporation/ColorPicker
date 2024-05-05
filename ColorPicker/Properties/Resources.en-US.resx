@@ -780,4 +780,7 @@
   <data name="RightClickCollectionMsg" xml:space="preserve">
     <value>Right click on a color to remove it</value>
   </data>
+  <data name="DragImagesHere" xml:space="preserve">
+    <value>You can drag and drop images here</value>
+  </data>
 </root>
