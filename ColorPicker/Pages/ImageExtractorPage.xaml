@@ -101,6 +101,29 @@
             Visibility="Collapsed">
             <StackPanel x:Name="ImageDisplayer" Orientation="Horizontal" />
         </ScrollViewer>
+        <Border
+            x:Name="DragZone"
+            Grid.Row="2"
+            Margin="10"
+            Padding="10"
+            AllowDrop="True"
+            BorderBrush="{DynamicResource LightAccentColor}"
+            BorderThickness="1"
+            CornerRadius="5"
+            Drop="DragZone_Drop"
+            MouseLeftButtonUp="DragZone_MouseLeftButtonUp">
+            <StackPanel>
+                <TextBlock
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    FontSize="36"
+                    Text="&#xF9AE;"
+                    TextAlignment="Center" />
+                <TextBlock
+                    FontWeight="Bold"
+                    Text="{x:Static lang:Resources.DragImagesHere}"
+                    TextAlignment="Center" />
+            </StackPanel>
+        </Border>
         <Button
             x:Name="ExtractBtn"
             Grid.Row="3"

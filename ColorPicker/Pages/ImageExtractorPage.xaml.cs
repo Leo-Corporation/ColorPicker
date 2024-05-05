@@ -26,6 +26,7 @@ using ColorPicker.Classes;
 using ColorPicker.UserControls;
 using Microsoft.Win32;
 using Synethia;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -68,6 +69,7 @@ public partial class ImageExtractorPage : Page
 		ImageScrollViewer.Visibility = ImageDisplayer.Children.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
 		ColorPlaceholder.Visibility = ImageDisplayer.Children.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
 		if (ImageDisplayer.Children.Count == 0) ColorDisplayerBorder.Visibility = Visibility.Collapsed;
+		DragZone.Visibility = ImageDisplayer.Children.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
 	}
 
 	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
@@ -224,5 +226,29 @@ public partial class ImageExtractorPage : Page
 
 		Colors = ascending ? Colors.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value) : Colors.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 		LoadColorDisplayer(Colors);
+	}
+
+	private void DragZone_Drop(object sender, DragEventArgs e)
+	{
+		if (e.Data.GetDataPresent(DataFormats.FileDrop))
+		{
+			string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+			foreach (string file in files)
+			{
+				string extension = Path.GetExtension(file).ToLower();
+
+				if (extension == ".jpg" || extension == ".png" || extension == ".jpeg" || extension == ".bmp" || extension == ".gif" || extension == ".ico")
+				{
+					filePaths.Add(file);
+				}
+			}
+			LoadImageUI();
+		}
+	}
+
+	private void DragZone_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	{
+		BrowseBtn_Click(sender, e);
 	}
 }
