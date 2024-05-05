@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
 	Microsoft ResX Schema 
 	
 	Version 2.0
@@ -59,725 +59,728 @@
 			: using a System.ComponentModel.TypeConverter
 			: and then encoded with base64 encoding.
 	-->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="ColorPicker" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColorPicker" xml:space="preserve">
 	<value>ColorPicker</value>
   </data>
-	<data name="Hi" xml:space="preserve">
+  <data name="Hi" xml:space="preserve">
 	<value>嗨</value>
   </data>
-	<data name="GoodAfternoon" xml:space="preserve">
+  <data name="GoodAfternoon" xml:space="preserve">
 	<value>下午好</value>
   </data>
-	<data name="GoodNight" xml:space="preserve">
+  <data name="GoodNight" xml:space="preserve">
 	<value>晚安</value>
   </data>
-	<data name="GoodEvening" xml:space="preserve">
+  <data name="GoodEvening" xml:space="preserve">
 	<value>晚上好</value>
   </data>
-	<data name="Pinned" xml:space="preserve">
+  <data name="Pinned" xml:space="preserve">
 	<value>已固定</value>
   </data>
-	<data name="Home" xml:space="preserve">
+  <data name="Home" xml:space="preserve">
 	<value>主页</value>
   </data>
-	<data name="Settings" xml:space="preserve">
+  <data name="Settings" xml:space="preserve">
 	<value>设置</value>
   </data>
-	<data name="History" xml:space="preserve">
+  <data name="History" xml:space="preserve">
 	<value>历史</value>
   </data>
-	<data name="Tools" xml:space="preserve">
+  <data name="Tools" xml:space="preserve">
 	<value>工具</value>
   </data>
-	<data name="Details" xml:space="preserve">
+  <data name="Details" xml:space="preserve">
 	<value>详细信息</value>
   </data>
-	<data name="Selector" xml:space="preserve">
+  <data name="Selector" xml:space="preserve">
 	<value>选择器</value>
   </data>
-	<data name="Picker" xml:space="preserve">
+  <data name="Picker" xml:space="preserve">
 	<value>拾色器</value>
   </data>
-	<data name="RGB" xml:space="preserve">
+  <data name="RGB" xml:space="preserve">
 	<value>RGB</value>
   </data>
-	<data name="HEX" xml:space="preserve">
+  <data name="HEX" xml:space="preserve">
 	<value>HEX</value>
   </data>
-	<data name="HSV" xml:space="preserve">
+  <data name="HSV" xml:space="preserve">
 	<value>HSV</value>
   </data>
-	<data name="HSL" xml:space="preserve">
+  <data name="HSL" xml:space="preserve">
 	<value>HSL</value>
   </data>
-	<data name="CMYK" xml:space="preserve">
+  <data name="CMYK" xml:space="preserve">
 	<value>CMYK</value>
   </data>
-	<data name="XYZ" xml:space="preserve">
+  <data name="XYZ" xml:space="preserve">
 	<value>XYZ</value>
   </data>
-	<data name="YIQ" xml:space="preserve">
+  <data name="YIQ" xml:space="preserve">
 	<value>YIQ</value>
   </data>
-	<data name="YUV" xml:space="preserve">
+  <data name="YUV" xml:space="preserve">
 	<value>YUV</value>
   </data>
-	<data name="Bookmarks" xml:space="preserve">
+  <data name="Bookmarks" xml:space="preserve">
 	<value>书签</value>
   </data>
-	<data name="ColorPickerMax" xml:space="preserve">
+  <data name="ColorPickerMax" xml:space="preserve">
 	<value>ColorPicker Max</value>
   </data>
-	<data name="ChromaticWheel" xml:space="preserve">
+  <data name="ChromaticWheel" xml:space="preserve">
 	<value>色轮</value>
   </data>
-	<data name="ColorTools" xml:space="preserve">
+  <data name="ColorTools" xml:space="preserve">
 	<value>颜色工具</value>
   </data>
-	<data name="Creation" xml:space="preserve">
+  <data name="Creation" xml:space="preserve">
 	<value>创建</value>
   </data>
-	<data name="Converter" xml:space="preserve">
+  <data name="Converter" xml:space="preserve">
 	<value>转换</value>
   </data>
-	<data name="TextTool" xml:space="preserve">
+  <data name="TextTool" xml:space="preserve">
 	<value>文本</value>
   </data>
-	<data name="Palette" xml:space="preserve">
+  <data name="Palette" xml:space="preserve">
 	<value>调色板</value>
   </data>
-	<data name="Gradient" xml:space="preserve">
+  <data name="Gradient" xml:space="preserve">
 	<value>渐变</value>
   </data>
-	<data name="Circle" xml:space="preserve">
+  <data name="Circle" xml:space="preserve">
 	<value>圆圈</value>
   </data>
-	<data name="Disc" xml:space="preserve">
+  <data name="Disc" xml:space="preserve">
 	<value>光盘</value>
   </data>
-	<data name="Shades" xml:space="preserve">
+  <data name="Shades" xml:space="preserve">
 	<value>色调</value>
   </data>
-	<data name="ColorValid" xml:space="preserve">
+  <data name="ColorValid" xml:space="preserve">
 	<value>颜色是有效的。</value>
   </data>
-	<data name="InvalidColor" xml:space="preserve">
+  <data name="InvalidColor" xml:space="preserve">
 	<value>颜色是无效的。</value>
   </data>
-	<data name="Font" xml:space="preserve">
+  <data name="Font" xml:space="preserve">
 	<value>字体</value>
   </data>
-	<data name="Size" xml:space="preserve">
+  <data name="Size" xml:space="preserve">
 	<value>大小</value>
   </data>
-	<data name="Foreground" xml:space="preserve">
+  <data name="Foreground" xml:space="preserve">
 	<value>前景色</value>
   </data>
-	<data name="Background" xml:space="preserve">
+  <data name="Background" xml:space="preserve">
 	<value>背景色</value>
   </data>
-	<data name="Contrast" xml:space="preserve">
+  <data name="Contrast" xml:space="preserve">
 	<value>对比度</value>
   </data>
-	<data name="Brightness" xml:space="preserve">
+  <data name="Brightness" xml:space="preserve">
 	<value>亮度</value>
   </data>
-	<data name="Hues" xml:space="preserve">
+  <data name="Hues" xml:space="preserve">
 	<value>色相</value>
   </data>
-	<data name="From" xml:space="preserve">
+  <data name="From" xml:space="preserve">
 	<value>从</value>
   </data>
-	<data name="To" xml:space="preserve">
+  <data name="To" xml:space="preserve">
 	<value>到</value>
   </data>
-	<data name="Rotation" xml:space="preserve">
+  <data name="Rotation" xml:space="preserve">
 	<value>旋转</value>
   </data>
-	<data name="DevTools" xml:space="preserve">
+  <data name="DevTools" xml:space="preserve">
 	<value>开发者工具</value>
   </data>
-	<data name="CSS" xml:space="preserve">
+  <data name="CSS" xml:space="preserve">
 	<value>CSS</value>
   </data>
-	<data name="GetStarted" xml:space="preserve">
+  <data name="GetStarted" xml:space="preserve">
 	<value>开始使用</value>
   </data>
-	<data name="SuggestedActions" xml:space="preserve">
+  <data name="SuggestedActions" xml:space="preserve">
 	<value>快速操作</value>
   </data>
-	<data name="Discover" xml:space="preserve">
+  <data name="Discover" xml:space="preserve">
 	<value>探索</value>
   </data>
-	<data name="SelectColor" xml:space="preserve">
+  <data name="SelectColor" xml:space="preserve">
 	<value>选择一个颜色</value>
   </data>
-	<data name="SelectChomaticDisc" xml:space="preserve">
+  <data name="SelectChomaticDisc" xml:space="preserve">
 	<value>从彩色光盘中选择</value>
   </data>
-	<data name="ConvertFromRGB" xml:space="preserve">
+  <data name="ConvertFromRGB" xml:space="preserve">
 	<value>从 RGB 转换</value>
   </data>
-	<data name="GetContrast" xml:space="preserve">
+  <data name="GetContrast" xml:space="preserve">
 	<value>获取对比度</value>
   </data>
-	<data name="GeneratePalette" xml:space="preserve">
+  <data name="GeneratePalette" xml:space="preserve">
 	<value>生成调色板</value>
   </data>
-	<data name="GenerateGradient" xml:space="preserve">
+  <data name="GenerateGradient" xml:space="preserve">
 	<value>生成一个渐变</value>
   </data>
-	<data name="RedP" xml:space="preserve">
+  <data name="RedP" xml:space="preserve">
 	<value>R</value>
   </data>
-	<data name="GreenP" xml:space="preserve">
+  <data name="GreenP" xml:space="preserve">
 	<value>G</value>
   </data>
-	<data name="BlueP" xml:space="preserve">
+  <data name="BlueP" xml:space="preserve">
 	<value>B</value>
   </data>
-	<data name="EmptyBookmarks" xml:space="preserve">
+  <data name="EmptyBookmarks" xml:space="preserve">
 	<value>空白书签</value>
   </data>
-	<data name="Colors" xml:space="preserve">
+  <data name="Colors" xml:space="preserve">
 	<value>颜色</value>
   </data>
-	<data name="Gradients" xml:space="preserve">
+  <data name="Gradients" xml:space="preserve">
 	<value>渐变</value>
   </data>
-	<data name="Palettes" xml:space="preserve">
+  <data name="Palettes" xml:space="preserve">
 	<value>调色板</value>
   </data>
-	<data name="EmptyHistoryMsg" xml:space="preserve">
+  <data name="EmptyHistoryMsg" xml:space="preserve">
 	<value>您确定要清空这些书签吗？ 此操作是不可逆转的。</value>
   </data>
-	<data name="CheckUpdate" xml:space="preserve">
+  <data name="CheckUpdate" xml:space="preserve">
 	<value>检查更新</value>
   </data>
-	<data name="Updates" xml:space="preserve">
+  <data name="Updates" xml:space="preserve">
 	<value>更新</value>
   </data>
-	<data name="Install" xml:space="preserve">
+  <data name="Install" xml:space="preserve">
 	<value>安装</value>
   </data>
-	<data name="Theme" xml:space="preserve">
+  <data name="Theme" xml:space="preserve">
 	<value>主题</value>
   </data>
-	<data name="Light" xml:space="preserve">
+  <data name="Light" xml:space="preserve">
 	<value>浅色</value>
   </data>
-	<data name="Dark" xml:space="preserve">
+  <data name="Dark" xml:space="preserve">
 	<value>深色</value>
   </data>
-	<data name="Licenses" xml:space="preserve">
+  <data name="Licenses" xml:space="preserve">
 	<value>许可证</value>
   </data>
-	<data name="Apply" xml:space="preserve">
+  <data name="Apply" xml:space="preserve">
 	<value>应用</value>
   </data>
-	<data name="SeeLicenses" xml:space="preserve">
+  <data name="SeeLicenses" xml:space="preserve">
 	<value>查看许可证</value>
   </data>
-	<data name="ChangeTheme" xml:space="preserve">
+  <data name="ChangeTheme" xml:space="preserve">
 	<value>更改 ColorPicker 主题。</value>
   </data>
-	<data name="Language" xml:space="preserve">
+  <data name="Language" xml:space="preserve">
 	<value>语言</value>
   </data>
-	<data name="NeedRestartToApplyChanges" xml:space="preserve">
+  <data name="NeedRestartToApplyChanges" xml:space="preserve">
 	<value>ColorPicker 需要重新启动才能应用更改。 您想现在重新启动吗？</value>
   </data>
-	<data name="Default" xml:space="preserve">
+  <data name="Default" xml:space="preserve">
 	<value>默认</value>
   </data>
-	<data name="UpToDate" xml:space="preserve">
+  <data name="UpToDate" xml:space="preserve">
 	<value>ColorPicker 是最新的。</value>
   </data>
-	<data name="AvailableUpdates" xml:space="preserve">
+  <data name="AvailableUpdates" xml:space="preserve">
 	<value>有更新可用。</value>
   </data>
-	<data name="InstallConfirmMsg" xml:space="preserve">
+  <data name="InstallConfirmMsg" xml:space="preserve">
 	<value>要安装更新，ColorPicker 需要重新启动。 你想继续吗？</value>
   </data>
-	<data name="InstallVersion" xml:space="preserve">
+  <data name="InstallVersion" xml:space="preserve">
 	<value>安装版本</value>
   </data>
-	<data name="Version" xml:space="preserve">
+  <data name="Version" xml:space="preserve">
 	<value>版本</value>
   </data>
-	<data name="ChangeLanguage" xml:space="preserve">
+  <data name="ChangeLanguage" xml:space="preserve">
 	<value>更改 ColorPicker 的语言。</value>
   </data>
-	<data name="NotifyUpdates" xml:space="preserve">
+  <data name="NotifyUpdates" xml:space="preserve">
 	<value>有更新时显示通知</value>
   </data>
-	<data name="Notifications" xml:space="preserve">
+  <data name="Notifications" xml:space="preserve">
 	<value>通知</value>
   </data>
-	<data name="NotificationsDescription" xml:space="preserve">
+  <data name="NotificationsDescription" xml:space="preserve">
 	<value>通知设置。</value>
   </data>
-	<data name="CheckUpdatesOnStart" xml:space="preserve">
+  <data name="CheckUpdatesOnStart" xml:space="preserve">
 	<value>启动时检查更新</value>
   </data>
-	<data name="StartupPage" xml:space="preserve">
+  <data name="StartupPage" xml:space="preserve">
 	<value>启动时在默认页面</value>
   </data>
-	<data name="OnStart" xml:space="preserve">
+  <data name="OnStart" xml:space="preserve">
 	<value>启动时</value>
   </data>
-	<data name="OnStartDescription" xml:space="preserve">
+  <data name="OnStartDescription" xml:space="preserve">
 	<value>启动时应用的设置。</value>
   </data>
-	<data name="DataPrivacy" xml:space="preserve">
+  <data name="DataPrivacy" xml:space="preserve">
 	<value>数据和隐私</value>
   </data>
-	<data name="DataDescription" xml:space="preserve">
+  <data name="DataDescription" xml:space="preserve">
 	<value>管理您的数据和隐私。</value>
   </data>
-	<data name="Import" xml:space="preserve">
+  <data name="Import" xml:space="preserve">
 	<value>导入设置</value>
   </data>
-	<data name="Export" xml:space="preserve">
+  <data name="Export" xml:space="preserve">
 	<value>导出设置</value>
   </data>
-	<data name="SettingsExportedSucessMsg" xml:space="preserve">
+  <data name="SettingsExportedSucessMsg" xml:space="preserve">
 	<value>设置已成功导出。</value>
   </data>
-	<data name="SettingsImportedMsg" xml:space="preserve">
+  <data name="SettingsImportedMsg" xml:space="preserve">
 	<value>设置已成功导入。 为了完成该过程，ColorPicker 将重新启动。</value>
   </data>
-	<data name="ResetSettings" xml:space="preserve">
+  <data name="ResetSettings" xml:space="preserve">
 	<value>重置设置</value>
   </data>
-	<data name="SynethiaEnable" xml:space="preserve">
+  <data name="SynethiaEnable" xml:space="preserve">
 	<value>启用 Synethia 自定义体验。</value>
   </data>
-	<data name="ResetSynethia" xml:space="preserve">
+  <data name="ResetSynethia" xml:space="preserve">
 	<value>重置 Synethia 数据</value>
   </data>
-	<data name="ResetSettingsConfirmation" xml:space="preserve">
+  <data name="ResetSettingsConfirmation" xml:space="preserve">
 	<value>您确定要重置所有设置吗？</value>
   </data>
-	<data name="SynethiaDeleteMsg" xml:space="preserve">
+  <data name="SynethiaDeleteMsg" xml:space="preserve">
 	<value>您确定要重置所有 Synethia 数据吗？ 您的个性化体验将会丢失； 此操作无法取消。</value>
   </data>
-	<data name="ColorOptions" xml:space="preserve">
+  <data name="ColorOptions" xml:space="preserve">
 	<value>颜色选项</value>
   </data>
-	<data name="DefaultColorType" xml:space="preserve">
+  <data name="DefaultColorType" xml:space="preserve">
 	<value>默认颜色类型</value>
   </data>
-	<data name="ColorOptionsDesc" xml:space="preserve">
+  <data name="ColorOptionsDesc" xml:space="preserve">
 	<value>ColorPicker 处理颜色的方式。</value>
   </data>
-	<data name="KeyboardShortcuts" xml:space="preserve">
+  <data name="KeyboardShortcuts" xml:space="preserve">
 	<value>键盘快捷键</value>
   </data>
-	<data name="UseKeyboardShortcuts" xml:space="preserve">
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
 	<value>使用键盘快捷键</value>
   </data>
-	<data name="EditShortcut" xml:space="preserve">
+  <data name="EditShortcut" xml:space="preserve">
 	<value>编辑快捷方式</value>
   </data>
-	<data name="PressKeys" xml:space="preserve">
+  <data name="PressKeys" xml:space="preserve">
 	<value>按组合键。</value>
   </data>
-	<data name="NeedRestartLabel" xml:space="preserve">
+  <data name="NeedRestartLabel" xml:space="preserve">
 	<value>ColorPicker 需要重新启动才能应用更改。</value>
   </data>
-	<data name="ResetKeyboardShortcuts" xml:space="preserve">
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
 	<value>重置键盘快捷键</value>
   </data>
-	<data name="StartSelection" xml:space="preserve">
+  <data name="StartSelection" xml:space="preserve">
 	<value>开始选择</value>
   </data>
-	<data name="CopyColor" xml:space="preserve">
+  <data name="CopyColor" xml:space="preserve">
 	<value>复制颜色</value>
   </data>
-	<data name="TextToolDesc" xml:space="preserve">
+  <data name="TextToolDesc" xml:space="preserve">
 	<value>文本工具设置。</value>
   </data>
-	<data name="Max" xml:space="preserve">
+  <data name="Max" xml:space="preserve">
 	<value>Max</value>
   </data>
-	<data name="FirstRunQuitMsg" xml:space="preserve">
+  <data name="FirstRunQuitMsg" xml:space="preserve">
 	<value>您想忽略此窗口并继续使用 ColorPicker 吗？</value>
   </data>
-	<data name="Next" xml:space="preserve">
+  <data name="Next" xml:space="preserve">
 	<value>下一步</value>
   </data>
-	<data name="Skip" xml:space="preserve">
+  <data name="Skip" xml:space="preserve">
 	<value>跳过</value>
   </data>
-	<data name="Features" xml:space="preserve">
+  <data name="Features" xml:space="preserve">
 	<value>产品特点</value>
   </data>
-	<data name="Agree" xml:space="preserve">
+  <data name="Agree" xml:space="preserve">
 	<value>我同意</value>
   </data>
-	<data name="NoThanks" xml:space="preserve">
+  <data name="NoThanks" xml:space="preserve">
 	<value>不，谢谢</value>
   </data>
-	<data name="IntroducingSynethia" xml:space="preserve">
+  <data name="IntroducingSynethia" xml:space="preserve">
 	<value>介绍 Synethia</value>
   </data>
-	<data name="SynethiaInfo" xml:space="preserve">
+  <data name="SynethiaInfo" xml:space="preserve">
 	<value>Synethia 是一种使您的体验个性化的算法。</value>
   </data>
-	<data name="SynethiaDataInfo" xml:space="preserve">
+  <data name="SynethiaDataInfo" xml:space="preserve">
 	<value>Synethia 仅在 ColorPicker 中收集数据</value>
   </data>
-	<data name="SynethiaAnalyze" xml:space="preserve">
+  <data name="SynethiaAnalyze" xml:space="preserve">
 	<value>Synethia 随后将分析这些数据以提供独特的体验</value>
   </data>
-	<data name="SynethiaHome" xml:space="preserve">
+  <data name="SynethiaHome" xml:space="preserve">
 	<value>主页仪表板将根据您的使用情况推荐操作</value>
   </data>
-	<data name="SynethiaPrivacy" xml:space="preserve">
+  <data name="SynethiaPrivacy" xml:space="preserve">
 	<value>您的数据以匿名方式存储在您的设备上。 绝对不会向 Léo Corporation 发送任何数据。</value>
   </data>
-	<data name="LetsGo" xml:space="preserve">
+  <data name="LetsGo" xml:space="preserve">
 	<value>开始吧!</value>
   </data>
-	<data name="WelcomeReady" xml:space="preserve">
+  <data name="WelcomeReady" xml:space="preserve">
 	<value>一切准备就绪</value>
   </data>
-	<data name="SelectorInfo" xml:space="preserve">
+  <data name="SelectorInfo" xml:space="preserve">
     <value>ColorPicker 的选择器功能使您可以通过将光标移动到屏幕上并按键盘快捷键来选择屏幕上的任何颜色。 所选颜色将显示在预览框中，其代码将以所需的颜色类型复制到剪贴板。</value>
   </data>
-	<data name="ConverterInfo" xml:space="preserve">
+  <data name="ConverterInfo" xml:space="preserve">
     <value>ColorPicker 的转换器功能允许您将任何颜色类型转换为另一种颜色类型。 颜色类型有 RGB、HEX、HSV、HSL、CMYK、XYZ、YIQ 和 YUV。 您可以输入任何这些格式的颜色代码，并查看其他格式的相应代码。</value>
   </data>
-	<data name="GradientInfo" xml:space="preserve">
+  <data name="GradientInfo" xml:space="preserve">
     <value>ColorPicker 的渐变功能可让您生成具有特定旋转角度的随机两站渐变。 您可以看到渐变及其 CSS 代码的预览。 您还可以将渐变导出为 CSS 代码并在网页设计项目中使用它。</value>
   </data>
-	<data name="WelcomeDesc" xml:space="preserve">
+  <data name="WelcomeDesc" xml:space="preserve">
     <value>欢迎使用 ColorPicker，这是用于拾取、转换和生成颜色的终极工具。</value>
   </data>
-	<data name="XAML" xml:space="preserve">
+  <data name="XAML" xml:space="preserve">
     <value>XAML</value>
   </data>
-	<data name="KeyboardSelectionHint" xml:space="preserve">
+  <data name="KeyboardSelectionHint" xml:space="preserve">
     <value>按 {0} 开始或停止从屏幕上选择颜色。</value>
   </data>
-	<data name="CopyRGB" xml:space="preserve">
+  <data name="CopyRGB" xml:space="preserve">
     <value>复制 RGB</value>
   </data>
-	<data name="CopyHEX" xml:space="preserve">
+  <data name="CopyHEX" xml:space="preserve">
     <value>复制 HEX</value>
   </data>
-	<data name="CopyHSL" xml:space="preserve">
+  <data name="CopyHSL" xml:space="preserve">
     <value>复制 HSL</value>
   </data>
-	<data name="CopyHSV" xml:space="preserve">
+  <data name="CopyHSV" xml:space="preserve">
     <value>复制 HSV</value>
   </data>
-	<data name="CopyXYZ" xml:space="preserve">
+  <data name="CopyXYZ" xml:space="preserve">
     <value>复制 XYZ</value>
   </data>
-	<data name="CopyYIQ" xml:space="preserve">
+  <data name="CopyYIQ" xml:space="preserve">
     <value>复制 YIQ</value>
   </data>
-	<data name="CopyYUV" xml:space="preserve">
+  <data name="CopyYUV" xml:space="preserve">
     <value>复制 YUV</value>
   </data>
-	<data name="CopyCMYK" xml:space="preserve">
+  <data name="CopyCMYK" xml:space="preserve">
     <value>复制 CMYK</value>
   </data>
-	<data name="GenerateColor" xml:space="preserve">
+  <data name="GenerateColor" xml:space="preserve">
     <value>生成一个随机颜色</value>
   </data>
-	<data name="AddBookmark" xml:space="preserve">
+  <data name="AddBookmark" xml:space="preserve">
     <value>添加到书签</value>
   </data>
-	<data name="RemoveBookmark" xml:space="preserve">
+  <data name="RemoveBookmark" xml:space="preserve">
     <value>从书签中删除</value>
   </data>
-	<data name="GenerateTextColors" xml:space="preserve">
+  <data name="GenerateTextColors" xml:space="preserve">
     <value>生成新的颜色</value>
   </data>
-	<data name="Delete" xml:space="preserve">
+  <data name="Delete" xml:space="preserve">
     <value>删除</value>
   </data>
-	<data name="AIGeneration" xml:space="preserve">
+  <data name="AIGeneration" xml:space="preserve">
     <value>AI 生成</value>
   </data>
-	<data name="AIGenerateColor" xml:space="preserve">
+  <data name="AIGenerateColor" xml:space="preserve">
     <value>使用 AI 生成颜色</value>
   </data>
-	<data name="AISettings" xml:space="preserve">
+  <data name="AISettings" xml:space="preserve">
     <value>自定义 AI 生成设置。</value>
   </data>
-	<data name="OpenAIKey" xml:space="preserve">
+  <data name="OpenAIKey" xml:space="preserve">
     <value>OpenAI API 密钥</value>
   </data>
-	<data name="Generate" xml:space="preserve">
+  <data name="Generate" xml:space="preserve">
     <value>生成</value>
   </data>
-	<data name="ProvideAPromptMsg" xml:space="preserve">
+  <data name="ProvideAPromptMsg" xml:space="preserve">
     <value>请给 AI 一个提示。</value>
   </data>
-	<data name="ProvideAPIKey" xml:space="preserve">
+  <data name="ProvideAPIKey" xml:space="preserve">
     <value>请在设置中定义 API 密钥。</value>
   </data>
-	<data name="SingleColor" xml:space="preserve">
+  <data name="SingleColor" xml:space="preserve">
     <value>单色</value>
   </data>
-	<data name="Model" xml:space="preserve">
+  <data name="Model" xml:space="preserve">
     <value>模型</value>
   </data>
-	<data name="NoApiKeyMsg" xml:space="preserve">
+  <data name="NoApiKeyMsg" xml:space="preserve">
     <value>要使用 AI 功能，您需要 OpenAI API 密钥。</value>
   </data>
-	<data name="Decimal" xml:space="preserve">
+  <data name="Decimal" xml:space="preserve">
     <value>十进制</value>
   </data>
-	<data name="DEC" xml:space="preserve">
+  <data name="DEC" xml:space="preserve">
     <value>十六进制</value>
   </data>
-	<data name="CopyDEC" xml:space="preserve">
+  <data name="CopyDEC" xml:space="preserve">
     <value>复制小数</value>
   </data>
-	<data name="AiPrompts" xml:space="preserve">
+  <data name="AiPrompts" xml:space="preserve">
     <value>海风,绯红夕阳,魔法森林,电光梦境,沙漠海市蜃楼,午夜小夜曲,霓虹银河,嘉禾,薰衣草迷雾,热带天堂,火与冰,神秘月光,翡翠优雅,樱花,南极光,钢铁城市之光, 复古浪漫,蓝宝石梦境,琥珀余辉,丝绒触感,蒲公英祝福,都市丛林,玫瑰花瓣呢喃,冰冷苔原,巧克力喜悦,港湾倒影,风声呢喃,活力光谱,粉彩遐想,月光草甸</value>
   </data>
-	<data name="GetIdeas" xml:space="preserve">
+  <data name="GetIdeas" xml:space="preserve">
     <value>获取创意</value>
   </data>
-	<data name="EditInSelector" xml:space="preserve">
+  <data name="EditInSelector" xml:space="preserve">
     <value>在选择器中编辑</value>
   </data>
-	<data name="Convert" xml:space="preserve">
+  <data name="Convert" xml:space="preserve">
     <value>转换</value>
   </data>
-	<data name="Harmonies" xml:space="preserve">
+  <data name="Harmonies" xml:space="preserve">
     <value>和谐</value>
   </data>
-	<data name="GetHarmonies" xml:space="preserve">
+  <data name="GetHarmonies" xml:space="preserve">
     <value>获得和谐</value>
   </data>
-	<data name="Complementary" xml:space="preserve">
+  <data name="Complementary" xml:space="preserve">
     <value>互补</value>
   </data>
-	<data name="SplitComplementary" xml:space="preserve">
+  <data name="SplitComplementary" xml:space="preserve">
     <value>拆分互补</value>
   </data>
-	<data name="Triadic" xml:space="preserve">
+  <data name="Triadic" xml:space="preserve">
     <value>三元组</value>
   </data>
-	<data name="Analogous" xml:space="preserve">
+  <data name="Analogous" xml:space="preserve">
     <value>近似</value>
   </data>
-	<data name="Monochromatic" xml:space="preserve">
+  <data name="Monochromatic" xml:space="preserve">
     <value>单色</value>
   </data>
-	<data name="PortableNoAutoUpdates" xml:space="preserve">
+  <data name="PortableNoAutoUpdates" xml:space="preserve">
     <value>便携模式下不支持自动更新，请重新下载ColorPicker Max。</value>
   </data>
-	<data name="EmptyAiPlaceholder" xml:space="preserve">
+  <data name="EmptyAiPlaceholder" xml:space="preserve">
     <value>输入提示，利用 AI 的力量生成颜色</value>
   </data>
-	<data name="RgbSeparator" xml:space="preserve">
+  <data name="RgbSeparator" xml:space="preserve">
     <value>RGB 分隔符</value>
   </data>
-	<data name="Angle" xml:space="preserve">
+  <data name="Angle" xml:space="preserve">
     <value>角度</value>
   </data>
-	<data name="Steps" xml:space="preserve">
+  <data name="Steps" xml:space="preserve">
     <value>步骤</value>
   </data>
-	<data name="AmountToGenerate" xml:space="preserve">
+  <data name="AmountToGenerate" xml:space="preserve">
     <value>生成数量</value>
   </data>
-	<data name="FirstColor" xml:space="preserve">
+  <data name="FirstColor" xml:space="preserve">
     <value>第一种颜色</value>
   </data>
-	<data name="SecondColor" xml:space="preserve">
+  <data name="SecondColor" xml:space="preserve">
     <value>第二种颜色</value>
   </data>
-	<data name="ImageExtractor" xml:space="preserve">
+  <data name="ImageExtractor" xml:space="preserve">
     <value>图像提取器</value>
   </data>
-	<data name="Color" xml:space="preserve">
+  <data name="Color" xml:space="preserve">
     <value>颜色</value>
   </data>
-	<data name="SelectImages" xml:space="preserve">
+  <data name="SelectImages" xml:space="preserve">
     <value>选择图像</value>
   </data>
-	<data name="Browse" xml:space="preserve">
+  <data name="Browse" xml:space="preserve">
     <value>浏览</value>
   </data>
-	<data name="RemoveImage" xml:space="preserve">
+  <data name="RemoveImage" xml:space="preserve">
     <value>删除图像</value>
   </data>
-	<data name="Frequence" xml:space="preserve">
+  <data name="Frequence" xml:space="preserve">
     <value>频率</value>
   </data>
-	<data name="Precision" xml:space="preserve">
+  <data name="Precision" xml:space="preserve">
     <value>精度（要忽略的像素）</value>
   </data>
-	<data name="Pixels" xml:space="preserve">
+  <data name="Pixels" xml:space="preserve">
     <value>像素</value>
   </data>
-	<data name="Clear" xml:space="preserve">
+  <data name="Clear" xml:space="preserve">
     <value>清除</value>
   </data>
-	<data name="ExtractColors" xml:space="preserve">
+  <data name="ExtractColors" xml:space="preserve">
     <value>提取颜色</value>
   </data>
-	<data name="ExtractionInProgress" xml:space="preserve">
+  <data name="ExtractionInProgress" xml:space="preserve">
     <value>正在提取颜色，请稍候。</value>
   </data>
-	<data name="ExportToCSV" xml:space="preserve">
+  <data name="ExportToCSV" xml:space="preserve">
     <value>导出到 CSV</value>
   </data>
-	<data name="CommaSeparated" xml:space="preserve">
+  <data name="CommaSeparated" xml:space="preserve">
     <value>逗号分隔 (,)</value>
   </data>
-	<data name="SemiColonSeparated" xml:space="preserve">
+  <data name="SemiColonSeparated" xml:space="preserve">
     <value>以分号分隔 (;)</value>
   </data>
-	<data name="SelectFormatItems" xml:space="preserve">
+  <data name="SelectFormatItems" xml:space="preserve">
     <value>为每个项目选择一种格式。</value>
   </data>
-	<data name="ExportShort" xml:space="preserve">
+  <data name="ExportShort" xml:space="preserve">
     <value>导出</value>
   </data>
-	<data name="IncludeFrequence" xml:space="preserve">
+  <data name="IncludeFrequence" xml:space="preserve">
     <value>包含频率</value>
   </data>
-	<data name="NumberColorDisplay" xml:space="preserve">
+  <data name="NumberColorDisplay" xml:space="preserve">
     <value>要显示的颜色数量</value>
   </data>
-	<data name="Sort" xml:space="preserve">
+  <data name="Sort" xml:space="preserve">
     <value>排序</value>
   </data>
-	<data name="ColorsWillDisplayHere" xml:space="preserve">
+  <data name="ColorsWillDisplayHere" xml:space="preserve">
     <value>提取的颜色将显示在这里。</value>
   </data>
-	<data name="ContrastGrid" xml:space="preserve">
+  <data name="ContrastGrid" xml:space="preserve">
     <value>对比网格</value>
   </data>
-	<data name="Score" xml:space="preserve">
+  <data name="Score" xml:space="preserve">
     <value>评分</value>
   </data>
-	<data name="ScoreAA" xml:space="preserve">
+  <data name="ScoreAA" xml:space="preserve">
     <value>4.5+ (AA)</value>
   </data>
-	<data name="ScoreAAA" xml:space="preserve">
+  <data name="ScoreAAA" xml:space="preserve">
     <value>7+ (AAA)</value>
   </data>
-	<data name="ScoreAll" xml:space="preserve">
+  <data name="ScoreAll" xml:space="preserve">
     <value>全部</value>
   </data>
-	<data name="ForegroundDetails" xml:space="preserve">
+  <data name="ForegroundDetails" xml:space="preserve">
     <value>前景色详细信息</value>
   </data>
-	<data name="BackgroundDetails" xml:space="preserve">
+  <data name="BackgroundDetails" xml:space="preserve">
     <value>背景色详细信息</value>
   </data>
-	<data name="UseUpperCasesHex" xml:space="preserve">
+  <data name="UseUpperCasesHex" xml:space="preserve">
     <value>使用大写字母表示十六进制颜色</value>
   </data>
-	<data name="AddNote" xml:space="preserve">
+  <data name="AddNote" xml:space="preserve">
     <value>添加注释</value>
   </data>
-	<data name="Save" xml:space="preserve">
+  <data name="Save" xml:space="preserve">
     <value>保存</value>
   </data>
-	<data name="HighlightColorGrid" xml:space="preserve">
+  <data name="HighlightColorGrid" xml:space="preserve">
     <value>高亮颜色</value>
   </data>
-	<data name="DescribeColor" xml:space="preserve">
+  <data name="DescribeColor" xml:space="preserve">
     <value>描述颜色</value>
   </data>
-	<data name="Name" xml:space="preserve">
+  <data name="Name" xml:space="preserve">
     <value>名称</value>
   </data>
-	<data name="GetNameAi" xml:space="preserve">
+  <data name="GetNameAi" xml:space="preserve">
     <value>生成名称</value>
   </data>
-	<data name="EnterColor" xml:space="preserve">
+  <data name="EnterColor" xml:space="preserve">
     <value>输入颜色以生成名称</value>
   </data>
-	<data name="Collections" xml:space="preserve">
+  <data name="Collections" xml:space="preserve">
     <value>收藏</value>
   </data>
-	<data name="AddToCollection" xml:space="preserve">
+  <data name="AddToCollection" xml:space="preserve">
     <value>添加到收藏</value>
   </data>
-	<data name="AddCollection" xml:space="preserve">
+  <data name="AddCollection" xml:space="preserve">
     <value>添加收藏</value>
   </data>
-	<data name="Add" xml:space="preserve">
+  <data name="Add" xml:space="preserve">
     <value>添加</value>
   </data>
-	<data name="AddTo" xml:space="preserve">
+  <data name="AddTo" xml:space="preserve">
     <value>添加到 {0}</value>
   </data>
-	<data name="RemoveFrom" xml:space="preserve">
+  <data name="RemoveFrom" xml:space="preserve">
     <value>从 {0} 中删除</value>
   </data>
-	<data name="RightClickCollectionMsg" xml:space="preserve">
+  <data name="RightClickCollectionMsg" xml:space="preserve">
     <value>右键单击颜色将其删除</value>
+  </data>
+  <data name="DragImagesHere" xml:space="preserve">
+    <value>您可以在这里拖放图片</value>
   </data>
 </root>

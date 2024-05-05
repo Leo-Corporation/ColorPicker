@@ -718,6 +718,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can drag and drop images here.
+        /// </summary>
+        public static string DragImagesHere {
+            get {
+                return ResourceManager.GetString("DragImagesHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit in Selector.
         /// </summary>
         public static string EditInSelector {
