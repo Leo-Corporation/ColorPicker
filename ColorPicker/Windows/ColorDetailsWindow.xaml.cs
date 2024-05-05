@@ -175,4 +175,12 @@ public partial class ColorDetailsWindow : Window
 	{
 		Clipboard.SetText(DecTxt.Text);
 	}
+
+	bool isPinned = false;
+	private void PinBtn_Click(object sender, RoutedEventArgs e)
+	{
+		isPinned = !isPinned;
+		Topmost = isPinned;
+		PinBtn.Content = isPinned ? "\uF604" : "\uF602";
+    }
 }
