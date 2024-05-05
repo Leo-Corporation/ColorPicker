@@ -50,9 +50,6 @@
                                 RecognizesAccessKey="True" />
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsHover1}" />
-                            </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter TargetName="border" Property="Background" Value="{DynamicResource WindowButtonsPressed1}" />
                             </Trigger>
@@ -139,6 +136,8 @@
                         Content="&#xF602;"
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
+                        MouseEnter="PinBtn_MouseEnter"
+                        MouseLeave="PinBtn_MouseLeave"
                         RenderOptions.EdgeMode="Aliased"
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button
@@ -151,6 +150,8 @@
                         Content="&#xFC75;"
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
+                        MouseEnter="PinBtn_MouseEnter"
+                        MouseLeave="PinBtn_MouseLeave"
                         RenderOptions.EdgeMode="Aliased"
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button

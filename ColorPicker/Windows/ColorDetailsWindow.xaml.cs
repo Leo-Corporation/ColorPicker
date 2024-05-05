@@ -63,6 +63,7 @@ public partial class ColorDetailsWindow : Window
 		CopyYuvBtn.Background = bgBtn;
 
 		MinimizeBtn.Foreground = bgBtn;
+		PinBtn.Foreground = bgBtn;
 		CloseBtn.Foreground = bgBtn;
 
 		CopyRgbBtn.Foreground = BackgroundSolidBrush;
@@ -183,4 +184,14 @@ public partial class ColorDetailsWindow : Window
 		Topmost = isPinned;
 		PinBtn.Content = isPinned ? "\uF604" : "\uF602";
     }
+
+	private void PinBtn_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+	{
+		((Button)sender).Background = HoverForegroundSolidBrush;
+	}
+
+	private void PinBtn_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+	{
+		((Button)sender).Background = null;
+	}
 }
