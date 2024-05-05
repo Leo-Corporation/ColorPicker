@@ -95,6 +95,8 @@
             x:Name="ImageScrollViewer"
             Grid.Row="2"
             Height="200"
+            AllowDrop="True"
+            Drop="DragZone_Drop"
             HorizontalScrollBarVisibility="Auto"
             Style="{DynamicResource ScrollViewerStyle}"
             VerticalScrollBarVisibility="Disabled"
