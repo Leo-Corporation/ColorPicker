@@ -440,7 +440,14 @@
                 d:Background="White"
                 CornerRadius="10"
                 Cursor="Hand"
-                MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
+                MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                <Border.ToolTip>
+                    <ToolTip
+                        x:Name="ComplementaryTooltip"
+                        Background="{DynamicResource Background1}"
+                        Foreground="{DynamicResource Foreground1}" />
+                </Border.ToolTip>
+            </Border>
             <TextBlock
                 Margin="5"
                 FontWeight="Bold"
@@ -455,7 +462,15 @@
                     d:Background="White"
                     CornerRadius="10 0 0 10"
                     Cursor="Hand"
-                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
+                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                    <Border.ToolTip>
+                        <ToolTip
+                            x:Name="Split1Tooltip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Border.ToolTip>
+                </Border>
+
                 <Border
                     x:Name="SplitBorder2"
                     Width="50"
@@ -464,7 +479,14 @@
                     HorizontalAlignment="Left"
                     d:Background="White"
                     Cursor="Hand"
-                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
+                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                    <Border.ToolTip>
+                        <ToolTip
+                            x:Name="Split2Tooltip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Border.ToolTip>
+                </Border>
                 <Border
                     x:Name="SplitBorder3"
                     Width="50"
@@ -474,7 +496,14 @@
                     d:Background="White"
                     CornerRadius="0 10 10 0"
                     Cursor="Hand"
-                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
+                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                    <Border.ToolTip>
+                        <ToolTip
+                            x:Name="Split3Tooltip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Border.ToolTip>
+                </Border>
             </StackPanel>
             <TextBlock
                 Margin="5"
@@ -490,7 +519,14 @@
                     d:Background="White"
                     CornerRadius="10 0 0 10"
                     Cursor="Hand"
-                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
+                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                    <Border.ToolTip>
+                        <ToolTip
+                            x:Name="Tria1Tooltip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Border.ToolTip>
+                </Border>
                 <Border
                     x:Name="TriadicBorder2"
                     Width="50"
@@ -499,7 +535,14 @@
                     HorizontalAlignment="Left"
                     d:Background="White"
                     Cursor="Hand"
-                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
+                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                    <Border.ToolTip>
+                        <ToolTip
+                            x:Name="Tria2Tooltip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Border.ToolTip>
+                </Border>
                 <Border
                     x:Name="TriadicBorder3"
                     Width="50"
@@ -509,7 +552,14 @@
                     d:Background="White"
                     CornerRadius="0 10 10 0"
                     Cursor="Hand"
-                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp" />
+                    MouseLeftButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                    <Border.ToolTip>
+                        <ToolTip
+                            x:Name="Tria3Tooltip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Border.ToolTip>
+                </Border>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock

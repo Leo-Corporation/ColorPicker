@@ -125,24 +125,31 @@ public partial class HarmoniesPage : Page
 		var complementary = Global.GetComplementaryColor(color);
 		ComplementaryBorder.Background = new SolidColorBrush { Color = complementary };
 		ComplementaryBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = complementary };
+		ComplementaryTooltip.Content = new ColorInfo(new(complementary.R, complementary.G, complementary.B)).ToString();
 
 		// Split complementary
 		var splitComplementaries = Global.GenerateSplitComplementaryColors(color);
 		SplitBorder1.Background = new SolidColorBrush { Color = splitComplementaries[0] };
 		SplitBorder1.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[0] };
+		Split1Tooltip.Content = new ColorInfo(new(splitComplementaries[0].R, splitComplementaries[0].G, splitComplementaries[0].B)).ToString();
 		SplitBorder2.Background = new SolidColorBrush { Color = splitComplementaries[1] };
 		SplitBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[1] };
+		Split2Tooltip.Content = new ColorInfo(new(splitComplementaries[1].R, splitComplementaries[1].G, splitComplementaries[1].B)).ToString();
 		SplitBorder3.Background = new SolidColorBrush { Color = splitComplementaries[2] };
 		SplitBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[2] };
+		Split3Tooltip.Content = new ColorInfo(new(splitComplementaries[2].R, splitComplementaries[2].G, splitComplementaries[2].B)).ToString();
 
 		// Triadic
 		var triadicComplementaries = Global.GenerateTriadicColors(color);
 		TriadicBorder1.Background = new SolidColorBrush { Color = triadicComplementaries[0] };
 		TriadicBorder1.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[0] };
+		Tria1Tooltip.Content = new ColorInfo(new(triadicComplementaries[0].R, triadicComplementaries[0].G, triadicComplementaries[0].B)).ToString();
 		TriadicBorder2.Background = new SolidColorBrush { Color = triadicComplementaries[1] };
 		TriadicBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[1] };
+		Tria2Tooltip.Content = new ColorInfo(new(triadicComplementaries[1].R, triadicComplementaries[1].G, triadicComplementaries[1].B)).ToString();
 		TriadicBorder3.Background = new SolidColorBrush { Color = triadicComplementaries[2] };
 		TriadicBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[2] };
+		Tria3Tooltip.Content = new ColorInfo(new(triadicComplementaries[2].R, triadicComplementaries[2].G, triadicComplementaries[2].B)).ToString();
 
 		// Analogous
 		AnalogousPanel.Children.Clear();
