@@ -85,6 +85,13 @@ public partial class SelectorPage : Page
 					GreenSlider.Value = hsl.S;
 					BlueSlider.Value = hsl.L;
 					break;
+				case 3:
+					var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new(pixel.R, pixel.G, pixel.B));
+					RedSlider.Value = cmyk.C;
+					GreenSlider.Value = cmyk.M;
+					BlueSlider.Value = cmyk.Y;
+					KSlider.Value = cmyk.K;
+					break;
 				default:
 					RedSlider.Value = pixel.R; // Set value
 					GreenSlider.Value = pixel.G; // Set value
@@ -132,6 +139,7 @@ public partial class SelectorPage : Page
 			{
 				ColorTypes.HSV => 1,
 				ColorTypes.HSL => 2,
+				ColorTypes.CMYK => 3,
 				_ => 0
 			};
 		}
@@ -240,12 +248,19 @@ public partial class SelectorPage : Page
 		return Color.FromRgb(c.R, c.G, c.B);
 	}
 
+	private Color GetRgb(byte c, byte m, byte y, byte k)
+	{
+		var rgb = ColorHelper.ColorConverter.CmykToRgb(new(c, m, y, k));
+		return Color.FromRgb(rgb.R, rgb.G, rgb.B);
+	}
+
 	private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	{
 		Color color = ColorTypeComboBox.SelectedIndex switch
 		{
 			1 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value),
 			2 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value, true),
+			3 => GetRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value),
 			_ => Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)
 		};
 
@@ -261,6 +276,7 @@ public partial class SelectorPage : Page
 		{
 			1 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value),
 			2 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value, true),
+			3 => GetRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value),
 			_ => Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)
 		};
 
@@ -276,6 +292,7 @@ public partial class SelectorPage : Page
 		{
 			1 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value),
 			2 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value, true),
+			3 => GetRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value),
 			_ => Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)
 		};
 
@@ -307,8 +324,10 @@ public partial class SelectorPage : Page
 		{
 			1 => new ColorInfo(ColorHelper.ColorConverter.HsvToRgb(new((int)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))),
 			2 => new ColorInfo(ColorHelper.ColorConverter.HslToRgb(new((int)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))),
+			3 => new ColorInfo(ColorHelper.ColorConverter.CmykToRgb(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value))) 
+			{ CMYK = new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value) },
 			_ => new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))
-		};
+		} ;
 		RgbTxt.Text = $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}";
 		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
 		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
@@ -403,6 +422,8 @@ public partial class SelectorPage : Page
 	private void LoadSliders()
 	{
 		var current = ColorInfo;
+		KSlider.Visibility = Visibility.Collapsed;
+		KValueTxt.Visibility = Visibility.Collapsed;
 		switch (ColorTypeComboBox.SelectedIndex)
 		{
 			case 1:
@@ -430,6 +451,25 @@ public partial class SelectorPage : Page
 				RedSlider.Value = current.HSL.H;
 				GreenSlider.Value = current.HSL.S;
 				BlueSlider.Value = current.HSL.L;
+				break;
+			case 3:
+				RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
+				GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
+				BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
+				KSlider.Foreground = Global.GetColorFromResource("AccentColor");
+
+				RedSlider.Maximum = 100;
+				GreenSlider.Maximum = 100;
+				BlueSlider.Maximum = 100;
+				KSlider.Maximum = 100;
+
+				RedSlider.Value = current.CMYK.C;
+				GreenSlider.Value = current.CMYK.M;
+				BlueSlider.Value = current.CMYK.Y;
+				KSlider.Value = current.CMYK.K;
+
+				KSlider.Visibility = Visibility.Visible;
+				KValueTxt.Visibility = Visibility.Visible;
 				break;
 
 			default: // RGB
@@ -478,5 +518,21 @@ public partial class SelectorPage : Page
 		BookmarkBtn.Content = "\uF1F8";
 		AddRemoveBookmarkBtn.Content = Properties.Resources.RemoveBookmark;
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+	}
+
+	private void KSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+	{
+		Color color = ColorTypeComboBox.SelectedIndex switch
+		{
+			1 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value),
+			2 => GetRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value, true),
+			3 => GetRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value),
+			_ => Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value)
+		};
+
+		ColorBorder.Background = new SolidColorBrush { Color = color };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
+		KValueTxt.Text = KSlider.Value.ToString(); // Set text
+		LoadDetails();
 	}
 }
