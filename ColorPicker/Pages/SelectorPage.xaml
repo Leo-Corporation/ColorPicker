@@ -81,6 +81,7 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -151,6 +152,29 @@
                     <TextBlock
                         x:Name="BlueValueTxt"
                         Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="3"
+                        HorizontalAlignment="Center"
+                        d:Text="255"
+                        FontSize="14"
+                        FontWeight="ExtraBold" />
+                    <Slider
+                        x:Name="KSlider"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Width="255"
+                        VerticalAlignment="Center"
+                        BorderBrush="#4169E1"
+                        Foreground="#4169E1"
+                        IsSnapToTickEnabled="True"
+                        Maximum="255"
+                        Minimum="0"
+                        SmallChange="1"
+                        Style="{DynamicResource SliderStyle1}"
+                        ValueChanged="KSlider_ValueChanged" />
+                    <TextBlock
+                        x:Name="KValueTxt"
+                        Grid.Row="3"
                         Grid.Column="2"
                         Margin="3"
                         HorizontalAlignment="Center"
@@ -268,6 +292,7 @@
                         <ComboBoxItem Content="{x:Static lang:Resources.RGB}" />
                         <ComboBoxItem Content="{x:Static lang:Resources.HSV}" />
                         <ComboBoxItem Content="{x:Static lang:Resources.HSL}" />
+                        <ComboBoxItem Content="{x:Static lang:Resources.CMYK}" />
                     </ComboBox>
                 </StackPanel>
             </Grid>
