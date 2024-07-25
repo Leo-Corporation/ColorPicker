@@ -783,4 +783,13 @@
   <data name="DragImagesHere" xml:space="preserve">
     <value>You can drag and drop images here</value>
   </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
 </root>
