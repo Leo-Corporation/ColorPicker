@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.UserControls;
+using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -181,5 +182,26 @@ public partial class BookmarksPage : Page
 		CollectionCreatorPopup.IsOpen = false;
 
 		InitUI();
+	}
+
+	private void ImportBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+    }
+
+	private void ExportBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SaveFileDialog saveFileDialog = new()
+		{
+			FileName = "Bookmarks.xml",
+			Filter = "XML|*.xml",
+			Title = Properties.Resources.Export
+		}; // Create file dialog
+
+		if (saveFileDialog.ShowDialog() ?? true)
+		{
+			XmlSerializerManager.SaveToXml(Global.Bookmarks, saveFileDialog.FileName); // Export games
+			MessageBox.Show(Properties.Resources.ExportBookmarksSuccess, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information); // Show message
+		}
 	}
 }

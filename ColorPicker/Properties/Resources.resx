@@ -772,4 +772,7 @@
   <data name="Minimum" xml:space="preserve">
     <value>Minimum</value>
   </data>
+  <data name="ExportBookmarksSuccess" xml:space="preserve">
+    <value>Bookmarks were sucessfully exported.</value>
+  </data>
 </root>

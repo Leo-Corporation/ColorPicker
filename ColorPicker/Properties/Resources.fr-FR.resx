@@ -796,4 +796,7 @@
   <data name="Minimum" xml:space="preserve">
     <value>Minimum</value>
   </data>
+  <data name="ExportBookmarksSuccess" xml:space="preserve">
+    <value>Les signets ont été exportés avec succès.</value>
+  </data>
 </root>

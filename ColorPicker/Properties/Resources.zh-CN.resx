@@ -792,4 +792,7 @@
   <data name="Minimum" xml:space="preserve">
     <value>最低</value>
   </data>
+  <data name="ExportBookmarksSuccess" xml:space="preserve">
+    <value>书签已成功导出。</value>
+  </data>
 </root>

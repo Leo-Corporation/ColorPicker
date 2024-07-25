@@ -799,6 +799,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bookmarks were sucessfully exported..
+        /// </summary>
+        public static string ExportBookmarksSuccess {
+            get {
+                return ResourceManager.GetString("ExportBookmarksSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export.
         /// </summary>
         public static string ExportShort {
