@@ -1168,6 +1168,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bookmarks were sucessfully imported..
+        /// </summary>
+        public static string ImportBookmarksSucess {
+            get {
+                return ResourceManager.GetString("ImportBookmarksSucess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include frequence.
         /// </summary>
         public static string IncludeFrequence {

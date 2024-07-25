@@ -24,6 +24,9 @@ SOFTWARE.
 using ColorPicker.Classes;
 using ColorPicker.UserControls;
 using Microsoft.Win32;
+using System.Diagnostics;
+using System.IO;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -186,8 +189,21 @@ public partial class BookmarksPage : Page
 
 	private void ImportBtn_Click(object sender, RoutedEventArgs e)
 	{
+		OpenFileDialog openFileDialog = new()
+		{
+			Filter = "XML|*.xml",
+			Title = Properties.Resources.Import
+		}; // Create file dialog
 
-    }
+		if (openFileDialog.ShowDialog() ?? true)
+		{
+			Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>(openFileDialog.FileName); // Import
+			XmlSerializerManager.SaveToXml(Global.Bookmarks	, Global.BookmarksPath);
+			MessageBox.Show(Properties.Resources.ImportBookmarksSucess, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information); // Show error message
+
+			InitUI();
+		}
+	}
 
 	private void ExportBtn_Click(object sender, RoutedEventArgs e)
 	{

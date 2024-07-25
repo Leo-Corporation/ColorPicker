@@ -799,4 +799,7 @@
   <data name="ExportBookmarksSuccess" xml:space="preserve">
     <value>Les signets ont été exportés avec succès.</value>
   </data>
+  <data name="ImportBookmarksSucess" xml:space="preserve">
+    <value>Les signets ont été importés avec succès.</value>
+  </data>
 </root>
