@@ -29,6 +29,7 @@ using ColorPicker.UserControls;
 using Synethia;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -435,7 +436,7 @@ public partial class ContrastPage : Page
 			Panel.SetZIndex(RowBorder, 10);
 
 			ContrastGrid.Children.Add(ColBorder);
-			ContrastGrid.Children.Add(RowBorder); 
+			ContrastGrid.Children.Add(RowBorder);
 		}
 
 		// Load the bookmark icon
@@ -470,5 +471,26 @@ public partial class ContrastPage : Page
 	private void ShowHighlight_Checked(object sender, RoutedEventArgs e)
 	{
 		InitGrid(contrastLimit);
+	}
+
+	private void CustomToggle_Checked(object sender, RoutedEventArgs e)
+	{
+		CustomContrastPopup.IsOpen = true;
+	}
+
+	private void MinContrastTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
+	}
+
+	private void MinContrastTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			bool parsed = int.TryParse(MinContrastTxt.Text, out int contrast);
+			InitGrid(parsed ? contrast : 0);
+		}
+		catch { }
 	}
 }
