@@ -240,7 +240,14 @@
                 Content="&#xF151;"
                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                 Foreground="{DynamicResource Foreground1}"
-                Style="{DynamicResource PrimaryButton}" />
+                Style="{DynamicResource PrimaryButton}">
+                <Button.ToolTip>
+                    <ToolTip
+                        Background="{DynamicResource Background1}"
+                        Content="{x:Static lang:Resources.Import}"
+                        Foreground="{DynamicResource Foreground1}" />
+                </Button.ToolTip>
+            </Button>
             <Button
                 x:Name="ExportBtn"
                 Margin="0 0 10 0"
@@ -251,7 +258,14 @@
                 Content="&#xF1A5;"
                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                 Foreground="{DynamicResource Foreground1}"
-                Style="{DynamicResource PrimaryButton}" />
+                Style="{DynamicResource PrimaryButton}">
+                <Button.ToolTip>
+                    <ToolTip
+                        Background="{DynamicResource Background1}"
+                        Content="{x:Static lang:Resources.Export}"
+                        Foreground="{DynamicResource Foreground1}" />
+                </Button.ToolTip>
+            </Button>
         </StackPanel>
         <Grid
             x:Name="HistoryGrid"
