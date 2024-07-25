@@ -787,4 +787,19 @@
   <data name="DragImagesHere" xml:space="preserve">
     <value>Vous pouvez glisser-déposer des images ici</value>
   </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Personnalisé</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
+  <data name="ExportBookmarksSuccess" xml:space="preserve">
+    <value>Les signets ont été exportés avec succès.</value>
+  </data>
+  <data name="ImportBookmarksSucess" xml:space="preserve">
+    <value>Les signets ont été importés avec succès.</value>
+  </data>
 </root>

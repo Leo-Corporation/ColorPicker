@@ -195,39 +195,78 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <Button
-            x:Name="EmptyHistoryBtn"
+        <StackPanel
             Grid.Row="1"
             Grid.Column="1"
             Margin="10 2 0 2"
-            Padding="5"
-            VerticalAlignment="Center"
-            HorizontalContentAlignment="Stretch"
-            Background="Transparent"
-            BorderThickness="0"
-            Click="EmptyHistoryBtn_Click"
-            Foreground="{DynamicResource Red}"
-            Style="{DynamicResource StandardButton}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock
-                    VerticalAlignment="Center"
-                    FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                    FontSize="14"
-                    Text="&#xFBF6;" />
-                <TextBlock
-                    Grid.Column="1"
-                    Margin="5 0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontSize="11"
-                    FontWeight="ExtraBold"
-                    Text="{x:Static lang:Resources.EmptyBookmarks}" />
-            </Grid>
-        </Button>
+            Orientation="Horizontal">
+            <Button
+                x:Name="EmptyHistoryBtn"
+                Padding="5"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Stretch"
+                Background="Transparent"
+                BorderThickness="0"
+                Click="EmptyHistoryBtn_Click"
+                Foreground="{DynamicResource Red}"
+                Style="{DynamicResource StandardButton}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                        FontSize="14"
+                        Text="&#xFBF6;" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="5 0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        FontWeight="ExtraBold"
+                        Text="{x:Static lang:Resources.EmptyBookmarks}" />
+                </Grid>
+            </Button>
+            <Button
+                x:Name="ImportBtn"
+                Margin="5 0"
+                Padding="5"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                Click="ImportBtn_Click"
+                Content="&#xF151;"
+                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                Foreground="{DynamicResource Foreground1}"
+                Style="{DynamicResource PrimaryButton}">
+                <Button.ToolTip>
+                    <ToolTip
+                        Background="{DynamicResource Background1}"
+                        Content="{x:Static lang:Resources.Import}"
+                        Foreground="{DynamicResource Foreground1}" />
+                </Button.ToolTip>
+            </Button>
+            <Button
+                x:Name="ExportBtn"
+                Margin="0 0 10 0"
+                Padding="5"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                Click="ExportBtn_Click"
+                Content="&#xF1A5;"
+                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                Foreground="{DynamicResource Foreground1}"
+                Style="{DynamicResource PrimaryButton}">
+                <Button.ToolTip>
+                    <ToolTip
+                        Background="{DynamicResource Background1}"
+                        Content="{x:Static lang:Resources.Export}"
+                        Foreground="{DynamicResource Foreground1}" />
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
         <Grid
             x:Name="HistoryGrid"
             Grid.Row="2"

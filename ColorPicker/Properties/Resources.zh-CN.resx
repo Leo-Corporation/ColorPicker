@@ -783,4 +783,19 @@
   <data name="DragImagesHere" xml:space="preserve">
     <value>您可以在这里拖放图片</value>
   </data>
+  <data name="Custom" xml:space="preserve">
+    <value>定制</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>最低</value>
+  </data>
+  <data name="ExportBookmarksSuccess" xml:space="preserve">
+    <value>书签已成功导出。</value>
+  </data>
+  <data name="ImportBookmarksSucess" xml:space="preserve">
+    <value>已成功导入书签。</value>
+  </data>
 </root>

@@ -128,11 +128,11 @@ public class ColorCollection
 	public string Name { get; set; }
 	public List<string> Colors { get; set; }
 
-    public ColorCollection()
-    {
+	public ColorCollection()
+	{
 		Colors = [];
 		Name = "";
-    }
+	}
 
 	public ColorCollection(string name)
 	{

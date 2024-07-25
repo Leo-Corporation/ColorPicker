@@ -601,6 +601,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        public static string Custom {
+            get {
+                return ResourceManager.GetString("Custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
         public static string Dark {
@@ -786,6 +795,15 @@ namespace ColorPicker.Properties {
         public static string Export {
             get {
                 return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bookmarks were sucessfully exported..
+        /// </summary>
+        public static string ExportBookmarksSuccess {
+            get {
+                return ResourceManager.GetString("ExportBookmarksSuccess", resourceCulture);
             }
         }
         
@@ -1150,6 +1168,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bookmarks were sucessfully imported..
+        /// </summary>
+        public static string ImportBookmarksSucess {
+            get {
+                return ResourceManager.GetString("ImportBookmarksSucess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include frequence.
         /// </summary>
         public static string IncludeFrequence {
@@ -1263,6 +1290,24 @@ namespace ColorPicker.Properties {
         public static string Max {
             get {
                 return ResourceManager.GetString("Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum.
+        /// </summary>
+        public static string Maximum {
+            get {
+                return ResourceManager.GetString("Maximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum.
+        /// </summary>
+        public static string Minimum {
+            get {
+                return ResourceManager.GetString("Minimum", resourceCulture);
             }
         }
         
