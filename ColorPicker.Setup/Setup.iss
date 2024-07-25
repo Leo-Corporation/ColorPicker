@@ -3,7 +3,7 @@
 
 #define MyAppName "ColorPicker Max"
 #define MyAppVersion "6.4.0.2407"
-#define MyAppFullVersion "6.4.0.2407-pre1"
+#define MyAppFullVersion "6.4.0.2407-rc1"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://leocorporation.dev/"
 #define MyAppExeName "ColorPicker.exe"
