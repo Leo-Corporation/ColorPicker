@@ -164,6 +164,7 @@ public partial class MainWindow : Window
 			AppPages.ContrastGrid => Global.ContrastPage,
 			_ => Global.HomePage
 		});
+		PinTooltip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin;
 	}
 
 	private void PageCard_OnCardClick(object? sender, PageEventArgs e)
@@ -257,6 +258,7 @@ public partial class MainWindow : Window
 	{
 		Topmost = !Topmost; // Toggle
 		PinBtn.Content = Topmost ? "\uF604" : "\uF602"; // Set text
+		PinTooltip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin;
 	}
 
 	private void HandleWindowStateChanged()
@@ -267,7 +269,9 @@ public partial class MainWindow : Window
 		MaximizeRestoreBtn.FontSize = WindowState == WindowState.Maximized
 			? 18
 			: 14;
-
+		MaximizeTooltip.Content = WindowState == WindowState.Maximized
+			? Properties.Resources.Restore // Restore icon
+			: Properties.Resources.Maximize; // Maximize icon
 		DefineMaximumSize();
 
 		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
