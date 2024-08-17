@@ -544,7 +544,12 @@ public partial class SettingsPage : Page
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 	}
 
-	private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
+	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/ColorPicker");
+    }
+
+    private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
 	{
 		// Ask the user a confirmation
 		if (MessageBox.Show(Properties.Resources.SynethiaDeleteMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
