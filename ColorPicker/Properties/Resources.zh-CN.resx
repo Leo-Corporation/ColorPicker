@@ -798,4 +798,22 @@
   <data name="ImportBookmarksSucess" xml:space="preserve">
     <value>已成功导入书签。</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>针脚</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>解夹</value>
+  </data>
 </root>
