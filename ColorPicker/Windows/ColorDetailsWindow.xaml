@@ -139,7 +139,11 @@
                         MouseEnter="PinBtn_MouseEnter"
                         MouseLeave="PinBtn_MouseLeave"
                         RenderOptions.EdgeMode="Aliased"
-                        Style="{StaticResource TitleBarButtonStyle}" />
+                        Style="{StaticResource TitleBarButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip x:Name="PinTooltip" Content="{x:Static lang:Resources.Pin}" />
+                        </Button.ToolTip>
+                    </Button>
                     <Button
                         x:Name="MinimizeBtn"
                         Grid.Column="2"
@@ -153,7 +157,11 @@
                         MouseEnter="PinBtn_MouseEnter"
                         MouseLeave="PinBtn_MouseLeave"
                         RenderOptions.EdgeMode="Aliased"
-                        Style="{StaticResource TitleBarButtonStyle}" />
+                        Style="{StaticResource TitleBarButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.Minimize}" />
+                        </Button.ToolTip>
+                    </Button>
                     <Button
                         x:Name="CloseBtn"
                         Grid.Column="4"
@@ -165,7 +173,11 @@
                         FontFamily="/Fonts/#FluentSystemIcons-Regular"
                         FontSize="14"
                         RenderOptions.EdgeMode="Aliased"
-                        Style="{StaticResource TitleBarCloseButtonStyle}" />
+                        Style="{StaticResource TitleBarCloseButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.Close}" />
+                        </Button.ToolTip>
+                    </Button>
                 </Grid>
             </Border>
             <Border
