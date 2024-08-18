@@ -18,7 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -276,6 +276,22 @@
             <WrapPanel x:Name="PalettesBookmarks" Visibility="Collapsed" />
             <WrapPanel x:Name="GradientsBookmarks" Visibility="Collapsed" />
             <WrapPanel x:Name="TextBookmarks" Visibility="Collapsed" />
+            <StackPanel
+                x:Name="Placeholder"
+                VerticalAlignment="Center"
+                Visibility="Collapsed">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    FontSize="24"
+                    Text="&#xF1F8;" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Text="{x:Static lang:Resources.NoBookmarks}" />
+                <TextBlock HorizontalAlignment="Center" Text="{x:Static lang:Resources.NoBookmarksDesc}" />
+            </StackPanel>
             <Grid x:Name="CollectionsGrid" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -373,5 +389,6 @@
                 </Popup>
             </Grid>
         </Grid>
+
     </Grid>
 </Page>
