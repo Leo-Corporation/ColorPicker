@@ -24,9 +24,6 @@ SOFTWARE.
 using ColorPicker.Classes;
 using ColorPicker.UserControls;
 using Microsoft.Win32;
-using System.Diagnostics;
-using System.IO;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -84,23 +81,45 @@ public partial class BookmarksPage : Page
 			Collections.Children.Add(new CollectionItem(Global.Bookmarks.ColorCollections[i], i));
 		}
 
+		if (ColorsBookmarks.Children.Count > 0)
+		{
+			if (CheckedButton == ColorsBtn)
+			{
+				ColorsBookmarks.Visibility = Visibility.Visible;
+			}
+		}
+		else
+		{
+			Placeholder.Visibility = Visibility.Visible;
+		}
+
 		Global.SelectorPage.LoadBookmarkMenu();
 		Global.ConverterPage.LoadBookmarkMenu();
 		Global.HarmoniesPage.LoadBookmarkMenu();
 	}
 
-	private void ColorsBtn_Click(object sender, RoutedEventArgs e)
+	internal void ColorsBtn_Click(object sender, RoutedEventArgs e)
 	{
 		UnCheckAllButtons();
 		CheckButton(ColorsBtn);
-		ColorsBookmarks.Visibility = Visibility.Visible;
+		if (ColorsBookmarks.Children.Count > 0)
+		{
+			ColorsBookmarks.Visibility = Visibility.Visible;
+			return;
+		}
+		Placeholder.Visibility = Visibility.Visible;
 	}
 
-	private void PaletteBtn_Click(object sender, RoutedEventArgs e)
+	internal void PaletteBtn_Click(object sender, RoutedEventArgs e)
 	{
 		UnCheckAllButtons();
 		CheckButton(PaletteBtn);
-		PalettesBookmarks.Visibility = Visibility.Visible;
+		if (PalettesBookmarks.Children.Count > 0)
+		{
+			PalettesBookmarks.Visibility = Visibility.Visible;
+			return;
+		}
+		Placeholder.Visibility = Visibility.Visible;
 	}
 
 	private void EmptyHistoryBtn_Click(object sender, RoutedEventArgs e)
@@ -134,11 +153,16 @@ public partial class BookmarksPage : Page
 		Global.TextPage.InitUI();
 	}
 
-	private void GradientsBtn_Click(object sender, RoutedEventArgs e)
+	internal void GradientsBtn_Click(object sender, RoutedEventArgs e)
 	{
 		UnCheckAllButtons();
 		CheckButton(GradientsBtn);
-		GradientsBookmarks.Visibility = Visibility.Visible;
+		if (GradientsBookmarks.Children.Count > 0)
+		{
+			GradientsBookmarks.Visibility = Visibility.Visible;
+			return;
+		}
+		Placeholder.Visibility = Visibility.Visible;
 	}
 
 	private void UnCheckAllButtons()
@@ -154,22 +178,32 @@ public partial class BookmarksPage : Page
 		GradientsBookmarks.Visibility = Visibility.Collapsed;
 		TextBookmarks.Visibility = Visibility.Collapsed;
 		CollectionsGrid.Visibility = Visibility.Collapsed;
+		Placeholder.Visibility = Visibility.Collapsed;
 	}
 
 	internal Button CheckedButton;
 	internal void CheckButton(Button button) { button.Background = Global.GetColorFromResource("LightAccentColor"); CheckedButton = button; }
 
-	private void TextBtn_Click(object sender, RoutedEventArgs e)
+	internal void TextBtn_Click(object sender, RoutedEventArgs e)
 	{
 		UnCheckAllButtons();
 		CheckButton(TextBtn);
-		TextBookmarks.Visibility = Visibility.Visible;
+		if (TextBookmarks.Children.Count > 0)
+		{
+			TextBookmarks.Visibility = Visibility.Visible;
+			return;
+		}
+		Placeholder.Visibility = Visibility.Visible;
 	}
 
-	private void CollectionBtn_Click(object sender, RoutedEventArgs e)
+	internal void CollectionBtn_Click(object sender, RoutedEventArgs e)
 	{
 		UnCheckAllButtons();
 		CheckButton(CollectionBtn);
+		if (Collections.Children.Count == 0)
+		{
+			Placeholder.Visibility = Visibility.Visible;
+		}
 		CollectionsGrid.Visibility = Visibility.Visible;
 	}
 
@@ -183,6 +217,7 @@ public partial class BookmarksPage : Page
 		if (string.IsNullOrEmpty(CollectionNameTxt.Text)) return;
 		Global.Bookmarks.ColorCollections.Add(new(CollectionNameTxt.Text));
 		CollectionCreatorPopup.IsOpen = false;
+		Placeholder.Visibility = Visibility.Collapsed;
 
 		InitUI();
 	}
@@ -198,7 +233,7 @@ public partial class BookmarksPage : Page
 		if (openFileDialog.ShowDialog() ?? true)
 		{
 			Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>(openFileDialog.FileName); // Import
-			XmlSerializerManager.SaveToXml(Global.Bookmarks	, Global.BookmarksPath);
+			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 			MessageBox.Show(Properties.Resources.ImportBookmarksSucess, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information); // Show error message
 
 			InitUI();

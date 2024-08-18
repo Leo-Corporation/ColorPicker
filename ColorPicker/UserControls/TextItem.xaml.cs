@@ -64,6 +64,7 @@ public partial class TextItem : UserControl
 		Global.Bookmarks.TextBookmarks.Remove(BookmarkText);
 		Global.BookmarksPage.TextBookmarks.Children.Remove(this);
 		Global.TextPage.InitUI();
+		Global.BookmarksPage.TextBtn_Click(sender, e);
 	}
 
 	public static event EventHandler<PageEventArgs> GoClick;

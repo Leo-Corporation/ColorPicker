@@ -1965,6 +1965,9 @@
             <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
                 <Setter Property="OverridesDefaultStyle" Value="true" />
                 <Setter Property="HasDropShadow" Value="True" />
+                <Setter Property="Foreground" Value="{DynamicResource Foreground1}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontWeight" Value="Normal" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ToolTip">
@@ -1973,7 +1976,7 @@
                                 Width="{TemplateBinding Width}"
                                 Height="{TemplateBinding Height}"
                                 Margin="5"
-                                Background="{TemplateBinding Background}"
+                                Background="{DynamicResource Background1}"
                                 BorderBrush="{DynamicResource LightAccentColor}"
                                 BorderThickness="1">
                                 <Border.Effect>
@@ -1985,7 +1988,7 @@
                                         Color="{DynamicResource Accent}" />
                                 </Border.Effect>
                                 <ContentPresenter
-                                    Margin="4"
+                                    Margin="4 2 4 4"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top" />
                             </Border>

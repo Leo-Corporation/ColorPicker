@@ -46,6 +46,8 @@
             Padding="20"
             HorizontalAlignment="Center"
             Background="{DynamicResource CardBackground}"
+            BorderBrush="{DynamicResource LightAccentColor}"
+            BorderThickness="1"
             CornerRadius="5">
             <Border.Effect>
                 <DropShadowEffect
@@ -104,6 +106,18 @@
                         Background="{DynamicResource Background3}"
                         Click="SeeLicensesBtn_Click"
                         Content="&#xF4A4;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        FontSize="14"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}" />
+                    <Button
+                        x:Name="GitHubBtn"
+                        Margin="5"
+                        Padding="3"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource Background3}"
+                        Click="GitHubBtn_Click"
+                        Content="&#xF1FB;"
                         FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                         FontSize="14"
                         Foreground="{DynamicResource Foreground1}"

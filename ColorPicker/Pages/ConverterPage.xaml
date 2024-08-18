@@ -484,480 +484,479 @@
                 Text="{x:Static lang:Resources.Details}" />
         </StackPanel>
 
-        <WrapPanel
+        <Grid
             x:Name="DetailsWrap"
-            Grid.Row="3"
-            Margin="0 0 0 20"
-            Orientation="Horizontal">
+            Grid.Row="4"
+            Margin="0 0 0 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
             <Border
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.RGB}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyRgbBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyRgbBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyRGB}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
 
-                        <TextBlock
-                            x:Name="RgbTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <Button
+                        x:Name="CopyRgbBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyRgbBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyRGB}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+
+                    <TextBlock
+                        x:Name="RgbTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
 
             <Border
+                Grid.Column="1"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.HEX}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyHexBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyHexBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyHEX}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
 
-                        <TextBlock
-                            x:Name="HexTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <Button
+                        x:Name="CopyHexBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyHexBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyHEX}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+
+                    <TextBlock
+                        x:Name="HexTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
 
             <Border
+                Grid.Column="2"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.HSV}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyHsvBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyHsvBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyHSV}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
 
-                        <TextBlock
-                            x:Name="HsvTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <Button
+                        x:Name="CopyHsvBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyHsvBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyHSV}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+
+                    <TextBlock
+                        x:Name="HsvTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
 
             <Border
+                Grid.Column="3"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.HSL}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyHslBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyHslBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyHSV}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
 
-                        <TextBlock
-                            x:Name="HslTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <Button
+                        x:Name="CopyHslBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyHslBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyHSV}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+
+                    <TextBlock
+                        x:Name="HslTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
 
             <Border
+                Grid.Row="1"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.CMYK}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyCmykBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyCmykBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyCMYK}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
 
-                        <TextBlock
-                            x:Name="CmykTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <Button
+                        x:Name="CopyCmykBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyCmykBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyCMYK}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+
+                    <TextBlock
+                        x:Name="CmykTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
             <Border
+                Grid.Row="1"
+                Grid.Column="1"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.DEC}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyDecBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyDecBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyDEC}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
+                    <Button
+                        x:Name="CopyDecBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyDecBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyDEC}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
 
-                        <TextBlock
-                            x:Name="DecTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <TextBlock
+                        x:Name="DecTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
             <Border
+                Grid.Row="1"
+                Grid.Column="2"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.XYZ}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyXyzBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyXyzBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyXYZ}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
 
-                        <TextBlock
-                            x:Name="XyzTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <Button
+                        x:Name="CopyXyzBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyXyzBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyXYZ}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+
+                    <TextBlock
+                        x:Name="XyzTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
 
             <Border
+                Grid.Row="1"
+                Grid.Column="3"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
+
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.YIQ}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyYiqBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyYiqBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyYIQ}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
+                    <Button
+                        x:Name="CopyYiqBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyYiqBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyYIQ}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
 
-                        <TextBlock
-                            x:Name="YiqTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <TextBlock
+                        x:Name="YiqTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
 
             <Border
+                Grid.Row="2"
                 MinWidth="150"
                 Margin="5"
                 Padding="5"
-                HorizontalAlignment="Left"
                 Background="{DynamicResource CardBackground}"
+                BorderBrush="{DynamicResource LightAccentColor}"
+                BorderThickness="2"
                 CornerRadius="5">
-                <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="135"
-                        Opacity="0.2"
-                        ShadowDepth="0"
-                        Color="#000" />
-                </Border.Effect>
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -965,40 +964,45 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
                     <TextBlock
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource DarkGray}"
                         Text="{x:Static lang:Resources.YUV}" />
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button
-                            x:Name="CopyYuvBtn"
-                            Grid.Column="2"
-                            Margin="0 3 3 3"
-                            Padding="5"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Background3}"
-                            Click="CopyYuvBtn_Click"
-                            Content="&#xF32C;"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{DynamicResource DefaultButton}">
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.CopyYUV}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
+                    <Button
+                        x:Name="CopyYuvBtn"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0 3 3 3"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource Background3}"
+                        Click="CopyYuvBtn_Click"
+                        Content="&#xF32C;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.CopyYUV}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
 
-                        <TextBlock
-                            x:Name="YuvTxt"
-                            VerticalAlignment="Center"
-                            FontSize="18"
-                            FontWeight="ExtraBold"
-                            Text="N/A" />
-                    </StackPanel>
+                    <TextBlock
+                        x:Name="YuvTxt"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        FontWeight="ExtraBold"
+                        Text="N/A" />
                 </Grid>
             </Border>
-        </WrapPanel>
+        </Grid>
     </Grid>
 </Page>

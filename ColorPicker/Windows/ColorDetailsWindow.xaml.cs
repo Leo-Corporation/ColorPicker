@@ -86,6 +86,8 @@ public partial class ColorDetailsWindow : Window
 		XyzTxt.Text = $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}";
 		YiqTxt.Text = $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}";
 		YuvTxt.Text = $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}";
+
+		PinTooltip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin;
 	}
 
 	public static bool IsColorDark(int red, int green, int blue)
@@ -183,7 +185,8 @@ public partial class ColorDetailsWindow : Window
 		isPinned = !isPinned;
 		Topmost = isPinned;
 		PinBtn.Content = isPinned ? "\uF604" : "\uF602";
-    }
+		PinTooltip.Content = isPinned ? Properties.Resources.Unpin : Properties.Resources.Pin;
+	}
 
 	private void PinBtn_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
 	{

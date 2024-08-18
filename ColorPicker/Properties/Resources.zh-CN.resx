@@ -798,4 +798,31 @@
   <data name="ImportBookmarksSucess" xml:space="preserve">
     <value>已成功导入书签。</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>针脚</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>解夹</value>
+  </data>
+  <data name="NoBookmarks" xml:space="preserve">
+    <value>此类别中没有书签</value>
+  </data>
+  <data name="NoBookmarksDesc" xml:space="preserve">
+    <value>您保存在书签中的颜色将出现在这里。</value>
+  </data>
+  <data name="ImportShort" xml:space="preserve">
+    <value>进口</value>
+  </data>
 </root>

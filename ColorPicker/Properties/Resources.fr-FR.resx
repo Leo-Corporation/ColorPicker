@@ -802,4 +802,31 @@
   <data name="ImportBookmarksSucess" xml:space="preserve">
     <value>Les signets ont été importés avec succès.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>Maximiser</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Restorer</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>Minimiser</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Épingler</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>Desépingler</value>
+  </data>
+  <data name="NoBookmarks" xml:space="preserve">
+    <value>Pas de favoris dans cette catégorie</value>
+  </data>
+  <data name="NoBookmarksDesc" xml:space="preserve">
+    <value>Les couleurs que vous avez enregistrées dans vos signets apparaîtront ici.</value>
+  </data>
+  <data name="ImportShort" xml:space="preserve">
+    <value>Importer</value>
+  </data>
 </root>

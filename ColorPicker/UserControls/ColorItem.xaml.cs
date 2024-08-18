@@ -105,6 +105,7 @@ public partial class ColorItem : UserControl
 		Global.Bookmarks.ColorBookmarks.RemoveAt(index);
 		Global.Bookmarks.ColorBookmarksNotes.RemoveAt(index);
 		Global.BookmarksPage.ColorsBookmarks.Children.Remove(this);
+		Global.BookmarksPage.ColorsBtn_Click(sender, e);
 		Global.SelectorPage.LoadDetails();
 		Global.ConverterPage.LoadDetails();
 	}

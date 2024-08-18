@@ -322,6 +322,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CMYK.
         /// </summary>
         public static string CMYK {
@@ -1177,6 +1186,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import.
+        /// </summary>
+        public static string ImportShort {
+            get {
+                return ResourceManager.GetString("ImportShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include frequence.
         /// </summary>
         public static string IncludeFrequence {
@@ -1294,11 +1312,29 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximize.
+        /// </summary>
+        public static string Maximize {
+            get {
+                return ResourceManager.GetString("Maximize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum.
         /// </summary>
         public static string Maximum {
             get {
                 return ResourceManager.GetString("Maximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimize.
+        /// </summary>
+        public static string Minimize {
+            get {
+                return ResourceManager.GetString("Minimize", resourceCulture);
             }
         }
         
@@ -1371,6 +1407,24 @@ namespace ColorPicker.Properties {
         public static string NoApiKeyMsg {
             get {
                 return ResourceManager.GetString("NoApiKeyMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No bookmarks in this category.
+        /// </summary>
+        public static string NoBookmarks {
+            get {
+                return ResourceManager.GetString("NoBookmarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colors you saved to your bookmarks will appear here..
+        /// </summary>
+        public static string NoBookmarksDesc {
+            get {
+                return ResourceManager.GetString("NoBookmarksDesc", resourceCulture);
             }
         }
         
@@ -1470,6 +1524,15 @@ namespace ColorPicker.Properties {
         public static string Picker {
             get {
                 return ResourceManager.GetString("Picker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin.
+        /// </summary>
+        public static string Pin {
+            get {
+                return ResourceManager.GetString("Pin", resourceCulture);
             }
         }
         
@@ -1605,6 +1668,15 @@ namespace ColorPicker.Properties {
         public static string ResetSynethia {
             get {
                 return ResourceManager.GetString("ResetSynethia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore.
+        /// </summary>
+        public static string Restore {
+            get {
+                return ResourceManager.GetString("Restore", resourceCulture);
             }
         }
         
@@ -2001,6 +2073,15 @@ namespace ColorPicker.Properties {
         public static string Triadic {
             get {
                 return ResourceManager.GetString("Triadic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unpin.
+        /// </summary>
+        public static string Unpin {
+            get {
+                return ResourceManager.GetString("Unpin", resourceCulture);
             }
         }
         

@@ -778,4 +778,31 @@
   <data name="ImportBookmarksSucess" xml:space="preserve">
     <value>Bookmarks were sucessfully imported.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>Unpin</value>
+  </data>
+  <data name="NoBookmarks" xml:space="preserve">
+    <value>No bookmarks in this category</value>
+  </data>
+  <data name="NoBookmarksDesc" xml:space="preserve">
+    <value>Colors you saved to your bookmarks will appear here.</value>
+  </data>
+  <data name="ImportShort" xml:space="preserve">
+    <value>Import</value>
+  </data>
 </root>

@@ -150,6 +150,7 @@ public partial class PaletteItem : UserControl
 		Global.Bookmarks.PaletteBookmarks.Remove(HexColor);
 		Global.BookmarksPage.PalettesBookmarks.Children.Remove(this);
 		Global.PalettePage.InitPaletteUI();
+		Global.BookmarksPage.PaletteBtn_Click(sender, e);
 	}
 
 	public static event EventHandler<PageEventArgs> GoClick;

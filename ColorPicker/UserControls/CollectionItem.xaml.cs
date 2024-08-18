@@ -100,5 +100,6 @@ public partial class CollectionItem : UserControl
 	{
 		Global.Bookmarks.ColorCollections.RemoveAt(Id);
 		Global.BookmarksPage.InitUI();
+		Global.BookmarksPage.CollectionBtn_Click(sender, e);
 	}
 }
