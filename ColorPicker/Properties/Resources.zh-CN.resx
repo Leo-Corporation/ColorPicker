@@ -822,4 +822,7 @@
   <data name="NoBookmarksDesc" xml:space="preserve">
     <value>您保存在书签中的颜色将出现在这里。</value>
   </data>
+  <data name="ImportShort" xml:space="preserve">
+    <value>进口</value>
+  </data>
 </root>

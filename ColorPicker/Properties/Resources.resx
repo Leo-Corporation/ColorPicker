@@ -802,4 +802,7 @@
   <data name="NoBookmarksDesc" xml:space="preserve">
     <value>Colors you saved to your bookmarks will appear here.</value>
   </data>
+  <data name="ImportShort" xml:space="preserve">
+    <value>Import</value>
+  </data>
 </root>

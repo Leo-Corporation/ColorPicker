@@ -1186,6 +1186,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import.
+        /// </summary>
+        public static string ImportShort {
+            get {
+                return ResourceManager.GetString("ImportShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include frequence.
         /// </summary>
         public static string IncludeFrequence {

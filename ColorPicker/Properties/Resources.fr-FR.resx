@@ -826,4 +826,7 @@
   <data name="NoBookmarksDesc" xml:space="preserve">
     <value>Les couleurs que vous avez enregistrées dans vos signets apparaîtront ici.</value>
   </data>
+  <data name="ImportShort" xml:space="preserve">
+    <value>Importer</value>
+  </data>
 </root>
