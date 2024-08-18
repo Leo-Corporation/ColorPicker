@@ -80,6 +80,7 @@ public partial class GradientItem : UserControl
 		Global.Bookmarks.GradientBookmarks.Remove(Gradient);
 		Global.BookmarksPage.GradientsBookmarks.Children.Remove(this);
 		Global.GradientPage.LoadGradientUI();
+		Global.BookmarksPage.GradientsBtn_Click(sender, e);
 	}
 
 	public static event EventHandler<PageEventArgs> GoClick;
