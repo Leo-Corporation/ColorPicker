@@ -816,4 +816,10 @@
   <data name="Unpin" xml:space="preserve">
     <value>解夹</value>
   </data>
+  <data name="NoBookmarks" xml:space="preserve">
+    <value>此类别中没有书签</value>
+  </data>
+  <data name="NoBookmarksDesc" xml:space="preserve">
+    <value>您保存在书签中的颜色将出现在这里。</value>
+  </data>
 </root>

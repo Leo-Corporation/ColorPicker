@@ -816,4 +816,10 @@
   <data name="Unpin" xml:space="preserve">
     <value>Unpin</value>
   </data>
+  <data name="NoBookmarks" xml:space="preserve">
+    <value>No bookmarks in this category</value>
+  </data>
+  <data name="NoBookmarksDesc" xml:space="preserve">
+    <value>Colors you saved to your bookmarks will appear here.</value>
+  </data>
 </root>

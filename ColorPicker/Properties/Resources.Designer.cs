@@ -1402,6 +1402,24 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No bookmarks in this category.
+        /// </summary>
+        public static string NoBookmarks {
+            get {
+                return ResourceManager.GetString("NoBookmarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colors you saved to your bookmarks will appear here..
+        /// </summary>
+        public static string NoBookmarksDesc {
+            get {
+                return ResourceManager.GetString("NoBookmarksDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No thanks.
         /// </summary>
         public static string NoThanks {

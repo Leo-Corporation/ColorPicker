@@ -820,4 +820,10 @@
   <data name="Unpin" xml:space="preserve">
     <value>Desépingler</value>
   </data>
+  <data name="NoBookmarks" xml:space="preserve">
+    <value>Pas de favoris dans cette catégorie</value>
+  </data>
+  <data name="NoBookmarksDesc" xml:space="preserve">
+    <value>Les couleurs que vous avez enregistrées dans vos signets apparaîtront ici.</value>
+  </data>
 </root>
