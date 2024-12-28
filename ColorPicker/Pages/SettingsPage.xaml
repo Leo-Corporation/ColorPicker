@@ -732,7 +732,7 @@
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="0 0 0 10" Orientation="Horizontal">
                         <TextBlock
                             Margin="10 0 10 0"
                             VerticalAlignment="Center"
