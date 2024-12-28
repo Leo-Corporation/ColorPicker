@@ -55,6 +55,7 @@ public partial class SettingsPage : Page
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
+	bool updatesAvailable = false;
 	private async void InitUI()
 	{
 		// About section
@@ -134,8 +135,9 @@ public partial class SettingsPage : Page
 
 		// If updates are available
 		// Update the UI
+		updatesAvailable = true;
 		CheckUpdateBtn.Content = Properties.Resources.Install;
-		UpdateTxt.Text = Properties.Resources.AvailableUpdates;
+		LoadUpdateSection();
 
 		// Show notification
 		notifyIcon.Visible = true; // Show
@@ -148,7 +150,8 @@ public partial class SettingsPage : Page
 		string lastVersion = await Update.GetLastVersionAsync(Global.LastVersionLink);
 		if (Update.IsAvailable(Global.Version, lastVersion))
 		{
-			UpdateTxt.Text = Properties.Resources.AvailableUpdates;
+			updatesAvailable = true;
+			LoadUpdateSection();
 
 #if PORTABLE
 			MessageBox.Show(Properties.Resources.PortableNoAutoUpdates, $"{Properties.Resources.InstallVersion} {lastVersion}", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -170,7 +173,38 @@ public partial class SettingsPage : Page
 		}
 		else
 		{
+			updatesAvailable = false;
+			LoadUpdateSection();
+		}
+	}
+
+	internal void LoadUpdateSection()
+	{
+		if (updatesAvailable)
+		{
+			UpdateTxt.Text = Properties.Resources.AvailableUpdates;
+			UpdateIconTxt.Text = "\uF86A";
+			UpdateTxt.Foreground = Global.GetColorFromResource("ForegroundOrange");
+			UpdateIconTxt.Foreground = Global.GetColorFromResource("ForegroundOrange");
+			UpdateBorder.Background = Global.GetColorFromResource("LightOrange");
+			CheckUpdateBtn.Foreground = Global.GetColorFromResource("ForegroundOrange");
+			CheckUpdateBtn.Content = Properties.Resources.Install;
+			CheckUpdateBtn.FontFamily = new(new Uri("pack://application:,,,/"), "./Fonts/#Hauora");
+			CheckUpdateBtn.FontSize = 12;
+			CheckUpdateBtn.FontWeight = FontWeights.ExtraBold;
+		}
+		else
+		{
 			UpdateTxt.Text = Properties.Resources.UpToDate;
+			UpdateIconTxt.Text = "\uF299";
+			UpdateTxt.Foreground = Global.GetColorFromResource("ForegroundGreen");
+			UpdateIconTxt.Foreground = Global.GetColorFromResource("ForegroundGreen");
+			UpdateBorder.Background = Global.GetColorFromResource("LightGreen");
+			CheckUpdateBtn.Foreground = Global.GetColorFromResource("ForegroundGreen");
+			CheckUpdateBtn.Content = "\uF191";
+			CheckUpdateBtn.FontFamily = new(new Uri("pack://application:,,,/"), "./Fonts/#FluentSystemIcons-Regular");
+			CheckUpdateBtn.FontSize = 14;
+			CheckUpdateBtn.FontWeight = FontWeights.Normal;
 		}
 	}
 
@@ -547,9 +581,9 @@ public partial class SettingsPage : Page
 	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/ColorPicker");
-    }
+	}
 
-    private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
+	private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)
 	{
 		// Ask the user a confirmation
 		if (MessageBox.Show(Properties.Resources.SynethiaDeleteMsg, Properties.Resources.Settings, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
