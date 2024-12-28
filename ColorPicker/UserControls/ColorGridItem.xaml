@@ -34,5 +34,15 @@
                     Style="{DynamicResource MenuStyle}" />
             </ContextMenu>
         </Border.ContextMenu>
+        <Border.ToolTip>
+            <ToolTip x:Name="BorderTooltip">
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" Text="{x:Static lang:Resources.Foreground}" />
+                    <TextBlock x:Name="ForegroundTooltip" Margin="10 0 0 10" />
+                    <TextBlock FontWeight="Bold" Text="{x:Static lang:Resources.Background}" />
+                    <TextBlock x:Name="BackgroundTooltip" Margin="10 0 0 0" />
+                </StackPanel>
+            </ToolTip>
+        </Border.ToolTip>
     </Border>
 </UserControl>

@@ -61,6 +61,9 @@ public partial class ColorGridItem : UserControl
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B) };
 		RatioTxt.Foreground = new SolidColorBrush { Color = Color.FromRgb(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B) };
 
+		BackgroundTooltip.Text = new ColorInfo(new(BackgroundColor.R, BackgroundColor.G, BackgroundColor.B)).ToString();
+		ForegroundTooltip.Text = new ColorInfo(new(ForegroundColor.R, ForegroundColor.G, ForegroundColor.B)).ToString();
+
 		RatioTxt.Text = contrast.ToString();
 	}
 
