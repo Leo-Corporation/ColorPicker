@@ -300,6 +300,7 @@ public static class Global
 			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
 
 			if (!reload) return;
+			SettingsPage.LoadUpdateSection();
 			BookmarksPage.CheckButton(BookmarksPage.CheckedButton);
 			ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
 			ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
