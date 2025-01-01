@@ -27,6 +27,7 @@ using ColorPicker.Enums;
 using ColorPicker.Windows;
 using Synethia;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -347,6 +348,7 @@ public partial class PalettePage : Page
 		try
 		{
 			InitPaletteUI();
+			InitHarmonies();
 		}
 		catch { }
 	}
@@ -398,17 +400,7 @@ public partial class PalettePage : Page
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
-		{
-			Global.Bookmarks.PaletteBookmarks.Remove(ColorInfo.HEX.Value);
-			BookmarkBtn.Content = "\uF1F6";
-			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
-
-			return;
-		}
-		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add to color bookmarks
-		BookmarkBtn.Content = "\uF1F8";
-		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
+		CollectionsPopup.IsOpen = true;
 	}
 
 	internal void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -428,5 +420,197 @@ public partial class PalettePage : Page
 		ColorInfo = color;
 		Global.SynethiaConfig.ActionsInfo[4].UsageCount++; // Increment the usage counter
 		RgbBtn_Click(SelectedColorBtn, null);
+	}
+
+	internal void LoadBookmarkMenu()
+	{
+		CollectionsPanel.Children.Clear();
+		// Load bookmark menu
+		for (int i = 0; i < Global.Bookmarks.ColorCollections.Count; i++)
+		{
+			bool isAddedAlready = Global.Bookmarks.ColorCollections[i].Colors.Contains(ColorInfo.HEX.Value);
+			Button button = new()
+			{
+				Content = isAddedAlready ? string.Format(Properties.Resources.RemoveFrom, Global.Bookmarks.ColorCollections[i].Name) : string.Format(Properties.Resources.AddTo, Global.Bookmarks.ColorCollections[i].Name),
+				HorizontalAlignment = HorizontalAlignment.Stretch,
+				HorizontalContentAlignment = HorizontalAlignment.Left,
+				Background = new SolidColorBrush() { Color = Colors.Transparent },
+				FontWeight = FontWeights.Bold,
+				Style = (Style)FindResource("DefaultButton"),
+				Foreground = Global.GetColorFromResource("Foreground1"),
+			};
+			int j = i; // Avoid index out of range issues
+			button.Click += (o, e) =>
+			{
+				if (Global.Bookmarks.ColorCollections[j].Colors.Contains(ColorInfo.HEX.Value))
+				{
+					Global.Bookmarks.ColorCollections[j].Colors.Remove(ColorInfo.HEX.Value);
+					button.Content = string.Format(Properties.Resources.AddTo, Global.Bookmarks.ColorCollections[j].Name);
+				}
+				else
+				{
+					Global.Bookmarks.ColorCollections[j].Colors.Add(ColorInfo.HEX.Value);
+					button.Content = string.Format(Properties.Resources.RemoveFrom, Global.Bookmarks.ColorCollections[j].Name);
+				}
+			};
+
+			CollectionsPanel.Children.Add(button);
+		}
+	}
+
+	internal void InitHarmonies()
+	{
+		ColorInfo = new ColorInfo(ConvertToRgb());
+		var color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
+		ColorBorder.Background = new SolidColorBrush { Color = color };
+		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
+
+		// Complementary
+		var complementary = Global.GetComplementaryColor(color);
+		ComplementaryBorder.Background = new SolidColorBrush { Color = complementary };
+		ComplementaryBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = complementary };
+		ComplementaryTooltip.Content = new ColorInfo(new(complementary.R, complementary.G, complementary.B)).ToString();
+
+		// Split complementary
+		var splitComplementaries = Global.GenerateSplitComplementaryColors(color);
+		SplitBorder1.Background = new SolidColorBrush { Color = splitComplementaries[0] };
+		SplitBorder1.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[0] };
+		Split1Tooltip.Content = new ColorInfo(new(splitComplementaries[0].R, splitComplementaries[0].G, splitComplementaries[0].B)).ToString();
+		SplitBorder2.Background = new SolidColorBrush { Color = splitComplementaries[1] };
+		SplitBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[1] };
+		Split2Tooltip.Content = new ColorInfo(new(splitComplementaries[1].R, splitComplementaries[1].G, splitComplementaries[1].B)).ToString();
+		SplitBorder3.Background = new SolidColorBrush { Color = splitComplementaries[2] };
+		SplitBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = splitComplementaries[2] };
+		Split3Tooltip.Content = new ColorInfo(new(splitComplementaries[2].R, splitComplementaries[2].G, splitComplementaries[2].B)).ToString();
+
+		// Triadic
+		var triadicComplementaries = Global.GenerateTriadicColors(color);
+		TriadicBorder1.Background = new SolidColorBrush { Color = triadicComplementaries[0] };
+		TriadicBorder1.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[0] };
+		Tria1Tooltip.Content = new ColorInfo(new(triadicComplementaries[0].R, triadicComplementaries[0].G, triadicComplementaries[0].B)).ToString();
+		TriadicBorder2.Background = new SolidColorBrush { Color = triadicComplementaries[1] };
+		TriadicBorder2.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[1] };
+		Tria2Tooltip.Content = new ColorInfo(new(triadicComplementaries[1].R, triadicComplementaries[1].G, triadicComplementaries[1].B)).ToString();
+		TriadicBorder3.Background = new SolidColorBrush { Color = triadicComplementaries[2] };
+		TriadicBorder3.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Opacity = 0.2, Color = triadicComplementaries[2] };
+		Tria3Tooltip.Content = new ColorInfo(new(triadicComplementaries[2].R, triadicComplementaries[2].G, triadicComplementaries[2].B)).ToString();
+
+		// Analogous
+		AnalogousPanel.Children.Clear();
+		var analogousColors = Global.GenerateAnalogousColors(color, int.Parse(AmountTxt.Text), int.Parse(AngleTxt.Text));
+		for (int i = 0; i < analogousColors.Length; i++)
+		{
+			CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
+			if (i == analogousColors.Length - 1) radius = new(0, 10, 10, 0);
+			Border border = new()
+			{
+				Cursor = Cursors.Hand,
+				Height = 50,
+				Width = 50,
+				CornerRadius = radius,
+				Background = new SolidColorBrush { Color = Color.FromRgb(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B) },
+				Effect = new DropShadowEffect()
+				{
+					BlurRadius = 15,
+					Opacity = 0.2,
+					ShadowDepth = 0,
+					Color = Color.FromRgb(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B)
+				},
+				ToolTip = new ToolTip()
+				{
+					Background = Global.GetColorFromResource("Background1"),
+					Foreground = Global.GetColorFromResource("Foreground1"),
+					Content = new ColorInfo(new(analogousColors[i].R, analogousColors[i].G, analogousColors[i].B)).ToString()
+				},
+			};
+			border.MouseRightButtonUp += ComplementaryBorder_MouseLeftButtonUp;
+
+			AnalogousPanel.Children.Add(border);
+		}
+
+		// Monochromatic
+		MonochromaticPanel.Children.Clear();
+		var monoColors = Global.GenerateMonochromaticColors(color, 10, int.Parse(StepsTxt.Text));
+		for (int i = 0; i < monoColors.Length; i++)
+		{
+			CornerRadius radius = i == 0 ? new(10, 0, 0, 10) : new(0);
+			if (i == monoColors.Length - 1) radius = new(0, 10, 10, 0);
+			Border border = new()
+			{
+				Cursor = Cursors.Hand,
+				Height = 50,
+				Width = 50,
+				CornerRadius = radius,
+				Background = new SolidColorBrush { Color = Color.FromRgb(monoColors[i].R, monoColors[i].G, monoColors[i].B) },
+				Effect = new DropShadowEffect()
+				{
+					BlurRadius = 15,
+					Opacity = 0.2,
+					ShadowDepth = 0,
+					Color = Color.FromRgb(monoColors[i].R, monoColors[i].G, monoColors[i].B)
+				},
+				ToolTip = new ToolTip()
+				{
+					Background = Global.GetColorFromResource("Background1"),
+					Foreground = Global.GetColorFromResource("Foreground1"),
+					Content = new ColorInfo(new(monoColors[i].R, monoColors[i].G, monoColors[i].B)).ToString()
+				},
+			};
+			border.MouseRightButtonUp += ComplementaryBorder_MouseLeftButtonUp;
+
+			MonochromaticPanel.Children.Add(border);
+		}
+
+		LoadBookmarkMenu();
+	}
+
+	private void AnalogousSettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		AnalogousPopup.IsOpen = true;
+	}
+
+	private void AngleTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
+	}
+
+	private void AngleTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		try
+		{
+			InitHarmonies();
+		}
+		catch { }
+	}
+
+	private void MonochromaticSettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		MonochromaticPopup.IsOpen = true;
+	}
+
+	private void ComplementaryBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		new ColorDetailsWindow((SolidColorBrush)((Border)sender).Background).Show();
+	}
+
+	private void AddRemoveBookmarkBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+		{
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf($"#{ColorInfo.HEX.Value}");
+			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
+			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
+			BookmarkBtn.Content = "\uF1F6";
+			AddRemoveBookmarkBtn.Content = Properties.Resources.AddBookmark;
+			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
+
+			return;
+		}
+		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
+		BookmarkBtn.Content = "\uF1F8";
+		AddRemoveBookmarkBtn.Content = Properties.Resources.RemoveBookmark;
+		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 	}
 }
