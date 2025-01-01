@@ -559,7 +559,7 @@
 
             </StackPanel>
             <StackPanel Grid.Row="8" Grid.Column="1">
-                <StackPanel Margin="10 0" Orientation="Horizontal">
+                <StackPanel Margin="10" Orientation="Horizontal">
                     <TextBlock
                         VerticalAlignment="Center"
                         FontFamily="../Fonts/#FluentSystemIcons-Regular"
@@ -627,7 +627,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="8" Grid.Column="3">
-                <StackPanel Margin="10 0" Orientation="Horizontal">
+                <StackPanel Margin="10" Orientation="Horizontal">
                     <TextBlock
                         VerticalAlignment="Center"
                         FontFamily="../Fonts/#FluentSystemIcons-Regular"
