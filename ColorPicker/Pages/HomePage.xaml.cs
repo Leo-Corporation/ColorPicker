@@ -57,6 +57,7 @@ public partial class HomePage : Page
 		// Load "Discover" section
 		for (int i = 0; i < relevantPages.Count; i++)
 		{
+			if (relevantPages[i].Name == "Harmonies") continue;
 			DiscoverPanel.Children.Add(new PageCard(Global.PageInfoToAppPages(relevantPages[i])));
 		}
 

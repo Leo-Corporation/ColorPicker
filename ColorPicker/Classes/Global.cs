@@ -133,7 +133,6 @@ public static class Global
 		{ AppPages.ColorPalette, "\uF2F6" },
 		{ AppPages.ColorGradient, "\uFD3F" },
 		{ AppPages.AIGeneration, "\uF4E5" },
-		{ AppPages.Harmonies, "\uFD0F" },
 		{ AppPages.ImageExtractor, "\uF49B" },
 		{ AppPages.ContrastGrid, "\uF467" }
 	};
@@ -149,7 +148,6 @@ public static class Global
 		{ AppPages.ColorPalette, Properties.Resources.Palette },
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
 		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
-		{ AppPages.Harmonies, Properties.Resources.Harmonies},
 		{ AppPages.ImageExtractor, Properties.Resources.ImageExtractor},
 		{ AppPages.ContrastGrid, Properties.Resources.ContrastGrid},
 	};
@@ -264,7 +262,6 @@ public static class Global
 			"Palette" => AppPages.ColorPalette,
 			"Gradient" => AppPages.ColorGradient,
 			"AIGeneration" => AppPages.AIGeneration,
-			"Harmonies" => AppPages.Harmonies,
 			"ImageExtractor" => AppPages.ImageExtractor,
 			"ContrastGrid" => AppPages.ContrastGrid,
 			_ => AppPages.Selector

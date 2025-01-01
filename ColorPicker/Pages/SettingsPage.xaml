@@ -520,7 +520,6 @@
                             <ComboBoxItem Content="{x:Static lang:Resources.Palette}" />
                             <ComboBoxItem Content="{x:Static lang:Resources.Gradient}" />
                             <ComboBoxItem Content="{x:Static lang:Resources.AIGeneration}" />
-                            <ComboBoxItem Content="{x:Static lang:Resources.Harmonies}" />
                             <ComboBoxItem Content="{x:Static lang:Resources.ImageExtractor}" />
                             <ComboBoxItem Content="{x:Static lang:Resources.ContrastGrid}" />
                         </ComboBox>
