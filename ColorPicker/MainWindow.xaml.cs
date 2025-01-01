@@ -133,10 +133,6 @@ public partial class MainWindow : Window
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
 				AiCreationPageBtn.IsChecked = true;
 				break;
-			case AppPages.Harmonies:
-				Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
-				HarmoniesPageBtn.IsChecked = true;
-				break;
 			case AppPages.ImageExtractor:
 				Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
 				ImageExtractorPageBtn.IsChecked = true;
@@ -159,7 +155,6 @@ public partial class MainWindow : Window
 			AppPages.ColorPalette => Global.PalettePage,
 			AppPages.ColorGradient => Global.GradientPage,
 			AppPages.AIGeneration => Global.AiGenPage,
-			AppPages.Harmonies => Global.HarmoniesPage,
 			AppPages.ImageExtractor => Global.ImageExtractorPage,
 			AppPages.ContrastGrid => Global.ContrastPage,
 			_ => Global.HomePage
@@ -212,12 +207,6 @@ public partial class MainWindow : Window
 
 				PageDisplayer.Navigate(Global.AiGenPage);
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
-				break;
-			case AppPages.Harmonies:
-				HarmoniesPageBtn.IsChecked = true;
-
-				PageDisplayer.Navigate(Global.HarmoniesPage);
-				Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ImageExtractor:
 				ImageExtractorPageBtn.IsChecked = true;
@@ -465,10 +454,6 @@ public partial class MainWindow : Window
 				Global.SynethiaConfig.PagesInfo[6].LeaveUnixTime = Sys.UnixTime;
 				Global.SynethiaConfig.PagesInfo[6].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[6].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[6].EnterUnixTime;
 				break;
-			case HarmoniesPage:
-				Global.SynethiaConfig.PagesInfo[7].LeaveUnixTime = Sys.UnixTime;
-				Global.SynethiaConfig.PagesInfo[7].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[7].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[7].EnterUnixTime;
-				break;
 			case ImageExtractorPage:
 				Global.SynethiaConfig.PagesInfo[8].LeaveUnixTime = Sys.UnixTime;
 				Global.SynethiaConfig.PagesInfo[8].TotalTimeSpent += Global.SynethiaConfig.PagesInfo[8].LeaveUnixTime - Global.SynethiaConfig.PagesInfo[8].EnterUnixTime;
@@ -489,15 +474,6 @@ public partial class MainWindow : Window
 
 		PageDisplayer.Navigate(Global.AiGenPage);
 		Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
-	}
-
-	private void HarmoniesPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		HarmoniesPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.HarmoniesPage);
-		Global.SynethiaConfig.PagesInfo[7].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void ImageExtractorPageBtn_Click(object sender, RoutedEventArgs e)

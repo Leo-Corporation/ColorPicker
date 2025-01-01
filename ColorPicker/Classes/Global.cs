@@ -47,7 +47,6 @@ public static class Global
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
 	public static AiGenPage? AiGenPage { get; set; }
-	public static HarmoniesPage? HarmoniesPage { get; set; }
 	public static HomePage? HomePage { get; set; }
 	public static BookmarksPage? BookmarksPage { get; set; }
 	public static SettingsPage? SettingsPage { get; set; }
@@ -304,7 +303,6 @@ public static class Global
 			BookmarksPage.CheckButton(BookmarksPage.CheckedButton);
 			ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
 			ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
-			HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
 			PalettePage.CheckButton(PalettePage.SelectedColorBtn);
 			ContrastPage.CheckButton(ContrastPage.RgbBtn);
 			ContrastPage.InitGrid(ContrastPage.contrastLimit);

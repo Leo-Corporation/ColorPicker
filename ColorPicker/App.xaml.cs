@@ -66,7 +66,6 @@ public partial class App : Application
 		Global.PalettePage = new();
 		Global.GradientPage = new();
 		Global.AiGenPage = new();
-		Global.HarmoniesPage = new();
 		Global.HomePage = new();
 		Global.BookmarksPage = new();
 		Global.SettingsPage = new();
