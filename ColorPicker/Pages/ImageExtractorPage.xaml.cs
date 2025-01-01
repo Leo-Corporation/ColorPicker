@@ -26,7 +26,6 @@ using ColorPicker.Classes;
 using ColorPicker.UserControls;
 using Microsoft.Win32;
 using Synethia;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;

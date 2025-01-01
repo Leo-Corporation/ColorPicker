@@ -193,9 +193,7 @@ public static class Global
 
 		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
 
-		int gridRow;
-		if (result > 7) gridRow = 0;
-		else gridRow = 0;
+		int gridRow = result > 7 ? 0 : 0;
 		if (result <= 3) gridRow = 3;
 		if (result >= 3 && result <= 4.5) gridRow = 2;
 		if (result >= 4.5 && result <= 7) gridRow = 1;
@@ -528,10 +526,7 @@ public static class Global
 			float delta = max - min;
 			if (max == r)
 				h = (g - b) / delta + (g < b ? 6 : 0);
-			else if (max == g)
-				h = (b - r) / delta + 2;
-			else
-				h = (r - g) / delta + 4;
+			else h = max == g ? (b - r) / delta + 2 : (r - g) / delta + 4;
 			h /= 6f;
 		}
 
@@ -566,7 +561,6 @@ public static class Global
 		if (t > 1) t -= 1;
 		if (t < 1.0 / 6.0) return p + (q - p) * 6 * t;
 		if (t < 1.0 / 2.0) return q;
-		if (t < 2.0 / 3.0) return p + (q - p) * (2.0f / 3.0f - t) * 6;
-		return p;
+		return t < 2.0 / 3.0 ? p + (q - p) * (2.0f / 3.0f - t) * 6 : p;
 	}
 }
