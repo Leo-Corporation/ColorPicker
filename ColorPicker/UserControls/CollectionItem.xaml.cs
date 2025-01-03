@@ -89,7 +89,6 @@ public partial class CollectionItem : UserControl
 				InitUI();
 				Global.SelectorPage.LoadBookmarkMenu();
 				Global.ConverterPage.LoadBookmarkMenu();
-				Global.HarmoniesPage.LoadBookmarkMenu();
 			};
 
 			ColorPanel.Children.Add(border);

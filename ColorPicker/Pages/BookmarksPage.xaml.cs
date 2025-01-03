@@ -95,7 +95,6 @@ public partial class BookmarksPage : Page
 
 		Global.SelectorPage.LoadBookmarkMenu();
 		Global.ConverterPage.LoadBookmarkMenu();
-		Global.HarmoniesPage.LoadBookmarkMenu();
 	}
 
 	internal void ColorsBtn_Click(object sender, RoutedEventArgs e)

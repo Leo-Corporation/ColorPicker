@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             Margin="10"
             Orientation="Horizontal">
             <TextBlock
@@ -395,7 +395,40 @@
                             Foreground="{DynamicResource Foreground1}" />
                     </Button.ToolTip>
                 </Button>
-
+                <Popup
+                    x:Name="CollectionsPopup"
+                    AllowsTransparency="True"
+                    Placement="Bottom"
+                    PlacementTarget="{Binding ElementName=BookmarkBtn}"
+                    PopupAnimation="Fade"
+                    StaysOpen="False">
+                    <Border
+                        Margin="10"
+                        Padding="10"
+                        Background="{DynamicResource Background1}"
+                        CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Opacity="0.4"
+                                RenderingBias="Performance"
+                                ShadowDepth="0"
+                                Color="Black" />
+                        </Border.Effect>
+                        <StackPanel>
+                            <Button
+                                x:Name="AddRemoveBookmarkBtn"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Click="AddRemoveBookmarkBtn_Click"
+                                Content="{x:Static lang:Resources.AddBookmark}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Foreground1}"
+                                Style="{DynamicResource DefaultButton}" />
+                            <StackPanel x:Name="CollectionsPanel" />
+                        </StackPanel>
+                    </Border>
+                </Popup>
             </Grid>
         </Border>
 
@@ -407,9 +440,17 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <StackPanel
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Margin="10"
                 Orientation="Horizontal">
                 <TextBlock
@@ -428,12 +469,13 @@
             <WrapPanel
                 x:Name="ShadesPanel"
                 Grid.Row="1"
+                Grid.ColumnSpan="3"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal" />
 
             <StackPanel
                 Grid.Row="2"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Margin="10"
                 Orientation="Horizontal">
                 <TextBlock
@@ -452,12 +494,13 @@
             <WrapPanel
                 x:Name="BrightnessPanel"
                 Grid.Row="3"
+                Grid.ColumnSpan="3"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal" />
 
             <StackPanel
                 Grid.Row="4"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 Margin="10"
                 Orientation="Horizontal">
                 <TextBlock
@@ -476,8 +519,392 @@
             <WrapPanel
                 x:Name="HuePanel"
                 Grid.Row="5"
+                Grid.ColumnSpan="3"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal" />
+            <StackPanel Grid.Row="8">
+                <StackPanel Margin="10" Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xF2FC;" />
+                    <TextBlock
+                        Margin="5"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.Complementary}" />
+                </StackPanel>
+                <Border
+                    x:Name="ComplementaryBorder"
+                    Width="50"
+                    Height="50"
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    d:Background="White"
+                    CornerRadius="10"
+                    Cursor="Hand"
+                    MouseRightButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                    <Border.ToolTip>
+                        <ToolTip
+                            x:Name="ComplementaryTooltip"
+                            Background="{DynamicResource Background1}"
+                            Foreground="{DynamicResource Foreground1}" />
+                    </Border.ToolTip>
+                </Border>
+
+
+
+
+            </StackPanel>
+            <StackPanel Grid.Row="8" Grid.Column="1">
+                <StackPanel Margin="10" Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xF357;" />
+                    <TextBlock
+                        Margin="5"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.SplitComplementary}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Border
+                        x:Name="SplitBorder1"
+                        Width="50"
+                        Height="50"
+                        Margin="10 0 0 0"
+                        HorizontalAlignment="Left"
+                        d:Background="White"
+                        CornerRadius="10 0 0 10"
+                        Cursor="Hand"
+                        MouseRightButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                        <Border.ToolTip>
+                            <ToolTip
+                                x:Name="Split1Tooltip"
+                                Background="{DynamicResource Background1}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Border.ToolTip>
+                    </Border>
+
+                    <Border
+                        x:Name="SplitBorder2"
+                        Width="50"
+                        Height="50"
+                        Margin="0 10"
+                        HorizontalAlignment="Left"
+                        d:Background="White"
+                        Cursor="Hand"
+                        MouseRightButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                        <Border.ToolTip>
+                            <ToolTip
+                                x:Name="Split2Tooltip"
+                                Background="{DynamicResource Background1}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Border.ToolTip>
+                    </Border>
+                    <Border
+                        x:Name="SplitBorder3"
+                        Width="50"
+                        Height="50"
+                        Margin="0 10"
+                        HorizontalAlignment="Left"
+                        d:Background="White"
+                        CornerRadius="0 10 10 0"
+                        Cursor="Hand"
+                        MouseRightButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                        <Border.ToolTip>
+                            <ToolTip
+                                x:Name="Split3Tooltip"
+                                Background="{DynamicResource Background1}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Border.ToolTip>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="8" Grid.Column="3">
+                <StackPanel Margin="10" Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xF346;" />
+                    <TextBlock
+                        Margin="5"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.Triadic}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Border
+                        x:Name="TriadicBorder1"
+                        Width="50"
+                        Height="50"
+                        Margin="10 0 0 0"
+                        HorizontalAlignment="Left"
+                        d:Background="White"
+                        CornerRadius="10 0 0 10"
+                        Cursor="Hand"
+                        MouseRightButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                        <Border.ToolTip>
+                            <ToolTip
+                                x:Name="Tria1Tooltip"
+                                Background="{DynamicResource Background1}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Border.ToolTip>
+                    </Border>
+                    <Border
+                        x:Name="TriadicBorder2"
+                        Width="50"
+                        Height="50"
+                        Margin="0 10"
+                        HorizontalAlignment="Left"
+                        d:Background="White"
+                        Cursor="Hand"
+                        MouseRightButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                        <Border.ToolTip>
+                            <ToolTip
+                                x:Name="Tria2Tooltip"
+                                Background="{DynamicResource Background1}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Border.ToolTip>
+                    </Border>
+                    <Border
+                        x:Name="TriadicBorder3"
+                        Width="50"
+                        Height="50"
+                        Margin="0 10"
+                        HorizontalAlignment="Left"
+                        d:Background="White"
+                        CornerRadius="0 10 10 0"
+                        Cursor="Hand"
+                        MouseRightButtonUp="ComplementaryBorder_MouseLeftButtonUp">
+                        <Border.ToolTip>
+                            <ToolTip
+                                x:Name="Tria3Tooltip"
+                                Background="{DynamicResource Background1}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Border.ToolTip>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="6" Grid.ColumnSpan="3">
+                <StackPanel Margin="10" Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xF30E;" />
+                    <TextBlock
+                        Margin="5"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.Analogous}" />
+                    <Button
+                        x:Name="AnalogousSettingsBtn"
+                        Grid.Column="3"
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource Background3}"
+                        Click="AnalogousSettingsBtn_Click"
+                        Content="&#xF6AA;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.Settings}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+                <WrapPanel
+                    x:Name="AnalogousPanel"
+                    Margin="10 0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal" />
+            </StackPanel>
+            <StackPanel Grid.Row="7" Grid.ColumnSpan="3">
+                <StackPanel Margin="10" Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                        FontSize="16"
+                        Foreground="{DynamicResource AccentColor}"
+                        Text="&#xF33C;" />
+                    <TextBlock
+                        Margin="5"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.Monochromatic}" />
+                    <Button
+                        x:Name="MonochromaticSettingsBtn"
+                        Grid.Column="3"
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource Background3}"
+                        Click="MonochromaticSettingsBtn_Click"
+                        Content="&#xF6AA;"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource DefaultButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background1}"
+                                Content="{x:Static lang:Resources.Settings}"
+                                Foreground="{DynamicResource Foreground1}" />
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+                <WrapPanel
+                    x:Name="MonochromaticPanel"
+                    Margin="10 0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal" />
+            </StackPanel>
+
+            <Popup
+                x:Name="AnalogousPopup"
+                AllowsTransparency="True"
+                Placement="Top"
+                PlacementTarget="{Binding ElementName=AnalogousSettingsBtn}"
+                StaysOpen="False">
+                <Border
+                    Margin="10"
+                    Padding="5"
+                    Background="{DynamicResource CardBackground}"
+                    CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            BlurRadius="15"
+                            Opacity="0.2"
+                            ShadowDepth="0"
+                            Color="{DynamicResource Accent}" />
+                    </Border.Effect>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"
+                                Text="{x:Static lang:Resources.Angle}" />
+                            <Border
+                                Width="50"
+                                HorizontalAlignment="Center"
+                                Background="{DynamicResource CardBackground}"
+                                CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="15"
+                                        Opacity="0.2"
+                                        ShadowDepth="0"
+                                        Color="{DynamicResource Accent}" />
+                                </Border.Effect>
+                                <TextBox
+                                    x:Name="AngleTxt"
+                                    Margin="3"
+                                    Padding="3"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource DarkGray}"
+                                    PreviewTextInput="AngleTxt_PreviewTextInput"
+                                    Text="15"
+                                    TextAlignment="Center"
+                                    TextChanged="AngleTxt_TextChanged" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"
+                                Text="{x:Static lang:Resources.AmountToGenerate}" />
+                            <Border
+                                Width="50"
+                                HorizontalAlignment="Center"
+                                Background="{DynamicResource CardBackground}"
+                                CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="15"
+                                        Opacity="0.2"
+                                        ShadowDepth="0"
+                                        Color="{DynamicResource Accent}" />
+                                </Border.Effect>
+                                <TextBox
+                                    x:Name="AmountTxt"
+                                    Margin="3"
+                                    Padding="3"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource DarkGray}"
+                                    PreviewTextInput="AngleTxt_PreviewTextInput"
+                                    Text="10"
+                                    TextAlignment="Center"
+                                    TextChanged="AngleTxt_TextChanged" />
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Popup>
+            <Popup
+                x:Name="MonochromaticPopup"
+                AllowsTransparency="True"
+                Placement="Top"
+                PlacementTarget="{Binding ElementName=MonochromaticSettingsBtn}"
+                StaysOpen="False">
+                <Border
+                    Margin="10"
+                    Padding="5"
+                    Background="{DynamicResource CardBackground}"
+                    CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            BlurRadius="15"
+                            Opacity="0.2"
+                            ShadowDepth="0"
+                            Color="{DynamicResource Accent}" />
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.Steps}" />
+                        <Border
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="StepsTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                PreviewTextInput="AngleTxt_PreviewTextInput"
+                                Text="10"
+                                TextAlignment="Center"
+                                TextChanged="AngleTxt_TextChanged" />
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Popup>
         </Grid>
     </Grid>
 </Page>

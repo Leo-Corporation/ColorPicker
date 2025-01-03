@@ -740,20 +740,6 @@
                                         GroupName="NavBar"
                                         Style="{DynamicResource NavBarToolButton}" />
                                     <RadioButton
-                                        x:Name="HarmoniesPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="HarmoniesPageBtn_Click"
-                                        Content="{x:Static lang:Resources.Harmonies}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                    <RadioButton
                                         x:Name="GradientPageBtn"
                                         Margin="10 0 0 0"
                                         Padding="5 2 2 2"

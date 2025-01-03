@@ -35,7 +35,6 @@ public enum AppPages
 	ColorPalette,
 	ColorGradient,
 	AIGeneration,
-	Harmonies,
 	ImageExtractor,
 	ContrastGrid
 }

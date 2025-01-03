@@ -193,7 +193,7 @@ public partial class SelectorPage : Page
 		Global.SynethiaConfig.ActionsInfo[0].UsageCount++; // Increment the usage counter
 	}
 
-	List<string> RecentColors = [];
+	readonly List<string> RecentColors = [];
 	private void HandleCopyKeyboard()
 	{
 		try
@@ -324,10 +324,10 @@ public partial class SelectorPage : Page
 		{
 			1 => new ColorInfo(ColorHelper.ColorConverter.HsvToRgb(new((int)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))),
 			2 => new ColorInfo(ColorHelper.ColorConverter.HslToRgb(new((int)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))),
-			3 => new ColorInfo(ColorHelper.ColorConverter.CmykToRgb(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value))) 
+			3 => new ColorInfo(ColorHelper.ColorConverter.CmykToRgb(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value)))
 			{ CMYK = new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value) },
 			_ => new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))
-		} ;
+		};
 		RgbTxt.Text = $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}";
 		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
 		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";

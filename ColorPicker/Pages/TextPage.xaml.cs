@@ -184,7 +184,7 @@ public partial class TextPage : Page
 		RgbBtn_Click(SelectedColorBtn, null);
 		ColorSelector.IsOpen = true;
 	}
-	Random random = new();
+	readonly Random random = new();
 
 	private void GenerateGradientBtn_Click(object sender, System.Windows.RoutedEventArgs e)
 	{
@@ -529,8 +529,9 @@ public partial class TextPage : Page
 		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
-		else if (SelectedColorBtn == DecBtn) return new DEC(int.Parse(Txt5.Text)).ToRgb();
-		else return ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
+		else return SelectedColorBtn == DecBtn
+			? new DEC(int.Parse(Txt5.Text)).ToRgb()
+			: ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
 	}

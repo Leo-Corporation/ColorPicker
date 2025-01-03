@@ -47,7 +47,6 @@ public static class Global
 	public static PalettePage? PalettePage { get; set; }
 	public static GradientPage? GradientPage { get; set; }
 	public static AiGenPage? AiGenPage { get; set; }
-	public static HarmoniesPage? HarmoniesPage { get; set; }
 	public static HomePage? HomePage { get; set; }
 	public static BookmarksPage? BookmarksPage { get; set; }
 	public static SettingsPage? SettingsPage { get; set; }
@@ -93,7 +92,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "6.5.0.2408";
+	public static string Version => "6.6.0.2501";
 
 	public static string HiSentence
 	{
@@ -134,7 +133,6 @@ public static class Global
 		{ AppPages.ColorPalette, "\uF2F6" },
 		{ AppPages.ColorGradient, "\uFD3F" },
 		{ AppPages.AIGeneration, "\uF4E5" },
-		{ AppPages.Harmonies, "\uFD0F" },
 		{ AppPages.ImageExtractor, "\uF49B" },
 		{ AppPages.ContrastGrid, "\uF467" }
 	};
@@ -150,7 +148,6 @@ public static class Global
 		{ AppPages.ColorPalette, Properties.Resources.Palette },
 		{ AppPages.ColorGradient, Properties.Resources.Gradient },
 		{ AppPages.AIGeneration, Properties.Resources.AIGeneration },
-		{ AppPages.Harmonies, Properties.Resources.Harmonies},
 		{ AppPages.ImageExtractor, Properties.Resources.ImageExtractor},
 		{ AppPages.ContrastGrid, Properties.Resources.ContrastGrid},
 	};
@@ -196,9 +193,7 @@ public static class Global
 
 		var result = Math.Round((brightest + 0.05) / (darkest + 0.05), 4);
 
-		int gridRow;
-		if (result > 7) gridRow = 0;
-		else gridRow = 0;
+		int gridRow = result > 7 ? 0 : 0;
 		if (result <= 3) gridRow = 3;
 		if (result >= 3 && result <= 4.5) gridRow = 2;
 		if (result >= 4.5 && result <= 7) gridRow = 1;
@@ -265,7 +260,6 @@ public static class Global
 			"Palette" => AppPages.ColorPalette,
 			"Gradient" => AppPages.ColorGradient,
 			"AIGeneration" => AppPages.AIGeneration,
-			"Harmonies" => AppPages.Harmonies,
 			"ImageExtractor" => AppPages.ImageExtractor,
 			"ContrastGrid" => AppPages.ContrastGrid,
 			_ => AppPages.Selector
@@ -300,10 +294,10 @@ public static class Global
 			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
 
 			if (!reload) return;
+			SettingsPage.LoadUpdateSection();
 			BookmarksPage.CheckButton(BookmarksPage.CheckedButton);
 			ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
 			ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
-			HarmoniesPage.CheckButton(HarmoniesPage.SelectedColorBtn);
 			PalettePage.CheckButton(PalettePage.SelectedColorBtn);
 			ContrastPage.CheckButton(ContrastPage.RgbBtn);
 			ContrastPage.InitGrid(ContrastPage.contrastLimit);
@@ -532,10 +526,7 @@ public static class Global
 			float delta = max - min;
 			if (max == r)
 				h = (g - b) / delta + (g < b ? 6 : 0);
-			else if (max == g)
-				h = (b - r) / delta + 2;
-			else
-				h = (r - g) / delta + 4;
+			else h = max == g ? (b - r) / delta + 2 : (r - g) / delta + 4;
 			h /= 6f;
 		}
 
@@ -570,7 +561,6 @@ public static class Global
 		if (t > 1) t -= 1;
 		if (t < 1.0 / 6.0) return p + (q - p) * 6 * t;
 		if (t < 1.0 / 2.0) return q;
-		if (t < 2.0 / 3.0) return p + (q - p) * (2.0f / 3.0f - t) * 6;
-		return p;
+		return t < 2.0 / 3.0 ? p + (q - p) * (2.0f / 3.0f - t) * 6 : p;
 	}
 }

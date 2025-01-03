@@ -58,11 +58,9 @@ public class BookmarkText : IEquatable<BookmarkText>
 
 	public bool Equals(BookmarkText? obj)
 	{
-		if (obj == null || GetType() != obj.GetType())
-		{
-			return false;
-		}
-		return FontFamily == obj.FontFamily && ForegroundColor == obj.ForegroundColor && BackgroundColor == obj.BackgroundColor;
+		return obj == null || GetType() != obj.GetType()
+			? false
+			: FontFamily == obj.FontFamily && ForegroundColor == obj.ForegroundColor && BackgroundColor == obj.BackgroundColor;
 	}
 
 
