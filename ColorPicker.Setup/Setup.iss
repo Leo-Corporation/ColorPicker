@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "ColorPicker Max"
-#define MyAppVersion "6.6.0.2412"
-#define MyAppFullVersion "6.6.0.2412-pre1"
+#define MyAppVersion "6.6.0.2501"
+#define MyAppFullVersion "6.6.0.2501-rc1"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://leocorporation.dev/"
 #define MyAppExeName "ColorPicker.exe"
