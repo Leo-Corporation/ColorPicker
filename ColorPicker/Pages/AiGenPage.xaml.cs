@@ -60,6 +60,7 @@ public partial class AiGenPage : Page
 		{
 			ColorPanel.Visibility = Visibility.Visible;
 			ApiPlaceholder.Visibility = Visibility.Collapsed;
+			NavGrid.Visibility = Visibility.Visible;
 			return;
 		}
 	}

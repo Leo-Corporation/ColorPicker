@@ -41,7 +41,11 @@
                 Text="{x:Static lang:Resources.AIGeneration}" />
         </StackPanel>
 
-        <Grid Grid.Row="1" Margin="10">
+        <Grid
+            x:Name="NavGrid"
+            Grid.Row="1"
+            Margin="10"
+            Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -146,7 +150,7 @@
             </RadioButton>
             <Button
                 x:Name="BookmarkBtn"
-                Grid.Column="4"
+                Grid.Column="4" Visibility="Collapsed"
                 Padding="5"
                 VerticalAlignment="Top"
                 Background="{DynamicResource Background3}"
