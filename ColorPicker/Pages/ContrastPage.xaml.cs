@@ -77,7 +77,7 @@ public partial class ContrastPage : Page
 		ScoreAllToggle.IsChecked = true;
 	}
 
-	internal Button SelectedColorBtn { get; set; }
+	internal Button SelectedColorBtn { get; set; } = null!;
 
 	private RGB ConvertToRgb()
 	{
@@ -98,10 +98,11 @@ public partial class ContrastPage : Page
 		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
-		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
+		else return SelectedColorBtn == YuvBtn
+			? ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
-											 double.Parse(Txt3.Text)));
-		else return SelectedColorBtn == DecBtn
+											 double.Parse(Txt3.Text)))
+			: SelectedColorBtn == DecBtn
 			? new DEC(int.Parse(Txt5.Text)).ToRgb()
 			: ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
@@ -155,7 +156,7 @@ public partial class ContrastPage : Page
 		B4.Visibility = Visibility.Collapsed;
 		B5.Visibility = Visibility.Collapsed; // Special textbox for hex
 	}
-	internal ColorInfo ColorInfo { get; set; }
+	internal ColorInfo ColorInfo { get; set; } = null!;
 	private void LoadInputUI()
 	{
 		HideAllInput();

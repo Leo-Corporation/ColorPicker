@@ -208,8 +208,8 @@ public partial class SettingsPage : Page
 		}
 	}
 
-	Border ThemeSelectedBorder;
-	private void Border_MouseEnter(object sender, MouseEventArgs e)
+	Border ThemeSelectedBorder = null!;
+	private void Border_MouseEnter(object sender, MouseEventArgs? e)
 	{
 		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 	}

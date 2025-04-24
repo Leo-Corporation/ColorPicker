@@ -237,7 +237,7 @@ public partial class ImageExtractorPage : Page
 			{
 				string extension = Path.GetExtension(file).ToLower();
 
-				if (extension == ".jpg" || extension == ".png" || extension == ".jpeg" || extension == ".bmp" || extension == ".gif" || extension == ".ico")
+				if (extension is ".jpg" or ".png" or ".jpeg" or ".bmp" or ".gif" or ".ico")
 				{
 					filePaths.Add(file);
 				}

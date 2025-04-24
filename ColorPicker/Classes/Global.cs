@@ -51,7 +51,7 @@ public static class Global
 	public static BookmarksPage? BookmarksPage { get; set; }
 	public static SettingsPage? SettingsPage { get; set; }
 
-	public static Bookmarks Bookmarks { get; set; }
+	public static Bookmarks Bookmarks { get; set; } = null!;
 	public static Settings Settings { get; set; } = XmlSerializerManager.LoadFromXml<Settings>(SettingsPath) ?? new();
 
 	public static SynethiaConfig SynethiaConfig { get; set; } = GetSynethiaConfig();
@@ -98,19 +98,19 @@ public static class Global
 	{
 		get
 		{
-			if (DateTime.Now.Hour >= 21 && DateTime.Now.Hour <= 7) // If between 9PM & 7AM
+			if (DateTime.Now.Hour is >= 21 or <= 7) // If between 9PM & 7AM
 			{
 				return Properties.Resources.GoodNight + ", " + Environment.UserName + "."; // Return the correct value
 			}
-			else if (DateTime.Now.Hour >= 7 && DateTime.Now.Hour <= 12) // If between 7AM - 12PM
+			else if (DateTime.Now.Hour is >= 7 and <= 12) // If between 7AM - 12PM
 			{
 				return Properties.Resources.Hi + ", " + Environment.UserName + "."; // Return the correct value
 			}
-			else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour <= 17) // If between 12PM - 5PM
+			else if (DateTime.Now.Hour is >= 12 and <= 17) // If between 12PM - 5PM
 			{
 				return Properties.Resources.GoodAfternoon + ", " + Environment.UserName + "."; // Return the correct value
 			}
-			else if (DateTime.Now.Hour >= 17 && DateTime.Now.Hour <= 21) // If between 5PM - 9PM
+			else if (DateTime.Now.Hour is >= 17 and <= 21) // If between 5PM - 9PM
 			{
 				return Properties.Resources.GoodEvening + ", " + Environment.UserName + "."; // Return the correct value
 			}
@@ -195,8 +195,8 @@ public static class Global
 
 		int gridRow = result > 7 ? 0 : 0;
 		if (result <= 3) gridRow = 3;
-		if (result >= 3 && result <= 4.5) gridRow = 2;
-		if (result >= 4.5 && result <= 7) gridRow = 1;
+		if (result is >= 3 and <= 4.5) gridRow = 2;
+		if (result is >= 4.5 and <= 7) gridRow = 1;
 		return (result.ToString(), gridRow);
 	}
 
@@ -310,7 +310,7 @@ public static class Global
 
 	public static bool IsSystemThemeDark()
 	{
-		if (Sys.CurrentWindowsVersion != WindowsVersion.Windows10 && Sys.CurrentWindowsVersion != WindowsVersion.Windows11)
+		if (Sys.CurrentWindowsVersion is not WindowsVersion.Windows10 and not WindowsVersion.Windows11)
 		{
 			return false; // Avoid errors on older OSs
 		}
@@ -524,9 +524,7 @@ public static class Global
 		if (max != min)
 		{
 			float delta = max - min;
-			if (max == r)
-				h = (g - b) / delta + (g < b ? 6 : 0);
-			else h = max == g ? (b - r) / delta + 2 : (r - g) / delta + 4;
+			h = max == r ? (g - b) / delta + (g < b ? 6 : 0) : max == g ? (b - r) / delta + 2 : (r - g) / delta + 4;
 			h /= 6f;
 		}
 
@@ -560,7 +558,6 @@ public static class Global
 		if (t < 0) t += 1;
 		if (t > 1) t -= 1;
 		if (t < 1.0 / 6.0) return p + (q - p) * 6 * t;
-		if (t < 1.0 / 2.0) return q;
-		return t < 2.0 / 3.0 ? p + (q - p) * (2.0f / 3.0f - t) * 6 : p;
+		return t < 1.0 / 2.0 ? q : t < 2.0 / 3.0 ? p + (q - p) * (2.0f / 3.0f - t) * 6 : p;
 	}
 }

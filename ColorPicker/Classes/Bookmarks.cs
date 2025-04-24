@@ -29,11 +29,11 @@ namespace ColorPicker.Classes;
 
 public class Bookmarks
 {
-	public List<string> ColorBookmarks { get; set; }
+	public List<string> ColorBookmarks { get; set; } = null!;
 	public List<string>? ColorBookmarksNotes { get; set; }
-	public List<string> PaletteBookmarks { get; set; }
-	public List<Gradient> GradientBookmarks { get; set; }
-	public List<BookmarkText> TextBookmarks { get; set; }
+	public List<string> PaletteBookmarks { get; set; } = null!;
+	public List<Gradient> GradientBookmarks { get; set; } = null!;
+	public List<BookmarkText> TextBookmarks { get; set; } = null!;
 	public List<ColorCollection>? ColorCollections { get; set; }
 }
 
@@ -58,13 +58,15 @@ public class BookmarkText : IEquatable<BookmarkText>
 
 	public bool Equals(BookmarkText? obj)
 	{
-		return obj == null || GetType() != obj.GetType()
-			? false
-			: FontFamily == obj.FontFamily && ForegroundColor == obj.ForegroundColor && BackgroundColor == obj.BackgroundColor;
+		return obj != null && GetType() == obj.GetType() && FontFamily == obj.FontFamily && ForegroundColor == obj.ForegroundColor && BackgroundColor == obj.BackgroundColor;
 	}
 
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(FontFamily, ForegroundColor, BackgroundColor);
+	}
 
-	public override bool Equals(object obj) => Equals(obj as BookmarkText);
+	public override bool Equals(object? obj) => Equals(obj as BookmarkText);
 }
 
 [XmlType("BookmarkGradientStop")]
@@ -118,7 +120,18 @@ public class Gradient : IEquatable<Gradient>
 		return true;
 	}
 
-	public override bool Equals(object obj) => Equals(obj as Gradient);
+	public override int GetHashCode()
+	{
+		int hash = 17;
+		foreach (var stop in Stops)
+		{
+			hash = hash * 31 + stop.GetHashCode();
+		}
+		hash = hash * 31 + Angle.GetHashCode();
+		return hash;
+	}
+
+	public override bool Equals(object? obj) => Equals(obj as Gradient);
 }
 
 public class ColorCollection

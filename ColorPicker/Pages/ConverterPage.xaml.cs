@@ -113,7 +113,7 @@ public partial class ConverterPage : Page
 		}
 	}
 
-	internal Button SelectedColorBtn { get; set; }
+	internal Button SelectedColorBtn { get; set; } = null!;
 	private void UnCheckAllButtons()
 	{
 		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -139,7 +139,7 @@ public partial class ConverterPage : Page
 	}
 
 	internal void CheckButton(Button button) => button.Background = Global.GetColorFromResource("LightAccentColor");
-	internal ColorInfo ColorInfo { get; set; }
+	internal ColorInfo ColorInfo { get; set; } = null!;
 
 	private RGB ConvertToRgb()
 	{
@@ -160,10 +160,11 @@ public partial class ConverterPage : Page
 		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)));
-		else if (SelectedColorBtn == YuvBtn) return ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
+		else return SelectedColorBtn == YuvBtn
+			? ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
-											 double.Parse(Txt3.Text)));
-		else return SelectedColorBtn == DecBtn
+											 double.Parse(Txt3.Text)))
+			: SelectedColorBtn == DecBtn
 			? new DEC(int.Parse(Txt5.Text)).ToRgb()
 			: ColorHelper.ColorConverter.YiqToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
