@@ -214,7 +214,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{DynamicResource AccentColor}"
+                            BorderBrush="{DynamicResource Gray}"
                             BorderThickness="2"
                             Foreground="{DynamicResource Foreground1}"
                             SelectionChanged="LangComboBox_SelectionChanged"
