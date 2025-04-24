@@ -21,7 +21,10 @@
     WindowStyle="None"
     mc:Ignorable="d">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="32" ResizeBorderThickness="10" />
+        <WindowChrome
+            x:Name="MainWindowChrome"
+            CaptionHeight="32"
+            ResizeBorderThickness="10" />
     </WindowChrome.WindowChrome>
 
     <Window.Resources>

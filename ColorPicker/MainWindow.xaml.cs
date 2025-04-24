@@ -265,6 +265,7 @@ public partial class MainWindow : Window
 
 		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
 		WindowBorder.CornerRadius = WindowState == WindowState.Maximized ? new(0) : new(5); // Set
+		MainWindowChrome.ResizeBorderThickness = WindowState == WindowState.Maximized ? new(0) : new(10); // Set
 
 		// Update settings information
 		Global.Settings.IsMaximized = WindowState == WindowState.Maximized;
