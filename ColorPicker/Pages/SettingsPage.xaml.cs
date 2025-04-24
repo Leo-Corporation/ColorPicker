@@ -520,8 +520,8 @@ public partial class SettingsPage : Page
 		"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
 		"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
 		"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
-		"PeyrSharp - MIT License - © 2022-2024 Devyus\n" +
-		"ColorPicker - MIT License - © 2021-2024 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		"PeyrSharp - MIT License - © 2022-2025 Devyus\n" +
+		"ColorPicker - MIT License - © 2021-2025 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
 	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
