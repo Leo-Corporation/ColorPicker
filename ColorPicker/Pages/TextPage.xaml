@@ -435,31 +435,23 @@
                         Margin="0 0 10 0"
                         VerticalAlignment="Center"
                         Text="{x:Static lang:Resources.Font}" />
-                    <Border Background="{DynamicResource CardBackground}" CornerRadius="5">
-                        <Border.Effect>
-                            <DropShadowEffect
-                                BlurRadius="15"
-                                Opacity="0.2"
-                                ShadowDepth="0"
-                                Color="{DynamicResource Accent}" />
 
-                        </Border.Effect>
-                        <ComboBox
-                            x:Name="FontComboBox"
-                            MinWidth="100"
-                            MaxWidth="150"
-                            Margin="0"
-                            Padding="5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource AccentColor}"
-                            BorderThickness="0"
-                            Foreground="{DynamicResource Foreground1}"
-                            IsEditable="True"
-                            SelectionChanged="FontComboBox_SelectionChanged"
-                            Style="{DynamicResource ComboBoxStyle1}" />
-                    </Border>
+                    <ComboBox
+                        x:Name="FontComboBox"
+                        MinWidth="100"
+                        MaxWidth="150"
+                        Margin="0"
+                        Padding="5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource AccentColor}"
+                        BorderThickness="0"
+                        Foreground="{DynamicResource Foreground1}"
+                        IsEditable="True"
+                        SelectionChanged="FontComboBox_SelectionChanged"
+                        Style="{DynamicResource ComboBoxStyle1}" />
+
                     <TextBlock
                         Margin="10 0 10 0"
                         VerticalAlignment="Center"

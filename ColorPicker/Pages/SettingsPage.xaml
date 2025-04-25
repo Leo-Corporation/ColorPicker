@@ -840,20 +840,12 @@
                     </StackPanel>
                 </Expander.Header>
 
-                <StackPanel Margin="10" Orientation="Horizontal">
+          <StackPanel Margin="10" Orientation="Horizontal">
                     <TextBlock
                         Margin="0 0 10 0"
                         VerticalAlignment="Center"
                         Text="{x:Static lang:Resources.Font}" />
-                    <Border Background="{DynamicResource CardBackground}" CornerRadius="5">
-                        <Border.Effect>
-                            <DropShadowEffect
-                                BlurRadius="15"
-                                Opacity="0.2"
-                                ShadowDepth="0"
-                                Color="{DynamicResource Accent}" />
-
-                        </Border.Effect>
+              
                         <ComboBox
                             x:Name="FontComboBox"
                             MinWidth="100"
@@ -869,7 +861,7 @@
                             IsEditable="True"
                             SelectionChanged="FontComboBox_SelectionChanged"
                             Style="{DynamicResource ComboBoxStyle1}" />
-                    </Border>
+                   
                     <TextBlock
                         Margin="10 0 10 0"
                         VerticalAlignment="Center"
