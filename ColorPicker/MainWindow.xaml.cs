@@ -38,9 +38,10 @@ namespace ColorPicker;
 /// </summary>
 public partial class MainWindow : Window
 {
-	public MainWindow()
+	public MainWindow(bool isSilent = false)
 	{
 		InitializeComponent();
+		if (isSilent) Hide();
 		InitUI();
 		GC.Collect();
 	}
@@ -265,6 +266,7 @@ public partial class MainWindow : Window
 
 		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
 		WindowBorder.CornerRadius = WindowState == WindowState.Maximized ? new(0) : new(5); // Set
+		MainWindowChrome.ResizeBorderThickness = WindowState == WindowState.Maximized ? new(0) : new(10); // Set
 
 		// Update settings information
 		Global.Settings.IsMaximized = WindowState == WindowState.Maximized;
@@ -492,5 +494,21 @@ public partial class MainWindow : Window
 
 		PageDisplayer.Navigate(Global.ContrastPage);
 		Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
+	}
+
+	private void ShowMenu_Click(object sender, RoutedEventArgs e)
+	{
+		Show();
+	}
+
+	private void QuitMenu_Click(object sender, RoutedEventArgs e)
+	{
+		LeavePage();
+		Application.Current.Shutdown(); // Close the application
+	}
+
+	private void HideMenu_Click(object sender, RoutedEventArgs e)
+	{
+		Hide();
 	}
 }

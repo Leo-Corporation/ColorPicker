@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using ColorPicker.UserControls;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
 using Synethia;
@@ -45,12 +46,12 @@ public partial class SelectorPage : Page
 	readonly DispatcherTimer timer = new();
 	private IKeyboardMouseEvents keyboardEvents = Hook.GlobalEvents();
 	internal MiniPicker miniPicker = new(); // MiniPicker window
+	ColorInfo ColorInfo { get; set; } = null!;
 
+	DetailsControl DetailsControl { get; set; } = new(new(new(0,0,0))); // Details control
 	public SelectorPage()
 	{
 		InitializeComponent();
-
-
 		InitUI();
 
 		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 0, ref code); // injects the code in the page
@@ -59,6 +60,7 @@ public partial class SelectorPage : Page
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.Picker} > {Properties.Resources.Selector}";
+		DetailsWrap.Children.Add(DetailsControl); // Add details control to the page	
 		(RedSlider.Value, GreenSlider.Value, BlueSlider.Value) = Global.GenerateRandomColor();
 		LoadDetails();
 
@@ -202,14 +204,14 @@ public partial class SelectorPage : Page
 
 			Clipboard.SetText(Global.Settings.DefaultColorType switch
 			{
-				ColorTypes.HEX => HexTxt.Text,
-				ColorTypes.HSL => HslTxt.Text,
-				ColorTypes.HSV => HsvTxt.Text,
-				ColorTypes.CMYK => CmykTxt.Text,
+				ColorTypes.HEX => $"#{ColorInfo.HEX.Value}",
+				ColorTypes.HSL => $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}",
+				ColorTypes.HSV => $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}",
+				ColorTypes.CMYK => $"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}",
 				ColorTypes.XYZ => $"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}",
 				ColorTypes.YIQ => $"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}",
 				ColorTypes.YUV => $"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}",
-				_ => RgbTxt.Text
+				_ => $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}"
 			});
 
 			if (RecentColors.Contains(ColorInfo.HEX.ToString())) return;
@@ -237,7 +239,7 @@ public partial class SelectorPage : Page
 		catch { }
 	}
 
-	private Color GetRgb(int h, int s, int v, bool isHsl = false)
+	private static Color GetRgb(int h, int s, int v, bool isHsl = false)
 	{
 		if (isHsl)
 		{
@@ -248,7 +250,7 @@ public partial class SelectorPage : Page
 		return Color.FromRgb(c.R, c.G, c.B);
 	}
 
-	private Color GetRgb(byte c, byte m, byte y, byte k)
+	private static Color GetRgb(byte c, byte m, byte y, byte k)
 	{
 		var rgb = ColorHelper.ColorConverter.CmykToRgb(new(c, m, y, k));
 		return Color.FromRgb(rgb.R, rgb.G, rgb.B);
@@ -316,7 +318,6 @@ public partial class SelectorPage : Page
 		LoadDetails();
 	}
 
-	ColorInfo ColorInfo { get; set; }
 	internal void LoadDetails()
 	{
 		// Load the details section
@@ -328,20 +329,12 @@ public partial class SelectorPage : Page
 			{ CMYK = new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value, (byte)KSlider.Value) },
 			_ => new ColorInfo(new((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value))
 		};
-		RgbTxt.Text = $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}";
-		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
-		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
-		HslTxt.Text = $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}";
-		CmykTxt.Text = $"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}";
-		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
-		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
-		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
-		DecTxt.Text = ColorInfo.DEC.Value.ToString();
 
+		DetailsControl.SetColorInfo(ColorInfo);
 		LoadBookmarkMenu();
 
 		// Load the bookmark icon
-		if (!Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
+		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 		{
 			BookmarkBtn.Content = "\uF1F6";
 			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
@@ -351,46 +344,6 @@ public partial class SelectorPage : Page
 		BookmarkBtn.Content = "\uF1F8";
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
 		AddRemoveBookmarkBtn.Content = Properties.Resources.RemoveBookmark;
-	}
-
-	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
-	}
-
-	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
-	}
-
-	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
-	}
-
-	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
-	}
-
-	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HslTxt.Text);
-	}
-
-	private void CopyHsvBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HsvTxt.Text);
-	}
-
-	private void CopyHexBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HexTxt.Text);
-	}
-
-	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(RgbTxt.Text);
 	}
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
@@ -495,16 +448,12 @@ public partial class SelectorPage : Page
 		GoClick?.Invoke(this, new(AppPages.ColorPalette));
 	}
 
-	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(DecTxt.Text);
-	}
 
 	private void AddRemoveBookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Global.Bookmarks.ColorBookmarks.Contains(HexTxt.Text))
+		if (Global.Bookmarks.ColorBookmarks.Contains( $"#{ColorInfo.HEX.Value}"))
 		{
-			int i = Global.Bookmarks.ColorBookmarks.IndexOf(HexTxt.Text);
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf( $"#{ColorInfo.HEX.Value}");
 			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
 			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
 			BookmarkBtn.Content = "\uF1F6";
@@ -513,7 +462,7 @@ public partial class SelectorPage : Page
 
 			return;
 		}
-		Global.Bookmarks.ColorBookmarks.Add(HexTxt.Text); // Add to color bookmarks
+		Global.Bookmarks.ColorBookmarks.Add( $"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
 		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
 		BookmarkBtn.Content = "\uF1F8";
 		AddRemoveBookmarkBtn.Content = Properties.Resources.RemoveBookmark;

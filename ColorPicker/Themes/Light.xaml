@@ -23,6 +23,7 @@
     <SolidColorBrush x:Key="LightOrange" Color="#ffca99" />
     <SolidColorBrush x:Key="ForegroundOrange" Color="#4c2500" />
     <SolidColorBrush x:Key="DarkGray" Color="#969696" />
+    <SolidColorBrush x:Key="Border" Color="#e6e6e6" />
     <SolidColorBrush x:Key="SliderRed" Color="#FF4500" />
     <SolidColorBrush x:Key="SliderGreen" Color="#00DF39" />
     <SolidColorBrush x:Key="SliderBlue" Color="#4169E1" />

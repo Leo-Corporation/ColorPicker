@@ -216,9 +216,9 @@ public partial class BookmarksPage : Page
 		if (string.IsNullOrEmpty(CollectionNameTxt.Text)) return;
 		Global.Bookmarks.ColorCollections.Add(new(CollectionNameTxt.Text));
 		CollectionCreatorPopup.IsOpen = false;
+		InitUI();
 		Placeholder.Visibility = Visibility.Collapsed;
 
-		InitUI();
 	}
 
 	private void ImportBtn_Click(object sender, RoutedEventArgs e)

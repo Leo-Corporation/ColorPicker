@@ -72,11 +72,25 @@ public partial class App : Application
 
 		if (!Global.Settings.IsFirstRun)
 		{
-			new MainWindow().Show();
+			if (IsSilentStart(e))
+			{
+				_ = new MainWindow(IsSilentStart(e));
+			}
+			else
+			{
+				new MainWindow().Show();
+			}
 		}
 		else
 		{
 			new FirstRunWindow().Show();
 		}
+	}
+
+	private bool IsSilentStart(StartupEventArgs e)
+	{
+		if (e.Args.Length == 0) return false;
+		if (e.Args[0].ToLower() == "--silent") return true;
+		return false;
 	}
 }

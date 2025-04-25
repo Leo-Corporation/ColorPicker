@@ -121,7 +121,9 @@ public partial class SettingsPage : Page
 		BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(background.R, background.G, background.B) };
 
 		// Checkboxes
+		Global.Settings.LaunchOnStart ??= false;
 		UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
+		LaunchOnStartChk.IsChecked = Global.Settings.LaunchOnStart;
 		UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
 		UseSynethiaChk.IsChecked = Global.Settings.UseSynethia;
 
@@ -208,8 +210,8 @@ public partial class SettingsPage : Page
 		}
 	}
 
-	Border ThemeSelectedBorder;
-	private void Border_MouseEnter(object sender, MouseEventArgs e)
+	Border ThemeSelectedBorder = null!;
+	private void Border_MouseEnter(object sender, MouseEventArgs? e)
 	{
 		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
 	}
@@ -520,8 +522,8 @@ public partial class SettingsPage : Page
 		"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
 		"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
 		"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
-		"PeyrSharp - MIT License - © 2022-2024 Devyus\n" +
-		"ColorPicker - MIT License - © 2021-2024 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		"PeyrSharp - MIT License - © 2022-2025 Devyus\n" +
+		"ColorPicker - MIT License - © 2021-2025 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
 	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
@@ -581,6 +583,11 @@ public partial class SettingsPage : Page
 	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/ColorPicker");
+	}
+
+	private void LaunchOnStartChk_Checked(object sender, RoutedEventArgs e)
+	{
+		Global.SetStartOnWindowsStart(LaunchOnStartChk.IsChecked ?? false);
 	}
 
 	private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

@@ -24,6 +24,7 @@ SOFTWARE.
 
 using ColorHelper;
 using ColorPicker.Classes;
+using ColorPicker.UserControls;
 using OpenAI;
 using OpenAI.Managers;
 using OpenAI.ObjectModels;
@@ -45,6 +46,8 @@ namespace ColorPicker.Pages;
 public partial class AiGenPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
+	ColorInfo ColorInfo { get; set; } = null!;
+	DetailsControl DetailsControl { get; set; } = new(new(new(0, 0, 0))); // Details control
 
 	public AiGenPage()
 	{
@@ -56,15 +59,16 @@ public partial class AiGenPage : Page
 
 	private void InitUI()
 	{
+		DetailsWrap.Children.Add(DetailsControl); // Add the details control to the page
 		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
 		{
 			ColorPanel.Visibility = Visibility.Visible;
 			ApiPlaceholder.Visibility = Visibility.Collapsed;
+			NavGrid.Visibility = Visibility.Visible;
 			return;
 		}
 	}
 
-	ColorInfo ColorInfo { get; set; }
 	internal void LoadDetails()
 	{
 		ColorBorder.Background = new SolidColorBrush { Color = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B) };
@@ -72,16 +76,8 @@ public partial class AiGenPage : Page
 		ColorBorder.Visibility = Visibility.Visible;
 		EmptyPlaceholder.Visibility = Visibility.Collapsed;
 
-		// Load the details section		
-		RgbTxt.Text = $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}";
-		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
-		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";
-		HslTxt.Text = $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}";
-		CmykTxt.Text = $"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}";
-		XyzTxt.Text = $"{ColorInfo.XYZ.X:0.00}..; {ColorInfo.XYZ.Y:0.00}..; {ColorInfo.XYZ.Z:0.00}..";
-		YiqTxt.Text = $"{ColorInfo.YIQ.Y:0.00}..; {ColorInfo.YIQ.I:0.00}..; {ColorInfo.YIQ.Q:0.00}..";
-		YuvTxt.Text = $"{ColorInfo.YUV.Y:0.00}..; {ColorInfo.YUV.U:0.00}..; {ColorInfo.YUV.V:0.00}..";
-		DecTxt.Text = ColorInfo.DEC.Value.ToString();
+		// Load the details
+		DetailsControl.SetColorInfo(ColorInfo);
 
 		// Load the bookmark icon
 		BookmarkBtn.Content = Global.Bookmarks.ColorBookmarks.Contains(ColorInfo.HEX.Value) ? "\uF1F8" : "\uF1F6";
@@ -120,46 +116,6 @@ public partial class AiGenPage : Page
 		{
 			MessageBox.Show(e.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
 		}
-	}
-
-	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
-	}
-
-	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
-	}
-
-	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
-	}
-
-	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
-	}
-
-	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HslTxt.Text);
-	}
-
-	private void CopyHsvBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HsvTxt.Text);
-	}
-
-	private void CopyHexBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HexTxt.Text);
-	}
-
-	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(RgbTxt.Text);
 	}
 
 	private async void GenerateBtn_Click(object sender, RoutedEventArgs e)
@@ -252,11 +208,6 @@ public partial class AiGenPage : Page
 		Global.Settings.ApiKey = ApiKeyTxt.Password;
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 		InitUI();
-	}
-
-	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(DecTxt.Text);
 	}
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)

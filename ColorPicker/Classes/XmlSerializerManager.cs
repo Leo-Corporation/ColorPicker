@@ -91,17 +91,5 @@ public static class XmlSerializerManager
 		writer.Dispose();
 		// Return true if no exception is thrown
 		return true;
-		//try
-		//{
-
-		//}
-		//catch (Exception ex)
-		//{
-		//	// Handle the exception
-		//	Console.WriteLine("An error occurred: " + ex.Message);
-
-		//	// Return false if an exception is thrown
-		//	return false;
-		//}
 	}
 }
