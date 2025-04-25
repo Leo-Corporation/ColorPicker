@@ -495,4 +495,20 @@ public partial class MainWindow : Window
 		PageDisplayer.Navigate(Global.ContrastPage);
 		Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
 	}
+
+	private void ShowMenu_Click(object sender, RoutedEventArgs e)
+	{
+		Show();
+	}
+
+	private void QuitMenu_Click(object sender, RoutedEventArgs e)
+	{
+		LeavePage();
+		Application.Current.Shutdown(); // Close the application
+	}
+
+	private void HideMenu_Click(object sender, RoutedEventArgs e)
+	{
+		Hide();
+	}
 }

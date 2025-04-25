@@ -6,6 +6,7 @@
     xmlns:lang="clr-namespace:ColorPicker.Properties"
     xmlns:local="clr-namespace:ColorPicker"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tb="http://www.hardcodet.net/taskbar"
     Title="{x:Static lang:Resources.ColorPickerMax}"
     Width="950"
     Height="600"
@@ -127,6 +128,58 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
+            <tb:TaskbarIcon
+                x:Name="myNotifyIcon"
+                IconSource="pack://application:,,,/Images/CPM.png"
+                MenuActivation="LeftOrRightClick"
+                PopupActivation="DoubleClick"
+                ToolTipText="ColorPicker Max"
+                Visibility="Visible">
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <ContextMenu.Template>
+                            <ControlTemplate>
+                                <Border
+                                    Padding="5"
+                                    Background="{DynamicResource Background1}"
+                                    CornerRadius="5">
+                                    <ScrollViewer
+                                        Uid="ScrollViewer_9"
+                                        CanContentScroll="True"
+                                        Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,
+                                                                                      TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                        <ItemsPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </ScrollViewer>
+                                </Border>
+                            </ControlTemplate>
+                        </ContextMenu.Template>
+                        <MenuItem
+                            x:Name="ShowMenu"
+                            Click="ShowMenu_Click"
+                            Foreground="{DynamicResource Foreground1}"
+                            Header="{x:Static lang:Resources.Show}"
+                            Style="{DynamicResource MenuStyle}" />
+                        <MenuItem
+                            x:Name="HideMenu"
+                            Click="HideMenu_Click"
+                            Foreground="{DynamicResource Foreground1}"
+                            Header="{x:Static lang:Resources.Hide}"
+                            Style="{DynamicResource MenuStyle}" />
+
+                        <Separator Foreground="{DynamicResource Foreground1}" />
+                        <MenuItem
+                            x:Name="QuitMenu"
+                            Click="QuitMenu_Click"
+                            Foreground="{DynamicResource Foreground1}"
+                            Header="{x:Static lang:Resources.Quit}"
+                            Style="{DynamicResource MenuStyle}" />
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
 
             <Border Height="Auto" Style="{StaticResource WindowMainPanelStyle}">
                 <Grid Height="32" VerticalAlignment="Top">
