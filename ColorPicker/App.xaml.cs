@@ -69,10 +69,17 @@ public partial class App : Application
 		Global.HomePage = new();
 		Global.BookmarksPage = new();
 		Global.SettingsPage = new();
-		
+
 		if (!Global.Settings.IsFirstRun)
 		{
-			new MainWindow(IsSilentStart(e)).Show();
+			if (IsSilentStart(e))
+			{
+				_ = new MainWindow(IsSilentStart(e));
+			}
+			else
+			{
+				new MainWindow().Show();
+			}
 		}
 		else
 		{
