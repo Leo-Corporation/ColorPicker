@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using ColorPicker.UserControls;
 using Synethia;
 using System;
 using System.Windows;
@@ -39,6 +40,8 @@ namespace ColorPicker.Pages;
 public partial class ChromaticWheelPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
+	ColorInfo ColorInfo { get; set; } = null!;
+	DetailsControl DetailsControl = new(new(new(0,0,0)));
 
 	public ChromaticWheelPage()
 	{
@@ -51,6 +54,7 @@ public partial class ChromaticWheelPage : Page
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.Picker} > {Properties.Resources.ChromaticWheel}";
+		DetailsWrap.Children.Add(DetailsControl);
 		CircleBtn_Click(this, null);
 	}
 
@@ -108,17 +112,8 @@ public partial class ChromaticWheelPage : Page
 		ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = Color.FromRgb(colorInfo.RGB.R, colorInfo.RGB.G, colorInfo.RGB.B) };
 
 		ColorInfo = colorInfo;
-		RgbTxt.Text = $"{colorInfo.RGB.R}{Global.Settings.RgbSeparator}{colorInfo.RGB.G}{Global.Settings.RgbSeparator}{colorInfo.RGB.B}";
-		HexTxt.Text = $"#{colorInfo.HEX.Value}";
-		HsvTxt.Text = $"{colorInfo.HSV.H}, {colorInfo.HSV.S}, {colorInfo.HSV.V}";
-		HslTxt.Text = $"{colorInfo.HSL.H}, {colorInfo.HSL.S}, {colorInfo.HSL.L}";
-		CmykTxt.Text = $"{colorInfo.CMYK.C}, {colorInfo.CMYK.M}, {colorInfo.CMYK.Y}, {colorInfo.CMYK.K}";
-		XyzTxt.Text = $"{colorInfo.XYZ.X:0.00}..; {colorInfo.XYZ.Y:0.00}..; {colorInfo.XYZ.Z:0.00}..";
-		YiqTxt.Text = $"{colorInfo.YIQ.Y:0.00}..; {colorInfo.YIQ.I:0.00}..; {colorInfo.YIQ.Q:0.00}..";
-		YuvTxt.Text = $"{colorInfo.YUV.Y:0.00}..; {colorInfo.YUV.U:0.00}..; {colorInfo.YUV.V:0.00}..";
-		DecTxt.Text = colorInfo.DEC.Value.ToString();
+		DetailsControl.SetColorInfo(ColorInfo);
 	}
-	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
 	private void UnCheckAllButtons()
 	{
 		CircleBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -129,55 +124,11 @@ public partial class ChromaticWheelPage : Page
 	internal Button CheckedButton = null!;
 	internal void CheckButton(Button button) { button.Background = Global.GetColorFromResource("LightAccentColor"); CheckedButton = button; }
 
-	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
-	}
-
-	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
-	}
-
-	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
-	}
-
-	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
-	}
-
-	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HslTxt.Text);
-	}
-
-	private void CopyHsvBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HsvTxt.Text);
-	}
-
-	private void CopyHexBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(HexTxt.Text);
-	}
-
-	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(RgbTxt.Text);
-	}
 	public static event EventHandler<PageEventArgs> GoClick;
 
 	private void PreviewBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		Global.PalettePage.InitFromColor(ColorInfo);
 		GoClick?.Invoke(this, new(AppPages.ColorPalette));
-	}
-
-	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Clipboard.SetText(DecTxt.Text);
 	}
 }
