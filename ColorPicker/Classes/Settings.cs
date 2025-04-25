@@ -49,6 +49,7 @@ public class Settings
 		SupportedModels = ["gpt-3.5-turbo", "gpt-4"];
 		RgbSeparator = ";";
 		UseUpperCasesHex = false;
+		LaunchOnStart = false;
 	}
 
 	public Themes Theme { get; set; }
@@ -71,4 +72,5 @@ public class Settings
 	public string[]? SupportedModels { get; set; }
 	public string? RgbSeparator { get; set; }
 	public bool? UseUpperCasesHex { get; set; }
+	public bool? LaunchOnStart { get; set; }
 }

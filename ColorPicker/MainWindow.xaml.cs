@@ -38,9 +38,10 @@ namespace ColorPicker;
 /// </summary>
 public partial class MainWindow : Window
 {
-	public MainWindow()
+	public MainWindow(bool isSilent = false)
 	{
 		InitializeComponent();
+		if (isSilent) Hide();
 		InitUI();
 		GC.Collect();
 	}

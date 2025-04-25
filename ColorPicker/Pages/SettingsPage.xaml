@@ -534,6 +534,16 @@
                         Foreground="{DynamicResource Foreground1}"
                         Style="{DynamicResource CheckBoxStyle1}"
                         Unchecked="UpdateOnStartChk_Checked" />
+                    <CheckBox
+                        x:Name="LaunchOnStartChk"
+                        Margin="10 0 0 5"
+                        VerticalContentAlignment="Center"
+                        BorderThickness="2"
+                        Checked="LaunchOnStartChk_Checked"
+                        Content="{x:Static lang:Resources.LaunchOnStart}"
+                        Foreground="{DynamicResource Foreground1}"
+                        Style="{DynamicResource CheckBoxStyle1}"
+                        Unchecked="LaunchOnStartChk_Checked" />
                 </StackPanel>
             </Expander>
             <Expander
@@ -840,28 +850,28 @@
                     </StackPanel>
                 </Expander.Header>
 
-          <StackPanel Margin="10" Orientation="Horizontal">
+                <StackPanel Margin="10" Orientation="Horizontal">
                     <TextBlock
                         Margin="0 0 10 0"
                         VerticalAlignment="Center"
                         Text="{x:Static lang:Resources.Font}" />
-              
-                        <ComboBox
-                            x:Name="FontComboBox"
-                            MinWidth="100"
-                            MaxWidth="150"
-                            Margin="0"
-                            Padding="5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource AccentColor}"
-                            BorderThickness="0"
-                            Foreground="{DynamicResource Foreground1}"
-                            IsEditable="True"
-                            SelectionChanged="FontComboBox_SelectionChanged"
-                            Style="{DynamicResource ComboBoxStyle1}" />
-                   
+
+                    <ComboBox
+                        x:Name="FontComboBox"
+                        MinWidth="100"
+                        MaxWidth="150"
+                        Margin="0"
+                        Padding="5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource AccentColor}"
+                        BorderThickness="0"
+                        Foreground="{DynamicResource Foreground1}"
+                        IsEditable="True"
+                        SelectionChanged="FontComboBox_SelectionChanged"
+                        Style="{DynamicResource ComboBoxStyle1}" />
+
                     <TextBlock
                         Margin="10 0 10 0"
                         VerticalAlignment="Center"

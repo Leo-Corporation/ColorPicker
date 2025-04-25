@@ -121,7 +121,9 @@ public partial class SettingsPage : Page
 		BackgroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb(background.R, background.G, background.B) };
 
 		// Checkboxes
+		Global.Settings.LaunchOnStart ??= false;
 		UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
+		LaunchOnStartChk.IsChecked = Global.Settings.LaunchOnStart;
 		UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
 		UseSynethiaChk.IsChecked = Global.Settings.UseSynethia;
 
@@ -581,6 +583,11 @@ public partial class SettingsPage : Page
 	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/ColorPicker");
+	}
+
+	private void LaunchOnStartChk_Checked(object sender, RoutedEventArgs e)
+	{
+		Global.SetStartOnWindowsStart(LaunchOnStartChk.IsChecked ?? false);
 	}
 
 	private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

@@ -560,4 +560,36 @@ public static class Global
 		if (t < 1.0 / 6.0) return p + (q - p) * 6 * t;
 		return t < 1.0 / 2.0 ? q : t < 2.0 / 3.0 ? p + (q - p) * (2.0f / 3.0f - t) * 6 : p;
 	}
+
+	public static void SetStartOnWindowsStart(bool enabled)
+	{
+		if (enabled)
+		{
+			var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+			key?.SetValue("ColorPicker", GetStartRegistryValue());
+
+			Settings.LaunchOnStart = enabled;
+			XmlSerializerManager.SaveToXml(Settings, SettingsPath);
+			return;
+		}
+
+		var key2 = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+		key2?.DeleteValue("ColorPicker", false);
+		Settings.LaunchOnStart = enabled;
+		XmlSerializerManager.SaveToXml(Settings, SettingsPath);
+	}
+
+	private static string GetStartRegistryValue()
+	{
+		if (Environment.ProcessPath is not null)
+		{
+			return $"\"{Environment.ProcessPath}\" --silent";
+		}
+#if PORTABLE
+			return $"\"{AppContext.BaseDirectory}\\ColorPickerMaxPortable.exe\" --silent";
+#else
+		return $"\"{AppContext.BaseDirectory}\\ColorPicker.exe\" --silent";
+#endif
+	}
 }
