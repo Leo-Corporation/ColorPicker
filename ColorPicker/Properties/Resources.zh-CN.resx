@@ -825,4 +825,16 @@
   <data name="ImportShort" xml:space="preserve">
     <value>进口</value>
   </data>
+  <data name="LaunchOnStart" xml:space="preserve">
+    <value>在 Windows 启动时启动 ColorPicker</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>退出</value>
+  </data>
 </root>

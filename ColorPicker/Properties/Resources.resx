@@ -805,4 +805,16 @@
   <data name="ImportShort" xml:space="preserve">
     <value>Import</value>
   </data>
+  <data name="LaunchOnStart" xml:space="preserve">
+    <value>Launch ColorPicker on Windows start</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
 </root>
