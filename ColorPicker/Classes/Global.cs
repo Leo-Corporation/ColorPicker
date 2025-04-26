@@ -341,6 +341,9 @@ public static class Global
 			case Languages.zh_CN: // Chinese (CN)
 				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
 				break;
+			case Languages.ja_JP: // Japanese (JP)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja-JP"); // Change
+				break;
 			default: // No language
 				break;
 		}

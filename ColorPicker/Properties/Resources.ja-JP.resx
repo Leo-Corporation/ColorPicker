@@ -572,7 +572,7 @@
     <value>10進数</value>
   </data>
   <data name="DEC" xml:space="preserve">
-    <value>16進数</value>
+    <value>DEC</value>
   </data>
   <data name="CopyDEC" xml:space="preserve">
     <value>10進数値をコピー</value>
