@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColorPicker" xml:space="preserve">
+	<value>ColorPicker</value>
+  </data>
+  <data name="Hi" xml:space="preserve">
+	<value>こんにちは</value>
+  </data>
+  <data name="GoodAfternoon" xml:space="preserve">
+	<value>こんにちは</value>
+  </data>
+  <data name="GoodNight" xml:space="preserve">
+	<value>おやすみ</value>
+  </data>
+  <data name="GoodEvening" xml:space="preserve">
+	<value>こんばんは</value>
+  </data>
+  <data name="Pinned" xml:space="preserve">
+	<value>ピン留め</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+	<value>ホーム</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+	<value>設定</value>
+  </data>
+  <data name="History" xml:space="preserve">
+	<value>履歴</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+	<value>ツール</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+	<value>詳細</value>
+  </data>
+  <data name="Selector" xml:space="preserve">
+	<value>セレクタ</value>
+  </data>
+  <data name="Picker" xml:space="preserve">
+	<value>ピッカー</value>
+  </data>
+  <data name="RGB" xml:space="preserve">
+	<value>RGB</value>
+  </data>
+  <data name="HEX" xml:space="preserve">
+	<value>HEX</value>
+  </data>
+  <data name="HSV" xml:space="preserve">
+	<value>HSV</value>
+  </data>
+  <data name="HSL" xml:space="preserve">
+	<value>HSL</value>
+  </data>
+  <data name="CMYK" xml:space="preserve">
+	<value>CMYK</value>
+  </data>
+  <data name="XYZ" xml:space="preserve">
+	<value>XYZ</value>
+  </data>
+  <data name="YIQ" xml:space="preserve">
+	<value>YIQ</value>
+  </data>
+  <data name="YUV" xml:space="preserve">
+	<value>YUV</value>
+  </data>
+  <data name="Bookmarks" xml:space="preserve">
+	<value>ブックマーク</value>
+  </data>
+  <data name="ColorPickerMax" xml:space="preserve">
+	<value>ColorPicker Max</value>
+  </data>
+  <data name="ChromaticWheel" xml:space="preserve">
+	<value>カラーホイール</value>
+  </data>
+  <data name="ColorTools" xml:space="preserve">
+	<value>カラー ツール</value>
+  </data>
+  <data name="Creation" xml:space="preserve">
+	<value>作成</value>
+  </data>
+  <data name="Converter" xml:space="preserve">
+	<value>コンバータ</value>
+  </data>
+  <data name="TextTool" xml:space="preserve">
+	<value>テキスト</value>
+  </data>
+  <data name="Palette" xml:space="preserve">
+	<value>パレット</value>
+  </data>
+  <data name="Gradient" xml:space="preserve">
+	<value>グラデーション</value>
+  </data>
+  <data name="Circle" xml:space="preserve">
+	<value>丸</value>
+  </data>
+  <data name="Disc" xml:space="preserve">
+	<value>色相環</value>
+  </data>
+  <data name="Shades" xml:space="preserve">
+	<value>色調</value>
+  </data>
+  <data name="ColorValid" xml:space="preserve">
+	<value>色は有効です。</value>
+  </data>
+  <data name="InvalidColor" xml:space="preserve">
+	<value>色が無効です。</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+	<value>フォント</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+	<value>サイズ</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+	<value>前景色</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+	<value>背景色</value>
+  </data>
+  <data name="Contrast" xml:space="preserve">
+	<value>コントラスト</value>
+  </data>
+  <data name="Brightness" xml:space="preserve">
+	<value>輝度</value>
+  </data>
+  <data name="Hues" xml:space="preserve">
+	<value>色相</value>
+  </data>
+  <data name="From" xml:space="preserve">
+	<value>開始</value>
+  </data>
+  <data name="To" xml:space="preserve">
+	<value>終了</value>
+  </data>
+  <data name="Rotation" xml:space="preserve">
+	<value>回転</value>
+  </data>
+  <data name="DevTools" xml:space="preserve">
+	<value>開発者ツール</value>
+  </data>
+  <data name="CSS" xml:space="preserve">
+	<value>CSS</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+	<value>はじめに</value>
+  </data>
+  <data name="SuggestedActions" xml:space="preserve">
+	<value>クイック操作</value>
+  </data>
+  <data name="Discover" xml:space="preserve">
+	<value>検索</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+	<value>色の選択</value>
+  </data>
+  <data name="SelectChomaticDisc" xml:space="preserve">
+	<value>色相環から選択</value>
+  </data>
+  <data name="ConvertFromRGB" xml:space="preserve">
+	<value>RGBから変換</value>
+  </data>
+  <data name="GetContrast" xml:space="preserve">
+	<value>コントラスト比を取得</value>
+  </data>
+  <data name="GeneratePalette" xml:space="preserve">
+	<value>パレットの生成</value>
+  </data>
+  <data name="GenerateGradient" xml:space="preserve">
+	<value>グラデーションの生成/value>
+  </data>
+  <data name="RedP" xml:space="preserve">
+	<value>R</value>
+  </data>
+  <data name="GreenP" xml:space="preserve">
+	<value>G</value>
+  </data>
+  <data name="BlueP" xml:space="preserve">
+	<value>B</value>
+  </data>
+  <data name="EmptyBookmarks" xml:space="preserve">
+	<value>空のブックマーク</value>
+  </data>
+  <data name="Colors" xml:space="preserve">
+	<value>色</value>
+  </data>
+  <data name="Gradients" xml:space="preserve">
+	<value>グラデーション</value>
+  </data>
+  <data name="Palettes" xml:space="preserve">
+	<value>パレット</value>
+  </data>
+  <data name="EmptyHistoryMsg" xml:space="preserve">
+	<value>これらのブックマークを空にしてもよろしいですか? この操作は元に戻せません。</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+	<value>更新の確認</value>
+  </data>
+  <data name="Updates" xml:space="preserve">
+	<value>更新</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+	<value>インストール</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+	<value>テーマ</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+	<value>ライト</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+	<value>ダーク</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+	<value>ライセンス</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+	<value>適用</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+	<value>ライセンスの表示</value>
+  </data>
+  <data name="ChangeTheme" xml:space="preserve">
+	<value>カラーピッカーのテーマを変更。</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+	<value>言語</value>
+  </data>
+  <data name="NeedRestartToApplyChanges" xml:space="preserve">
+	<value>変更を適用するにはColorPickerを再起動する必要があります。今すぐ再起動しますか？</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+	<value>既定</value>
+  </data>
+  <data name="UpToDate" xml:space="preserve">
+	<value>ColorPicker は最新です。</value>
+  </data>
+  <data name="AvailableUpdates" xml:space="preserve">
+	<value>更新が利用可能です。</value>
+  </data>
+  <data name="InstallConfirmMsg" xml:space="preserve">
+	<value>更新をインストールするには、ColorPicker を再起動する必要があります。続行しますか?</value>
+  </data>
+  <data name="InstallVersion" xml:space="preserve">
+	<value>インストールバージョン</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+	<value>バージョン</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+	<value>ColorPicker の言語を変更。</value>
+  </data>
+  <data name="NotifyUpdates" xml:space="preserve">
+	<value>更新が利用可能になったときに通知を表示する</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+	<value>通知</value>
+  </data>
+  <data name="NotificationsDescription" xml:space="preserve">
+	<value>通知の設定。</value>
+  </data>
+  <data name="CheckUpdatesOnStart" xml:space="preserve">
+	<value>起動時に更新を確認する</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+	<value>起動時の開始ページ</value>
+  </data>
+  <data name="OnStart" xml:space="preserve">
+	<value>起動時</value>
+  </data>
+  <data name="OnStartDescription" xml:space="preserve">
+	<value>S起動時に適用される設定。</value>
+  </data>
+  <data name="DataPrivacy" xml:space="preserve">
+	<value>データとプライバシー</value>
+  </data>
+  <data name="DataDescription" xml:space="preserve">
+	<value>データとプライバシーの管理。</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+	<value>設定のインポート</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+	<value>設定をエクスポート</value>
+  </data>
+  <data name="SettingsExportedSucessMsg" xml:space="preserve">
+	<value>設定が正常にエクスポートされました。</value>
+  </data>
+  <data name="SettingsImportedMsg" xml:space="preserve">
+	<value>設定が正常にインポートされました。処理を完了するために、ColorPicker を再起動します。</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+	<value>設定のリセット</value>
+  </data>
+  <data name="SynethiaEnable" xml:space="preserve">
+	<value>Synethia カスタム エクスペリエンスを有効する。</value>
+  </data>
+  <data name="ResetSynethia" xml:space="preserve">
+	<value>Synethiaデータをリセット</value>
+  </data>
+  <data name="ResetSettingsConfirmation" xml:space="preserve">
+	<value>すべての設定をリセットしてもよろしいですか?</value>
+  </data>
+  <data name="SynethiaDeleteMsg" xml:space="preserve">
+	<value>Synethiaのすべてのデータをリセットしますか? 個人用のエクスペリエンスは失われます; この操作はキャンセルできません。</value>
+  </data>
+  <data name="ColorOptions" xml:space="preserve">
+	<value>色のオプション</value>
+  </data>
+  <data name="DefaultColorType" xml:space="preserve">
+	<value>既定の色の種類</value>
+  </data>
+  <data name="ColorOptionsDesc" xml:space="preserve">
+	<value>ColorPicker が色を処理する方法。</value>
+  </data>
+  <data name="KeyboardShortcuts" xml:space="preserve">
+	<value>キーボード ショートカット</value>
+  </data>
+  <data name="UseKeyboardShortcuts" xml:space="preserve">
+	<value>キーボード ショートカットを使用する</value>
+  </data>
+  <data name="EditShortcut" xml:space="preserve">
+	<value>ショートカットの編集</value>
+  </data>
+  <data name="PressKeys" xml:space="preserve">
+	<value>キーの組み合わせを押します。</value>
+  </data>
+  <data name="NeedRestartLabel" xml:space="preserve">
+	<value>変更を適用するには、ColorPicker を再起動する必要があります。</value>
+  </data>
+  <data name="ResetKeyboardShortcuts" xml:space="preserve">
+	<value>キーボード ショートカットのリセット</value>
+  </data>
+  <data name="StartSelection" xml:space="preserve">
+	<value>選択開始</value>
+  </data>
+  <data name="CopyColor" xml:space="preserve">
+	<value>色をコピー</value>
+  </data>
+  <data name="TextToolDesc" xml:space="preserve">
+	<value>テキストツールの設定。</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+	<value>最大</value>
+  </data>
+  <data name="FirstRunQuitMsg" xml:space="preserve">
+	<value>このウィンドウを無視して ColorPicker に進みますか?</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+	<value>次へ</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+	<value>スキップ</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+	<value>機能</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+	<value>同意</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+	<value>結構です</value>
+  </data>
+  <data name="IntroducingSynethia" xml:space="preserve">
+	<value>Synethiaの紹介</value>
+  </data>
+  <data name="SynethiaInfo" xml:space="preserve">
+	<value>Synethia は、ユーザーの体験をパーソナライズするアルゴリズムです。</value>
+  </data>
+  <data name="SynethiaDataInfo" xml:space="preserve">
+	<value>SynethiaはColorPickerでのみデータを収集します</value>
+  </data>
+  <data name="SynethiaAnalyze" xml:space="preserve">
+	<value>Synethiaはこのデータを分析してユニークな体験を提供します</value>
+  </data>
+  <data name="SynethiaHome" xml:space="preserve">
+	<value>ホームダッシュボードは使用状況に基づいて操作を推奨します</value>
+  </data>
+  <data name="SynethiaPrivacy" xml:space="preserve">
+	<value>お客様のデータは匿名でデバイスに保存されます。Léo Corporationにデータが送信されることはありません。</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+	<value>始める!</value>
+  </data>
+  <data name="WelcomeReady" xml:space="preserve">
+	<value>準備万端</value>
+  </data>
+  <data name="SelectorInfo" xml:space="preserve">
+    <value>ColorPickerのセレクター機能を使用すると、画面上の任意の色にカーソルを合わせてキーボードショートカットを押すだけで選択できます。選択した色はプレビューボックスに表示され、そのコードが希望する色の種類でクリップボードにコピーされます。</value>
+  </data>
+  <data name="ConverterInfo" xml:space="preserve">
+    <value>ColorPickerのコンバーター機能を使うと、任意のカラータイプを別のカラータイプに変換できます。カラータイプは、RGB、HEX、HSV、HSL、CMYK、XYZ、YIQ、YUVです。これらのいずれかの形式でカラーコードを入力すると、他の形式で対応するカラーコードが表示されます。</value>
+  </data>
+  <data name="GradientInfo" xml:space="preserve">
+    <value>ColorPickerのグラデーション機能を使うと、指定した回転角度で2段階のグラデーションをランダムに生成できます。グラデーションのプレビューとCSSコードを確認できます。また、グラデーションをCSSコードにエクスポートして、Webデザインプロジェクトで使用することもできます。</value>
+  </data>
+  <data name="WelcomeDesc" xml:space="preserve">
+    <value>色の選択、変換、生成のための究極のツール、ColorPicker へようこそ。</value>
+  </data>
+  <data name="XAML" xml:space="preserve">
+    <value>XAML</value>
+  </data>
+  <data name="KeyboardSelectionHint" xml:space="preserve">
+    <value>画面から色の選択を開始または停止するには、{0} を押します。</value>
+  </data>
+  <data name="CopyRGB" xml:space="preserve">
+    <value>RGB値をコピー</value>
+  </data>
+  <data name="CopyHEX" xml:space="preserve">
+    <value>HEX値をコピー</value>
+  </data>
+  <data name="CopyHSL" xml:space="preserve">
+    <value>HSL値をコピー</value>
+  </data>
+  <data name="CopyHSV" xml:space="preserve">
+    <value>HSV値をコピー</value>
+  </data>
+  <data name="CopyXYZ" xml:space="preserve">
+    <value>XYZ値をコピー</value>
+  </data>
+  <data name="CopyYIQ" xml:space="preserve">
+    <value>YIQ値をコピー</value>
+  </data>
+  <data name="CopyYUV" xml:space="preserve">
+    <value>YUV値をコピー</value>
+  </data>
+  <data name="CopyCMYK" xml:space="preserve">
+    <value>CMYK値をコピー</value>
+  </data>
+  <data name="GenerateColor" xml:space="preserve">
+    <value>ランダムな色を生成</value>
+  </data>
+  <data name="AddBookmark" xml:space="preserve">
+    <value>ブックマークに追加</value>
+  </data>
+  <data name="RemoveBookmark" xml:space="preserve">
+    <value>ブックマークから削除</value>
+  </data>
+  <data name="GenerateTextColors" xml:space="preserve">
+    <value>新しい色を生成</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="AIGeneration" xml:space="preserve">
+    <value>AI 生成</value>
+  </data>
+  <data name="AIGenerateColor" xml:space="preserve">
+    <value>AIで色を生成</value>
+  </data>
+  <data name="AISettings" xml:space="preserve">
+    <value>AI 生成設定のカスタマイズ。</value>
+  </data>
+  <data name="OpenAIKey" xml:space="preserve">
+    <value>OpenAI API キー</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>生成</value>
+  </data>
+  <data name="ProvideAPromptMsg" xml:space="preserve">
+    <value>AIにプロンプトを入力してください。</value>
+  </data>
+  <data name="ProvideAPIKey" xml:space="preserve">
+    <value>設定で API キーを定義してください。</value>
+  </data>
+  <data name="SingleColor" xml:space="preserve">
+    <value>単色</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>モデル</value>
+  </data>
+  <data name="NoApiKeyMsg" xml:space="preserve">
+    <value>AI 機能を使用するには、OpenAI API キーが必要です。</value>
+  </data>
+  <data name="Decimal" xml:space="preserve">
+    <value>10進数</value>
+  </data>
+  <data name="DEC" xml:space="preserve">
+    <value>16進数</value>
+  </data>
+  <data name="CopyDEC" xml:space="preserve">
+    <value>10進数値をコピー</value>
+  </data>
+  <data name="AiPrompts" xml:space="preserve">
+    <value>Ocean Breeze,Crimson Sunset,Enchanted Forest,Electric Dreams,Desert Mirage,Midnight Serenade,Neon Galaxy,Golden Harvest,Lavender Mist,Tropical Paradise,Fire and Ice,Mystic Moonlight,Emerald Elegance,Cherry Blossom,Aurora Australis,Steel City Lights,Vintage Romance,Sapphire Dreams,Amber Afterglow,Velvet Touch,Dandelion Wishes,Urban Jungle,Rose Petal Whispers,Icy Tundra,Chocolate Delight,Harbor Reflections,Whispering Wind,Vibrant Spectrum,Pastel Reverie,Moonlit Meadow</value>
+  </data>
+  <data name="GetIdeas" xml:space="preserve">
+    <value>アイデアの取得</value>
+  </data>
+  <data name="EditInSelector" xml:space="preserve">
+    <value>セレクターで編集</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>変換</value>
+  </data>
+  <data name="Harmonies" xml:space="preserve">
+    <value>ハーモニー</value>
+  </data>
+  <data name="GetHarmonies" xml:space="preserve">
+    <value>ハーモニーの取得</value>
+  </data>
+  <data name="Complementary" xml:space="preserve">
+    <value>補完的</value>
+  </data>
+  <data name="SplitComplementary" xml:space="preserve">
+    <value>分割補完</value>
+  </data>
+  <data name="Triadic" xml:space="preserve">
+    <value>三位一体</value>
+  </data>
+  <data name="Analogous" xml:space="preserve">
+    <value>類似</value>
+  </data>
+  <data name="Monochromatic" xml:space="preserve">
+    <value>モノクロ</value>
+  </data>
+  <data name="PortableNoAutoUpdates" xml:space="preserve">
+    <value>ポータブルモードでは自動更新は利用できません。ColorPicker Max を再度ダウンロードしてください。</value>
+  </data>
+  <data name="EmptyAiPlaceholder" xml:space="preserve">
+    <value>AIの力を使って色を生成するためのプロンプトを入力します</value>
+  </data>
+  <data name="RgbSeparator" xml:space="preserve">
+    <value>RGB セパレーター</value>
+  </data>
+  <data name="Angle" xml:space="preserve">
+    <value>角度</value>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="AmountToGenerate" xml:space="preserve">
+    <value>生成量</value>
+  </data>
+  <data name="FirstColor" xml:space="preserve">
+    <value>最初の色</value>
+  </data>
+  <data name="SecondColor" xml:space="preserve">
+    <value>2番目の色</value>
+  </data>
+  <data name="ImageExtractor" xml:space="preserve">
+    <value>画像抽出ツール</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="SelectImages" xml:space="preserve">
+    <value>画像の選択</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>選択</value>
+  </data>
+  <data name="RemoveImage" xml:space="preserve">
+    <value>画像の削除</value>
+  </data>
+  <data name="Frequence" xml:space="preserve">
+    <value>頻度</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>精度(無視するピクセル数)</value>
+  </data>
+  <data name="Pixels" xml:space="preserve">
+    <value>ピクセル</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>消去</value>
+  </data>
+  <data name="ExtractColors" xml:space="preserve">
+    <value>色の抽出</value>
+  </data>
+  <data name="ExtractionInProgress" xml:space="preserve">
+    <value>色を抽出中です。お待​​ちください。</value>
+  </data>
+  <data name="ExportToCSV" xml:space="preserve">
+    <value>CSV へエクスポート</value>
+  </data>
+  <data name="CommaSeparated" xml:space="preserve">
+    <value>カンマ区切り (,)</value>
+  </data>
+  <data name="SemiColonSeparated" xml:space="preserve">
+    <value>セミコロン区切り (;)</value>
+  </data>
+  <data name="SelectFormatItems" xml:space="preserve">
+    <value>各項目の形式を選択します。</value>
+  </data>
+  <data name="ExportShort" xml:space="preserve">
+    <value>エクスポート</value>
+  </data>
+  <data name="IncludeFrequence" xml:space="preserve">
+    <value>頻度を含める</value>
+  </data>
+  <data name="NumberColorDisplay" xml:space="preserve">
+    <value>表示する色の数</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>並べ替え</value>
+  </data>
+  <data name="ColorsWillDisplayHere" xml:space="preserve">
+    <value>抽出された色がここに表示されます。</value>
+  </data>
+  <data name="ContrastGrid" xml:space="preserve">
+    <value>コントラスト グリッド</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>スコア</value>
+  </data>
+  <data name="ScoreAA" xml:space="preserve">
+    <value>4.5+ (AA)</value>
+  </data>
+  <data name="ScoreAAA" xml:space="preserve">
+    <value>7+ (AAA)</value>
+  </data>
+  <data name="ScoreAll" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="ForegroundDetails" xml:space="preserve">
+    <value>前景色の詳細</value>
+  </data>
+  <data name="BackgroundDetails" xml:space="preserve">
+    <value>背景色の詳細</value>
+  </data>
+  <data name="UseUpperCasesHex" xml:space="preserve">
+    <value>HEXカラーには大文字を使用する</value>
+  </data>
+  <data name="AddNote" xml:space="preserve">
+    <value>メモの追加</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="HighlightColorGrid" xml:space="preserve">
+    <value>強調表示色</value>
+  </data>
+  <data name="DescribeColor" xml:space="preserve">
+    <value>色の説明</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="GetNameAi" xml:space="preserve">
+    <value>名前の生成</value>
+  </data>
+  <data name="EnterColor" xml:space="preserve">
+    <value>名前を生成する色を入力してください</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>コレクション</value>
+  </data>
+  <data name="AddToCollection" xml:space="preserve">
+    <value>コレクションに追加</value>
+  </data>
+  <data name="AddCollection" xml:space="preserve">
+    <value>コレクションを追加</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="AddTo" xml:space="preserve">
+    <value>{0} へ追加</value>
+  </data>
+  <data name="RemoveFrom" xml:space="preserve">
+    <value>{0} から削除</value>
+  </data>
+  <data name="RightClickCollectionMsg" xml:space="preserve">
+    <value>色を削除するには右クリックします</value>
+  </data>
+  <data name="DragImagesHere" xml:space="preserve">
+    <value>ここに画像をドラッグアンドドロップできます</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>カスタム</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="ExportBookmarksSuccess" xml:space="preserve">
+    <value>ブックマークは正常にエクスポートされました。</value>
+  </data>
+  <data name="ImportBookmarksSucess" xml:space="preserve">
+    <value>ブックマークは正常にインポートされました。</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>復元</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>ピン留め</value>
+  </data>
+  <data name="Unpin" xml:space="preserve">
+    <value>ピン留め解除</value>
+  </data>
+  <data name="NoBookmarks" xml:space="preserve">
+    <value>このカテゴリにはブックマークがありません</value>
+  </data>
+  <data name="NoBookmarksDesc" xml:space="preserve">
+    <value>ブックマークに保存した色がここに表示されます。</value>
+  </data>
+  <data name="ImportShort" xml:space="preserve">
+    <value>インポート</value>
+  </data>
+  <data name="LaunchOnStart" xml:space="preserve">
+    <value>Windowsの起動時にColorPickerを起動する</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>非表示</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>終了</value>
+  </data>
+</root>
