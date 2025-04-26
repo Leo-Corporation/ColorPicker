@@ -434,7 +434,7 @@ public partial class SettingsPage : Page
 
 	private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		Global.Settings.TextToolFont = FontComboBox.SelectedItem.ToString();
+		Global.Settings.TextToolFont = FontComboBox.SelectedItem.ToString() ?? "Arial";
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 	}
 
@@ -460,7 +460,7 @@ public partial class SettingsPage : Page
 
 		if (openFileDialog.ShowDialog() ?? true)
 		{
-			Global.Settings = XmlSerializerManager.LoadFromXml<Settings>(openFileDialog.FileName); // Import
+			Global.Settings = XmlSerializerManager.LoadFromXml<Settings>(openFileDialog.FileName) ?? new(); // Import
 			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 			MessageBox.Show(Properties.Resources.SettingsImportedMsg, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information); // Show error message
 

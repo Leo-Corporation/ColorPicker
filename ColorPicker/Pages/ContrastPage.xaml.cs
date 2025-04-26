@@ -95,10 +95,11 @@ public partial class ContrastPage : Page
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text),
 											 (byte)int.Parse(Txt4.Text)));
-		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
+		else return SelectedColorBtn == XyzBtn
+			? ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
-											 double.Parse(Txt3.Text)));
-		else return SelectedColorBtn == YuvBtn
+											 double.Parse(Txt3.Text)))
+			: SelectedColorBtn == YuvBtn
 			? ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)))

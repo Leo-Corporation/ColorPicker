@@ -35,6 +35,8 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class BookmarksPage : Page
 {
+	internal Button CheckedButton = null!;
+
 	public BookmarksPage()
 	{
 		InitializeComponent();
@@ -180,7 +182,6 @@ public partial class BookmarksPage : Page
 		Placeholder.Visibility = Visibility.Collapsed;
 	}
 
-	internal Button CheckedButton;
 	internal void CheckButton(Button button) { button.Background = Global.GetColorFromResource("LightAccentColor"); CheckedButton = button; }
 
 	internal void TextBtn_Click(object sender, RoutedEventArgs e)
@@ -231,7 +232,7 @@ public partial class BookmarksPage : Page
 
 		if (openFileDialog.ShowDialog() ?? true)
 		{
-			Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>(openFileDialog.FileName); // Import
+			Global.Bookmarks = XmlSerializerManager.LoadFromXml<Bookmarks>(openFileDialog.FileName) ?? new(); // Import
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
 			MessageBox.Show(Properties.Resources.ImportBookmarksSucess, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information); // Show error message
 

@@ -41,6 +41,9 @@ public partial class TextPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 
+	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
+	Button SelectedColorBtn { get; set; } = null!;
+
 	public TextPage()
 	{
 		InitializeComponent();
@@ -97,7 +100,7 @@ public partial class TextPage : Page
 			ColorTypes.DEC => DecBtn,
 			_ => RgbBtn
 		};
-		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString() ?? "Arial", ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
 		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 	}
 
@@ -135,10 +138,10 @@ public partial class TextPage : Page
 	{
 		try
 		{
-			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
+			RegularTxt.FontFamily = new(FontComboBox.SelectedItem.ToString() ?? "Arial"); // Set font family
 			ItalicTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
 			BoldTxt.FontFamily = new(FontComboBox.SelectedItem.ToString()); // Set font family
-			BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+			BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString() ?? "Arial", ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
 			BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 		}
 		catch { }
@@ -216,7 +219,7 @@ public partial class TextPage : Page
 		LoadConstrastUI();
 
 		// 4. Update the bookmark button
-		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString() ?? "Arial", ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
 		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 	}
 
@@ -229,9 +232,6 @@ public partial class TextPage : Page
 		Global.SynethiaConfig.ActionsInfo[3].UsageCount++; // Increment the usage counter
 	}
 
-	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
-
-	Button SelectedColorBtn { get; set; }
 	private void UnCheckAllButtons()
 	{
 		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -256,7 +256,7 @@ public partial class TextPage : Page
 		LoadInputUI();
 
 		// Update the bookmark button
-		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString() ?? "Arial", ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
 		BookmarkBtn.Content = !Global.Bookmarks.TextBookmarks.Contains(bookmarkText) ? "\uF1F6" : "\uF1F8";
 	}
 
@@ -488,7 +488,7 @@ public partial class TextPage : Page
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString(), ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
+		BookmarkText bookmarkText = new(FontComboBox.SelectedItem.ToString() ?? "Arial", ColorHelper.ColorConverter.RgbToHex(new(foreground.R, foreground.G, foreground.B)).Value, ColorHelper.ColorConverter.RgbToHex(new(background.R, background.G, background.B)).Value);
 		if (Global.Bookmarks.TextBookmarks.Contains(bookmarkText))
 		{
 			Global.Bookmarks.TextBookmarks.Remove(bookmarkText);
@@ -523,10 +523,11 @@ public partial class TextPage : Page
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text),
 											 (byte)int.Parse(Txt4.Text)));
-		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
+		else return SelectedColorBtn == XyzBtn
+			? ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
-											 double.Parse(Txt3.Text)));
-		else return SelectedColorBtn == YuvBtn
+											 double.Parse(Txt3.Text)))
+			: SelectedColorBtn == YuvBtn
 			? ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)))

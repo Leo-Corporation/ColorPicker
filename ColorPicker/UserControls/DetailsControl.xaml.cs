@@ -46,7 +46,7 @@ public partial class DetailsControl : UserControl
 	}
 
 	internal void LoadDetails()
-	{	
+	{
 		RgbTxt.Text = $"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}";
 		HexTxt.Text = $"#{ColorInfo.HEX.Value}";
 		HsvTxt.Text = $"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}";

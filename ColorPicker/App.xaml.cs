@@ -90,7 +90,6 @@ public partial class App : Application
 	private bool IsSilentStart(StartupEventArgs e)
 	{
 		if (e.Args.Length == 0) return false;
-		if (e.Args[0].ToLower() == "--silent") return true;
-		return false;
+		return e.Args[0].ToLower() == "--silent";
 	}
 }

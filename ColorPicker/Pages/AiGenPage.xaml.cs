@@ -189,8 +189,8 @@ public partial class AiGenPage : Page
 
 			if (completionResult.Successful)
 			{
-				var colors = JsonSerializer.Deserialize<string[]>(completionResult.Choices.First().Message.Content);
-				LoadBorders(colors);
+				var colors = JsonSerializer.Deserialize<string[]>(completionResult.Choices.First().Message.Content ?? "");
+				LoadBorders(colors ?? []);
 			}
 		}
 		catch { }
