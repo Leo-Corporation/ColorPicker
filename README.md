@@ -117,3 +117,4 @@ Special thanks to:
 
 - [@OCTIPI1](https://github.com/OCTIPI1) for Italian
 - [@wcxu21](https://github.com/wcxu21) for Simplified Chinese
+- [@coolvitto](https://github.com/coolvitto) for Japanese
