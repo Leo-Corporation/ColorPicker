@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "ColorPicker Max"
-#define MyAppVersion "6.7.0.2504"
-#define MyAppFullVersion "6.7.0.2504"
+#define MyAppVersion "6.7.1.2504"
+#define MyAppFullVersion "6.7.1.2504"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://leocorporation.dev/"
 #define MyAppExeName "ColorPicker.exe"
@@ -39,6 +39,7 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
 ; Remove the line below if there are compilation errors
 Name: "chinesesimplified"; MessagesFile: "Languages\ChineseSimplified.isl"
 
