@@ -223,6 +223,7 @@
                             <ComboBoxItem Content="English (United States)" />
                             <ComboBoxItem Content="Français (France)" />
                             <ComboBoxItem Content="中文（简体）" />
+                            <ComboBoxItem Content="日本語（日本）" />
                         </ComboBox>
                         <Button
                             x:Name="LangApplyBtn"

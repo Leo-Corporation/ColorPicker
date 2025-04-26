@@ -35,6 +35,16 @@ public class Bookmarks
 	public List<Gradient> GradientBookmarks { get; set; } = null!;
 	public List<BookmarkText> TextBookmarks { get; set; } = null!;
 	public List<ColorCollection>? ColorCollections { get; set; }
+
+	public Bookmarks()
+	{
+		ColorBookmarks = [];
+		ColorBookmarksNotes = [];
+		PaletteBookmarks = [];
+		GradientBookmarks = [];
+		TextBookmarks = [];
+		ColorCollections = [];
+	}
 }
 
 public class BookmarkText : IEquatable<BookmarkText>

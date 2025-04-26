@@ -36,7 +36,7 @@ public partial class ColorDetailsWindow : Window
 {
 	ColorInfo ColorInfo { get; init; }
 	SolidColorBrush BackgroundSolidBrush { get; init; }
-	SolidColorBrush HoverForegroundSolidBrush { get; set; }
+	SolidColorBrush HoverForegroundSolidBrush { get; set; } = null!;
 	public ColorDetailsWindow(SolidColorBrush color)
 	{
 		InitializeComponent();

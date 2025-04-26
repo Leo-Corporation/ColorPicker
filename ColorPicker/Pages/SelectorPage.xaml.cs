@@ -48,7 +48,7 @@ public partial class SelectorPage : Page
 	internal MiniPicker miniPicker = new(); // MiniPicker window
 	ColorInfo ColorInfo { get; set; } = null!;
 
-	DetailsControl DetailsControl { get; set; } = new(new(new(0,0,0))); // Details control
+	DetailsControl DetailsControl { get; set; } = new(new(new(0, 0, 0))); // Details control
 	public SelectorPage()
 	{
 		InitializeComponent();
@@ -451,9 +451,9 @@ public partial class SelectorPage : Page
 
 	private void AddRemoveBookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Global.Bookmarks.ColorBookmarks.Contains( $"#{ColorInfo.HEX.Value}"))
+		if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
 		{
-			int i = Global.Bookmarks.ColorBookmarks.IndexOf( $"#{ColorInfo.HEX.Value}");
+			int i = Global.Bookmarks.ColorBookmarks.IndexOf($"#{ColorInfo.HEX.Value}");
 			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
 			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
 			BookmarkBtn.Content = "\uF1F6";
@@ -462,7 +462,7 @@ public partial class SelectorPage : Page
 
 			return;
 		}
-		Global.Bookmarks.ColorBookmarks.Add( $"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
+		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
 		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
 		BookmarkBtn.Content = "\uF1F8";
 		AddRemoveBookmarkBtn.Content = Properties.Resources.RemoveBookmark;

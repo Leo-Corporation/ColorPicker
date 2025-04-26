@@ -92,7 +92,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "6.7.0.2504";
+	public static string Version => "6.7.1.2504";
 
 	public static string HiSentence
 	{
@@ -341,6 +341,9 @@ public static class Global
 			case Languages.zh_CN: // Chinese (CN)
 				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
 				break;
+			case Languages.ja_JP: // Japanese (JP)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja-JP"); // Change
+				break;
 			default: // No language
 				break;
 		}
@@ -557,8 +560,7 @@ public static class Global
 	{
 		if (t < 0) t += 1;
 		if (t > 1) t -= 1;
-		if (t < 1.0 / 6.0) return p + (q - p) * 6 * t;
-		return t < 1.0 / 2.0 ? q : t < 2.0 / 3.0 ? p + (q - p) * (2.0f / 3.0f - t) * 6 : p;
+		return t < 1.0 / 6.0 ? p + (q - p) * 6 * t : t < 1.0 / 2.0 ? q : t < 2.0 / 3.0 ? p + (q - p) * (2.0f / 3.0f - t) * 6 : p;
 	}
 
 	public static void SetStartOnWindowsStart(bool enabled)

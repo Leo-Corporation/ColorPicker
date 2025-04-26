@@ -47,7 +47,7 @@ public static class XmlSerializerManager
 				using StreamReader reader = new(path);
 
 				// Deserialize the object from the file
-				T obj = (T)serializer.Deserialize(reader);
+				T? obj = (T?)serializer.Deserialize(reader);
 
 				// Return the object
 				return obj;

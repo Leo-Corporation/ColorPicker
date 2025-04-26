@@ -40,6 +40,9 @@ namespace ColorPicker.Pages;
 public partial class GradientPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
+	Gradient CurrentGradient { get; set; } = null!;
+	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
+	Button SelectedColorBtn { get; set; } = null!;
 
 	public GradientPage()
 	{
@@ -132,7 +135,6 @@ public partial class GradientPage : Page
 	}
 
 	internal System.Drawing.Color from, to;
-	Gradient CurrentGradient { get; set; }
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		var bg = ForegroundBorder.Background as SolidColorBrush;
@@ -194,9 +196,7 @@ public partial class GradientPage : Page
 		ColorSelector.IsOpen = true;
 		isColor1 = false;
 	}
-	ColorInfo ColorInfo { get; set; } = new(new(0, 0, 0));
 	bool isColor1 = false;
-	Button SelectedColorBtn { get; set; }
 	private void UnCheckAllButtons()
 	{
 		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };
@@ -472,10 +472,11 @@ public partial class GradientPage : Page
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text),
 											 (byte)int.Parse(Txt4.Text)));
-		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
+		else return SelectedColorBtn == XyzBtn
+			? ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
-											 double.Parse(Txt3.Text)));
-		else return SelectedColorBtn == YuvBtn
+											 double.Parse(Txt3.Text)))
+			: SelectedColorBtn == YuvBtn
 			? ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)))

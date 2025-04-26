@@ -41,6 +41,9 @@ namespace ColorPicker.Pages;
 public partial class PalettePage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
+	internal ColorInfo ColorInfo { get; set; } = null!;
+	internal Button SelectedColorBtn { get; set; } = null!;
+
 	public PalettePage()
 	{
 		InitializeComponent();
@@ -74,7 +77,6 @@ public partial class PalettePage : Page
 			_ => RgbBtn
 		}, null);
 	}
-	internal ColorInfo ColorInfo { get; set; }
 
 	private RGB ConvertToRgb()
 	{
@@ -92,10 +94,11 @@ public partial class PalettePage : Page
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text),
 											 (byte)int.Parse(Txt4.Text)));
-		else if (SelectedColorBtn == XyzBtn) return ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
+		else return SelectedColorBtn == XyzBtn
+			? ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
-											 double.Parse(Txt3.Text)));
-		else return SelectedColorBtn == YuvBtn
+											 double.Parse(Txt3.Text)))
+			: SelectedColorBtn == YuvBtn
 			? ColorHelper.ColorConverter.YuvToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)))
@@ -106,7 +109,7 @@ public partial class PalettePage : Page
 											 double.Parse(Txt3.Text)));
 	}
 
-	internal Button SelectedColorBtn { get; set; }
+
 	private void UnCheckAllButtons()
 	{
 		RgbBtn.Background = new SolidColorBrush { Color = Colors.Transparent };

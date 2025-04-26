@@ -41,7 +41,7 @@ public partial class ChromaticWheelPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 	ColorInfo ColorInfo { get; set; } = null!;
-	DetailsControl DetailsControl = new(new(new(0,0,0)));
+	readonly DetailsControl DetailsControl = new(new(new(0, 0, 0)));
 
 	public ChromaticWheelPage()
 	{
@@ -58,7 +58,7 @@ public partial class ChromaticWheelPage : Page
 		CircleBtn_Click(this, null);
 	}
 
-	private void CircleBtn_Click(object sender, RoutedEventArgs e)
+	private void CircleBtn_Click(object sender, RoutedEventArgs? e)
 	{
 		UnCheckAllButtons();
 		CheckButton(CircleBtn);
