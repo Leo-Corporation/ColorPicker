@@ -31,90 +31,140 @@
 
 ![Banner](https://github.com/Leo-Corporation/LeoCorp-Docs/raw/master/Images/ColorPicker%20Max%20Banner.png)
 
-ColorPicker Max is a powerful and intuitive color selection and manipulation tool that is designed to make working with color easier and more efficient than ever before. With its wide range of features and tools, ColorPicker Max offers an unprecedented level of control and customization over every aspect of color selection and manipulation.
+**ColorPicker Max** is a feature-rich and user-friendly color tool built for Windows using **.NET 8** and **WPF**. Whether you're a designer creating palettes or a developer working on UI contrast, ColorPicker Max simplifies every aspect of color manipulation.
 
-The app allows you to select a specific color using different sliders, pick a color from a pixel on the screen, or even choose a color randomly. All of the color's details are available in a dedicated panel, including RGB, HEX, HSL, HSV, CMYK, XYZ, YIQ, and YUV values, and hovering over the values reveals a copy button for easy copying to the clipboard. ColorPicker Max also includes a chromatic wheel for easy color selection and a wide range of color tools and converters, including the ability to convert between different color types and preview the results in real-time.
-
-ColorPicker Max also offers a range of creation tools, such as the ability to generate color palettes and gradients, making it easy to create and customize your own unique color schemes. The app also includes a dedicated text tool, which allows you to set the font, font size, text foreground and background color, and get the contrast ratio between the foreground and background color.
-
-The user interface of ColorPicker Max is designed to be easy to use and intuitive, with a mesh gradient background that adapts to the light or dark theme. The app is also highly customizable, with the ability to set your default color type, page on start, keyboard shortcuts, and more.
-
-Overall, ColorPicker Max is a comprehensive color selection and manipulation tool that offers an unprecedented level of customization and control, making it the perfect choice for designers, artists, and anyone who works with color on a regular basis.
-
-ColorPicker is written in C# .NET 8 using WPF.
+You can select colors using a pixel picker, random generator, or sliders, and then explore a wide array of detailed color formats. With real-time conversion, gradient and palette generation, and intuitive tools for font and contrast checking, ColorPicker Max is a must-have for anyone working with colors.
 
 ## Download
 
 ### Setup
 
-Click on the first link below to download the setup of ColorPicker Max.
-
-- [Download Setup](https://tinyurl.com/DownloadColorPickerMax)
-- [Latest Release Changelog](https://github.com/Leo-Corporation/ColorPicker/releases)
+-   [Download Setup (Installer)](https://tinyurl.com/DownloadColorPickerMax)
+-   [Changelog & Releases](https://github.com/Leo-Corporation/ColorPicker/releases)
 
 ### Portable
 
-Be aware that some features, such as automatic updates are not available in portable mode. Click on the link below to download the portable version of ColorPicker Max.
+> ⚠ Some features (e.g., automatic updates) are not available in the portable version.
 
-- [Donwload Portable](https://www.mediafire.com/file/k4lvwqxtv1kmmvh/ColorPickerMaxPortable.exe/file)
+-   [Download Portable](https://www.mediafire.com/file/k4lvwqxtv1kmmvh/ColorPickerMaxPortable.exe/file)
 
 ## Features
 
-**Top Features of ColorPicker Max:**
+### Color Selection and Management
 
-1. Advanced color selection options, including sliders, pixel picking, and random selection.
-2. Detailed color information panel with RGB, HEX, HSL, HSV, CMYK, XYZ, YIQ, and YUV values.
-3. Chromatic wheel for easy color selection and multiple wheel options.
-4. Color converter tool with support for multiple color types and automatic text field population.
-5. Text tool for selecting fonts and foreground/background colors, with contrast ratio calculation.
-6. Color palette creation with options for different shades, brightness, and hues.
-7. Gradient generator with adjustable parameters and CSS export.
-8. Bookmarking system for saving colors, palettes, and gradients.
-9. Customizable settings, including theme, language, default color type, and keyboard shortcuts.
-10. Dashboard: see the most relevant features displayed, and access least relevant features in the "Discover" section. (Powered by [Synethia](http://synethia.leocorporation.dev/))
+<picture>
+  <source srcset=".github/images/screens/1B.png" media="(prefers-color-scheme: dark)"          />
+    <img
+      src=".github/images/screens/1.png"
+      alt="A screenshot of Selector page of ColorPicker Max"
+    />
+</picture>
+
+ColorPicker Max offers three distinct methods for choosing colors: you can capture a hue directly from any pixel on your screen with the pixel picker tool, fine-tune precise values via adjustable RGB or HSL sliders, or instantly spark new ideas with the random color generator.
+
+Once a color is selected, you’ll see its representation in RGB, HEX, HSL, HSV, CMYK, XYZ, YIQ, and YUV formats. Hover over any value to reveal a one-click copy button, making it effortless to transfer exact color codes into your projects.
+
+Plus, you can convert any color between supported formats in real time. As you adjust one model (for example, HSL), all other fields update instantly, and you can preview the changes on an on-screen swatch before copying the converted value.
+
+### Chromatic Wheel
+
+An interactive chromatic wheel lets you visually explore color relationships. Multiple wheel styles are available so you can switch between classic hue‐saturation layouts or alternative presentations, ensuring you always find the perfect shade.
+
+### Text Tool
+
+<picture>
+  <source srcset=".github/images/screens/6B.png" media="(prefers-color-scheme: dark)"          />
+    <img
+      src=".github/images/screens/6.png"
+      alt="A screenshot of Text Tool page of ColorPicker Max"
+    />
+</picture>
+
+Test typography and contrast in one place: choose foreground and background colors, pick a font and size, and immediately view the resulting text sample alongside its WCAG-compliant contrast ratio. This ensures your designs remain accessible and visually clear.
+
+### Palette Generator
+
+<picture>
+  <source srcset=".github/images/screens/3B.png" media="(prefers-color-scheme: dark)"          />
+    <img
+      src=".github/images/screens/3.png"
+      alt="A screenshot of Palette page of ColorPicker Max"
+    />
+</picture>
+
+Build complete color schemes from a single base hue. ColorPicker Max generates coordinated palettes with variations in shades, tints, tones, and complementary hues. Save your custom palettes for future projects and quickly switch between them as needed.
+
+### Gradient Creator
+
+<picture>
+  <source srcset=".github/images/screens/4B.png" media="(prefers-color-scheme: dark)"          />
+    <img
+      src=".github/images/screens/4.png"
+      alt="A screenshot of Gradient page of ColorPicker Max"
+    />
+</picture>
+
+Design linear gradients by adjusting their positions, and setting the gradient angle. A live preview updates as you work, and you can export the final gradient directly as CSS code for seamless integration into your web designs.
+
+### AI Color Suggestions
+
+<picture>
+  <source srcset=".github/images/screens/5B.png" media="(prefers-color-scheme: dark)"          />
+    <img
+      src=".github/images/screens/5.png"
+      alt="A screenshot of AI Generation page of ColorPicker Max"
+    />
+</picture>
+
+Leverage AI to generate color suggestions based on natural language prompts. Simply describe the color you envision, and the AI will provide a selection of colors that match your description. This feature is perfect for brainstorming sessions or when you're looking for inspiration.
+
+### Bookmarks
+
+Save individual colors, entire palettes, or gradients to your bookmarks library. Access your most important assets at any time from the dedicated bookmarks section, keeping your creative workflow organized and efficient.
+
+### Customizable Settings
+
+Tailor the application to your preferences by choosing between light and dark themes, selecting your language, defining the default color format, and configuring keyboard shortcuts. You can also specify which page opens at startup for immediate access to your favorite tool.
 
 ## Keyboard shortcuts
 
-The default keyboard shortcuts are:
+| Action                     | Shortcut           |
+| -------------------------- | ------------------ |
+| Start/Stop color selection | <kbd>Shift+S</kbd> |
+| Copy selected screen color | <kbd>Shift+C</kbd> |
 
-- <kbd>Shift+S</kbd> - Start/Stop color selection
-- <kbd>Shift+C</kbd> - Copy the selected color on screen
-
-> **Note**
-> You can disable or edit keyboard shortcuts in settings.
+> You can modify or disable these shortcuts in the **Settings** page.
 
 ## Contribute
 
-To contribute to the project, you'll need:
+To build and contribute:
 
-- Visual Studio 2022 v17.0 or higher
-  - .NET Desktop Development
-  - Git
-- .NET 6
-- (_optional_) Inno Setup v6.1 or higher
+-   **Visual Studio 2022** (v17.0+)
 
-[Click here](https://github.com/Leo-Corporation/ColorPicker/blob/main/CONTRIBUTING.md) to see the full guidelines.
+    -   Workloads: **.NET Desktop Development**, **Git**
+
+-   **.NET 8 SDK**
+-   (_Optional_) **Inno Setup** v6.1+ for installer generation
+
+👉 [See full contribution guide](https://github.com/Leo-Corporation/ColorPicker/blob/main/CONTRIBUTING.md)
 
 ## Branches
 
-This Git repo has always two branches:
+| Branch  | Description                  | Current version                                                                                         |
+| ------- | ---------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `main`  | Stable release versions      | ![Latest Release](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker)                  |
+| `vNext` | Preview of upcoming features | ![Pre-Release](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker?include_prereleases) |
 
-|  Name   |                                                                      Release                                                                      |              Description               |
-| :-----: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------: |
-| `main`  |                      ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker)                      |            Stable versions             |
-| `vNext` | ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/Leo-Corporation/ColorPicker?include_prereleases) | Next version of ColorPicker (unstable) |
-
-> **Note**
-> Other branches can also - of course - exist.
+> Additional branches may exist for hotfixes or experiments.
 
 ## License
 
-This project is under the [MIT License](https://github.com/Leo-Corporation/ColorPicker/blob/main/LICENSE).
+This project is licensed under the [MIT License](https://github.com/Leo-Corporation/ColorPicker/blob/main/LICENSE).
 
-## Translations Credits
+## Translation Credits
 
-Special thanks to:
+Huge thanks to our community translators:
 
-- [@OCTIPI1](https://github.com/OCTIPI1) for Italian
-- [@wcxu21](https://github.com/wcxu21) for Simplified Chinese
-- [@coolvitto](https://github.com/coolvitto) for Japanese
+-   🇮🇹 [@OCTIPI1](https://github.com/OCTIPI1) — Italian
+-   🇨🇳 [@wcxu21](https://github.com/wcxu21) — Simplified Chinese
+-   🇯🇵 [@coolvitto](https://github.com/coolvitto) — Japanese
