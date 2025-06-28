@@ -308,6 +308,6 @@ public partial class AiGenPage : Page
 
 	private void NameTxt_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 	{
-		Clipboard.SetText(_colorName);
+		Clipboard.SetDataObject(_colorName);
 	}
 }

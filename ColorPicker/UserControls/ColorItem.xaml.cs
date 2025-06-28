@@ -85,7 +85,7 @@ public partial class ColorItem : UserControl
 
 	private void ColorBorder_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 	{
-		Clipboard.SetText(Global.Settings.DefaultColorType switch
+		Clipboard.SetDataObject(Global.Settings.DefaultColorType switch
 		{
 			ColorTypes.HEX => ColorInfo.HEX.Value,
 			ColorTypes.HSV => $"{ColorInfo.HSV.H},{ColorInfo.HSV.S},{ColorInfo.HSV.V}",
@@ -123,47 +123,47 @@ public partial class ColorItem : UserControl
 
 	private void CopyRGB_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}");
+		Clipboard.SetDataObject($"{ColorInfo.RGB.R}{Global.Settings.RgbSeparator}{ColorInfo.RGB.G}{Global.Settings.RgbSeparator}{ColorInfo.RGB.B}");
 	}
 
 	private void CopyHEX_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"#{ColorInfo.HEX.Value}");
+		Clipboard.SetDataObject($"#{ColorInfo.HEX.Value}");
 	}
 
 	private void CopyHSV_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}");
+		Clipboard.SetDataObject($"{ColorInfo.HSV.H}, {ColorInfo.HSV.S}, {ColorInfo.HSV.V}");
 	}
 
 	private void CopyHSL_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}");
+		Clipboard.SetDataObject($"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}");
 	}
 
 	private void CopyCMYK_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
+		Clipboard.SetDataObject($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
 	}
 
 	private void CopyXYZ_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
+		Clipboard.SetDataObject($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
 	}
 
 	private void CopyYIQ_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
+		Clipboard.SetDataObject($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
 	}
 
 	private void CopyYUV_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
+		Clipboard.SetDataObject($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
 	}
 
 	private void CopyDEC_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(ColorInfo.DEC.Value.ToString());
+		Clipboard.SetDataObject(ColorInfo.DEC.Value.ToString());
 	}
 
 	private void MoreBtn_Click(object sender, RoutedEventArgs e)

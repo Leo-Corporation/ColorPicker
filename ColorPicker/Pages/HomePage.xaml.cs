@@ -141,7 +141,7 @@ public partial class HomePage : Page
 			border.MouseLeftButtonUp += (o, e) =>
 			{
 				var info = new ColorInfo(new(hues[j].R, hues[j].G, hues[j].B));
-				Clipboard.SetText(Global.Settings.DefaultColorType switch
+				Clipboard.SetDataObject(Global.Settings.DefaultColorType switch
 				{
 					ColorTypes.HEX => info.HEX.Value,
 					ColorTypes.HSV => $"{info.HSV.H},{info.HSV.S},{info.HSV.V}",

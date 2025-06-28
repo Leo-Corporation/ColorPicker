@@ -164,7 +164,7 @@ public partial class GradientPage : Page
 
 	private void CopyCssBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(CssCodeTxt.Text);
+		Clipboard.SetDataObject(CssCodeTxt.Text);
 	}
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
@@ -184,7 +184,7 @@ public partial class GradientPage : Page
 
 	private void CopyXamlBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(XamlCodeTxt.Text);
+		Clipboard.SetDataObject(XamlCodeTxt.Text);
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
