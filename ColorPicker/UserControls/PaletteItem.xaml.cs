@@ -104,7 +104,7 @@ public partial class PaletteItem : UserControl
 				border.MouseLeftButtonUp += (o, e) =>
 				{
 					var info = new ColorInfo(new(shades[j].R, shades[j].G, shades[j].B));
-					Clipboard.SetText(Global.Settings.DefaultColorType switch
+					Clipboard.SetDataObject(Global.Settings.DefaultColorType switch
 					{
 						ColorTypes.HEX => info.HEX.Value,
 						ColorTypes.HSV => $"{info.HSV.H},{info.HSV.S},{info.HSV.V}",
@@ -131,7 +131,7 @@ public partial class PaletteItem : UserControl
 
 	private void ColorBorder_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 	{
-		Clipboard.SetText(Global.Settings.DefaultColorType switch
+		Clipboard.SetDataObject(Global.Settings.DefaultColorType switch
 		{
 			ColorTypes.HEX => ColorInfo.HEX.Value,
 			ColorTypes.HSV => $"{ColorInfo.HSV.H},{ColorInfo.HSV.S},{ColorInfo.HSV.V}",

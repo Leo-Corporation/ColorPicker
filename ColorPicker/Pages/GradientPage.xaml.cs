@@ -164,7 +164,7 @@ public partial class GradientPage : Page
 
 	private void CopyCssBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(CssCodeTxt.Text);
+		Clipboard.SetDataObject(CssCodeTxt.Text);
 	}
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
@@ -184,7 +184,7 @@ public partial class GradientPage : Page
 
 	private void CopyXamlBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(XamlCodeTxt.Text);
+		Clipboard.SetDataObject(XamlCodeTxt.Text);
 	}
 
 	private void BackgroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -468,11 +468,12 @@ public partial class GradientPage : Page
 		else if (SelectedColorBtn == HslBtn) return ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text)));
-		else if (SelectedColorBtn == CmykBtn) return ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
+		else return SelectedColorBtn == CmykBtn
+			? ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text),
-											 (byte)int.Parse(Txt4.Text)));
-		else return SelectedColorBtn == XyzBtn
+											 (byte)int.Parse(Txt4.Text)))
+			: SelectedColorBtn == XyzBtn
 			? ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)))

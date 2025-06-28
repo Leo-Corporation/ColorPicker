@@ -60,46 +60,46 @@ public partial class DetailsControl : UserControl
 
 	private void CopyYiqBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
+		Clipboard.SetDataObject($"{ColorInfo.YIQ.Y}; {ColorInfo.YIQ.I}; {ColorInfo.YIQ.Q}");
 	}
 
 	private void CopyXyzBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
+		Clipboard.SetDataObject($"{ColorInfo.XYZ.X}; {ColorInfo.XYZ.Y}; {ColorInfo.XYZ.Z}");
 	}
 
 	private void CopyCmykBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
+		Clipboard.SetDataObject($"{ColorInfo.CMYK.C}, {ColorInfo.CMYK.M}, {ColorInfo.CMYK.Y}, {ColorInfo.CMYK.K}");
 	}
 
 	private void CopyYuvBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
+		Clipboard.SetDataObject($"{ColorInfo.YUV.Y}; {ColorInfo.YUV.U}; {ColorInfo.YUV.V}");
 	}
 
 	private void CopyHslBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(HslTxt.Text);
+		Clipboard.SetDataObject(HslTxt.Text);
 	}
 
 	private void CopyHsvBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(HsvTxt.Text);
+		Clipboard.SetDataObject(HsvTxt.Text);
 	}
 
 	private void CopyHexBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(HexTxt.Text);
+		Clipboard.SetDataObject(HexTxt.Text);
 	}
 
 	private void CopyRgbBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(RgbTxt.Text);
+		Clipboard.SetDataObject(RgbTxt.Text);
 	}
 
 	private void CopyDecBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Clipboard.SetText(DecTxt.Text);
+		Clipboard.SetDataObject(DecTxt.Text);
 	}
 }

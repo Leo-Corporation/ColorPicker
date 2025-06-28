@@ -202,7 +202,7 @@ public partial class SelectorPage : Page
 		{
 			if (!Global.Settings.UseKeyboardShortcuts) return;
 
-			Clipboard.SetText(Global.Settings.DefaultColorType switch
+			Clipboard.SetDataObject(Global.Settings.DefaultColorType switch
 			{
 				ColorTypes.HEX => $"#{ColorInfo.HEX.Value}",
 				ColorTypes.HSL => $"{ColorInfo.HSL.H}, {ColorInfo.HSL.S}, {ColorInfo.HSL.L}",

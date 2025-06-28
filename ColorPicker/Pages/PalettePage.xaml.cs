@@ -90,11 +90,12 @@ public partial class PalettePage : Page
 		else if (SelectedColorBtn == HslBtn) return ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text)));
-		else if (SelectedColorBtn == CmykBtn) return ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
+		else return SelectedColorBtn == CmykBtn
+			? ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text),
-											 (byte)int.Parse(Txt4.Text)));
-		else return SelectedColorBtn == XyzBtn
+											 (byte)int.Parse(Txt4.Text)))
+			: SelectedColorBtn == XyzBtn
 			? ColorHelper.ColorConverter.XyzToRgb(new(double.Parse(Txt1.Text),
 											 double.Parse(Txt2.Text),
 											 double.Parse(Txt3.Text)))
@@ -312,7 +313,7 @@ public partial class PalettePage : Page
 				border.MouseLeftButtonUp += (o, e) =>
 				{
 					var info = new ColorInfo(new(shades[j].R, shades[j].G, shades[j].B));
-					Clipboard.SetText(Global.Settings.DefaultColorType switch
+					Clipboard.SetDataObject(Global.Settings.DefaultColorType switch
 					{
 						ColorTypes.HEX => info.HEX.Value,
 						ColorTypes.HSV => $"{info.HSV.H},{info.HSV.S},{info.HSV.V}",
