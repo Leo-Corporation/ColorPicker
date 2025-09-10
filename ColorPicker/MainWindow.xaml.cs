@@ -82,6 +82,8 @@ public partial class MainWindow : MicaWindow
 			if (!Global.Settings.UseSynethia) Global.SynethiaConfig = Global.Default;
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml");
+			LeavePage();
+			Application.Current.Shutdown(); // Close the application
 		};
 
 		WindowState = Global.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal;
@@ -225,12 +227,6 @@ public partial class MainWindow : MicaWindow
 			default:
 				break;
 		}
-	}
-
-	private void CloseBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		Application.Current.Shutdown(); // Close the application
 	}
 
 	private void PinBtn_Click(object sender, RoutedEventArgs e)
