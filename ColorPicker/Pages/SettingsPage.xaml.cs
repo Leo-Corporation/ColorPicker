@@ -25,7 +25,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Gma.System.MouseKeyHook;
 using Microsoft.Win32;
-using OpenAI.Managers;
+using Betalgo.Ranul.OpenAI.Managers;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using Synethia;
