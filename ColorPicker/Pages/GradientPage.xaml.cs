@@ -469,7 +469,7 @@ public partial class GradientPage : Page
 		ExpandTailwindBtn.Content = TailwindBorder.Visibility == Visibility.Visible ? "\uF2B7" : "\uF2A4";
 	}
 
-    private ColorHelper.RGB ConvertToRgb()
+	private ColorHelper.RGB ConvertToRgb()
 	{
 		if (SelectedColorBtn == RgbBtn) return new((byte)int.Parse(Txt1.Text),
 			(byte)int.Parse(Txt2.Text),
@@ -478,10 +478,11 @@ public partial class GradientPage : Page
 		else if (SelectedColorBtn == HsvBtn) return ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text)));
-		else if (SelectedColorBtn == HslBtn) return ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
+		else return SelectedColorBtn == HslBtn
+			? ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
-											 (byte)int.Parse(Txt3.Text)));
-		else return SelectedColorBtn == CmykBtn
+											 (byte)int.Parse(Txt3.Text)))
+			: SelectedColorBtn == CmykBtn
 			? ColorHelper.ColorConverter.CmykToRgb(new((byte)int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text),

@@ -22,12 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using ColorHelper;
-using ColorPicker.Classes;
-using ColorPicker.UserControls;
+using Betalgo.Ranul.OpenAI;
 using Betalgo.Ranul.OpenAI.Managers;
 using Betalgo.Ranul.OpenAI.ObjectModels;
 using Betalgo.Ranul.OpenAI.ObjectModels.RequestModels;
+using ColorHelper;
+using ColorPicker.Classes;
+using ColorPicker.UserControls;
 using Synethia;
 using System;
 using System.Globalization;
@@ -37,7 +38,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using Betalgo.Ranul.OpenAI;
 
 namespace ColorPicker.Pages;
 /// <summary>

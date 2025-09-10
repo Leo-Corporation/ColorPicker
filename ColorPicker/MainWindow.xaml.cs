@@ -243,7 +243,7 @@ public partial class MainWindow : MicaWindow
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 	}
 
-	
+
 	private void HomePageBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();

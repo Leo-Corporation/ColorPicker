@@ -21,11 +21,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Betalgo.Ranul.OpenAI.Managers;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Gma.System.MouseKeyHook;
 using Microsoft.Win32;
-using Betalgo.Ranul.OpenAI.Managers;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using Synethia;
