@@ -654,6 +654,54 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             FontWeight="ExtraBold"
+                            Text="{x:Static lang:Resources.TailwindCSS}" />
+                        <Button
+                            x:Name="CopyTailwindBtn"
+                            Grid.Column="2"
+                            Margin="5 0"
+                            Padding="5"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource Background3}"
+                            Click="CopyTailwindBtn_Click"
+                            Content="&#xF32C;"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                            Foreground="{DynamicResource Foreground1}"
+                            Style="{DynamicResource DefaultButton}" />
+                        <Button
+                            x:Name="ExpandTailwindBtn"
+                            Padding="5"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            Click="ExpandTailwindBtn_Click"
+                            Content="&#xF2A4;"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                            Foreground="{DynamicResource Foreground1}"
+                            Style="{DynamicResource DefaultButton}" />
+                    </StackPanel>
+                    <Border
+                        x:Name="TailwindBorder"
+                        Background="{DynamicResource Background2}"
+                        CornerRadius="5"
+                        Visibility="Collapsed">
+                        <TextBox
+                            x:Name="TailwindCodeTxt"
+                            Width="210"
+                            Margin="3"
+                            Padding="3"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource DarkGray}"
+                            IsReadOnly="True"
+                            TextWrapping="WrapWithOverflow" />
+                    </Border>
+
+                    <StackPanel Margin="0 10 0 10" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="5 0 0 0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            FontWeight="ExtraBold"
                             Text="{x:Static lang:Resources.XAML}" />
                         <Button
                             x:Name="CopyXamlBtn"

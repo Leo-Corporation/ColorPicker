@@ -115,6 +115,8 @@ public partial class GradientPage : Page
 			$"\t</Rectangle.RenderTransform>\n" +
 			$"</Rectangle>";
 
+		TailwindCodeTxt.Text = $"bg-gradient-to-[{(double.IsNaN(angle) ? 0 : angle)}deg] from-[#{color1}] to-[#{color2}]";
+
 		CurrentGradient = new(
 			[
 				new(ColorHelper.ColorConverter.RgbToHex(new(from.R, from.G, from.B)).Value, 0),
@@ -456,7 +458,18 @@ public partial class GradientPage : Page
 		ExpandXamlBtn.Content = XamlBorder.Visibility == Visibility.Visible ? "\uF2B7" : "\uF2A4";
 	}
 
-	private ColorHelper.RGB ConvertToRgb()
+	private void CopyTailwindBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Clipboard.SetDataObject(TailwindCodeTxt.Text);
+	}
+
+	private void ExpandTailwindBtn_Click(object sender, RoutedEventArgs e)
+	{
+		TailwindBorder.Visibility = TailwindBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+		ExpandTailwindBtn.Content = TailwindBorder.Visibility == Visibility.Visible ? "\uF2B7" : "\uF2A4";
+	}
+
+    private ColorHelper.RGB ConvertToRgb()
 	{
 		if (SelectedColorBtn == RgbBtn) return new((byte)int.Parse(Txt1.Text),
 			(byte)int.Parse(Txt2.Text),
