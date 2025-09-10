@@ -1,7 +1,8 @@
-﻿<Window
+﻿<controls:MicaWindow
     x:Class="ColorPicker.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:MicaWPF.Lite.Controls;assembly=MicaWPF.Lite"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lang="clr-namespace:ColorPicker.Properties"
     xmlns:local="clr-namespace:ColorPicker"
@@ -12,27 +13,13 @@
     Height="600"
     MinWidth="500"
     MinHeight="500"
-    AllowsTransparency="True"
-    Background="Transparent"
     FontFamily="/Fonts/#Hauora"
     Foreground="{DynamicResource Foreground1}"
     Icon="Images/CPM.png"
     ResizeMode="CanResize"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
     mc:Ignorable="d">
-    <WindowChrome.WindowChrome>
-        <WindowChrome
-            x:Name="MainWindowChrome"
-            CaptionHeight="32"
-            ResizeBorderThickness="10" />
-    </WindowChrome.WindowChrome>
-
-    <Window.Resources>
-        <Style x:Key="WindowMainPanelStyle" TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-        </Style>
+    <controls:MicaWindow.Resources>
         <Style x:Key="TitleBarButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Padding" Value="0" />
@@ -68,777 +55,668 @@
                 </Setter.Value>
             </Setter>
         </Style>
+    </controls:MicaWindow.Resources>
 
-        <Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="border"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            CornerRadius="5"
-                            SnapsToDevicePixels="true">
-                            <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Focusable="False"
-                                RecognizesAccessKey="True" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="Red" />
-                                <Setter Property="Foreground" Value="White" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="Red" />
-                                <Setter Property="Foreground" Value="White" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
-    <Window.Effect>
-        <DropShadowEffect
-            BlurRadius="10"
-            Opacity="0.4"
-            RenderingBias="Performance"
-            ShadowDepth="0"
-            Color="Black" />
-    </Window.Effect>
-    <Border
-        Name="WindowBorder"
-        Margin="10"
-        d:Background="#fff"
-        Background="{DynamicResource BackgroundImg}"
-        BorderThickness="0"
-        CornerRadius="5">
-        <Grid VerticalAlignment="Stretch">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <tb:TaskbarIcon
-                x:Name="myNotifyIcon"
-                IconSource="pack://application:,,,/Images/CPM.png"
-                MenuActivation="LeftOrRightClick"
-                PopupActivation="DoubleClick"
-                ToolTipText="ColorPicker Max"
-                Visibility="Visible">
-                <tb:TaskbarIcon.ContextMenu>
-                    <ContextMenu>
-                        <ContextMenu.Template>
-                            <ControlTemplate>
-                                <Border
-                                    Padding="5"
-                                    Background="{DynamicResource Background1}"
-                                    CornerRadius="5">
-                                    <ScrollViewer
-                                        Uid="ScrollViewer_9"
-                                        CanContentScroll="True"
-                                        Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,
-                                                                                      TypeInTargetAssembly={x:Type FrameworkElement}}}">
-                                        <ItemsPresenter
-                                            Margin="{TemplateBinding Padding}"
-                                            KeyboardNavigation.DirectionalNavigation="Cycle"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                    </ScrollViewer>
-                                </Border>
-                            </ControlTemplate>
-                        </ContextMenu.Template>
-                        <MenuItem
-                            x:Name="ShowMenu"
-                            Click="ShowMenu_Click"
-                            Foreground="{DynamicResource Foreground1}"
-                            Header="{x:Static lang:Resources.Show}"
-                            Style="{DynamicResource MenuStyle}" />
-                        <MenuItem
-                            x:Name="HideMenu"
-                            Click="HideMenu_Click"
-                            Foreground="{DynamicResource Foreground1}"
-                            Header="{x:Static lang:Resources.Hide}"
-                            Style="{DynamicResource MenuStyle}" />
-
-                        <Separator Foreground="{DynamicResource Foreground1}" />
-                        <MenuItem
-                            x:Name="QuitMenu"
-                            Click="QuitMenu_Click"
-                            Foreground="{DynamicResource Foreground1}"
-                            Header="{x:Static lang:Resources.Quit}"
-                            Style="{DynamicResource MenuStyle}" />
-                    </ContextMenu>
-                </tb:TaskbarIcon.ContextMenu>
-            </tb:TaskbarIcon>
-
-            <Border Height="Auto" Style="{StaticResource WindowMainPanelStyle}">
-                <Grid Height="32" VerticalAlignment="Top">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        Grid.Column="1"
-                        Padding="5 2"
-                        VerticalAlignment="Center"
-                        Background="{DynamicResource CardBackground}"
-                        CornerRadius="10">
-                        <TextBlock
-                            x:Name="VersionTxt"
-                            d:Text="5.4.0.2308"
-                            FontSize="10"
-                            FontWeight="SemiBold"
-                            Foreground="{DynamicResource DarkGray}" />
-                    </Border>
-                    <Button
-                        x:Name="PinBtn"
-                        Grid.Column="2"
-                        Width="46"
-                        Height="32"
-                        Background="Transparent"
-                        Click="PinBtn_Click"
-                        Content="&#xF602;"
-                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                        FontSize="14"
-                        Foreground="{DynamicResource Foreground1}"
-                        RenderOptions.EdgeMode="Aliased"
-                        Style="{StaticResource TitleBarButtonStyle}">
-                        <Button.ToolTip>
-                            <ToolTip x:Name="PinTooltip" Content="{x:Static lang:Resources.Pin}" />
-                        </Button.ToolTip>
-                    </Button>
-                    <Button
-                        x:Name="MinimizeBtn"
-                        Grid.Column="3"
-                        Width="46"
-                        Height="32"
-                        Background="Transparent"
-                        Click="MinimizeBtn_Click"
-                        Content="&#xFC75;"
-                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                        FontSize="14"
-                        Foreground="{DynamicResource Foreground1}"
-                        RenderOptions.EdgeMode="Aliased"
-                        Style="{StaticResource TitleBarButtonStyle}">
-                        <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Minimize}" />
-                        </Button.ToolTip>
-                    </Button>
-                    <Button
-                        x:Name="MaximizeRestoreBtn"
-                        Grid.Column="4"
-                        Width="46"
-                        Height="32"
-                        Background="Transparent"
-                        Click="MaximizeRestoreBtn_Click"
-                        Content="&#xFA40;"
-                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                        FontSize="14"
-                        Foreground="{DynamicResource Foreground1}"
-                        RenderOptions.EdgeMode="Aliased"
-                        Style="{StaticResource TitleBarButtonStyle}">
-                        <Button.ToolTip>
-                            <ToolTip x:Name="MaximizeTooltip" Content="{x:Static lang:Resources.Maximize}" />
-                        </Button.ToolTip>
-                    </Button>
-                    <Button
-                        x:Name="CloseBtn"
-                        Grid.Column="5"
-                        Width="46"
-                        Height="32"
-                        Background="Transparent"
-                        Click="CloseBtn_Click"
-                        Content="&#xF36B;"
-                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                        FontSize="14"
-                        Foreground="{DynamicResource Foreground1}"
-                        RenderOptions.EdgeMode="Aliased"
-                        Style="{StaticResource TitleBarCloseButtonStyle}">
-                        <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Close}" />
-                        </Button.ToolTip>
-                    </Button>
-                </Grid>
+    <controls:MicaWindow.TitleBarContent>
+        <StackPanel
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Border
+                Grid.Column="1"
+                Padding="5 2"
+                VerticalAlignment="Center"
+                Background="{DynamicResource CardBackground}"
+                CornerRadius="10"
+                WindowChrome.IsHitTestVisibleInChrome="False">
+                <TextBlock
+                    x:Name="VersionTxt"
+                    d:Text="5.4.0.2308"
+                    FontSize="10"
+                    FontWeight="SemiBold"
+                    Foreground="{DynamicResource DarkGray}" />
             </Border>
-            <Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}">
-                <Grid x:Name="MainGrid">
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="GridRow1" Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="24" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="1" Grid.ColumnSpan="3">
+            <Button
+                x:Name="PinBtn"
+                Grid.Column="2"
+                Width="46"
+                Height="24"
+                Background="Transparent"
+                Click="PinBtn_Click"
+                Content="&#xF602;"
+                FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                FontSize="14"
+                Foreground="{DynamicResource Foreground1}"
+                RenderOptions.EdgeMode="Aliased"
+                Style="{StaticResource TitleBarButtonStyle}">
+                <Button.ToolTip>
+                    <ToolTip x:Name="PinTooltip" Content="{x:Static lang:Resources.Pin}" />
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+    </controls:MicaWindow.TitleBarContent>
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <tb:TaskbarIcon
+            x:Name="myNotifyIcon"
+            IconSource="pack://application:,,,/Images/CPM.png"
+            MenuActivation="LeftOrRightClick"
+            PopupActivation="DoubleClick"
+            ToolTipText="ColorPicker Max"
+            Visibility="Visible">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <ContextMenu.Template>
+                        <ControlTemplate>
+                            <Border
+                                Padding="5"
+                                Background="{DynamicResource Background1}"
+                                CornerRadius="5">
+                                <ScrollViewer
+                                    Uid="ScrollViewer_9"
+                                    CanContentScroll="True"
+                                    Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer,
+                                                                                  TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                    <ItemsPresenter
+                                        Margin="{TemplateBinding Padding}"
+                                        KeyboardNavigation.DirectionalNavigation="Cycle"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </ContextMenu.Template>
+                    <MenuItem
+                        x:Name="ShowMenu"
+                        Click="ShowMenu_Click"
+                        Foreground="{DynamicResource Foreground1}"
+                        Header="{x:Static lang:Resources.Show}"
+                        Style="{DynamicResource MenuStyle}" />
+                    <MenuItem
+                        x:Name="HideMenu"
+                        Click="HideMenu_Click"
+                        Foreground="{DynamicResource Foreground1}"
+                        Header="{x:Static lang:Resources.Hide}"
+                        Style="{DynamicResource MenuStyle}" />
+
+                    <Separator Foreground="{DynamicResource Foreground1}" />
+                    <MenuItem
+                        x:Name="QuitMenu"
+                        Click="QuitMenu_Click"
+                        Foreground="{DynamicResource Foreground1}"
+                        Header="{x:Static lang:Resources.Quit}"
+                        Style="{DynamicResource MenuStyle}" />
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+        <Border Grid.Row="1">
+            <Grid x:Name="MainGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="GridRow1" Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1" Grid.ColumnSpan="3">
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="0 10 0 0"
+                        FontSize="36"
+                        FontWeight="ExtraBold"
+                        Text="{x:Static lang:Resources.ColorPicker}" />
+                    <TextBlock
+                        x:Name="HelloTxt"
+                        Grid.Column="1"
+                        FontSize="16"
+                        FontWeight="ExtraBold"
+                        Text="{x:Static lang:Resources.ColorPicker}" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="SideBar"
+                    Grid.Row="1"
+                    Grid.Column="1">
+                    <StackPanel Name="SideBarTop">
                         <TextBlock
-                            Grid.Column="1"
-                            Margin="0 10 0 0"
-                            FontSize="36"
-                            FontWeight="ExtraBold"
-                            Text="{x:Static lang:Resources.ColorPicker}" />
+                            Margin="0 10"
+                            FontWeight="Bold"
+                            Text="{x:Static lang:Resources.Pinned}" />
+                        <RadioButton
+                            x:Name="HomePageBtn"
+                            HorizontalContentAlignment="Left"
+                            Background="Transparent"
+                            BorderThickness="1"
+                            Click="HomePageBtn_Click"
+                            GroupName="NavBar"
+                            Style="{DynamicResource NavBarButton}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    Width="32"
+                                    Height="32"
+                                    Padding="7"
+                                    CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush>
+                                            <GradientStop Offset="0" Color="#59ADFF" />
+                                            <GradientStop Offset="1" Color="#5161FF" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock
+                                        x:Name="HomeIconTxt"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Filled"
+                                        FontSize="18"
+                                        Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                                        Text="&#xF488;" />
+                                </Border>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="10 0 0 0"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource Foreground1}"
+                                    Text="{x:Static lang:Resources.Home}" />
+                            </Grid>
+
+                            <RadioButton.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="HomeIconTxt"
+                                                Storyboard.TargetProperty="FontSize"
+                                                From="12"
+                                                To="18"
+                                                Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </RadioButton.Triggers>
+                        </RadioButton>
+                        <RadioButton
+                            x:Name="BookmarksPageBtn"
+                            Margin="0 5 0 0"
+                            HorizontalContentAlignment="Left"
+                            Background="Transparent"
+                            BorderThickness="1"
+                            Click="BookmarksPageBtn_Click"
+                            GroupName="NavBar"
+                            Style="{DynamicResource NavBarButton}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    Width="32"
+                                    Height="32"
+                                    Padding="7"
+                                    CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush>
+                                            <GradientStop Offset="0" Color="#9B00FF" />
+                                            <GradientStop Offset="1" Color="#2144E0" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock
+                                        x:Name="HistoryIconTxt"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Filled"
+                                        FontSize="18"
+                                        Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Text="&#xF1F6;" />
+                                </Border>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="10 0 0 0"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource Foreground1}"
+                                    Text="{x:Static lang:Resources.Bookmarks}" />
+                            </Grid>
+
+                            <RadioButton.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimationUsingKeyFrames
+                                                AccelerationRatio="0.5"
+                                                BeginTime="00:00:00"
+                                                Storyboard.TargetName="HistoryIconTxt"
+                                                Storyboard.TargetProperty="Margin">
+                                                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="10,0,0,0" />
+                                                <SplineThicknessKeyFrame KeyTime="00:00:0.3" Value="0" />
+                                            </ThicknessAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </RadioButton.Triggers>
+                        </RadioButton>
+                        <RadioButton
+                            x:Name="SettingsPageBtn"
+                            Margin="0 5 0 0"
+                            HorizontalContentAlignment="Left"
+                            Background="Transparent"
+                            BorderThickness="1"
+                            Click="SettingsPageBtn_Click"
+                            GroupName="NavBar"
+                            Style="{DynamicResource NavBarButton}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Border Padding="7" CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush>
+                                            <GradientStop Offset="0" Color="#B1B1B1" />
+                                            <GradientStop Offset="1" Color="#343C51" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock
+                                        x:Name="SettingsIconTxt"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Filled"
+                                        FontSize="18"
+                                        Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Text="&#xF6B3;">
+                                        <TextBlock.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform x:Name="SettingsRotator" Angle="0" />
+                                            </TransformGroup>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                </Border>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="10 0 0 0"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource Foreground1}"
+                                    Text="{x:Static lang:Resources.Settings}" />
+                            </Grid>
+
+                            <RadioButton.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="SettingsRotator"
+                                                Storyboard.TargetProperty="Angle"
+                                                From="360"
+                                                To="0"
+                                                Duration="0:0:0.4" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </RadioButton.Triggers>
+                        </RadioButton>
+
                         <TextBlock
-                            x:Name="HelloTxt"
-                            Grid.Column="1"
-                            FontSize="16"
-                            FontWeight="ExtraBold"
-                            Text="{x:Static lang:Resources.ColorPicker}" />
+                            Margin="0 10"
+                            FontWeight="Bold"
+                            Text="{x:Static lang:Resources.Tools}" />
                     </StackPanel>
-                    <StackPanel
-                        x:Name="SideBar"
-                        Grid.Row="1"
-                        Grid.Column="1">
-                        <StackPanel Name="SideBarTop">
-                            <TextBlock
-                                Margin="0 10"
-                                FontWeight="Bold"
-                                Text="{x:Static lang:Resources.Pinned}" />
-                            <RadioButton
-                                x:Name="HomePageBtn"
-                                HorizontalContentAlignment="Left"
+                    <ScrollViewer
+                        x:Name="ActionsScrollViewer"
+                        HorizontalScrollBarVisibility="Disabled"
+                        Style="{DynamicResource ScrollViewerStyle}"
+                        VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="ToolsStackPanel">
+                            <Button
+                                x:Name="PickerBtn"
+                                Height="30"
+                                Margin="0 2"
+                                Padding="5"
+                                HorizontalContentAlignment="Stretch"
                                 Background="Transparent"
-                                BorderThickness="1"
-                                Click="HomePageBtn_Click"
-                                GroupName="NavBar"
-                                Style="{DynamicResource NavBarButton}">
+                                BorderThickness="0"
+                                Click="PickerBtn_Click"
+                                Foreground="{DynamicResource AccentColor}"
+                                Style="{DynamicResource DefaultButton}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="16" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <Border
-                                        Width="32"
-                                        Height="32"
-                                        Padding="7"
-                                        CornerRadius="5">
-                                        <Border.Background>
-                                            <LinearGradientBrush>
-                                                <GradientStop Offset="0" Color="#59ADFF" />
-                                                <GradientStop Offset="1" Color="#5161FF" />
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                        <TextBlock
-                                            x:Name="HomeIconTxt"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Filled"
-                                            FontSize="18"
-                                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
-                                            Text="&#xF488;" />
-                                    </Border>
+                                    <TextBlock
+                                        x:Name="PickerIconTxt"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                                        FontSize="16"
+                                        Text="&#xFD3F;" />
                                     <TextBlock
                                         Grid.Column="1"
-                                        Margin="10 0 0 0"
+                                        Margin="5 0"
+                                        HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         FontSize="14"
-                                        FontWeight="Bold"
-                                        Foreground="{DynamicResource Foreground1}"
-                                        Text="{x:Static lang:Resources.Home}" />
+                                        FontWeight="ExtraBold"
+                                        Text="{x:Static lang:Resources.Picker}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                                        FontSize="12"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Text="&#xF2A4;">
+                                        <TextBlock.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform x:Name="PickerRotator" Angle="0" />
+                                            </TransformGroup>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
                                 </Grid>
 
-                                <RadioButton.Triggers>
+                                <Button.Triggers>
                                     <EventTrigger RoutedEvent="MouseEnter">
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation
-                                                    Storyboard.TargetName="HomeIconTxt"
+                                                    Storyboard.TargetName="PickerIconTxt"
                                                     Storyboard.TargetProperty="FontSize"
-                                                    From="12"
-                                                    To="18"
-                                                    Duration="0:0:0.2" />
+                                                    From="0"
+                                                    To="16"
+                                                    Duration="0:0:0.3" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger>
-                                </RadioButton.Triggers>
-                            </RadioButton>
-                            <RadioButton
-                                x:Name="BookmarksPageBtn"
-                                Margin="0 5 0 0"
-                                HorizontalContentAlignment="Left"
+                                </Button.Triggers>
+                            </Button>
+                            <StackPanel x:Name="PickerPanel" Visibility="Collapsed">
+                                <RadioButton
+                                    x:Name="SelectorPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="SelectorPageBtn_Click"
+                                    Content="{x:Static lang:Resources.Selector}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource AccentColor}"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                                <RadioButton
+                                    x:Name="ChromaticPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="ChromaticPageBtn_Click"
+                                    Content="{x:Static lang:Resources.ChromaticWheel}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource AccentColor}"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                            </StackPanel>
+                            <Button
+                                x:Name="ColorToolsBtn"
+                                Height="30"
+                                Margin="0 2"
+                                Padding="5"
+                                HorizontalContentAlignment="Stretch"
                                 Background="Transparent"
-                                BorderThickness="1"
-                                Click="BookmarksPageBtn_Click"
-                                GroupName="NavBar"
-                                Style="{DynamicResource NavBarButton}">
+                                BorderThickness="0"
+                                Click="ColorToolsBtn_Click"
+                                Foreground="{DynamicResource AccentColor}"
+                                Style="{DynamicResource DefaultButton}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="16" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <Border
-                                        Width="32"
-                                        Height="32"
-                                        Padding="7"
-                                        CornerRadius="5">
-                                        <Border.Background>
-                                            <LinearGradientBrush>
-                                                <GradientStop Offset="0" Color="#9B00FF" />
-                                                <GradientStop Offset="1" Color="#2144E0" />
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                        <TextBlock
-                                            x:Name="HistoryIconTxt"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Filled"
-                                            FontSize="18"
-                                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Text="&#xF1F6;" />
-                                    </Border>
+                                    <TextBlock
+                                        x:Name="ColorToolsIconTxt"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                                        FontSize="16"
+                                        Text="&#xF82F;" />
                                     <TextBlock
                                         Grid.Column="1"
-                                        Margin="10 0 0 0"
+                                        Margin="5 0"
+                                        HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         FontSize="14"
-                                        FontWeight="Bold"
-                                        Foreground="{DynamicResource Foreground1}"
-                                        Text="{x:Static lang:Resources.Bookmarks}" />
+                                        FontWeight="ExtraBold"
+                                        Text="{x:Static lang:Resources.ColorTools}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                                        FontSize="12"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Text="&#xF2A4;">
+                                        <TextBlock.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform x:Name="ColorToolsRotator" Angle="0" />
+                                            </TransformGroup>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
                                 </Grid>
 
-                                <RadioButton.Triggers>
+                                <Button.Triggers>
                                     <EventTrigger RoutedEvent="MouseEnter">
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ThicknessAnimationUsingKeyFrames
-                                                    AccelerationRatio="0.5"
                                                     BeginTime="00:00:00"
-                                                    Storyboard.TargetName="HistoryIconTxt"
+                                                    Storyboard.TargetName="ColorToolsIconTxt"
                                                     Storyboard.TargetProperty="Margin">
-                                                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="10,0,0,0" />
+                                                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="20,0,0,0" />
                                                     <SplineThicknessKeyFrame KeyTime="00:00:0.3" Value="0" />
                                                 </ThicknessAnimationUsingKeyFrames>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger>
-                                </RadioButton.Triggers>
-                            </RadioButton>
-                            <RadioButton
-                                x:Name="SettingsPageBtn"
-                                Margin="0 5 0 0"
-                                HorizontalContentAlignment="Left"
+                                </Button.Triggers>
+                            </Button>
+                            <StackPanel x:Name="ColorToolsPanel" Visibility="Collapsed">
+                                <RadioButton
+                                    x:Name="ConverterPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="ConverterPageBtn_Click"
+                                    Content="{x:Static lang:Resources.Converter}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource AccentColor}"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                                <RadioButton
+                                    x:Name="TextPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="TextPageBtn_Click"
+                                    Content="{x:Static lang:Resources.TextTool}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource AccentColor}"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                                <RadioButton
+                                    x:Name="ContrastGridPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="ContrastGridPageBtn_Click"
+                                    Content="{x:Static lang:Resources.ContrastGrid}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource AccentColor}"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                                <RadioButton
+                                    x:Name="ImageExtractorPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="ImageExtractorPageBtn_Click"
+                                    Content="{x:Static lang:Resources.ImageExtractor}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource AccentColor}"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                            </StackPanel>
+                            <Button
+                                x:Name="CreationBtn"
+                                Height="30"
+                                Margin="0 2"
+                                Padding="5"
+                                HorizontalContentAlignment="Stretch"
                                 Background="Transparent"
-                                BorderThickness="1"
-                                Click="SettingsPageBtn_Click"
-                                GroupName="NavBar"
-                                Style="{DynamicResource NavBarButton}">
+                                BorderThickness="0"
+                                Click="CreationBtn_Click"
+                                Foreground="{DynamicResource AccentColor}"
+                                Style="{DynamicResource DefaultButton}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="16" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <Border Padding="7" CornerRadius="5">
-                                        <Border.Background>
-                                            <LinearGradientBrush>
-                                                <GradientStop Offset="0" Color="#B1B1B1" />
-                                                <GradientStop Offset="1" Color="#343C51" />
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                        <TextBlock
-                                            x:Name="SettingsIconTxt"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Filled"
-                                            FontSize="18"
-                                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Text="&#xF6B3;">
-                                            <TextBlock.RenderTransform>
-                                                <TransformGroup>
-                                                    <RotateTransform x:Name="SettingsRotator" Angle="0" />
-                                                </TransformGroup>
-                                            </TextBlock.RenderTransform>
-                                        </TextBlock>
-                                    </Border>
+                                    <TextBlock
+                                        x:Name="CreationIconTxt"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                                        FontSize="16"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Text="&#xF596;">
+                                        <TextBlock.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform x:Name="CreationIconRotator" Angle="0" />
+                                            </TransformGroup>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
                                     <TextBlock
                                         Grid.Column="1"
-                                        Margin="10 0 0 0"
+                                        Margin="5 0"
+                                        HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         FontSize="14"
-                                        FontWeight="Bold"
-                                        Foreground="{DynamicResource Foreground1}"
-                                        Text="{x:Static lang:Resources.Settings}" />
+                                        FontWeight="ExtraBold"
+                                        Text="{x:Static lang:Resources.Creation}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        VerticalAlignment="Center"
+                                        FontFamily="/Fonts/#FluentSystemIcons-Regular"
+                                        FontSize="12"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Text="&#xF2A4;">
+                                        <TextBlock.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform x:Name="CreationRotator" Angle="0" />
+                                            </TransformGroup>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
                                 </Grid>
 
-                                <RadioButton.Triggers>
+                                <Button.Triggers>
                                     <EventTrigger RoutedEvent="MouseEnter">
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation
-                                                    Storyboard.TargetName="SettingsRotator"
+                                                    Storyboard.TargetName="CreationIconRotator"
                                                     Storyboard.TargetProperty="Angle"
-                                                    From="360"
+                                                    From="-45"
                                                     To="0"
-                                                    Duration="0:0:0.4" />
+                                                    Duration="0:0:0.3" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </EventTrigger>
-                                </RadioButton.Triggers>
-                            </RadioButton>
-
-                            <TextBlock
-                                Margin="0 10"
-                                FontWeight="Bold"
-                                Text="{x:Static lang:Resources.Tools}" />
-                        </StackPanel>
-                        <ScrollViewer
-                            x:Name="ActionsScrollViewer"
-                            HorizontalScrollBarVisibility="Disabled"
-                            Style="{DynamicResource ScrollViewerStyle}"
-                            VerticalScrollBarVisibility="Auto">
-                            <StackPanel x:Name="ToolsStackPanel">
-                                <Button
-                                    x:Name="PickerBtn"
-                                    Height="30"
-                                    Margin="0 2"
-                                    Padding="5"
-                                    HorizontalContentAlignment="Stretch"
+                                </Button.Triggers>
+                            </Button>
+                            <StackPanel x:Name="CreationPanel" Visibility="Collapsed">
+                                <RadioButton
+                                    x:Name="PalettePageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    Click="PickerBtn_Click"
+                                    Click="PalettePageBtn_Click"
+                                    Content="{x:Static lang:Resources.Palette}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
                                     Foreground="{DynamicResource AccentColor}"
-                                    Style="{DynamicResource DefaultButton}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="16" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            x:Name="PickerIconTxt"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                                            FontSize="16"
-                                            Text="&#xFD3F;" />
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            Margin="5 0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            FontSize="14"
-                                            FontWeight="ExtraBold"
-                                            Text="{x:Static lang:Resources.Picker}" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                                            FontSize="12"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Text="&#xF2A4;">
-                                            <TextBlock.RenderTransform>
-                                                <TransformGroup>
-                                                    <RotateTransform x:Name="PickerRotator" Angle="0" />
-                                                </TransformGroup>
-                                            </TextBlock.RenderTransform>
-                                        </TextBlock>
-                                    </Grid>
-
-                                    <Button.Triggers>
-                                        <EventTrigger RoutedEvent="MouseEnter">
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <DoubleAnimation
-                                                        Storyboard.TargetName="PickerIconTxt"
-                                                        Storyboard.TargetProperty="FontSize"
-                                                        From="0"
-                                                        To="16"
-                                                        Duration="0:0:0.3" />
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </EventTrigger>
-                                    </Button.Triggers>
-                                </Button>
-                                <StackPanel x:Name="PickerPanel" Visibility="Collapsed">
-                                    <RadioButton
-                                        x:Name="SelectorPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="SelectorPageBtn_Click"
-                                        Content="{x:Static lang:Resources.Selector}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                    <RadioButton
-                                        x:Name="ChromaticPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="ChromaticPageBtn_Click"
-                                        Content="{x:Static lang:Resources.ChromaticWheel}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                </StackPanel>
-                                <Button
-                                    x:Name="ColorToolsBtn"
-                                    Height="30"
-                                    Margin="0 2"
-                                    Padding="5"
-                                    HorizontalContentAlignment="Stretch"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                                <RadioButton
+                                    x:Name="GradientPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    Click="ColorToolsBtn_Click"
+                                    Click="GradientPageBtn_Click"
+                                    Content="{x:Static lang:Resources.Gradient}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
                                     Foreground="{DynamicResource AccentColor}"
-                                    Style="{DynamicResource DefaultButton}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="16" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            x:Name="ColorToolsIconTxt"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                                            FontSize="16"
-                                            Text="&#xF82F;" />
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            Margin="5 0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            FontSize="14"
-                                            FontWeight="ExtraBold"
-                                            Text="{x:Static lang:Resources.ColorTools}" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                                            FontSize="12"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Text="&#xF2A4;">
-                                            <TextBlock.RenderTransform>
-                                                <TransformGroup>
-                                                    <RotateTransform x:Name="ColorToolsRotator" Angle="0" />
-                                                </TransformGroup>
-                                            </TextBlock.RenderTransform>
-                                        </TextBlock>
-                                    </Grid>
-
-                                    <Button.Triggers>
-                                        <EventTrigger RoutedEvent="MouseEnter">
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <ThicknessAnimationUsingKeyFrames
-                                                        BeginTime="00:00:00"
-                                                        Storyboard.TargetName="ColorToolsIconTxt"
-                                                        Storyboard.TargetProperty="Margin">
-                                                        <SplineThicknessKeyFrame KeyTime="00:00:00" Value="20,0,0,0" />
-                                                        <SplineThicknessKeyFrame KeyTime="00:00:0.3" Value="0" />
-                                                    </ThicknessAnimationUsingKeyFrames>
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </EventTrigger>
-                                    </Button.Triggers>
-                                </Button>
-                                <StackPanel x:Name="ColorToolsPanel" Visibility="Collapsed">
-                                    <RadioButton
-                                        x:Name="ConverterPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="ConverterPageBtn_Click"
-                                        Content="{x:Static lang:Resources.Converter}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                    <RadioButton
-                                        x:Name="TextPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="TextPageBtn_Click"
-                                        Content="{x:Static lang:Resources.TextTool}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                    <RadioButton
-                                        x:Name="ContrastGridPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="ContrastGridPageBtn_Click"
-                                        Content="{x:Static lang:Resources.ContrastGrid}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                    <RadioButton
-                                        x:Name="ImageExtractorPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="ImageExtractorPageBtn_Click"
-                                        Content="{x:Static lang:Resources.ImageExtractor}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                </StackPanel>
-                                <Button
-                                    x:Name="CreationBtn"
-                                    Height="30"
-                                    Margin="0 2"
-                                    Padding="5"
-                                    HorizontalContentAlignment="Stretch"
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
+                                <RadioButton
+                                    x:Name="AiCreationPageBtn"
+                                    Margin="10 0 0 0"
+                                    Padding="5 2 2 2"
+                                    HorizontalContentAlignment="Left"
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    Click="CreationBtn_Click"
+                                    Click="AiCreationPageBtn_Click"
+                                    Content="{x:Static lang:Resources.AIGeneration}"
+                                    FontSize="10"
+                                    FontWeight="ExtraBold"
                                     Foreground="{DynamicResource AccentColor}"
-                                    Style="{DynamicResource DefaultButton}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="16" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            x:Name="CreationIconTxt"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                                            FontSize="16"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Text="&#xF596;">
-                                            <TextBlock.RenderTransform>
-                                                <TransformGroup>
-                                                    <RotateTransform x:Name="CreationIconRotator" Angle="0" />
-                                                </TransformGroup>
-                                            </TextBlock.RenderTransform>
-                                        </TextBlock>
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            Margin="5 0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            FontSize="14"
-                                            FontWeight="ExtraBold"
-                                            Text="{x:Static lang:Resources.Creation}" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            VerticalAlignment="Center"
-                                            FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                                            FontSize="12"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Text="&#xF2A4;">
-                                            <TextBlock.RenderTransform>
-                                                <TransformGroup>
-                                                    <RotateTransform x:Name="CreationRotator" Angle="0" />
-                                                </TransformGroup>
-                                            </TextBlock.RenderTransform>
-                                        </TextBlock>
-                                    </Grid>
-
-                                    <Button.Triggers>
-                                        <EventTrigger RoutedEvent="MouseEnter">
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <DoubleAnimation
-                                                        Storyboard.TargetName="CreationIconRotator"
-                                                        Storyboard.TargetProperty="Angle"
-                                                        From="-45"
-                                                        To="0"
-                                                        Duration="0:0:0.3" />
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </EventTrigger>
-                                    </Button.Triggers>
-                                </Button>
-                                <StackPanel x:Name="CreationPanel" Visibility="Collapsed">
-                                    <RadioButton
-                                        x:Name="PalettePageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="PalettePageBtn_Click"
-                                        Content="{x:Static lang:Resources.Palette}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                    <RadioButton
-                                        x:Name="GradientPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="GradientPageBtn_Click"
-                                        Content="{x:Static lang:Resources.Gradient}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                    <RadioButton
-                                        x:Name="AiCreationPageBtn"
-                                        Margin="10 0 0 0"
-                                        Padding="5 2 2 2"
-                                        HorizontalContentAlignment="Left"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="AiCreationPageBtn_Click"
-                                        Content="{x:Static lang:Resources.AIGeneration}"
-                                        FontSize="10"
-                                        FontWeight="ExtraBold"
-                                        Foreground="{DynamicResource AccentColor}"
-                                        GroupName="NavBar"
-                                        Style="{DynamicResource NavBarToolButton}" />
-                                </StackPanel>
+                                    GroupName="NavBar"
+                                    Style="{DynamicResource NavBarToolButton}" />
                             </StackPanel>
-                        </ScrollViewer>
-                    </StackPanel>
-                    <ScrollViewer
-                        x:Name="PageScroller"
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Margin="10 10 0 0"
-                        HorizontalScrollBarVisibility="Disabled"
-                        Style="{DynamicResource ScrollViewerStyle}"
-                        VerticalScrollBarVisibility="Auto">
-                        <Frame x:Name="PageDisplayer" NavigationUIVisibility="Hidden" />
+                        </StackPanel>
                     </ScrollViewer>
-                </Grid>
-            </Border>
-        </Grid>
-    </Border>
-</Window>
+                </StackPanel>
+                <ScrollViewer
+                    x:Name="PageScroller"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="10 10 0 0"
+                    HorizontalScrollBarVisibility="Disabled"
+                    Style="{DynamicResource ScrollViewerStyle}"
+                    VerticalScrollBarVisibility="Auto">
+                    <Frame x:Name="PageDisplayer" NavigationUIVisibility="Hidden" />
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:MicaWindow>

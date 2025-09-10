@@ -24,6 +24,8 @@ SOFTWARE.
 using ColorHelper;
 using ColorPicker.Enums;
 using ColorPicker.Pages;
+using MicaWPF.Core.Enums;
+using MicaWPF.Core.Services;
 using Microsoft.Win32;
 using PeyrSharp.Enums;
 using PeyrSharp.Env;
@@ -273,7 +275,7 @@ public static class Global
 	{
 		try
 		{
-			App.Current.Resources.MergedDictionaries.Clear();
+			Application.Current.Resources.MergedDictionaries.Clear();
 			ResourceDictionary resourceDictionary = []; // Create a resource dictionary
 
 			bool isDark = Settings.Theme == Themes.Dark;
@@ -291,7 +293,8 @@ public static class Global
 				resourceDictionary.Source = new Uri("..\\Themes\\Light.xaml", UriKind.Relative); // Add source
 			}
 
-			App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+			Application.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+			MicaWPFServiceUtility.ThemeService.ChangeTheme(isDark ? WindowsTheme.Dark : WindowsTheme.Light);
 
 			if (!reload) return;
 			SettingsPage.LoadUpdateSection();
@@ -299,8 +302,9 @@ public static class Global
 			ConverterPage.CheckButton(ConverterPage.SelectedColorBtn);
 			ChromaticWheelPage.CheckButton(ChromaticWheelPage.CheckedButton);
 			PalettePage.CheckButton(PalettePage.SelectedColorBtn);
-			ContrastPage.CheckButton(ContrastPage.RgbBtn);
+			ContrastPage.CheckButton(ContrastPage.SelectedColorBtn);
 			ContrastPage.InitGrid(ContrastPage.contrastLimit);
+
 		}
 		catch (Exception ex)
 		{
