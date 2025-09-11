@@ -94,7 +94,7 @@ public static class Global
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
-	public static string Version => "6.8.0.2509-rc1";
+	public static string Version => "6.8.0.2509";
 
 	public static string HiSentence
 	{
