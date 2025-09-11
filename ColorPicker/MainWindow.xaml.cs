@@ -25,6 +25,7 @@ using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.Pages;
 using ColorPicker.UserControls;
+using MicaWPF.Lite.Controls;
 using PeyrSharp.Env;
 using Synethia;
 using System;
@@ -36,7 +37,7 @@ namespace ColorPicker;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow : MicaWindow
 {
 	public MainWindow(bool isSilent = false)
 	{
@@ -81,6 +82,8 @@ public partial class MainWindow : Window
 			if (!Global.Settings.UseSynethia) Global.SynethiaConfig = Global.Default;
 			SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
 			XmlSerializerManager.SaveToXml(Global.Bookmarks, $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml");
+			LeavePage();
+			Application.Current.Shutdown(); // Close the application
 		};
 
 		WindowState = Global.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal;
@@ -226,24 +229,6 @@ public partial class MainWindow : Window
 		}
 	}
 
-	private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
-	{
-		WindowState = WindowState.Minimized; // Minimize the window
-	}
-
-	private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
-	{
-		WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
-
-		HandleWindowStateChanged();
-	}
-
-	private void CloseBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		Application.Current.Shutdown(); // Close the application
-	}
-
 	private void PinBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Topmost = !Topmost; // Toggle
@@ -253,54 +238,11 @@ public partial class MainWindow : Window
 
 	private void HandleWindowStateChanged()
 	{
-		MaximizeRestoreBtn.Content = WindowState == WindowState.Maximized
-			? "\uF670" // Restore icon
-			: "\uFA40"; // Maximize icon
-		MaximizeRestoreBtn.FontSize = WindowState == WindowState.Maximized
-			? 18
-			: 14;
-		MaximizeTooltip.Content = WindowState == WindowState.Maximized
-			? Properties.Resources.Restore // Restore icon
-			: Properties.Resources.Maximize; // Maximize icon
-		DefineMaximumSize();
-
-		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
-		WindowBorder.CornerRadius = WindowState == WindowState.Maximized ? new(0) : new(5); // Set
-		MainWindowChrome.ResizeBorderThickness = WindowState == WindowState.Maximized ? new(0) : new(10); // Set
-
 		// Update settings information
 		Global.Settings.IsMaximized = WindowState == WindowState.Maximized;
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 	}
 
-	private void DefineMaximumSize()
-	{
-		System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(this).Handle); // The current screen
-
-		float dpiX, dpiY;
-		double scaling = 100; // Default scaling = 100%
-
-		using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
-		{
-			dpiX = graphics.DpiX; // Get the DPI
-			dpiY = graphics.DpiY; // Get the DPI
-
-			scaling = dpiX switch
-			{
-				96 => 100, // Get the %
-				120 => 125, // Get the %
-				144 => 150, // Get the %
-				168 => 175, // Get the %
-				192 => 200, // Get the % 
-				_ => 100
-			};
-		}
-
-		double factor = scaling / 100d; // Calculate factor
-
-		MaxHeight = currentScreen.WorkingArea.Height / factor + 5; // Set max size
-		MaxWidth = currentScreen.WorkingArea.Width / factor + 5; // Set max size
-	}
 
 	private void HomePageBtn_Click(object sender, RoutedEventArgs e)
 	{

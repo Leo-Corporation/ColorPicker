@@ -21,11 +21,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Betalgo.Ranul.OpenAI.Managers;
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using Gma.System.MouseKeyHook;
 using Microsoft.Win32;
-using OpenAI.Managers;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using Synethia;
@@ -551,21 +551,28 @@ public partial class SettingsPage : Page
 	{
 		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
 
-		OpenAIService sdk = new(new() { ApiKey = Global.Settings.ApiKey });
-		var modelList = await sdk.Models.ListModel();
-
-		var sortedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToList();
-		sortedModels.Sort();
-
-		Global.Settings.SupportedModels = [.. sortedModels];
-		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-
-		ModelComboBox.Items.Clear();
-		for (int i = 0; i < Global.Settings.SupportedModels.Length; i++)
+		try
 		{
-			ModelComboBox.Items.Add(Global.Settings.SupportedModels[i]);
+			OpenAIService sdk = new(new() { ApiKey = Global.Settings.ApiKey });
+			var modelList = await sdk.Models.ListModel();
+
+			var sortedModels = modelList.Models.Select(m => m.Id).Where(m => m.StartsWith("gpt")).ToList();
+			sortedModels.Sort();
+
+			Global.Settings.SupportedModels = [.. sortedModels];
+			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+
+			ModelComboBox.Items.Clear();
+			for (int i = 0; i < Global.Settings.SupportedModels.Length; i++)
+			{
+				ModelComboBox.Items.Add(Global.Settings.SupportedModels[i]);
+			}
+			ModelComboBox.SelectedItem = Global.Settings.Model;
 		}
-		ModelComboBox.SelectedItem = Global.Settings.Model;
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.ColorPicker, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private void RgbSeparatorTxt_TextChanged(object sender, TextChangedEventArgs e)

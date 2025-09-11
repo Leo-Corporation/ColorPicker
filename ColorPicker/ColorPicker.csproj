@@ -11,7 +11,7 @@
 	<Title>ColorPicker</Title>
 	<Description>Maximize your creativity.</Description>
 	<RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
-	<Version>6.7.2.2506</Version>
+	<Version>6.8.0.2509</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageIcon>logo.png</PackageIcon>
 	<ApplicationIcon>CPM.ico</ApplicationIcon>
@@ -50,9 +50,10 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="Betalgo.OpenAI" Version="8.7.2" />
+	<PackageReference Include="Betalgo.Ranul.OpenAI" Version="9.1.0" />
 	<PackageReference Include="ColorHelper" Version="1.8.1" />
 	<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+	<PackageReference Include="MicaWPF.Lite" Version="6.3.0" />
 	<PackageReference Include="MouseKeyHook" Version="5.7.1" />
 	<PackageReference Include="PeyrSharp.Core" Version="2.1.0.2312" />
 	<PackageReference Include="PeyrSharp.Env" Version="2.1.0.2312" />

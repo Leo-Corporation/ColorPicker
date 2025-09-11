@@ -24,6 +24,7 @@ SOFTWARE.
 
 using ColorPicker.Classes;
 using ColorPicker.Pages.FirstRun;
+using MicaWPF.Lite.Controls;
 using System.Windows;
 
 namespace ColorPicker.Windows;
@@ -31,7 +32,7 @@ namespace ColorPicker.Windows;
 /// <summary>
 /// Interaction logic for FirstRunWindow.xaml
 /// </summary>
-public partial class FirstRunWindow : Window
+public partial class FirstRunWindow : MicaWindow
 {
 	internal WelcomePage welcomePage;
 	internal FeaturesPage featuresPage;

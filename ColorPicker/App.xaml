@@ -3,12 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:ColorPicker"
+    xmlns:mica="clr-namespace:MicaWPF.Lite.Styles;assembly=MicaWPF.Lite"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
     Startup="Application_Startup">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/Light.xaml" />
+                <mica:ThemeDictionary DesignModeTheme="Light" Theme="Auto" />
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="PrimaryButton" TargetType="{x:Type Button}">

@@ -837,4 +837,7 @@
   <data name="Quit" xml:space="preserve">
     <value>退出</value>
   </data>
+  <data name="TailwindCSS" xml:space="preserve">
+    <value>TailwindCSS</value>
+  </data>
 </root>

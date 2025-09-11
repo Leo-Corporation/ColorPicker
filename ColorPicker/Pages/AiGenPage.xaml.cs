@@ -22,13 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Betalgo.Ranul.OpenAI;
+using Betalgo.Ranul.OpenAI.Managers;
+using Betalgo.Ranul.OpenAI.ObjectModels;
+using Betalgo.Ranul.OpenAI.ObjectModels.RequestModels;
 using ColorHelper;
 using ColorPicker.Classes;
 using ColorPicker.UserControls;
-using OpenAI;
-using OpenAI.Managers;
-using OpenAI.ObjectModels;
-using OpenAI.ObjectModels.RequestModels;
 using Synethia;
 using System;
 using System.Globalization;
@@ -134,7 +134,7 @@ public partial class AiGenPage : Page
 		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
 		try
 		{
-			var openAiService = new OpenAIService(new OpenAiOptions()
+			var openAiService = new OpenAIService(new OpenAIOptions()
 			{
 				ApiKey = Global.Settings.ApiKey ?? ""
 			});
@@ -173,7 +173,7 @@ public partial class AiGenPage : Page
 		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
 		try
 		{
-			var openAiService = new OpenAIService(new OpenAiOptions()
+			var openAiService = new OpenAIService(new OpenAIOptions()
 			{
 				ApiKey = Global.Settings.ApiKey ?? ""
 			});
@@ -283,7 +283,7 @@ public partial class AiGenPage : Page
 		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
 		try
 		{
-			var openAiService = new OpenAIService(new OpenAiOptions()
+			var openAiService = new OpenAIService(new OpenAIOptions()
 			{
 				ApiKey = Global.Settings.ApiKey ?? ""
 			});
