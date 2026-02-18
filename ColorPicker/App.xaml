@@ -1736,6 +1736,7 @@
                             Margin="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            CaretBrush="{DynamicResource Foreground1}"
                             IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
                             Style="{StaticResource ComboBoxEditableTextBox}" />
                     </Border>
@@ -2023,6 +2024,9 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="CaretBrush" Value="{DynamicResource Foreground1}" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

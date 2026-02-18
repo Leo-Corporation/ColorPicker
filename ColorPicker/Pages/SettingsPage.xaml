@@ -759,6 +759,7 @@
                                 Padding="3"
                                 Background="Transparent"
                                 BorderThickness="0"
+                                CaretBrush="{DynamicResource Foreground1}"
                                 FontWeight="Bold"
                                 Foreground="{DynamicResource DarkGray}"
                                 PasswordChanged="ApiKeyTxt_PasswordChanged" />
