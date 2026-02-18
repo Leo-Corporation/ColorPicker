@@ -81,14 +81,17 @@ public partial class ContrastPage : Page
 
 	private RGB ConvertToRgb()
 	{
-		if (SelectedColorBtn == RgbBtn) return new((byte)int.Parse(Txt1.Text),
+		return SelectedColorBtn == RgbBtn
+			? new((byte)int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
-											 (byte)int.Parse(Txt3.Text));
-		if (SelectedColorBtn == HexBtn) return ColorHelper.ColorConverter.HexToRgb(new(Txt5.Text));
-		else if (SelectedColorBtn == HsvBtn) return ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(Txt1.Text),
+											 (byte)int.Parse(Txt3.Text))
+			: SelectedColorBtn == HexBtn
+			? ColorHelper.ColorConverter.HexToRgb(new(Txt5.Text))
+			: SelectedColorBtn == HsvBtn
+			? ColorHelper.ColorConverter.HsvToRgb(new(int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
-											 (byte)int.Parse(Txt3.Text)));
-		else return SelectedColorBtn == HslBtn
+											 (byte)int.Parse(Txt3.Text)))
+			: SelectedColorBtn == HslBtn
 			? ColorHelper.ColorConverter.HslToRgb(new(int.Parse(Txt1.Text),
 											 (byte)int.Parse(Txt2.Text),
 											 (byte)int.Parse(Txt3.Text)))

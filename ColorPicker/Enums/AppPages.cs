@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 namespace ColorPicker.Enums;
+
 public enum AppPages
 {
 	Settings = -1, // Special page

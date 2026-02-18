@@ -25,6 +25,7 @@ using ColorPicker.Enums;
 using System;
 
 namespace ColorPicker.Classes;
+
 public class PageEventArgs(AppPages page) : EventArgs
 {
 	public AppPages AppPage { get; set; } = page;

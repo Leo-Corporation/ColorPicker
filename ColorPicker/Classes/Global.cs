@@ -38,6 +38,7 @@ using System.Windows;
 using System.Windows.Media;
 
 namespace ColorPicker.Classes;
+
 public static class Global
 {
 	public static SelectorPage? SelectorPage { get; set; }
