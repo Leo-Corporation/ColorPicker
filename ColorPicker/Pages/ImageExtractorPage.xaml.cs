@@ -46,7 +46,7 @@ public partial class ImageExtractorPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 	readonly List<string> filePaths = [];
-	private Dictionary<RGB, int> Colors = [];
+	private Dictionary<RGB, int>? Colors = [];
 	public ImageExtractorPage()
 	{
 		InitializeComponent();
@@ -94,10 +94,18 @@ public partial class ImageExtractorPage : Page
 		if (filePaths.Count == 0) return;
 
 		bool precisionValid = int.TryParse(PrecisionTxt.Text, out var precision);
+		ExtractBtn.IsEnabled = false;
+
+		// Release previous results before starting new extraction
+		Colors.Clear();
+		Colors = [];
+		ColorDisplayer.Children.Clear();
+		GC.Collect();
 
 		var colors = await GetImageColorFrequenciesAsync(filePaths, precisionValid ? precision : 10, ascending);
 		Colors = colors;
 		LoadColorDisplayer(colors);
+		ExtractBtn.IsEnabled = true;
 	}
 
 	private void LoadColorDisplayer(Dictionary<RGB, int> colors)
@@ -209,8 +217,13 @@ public partial class ImageExtractorPage : Page
 		filePaths.Clear();
 		LoadImageUI();
 		ColorDisplayer.Children.Clear();
+		Colors.Clear();
+		Colors = null; // drop the reference entirely
+		Colors = [];   // reinitialize fresh
+		GC.Collect();
+		GC.WaitForPendingFinalizers(); // ensure finalizers run before continuing
+		GC.Collect(); // second pass to collect anything freed by finalizers
 	}
-
 	private void ExportBtn_Click(object sender, RoutedEventArgs e)
 	{
 		ExportCSVPopup.IsOpen = true;
@@ -224,7 +237,7 @@ public partial class ImageExtractorPage : Page
 		};
 		if (saveFileDialog.ShowDialog() == true)
 		{
-			await ExportToCSVAsync(Colors, saveFileDialog.FileName, (CommaRadioBtn.IsChecked ?? true) ? "," : ";", IncludeFrequenceChk.IsChecked ?? false);
+			await ExportToCSVAsync(Colors ?? [], saveFileDialog.FileName, (CommaRadioBtn.IsChecked ?? true) ? "," : ";", IncludeFrequenceChk.IsChecked ?? false);
 		}
 	}
 
@@ -250,8 +263,13 @@ public partial class ImageExtractorPage : Page
 		ascending = !ascending;
 		SortBtn.Content = ascending ? "\uF149" : "\uF19C";
 
-		Colors = ascending ? Colors.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value) : Colors.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-		LoadColorDisplayer(Colors);
+		var sorted = ascending
+			? Colors?.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value)
+			: Colors?.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+		Colors.Clear(); // free the old one before replacing
+		Colors = sorted;
+		LoadColorDisplayer(Colors ?? []);
 	}
 
 	private void DragZone_Drop(object sender, DragEventArgs e)
