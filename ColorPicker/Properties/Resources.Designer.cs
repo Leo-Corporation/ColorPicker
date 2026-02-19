@@ -19,7 +19,7 @@ namespace ColorPicker.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -628,6 +628,15 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Easy in low light.
+        /// </summary>
+        public static string DarkDesc {
+            get {
+                return ResourceManager.GetString("DarkDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage your data and your privacy..
         /// </summary>
         public static string DataDescription {
@@ -678,6 +687,15 @@ namespace ColorPicker.Properties {
         public static string DefaultColorType {
             get {
                 return ResourceManager.GetString("DefaultColorType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follows your preference.
+        /// </summary>
+        public static string DefaultThemeDesc {
+            get {
+                return ResourceManager.GetString("DefaultThemeDesc", resourceCulture);
             }
         }
         
@@ -1317,6 +1335,15 @@ namespace ColorPicker.Properties {
         public static string Light {
             get {
                 return ResourceManager.GetString("Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clean and bright.
+        /// </summary>
+        public static string LightDesc {
+            get {
+                return ResourceManager.GetString("LightDesc", resourceCulture);
             }
         }
         
@@ -2059,7 +2086,7 @@ namespace ColorPicker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to TailwindCSS.
         /// </summary>
         public static string TailwindCSS {
             get {

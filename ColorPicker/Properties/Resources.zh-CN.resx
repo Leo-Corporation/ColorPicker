@@ -840,4 +840,13 @@
   <data name="TailwindCSS" xml:space="preserve">
     <value>TailwindCSS</value>
   </data>
+  <data name="LightDesc" xml:space="preserve">
+    <value>洁净明亮</value>
+  </data>
+  <data name="DarkDesc" xml:space="preserve">
+    <value>低光环境下操作简便</value>
+  </data>
+  <data name="DefaultThemeDesc" xml:space="preserve">
+    <value>遵循您的偏好</value>
+  </data>
 </root>

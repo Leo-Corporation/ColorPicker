@@ -281,92 +281,129 @@
                         </StackPanel>
                     </StackPanel>
                 </Expander.Header>
-                <StackPanel Orientation="Horizontal">
-                    <Border
-                        x:Name="LightBorder"
-                        Margin="6"
-                        BorderBrush="{x:Null}"
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <RadioButton
+                        x:Name="LightBtn"
                         BorderThickness="2"
-                        CornerRadius="5"
-                        Cursor="Hand"
-                        MouseEnter="Border_MouseEnter"
-                        MouseLeave="Border_MouseLeave"
-                        MouseLeftButtonUp="LightBorder_MouseLeftButtonUp">
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle
-                                Width="50"
-                                Height="50"
-                                RadiusX="4"
-                                RadiusY="4">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="../Images/LightTheme.png" />
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <TextBlock
-                                Margin="10 0"
-                                Padding="0 15"
-                                VerticalAlignment="Center"
-                                FontWeight="Bold"
-                                Text="{x:Static lang:Resources.Light}" />
-                        </StackPanel>
-                    </Border>
-                    <Border
-                        x:Name="DarkBorder"
-                        Margin="6"
-                        BorderBrush="{x:Null}"
+                        Checked="LightBtn_Checked"
+                        GroupName="Theme"
+                        Style="{DynamicResource ThemeButton}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                                Width="40"
+                                Height="40"
+                                Margin="5"
+                                Background="{DynamicResource Background3}"
+                                CornerRadius="5">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="24"
+                                    Text="&#xF8A2;" />
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock
+                                    Margin="5 0"
+                                    FontWeight="Bold"
+                                    Text="{x:Static lang:Resources.Light}" />
+                                <TextBlock
+                                    Margin="5 0"
+                                    Foreground="{DynamicResource DarkGray}"
+                                    Text="{x:Static lang:Resources.LightDesc}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </RadioButton>
+                    <RadioButton
+                        x:Name="DarkBtn"
+                        Grid.Column="1"
+                        Margin="10 0"
                         BorderThickness="2"
-                        CornerRadius="5"
-                        Cursor="Hand"
-                        MouseEnter="Border_MouseEnter"
-                        MouseLeave="Border_MouseLeave"
-                        MouseLeftButtonUp="DarkBorder_MouseLeftButtonUp">
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle
-                                Width="50"
-                                Height="50"
-                                RadiusX="4"
-                                RadiusY="4">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="../Images/DarkTheme.png" />
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <TextBlock
-                                Margin="10 0"
-                                Padding="0 15"
-                                VerticalAlignment="Center"
-                                FontWeight="Bold"
-                                Text="{x:Static lang:Resources.Dark}" />
-                        </StackPanel>
-                    </Border>
-                    <Border
-                        x:Name="SystemBorder"
-                        Margin="6"
-                        BorderBrush="{x:Null}"
+                        Checked="LightBtn_Checked"
+                        GroupName="Theme"
+                        Style="{DynamicResource ThemeButton}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                                Width="40"
+                                Height="40"
+                                Margin="5"
+                                Background="{DynamicResource Background3}"
+                                CornerRadius="5">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="24"
+                                    Text="&#xF87E;" />
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock
+                                    Margin="5 0"
+                                    FontWeight="Bold"
+                                    Text="{x:Static lang:Resources.Dark}" />
+                                <TextBlock
+                                    Margin="5 0"
+                                    Foreground="{DynamicResource DarkGray}"
+                                    Text="{x:Static lang:Resources.DarkDesc}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+
+                        </Grid>
+                    </RadioButton>
+                    <RadioButton
+                        x:Name="DefaultBtn"
+                        Grid.Column="2"
                         BorderThickness="2"
-                        CornerRadius="5"
-                        Cursor="Hand"
-                        MouseEnter="Border_MouseEnter"
-                        MouseLeave="Border_MouseLeave"
-                        MouseLeftButtonUp="SystemBorder_MouseLeftButtonUp">
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle
-                                Width="50"
-                                Height="50"
-                                RadiusX="4"
-                                RadiusY="4">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="../Images/SystemTheme.png" />
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <TextBlock
-                                Margin="10 0"
-                                Padding="0 15"
-                                VerticalAlignment="Center"
-                                FontWeight="Bold"
-                                Text="{x:Static lang:Resources.Default}" />
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
+                        Checked="LightBtn_Checked"
+                        GroupName="Theme"
+                        Style="{DynamicResource ThemeButton}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                                Width="40"
+                                Height="40"
+                                Margin="5"
+                                Background="{DynamicResource Background3}"
+                                CornerRadius="5">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="24"
+                                    Text="&#xF33C;" />
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock
+                                    Margin="5 0"
+                                    FontWeight="Bold"
+                                    Text="{x:Static lang:Resources.Default}" />
+                                <TextBlock
+                                    Margin="5 0"
+                                    Foreground="{DynamicResource DarkGray}"
+                                    Text="{x:Static lang:Resources.DefaultThemeDesc}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+
+                        </Grid>
+                    </RadioButton>
+                </Grid>
             </Expander>
             <Expander
                 Margin="10 10 10 0"

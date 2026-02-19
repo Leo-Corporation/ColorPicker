@@ -820,4 +820,13 @@
   <data name="TailwindCSS" xml:space="preserve">
     <value>TailwindCSS</value>
   </data>
+  <data name="LightDesc" xml:space="preserve">
+    <value>清潔で明るい</value>
+  </data>
+  <data name="DarkDesc" xml:space="preserve">
+    <value>暗い場所でも簡単</value>
+  </data>
+  <data name="DefaultThemeDesc" xml:space="preserve">
+    <value>好みに従います</value>
+  </data>
 </root>
