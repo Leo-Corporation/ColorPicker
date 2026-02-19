@@ -840,4 +840,13 @@
   <data name="TailwindCSS" xml:space="preserve">
     <value>TailwindCSS</value>
   </data>
+  <data name="LightDesc" xml:space="preserve">
+    <value>Clean and bright</value>
+  </data>
+  <data name="DarkDesc" xml:space="preserve">
+    <value>Easy in low light</value>
+  </data>
+  <data name="DefaultThemeDesc" xml:space="preserve">
+    <value>Follows your preference</value>
+  </data>
 </root>

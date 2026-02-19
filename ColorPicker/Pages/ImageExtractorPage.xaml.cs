@@ -26,10 +26,13 @@ using ColorPicker.Classes;
 using ColorPicker.UserControls;
 using Microsoft.Win32;
 using Synethia;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,7 +46,7 @@ public partial class ImageExtractorPage : Page
 {
 	bool code = !Global.Settings.UseSynethia; // checks if the code as already been implemented
 	readonly List<string> filePaths = [];
-	private Dictionary<RGB, int> Colors = [];
+	private Dictionary<RGB, int>? Colors = [];
 	public ImageExtractorPage()
 	{
 		InitializeComponent();
@@ -91,10 +94,18 @@ public partial class ImageExtractorPage : Page
 		if (filePaths.Count == 0) return;
 
 		bool precisionValid = int.TryParse(PrecisionTxt.Text, out var precision);
+		ExtractBtn.IsEnabled = false;
+
+		// Release previous results before starting new extraction
+		Colors.Clear();
+		Colors = [];
+		ColorDisplayer.Children.Clear();
+		GC.Collect();
 
 		var colors = await GetImageColorFrequenciesAsync(filePaths, precisionValid ? precision : 10, ascending);
 		Colors = colors;
 		LoadColorDisplayer(colors);
+		ExtractBtn.IsEnabled = true;
 	}
 
 	private void LoadColorDisplayer(Dictionary<RGB, int> colors)
@@ -127,6 +138,8 @@ public partial class ImageExtractorPage : Page
 		return await Task.Run(() =>
 		{
 			Dictionary<RGB, int> colorFrequencies = [];
+			// Clamp step to minimum of 1 to avoid division by zero
+			int effectiveStep = Math.Max(1, step);
 
 			for (int i = 0; i < imagePaths.Count; i++)
 			{
@@ -134,25 +147,46 @@ public partial class ImageExtractorPage : Page
 				int width = image.Width;
 				int height = image.Height;
 
+				BitmapData bitmapData = image.LockBits(
+					new Rectangle(0, 0, width, height),
+					ImageLockMode.ReadOnly,
+					PixelFormat.Format32bppArgb);
 
-				for (int x = 0; x < width; x++)
+				try
 				{
-					if (x % step != 0) continue;
-					for (int y = 0; y < height; y++)
-					{
-						if (y % step != 0) continue;
-						System.Drawing.Color pixelColor = image.GetPixel(x, y);
-						RGB rgbColor = new(pixelColor.R, pixelColor.G, pixelColor.B);
+					int bytesPerPixel = 4; // Format32bppArgb
+					int stride = bitmapData.Stride;
+					nint scan0 = bitmapData.Scan0;
+					int byteCount = stride * height;
+					byte[] pixels = new byte[byteCount];
+					Marshal.Copy(scan0, pixels, 0, byteCount);
 
-						if (colorFrequencies.TryGetValue(rgbColor, out int value))
-							colorFrequencies[rgbColor] = ++value;
-						else
-							colorFrequencies.Add(rgbColor, 1);
+					for (int y = 0; y < height; y += effectiveStep)
+					{
+						for (int x = 0; x < width; x += effectiveStep)
+						{
+							int index = (y * stride) + (x * bytesPerPixel);
+							byte b = pixels[index];
+							byte g = pixels[index + 1];
+							byte r = pixels[index + 2];
+
+							RGB rgbColor = new(r, g, b);
+							if (colorFrequencies.TryGetValue(rgbColor, out int value))
+								colorFrequencies[rgbColor] = value + 1;
+							else
+								colorFrequencies.Add(rgbColor, 1);
+						}
 					}
+				}
+				finally
+				{
+					image.UnlockBits(bitmapData);
 				}
 			}
 
-			return ascending ? colorFrequencies.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value) : colorFrequencies.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+			return ascending
+				? colorFrequencies.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value)
+				: colorFrequencies.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 		});
 	}
 
@@ -183,14 +217,19 @@ public partial class ImageExtractorPage : Page
 		filePaths.Clear();
 		LoadImageUI();
 		ColorDisplayer.Children.Clear();
+		Colors.Clear();
+		Colors = null; // drop the reference entirely
+		Colors = [];   // reinitialize fresh
+		GC.Collect();
+		GC.WaitForPendingFinalizers(); // ensure finalizers run before continuing
+		GC.Collect(); // second pass to collect anything freed by finalizers
 	}
-
 	private void ExportBtn_Click(object sender, RoutedEventArgs e)
 	{
 		ExportCSVPopup.IsOpen = true;
 	}
 
-	private void ExportCSVBtn_Click(object sender, RoutedEventArgs e)
+	private async void ExportCSVBtn_Click(object sender, RoutedEventArgs e)
 	{
 		SaveFileDialog saveFileDialog = new()
 		{
@@ -198,22 +237,23 @@ public partial class ImageExtractorPage : Page
 		};
 		if (saveFileDialog.ShowDialog() == true)
 		{
-			ExportToCSV(Colors, saveFileDialog.FileName, (CommaRadioBtn.IsChecked ?? true) ? "," : ";", IncludeFrequenceChk.IsChecked ?? false);
+			await ExportToCSVAsync(Colors ?? [], saveFileDialog.FileName, (CommaRadioBtn.IsChecked ?? true) ? "," : ";", IncludeFrequenceChk.IsChecked ?? false);
 		}
 	}
 
-	private static void ExportToCSV(Dictionary<RGB, int> colors, string fileName, string separator, bool includeFreq)
+	private static async Task ExportToCSVAsync(Dictionary<RGB, int> colors, string fileName, string separator, bool includeFreq)
 	{
-		string text = "";
-		foreach (var color in colors)
-		{
-			var hex = ColorHelper.ColorConverter.RgbToHex(new(color.Key.R, color.Key.G, color.Key.B));
-			text += $"#{hex}{separator}{(includeFreq ? color.Value.ToString() + separator : "")}\n";
-		}
 		try
 		{
 			using StreamWriter writer = new(fileName, false, Encoding.UTF8);
-			writer.WriteLine(text);
+			foreach (var color in colors)
+			{
+				var hex = ColorHelper.ColorConverter.RgbToHex(new(color.Key.R, color.Key.G, color.Key.B));
+				string line = includeFreq
+					? $"#{hex}{separator}{color.Value}{separator}"
+					: $"#{hex}{separator}";
+				await writer.WriteLineAsync(line);
+			}
 		}
 		catch { }
 	}
@@ -223,8 +263,13 @@ public partial class ImageExtractorPage : Page
 		ascending = !ascending;
 		SortBtn.Content = ascending ? "\uF149" : "\uF19C";
 
-		Colors = ascending ? Colors.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value) : Colors.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-		LoadColorDisplayer(Colors);
+		var sorted = ascending
+			? Colors?.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value)
+			: Colors?.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+		Colors.Clear(); // free the old one before replacing
+		Colors = sorted;
+		LoadColorDisplayer(Colors ?? []);
 	}
 
 	private void DragZone_Drop(object sender, DragEventArgs e)

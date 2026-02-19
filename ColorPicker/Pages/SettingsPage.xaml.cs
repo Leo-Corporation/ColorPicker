@@ -56,6 +56,7 @@ public partial class SettingsPage : Page
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
 	bool updatesAvailable = false;
+	bool loaded = false;
 	private async void InitUI()
 	{
 		// About section
@@ -69,18 +70,18 @@ public partial class SettingsPage : Page
 		LangComboBox.SelectedIndex = (int)Global.Settings.Language;
 
 		// Select the default theme border
-		ThemeSelectedBorder = Global.Settings.Theme switch
+		switch (Global.Settings.Theme)
 		{
-			Themes.Light => LightBorder,
-			Themes.Dark => DarkBorder,
-			_ => SystemBorder
-		};
-		Border_MouseEnter(Global.Settings.Theme switch
-		{
-			Themes.Light => LightBorder,
-			Themes.Dark => DarkBorder,
-			_ => SystemBorder
-		}, null);
+			case Themes.System:
+				DefaultBtn.IsChecked = true;
+				break;
+			case Themes.Light:
+				LightBtn.IsChecked = true;
+				break;
+			case Themes.Dark:
+				DarkBtn.IsChecked = true;
+				break;
+		}
 
 		// Load the color option section
 		Global.Settings.RgbSeparator ??= ";";
@@ -126,6 +127,8 @@ public partial class SettingsPage : Page
 		LaunchOnStartChk.IsChecked = Global.Settings.LaunchOnStart;
 		UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
 		UseSynethiaChk.IsChecked = Global.Settings.UseSynethia;
+
+		loaded = true;
 
 		if (!Global.Settings.CheckUpdateOnStart) return;
 		try
@@ -208,66 +211,6 @@ public partial class SettingsPage : Page
 			CheckUpdateBtn.FontSize = 14;
 			CheckUpdateBtn.FontWeight = FontWeights.Normal;
 		}
-	}
-
-	Border ThemeSelectedBorder = null!;
-	private void Border_MouseEnter(object sender, MouseEventArgs? e)
-	{
-		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-	}
-
-	private void Border_MouseLeave(object sender, MouseEventArgs e)
-	{
-		if ((Border)sender == ThemeSelectedBorder) return;
-		((Border)sender).BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-	}
-
-	private void ResetBorders()
-	{
-		LightBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-		DarkBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-		SystemBorder.BorderBrush = new SolidColorBrush { Color = Colors.Transparent };
-	}
-
-	private void LightBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	{
-		ResetBorders();
-		ThemeSelectedBorder = (Border)sender;
-		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-		Global.Settings.Theme = Themes.Light;
-		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-
-		SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
-		XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
-
-		Global.ChangeTheme(true);
-	}
-
-	private void DarkBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	{
-		ResetBorders();
-		ThemeSelectedBorder = (Border)sender;
-		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-		Global.Settings.Theme = Themes.Dark;
-		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-
-		SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
-		XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
-
-		Global.ChangeTheme(true);
-	}
-	private void SystemBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	{
-		ResetBorders();
-		ThemeSelectedBorder = (Border)sender;
-		((Border)sender).BorderBrush = Global.GetColorFromResource("AccentColor");
-		Global.Settings.Theme = Themes.System;
-		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-
-		SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
-		XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
-
-		Global.ChangeTheme(true);
 	}
 
 	private void LangComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -522,8 +465,8 @@ public partial class SettingsPage : Page
 		"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
 		"ColorHelper - MIT License - © 2020 Artyom Gritsuk\n" +
 		"globalmousekeyhook - MIT License - © 2010-2018 George Mamaladze\n" +
-		"PeyrSharp - MIT License - © 2022-2025 Devyus\n" +
-		"ColorPicker - MIT License - © 2021-2025 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		"PeyrSharp - MIT License - © 2022-2026 Léo Corporation\n" +
+		"ColorPicker - MIT License - © 2021-2026 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
 	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
@@ -595,6 +538,25 @@ public partial class SettingsPage : Page
 	private void LaunchOnStartChk_Checked(object sender, RoutedEventArgs e)
 	{
 		Global.SetStartOnWindowsStart(LaunchOnStartChk.IsChecked ?? false);
+	}
+
+	private void LightBtn_Checked(object sender, RoutedEventArgs e)
+	{
+		if (!loaded) return;
+		Global.Settings.Theme = ((RadioButton)sender).Name switch
+		{
+			"DefaultBtn" => Themes.System,
+			"LightBtn" => Themes.Light,
+			"DarkBtn" => Themes.Dark,
+			_ => Global.Settings.Theme
+		};
+
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+
+		SynethiaManager.Save(Global.SynethiaConfig, Global.SynethiaPath);
+		XmlSerializerManager.SaveToXml(Global.Bookmarks, Global.BookmarksPath);
+
+		Global.ChangeTheme(true);
 	}
 
 	private void ResetSynethiaLink_Click(object sender, RoutedEventArgs e)

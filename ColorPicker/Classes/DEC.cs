@@ -26,6 +26,7 @@ using ColorHelper;
 using System;
 
 namespace ColorPicker.Classes;
+
 public class DEC(int value)
 {
 	public int Value { get; set; } = value;

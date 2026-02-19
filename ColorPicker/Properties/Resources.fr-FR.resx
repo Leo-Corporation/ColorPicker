@@ -844,4 +844,13 @@
   <data name="TailwindCSS" xml:space="preserve">
     <value>TailwindCSS</value>
   </data>
+  <data name="LightDesc" xml:space="preserve">
+    <value>Interface lumineuse</value>
+  </data>
+  <data name="DarkDesc" xml:space="preserve">
+    <value>Agréable le soir</value>
+  </data>
+  <data name="DefaultThemeDesc" xml:space="preserve">
+    <value>Suit vos préférences</value>
+  </data>
 </root>

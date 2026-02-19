@@ -2,11 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-
+    
     <SolidColorBrush x:Key="Background1" Color="#0A0A1E" />
     <SolidColorBrush x:Key="Background2" Color="#141428" />
-    <SolidColorBrush x:Key="Background3" Color="#222277" />
-    <SolidColorBrush x:Key="CardBackground" Color="#141446" />
+    <SolidColorBrush x:Key="Background3" Color="#222255" />
+    <SolidColorBrush x:Key="CardBackground" Color="#FF141428" />
     <SolidColorBrush x:Key="Foreground1" Color="#FFFFFF" />
     <ImageBrush x:Key="BackgroundImg" ImageSource="/Images/DarkBackground.png" />
     <SolidColorBrush x:Key="WindowButtonsHover1" Color="#141428" />
