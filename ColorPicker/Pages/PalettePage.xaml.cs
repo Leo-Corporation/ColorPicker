@@ -410,6 +410,10 @@ public partial class PalettePage : Page
 
 	private void BookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
+		// Sync the "Add/Remove" label with the current palette bookmark state
+		AddRemoveBookmarkBtn.Content = Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value)
+			? Properties.Resources.RemoveBookmark
+			: Properties.Resources.AddBookmark;
 		CollectionsPopup.IsOpen = true;
 	}
 
@@ -606,19 +610,18 @@ public partial class PalettePage : Page
 
 	private void AddRemoveBookmarkBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
+		// Operate on the palette bookmarks (not the color bookmarks) so the
+		// whole palette is saved, matching the bookmark icon's state in InitPaletteUI.
+		if (Global.Bookmarks.PaletteBookmarks.Contains(ColorInfo.HEX.Value))
 		{
-			int i = Global.Bookmarks.ColorBookmarks.IndexOf($"#{ColorInfo.HEX.Value}");
-			Global.Bookmarks.ColorBookmarks.RemoveAt(i);
-			Global.Bookmarks.ColorBookmarksNotes.RemoveAt(i); // Add note
+			Global.Bookmarks.PaletteBookmarks.Remove(ColorInfo.HEX.Value); // Remove the palette bookmark
 			BookmarkBtn.Content = "\uF1F6";
 			AddRemoveBookmarkBtn.Content = Properties.Resources.AddBookmark;
 			BookmarkToolTip.Content = Properties.Resources.AddBookmark;
 
 			return;
 		}
-		Global.Bookmarks.ColorBookmarks.Add($"#{ColorInfo.HEX.Value}"); // Add to color bookmarks
-		Global.Bookmarks.ColorBookmarksNotes.Add(""); // Add note
+		Global.Bookmarks.PaletteBookmarks.Add(ColorInfo.HEX.Value); // Add the palette bookmark
 		BookmarkBtn.Content = "\uF1F8";
 		AddRemoveBookmarkBtn.Content = Properties.Resources.RemoveBookmark;
 		BookmarkToolTip.Content = Properties.Resources.RemoveBookmark;
