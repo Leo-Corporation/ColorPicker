@@ -59,13 +59,6 @@ public partial class SettingsPage : Page
 	bool loaded = false;
 	private async void InitUI()
 	{
-		// About section
-#if PORTABLE
-	VersionTxt.Text = Global.Version + " (Portable)";
-#else
-		VersionTxt.Text = Global.Version;
-#endif
-
 		// Select the language
 		LangComboBox.SelectedIndex = (int)Global.Settings.Language;
 
@@ -99,8 +92,12 @@ public partial class SettingsPage : Page
 
 		// Load the AI section
 		Global.Settings.ApiKey ??= "";
+		Global.Settings.ApiEndpoint ??= "";
 		Global.Settings.Model ??= "gpt-3.5-turbo";
+		Global.Settings.CustomModelId ??= "";
 		ApiKeyTxt.Password = Global.Settings.ApiKey;
+		ApiEndpointTxt.Text = Global.Settings.ApiEndpoint;
+		CustomModelIdTxt.Text = Global.Settings.CustomModelId;
 		for (int i = 0; i < Global.Settings.SupportedModels.Length; i++)
 		{
 			ModelComboBox.Items.Add(Global.Settings.SupportedModels[i]);
@@ -472,6 +469,21 @@ public partial class SettingsPage : Page
 	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Global.Settings.ApiKey = ApiKeyTxt.Password;
+		Global.Settings.ApiEndpoint = ApiEndpointTxt.Text;
+		Global.Settings.CustomModelId = CustomModelIdTxt.Text;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		ApiApplyBtn.Visibility = Visibility.Hidden;
+	}
+
+	private void ApiEndpointTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		Global.Settings.ApiEndpoint = ApiEndpointTxt.Text;
+		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+	}
+
+	private void CustomModelIdTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		Global.Settings.CustomModelId = CustomModelIdTxt.Text;
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
 	}
 

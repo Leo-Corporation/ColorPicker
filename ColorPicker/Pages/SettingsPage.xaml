@@ -42,9 +42,8 @@
 
         <Border
             Grid.Row="1"
-            Margin="5"
-            Padding="20"
-            HorizontalAlignment="Center"
+            Margin="10 5"
+            Padding="15 10"
             Background="{DynamicResource CardBackground}"
             BorderBrush="{DynamicResource LightAccentColor}"
             BorderThickness="1"
@@ -56,81 +55,86 @@
                     ShadowDepth="0"
                     Color="{DynamicResource LightAccent}" />
             </Border.Effect>
-            <StackPanel>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Left: Title only -->
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBlock
-                        FontSize="32"
+                        FontSize="24"
                         FontWeight="Bold"
                         Foreground="{DynamicResource AccentColor}"
                         Text="{x:Static lang:Resources.ColorPicker}" />
                     <TextBlock
                         Margin="5 0 0 0"
-                        FontSize="32"
+                        FontSize="24"
                         FontWeight="Bold"
                         Text="{x:Static lang:Resources.Max}" />
                 </StackPanel>
-                <TextBlock
-                    x:Name="VersionTxt"
-                    HorizontalAlignment="Center"
-                    d:Text="5.0.0.2302"
-                    FontSize="11" />
-                <Border
-                    x:Name="UpdateBorder"
-                    Margin="0 5"
-                    Padding="5"
-                    Background="{DynamicResource LightGreen}"
-                    CornerRadius="5">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            x:Name="UpdateIconTxt"
-                            Margin="0 0 5 0"
-                            VerticalAlignment="Center"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            FontSize="14"
-                            Foreground="{DynamicResource ForegroundGreen}"
-                            Text="&#xF299;" />
-                        <TextBlock
-                            x:Name="UpdateTxt"
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
-                            FontSize="11"
-                            FontWeight="Bold"
-                            Foreground="{DynamicResource ForegroundGreen}"
-                            Text="{x:Static lang:Resources.UpToDate}" />
-                        <Button
-                            x:Name="CheckUpdateBtn"
-                            Grid.Column="2"
-                            Padding="5 2"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Click="CheckUpdateBtn_Click"
-                            Content="&#xF191;"
-                            Cursor="Hand"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            FontSize="14"
-                            Foreground="{DynamicResource ForegroundGreen}"
-                            Style="{DynamicResource ToolButton}">
-                            <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.CheckUpdate}" />
-                            </Button.ToolTip>
-                        </Button>
-                    </Grid>
-                </Border>
+
+                <!-- Right: Update status badge + Links (right-aligned) -->
                 <StackPanel
-                    HorizontalAlignment="Center"
+                    Grid.Column="2"
+                    HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
+                    <Border
+                        x:Name="UpdateBorder"
+                        Margin="0 0 10 0"
+                        Padding="8 4"
+                        Background="{DynamicResource LightGreen}"
+                        CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                x:Name="UpdateIconTxt"
+                                Margin="0 0 5 0"
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="14"
+                                Foreground="{DynamicResource ForegroundGreen}"
+                                Text="&#xF299;" />
+                            <TextBlock
+                                x:Name="UpdateTxt"
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                FontSize="11"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource ForegroundGreen}"
+                                Text="{x:Static lang:Resources.UpToDate}" />
+                            <Button
+                                x:Name="CheckUpdateBtn"
+                                Grid.Column="2"
+                                Margin="5 0 0 0"
+                                Padding="5 2"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Click="CheckUpdateBtn_Click"
+                                Content="&#xF191;"
+                                Cursor="Hand"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="14"
+                                Foreground="{DynamicResource ForegroundGreen}"
+                                Style="{DynamicResource ToolButton}">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.CheckUpdate}" />
+                                </Button.ToolTip>
+                            </Button>
+                        </Grid>
+                    </Border>
                     <Button
                         x:Name="SeeLicensesBtn"
                         Padding="5"
-                        HorizontalAlignment="Left"
                         Background="{x:Null}"
                         Click="SeeLicensesBtn_Click"
                         Cursor="Hand"
@@ -140,7 +144,7 @@
                         Style="{DynamicResource StandardButton}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
-                                Margin="0 0 10 0"
+                                Margin="0 0 5 0"
                                 VerticalAlignment="Center"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 FontWeight="Regular"
@@ -150,8 +154,8 @@
                     </Button>
                     <Button
                         x:Name="GitHubBtn"
+                        Margin="5 0 0 0"
                         Padding="5"
-                        HorizontalAlignment="Left"
                         Background="{x:Null}"
                         Click="GitHubBtn_Click"
                         Cursor="Hand"
@@ -161,7 +165,7 @@
                         Style="{DynamicResource StandardButton}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
-                                Margin="0 0 10 0"
+                                Margin="0 0 5 0"
                                 VerticalAlignment="Center"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 FontWeight="Regular"
@@ -170,8 +174,7 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
-
-            </StackPanel>
+            </Grid>
         </Border>
         <StackPanel Grid.Row="2">
             <Border
@@ -828,6 +831,35 @@
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
+                    <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="Endpoint" />
+                        <Border
+                            Width="250"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="ApiEndpointTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                CaretBrush="{DynamicResource Foreground1}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                TextChanged="ApiEndpointTxt_TextChanged" />
+                        </Border>
+                    </StackPanel>
                     <StackPanel Margin="0 0 0 10" Orientation="Horizontal">
                         <TextBlock
                             Margin="10 0 10 0"
@@ -857,6 +889,35 @@
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                             Foreground="{DynamicResource WindowButtonsHoverForeground1}"
                             Style="{StaticResource PrimaryButton}" />
+                    </StackPanel>
+                    <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Text="Custom Model ID" />
+                        <Border
+                            Width="200"
+                            HorizontalAlignment="Center"
+                            Background="{DynamicResource CardBackground}"
+                            CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource Accent}" />
+                            </Border.Effect>
+                            <TextBox
+                                x:Name="CustomModelIdTxt"
+                                Margin="3"
+                                Padding="3"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                CaretBrush="{DynamicResource Foreground1}"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource DarkGray}"
+                                TextChanged="CustomModelIdTxt_TextChanged" />
+                        </Border>
                     </StackPanel>
                 </StackPanel>
             </Expander>

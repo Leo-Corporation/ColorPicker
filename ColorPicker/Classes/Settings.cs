@@ -45,7 +45,9 @@ public class Settings
 		TextToolBackground = "#FFFFFF";
 		IsMaximized = false;
 		ApiKey = "";
+		ApiEndpoint = "";
 		Model = "gpt-3.5-turbo";
+		CustomModelId = "";
 		SupportedModels = ["gpt-3.5-turbo", "gpt-4"];
 		RgbSeparator = ";";
 		UseUpperCasesHex = false;
@@ -68,7 +70,9 @@ public class Settings
 	public string TextToolBackground { get; set; }
 	public bool IsMaximized { get; set; }
 	public string? ApiKey { get; set; }
+	public string? ApiEndpoint { get; set; }
 	public string? Model { get; set; }
+	public string? CustomModelId { get; set; }
 	public string[]? SupportedModels { get; set; }
 	public string? RgbSeparator { get; set; }
 	public bool? UseUpperCasesHex { get; set; }

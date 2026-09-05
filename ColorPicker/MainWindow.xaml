@@ -267,11 +267,11 @@
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.Theme}" />
                             </Button.ToolTip>
-                            <TextBlock
+                            <Image
                                 x:Name="ThemeToggleIcon"
-                                FontFamily="/Fonts/#FluentSystemIcons-Regular"
-                                FontSize="18"
-                                Text="&#xF8A2;" />
+                                Width="18"
+                                Height="18"
+                                Source="/Images/sun.png" />
                         </Button>
                         <RadioButton
                             x:Name="HomePageBtn"

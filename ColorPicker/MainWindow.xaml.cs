@@ -32,6 +32,7 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 
 namespace ColorPicker;
 /// <summary>
@@ -174,10 +175,10 @@ public partial class MainWindow : MicaWindow
 	}
 
 	/// <summary>Updates the nav-bar theme toggle icon to match the current effective theme:
-	/// sun for light mode, moon for dark mode (same icons used on the Settings page).</summary>
+	/// sun for light mode, moon for dark mode (same images used on the Settings page).</summary>
 	private void UpdateThemeToggleIcon()
 	{
-		ThemeToggleIcon.Text = IsEffectiveThemeDark() ? "\uF87E" : "\uF8A2";
+		ThemeToggleIcon.Source = new BitmapImage(new Uri(IsEffectiveThemeDark() ? "/Images/moon.png" : "/Images/sun.png", UriKind.Relative));
 	}
 
 	private void ThemeToggleBtn_Click(object sender, RoutedEventArgs e)
