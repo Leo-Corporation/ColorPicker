@@ -522,12 +522,27 @@ public partial class SettingsPage : Page
 			}
 			else
 			{
-				TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(209, 52, 56)); // Red
-				TestStatusTitle.Text = "连接失败";
-				string errorMsg = res.Error?.Message ?? "未知错误";
-				string errorCode = res.Error?.Code ?? "N/A";
-				string errorType = res.Error?.Type ?? "N/A";
-				TestResultTxt.Text = $"错误代码: {errorCode}\n错误类型: {errorType}\n详细提示: {errorMsg}";
+				string rawMsg = res.Error?.Message ?? "";
+				// Check if the "error" is actually an SSE stream chunk response from proxy
+				if (rawMsg.Contains("chat.completion") || rawMsg.Contains("data: {"))
+				{
+					// Extract delta contents from stream chunk lines
+					var matches = Regex.Matches(rawMsg, @"""content""\s*:\s*""([^""]+)""");
+					string joinedContent = string.Join("", matches.Select(m => m.Groups[1].Value));
+					if (string.IsNullOrWhiteSpace(joinedContent)) joinedContent = "连接成功，能正确接收流式响应。";
+
+					TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(16, 124, 65)); // Green
+					TestStatusTitle.Text = "连接成功！";
+					TestResultTxt.Text = $"响应内容 (流式): {joinedContent}";
+				}
+				else
+				{
+					TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(209, 52, 56)); // Red
+					TestStatusTitle.Text = "连接失败";
+					string errorCode = res.Error?.Code ?? "N/A";
+					string errorType = res.Error?.Type ?? "N/A";
+					TestResultTxt.Text = $"错误代码: {errorCode}\n错误类型: {errorType}\n详细提示: {rawMsg}";
+				}
 			}
 		}
 		catch (Exception ex)

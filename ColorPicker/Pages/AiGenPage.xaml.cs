@@ -197,8 +197,18 @@ public partial class AiGenPage : Page
 			}
 			else
 			{
-				string error = completionResult.Error?.Message ?? "Generation failed";
-				MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+				string rawMsg = completionResult.Error?.Message ?? "";
+				var hexMatch = Regex.Match(rawMsg, @"#[0-9a-fA-F]{6}");
+				if (hexMatch.Success)
+				{
+					ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(hexMatch.Value)));
+					LoadDetails();
+				}
+				else
+				{
+					string error = string.IsNullOrWhiteSpace(rawMsg) ? "Generation failed" : rawMsg;
+					MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+				}
 			}
 		}
 		catch (Exception ex)
@@ -258,8 +268,18 @@ public partial class AiGenPage : Page
 			}
 			else
 			{
-				string error = completionResult.Error?.Message ?? "Palette generation failed";
-				MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+				string rawMsg = completionResult.Error?.Message ?? "";
+				var matches = Regex.Matches(rawMsg, @"#[0-9a-fA-F]{6}");
+				if (matches.Count >= 5)
+				{
+					string[] colors = matches.Take(5).Select(m => m.Value).ToArray();
+					LoadBorders(colors);
+				}
+				else
+				{
+					string error = string.IsNullOrWhiteSpace(rawMsg) ? "Palette generation failed" : rawMsg;
+					MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+				}
 			}
 		}
 		catch (Exception ex)
