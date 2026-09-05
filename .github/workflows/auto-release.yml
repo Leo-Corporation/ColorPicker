@@ -52,9 +52,34 @@ jobs:
                   -p:DebugType=none
                   -o publish
 
-            - name: Zip artifact
+            # The single-file exe is shipped as-is, matching upstream's "portable" naming.
+            - name: Name portable exe
               shell: pwsh
-              run: Compress-Archive -Path "publish/ColorPickerMax.exe" -DestinationPath "ColorPickerMax-win-x64.zip"
+              run: Copy-Item "publish/ColorPickerMax.exe" "ColorPickerMaxPortable.exe"
+
+            - name: Install Inno Setup
+              shell: pwsh
+              run: choco install innosetup -y --no-progress
+
+            # Compiles ColorPicker.Setup/Setup.iss, wrapping the published exe into a
+            # proper Windows installer: wizard, start menu entry, license page,
+            # optional desktop shortcut and an uninstaller.
+            - name: Build installer
+              shell: pwsh
+              working-directory: ColorPicker.Setup
+              run: |
+                  $iscc = @(
+                      "C:\Program Files (x86)\Inno Setup 6\ISCC.exe",
+                      "C:\Program Files\Inno Setup 6\ISCC.exe"
+                  ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+                  if (-not $iscc) { $iscc = (Get-Command ISCC.exe -ErrorAction Stop).Source }
+                  Write-Host "Using ISCC: $iscc"
+                  & $iscc Setup.iss "/DMyAppVersion=${{ steps.info.outputs.version }}" "/DMyAppFullVersion=${{ steps.info.outputs.version }}"
+                  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+            - name: Collect installer
+              shell: pwsh
+              run: Copy-Item "ColorPicker.Setup/Output/ColorPickerMaxSetup.exe" "ColorPickerMaxSetup.exe"
 
             # Remove the previous rolling release so the new asset replaces it cleanly.
             # Fails silently on the very first run when nothing exists yet.
@@ -77,10 +102,16 @@ jobs:
                       - Commit: `${{ steps.info.outputs.sha }}`
                       - Message: ${{ github.event.head_commit.message }}
 
-                      Single-file Windows x64 executable (~9 MB, framework-dependent).
+                      Attachments:
 
+                      - **ColorPickerMaxSetup.exe** - Windows installer (start menu entry + uninstaller)
+                      - **ColorPickerMaxPortable.exe** - single-file portable exe, no install needed
+
+                      Framework-dependent build (~9 MB).
                       Requires the **.NET 10 Desktop Runtime** to be installed.
-                  files: ColorPickerMax-win-x64.zip
+                  files: |
+                      ColorPickerMaxSetup.exe
+                      ColorPickerMaxPortable.exe
                   prerelease: true
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
