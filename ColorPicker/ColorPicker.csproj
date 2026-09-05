@@ -57,6 +57,7 @@
 	<PackageReference Include="MouseKeyHook" Version="5.7.1" />
 	<PackageReference Include="PeyrSharp.Core" Version="2.1.0.2312" />
 	<PackageReference Include="PeyrSharp.Env" Version="2.1.0.2312" />
+	<PackageReference Include="PixiEditor.ColorPicker" Version="3.4.1" />
 	<PackageReference Include="Synethia" Version="1.1.1.2302" />
   </ItemGroup>
 
