@@ -39,8 +39,12 @@ namespace ColorPicker;
 /// </summary>
 public partial class MainWindow : MicaWindow
 {
+	/// <summary>Allows pages (e.g. HomePage) to reach back to the host window's Frame and other members.</summary>
+	public static MainWindow? Current { get; private set; }
+
 	public MainWindow(bool isSilent = false)
 	{
+		Current = this;
 		InitializeComponent();
 		if (isSilent) Hide();
 		InitUI();
@@ -75,7 +79,6 @@ public partial class MainWindow : MicaWindow
 		SizeChanged += (o, e) =>
 		{
 			PageScroller.Height = (ActualHeight - (GridRow1.ActualHeight + 68) > 0) ? ActualHeight - (GridRow1.ActualHeight + 68) : 0; // Set the scroller height
-			ActionsScrollViewer.Height = ActualHeight - SideBarTop.ActualHeight - GridRow1.ActualHeight - 60;
 		};
 		Closed += (o, e) =>
 		{
@@ -111,39 +114,30 @@ public partial class MainWindow : MicaWindow
 				break;
 			case AppPages.Selector:
 				Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
-				SelectorPageBtn.IsChecked = true;
 				break;
 			case AppPages.ColorWheel:
 				Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
-				ChromaticPageBtn.IsChecked = true;
 				break;
 			case AppPages.Converter:
 				Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
-				ConverterPageBtn.IsChecked = true;
 				break;
 			case AppPages.TextTool:
 				Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
-				TextPageBtn.IsChecked = true;
 				break;
 			case AppPages.ColorPalette:
 				Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
-				PalettePageBtn.IsChecked = true;
 				break;
 			case AppPages.ColorGradient:
 				Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
-				GradientPageBtn.IsChecked = true;
 				break;
 			case AppPages.AIGeneration:
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
-				AiCreationPageBtn.IsChecked = true;
 				break;
 			case AppPages.ImageExtractor:
 				Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
-				ImageExtractorPageBtn.IsChecked = true;
 				break;
 			case AppPages.ContrastGrid:
 				Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
-				ContrastGridPageBtn.IsChecked = true;
 				break;
 			default:
 				break;
@@ -164,6 +158,11 @@ public partial class MainWindow : MicaWindow
 			_ => Global.HomePage
 		});
 		PinTooltip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin;
+		NavSelectColorShortcutTxt.Text = Global.Settings.SelectKeyboardShortcut
+			.Replace("LControlKey", "Ctrl")
+			.Replace("LShiftKey", "Shift")
+			.Replace("RShiftKey", "Shift")
+			.Replace("RControlKey", "Ctrl");
 	}
 
 	private void PageCard_OnCardClick(object? sender, PageEventArgs e)
@@ -171,56 +170,47 @@ public partial class MainWindow : MicaWindow
 		switch (e.AppPage)
 		{
 			case AppPages.Selector:
-				SelectorPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.SelectorPage);
 				Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ColorWheel:
-				ChromaticPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.ChromaticWheelPage);
 				Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.Converter:
-				ConverterPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.ConverterPage);
 				Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.TextTool:
-				TextPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.TextPage);
 				Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ColorPalette:
-				PalettePageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.PalettePage);
 				Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ColorGradient:
-				GradientPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.GradientPage);
 				Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.AIGeneration:
-				AiCreationPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.AiGenPage);
 				Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ImageExtractor:
-				ImageExtractorPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.ImageExtractorPage);
 				Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
 				break;
 			case AppPages.ContrastGrid:
-				ContrastGridPageBtn.IsChecked = true;
-
+				LeavePage();
 				PageDisplayer.Navigate(Global.ContrastPage);
 				Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
 				break;
@@ -234,6 +224,29 @@ public partial class MainWindow : MicaWindow
 		Topmost = !Topmost; // Toggle
 		PinBtn.Content = Topmost ? "\uF604" : "\uF602"; // Set text
 		PinTooltip.Content = Topmost ? Properties.Resources.Unpin : Properties.Resources.Pin;
+	}
+
+	/// <summary>
+	/// Public helper invoked by tool radio buttons that now live in HomePage (moved out of the sidebar).
+	/// Navigates the PageDisplayer to the given tool page and updates Synethia usage timestamps.
+	/// </summary>
+	public void NavigateToTool(AppPages page, int synethiaIndex)
+	{
+		LeavePage();
+		PageDisplayer.Navigate(page switch
+		{
+			AppPages.Selector => Global.SelectorPage,
+			AppPages.ColorWheel => Global.ChromaticWheelPage,
+			AppPages.Converter => Global.ConverterPage,
+			AppPages.TextTool => Global.TextPage,
+			AppPages.ColorPalette => Global.PalettePage,
+			AppPages.ColorGradient => Global.GradientPage,
+			AppPages.AIGeneration => Global.AiGenPage,
+			AppPages.ImageExtractor => Global.ImageExtractorPage,
+			AppPages.ContrastGrid => Global.ContrastPage,
+			_ => Global.HomePage
+		});
+		Global.SynethiaConfig.PagesInfo[synethiaIndex].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void HandleWindowStateChanged()
@@ -268,101 +281,25 @@ public partial class MainWindow : MicaWindow
 		PageDisplayer.Navigate(Global.SettingsPage);
 	}
 
-	private void PickerBtn_Click(object sender, RoutedEventArgs e)
+	private void NavSelectColorBtn_Click(object sender, RoutedEventArgs e)
 	{
-		bool expanded = PickerPanel.Visibility == Visibility.Visible;
-		PickerPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible; // Show/hide the picker panel
-
-		Storyboard storyboard = new(); // Create a storyboard
-
-		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
-		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "PickerRotator");
-		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
-
-		storyboard.Begin(this); // Animate the picker panel
+		Global.HomePage?.Nav_OpenColorSelector();
 	}
 
-	private void SelectorPageBtn_Click(object sender, RoutedEventArgs e)
+	private void NavContrastBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		SelectorPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.SelectorPage);
-		Global.SynethiaConfig.PagesInfo[0].EnterUnixTime = Sys.UnixTime;
+		HomePageBtn.IsChecked = true;
+		PageDisplayer.Navigate(Global.HomePage);
+		Global.HomePage?.Nav_OpenContrastPopup();
 	}
 
-	private void ChromaticPageBtn_Click(object sender, RoutedEventArgs e)
+	private void NavPaletteBtn_Click(object sender, RoutedEventArgs e)
 	{
 		LeavePage();
-		ChromaticPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.ChromaticWheelPage);
-		Global.SynethiaConfig.PagesInfo[1].EnterUnixTime = Sys.UnixTime;
-	}
-
-
-	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)
-	{
-		bool expanded = ColorToolsPanel.Visibility == Visibility.Visible;
-		ColorToolsPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible; // Show/hide the picker panel
-
-		Storyboard storyboard = new(); // Create a storyboard
-
-		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
-		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "ColorToolsRotator");
-		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
-
-		storyboard.Begin(this); // Animate the picker panel
-	}
-
-	private void ConverterPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		ConverterPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.ConverterPage);
-		Global.SynethiaConfig.PagesInfo[2].EnterUnixTime = Sys.UnixTime;
-	}
-
-	private void TextPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		TextPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.TextPage);
-		Global.SynethiaConfig.PagesInfo[3].EnterUnixTime = Sys.UnixTime;
-	}
-
-	private void CreationBtn_Click(object sender, RoutedEventArgs e)
-	{
-		bool expanded = CreationPanel.Visibility == Visibility.Visible;
-		CreationPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible; // Show/hide the picker panel
-
-		Storyboard storyboard = new(); // Create a storyboard
-
-		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
-		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "CreationRotator");
-		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
-
-		storyboard.Begin(this); // Animate the picker panel
-	}
-
-	private void PalettePageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		PalettePageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.PalettePage);
-		Global.SynethiaConfig.PagesInfo[4].EnterUnixTime = Sys.UnixTime;
-	}
-
-	private void GradientPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		GradientPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.GradientPage);
-		Global.SynethiaConfig.PagesInfo[5].EnterUnixTime = Sys.UnixTime;
+		HomePageBtn.IsChecked = true;
+		PageDisplayer.Navigate(Global.HomePage);
+		Global.HomePage?.Nav_OpenPalettePopup();
 	}
 
 	private void LeavePage()
@@ -409,33 +346,6 @@ public partial class MainWindow : MicaWindow
 			default:
 				break;
 		}
-	}
-
-	private void AiCreationPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		AiCreationPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.AiGenPage);
-		Global.SynethiaConfig.PagesInfo[6].EnterUnixTime = Sys.UnixTime;
-	}
-
-	private void ImageExtractorPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		ImageExtractorPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.ImageExtractorPage);
-		Global.SynethiaConfig.PagesInfo[8].EnterUnixTime = Sys.UnixTime;
-	}
-
-	private void ContrastGridPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		LeavePage();
-		ContrastGridPageBtn.IsChecked = true;
-
-		PageDisplayer.Navigate(Global.ContrastPage);
-		Global.SynethiaConfig.PagesInfo[9].EnterUnixTime = Sys.UnixTime;
 	}
 
 	private void ShowMenu_Click(object sender, RoutedEventArgs e)

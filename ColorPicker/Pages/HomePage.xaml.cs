@@ -19,26 +19,43 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE. 
+SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
 using ColorPicker.UserControls;
 using ColorPicker.Windows;
 using Synethia;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 
 namespace ColorPicker.Pages;
+
 /// <summary>
 /// Interaction logic for HomePage.xaml
 /// </summary>
 public partial class HomePage : Page
 {
+	readonly DoubleAnimation expandAnimation = new()
+	{
+		From = 0,
+		To = 180,
+		Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+	};
+
+	readonly DoubleAnimation collapseAnimation = new()
+	{
+		From = 180,
+		To = 0,
+		Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+	};
+
 	public HomePage()
 	{
 		InitializeComponent();
@@ -61,17 +78,46 @@ public partial class HomePage : Page
 			DiscoverPanel.Children.Add(new PageCard(Global.PageInfoToAppPages(relevantPages[i])));
 		}
 
-		// Keyboard hints
-		KeyboardHintTxt.Text = string.Format(Properties.Resources.KeyboardSelectionHint, Global.Settings.SelectKeyboardShortcut.Replace("LControlKey", "Ctrl")
-			.Replace("LShiftKey", "Shift")
-			.Replace("RShiftKey", "Shift")
-			.Replace("RControlKey", "Ctrl"));
 		LoadPaletteUI();
+		ApplyDefaultToolSelection();
 	}
 
-	private void SelectColor_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	/// <summary>
+	/// Highlights the matching tool radio button (moved here from MainWindow) based on the user's
+	/// configured default landing page so the HomePage tool section reflects the current selection.
+	/// </summary>
+	private void ApplyDefaultToolSelection()
 	{
-		Global.SelectorPage.SelectBtn_Click(sender, e);
+		switch (Global.Settings.DefaultPage)
+		{
+			case AppPages.Selector:
+				SelectorPageBtn.IsChecked = true;
+				break;
+			case AppPages.ColorWheel:
+				ChromaticPageBtn.IsChecked = true;
+				break;
+			case AppPages.Converter:
+				ConverterPageBtn.IsChecked = true;
+				break;
+			case AppPages.TextTool:
+				TextPageBtn.IsChecked = true;
+				break;
+			case AppPages.ColorPalette:
+				PalettePageBtn.IsChecked = true;
+				break;
+			case AppPages.ColorGradient:
+				GradientPageBtn.IsChecked = true;
+				break;
+			case AppPages.AIGeneration:
+				AiCreationPageBtn.IsChecked = true;
+				break;
+			case AppPages.ImageExtractor:
+				ImageExtractorPageBtn.IsChecked = true;
+				break;
+			case AppPages.ContrastGrid:
+				ContrastGridPageBtn.IsChecked = true;
+				break;
+		}
 	}
 
 	private void GetContrastBtn_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -164,18 +210,125 @@ public partial class HomePage : Page
 			PalettePanel.Children.Add(border);
 		}
 	}
-	private void Contrast_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	{
-		ContrastPopup.IsOpen = true;
-	}
-
-	private void Palette_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	{
-		PalettePopup.IsOpen = true;
-	}
 
 	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		LoadPaletteUI();
+	}
+
+	// ============================
+	// Tool section handlers (moved from MainWindow sidebar)
+	// ============================
+
+	private void PickerBtn_Click(object sender, RoutedEventArgs e)
+	{
+		bool expanded = PickerPanel.Visibility == Visibility.Visible;
+		PickerPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible;
+
+		Storyboard storyboard = new();
+		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
+		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "PickerRotator");
+		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
+
+		storyboard.Begin(this);
+	}
+
+	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		bool expanded = ColorToolsPanel.Visibility == Visibility.Visible;
+		ColorToolsPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible;
+
+		Storyboard storyboard = new();
+		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
+		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "ColorToolsRotator");
+		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
+
+		storyboard.Begin(this);
+	}
+
+	private void CreationBtn_Click(object sender, RoutedEventArgs e)
+	{
+		bool expanded = CreationPanel.Visibility == Visibility.Visible;
+		CreationPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible;
+
+		Storyboard storyboard = new();
+		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
+		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "CreationRotator");
+		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
+
+		storyboard.Begin(this);
+	}
+
+	private void SelectorPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SelectorPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.Selector, 0);
+	}
+
+	private void ChromaticPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ChromaticPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.ColorWheel, 1);
+	}
+
+	private void ConverterPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ConverterPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.Converter, 2);
+	}
+
+	private void TextPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		TextPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.TextTool, 3);
+	}
+
+	private void PalettePageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		PalettePageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.ColorPalette, 4);
+	}
+
+	private void GradientPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		GradientPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.ColorGradient, 5);
+	}
+
+	private void AiCreationPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		AiCreationPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.AIGeneration, 6);
+	}
+
+	private void ImageExtractorPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ImageExtractorPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.ImageExtractor, 8);
+	}
+
+	private void ContrastGridPageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ContrastGridPageBtn.IsChecked = true;
+		MainWindow.Current?.NavigateToTool(AppPages.ContrastGrid, 9);
+	}
+
+	// ============================
+	// Helpers invoked by MainWindow nav bar buttons
+	// ============================
+
+	public void Nav_OpenColorSelector()
+	{
+		Global.SelectorPage?.SelectBtn_Click(this, new RoutedEventArgs());
+	}
+
+	public void Nav_OpenContrastPopup()
+	{
+		ContrastPopup.IsOpen = true;
+	}
+
+	public void Nav_OpenPalettePopup()
+	{
+		PalettePopup.IsOpen = true;
 	}
 }
