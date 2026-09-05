@@ -213,7 +213,7 @@
             </Grid.RowDefinitions>
 
             <!-- Row 0: Header (Title / GridSplitter / Nav bar) -->
-            <Grid Grid.Row="0" Margin="10 10 10 0">
+            <Grid Grid.Row="0" Margin="25 15 25 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="100" />
                     <ColumnDefinition Width="*" />
@@ -402,7 +402,7 @@
             <ScrollViewer
                 x:Name="PageScroller"
                 Grid.Row="1"
-                Margin="10 10 10 0"
+                Margin="25 10 25 0"
                 HorizontalScrollBarVisibility="Disabled"
                 Style="{DynamicResource ScrollViewerStyle}"
                 VerticalScrollBarVisibility="Auto">

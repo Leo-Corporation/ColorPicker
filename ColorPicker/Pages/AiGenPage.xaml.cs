@@ -143,9 +143,15 @@ public partial class AiGenPage : Page
 
 	public static OpenAIService CreateOpenAIService()
 	{
+		string key = Global.Settings.ApiKey;
+		if (string.IsNullOrWhiteSpace(key))
+		{
+			key = "sk-placeholder";
+		}
+
 		var options = new OpenAIOptions
 		{
-			ApiKey = Global.Settings.ApiKey ?? ""
+			ApiKey = key
 		};
 		if (!string.IsNullOrWhiteSpace(Global.Settings.ApiEndpoint))
 		{
