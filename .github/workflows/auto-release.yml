@@ -1,0 +1,82 @@
+name: Auto Release
+
+# Builds the single-file Windows exe on every push to main and publishes it
+# to a rolling "latest" GitHub Release (the previous one is replaced each run).
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    release:
+        runs-on: windows-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+
+            - name: Install .NET
+              uses: actions/setup-dotnet@v5
+              with:
+                  dotnet-version: 10.0.x
+
+            - name: Read project version
+              id: info
+              shell: pwsh
+              run: |
+                  [xml]$xml = Get-Content "ColorPicker/ColorPicker.csproj"
+                  $base = ($xml.Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1)
+                  $sha = "${{ github.sha }}".Substring(0, 7)
+                  "version=$base" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+                  "sha=$sha" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+                  "full=$base+$sha" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+            # Single-file + self-contained so the exe runs without a .NET runtime installed.
+            # (Verified: the reflection-loaded color wheel resolves correctly from the bundle.)
+            - name: Publish single-file exe
+              run: >
+                  dotnet publish ColorPicker/ColorPicker.csproj
+                  -c Release
+                  -r win-x64
+                  --self-contained true
+                  -p:PublishSingleFile=true
+                  -p:DebugType=none
+                  -o publish
+
+            - name: Zip artifact
+              shell: pwsh
+              run: Compress-Archive -Path "publish/ColorPickerMax.exe" -DestinationPath "ColorPickerMax-win-x64.zip"
+
+            # Remove the previous rolling release so the new asset replaces it cleanly.
+            # Fails silently on the very first run when nothing exists yet.
+            - name: Remove previous rolling release
+              continue-on-error: true
+              shell: pwsh
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: gh release delete latest --yes --cleanup-tag
+
+            - name: Publish release
+              uses: softprops/action-gh-release@v2
+              with:
+                  tag_name: latest
+                  name: ColorPicker Max v${{ steps.info.outputs.full }}
+                  body: |
+                      Automated build of branch `main`.
+
+                      - Base version: **${{ steps.info.outputs.version }}**
+                      - Commit: `${{ steps.info.outputs.sha }}`
+                      - Message: ${{ github.event.head_commit.message }}
+
+                      Self-contained single-file Windows x64 executable.
+                      No .NET runtime required.
+                  files: ColorPickerMax-win-x64.zip
+                  prerelease: true
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
