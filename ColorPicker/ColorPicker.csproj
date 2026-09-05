@@ -9,6 +9,7 @@
 	<Copyright>© 2026</Copyright>
 	<Authors>Léo Corporation</Authors>
 	<Title>ColorPicker</Title>
+	<AssemblyName>ColorPickerMax</AssemblyName>
 	<Description>Maximize your creativity.</Description>
 	<RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
 	<Version>6.9.1.2602</Version>

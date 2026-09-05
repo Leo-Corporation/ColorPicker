@@ -70,10 +70,12 @@ public partial class SelectorPage : Page
 		WheelPicker.ColorChanged += (s, e) =>
 		{
 			if (isUpdatingFromSliders) return;
-			var c = (ColorRoutedEventArgs)e;
-			byte r = c.Color.R;
-			byte g = c.Color.G;
-			byte b = c.Color.B;
+			var colorProp = e.GetType().GetProperty("Color");
+			if (colorProp is null) return;
+			var c = (Color)colorProp.GetValue(e)!;
+			byte r = c.R;
+			byte g = c.G;
+			byte b = c.B;
 
 				switch (ColorTypeComboBox.SelectedIndex)
 				{
