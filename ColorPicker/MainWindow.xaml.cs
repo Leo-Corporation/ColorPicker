@@ -173,11 +173,11 @@ public partial class MainWindow : MicaWindow
 		return Global.Settings.Theme == Themes.Dark;
 	}
 
-	/// <summary>Updates the nav-bar theme toggle icon so it shows the icon of the theme you would switch to.</summary>
+	/// <summary>Updates the nav-bar theme toggle icon to match the current effective theme:
+	/// sun for light mode, moon for dark mode (same icons used on the Settings page).</summary>
 	private void UpdateThemeToggleIcon()
 	{
-		// In dark mode show a sun (switch to light); in light mode show a moon (switch to dark).
-		ThemeToggleIcon.Text = IsEffectiveThemeDark() ? "\uF568" : "\uF206";
+		ThemeToggleIcon.Text = IsEffectiveThemeDark() ? "\uF87E" : "\uF8A2";
 	}
 
 	private void ThemeToggleBtn_Click(object sender, RoutedEventArgs e)

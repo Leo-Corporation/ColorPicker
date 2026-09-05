@@ -269,9 +269,9 @@
                             </Button.ToolTip>
                             <TextBlock
                                 x:Name="ThemeToggleIcon"
-                                FontFamily="/Fonts/#FluentSystemIcons-Filled"
+                                FontFamily="/Fonts/#FluentSystemIcons-Regular"
                                 FontSize="18"
-                                Text="&#xF206;" />
+                                Text="&#xF8A2;" />
                         </Button>
                         <RadioButton
                             x:Name="HomePageBtn"
