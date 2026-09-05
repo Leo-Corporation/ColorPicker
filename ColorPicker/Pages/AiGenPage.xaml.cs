@@ -179,7 +179,7 @@ public partial class AiGenPage : Page
 		{
 			return Global.Settings.CustomModelId.Trim();
 		}
-		return Global.Settings.Model ?? Models.Gpt_3_5_Turbo;
+		return Global.Settings.Model ?? Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo;
 	}
 
 	private async void GenerateBtn_Click(object sender, RoutedEventArgs e)
