@@ -267,30 +267,12 @@
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.Theme}" />
                             </Button.ToolTip>
-                            <Grid Width="18" Height="18">
-                                <Viewbox
-                                    x:Name="SunIconViewbox"
-                                    Width="18"
-                                    Height="18"
-                                    Visibility="Visible">
-                                    <Canvas Width="16" Height="16">
-                                        <Path
-                                            Fill="{DynamicResource Foreground1}"
-                                            Data="M8 1a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 1m2.5 7a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0m2.45-3.89a.75.75 0 1 0-1.06-1.06l-1.062 1.06a.75.75 0 0 0 1.061 1.062zM15 8a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 15 8m-3.11 4.95a.75.75 0 0 0 1.06-1.06l-1.06-1.062a.75.75 0 0 0-1.062 1.061zM8 12a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 12m-2.828-.11a.75.75 0 0 0-1.061-1.062L3.05 11.89a.75.75 0 1 0 1.06 1.06zM4 8a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 4 8m.11-2.828A.75.75 0 0 0 5.173 4.11L4.11 3.05a.75.75 0 1 0-1.06 1.06z" />
-                                    </Canvas>
-                                </Viewbox>
-                                <Viewbox
-                                    x:Name="MoonIconViewbox"
-                                    Width="18"
-                                    Height="18"
-                                    Visibility="Collapsed">
-                                    <Canvas Width="24" Height="24">
-                                        <Path
-                                            Fill="{DynamicResource Foreground1}"
-                                            Data="M12.2 22c4.53 0 8.45-2.91 9.76-7.24c.11-.35.01-.74-.25-1s-.64-.36-1-.25c-.78.23-1.58.35-2.38.35c-4.52 0-8.2-3.68-8.2-8.2c0-.8.12-1.6.35-2.38a1.002 1.002 0 0 0-1.25-1.25A10.17 10.17 0 0 0 2 11.8C2 17.42 6.58 22 12.2 22" />
-                                    </Canvas>
-                                </Viewbox>
-                            </Grid>
+                            <TextBlock
+                                x:Name="ThemeToggleIcon"
+                                FontFamily="/Fonts/#FluentSystemIcons-Filled"
+                                FontSize="18"
+                                Foreground="{DynamicResource Foreground1}"
+                                Text="&#xF8A3;" />
                         </Button>
                         <RadioButton
                             x:Name="HomePageBtn"

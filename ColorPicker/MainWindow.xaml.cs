@@ -175,12 +175,10 @@ public partial class MainWindow : MicaWindow
 	}
 
 	/// <summary>Updates the nav-bar theme toggle icon to match the current effective theme:
-	/// sun for light mode, moon for dark mode (using vector shapes styled with AccentColor).</summary>
+	/// sun (Filled) for light mode, moon (Filled) for dark mode matching the navbar font icon style.</summary>
 	private void UpdateThemeToggleIcon()
 	{
-		bool isDark = IsEffectiveThemeDark();
-		SunIconViewbox.Visibility = isDark ? Visibility.Collapsed : Visibility.Visible;
-		MoonIconViewbox.Visibility = isDark ? Visibility.Visible : Visibility.Collapsed;
+		ThemeToggleIcon.Text = IsEffectiveThemeDark() ? "\uF568" : "\uF8A3";
 	}
 
 	private void ThemeToggleBtn_Click(object sender, RoutedEventArgs e)
