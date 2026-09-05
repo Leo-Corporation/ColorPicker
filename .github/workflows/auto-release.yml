@@ -37,14 +37,17 @@ jobs:
                   "sha=$sha" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
                   "full=$base+$sha" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
-            # Single-file + self-contained so the exe runs without a .NET runtime installed.
-            # (Verified: the reflection-loaded color wheel resolves correctly from the bundle.)
+            # Framework-dependent single-file build (~9.4 MB), matching upstream release size.
+            # Requires the .NET 10 Desktop Runtime to be installed on the target machine.
+            # NOTE: must use the -p:SelfContained=false property form. The CLI flag
+            # "--self-contained false" gets overridden by the default implied by
+            # -r win-x64, which silently bundles the entire runtime (~167 MB).
             - name: Publish single-file exe
               run: >
                   dotnet publish ColorPicker/ColorPicker.csproj
                   -c Release
                   -r win-x64
-                  --self-contained true
+                  -p:SelfContained=false
                   -p:PublishSingleFile=true
                   -p:DebugType=none
                   -o publish
@@ -74,8 +77,9 @@ jobs:
                       - Commit: `${{ steps.info.outputs.sha }}`
                       - Message: ${{ github.event.head_commit.message }}
 
-                      Self-contained single-file Windows x64 executable.
-                      No .NET runtime required.
+                      Single-file Windows x64 executable (~9 MB, framework-dependent).
+
+                      Requires the **.NET 10 Desktop Runtime** to be installed.
                   files: ColorPickerMax-win-x64.zip
                   prerelease: true
               env:
