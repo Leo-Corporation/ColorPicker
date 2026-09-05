@@ -482,6 +482,64 @@ public partial class SettingsPage : Page
 		MessageBox.Show(Properties.Resources.Settings, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
+	private async void TestAiConnectionBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SaveAiSettings();
+		TestAiConnectionBtn.IsEnabled = false;
+		TestResultBadge.Visibility = Visibility.Collapsed;
+
+		try
+		{
+			var options = new Betalgo.Ranul.OpenAI.OpenAIOptions
+			{
+				ApiKey = Global.Settings.ApiKey ?? ""
+			};
+			if (!string.IsNullOrWhiteSpace(Global.Settings.ApiEndpoint))
+			{
+				string endpoint = Global.Settings.ApiEndpoint.Trim().TrimEnd('/');
+				if (endpoint.EndsWith("/chat/completions", StringComparison.OrdinalIgnoreCase)) endpoint = endpoint[..^17].TrimEnd('/');
+				if (endpoint.EndsWith("/v1", StringComparison.OrdinalIgnoreCase)) endpoint = endpoint[..^3].TrimEnd('/');
+				options.BaseDomain = endpoint;
+			}
+
+			Betalgo.Ranul.OpenAI.Managers.OpenAIService sdk = new(options);
+			string targetModel = !string.IsNullOrWhiteSpace(Global.Settings.CustomModelId)
+				? Global.Settings.CustomModelId.Trim()
+				: (Global.Settings.Model ?? Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo);
+
+			var res = await sdk.ChatCompletion.CreateCompletion(new Betalgo.Ranul.OpenAI.ObjectModels.RequestModels.ChatCompletionCreateRequest
+			{
+				Messages = [Betalgo.Ranul.OpenAI.ObjectModels.RequestModels.ChatMessage.FromUser("hi")],
+				Model = targetModel,
+				MaxTokens = 5
+			});
+
+			if (res.Successful)
+			{
+				TestResultBadge.Background = (Brush)Application.Current.Resources["LightGreen"];
+				TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundGreen"];
+				TestResultTxt.Text = "连接成功！";
+			}
+			else
+			{
+				TestResultBadge.Background = (Brush)Application.Current.Resources["LightRed"];
+				TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundRed"];
+				TestResultTxt.Text = res.Error?.Message ?? "连接失败";
+			}
+		}
+		catch (Exception ex)
+		{
+			TestResultBadge.Background = (Brush)Application.Current.Resources["LightRed"];
+			TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundRed"];
+			TestResultTxt.Text = ex.Message;
+		}
+		finally
+		{
+			TestResultBadge.Visibility = Visibility.Visible;
+			TestAiConnectionBtn.IsEnabled = true;
+		}
+	}
+
 	private void ApiEndpointTxt_TextChanged(object sender, TextChangedEventArgs e)
 	{
 		if (!loaded) return;

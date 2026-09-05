@@ -34,6 +34,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -178,8 +179,17 @@ public partial class AiGenPage : Page
 
 			if (completionResult.Successful)
 			{
-				ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(completionResult.Choices.First().Message.Content)));
-				LoadDetails();
+				string content = completionResult.Choices.First().Message.Content ?? "";
+				var hexMatch = Regex.Match(content, @"#[0-9a-fA-F]{6}");
+				if (hexMatch.Success)
+				{
+					ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(hexMatch.Value)));
+					LoadDetails();
+				}
+				else
+				{
+					MessageBox.Show($"AI 返回的内容未包含有效的 Hex 颜色代码: {content}", Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Warning);
+				}
 			}
 			else
 			{
@@ -222,8 +232,25 @@ public partial class AiGenPage : Page
 
 			if (completionResult.Successful)
 			{
-				var colors = JsonSerializer.Deserialize<string[]>(completionResult.Choices.First().Message.Content ?? "");
-				LoadBorders(colors ?? []);
+				string content = completionResult.Choices.First().Message.Content ?? "";
+				var matches = Regex.Matches(content, @"#[0-9a-fA-F]{6}");
+				if (matches.Count >= 5)
+				{
+					string[] colors = matches.Take(5).Select(m => m.Value).ToArray();
+					LoadBorders(colors);
+				}
+				else
+				{
+					try
+					{
+						var colors = JsonSerializer.Deserialize<string[]>(content);
+						LoadBorders(colors ?? []);
+					}
+					catch
+					{
+						MessageBox.Show($"AI 返回的内容格式不正确: {content}", Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Warning);
+					}
+				}
 			}
 			else
 			{

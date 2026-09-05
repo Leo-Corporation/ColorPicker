@@ -926,10 +926,11 @@
                             Style="{StaticResource PrimaryButton}" />
                     </Grid>
 
-                    <!-- Save AI Settings Button -->
+                    <!-- Save AI Settings & Test Connection Buttons -->
                     <StackPanel Margin="0 15 0 5" Orientation="Horizontal">
                         <Button
                             x:Name="SaveAiSettingsBtn"
+                            Margin="0 0 10 0"
                             Padding="15 6"
                             VerticalAlignment="Center"
                             Background="{DynamicResource AccentColor}"
@@ -948,6 +949,43 @@
                                 <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.Save}" />
                             </StackPanel>
                         </Button>
+
+                        <Button
+                            x:Name="TestAiConnectionBtn"
+                            Padding="12 6"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource Background3}"
+                            Click="TestAiConnectionBtn_Click"
+                            Cursor="Hand"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource Foreground1}"
+                            Style="{StaticResource DefaultButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0 0 6 0"
+                                    VerticalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="14"
+                                    Text="&#xF5A2;" />
+                                <TextBlock VerticalAlignment="Center" Text="测试连接" />
+                            </StackPanel>
+                        </Button>
+
+                        <Border
+                            x:Name="TestResultBadge"
+                            Margin="10 0 0 0"
+                            Padding="8 4"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource LightGreen}"
+                            CornerRadius="5"
+                            Visibility="Collapsed">
+                            <TextBlock
+                                x:Name="TestResultTxt"
+                                FontSize="12"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource ForegroundGreen}"
+                                Text="连接成功！" />
+                        </Border>
                     </StackPanel>
                 </StackPanel>
             </Expander>
