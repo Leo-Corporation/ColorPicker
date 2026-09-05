@@ -163,6 +163,28 @@ public partial class MainWindow : MicaWindow
 			.Replace("LShiftKey", "Shift")
 			.Replace("RShiftKey", "Shift")
 			.Replace("RControlKey", "Ctrl");
+		UpdateThemeToggleIcon();
+	}
+
+	/// <summary>Computes whether the effective (resolved) theme is currently dark.</summary>
+	private static bool IsEffectiveThemeDark()
+	{
+		if (Global.Settings.Theme == Themes.System) return Global.IsSystemThemeDark();
+		return Global.Settings.Theme == Themes.Dark;
+	}
+
+	/// <summary>Updates the nav-bar theme toggle icon so it shows the icon of the theme you would switch to.</summary>
+	private void UpdateThemeToggleIcon()
+	{
+		// In dark mode show a sun (switch to light); in light mode show a moon (switch to dark).
+		ThemeToggleIcon.Text = IsEffectiveThemeDark() ? "\uF568" : "\uF206";
+	}
+
+	private void ThemeToggleBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Global.Settings.Theme = IsEffectiveThemeDark() ? Themes.Light : Themes.Dark;
+		Global.ChangeTheme();
+		UpdateThemeToggleIcon();
 	}
 
 	private void PageCard_OnCardClick(object? sender, PageEventArgs e)

@@ -15,48 +15,8 @@
     Foreground="{DynamicResource Foreground1}"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <Style x:Key="ToolCategoryButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="{DynamicResource AccentColor}" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="8 5" />
-            <Setter Property="Height" Value="36" />
-            <Setter Property="Margin" Value="0 2" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontWeight" Value="ExtraBold" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="8"
-                            Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="{DynamicResource CardBackground}" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ToolItemButtonStyle" TargetType="RadioButton" BasedOn="{StaticResource NavBarToolButton}">
-            <Setter Property="Margin" Value="10 0 0 0" />
-            <Setter Property="Padding" Value="5 4 2 4" />
-            <Setter Property="FontSize" Value="11" />
-        </Style>
-    </Page.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -87,201 +47,9 @@
             Grid.Row="1"
             Orientation="Horizontal" />
 
-        <!-- Row 2: 工具分类 (moved from MainWindow sidebar) -->
+        <!-- Row 2: 探索 -->
         <StackPanel
             Grid.Row="2"
-            Margin="10 5 10 5">
-            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
-                <TextBlock
-                    VerticalAlignment="Center"
-                    FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                    FontSize="16"
-                    Foreground="{DynamicResource AccentColor}"
-                    Text="&#xF596;" />
-                <TextBlock
-                    Margin="5 0 0 0"
-                    VerticalAlignment="Center"
-                    FontSize="14"
-                    FontWeight="ExtraBold"
-                    Text="{x:Static lang:Resources.Tools}" />
-            </StackPanel>
-
-            <!-- 拾色器 -->
-            <Button
-                x:Name="PickerBtn"
-                Click="PickerBtn_Click"
-                Style="{StaticResource ToolCategoryButtonStyle}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        x:Name="PickerIconTxt"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                        FontSize="16"
-                        Text="&#xFD3F;" />
-                    <TextBlock
-                        Grid.Column="1"
-                        Margin="8 0"
-                        VerticalAlignment="Center"
-                        Text="{x:Static lang:Resources.Picker}" />
-                    <TextBlock
-                        Grid.Column="2"
-                        VerticalAlignment="Center"
-                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                        FontSize="12"
-                        Text="&#xF2A4;">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <RotateTransform x:Name="PickerRotator" Angle="0" />
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                </Grid>
-            </Button>
-            <StackPanel x:Name="PickerPanel" Visibility="Collapsed">
-                <RadioButton
-                    x:Name="SelectorPageBtn"
-                    Click="SelectorPageBtn_Click"
-                    Content="{x:Static lang:Resources.Selector}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-                <RadioButton
-                    x:Name="ChromaticPageBtn"
-                    Click="ChromaticPageBtn_Click"
-                    Content="{x:Static lang:Resources.ChromaticWheel}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-            </StackPanel>
-
-            <!-- 颜色工具 -->
-            <Button
-                x:Name="ColorToolsBtn"
-                Click="ColorToolsBtn_Click"
-                Style="{StaticResource ToolCategoryButtonStyle}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        x:Name="ColorToolsIconTxt"
-                        VerticalAlignment="Center"
-                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                        FontSize="16"
-                        Text="&#xF82F;" />
-                    <TextBlock
-                        Grid.Column="1"
-                        Margin="8 0"
-                        VerticalAlignment="Center"
-                        Text="{x:Static lang:Resources.ColorTools}" />
-                    <TextBlock
-                        Grid.Column="2"
-                        VerticalAlignment="Center"
-                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                        FontSize="12"
-                        Text="&#xF2A4;">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <RotateTransform x:Name="ColorToolsRotator" Angle="0" />
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                </Grid>
-            </Button>
-            <StackPanel x:Name="ColorToolsPanel" Visibility="Collapsed">
-                <RadioButton
-                    x:Name="ConverterPageBtn"
-                    Click="ConverterPageBtn_Click"
-                    Content="{x:Static lang:Resources.Converter}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-                <RadioButton
-                    x:Name="TextPageBtn"
-                    Click="TextPageBtn_Click"
-                    Content="{x:Static lang:Resources.TextTool}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-                <RadioButton
-                    x:Name="ContrastGridPageBtn"
-                    Click="ContrastGridPageBtn_Click"
-                    Content="{x:Static lang:Resources.ContrastGrid}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-                <RadioButton
-                    x:Name="ImageExtractorPageBtn"
-                    Click="ImageExtractorPageBtn_Click"
-                    Content="{x:Static lang:Resources.ImageExtractor}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-            </StackPanel>
-
-            <!-- 创建 -->
-            <Button
-                x:Name="CreationBtn"
-                Click="CreationBtn_Click"
-                Style="{StaticResource ToolCategoryButtonStyle}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        x:Name="CreationIconTxt"
-                        VerticalAlignment="Center"
-                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                        FontSize="16"
-                        Text="&#xF596;" />
-                    <TextBlock
-                        Grid.Column="1"
-                        Margin="8 0"
-                        VerticalAlignment="Center"
-                        Text="{x:Static lang:Resources.Creation}" />
-                    <TextBlock
-                        Grid.Column="2"
-                        VerticalAlignment="Center"
-                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                        FontSize="12"
-                        Text="&#xF2A4;">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <RotateTransform x:Name="CreationRotator" Angle="0" />
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                </Grid>
-            </Button>
-            <StackPanel x:Name="CreationPanel" Visibility="Collapsed">
-                <RadioButton
-                    x:Name="PalettePageBtn"
-                    Click="PalettePageBtn_Click"
-                    Content="{x:Static lang:Resources.Palette}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-                <RadioButton
-                    x:Name="GradientPageBtn"
-                    Click="GradientPageBtn_Click"
-                    Content="{x:Static lang:Resources.Gradient}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-                <RadioButton
-                    x:Name="AiCreationPageBtn"
-                    Click="AiCreationPageBtn_Click"
-                    Content="{x:Static lang:Resources.AIGeneration}"
-                    GroupName="NavBar"
-                    Style="{StaticResource ToolItemButtonStyle}" />
-            </StackPanel>
-        </StackPanel>
-
-        <!-- Row 3: 探索 -->
-        <StackPanel
-            Grid.Row="3"
             Margin="10"
             Orientation="Horizontal">
             <TextBlock
@@ -300,7 +68,7 @@
 
         <WrapPanel
             x:Name="DiscoverPanel"
-            Grid.Row="4"
+            Grid.Row="3"
             Orientation="Horizontal" />
 
         <Popup

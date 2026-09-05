@@ -124,14 +124,41 @@ public partial class SelectorPage : Page
 			}
 
 			double factor = scaling / 100d; // Calculate factor
-			miniPicker.Left = System.Windows.Forms.Cursor.Position.X / factor; // Define position
-			miniPicker.Top = System.Windows.Forms.Cursor.Position.Y / factor + 5; // Define position
+
+			// Position the MiniPicker next to the cursor, but flip to the other side
+			// when it would overflow the screen so the color block is never cut off.
+			System.Drawing.Rectangle workingArea = System.Windows.Forms.Screen.FromPoint(System.Windows.Forms.Cursor.Position).WorkingArea;
+			double screenW = workingArea.Width / factor;
+			double screenH = workingArea.Height / factor;
+
+			double pickerW = miniPicker.Width;   // 270 (logical units)
+			double pickerH = miniPicker.Height;  // 120 (logical units)
+			double cursorX = System.Windows.Forms.Cursor.Position.X / factor;
+			double cursorY = System.Windows.Forms.Cursor.Position.Y / factor;
+
+			double left = cursorX + 16;
+			double top = cursorY + 16;
+
+			if (left + pickerW > screenW) left = cursorX - pickerW - 16; // flip to the left of the cursor
+			if (top + pickerH > screenH) top = cursorY - pickerH - 16;   // flip above the cursor
+
+			miniPicker.Left = Math.Max(0, left);  // Define position
+			miniPicker.Top = Math.Max(0, top);    // Define position
 		};
 
 		// Register Keyboard Shortcuts
 		try
 		{
 			keyboardEvents = Hook.GlobalEvents();
+			keyboardEvents.KeyDown += (s, e) =>
+			{
+				// ESC cancels/closes the color picker, following the common convention.
+				if (e.KeyCode == System.Windows.Forms.Keys.Escape && selecting)
+				{
+					selecting = false;
+					UpdateSelectionState(false);
+				}
+			};
 			Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
 			{
 				{ Combination.FromString(Global.Settings.CopyKeyboardShortcut), HandleCopyKeyboard },

@@ -254,11 +254,25 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <!-- Row 0: 主页 / 书签 / 设置 (icon-only) -->
+                    <!-- Row 0: 主题切换 / 主页 / 书签 / 设置 (icon-only) -->
                     <StackPanel
                         Grid.Row="0"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
+                        <Button
+                            x:Name="ThemeToggleBtn"
+                            Margin="0 0 5 0"
+                            Click="ThemeToggleBtn_Click"
+                            Style="{StaticResource NavActionButtonStyle}">
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Theme}" />
+                            </Button.ToolTip>
+                            <TextBlock
+                                x:Name="ThemeToggleIcon"
+                                FontFamily="/Fonts/#FluentSystemIcons-Filled"
+                                FontSize="18"
+                                Text="&#xF206;" />
+                        </Button>
                         <RadioButton
                             x:Name="HomePageBtn"
                             Margin="0 0 5 0"

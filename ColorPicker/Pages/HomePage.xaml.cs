@@ -32,7 +32,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 
 namespace ColorPicker.Pages;
@@ -42,20 +41,6 @@ namespace ColorPicker.Pages;
 /// </summary>
 public partial class HomePage : Page
 {
-	readonly DoubleAnimation expandAnimation = new()
-	{
-		From = 0,
-		To = 180,
-		Duration = new Duration(TimeSpan.FromSeconds(0.2)),
-	};
-
-	readonly DoubleAnimation collapseAnimation = new()
-	{
-		From = 180,
-		To = 0,
-		Duration = new Duration(TimeSpan.FromSeconds(0.2)),
-	};
-
 	public HomePage()
 	{
 		InitializeComponent();
@@ -79,45 +64,6 @@ public partial class HomePage : Page
 		}
 
 		LoadPaletteUI();
-		ApplyDefaultToolSelection();
-	}
-
-	/// <summary>
-	/// Highlights the matching tool radio button (moved here from MainWindow) based on the user's
-	/// configured default landing page so the HomePage tool section reflects the current selection.
-	/// </summary>
-	private void ApplyDefaultToolSelection()
-	{
-		switch (Global.Settings.DefaultPage)
-		{
-			case AppPages.Selector:
-				SelectorPageBtn.IsChecked = true;
-				break;
-			case AppPages.ColorWheel:
-				ChromaticPageBtn.IsChecked = true;
-				break;
-			case AppPages.Converter:
-				ConverterPageBtn.IsChecked = true;
-				break;
-			case AppPages.TextTool:
-				TextPageBtn.IsChecked = true;
-				break;
-			case AppPages.ColorPalette:
-				PalettePageBtn.IsChecked = true;
-				break;
-			case AppPages.ColorGradient:
-				GradientPageBtn.IsChecked = true;
-				break;
-			case AppPages.AIGeneration:
-				AiCreationPageBtn.IsChecked = true;
-				break;
-			case AppPages.ImageExtractor:
-				ImageExtractorPageBtn.IsChecked = true;
-				break;
-			case AppPages.ContrastGrid:
-				ContrastGridPageBtn.IsChecked = true;
-				break;
-		}
 	}
 
 	private void GetContrastBtn_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -214,103 +160,6 @@ public partial class HomePage : Page
 	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		LoadPaletteUI();
-	}
-
-	// ============================
-	// Tool section handlers (moved from MainWindow sidebar)
-	// ============================
-
-	private void PickerBtn_Click(object sender, RoutedEventArgs e)
-	{
-		bool expanded = PickerPanel.Visibility == Visibility.Visible;
-		PickerPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible;
-
-		Storyboard storyboard = new();
-		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
-		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "PickerRotator");
-		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
-
-		storyboard.Begin(this);
-	}
-
-	private void ColorToolsBtn_Click(object sender, RoutedEventArgs e)
-	{
-		bool expanded = ColorToolsPanel.Visibility == Visibility.Visible;
-		ColorToolsPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible;
-
-		Storyboard storyboard = new();
-		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
-		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "ColorToolsRotator");
-		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
-
-		storyboard.Begin(this);
-	}
-
-	private void CreationBtn_Click(object sender, RoutedEventArgs e)
-	{
-		bool expanded = CreationPanel.Visibility == Visibility.Visible;
-		CreationPanel.Visibility = expanded ? Visibility.Collapsed : Visibility.Visible;
-
-		Storyboard storyboard = new();
-		storyboard.Children.Add(expanded ? collapseAnimation : expandAnimation);
-		Storyboard.SetTargetName(expanded ? collapseAnimation : expandAnimation, "CreationRotator");
-		Storyboard.SetTargetProperty(expanded ? collapseAnimation : expandAnimation, new(RotateTransform.AngleProperty));
-
-		storyboard.Begin(this);
-	}
-
-	private void SelectorPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		SelectorPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.Selector, 0);
-	}
-
-	private void ChromaticPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		ChromaticPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.ColorWheel, 1);
-	}
-
-	private void ConverterPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		ConverterPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.Converter, 2);
-	}
-
-	private void TextPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		TextPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.TextTool, 3);
-	}
-
-	private void PalettePageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		PalettePageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.ColorPalette, 4);
-	}
-
-	private void GradientPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		GradientPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.ColorGradient, 5);
-	}
-
-	private void AiCreationPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		AiCreationPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.AIGeneration, 6);
-	}
-
-	private void ImageExtractorPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		ImageExtractorPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.ImageExtractor, 8);
-	}
-
-	private void ContrastGridPageBtn_Click(object sender, RoutedEventArgs e)
-	{
-		ContrastGridPageBtn.IsChecked = true;
-		MainWindow.Current?.NavigateToTool(AppPages.ContrastGrid, 9);
 	}
 
 	// ============================
