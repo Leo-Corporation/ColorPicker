@@ -515,22 +515,26 @@ public partial class SettingsPage : Page
 
 			if (res.Successful)
 			{
-				TestResultBadge.Background = (Brush)Application.Current.Resources["LightGreen"];
-				TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundGreen"];
-				TestResultTxt.Text = "连接成功！";
+				TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(16, 124, 65)); // Green
+				TestStatusTitle.Text = "连接成功！";
+				string reply = res.Choices?.FirstOrDefault()?.Message?.Content ?? "(无返回文本)";
+				TestResultTxt.Text = $"响应内容: {reply}";
 			}
 			else
 			{
-				TestResultBadge.Background = (Brush)Application.Current.Resources["LightRed"];
-				TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundRed"];
-				TestResultTxt.Text = $"连接失败: {res.Error?.Message ?? "未知错误"} (Code: {res.Error?.Code})";
+				TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(209, 52, 56)); // Red
+				TestStatusTitle.Text = "连接失败";
+				string errorMsg = res.Error?.Message ?? "未知错误";
+				string errorCode = res.Error?.Code ?? "N/A";
+				string errorType = res.Error?.Type ?? "N/A";
+				TestResultTxt.Text = $"错误代码: {errorCode}\n错误类型: {errorType}\n详细提示: {errorMsg}";
 			}
 		}
 		catch (Exception ex)
 		{
-			TestResultBadge.Background = (Brush)Application.Current.Resources["LightRed"];
-			TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundRed"];
-			TestResultTxt.Text = $"异常报错: {ex.Message}";
+			TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(209, 52, 56)); // Red
+			TestStatusTitle.Text = "异常报错";
+			TestResultTxt.Text = $"{ex.GetType().Name}: {ex.Message}\n{ex.InnerException?.Message}";
 		}
 		finally
 		{
