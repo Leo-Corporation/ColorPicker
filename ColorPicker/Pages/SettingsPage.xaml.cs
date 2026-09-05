@@ -122,6 +122,7 @@ public partial class SettingsPage : Page
 		Global.Settings.LaunchOnStart ??= false;
 		UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
 		LaunchOnStartChk.IsChecked = Global.Settings.LaunchOnStart;
+		loaded = true;
 		UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
 		UseSynethiaChk.IsChecked = Global.Settings.UseSynethia;
 
@@ -466,30 +467,40 @@ public partial class SettingsPage : Page
 		"ColorPicker - MIT License - © 2021-2026 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
-	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
+	private void SaveAiSettings()
 	{
 		Global.Settings.ApiKey = ApiKeyTxt.Password;
 		Global.Settings.ApiEndpoint = ApiEndpointTxt.Text;
 		Global.Settings.CustomModelId = CustomModelIdTxt.Text;
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
-		ApiApplyBtn.Visibility = Visibility.Hidden;
+		Global.SaveUserAiSettings();
+	}
+
+	private void SaveAiSettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SaveAiSettings();
+		MessageBox.Show(Properties.Resources.Settings, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
 	private void ApiEndpointTxt_TextChanged(object sender, TextChangedEventArgs e)
 	{
+		if (!loaded) return;
 		Global.Settings.ApiEndpoint = ApiEndpointTxt.Text;
-		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		Global.SaveUserAiSettings();
 	}
 
 	private void CustomModelIdTxt_TextChanged(object sender, TextChangedEventArgs e)
 	{
+		if (!loaded) return;
 		Global.Settings.CustomModelId = CustomModelIdTxt.Text;
-		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		Global.SaveUserAiSettings();
 	}
 
 	private void ApiKeyTxt_PasswordChanged(object sender, RoutedEventArgs e)
 	{
-		ApiApplyBtn.Visibility = Visibility.Visible;
+		if (!loaded) return;
+		Global.Settings.ApiKey = ApiKeyTxt.Password;
+		Global.SaveUserAiSettings();
 	}
 
 	private void ModelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -497,7 +508,7 @@ public partial class SettingsPage : Page
 		try
 		{
 			Global.Settings.Model = Global.Settings.SupportedModels[ModelComboBox.SelectedIndex];
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			Global.SaveUserAiSettings();
 		}
 		catch { }
 	}

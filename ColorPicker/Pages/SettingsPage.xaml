@@ -775,15 +775,21 @@
                         </StackPanel>
                     </StackPanel>
                 </Expander.Header>
-                <StackPanel>
-                    <StackPanel Margin="10" Orientation="Horizontal">
+                <StackPanel Margin="10">
+                    <Grid Margin="0 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- 1: API Key -->
                         <TextBlock
-                            Margin="0 0 10 0"
+                            Grid.Column="0"
                             VerticalAlignment="Center"
                             Text="{x:Static lang:Resources.OpenAIKey}" />
                         <Border
-                            Width="250"
-                            HorizontalAlignment="Center"
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
                             Background="{DynamicResource CardBackground}"
                             CornerRadius="5">
                             <Border.Effect>
@@ -795,6 +801,7 @@
                             </Border.Effect>
                             <PasswordBox
                                 x:Name="ApiKeyTxt"
+                                Width="254"
                                 Margin="3"
                                 Padding="3"
                                 Background="Transparent"
@@ -804,41 +811,22 @@
                                 Foreground="{DynamicResource DarkGray}"
                                 PasswordChanged="ApiKeyTxt_PasswordChanged" />
                         </Border>
-                        <Button
-                            x:Name="ApiApplyBtn"
-                            Margin="10 0 0 0"
-                            Padding="10 5 10 5"
-                            VerticalAlignment="Center"
-                            Background="{DynamicResource AccentColor}"
-                            Click="ApiApplyBtn_Click"
-                            Cursor="Hand"
-                            FontWeight="ExtraBold"
-                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
-                            Style="{StaticResource PrimaryButton}"
-                            Visibility="Hidden">
-                            <TextBlock
-                                Margin="0 0 0 0"
-                                VerticalAlignment="Center"
-                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                                FontWeight="Regular"
-                                Text="&#xF680;" />
+                    </Grid>
 
-                            <Button.ToolTip>
-                                <ToolTip
-                                    Background="{DynamicResource Background1}"
-                                    Content="{x:Static lang:Resources.Apply}"
-                                    Foreground="{DynamicResource Foreground1}" />
-                            </Button.ToolTip>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
+                    <Grid Margin="0 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- 2: Endpoint -->
                         <TextBlock
-                            Margin="0 0 10 0"
+                            Grid.Column="0"
                             VerticalAlignment="Center"
                             Text="Endpoint" />
                         <Border
-                            Width="250"
-                            HorizontalAlignment="Center"
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
                             Background="{DynamicResource CardBackground}"
                             CornerRadius="5">
                             <Border.Effect>
@@ -850,6 +838,7 @@
                             </Border.Effect>
                             <TextBox
                                 x:Name="ApiEndpointTxt"
+                                Width="254"
                                 Margin="3"
                                 Padding="3"
                                 Background="Transparent"
@@ -859,45 +848,22 @@
                                 Foreground="{DynamicResource DarkGray}"
                                 TextChanged="ApiEndpointTxt_TextChanged" />
                         </Border>
-                    </StackPanel>
-                    <StackPanel Margin="0 0 0 10" Orientation="Horizontal">
+                    </Grid>
+
+                    <Grid Margin="0 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- 3: Custom Model ID -->
                         <TextBlock
-                            Margin="10 0 10 0"
-                            VerticalAlignment="Center"
-                            Text="{x:Static lang:Resources.Model}" />
-                        <ComboBox
-                            x:Name="ModelComboBox"
-                            Margin="0 0 10 0"
-                            Padding="5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Background="Transparent"
-                            BorderBrush="{DynamicResource AccentColor}"
-                            BorderThickness="2"
-                            Foreground="{DynamicResource Foreground1}"
-                            SelectionChanged="ModelComboBox_SelectionChanged"
-                            Style="{DynamicResource ComboBoxStyle1}" />
-                        <Button
-                            x:Name="RefreshModelsBtn"
-                            Margin="0 0 10 0"
-                            Padding="5"
-                            VerticalAlignment="Center"
-                            Background="{DynamicResource AccentColor}"
-                            Click="RefreshModelsBtn_Click"
-                            Content="&#xF140;"
-                            Cursor="Hand"
-                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
-                            Style="{StaticResource PrimaryButton}" />
-                    </StackPanel>
-                    <StackPanel Margin="10 0 10 10" Orientation="Horizontal">
-                        <TextBlock
-                            Margin="0 0 10 0"
+                            Grid.Column="0"
                             VerticalAlignment="Center"
                             Text="Custom Model ID" />
                         <Border
-                            Width="200"
-                            HorizontalAlignment="Center"
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
                             Background="{DynamicResource CardBackground}"
                             CornerRadius="5">
                             <Border.Effect>
@@ -909,6 +875,7 @@
                             </Border.Effect>
                             <TextBox
                                 x:Name="CustomModelIdTxt"
+                                Width="254"
                                 Margin="3"
                                 Padding="3"
                                 Background="Transparent"
@@ -918,6 +885,69 @@
                                 Foreground="{DynamicResource DarkGray}"
                                 TextChanged="CustomModelIdTxt_TextChanged" />
                         </Border>
+                    </Grid>
+
+                    <Grid Margin="0 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- 4: Model -->
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Text="{x:Static lang:Resources.Model}" />
+                        <ComboBox
+                            x:Name="ModelComboBox"
+                            Grid.Column="1"
+                            Width="260"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="{DynamicResource AccentColor}"
+                            BorderThickness="2"
+                            Foreground="{DynamicResource Foreground1}"
+                            SelectionChanged="ModelComboBox_SelectionChanged"
+                            Style="{DynamicResource ComboBoxStyle1}" />
+                        <Button
+                            x:Name="RefreshModelsBtn"
+                            Grid.Column="2"
+                            Margin="10 0 0 0"
+                            Padding="8 5"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource AccentColor}"
+                            Click="RefreshModelsBtn_Click"
+                            Content="&#xF140;"
+                            Cursor="Hand"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                            Style="{StaticResource PrimaryButton}" />
+                    </Grid>
+
+                    <!-- Save AI Settings Button -->
+                    <StackPanel Margin="0 15 0 5" Orientation="Horizontal">
+                        <Button
+                            x:Name="SaveAiSettingsBtn"
+                            Padding="15 6"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource AccentColor}"
+                            Click="SaveAiSettingsBtn_Click"
+                            Cursor="Hand"
+                            FontWeight="ExtraBold"
+                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                            Style="{StaticResource PrimaryButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0 0 6 0"
+                                    VerticalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="14"
+                                    Text="&#xF680;" />
+                                <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.Save}" />
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </Expander>
