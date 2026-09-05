@@ -54,19 +54,41 @@ public partial class AiGenPage : Page
 	{
 		InitializeComponent();
 		InitUI();
-		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+		Loaded += (o, e) =>
+		{
+			SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+			InitUI();
+		};
 		ColorBtn.IsChecked = true;
 	}
 
-	private void InitUI()
+	public static bool HasValidAiConfig()
 	{
-		DetailsWrap.Children.Add(DetailsControl); // Add the details control to the page
-		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
+		return !string.IsNullOrWhiteSpace(Global.Settings.ApiKey) || !string.IsNullOrWhiteSpace(Global.Settings.ApiEndpoint);
+	}
+
+	internal void InitUI()
+	{
+		if (DetailsWrap.Children.Count == 0)
 		{
-			ColorPanel.Visibility = Visibility.Visible;
+			DetailsWrap.Children.Add(DetailsControl); // Add the details control to the page
+		}
+
+		if (HasValidAiConfig())
+		{
+			ColorPanel.Visibility = ColorBtn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+			PalettePanel.Visibility = PaletteBtn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+			DescPanel.Visibility = DescribeBtn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
 			ApiPlaceholder.Visibility = Visibility.Collapsed;
 			NavGrid.Visibility = Visibility.Visible;
-			return;
+		}
+		else
+		{
+			ColorPanel.Visibility = Visibility.Collapsed;
+			PalettePanel.Visibility = Visibility.Collapsed;
+			DescPanel.Visibility = Visibility.Collapsed;
+			ApiPlaceholder.Visibility = Visibility.Visible;
+			NavGrid.Visibility = Visibility.Collapsed;
 		}
 	}
 
@@ -156,7 +178,7 @@ public partial class AiGenPage : Page
 
 	private async void GenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		if (!HasValidAiConfig())
 		{
 			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
@@ -219,7 +241,7 @@ public partial class AiGenPage : Page
 
 	private async void PaletteGenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		if (!HasValidAiConfig())
 		{
 			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
@@ -334,7 +356,7 @@ public partial class AiGenPage : Page
 
 	private void ColorBtn_Checked(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (!HasValidAiConfig()) return;
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Visible;
 		PalettePanel.Visibility = Visibility.Collapsed;
@@ -343,7 +365,7 @@ public partial class AiGenPage : Page
 
 	private void PaletteBtn_Checked(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (!HasValidAiConfig()) return;
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Collapsed;
 		PalettePanel.Visibility = Visibility.Visible;
@@ -352,7 +374,7 @@ public partial class AiGenPage : Page
 
 	private void DescribeBtn_Checked(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (!HasValidAiConfig()) return;
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Collapsed;
 		PalettePanel.Visibility = Visibility.Collapsed;
@@ -361,7 +383,7 @@ public partial class AiGenPage : Page
 	string _colorName = "";
 	private async void DescGenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		if (!HasValidAiConfig())
 		{
 			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
