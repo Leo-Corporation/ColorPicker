@@ -126,7 +126,16 @@ public partial class AiGenPage : Page
 		};
 		if (!string.IsNullOrWhiteSpace(Global.Settings.ApiEndpoint))
 		{
-			options.BaseDomain = Global.Settings.ApiEndpoint.Trim().TrimEnd('/');
+			string endpoint = Global.Settings.ApiEndpoint.Trim().TrimEnd('/');
+			if (endpoint.EndsWith("/chat/completions", StringComparison.OrdinalIgnoreCase))
+			{
+				endpoint = endpoint[..^17].TrimEnd('/');
+			}
+			if (endpoint.EndsWith("/v1", StringComparison.OrdinalIgnoreCase))
+			{
+				endpoint = endpoint[..^3].TrimEnd('/');
+			}
+			options.BaseDomain = endpoint;
 		}
 		return new OpenAIService(options);
 	}
@@ -172,8 +181,16 @@ public partial class AiGenPage : Page
 				ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(completionResult.Choices.First().Message.Content)));
 				LoadDetails();
 			}
+			else
+			{
+				string error = completionResult.Error?.Message ?? "Generation failed";
+				MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
-		catch { }
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private async void PaletteGenerateBtn_Click(object sender, RoutedEventArgs e)
@@ -208,8 +225,16 @@ public partial class AiGenPage : Page
 				var colors = JsonSerializer.Deserialize<string[]>(completionResult.Choices.First().Message.Content ?? "");
 				LoadBorders(colors ?? []);
 			}
+			else
+			{
+				string error = completionResult.Error?.Message ?? "Palette generation failed";
+				MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
-		catch { }
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private void C1_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -315,8 +340,16 @@ public partial class AiGenPage : Page
 				_colorName = completionResult.Choices.First().Message.Content ?? "";
 				NameTxt.Text = $"{Properties.Resources.Name}: {_colorName}";
 			}
+			else
+			{
+				string error = completionResult.Error?.Message ?? "Name generation failed";
+				MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
-		catch { }
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private void NameTxt_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
