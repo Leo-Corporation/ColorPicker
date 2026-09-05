@@ -39,6 +39,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace ColorPicker.Pages;
 
@@ -488,26 +489,24 @@ public partial class SettingsPage : Page
 		TestAiConnectionBtn.IsEnabled = false;
 		TestResultBadge.Visibility = Visibility.Collapsed;
 
+		// Start rotating animation on icon
+		DoubleAnimation spinAnimation = new()
+		{
+			From = 0,
+			To = 360,
+			Duration = TimeSpan.FromSeconds(1),
+			RepeatBehavior = RepeatBehavior.Forever
+		};
+		TestIconRotator.BeginAnimation(RotateTransform.AngleProperty, spinAnimation);
+
 		try
 		{
-			var options = new Betalgo.Ranul.OpenAI.OpenAIOptions
-			{
-				ApiKey = Global.Settings.ApiKey ?? ""
-			};
-			if (!string.IsNullOrWhiteSpace(Global.Settings.ApiEndpoint))
-			{
-				string endpoint = Global.Settings.ApiEndpoint.Trim().TrimEnd('/');
-				if (endpoint.EndsWith("/chat/completions", StringComparison.OrdinalIgnoreCase)) endpoint = endpoint[..^17].TrimEnd('/');
-				if (endpoint.EndsWith("/v1", StringComparison.OrdinalIgnoreCase)) endpoint = endpoint[..^3].TrimEnd('/');
-				options.BaseDomain = endpoint;
-			}
-
-			Betalgo.Ranul.OpenAI.Managers.OpenAIService sdk = new(options);
+			var openAiService = AiGenPage.CreateOpenAIService();
 			string targetModel = !string.IsNullOrWhiteSpace(Global.Settings.CustomModelId)
 				? Global.Settings.CustomModelId.Trim()
 				: (Global.Settings.Model ?? Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo);
 
-			var res = await sdk.ChatCompletion.CreateCompletion(new Betalgo.Ranul.OpenAI.ObjectModels.RequestModels.ChatCompletionCreateRequest
+			var res = await openAiService.ChatCompletion.CreateCompletion(new Betalgo.Ranul.OpenAI.ObjectModels.RequestModels.ChatCompletionCreateRequest
 			{
 				Messages = [Betalgo.Ranul.OpenAI.ObjectModels.RequestModels.ChatMessage.FromUser("hi")],
 				Model = targetModel,
@@ -524,17 +523,18 @@ public partial class SettingsPage : Page
 			{
 				TestResultBadge.Background = (Brush)Application.Current.Resources["LightRed"];
 				TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundRed"];
-				TestResultTxt.Text = res.Error?.Message ?? "连接失败";
+				TestResultTxt.Text = $"连接失败: {res.Error?.Message ?? "未知错误"} (Code: {res.Error?.Code})";
 			}
 		}
 		catch (Exception ex)
 		{
 			TestResultBadge.Background = (Brush)Application.Current.Resources["LightRed"];
 			TestResultTxt.Foreground = (Brush)Application.Current.Resources["ForegroundRed"];
-			TestResultTxt.Text = ex.Message;
+			TestResultTxt.Text = $"异常报错: {ex.Message}";
 		}
 		finally
 		{
+			TestIconRotator.BeginAnimation(RotateTransform.AngleProperty, null); // Stop spinning
 			TestResultBadge.Visibility = Visibility.Visible;
 			TestAiConnectionBtn.IsEnabled = true;
 		}

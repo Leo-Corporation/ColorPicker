@@ -119,7 +119,7 @@ public partial class AiGenPage : Page
 		}
 	}
 
-	private static OpenAIService CreateOpenAIService()
+	public static OpenAIService CreateOpenAIService()
 	{
 		var options = new OpenAIOptions
 		{
@@ -135,6 +135,10 @@ public partial class AiGenPage : Page
 			if (endpoint.EndsWith("/v1", StringComparison.OrdinalIgnoreCase))
 			{
 				endpoint = endpoint[..^3].TrimEnd('/');
+			}
+			if (!endpoint.EndsWith("/"))
+			{
+				endpoint += "/";
 			}
 			options.BaseDomain = endpoint;
 		}

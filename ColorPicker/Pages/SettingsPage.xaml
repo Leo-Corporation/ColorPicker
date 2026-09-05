@@ -927,55 +927,64 @@
                     </Grid>
 
                     <!-- Save AI Settings & Test Connection Buttons -->
-                    <StackPanel Margin="0 15 0 5" Orientation="Horizontal">
-                        <Button
-                            x:Name="SaveAiSettingsBtn"
-                            Margin="0 0 10 0"
-                            Padding="15 6"
-                            VerticalAlignment="Center"
-                            Background="{DynamicResource AccentColor}"
-                            Click="SaveAiSettingsBtn_Click"
-                            Cursor="Hand"
-                            FontWeight="ExtraBold"
-                            Foreground="{DynamicResource WindowButtonsHoverForeground1}"
-                            Style="{StaticResource PrimaryButton}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0 0 6 0"
-                                    VerticalAlignment="Center"
-                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                                    FontSize="14"
-                                    Text="&#xF680;" />
-                                <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.Save}" />
-                            </StackPanel>
-                        </Button>
+                    <StackPanel Margin="0 15 0 5" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                x:Name="SaveAiSettingsBtn"
+                                Margin="0 0 10 0"
+                                Padding="15 6"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource AccentColor}"
+                                Click="SaveAiSettingsBtn_Click"
+                                Cursor="Hand"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource WindowButtonsHoverForeground1}"
+                                Style="{StaticResource PrimaryButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0 0 6 0"
+                                        VerticalAlignment="Center"
+                                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                        FontSize="14"
+                                        Text="&#xF680;" />
+                                    <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.Save}" />
+                                </StackPanel>
+                            </Button>
 
-                        <Button
-                            x:Name="TestAiConnectionBtn"
-                            Padding="12 6"
-                            VerticalAlignment="Center"
-                            Background="{DynamicResource Background3}"
-                            Click="TestAiConnectionBtn_Click"
-                            Cursor="Hand"
-                            FontWeight="Bold"
-                            Foreground="{DynamicResource Foreground1}"
-                            Style="{StaticResource DefaultButton}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0 0 6 0"
-                                    VerticalAlignment="Center"
-                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                                    FontSize="14"
-                                    Text="&#xF5A2;" />
-                                <TextBlock VerticalAlignment="Center" Text="测试连接" />
-                            </StackPanel>
-                        </Button>
+                            <Button
+                                x:Name="TestAiConnectionBtn"
+                                Padding="12 6"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource Background3}"
+                                Click="TestAiConnectionBtn_Click"
+                                Cursor="Hand"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Foreground1}"
+                                Style="{StaticResource DefaultButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        x:Name="TestBtnIcon"
+                                        Margin="0 0 6 0"
+                                        VerticalAlignment="Center"
+                                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                        FontSize="14"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Text="&#xF5A2;">
+                                        <TextBlock.RenderTransform>
+                                            <RotateTransform x:Name="TestIconRotator" Angle="0" />
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="TestBtnTxt" VerticalAlignment="Center" Text="测试连接" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
 
+                        <!-- Error/Status Info Message Block (below the buttons) -->
                         <Border
                             x:Name="TestResultBadge"
-                            Margin="10 0 0 0"
-                            Padding="8 4"
-                            VerticalAlignment="Center"
+                            Margin="0 10 0 0"
+                            Padding="10 8"
+                            HorizontalAlignment="Left"
                             Background="{DynamicResource LightGreen}"
                             CornerRadius="5"
                             Visibility="Collapsed">
@@ -984,7 +993,8 @@
                                 FontSize="12"
                                 FontWeight="Bold"
                                 Foreground="{DynamicResource ForegroundGreen}"
-                                Text="连接成功！" />
+                                Text="连接成功！"
+                                TextWrapping="Wrap" />
                         </Border>
                     </StackPanel>
                 </StackPanel>
