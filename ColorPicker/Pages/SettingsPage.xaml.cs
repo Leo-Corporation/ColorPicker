@@ -39,6 +39,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace ColorPicker.Pages;
 
@@ -59,13 +60,6 @@ public partial class SettingsPage : Page
 	bool loaded = false;
 	private async void InitUI()
 	{
-		// About section
-#if PORTABLE
-	VersionTxt.Text = Global.Version + " (Portable)";
-#else
-		VersionTxt.Text = Global.Version;
-#endif
-
 		// Select the language
 		LangComboBox.SelectedIndex = (int)Global.Settings.Language;
 
@@ -99,8 +93,12 @@ public partial class SettingsPage : Page
 
 		// Load the AI section
 		Global.Settings.ApiKey ??= "";
+		Global.Settings.ApiEndpoint ??= "";
 		Global.Settings.Model ??= "gpt-3.5-turbo";
+		Global.Settings.CustomModelId ??= "";
 		ApiKeyTxt.Password = Global.Settings.ApiKey;
+		ApiEndpointTxt.Text = Global.Settings.ApiEndpoint;
+		CustomModelIdTxt.Text = Global.Settings.CustomModelId;
 		for (int i = 0; i < Global.Settings.SupportedModels.Length; i++)
 		{
 			ModelComboBox.Items.Add(Global.Settings.SupportedModels[i]);
@@ -125,6 +123,7 @@ public partial class SettingsPage : Page
 		Global.Settings.LaunchOnStart ??= false;
 		UpdateOnStartChk.IsChecked = Global.Settings.CheckUpdateOnStart;
 		LaunchOnStartChk.IsChecked = Global.Settings.LaunchOnStart;
+		loaded = true;
 		UseKeyboardShortcutsChk.IsChecked = Global.Settings.UseKeyboardShortcuts;
 		UseSynethiaChk.IsChecked = Global.Settings.UseSynethia;
 
@@ -469,15 +468,116 @@ public partial class SettingsPage : Page
 		"ColorPicker - MIT License - © 2021-2026 Léo Corporation", $"{Properties.Resources.ColorPickerMax} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
-	private void ApiApplyBtn_Click(object sender, RoutedEventArgs e)
+	private void SaveAiSettings()
 	{
 		Global.Settings.ApiKey = ApiKeyTxt.Password;
+		Global.Settings.ApiEndpoint = ApiEndpointTxt.Text;
+		Global.Settings.CustomModelId = CustomModelIdTxt.Text;
 		XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+		Global.SaveUserAiSettings();
+	}
+
+	private void SaveAiSettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SaveAiSettings();
+		MessageBox.Show(Properties.Resources.Settings, Properties.Resources.ColorPickerMax, MessageBoxButton.OK, MessageBoxImage.Information);
+	}
+
+	private async void TestAiConnectionBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SaveAiSettings();
+		TestAiConnectionBtn.IsEnabled = false;
+		TestResultBadge.Visibility = Visibility.Collapsed;
+
+		// Start rotating animation on icon
+		DoubleAnimation spinAnimation = new()
+		{
+			From = 0,
+			To = 360,
+			Duration = TimeSpan.FromSeconds(1),
+			RepeatBehavior = RepeatBehavior.Forever
+		};
+		TestIconRotator.BeginAnimation(RotateTransform.AngleProperty, spinAnimation);
+
+		try
+		{
+			var openAiService = AiGenPage.CreateOpenAIService();
+			string targetModel = !string.IsNullOrWhiteSpace(Global.Settings.CustomModelId)
+				? Global.Settings.CustomModelId.Trim()
+				: (Global.Settings.Model ?? Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo);
+
+			var res = await openAiService.ChatCompletion.CreateCompletion(new Betalgo.Ranul.OpenAI.ObjectModels.RequestModels.ChatCompletionCreateRequest
+			{
+				Messages = [Betalgo.Ranul.OpenAI.ObjectModels.RequestModels.ChatMessage.FromUser("hi")],
+				Model = targetModel,
+				MaxTokens = 5
+			});
+
+			if (res.Successful)
+			{
+				TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(16, 124, 65)); // Green
+				TestStatusTitle.Text = "连接成功！";
+				string reply = res.Choices?.FirstOrDefault()?.Message?.Content ?? "(无返回文本)";
+				TestResultTxt.Text = $"响应内容: {reply}";
+			}
+			else
+			{
+				string rawMsg = res.Error?.Message ?? "";
+				// Check if the "error" is actually an SSE stream chunk response from proxy
+				if (rawMsg.Contains("chat.completion") || rawMsg.Contains("data: {"))
+				{
+					// Extract delta contents from stream chunk lines
+					var matches = Regex.Matches(rawMsg, @"""content""\s*:\s*""([^""]+)""");
+					string joinedContent = string.Join("", matches.Select(m => m.Groups[1].Value));
+					if (string.IsNullOrWhiteSpace(joinedContent)) joinedContent = "连接成功，能正确接收流式响应。";
+
+					TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(16, 124, 65)); // Green
+					TestStatusTitle.Text = "连接成功！";
+					TestResultTxt.Text = $"响应内容 (流式): {joinedContent}";
+				}
+				else
+				{
+					TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(209, 52, 56)); // Red
+					TestStatusTitle.Text = "连接失败";
+					string errorCode = res.Error?.Code ?? "N/A";
+					string errorType = res.Error?.Type ?? "N/A";
+					TestResultTxt.Text = $"错误代码: {errorCode}\n错误类型: {errorType}\n详细提示: {rawMsg}";
+				}
+			}
+		}
+		catch (Exception ex)
+		{
+			TestStatusTitle.Foreground = new SolidColorBrush(Color.FromRgb(209, 52, 56)); // Red
+			TestStatusTitle.Text = "异常报错";
+			TestResultTxt.Text = $"{ex.GetType().Name}: {ex.Message}\n{ex.InnerException?.Message}";
+		}
+		finally
+		{
+			TestIconRotator.BeginAnimation(RotateTransform.AngleProperty, null); // Stop spinning
+			TestResultBadge.Visibility = Visibility.Visible;
+			TestAiConnectionBtn.IsEnabled = true;
+		}
+	}
+
+	private void ApiEndpointTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		if (!loaded) return;
+		Global.Settings.ApiEndpoint = ApiEndpointTxt.Text;
+		Global.SaveUserAiSettings();
+	}
+
+	private void CustomModelIdTxt_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		if (!loaded) return;
+		Global.Settings.CustomModelId = CustomModelIdTxt.Text;
+		Global.SaveUserAiSettings();
 	}
 
 	private void ApiKeyTxt_PasswordChanged(object sender, RoutedEventArgs e)
 	{
-		ApiApplyBtn.Visibility = Visibility.Visible;
+		if (!loaded) return;
+		Global.Settings.ApiKey = ApiKeyTxt.Password;
+		Global.SaveUserAiSettings();
 	}
 
 	private void ModelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -485,7 +585,7 @@ public partial class SettingsPage : Page
 		try
 		{
 			Global.Settings.Model = Global.Settings.SupportedModels[ModelComboBox.SelectedIndex];
-			XmlSerializerManager.SaveToXml(Global.Settings, Global.SettingsPath);
+			Global.SaveUserAiSettings();
 		}
 		catch { }
 	}

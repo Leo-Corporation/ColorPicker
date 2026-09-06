@@ -32,7 +32,9 @@ using PeyrSharp.Env;
 using Synethia;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
@@ -90,9 +92,51 @@ public static class Global
 	};
 
 
+	internal static string UserColorPickerDir => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".colorpicker");
+	internal static string UserAiSettingsPath => Path.Combine(UserColorPickerDir, "setting.json");
+
 	internal static string SynethiaPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\SynethiaConfig.json";
 	internal static string BookmarksPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Bookmarks.xml";
 	internal static string SettingsPath => $@"{FileSys.AppDataPath}\Léo Corporation\ColorPicker Max\Settings.xml";
+
+	public static void LoadUserAiSettings()
+	{
+		try
+		{
+			if (File.Exists(UserAiSettingsPath))
+			{
+				string json = File.ReadAllText(UserAiSettingsPath);
+				using var doc = JsonDocument.Parse(json);
+				var root = doc.RootElement;
+				if (root.TryGetProperty("ApiKey", out var apiKeyProp)) Settings.ApiKey = apiKeyProp.GetString() ?? "";
+				if (root.TryGetProperty("ApiEndpoint", out var endpointProp)) Settings.ApiEndpoint = endpointProp.GetString() ?? "";
+				if (root.TryGetProperty("CustomModelId", out var customModelProp)) Settings.CustomModelId = customModelProp.GetString() ?? "";
+				if (root.TryGetProperty("Model", out var modelProp)) Settings.Model = modelProp.GetString() ?? "gpt-3.5-turbo";
+			}
+		}
+		catch { }
+	}
+
+	public static void SaveUserAiSettings()
+	{
+		try
+		{
+			if (!Directory.Exists(UserColorPickerDir))
+			{
+				Directory.CreateDirectory(UserColorPickerDir);
+			}
+			var aiConfig = new
+			{
+				ApiKey = Settings.ApiKey ?? "",
+				ApiEndpoint = Settings.ApiEndpoint ?? "",
+				CustomModelId = Settings.CustomModelId ?? "",
+				Model = Settings.Model ?? "gpt-3.5-turbo"
+			};
+			string json = JsonSerializer.Serialize(aiConfig, new JsonSerializerOptions { WriteIndented = true });
+			File.WriteAllText(UserAiSettingsPath, json);
+		}
+		catch { }
+	}
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/ColorPicker/5.0/Version.txt";
 
 	public static string Version => "6.9.1.2602";

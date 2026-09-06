@@ -34,6 +34,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -53,19 +54,41 @@ public partial class AiGenPage : Page
 	{
 		InitializeComponent();
 		InitUI();
-		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+		Loaded += (o, e) =>
+		{
+			SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 4, ref code); // injects the code in the page
+			InitUI();
+		};
 		ColorBtn.IsChecked = true;
 	}
 
-	private void InitUI()
+	public static bool HasValidAiConfig()
 	{
-		DetailsWrap.Children.Add(DetailsControl); // Add the details control to the page
-		if (!string.IsNullOrEmpty(Global.Settings.ApiKey))
+		return !string.IsNullOrWhiteSpace(Global.Settings.ApiKey) || !string.IsNullOrWhiteSpace(Global.Settings.ApiEndpoint);
+	}
+
+	internal void InitUI()
+	{
+		if (DetailsWrap.Children.Count == 0)
 		{
-			ColorPanel.Visibility = Visibility.Visible;
+			DetailsWrap.Children.Add(DetailsControl); // Add the details control to the page
+		}
+
+		if (HasValidAiConfig())
+		{
+			ColorPanel.Visibility = ColorBtn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+			PalettePanel.Visibility = PaletteBtn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+			DescPanel.Visibility = DescribeBtn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
 			ApiPlaceholder.Visibility = Visibility.Collapsed;
 			NavGrid.Visibility = Visibility.Visible;
-			return;
+		}
+		else
+		{
+			ColorPanel.Visibility = Visibility.Collapsed;
+			PalettePanel.Visibility = Visibility.Collapsed;
+			DescPanel.Visibility = Visibility.Collapsed;
+			ApiPlaceholder.Visibility = Visibility.Visible;
+			NavGrid.Visibility = Visibility.Collapsed;
 		}
 	}
 
@@ -118,9 +141,50 @@ public partial class AiGenPage : Page
 		}
 	}
 
+	public static OpenAIService CreateOpenAIService()
+	{
+		string key = Global.Settings.ApiKey;
+		if (string.IsNullOrWhiteSpace(key))
+		{
+			key = "sk-placeholder";
+		}
+
+		var options = new OpenAIOptions
+		{
+			ApiKey = key
+		};
+		if (!string.IsNullOrWhiteSpace(Global.Settings.ApiEndpoint))
+		{
+			string endpoint = Global.Settings.ApiEndpoint.Trim().TrimEnd('/');
+			if (endpoint.EndsWith("/chat/completions", StringComparison.OrdinalIgnoreCase))
+			{
+				endpoint = endpoint[..^17].TrimEnd('/');
+			}
+			if (endpoint.EndsWith("/v1", StringComparison.OrdinalIgnoreCase))
+			{
+				endpoint = endpoint[..^3].TrimEnd('/');
+			}
+			if (!endpoint.EndsWith("/"))
+			{
+				endpoint += "/";
+			}
+			options.BaseDomain = endpoint;
+		}
+		return new OpenAIService(options);
+	}
+
+	private static string GetEffectiveModel()
+	{
+		if (!string.IsNullOrWhiteSpace(Global.Settings.CustomModelId))
+		{
+			return Global.Settings.CustomModelId.Trim();
+		}
+		return Global.Settings.Model ?? Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo;
+	}
+
 	private async void GenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		if (!HasValidAiConfig())
 		{
 			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
@@ -134,10 +198,7 @@ public partial class AiGenPage : Page
 		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
 		try
 		{
-			var openAiService = new OpenAIService(new OpenAIOptions()
-			{
-				ApiKey = Global.Settings.ApiKey ?? ""
-			});
+			var openAiService = CreateOpenAIService();
 			var completionResult = await openAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
 			{
 				Messages =
@@ -145,21 +206,48 @@ public partial class AiGenPage : Page
 					ChatMessage.FromSystem("GOAL: You are a color generator assistant. The user gives you a prompt to generate a SINGLE color. RESPONDE FORMAT: Only the color is in hexadecimal format, i.e.: #FFFFFF. "),
 					ChatMessage.FromUser("Generate a color from this prompt: " + PromptTxt.Text)
 				],
-				Model = Global.Settings.Model ?? Models.Gpt_3_5_Turbo,
+				Model = GetEffectiveModel(),
 			});
 
 			if (completionResult.Successful)
 			{
-				ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(completionResult.Choices.First().Message.Content)));
-				LoadDetails();
+				string content = completionResult.Choices.First().Message.Content ?? "";
+				var hexMatch = Regex.Match(content, @"#[0-9a-fA-F]{6}");
+				if (hexMatch.Success)
+				{
+					ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(hexMatch.Value)));
+					LoadDetails();
+				}
+				else
+				{
+					MessageBox.Show($"AI 返回的内容未包含有效的 Hex 颜色代码: {content}", Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Warning);
+				}
+			}
+			else
+			{
+				string rawMsg = completionResult.Error?.Message ?? "";
+				var hexMatch = Regex.Match(rawMsg, @"#[0-9a-fA-F]{6}");
+				if (hexMatch.Success)
+				{
+					ColorInfo = new(ColorHelper.ColorConverter.HexToRgb(new(hexMatch.Value)));
+					LoadDetails();
+				}
+				else
+				{
+					string error = string.IsNullOrWhiteSpace(rawMsg) ? "Generation failed" : rawMsg;
+					MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+				}
 			}
 		}
-		catch { }
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private async void PaletteGenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		if (!HasValidAiConfig())
 		{
 			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
@@ -173,10 +261,7 @@ public partial class AiGenPage : Page
 		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
 		try
 		{
-			var openAiService = new OpenAIService(new OpenAIOptions()
-			{
-				ApiKey = Global.Settings.ApiKey ?? ""
-			});
+			var openAiService = CreateOpenAIService();
 			var completionResult = await openAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
 			{
 				Messages =
@@ -184,16 +269,51 @@ public partial class AiGenPage : Page
 					ChatMessage.FromSystem("GOAL: You are a color palette assistant. The user gives you a prompt to generate a EXACLY FIVE colors. FORMAT: ONLY ANWSER LIKE THIS (with colors instead of \"...\"): [\"#FFFFFF\", \"#000000\", \"...\", \"...\", \"...\"]"),
 					ChatMessage.FromUser(PalettePromptTxt.Text)
 				],
-				Model = Models.Gpt_3_5_Turbo,
+				Model = GetEffectiveModel(),
 			});
 
 			if (completionResult.Successful)
 			{
-				var colors = JsonSerializer.Deserialize<string[]>(completionResult.Choices.First().Message.Content ?? "");
-				LoadBorders(colors ?? []);
+				string content = completionResult.Choices.First().Message.Content ?? "";
+				var matches = Regex.Matches(content, @"#[0-9a-fA-F]{6}");
+				if (matches.Count >= 5)
+				{
+					string[] colors = matches.Take(5).Select(m => m.Value).ToArray();
+					LoadBorders(colors);
+				}
+				else
+				{
+					try
+					{
+						var colors = JsonSerializer.Deserialize<string[]>(content);
+						LoadBorders(colors ?? []);
+					}
+					catch
+					{
+						MessageBox.Show($"AI 返回的内容格式不正确: {content}", Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Warning);
+					}
+				}
+			}
+			else
+			{
+				string rawMsg = completionResult.Error?.Message ?? "";
+				var matches = Regex.Matches(rawMsg, @"#[0-9a-fA-F]{6}");
+				if (matches.Count >= 5)
+				{
+					string[] colors = matches.Take(5).Select(m => m.Value).ToArray();
+					LoadBorders(colors);
+				}
+				else
+				{
+					string error = string.IsNullOrWhiteSpace(rawMsg) ? "Palette generation failed" : rawMsg;
+					MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+				}
 			}
 		}
-		catch { }
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private void C1_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -242,7 +362,7 @@ public partial class AiGenPage : Page
 
 	private void ColorBtn_Checked(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (!HasValidAiConfig()) return;
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Visible;
 		PalettePanel.Visibility = Visibility.Collapsed;
@@ -251,7 +371,7 @@ public partial class AiGenPage : Page
 
 	private void PaletteBtn_Checked(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (!HasValidAiConfig()) return;
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Collapsed;
 		PalettePanel.Visibility = Visibility.Visible;
@@ -260,7 +380,7 @@ public partial class AiGenPage : Page
 
 	private void DescribeBtn_Checked(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey)) return;
+		if (!HasValidAiConfig()) return;
 		if (ColorInfo is null) BookmarkBtn.Visibility = Visibility.Collapsed;
 		ColorPanel.Visibility = Visibility.Collapsed;
 		PalettePanel.Visibility = Visibility.Collapsed;
@@ -269,7 +389,7 @@ public partial class AiGenPage : Page
 	string _colorName = "";
 	private async void DescGenerateBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (string.IsNullOrEmpty(Global.Settings.ApiKey) || string.IsNullOrWhiteSpace(Global.Settings.ApiKey))
+		if (!HasValidAiConfig())
 		{
 			MessageBox.Show(Properties.Resources.ProvideAPIKey, Properties.Resources.AIGenerateColor, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
@@ -283,10 +403,7 @@ public partial class AiGenPage : Page
 		Global.SynethiaConfig.ActionsInfo[6].UsageCount++; // Increment the usage counter
 		try
 		{
-			var openAiService = new OpenAIService(new OpenAIOptions()
-			{
-				ApiKey = Global.Settings.ApiKey ?? ""
-			});
+			var openAiService = CreateOpenAIService();
 			var completionResult = await openAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
 			{
 				Messages =
@@ -294,7 +411,7 @@ public partial class AiGenPage : Page
 					ChatMessage.FromSystem($"GOAL: You are a color name generator assistant. The user gives you a prompt to generate a SINGLE name for a specified color. RESPONDE FORMAT: Only the color name. LANGUAGE: {CultureInfo.CurrentUICulture.Name}"),
 					ChatMessage.FromUser("Generate the name of the color from this prompt: " + DescPromptTxt.Text)
 				],
-				Model = Global.Settings.Model ?? Models.Gpt_3_5_Turbo,
+				Model = GetEffectiveModel(),
 			});
 
 			if (completionResult.Successful)
@@ -302,8 +419,16 @@ public partial class AiGenPage : Page
 				_colorName = completionResult.Choices.First().Message.Content ?? "";
 				NameTxt.Text = $"{Properties.Resources.Name}: {_colorName}";
 			}
+			else
+			{
+				string error = completionResult.Error?.Message ?? "Name generation failed";
+				MessageBox.Show(error, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
-		catch { }
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.AIGeneration, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
 	}
 
 	private void NameTxt_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
