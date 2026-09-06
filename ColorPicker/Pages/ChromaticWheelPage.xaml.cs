@@ -65,7 +65,7 @@ public partial class ChromaticWheelPage : Page
 
 		BitmapImage img = new();
 		img.BeginInit();
-		img.UriSource = new Uri("pack://application:,,,/ColorPicker;component/Images/ColorWheel.png");
+		img.UriSource = new Uri("pack://application:,,,/ColorPickerMax;component/Images/ColorWheel.png");
 		img.EndInit();
 
 		WheelImg.Source = img; // Set the image source
@@ -77,7 +77,7 @@ public partial class ChromaticWheelPage : Page
 		CheckButton(DiscBtn);
 		BitmapImage img = new();
 		img.BeginInit();
-		img.UriSource = new Uri("pack://application:,,,/ColorPicker;component/Images/ColorDisc2.png");
+		img.UriSource = new Uri("pack://application:,,,/ColorPickerMax;component/Images/ColorDisc2.png");
 		img.EndInit();
 
 		WheelImg.Source = img; // Set the image source
@@ -90,7 +90,7 @@ public partial class ChromaticWheelPage : Page
 		CheckButton(ShadesBtn);
 		BitmapImage img = new();
 		img.BeginInit();
-		img.UriSource = new Uri("pack://application:,,,/ColorPicker;component/Images/ColorDisc.png");
+		img.UriSource = new Uri("pack://application:,,,/ColorPickerMax;component/Images/ColorDisc.png");
 		img.EndInit();
 
 		WheelImg.Source = img; // Set the image source

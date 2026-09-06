@@ -6,6 +6,7 @@
     xmlns:lang="clr-namespace:ColorPicker.Properties"
     xmlns:local="clr-namespace:ColorPicker.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:ColorPicker.UserControls"
     Title="SelectorPage"
     d:Background="White"
     d:DesignHeight="450"
@@ -46,8 +47,8 @@
 
         <Border
             Grid.Row="2"
-            MinWidth="440"
-            Padding="10"
+            MinWidth="680"
+            Padding="15"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Background="{DynamicResource CardBackground}"
@@ -63,240 +64,258 @@
             </Border.Effect>
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <!-- Column 0: PixiEditor ColorPicker Wheel (Left Side) -->
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
+                    <!-- Column 1: Existing Sliders & Actions (Right Side) -->
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Border
-                    x:Name="ColorBorder"
-                    Width="75"
-                    Height="75"
-                    Margin="10"
-                    VerticalAlignment="Center"
-                    d:Background="#ff0000"
-                    CornerRadius="50"
-                    Cursor="Hand"
-                    MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" />
 
-                <Grid Grid.Column="1" VerticalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="35" />
-                    </Grid.ColumnDefinitions>
-
-                    <Slider
-                        x:Name="RedSlider"
-                        Grid.Column="0"
-                        Width="255"
-                        VerticalAlignment="Center"
-                        BorderBrush="#FF4500"
-                        Foreground="#FF4500"
-                        IsSnapToTickEnabled="True"
-                        Maximum="255"
-                        Minimum="0"
-                        SmallChange="1"
-                        Style="{DynamicResource SliderStyle1}"
-                        ValueChanged="RedSlider_ValueChanged" />
-                    <TextBlock
-                        x:Name="RedValueTxt"
-                        Grid.Column="2"
-                        Margin="3"
-                        HorizontalAlignment="Center"
-                        d:Text="255"
-                        FontSize="14"
-                        FontWeight="ExtraBold" />
-
-                    <Slider
-                        x:Name="GreenSlider"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Width="255"
-                        VerticalAlignment="Center"
-                        BorderBrush="#00df39"
-                        Foreground="#00df39"
-                        IsSnapToTickEnabled="True"
-                        Maximum="255"
-                        Minimum="0"
-                        SmallChange="1"
-                        Style="{DynamicResource SliderStyle1}"
-                        ValueChanged="GreenSlider_ValueChanged" />
-                    <TextBlock
-                        x:Name="GreenValueTxt"
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Margin="3"
-                        HorizontalAlignment="Center"
-                        d:Text="255"
-                        FontSize="14"
-                        FontWeight="ExtraBold" />
-
-                    <Slider
-                        x:Name="BlueSlider"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Width="255"
-                        VerticalAlignment="Center"
-                        BorderBrush="#4169E1"
-                        Foreground="#4169E1"
-                        IsSnapToTickEnabled="True"
-                        Maximum="255"
-                        Minimum="0"
-                        SmallChange="1"
-                        Style="{DynamicResource SliderStyle1}"
-                        ValueChanged="BlueSlider_ValueChanged" />
-                    <TextBlock
-                        x:Name="BlueValueTxt"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Margin="3"
-                        HorizontalAlignment="Center"
-                        d:Text="255"
-                        FontSize="14"
-                        FontWeight="ExtraBold" />
-                    <Slider
-                        x:Name="KSlider"
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        Width="255"
-                        VerticalAlignment="Center"
-                        BorderBrush="#4169E1"
-                        Foreground="#4169E1"
-                        IsSnapToTickEnabled="True"
-                        Maximum="255"
-                        Minimum="0"
-                        SmallChange="1"
-                        Style="{DynamicResource SliderStyle1}"
-                        ValueChanged="KSlider_ValueChanged" />
-                    <TextBlock
-                        x:Name="KValueTxt"
-                        Grid.Row="3"
-                        Grid.Column="2"
-                        Margin="3"
-                        HorizontalAlignment="Center"
-                        d:Text="255"
-                        FontSize="14"
-                        FontWeight="ExtraBold" />
-                </Grid>
-
-                <StackPanel Grid.Column="2" Orientation="Horizontal">
-                    <Button
-                        x:Name="SelectBtn"
-                        Grid.Column="2"
-                        Margin="10 0 0 0"
-                        Padding="5"
-                        VerticalAlignment="Top"
-                        Background="{DynamicResource Background3}"
-                        Click="SelectBtn_Click"
-                        Content="&#xFD3F;"
-                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                        Foreground="{DynamicResource Foreground1}"
-                        Style="{DynamicResource DefaultButton}">
-                        <Button.ToolTip>
-                            <ToolTip
-                                Background="{DynamicResource Background1}"
-                                Content="{x:Static lang:Resources.SelectColor}"
-                                Foreground="{DynamicResource Foreground1}" />
-                        </Button.ToolTip>
-                    </Button>
-                    <Button
-                        x:Name="PaletteBtn"
-                        Grid.Column="2"
-                        Padding="5"
-                        VerticalAlignment="Top"
-                        Background="{DynamicResource Background3}"
-                        Click="PaletteBtn_Click"
-                        Content="&#xF2F6;"
-                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                        Foreground="{DynamicResource Foreground1}"
-                        Style="{DynamicResource DefaultButton}">
-                        <Button.ToolTip>
-                            <ToolTip
-                                Background="{DynamicResource Background1}"
-                                Content="{x:Static lang:Resources.GenerateColor}"
-                                Foreground="{DynamicResource Foreground1}" />
-                        </Button.ToolTip>
-                    </Button>
-                    <Button
-                        x:Name="BookmarkBtn"
-                        Grid.Column="2"
-                        Padding="5"
-                        VerticalAlignment="Top"
-                        Background="{DynamicResource Background3}"
-                        Click="BookmarkBtn_Click"
-                        Content="&#xF1F6;"
-                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                        Foreground="{DynamicResource Foreground1}"
-                        Style="{DynamicResource DefaultButton}">
-                        <Button.ToolTip>
-                            <ToolTip
-                                x:Name="BookmarkToolTip"
-                                Background="{DynamicResource Background1}"
-                                Content="{x:Static lang:Resources.AddBookmark}"
-                                Foreground="{DynamicResource Foreground1}" />
-                        </Button.ToolTip>
-                    </Button>
-                    <Popup
-                        x:Name="CollectionsPopup"
-                        AllowsTransparency="True"
-                        Placement="Bottom"
-                        PlacementTarget="{Binding ElementName=BookmarkBtn}"
-                        PopupAnimation="Fade"
-                        StaysOpen="False">
-                        <Border
-                            Margin="10"
-                            Padding="10"
-                            Background="{DynamicResource Background1}"
-                            CornerRadius="5">
-                            <Border.Effect>
-                                <DropShadowEffect
-                                    BlurRadius="10"
-                                    Opacity="0.4"
-                                    RenderingBias="Performance"
-                                    ShadowDepth="0"
-                                    Color="Black" />
-                            </Border.Effect>
-                            <StackPanel>
-                                <Button
-                                    x:Name="AddRemoveBookmarkBtn"
-                                    HorizontalContentAlignment="Left"
-                                    Background="Transparent"
-                                    Click="AddRemoveBookmarkBtn_Click"
-                                    Content="{x:Static lang:Resources.AddBookmark}"
-                                    FontWeight="Bold"
-                                    Foreground="{DynamicResource Foreground1}"
-                                    Style="{DynamicResource DefaultButton}" />
-                                <StackPanel x:Name="CollectionsPanel" />
-                            </StackPanel>
-                        </Border>
-                    </Popup>
-
-                    <ComboBox
-                        x:Name="ColorTypeComboBox"
-                        Height="22"
-                        Margin="1"
-                        Padding="5"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Background="Transparent"
-                        BorderBrush="{DynamicResource AccentColor}"
-                        BorderThickness="2"
-                        FontSize="10"
-                        Foreground="{DynamicResource Foreground1}"
-                        SelectionChanged="ColorTypeComboBox_SelectionChanged"
-                        Style="{DynamicResource ComboBoxStyle1}">
-                        <ComboBoxItem Content="{x:Static lang:Resources.RGB}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.HSV}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.HSL}" />
-                        <ComboBoxItem Content="{x:Static lang:Resources.CMYK}" />
-                    </ComboBox>
+                <!-- Left: SquarePicker (Hue Ring + HSV/HSL Square) via project wrapper (avoids assembly-name clash) -->
+                <StackPanel Grid.Column="0" Margin="0 0 20 0" VerticalAlignment="Center">
+                    <uc:ColorWheelControl
+                        x:Name="WheelPicker"
+                        Width="220"
+                        Height="220" />
                 </StackPanel>
+
+                <!-- Right: Existing ColorBorder, Sliders and Top Action Buttons -->
+                <Grid Grid.Column="1" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border
+                        x:Name="ColorBorder"
+                        Width="75"
+                        Height="75"
+                        Margin="10"
+                        VerticalAlignment="Center"
+                        d:Background="#ff0000"
+                        CornerRadius="50"
+                        Cursor="Hand"
+                        MouseLeftButtonUp="ColorBorder_MouseLeftButtonUp" />
+
+                    <Grid Grid.Column="1" VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="35" />
+                        </Grid.ColumnDefinitions>
+
+                        <Slider
+                            x:Name="RedSlider"
+                            Grid.Column="0"
+                            Width="255"
+                            VerticalAlignment="Center"
+                            BorderBrush="#FF4500"
+                            Foreground="#FF4500"
+                            IsSnapToTickEnabled="True"
+                            Maximum="255"
+                            Minimum="0"
+                            SmallChange="1"
+                            Style="{DynamicResource SliderStyle1}"
+                            ValueChanged="RedSlider_ValueChanged" />
+                        <TextBlock
+                            x:Name="RedValueTxt"
+                            Grid.Column="2"
+                            Margin="3"
+                            HorizontalAlignment="Center"
+                            d:Text="255"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+
+                        <Slider
+                            x:Name="GreenSlider"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Width="255"
+                            VerticalAlignment="Center"
+                            BorderBrush="#00df39"
+                            Foreground="#00df39"
+                            IsSnapToTickEnabled="True"
+                            Maximum="255"
+                            Minimum="0"
+                            SmallChange="1"
+                            Style="{DynamicResource SliderStyle1}"
+                            ValueChanged="GreenSlider_ValueChanged" />
+                        <TextBlock
+                            x:Name="GreenValueTxt"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="3"
+                            HorizontalAlignment="Center"
+                            d:Text="255"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+
+                        <Slider
+                            x:Name="BlueSlider"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Width="255"
+                            VerticalAlignment="Center"
+                            BorderBrush="#4169E1"
+                            Foreground="#4169E1"
+                            IsSnapToTickEnabled="True"
+                            Maximum="255"
+                            Minimum="0"
+                            SmallChange="1"
+                            Style="{DynamicResource SliderStyle1}"
+                            ValueChanged="BlueSlider_ValueChanged" />
+                        <TextBlock
+                            x:Name="BlueValueTxt"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Margin="3"
+                            HorizontalAlignment="Center"
+                            d:Text="255"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                        <Slider
+                            x:Name="KSlider"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Width="255"
+                            VerticalAlignment="Center"
+                            BorderBrush="#4169E1"
+                            Foreground="#4169E1"
+                            IsSnapToTickEnabled="True"
+                            Maximum="255"
+                            Minimum="0"
+                            SmallChange="1"
+                            Style="{DynamicResource SliderStyle1}"
+                            ValueChanged="KSlider_ValueChanged" />
+                        <TextBlock
+                            x:Name="KValueTxt"
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Margin="3"
+                            HorizontalAlignment="Center"
+                            d:Text="255"
+                            FontSize="14"
+                            FontWeight="ExtraBold" />
+                    </Grid>
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <Button
+                            x:Name="SelectBtn"
+                            Grid.Column="2"
+                            Margin="10 0 0 0"
+                            Padding="5"
+                            VerticalAlignment="Top"
+                            Background="{DynamicResource Background3}"
+                            Click="SelectBtn_Click"
+                            Content="&#xFD3F;"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                            Foreground="{DynamicResource Foreground1}"
+                            Style="{DynamicResource DefaultButton}">
+                            <Button.ToolTip>
+                                <ToolTip
+                                    Background="{DynamicResource Background1}"
+                                    Content="{x:Static lang:Resources.SelectColor}"
+                                    Foreground="{DynamicResource Foreground1}" />
+                            </Button.ToolTip>
+                        </Button>
+                        <Button
+                            x:Name="PaletteBtn"
+                            Grid.Column="2"
+                            Padding="5"
+                            VerticalAlignment="Top"
+                            Background="{DynamicResource Background3}"
+                            Click="PaletteBtn_Click"
+                            Content="&#xF2F6;"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                            Foreground="{DynamicResource Foreground1}"
+                            Style="{DynamicResource DefaultButton}">
+                            <Button.ToolTip>
+                                <ToolTip
+                                    Background="{DynamicResource Background1}"
+                                    Content="{x:Static lang:Resources.GenerateColor}"
+                                    Foreground="{DynamicResource Foreground1}" />
+                            </Button.ToolTip>
+                        </Button>
+                        <Button
+                            x:Name="BookmarkBtn"
+                            Grid.Column="2"
+                            Padding="5"
+                            VerticalAlignment="Top"
+                            Background="{DynamicResource Background3}"
+                            Click="BookmarkBtn_Click"
+                            Content="&#xF1F6;"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                            Foreground="{DynamicResource Foreground1}"
+                            Style="{DynamicResource DefaultButton}">
+                            <Button.ToolTip>
+                                <ToolTip
+                                    x:Name="BookmarkToolTip"
+                                    Background="{DynamicResource Background1}"
+                                    Content="{x:Static lang:Resources.AddBookmark}"
+                                    Foreground="{DynamicResource Foreground1}" />
+                            </Button.ToolTip>
+                        </Button>
+                        <Popup
+                            x:Name="CollectionsPopup"
+                            AllowsTransparency="True"
+                            Placement="Bottom"
+                            PlacementTarget="{Binding ElementName=BookmarkBtn}"
+                            PopupAnimation="Fade"
+                            StaysOpen="False">
+                            <Border
+                                Margin="10"
+                                Padding="10"
+                                Background="{DynamicResource Background1}"
+                                CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="10"
+                                        Opacity="0.4"
+                                        RenderingBias="Performance"
+                                        ShadowDepth="0"
+                                        Color="Black" />
+                                </Border.Effect>
+                                <StackPanel>
+                                    <Button
+                                        x:Name="AddRemoveBookmarkBtn"
+                                        HorizontalContentAlignment="Left"
+                                        Background="Transparent"
+                                        Click="AddRemoveBookmarkBtn_Click"
+                                        Content="{x:Static lang:Resources.AddBookmark}"
+                                        FontWeight="Bold"
+                                        Foreground="{DynamicResource Foreground1}"
+                                        Style="{DynamicResource DefaultButton}" />
+                                    <StackPanel x:Name="CollectionsPanel" />
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+
+                        <ComboBox
+                            x:Name="ColorTypeComboBox"
+                            Height="22"
+                            Margin="1"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="Transparent"
+                            BorderBrush="{DynamicResource AccentColor}"
+                            BorderThickness="2"
+                            FontSize="10"
+                            Foreground="{DynamicResource Foreground1}"
+                            SelectionChanged="ColorTypeComboBox_SelectionChanged"
+                            Style="{DynamicResource ComboBoxStyle1}">
+                            <ComboBoxItem Content="{x:Static lang:Resources.RGB}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.HSV}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.HSL}" />
+                            <ComboBoxItem Content="{x:Static lang:Resources.CMYK}" />
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Border>
 
