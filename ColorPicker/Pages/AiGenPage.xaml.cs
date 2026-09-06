@@ -145,7 +145,7 @@ public partial class AiGenPage : Page
 					ChatMessage.FromSystem("GOAL: You are a color generator assistant. The user gives you a prompt to generate a SINGLE color. RESPONDE FORMAT: Only the color is in hexadecimal format, i.e.: #FFFFFF. "),
 					ChatMessage.FromUser("Generate a color from this prompt: " + PromptTxt.Text)
 				],
-				Model = Global.Settings.Model ?? Models.Gpt_3_5_Turbo,
+				Model = Global.Settings.Model ?? Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo,
 			});
 
 			if (completionResult.Successful)
@@ -184,7 +184,7 @@ public partial class AiGenPage : Page
 					ChatMessage.FromSystem("GOAL: You are a color palette assistant. The user gives you a prompt to generate a EXACLY FIVE colors. FORMAT: ONLY ANWSER LIKE THIS (with colors instead of \"...\"): [\"#FFFFFF\", \"#000000\", \"...\", \"...\", \"...\"]"),
 					ChatMessage.FromUser(PalettePromptTxt.Text)
 				],
-				Model = Models.Gpt_3_5_Turbo,
+				Model = Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo,
 			});
 
 			if (completionResult.Successful)
@@ -294,7 +294,7 @@ public partial class AiGenPage : Page
 					ChatMessage.FromSystem($"GOAL: You are a color name generator assistant. The user gives you a prompt to generate a SINGLE name for a specified color. RESPONDE FORMAT: Only the color name. LANGUAGE: {CultureInfo.CurrentUICulture.Name}"),
 					ChatMessage.FromUser("Generate the name of the color from this prompt: " + DescPromptTxt.Text)
 				],
-				Model = Global.Settings.Model ?? Models.Gpt_3_5_Turbo,
+				Model = Global.Settings.Model ?? Betalgo.Ranul.OpenAI.ObjectModels.Models.Gpt_3_5_Turbo,
 			});
 
 			if (completionResult.Successful)

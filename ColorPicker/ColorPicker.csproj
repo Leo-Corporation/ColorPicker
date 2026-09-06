@@ -9,6 +9,7 @@
 	<Copyright>© 2026</Copyright>
 	<Authors>Léo Corporation</Authors>
 	<Title>ColorPicker</Title>
+	<AssemblyName>ColorPickerMax</AssemblyName>
 	<Description>Maximize your creativity.</Description>
 	<RepositoryUrl>https://github.com/Leo-Corporation/ColorPicker</RepositoryUrl>
 	<Version>6.9.1.2602</Version>
@@ -57,6 +58,7 @@
 	<PackageReference Include="MouseKeyHook" Version="5.7.1" />
 	<PackageReference Include="PeyrSharp.Core" Version="2.1.0.2312" />
 	<PackageReference Include="PeyrSharp.Env" Version="2.1.0.2312" />
+	<PackageReference Include="PixiEditor.ColorPicker" Version="3.4.1" />
 	<PackageReference Include="Synethia" Version="1.1.1.2302" />
   </ItemGroup>
 

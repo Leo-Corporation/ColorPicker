@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using ColorPicker.Classes;
 using ColorPicker.Enums;
+using ColorPicker.Models;
 using ColorPicker.UserControls;
 using ColorPicker.Windows;
 using Gma.System.MouseKeyHook;
@@ -57,11 +58,59 @@ public partial class SelectorPage : Page
 		Loaded += (o, e) => SynethiaManager.InjectSynethiaCode(this, Global.SynethiaConfig.PagesInfo, 0, ref code); // injects the code in the page
 	}
 
+	private bool isUpdatingFromSliders = false;
+
 	private void InitUI()
 	{
 		TitleTxt.Text = $"{Properties.Resources.Picker} > {Properties.Resources.Selector}";
 		DetailsWrap.Children.Add(DetailsControl); // Add details control to the page	
-		(RedSlider.Value, GreenSlider.Value, BlueSlider.Value) = Global.GenerateRandomColor();
+		(RedSlider.Value, GreenSlider.Value, BlueSlider.Value) = (30, 130, 220); // fixed default (no random generation)
+
+		// Bind SquarePicker ColorChanged (RoutedEvent) -> sync sliders + preview
+		WheelPicker.ColorChanged += (s, e) =>
+		{
+			if (isUpdatingFromSliders) return;
+			var colorProp = e.GetType().GetProperty("Color");
+			if (colorProp is null) return;
+			var c = (Color)colorProp.GetValue(e)!;
+			byte r = c.R;
+			byte g = c.G;
+			byte b = c.B;
+
+				switch (ColorTypeComboBox.SelectedIndex)
+				{
+					case 1:
+						var hsv = ColorHelper.ColorConverter.RgbToHsv(new(r, g, b));
+						RedSlider.Value = hsv.H;
+						GreenSlider.Value = hsv.S;
+						BlueSlider.Value = hsv.V;
+						break;
+					case 2:
+						var hsl = ColorHelper.ColorConverter.RgbToHsl(new(r, g, b));
+						RedSlider.Value = hsl.H;
+						GreenSlider.Value = hsl.S;
+						BlueSlider.Value = hsl.L;
+						break;
+					case 3:
+						var cmyk = ColorHelper.ColorConverter.RgbToCmyk(new(r, g, b));
+						RedSlider.Value = cmyk.C;
+						GreenSlider.Value = cmyk.M;
+						BlueSlider.Value = cmyk.Y;
+						KSlider.Value = cmyk.K;
+						break;
+					default:
+						RedSlider.Value = r;
+						GreenSlider.Value = g;
+						BlueSlider.Value = b;
+						break;
+				}
+
+				Color color = Color.FromRgb(r, g, b);
+				ColorBorder.Background = new SolidColorBrush { Color = color };
+				ColorBorder.Effect = new DropShadowEffect() { BlurRadius = 15, ShadowDepth = 0, Color = color };
+				LoadDetails();
+		};
+
 		LoadDetails();
 
 		timer.Interval = new(0, 0, 0, 0, 1); // Interval
@@ -124,14 +173,41 @@ public partial class SelectorPage : Page
 			}
 
 			double factor = scaling / 100d; // Calculate factor
-			miniPicker.Left = System.Windows.Forms.Cursor.Position.X / factor; // Define position
-			miniPicker.Top = System.Windows.Forms.Cursor.Position.Y / factor + 5; // Define position
+
+			// Position the MiniPicker next to the cursor, but flip to the other side
+			// when it would overflow the screen so the color block is never cut off.
+			System.Drawing.Rectangle workingArea = System.Windows.Forms.Screen.FromPoint(System.Windows.Forms.Cursor.Position).WorkingArea;
+			double screenW = workingArea.Width / factor;
+			double screenH = workingArea.Height / factor;
+
+			double pickerW = miniPicker.Width;   // 270 (logical units)
+			double pickerH = miniPicker.Height;  // 120 (logical units)
+			double cursorX = System.Windows.Forms.Cursor.Position.X / factor;
+			double cursorY = System.Windows.Forms.Cursor.Position.Y / factor;
+
+			double left = cursorX + 16;
+			double top = cursorY + 16;
+
+			if (left + pickerW > screenW) left = cursorX - pickerW - 16; // flip to the left of the cursor
+			if (top + pickerH > screenH) top = cursorY - pickerH - 16;   // flip above the cursor
+
+			miniPicker.Left = Math.Max(0, left);  // Define position
+			miniPicker.Top = Math.Max(0, top);    // Define position
 		};
 
 		// Register Keyboard Shortcuts
 		try
 		{
 			keyboardEvents = Hook.GlobalEvents();
+			keyboardEvents.KeyDown += (s, e) =>
+			{
+				// ESC cancels/closes the color picker, following the common convention.
+				if (e.KeyCode == System.Windows.Forms.Keys.Escape && selecting)
+				{
+					selecting = false;
+					UpdateSelectionState(false);
+				}
+			};
 			Hook.GlobalEvents().OnCombination(new Dictionary<Combination, Action>
 			{
 				{ Combination.FromString(Global.Settings.CopyKeyboardShortcut), HandleCopyKeyboard },
@@ -314,7 +390,7 @@ public partial class SelectorPage : Page
 
 	private void ColorBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		(RedSlider.Value, GreenSlider.Value, BlueSlider.Value) = Global.GenerateRandomColor();
+		// Do not randomize on click - keep current selection
 		LoadDetails();
 	}
 
@@ -332,6 +408,9 @@ public partial class SelectorPage : Page
 
 		DetailsControl.SetColorInfo(ColorInfo);
 		LoadBookmarkMenu();
+
+		// Bidirectional: sliders / eyedropper changes also move the wheel selector
+		SyncWheelFromColorInfo();
 
 		// Load the bookmark icon
 		if (!Global.Bookmarks.ColorBookmarks.Contains($"#{ColorInfo.HEX.Value}"))
@@ -372,72 +451,101 @@ public partial class SelectorPage : Page
 		LoadSliders();
 	}
 
+	private void SyncWheelFromColorInfo()
+	{
+		isUpdatingFromSliders = true;
+		try
+		{
+			WheelPicker.SelectedColor = Color.FromRgb(ColorInfo.RGB.R, ColorInfo.RGB.G, ColorInfo.RGB.B);
+		}
+		finally
+		{
+			isUpdatingFromSliders = false;
+		}
+	}
+
 	private void LoadSliders()
 	{
 		var current = ColorInfo;
 		KSlider.Visibility = Visibility.Collapsed;
 		KValueTxt.Visibility = Visibility.Collapsed;
-		switch (ColorTypeComboBox.SelectedIndex)
+		
+		isUpdatingFromSliders = true;
+		try
 		{
-			case 1:
-				RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
-				GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
-				BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
+			// Sync WheelPicker (external library SquarePicker expects System.Windows.Media.Color)
+			var mediaColor = Color.FromRgb(current.RGB.R, current.RGB.G, current.RGB.B);
+			if (WheelPicker.SelectedColor != mediaColor)
+			{
+				WheelPicker.SelectedColor = mediaColor;
+			}
 
-				RedSlider.Maximum = 360;
-				GreenSlider.Maximum = 100;
-				BlueSlider.Maximum = 100;
+			switch (ColorTypeComboBox.SelectedIndex)
+			{
+				case 1:
+					RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
 
-				RedSlider.Value = current.HSV.H;
-				GreenSlider.Value = current.HSV.S;
-				BlueSlider.Value = current.HSV.V;
-				break;
-			case 2:
-				RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
-				GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
-				BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					RedSlider.Maximum = 360;
+					GreenSlider.Maximum = 100;
+					BlueSlider.Maximum = 100;
 
-				RedSlider.Maximum = 360;
-				GreenSlider.Maximum = 100;
-				BlueSlider.Maximum = 100;
+					RedSlider.Value = current.HSV.H;
+					GreenSlider.Value = current.HSV.S;
+					BlueSlider.Value = current.HSV.V;
+					break;
+				case 2:
+					RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
 
-				RedSlider.Value = current.HSL.H;
-				GreenSlider.Value = current.HSL.S;
-				BlueSlider.Value = current.HSL.L;
-				break;
-			case 3:
-				RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
-				GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
-				BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
-				KSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					RedSlider.Maximum = 360;
+					GreenSlider.Maximum = 100;
+					BlueSlider.Maximum = 100;
 
-				RedSlider.Maximum = 100;
-				GreenSlider.Maximum = 100;
-				BlueSlider.Maximum = 100;
-				KSlider.Maximum = 100;
+					RedSlider.Value = current.HSL.H;
+					GreenSlider.Value = current.HSL.S;
+					BlueSlider.Value = current.HSL.L;
+					break;
+				case 3:
+					RedSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					GreenSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					BlueSlider.Foreground = Global.GetColorFromResource("AccentColor");
+					KSlider.Foreground = Global.GetColorFromResource("AccentColor");
 
-				RedSlider.Value = current.CMYK.C;
-				GreenSlider.Value = current.CMYK.M;
-				BlueSlider.Value = current.CMYK.Y;
-				KSlider.Value = current.CMYK.K;
+					RedSlider.Maximum = 100;
+					GreenSlider.Maximum = 100;
+					BlueSlider.Maximum = 100;
+					KSlider.Maximum = 100;
 
-				KSlider.Visibility = Visibility.Visible;
-				KValueTxt.Visibility = Visibility.Visible;
-				break;
+					RedSlider.Value = current.CMYK.C;
+					GreenSlider.Value = current.CMYK.M;
+					BlueSlider.Value = current.CMYK.Y;
+					KSlider.Value = current.CMYK.K;
 
-			default: // RGB
-				RedSlider.Foreground = Global.GetColorFromResource("SliderRed");
-				GreenSlider.Foreground = Global.GetColorFromResource("SliderGreen");
-				BlueSlider.Foreground = Global.GetColorFromResource("SliderBlue");
+					KSlider.Visibility = Visibility.Visible;
+					KValueTxt.Visibility = Visibility.Visible;
+					break;
 
-				RedSlider.Maximum = 255;
-				GreenSlider.Maximum = 255;
-				BlueSlider.Maximum = 255;
+				default: // RGB
+					RedSlider.Foreground = Global.GetColorFromResource("SliderRed");
+					GreenSlider.Foreground = Global.GetColorFromResource("SliderGreen");
+					BlueSlider.Foreground = Global.GetColorFromResource("SliderBlue");
 
-				RedSlider.Value = current.RGB.R;
-				GreenSlider.Value = current.RGB.G;
-				BlueSlider.Value = current.RGB.B;
-				break;
+					RedSlider.Maximum = 255;
+					GreenSlider.Maximum = 255;
+					BlueSlider.Maximum = 255;
+
+					RedSlider.Value = current.RGB.R;
+					GreenSlider.Value = current.RGB.G;
+					BlueSlider.Value = current.RGB.B;
+					break;
+			}
+		}
+		finally
+		{
+			isUpdatingFromSliders = false;
 		}
 	}
 	public static event EventHandler<PageEventArgs> GoClick;
