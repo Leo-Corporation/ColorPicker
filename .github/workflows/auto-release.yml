@@ -112,6 +112,6 @@ jobs:
                   files: |
                       ColorPickerMaxSetup.exe
                       ColorPickerMaxPortable.exe
-                  prerelease: true
+                  prerelease: false
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
